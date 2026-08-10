@@ -64,14 +64,20 @@ function SearchPage() {
     [driveIndex.nodes]
   );
 
+  const hasCriteria =
+    q.trim().length > 0 || Boolean(semester || course || kind);
+
   const results = useMemo(() => {
+    if (!hasCriteria) {
+      return [];
+    }
     const filtered = filterNodes(driveIndex.nodes, {
       courseCode: course,
       kind,
       semester,
     });
     return searchNodes(filtered, q);
-  }, [driveIndex.nodes, q, semester, course, kind]);
+  }, [driveIndex.nodes, q, semester, course, kind, hasCriteria]);
 
   const updateSearch = useCallback(
     (patch: Partial<SearchPageSearch>) => {
@@ -129,7 +135,11 @@ function SearchPage() {
           value={semester ?? ALL_VALUE}
         >
           <SelectTrigger>
-            <SelectValue placeholder="Semester" />
+            <SelectValue>
+              {(value: string) =>
+                value === ALL_VALUE ? "All semesters" : value
+              }
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
@@ -145,7 +155,9 @@ function SearchPage() {
 
         <Select onValueChange={handleCourseChange} value={course ?? ALL_VALUE}>
           <SelectTrigger>
-            <SelectValue placeholder="Course" />
+            <SelectValue>
+              {(value: string) => (value === ALL_VALUE ? "All courses" : value)}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
@@ -161,7 +173,9 @@ function SearchPage() {
 
         <Select onValueChange={handleKindChange} value={kind ?? ALL_VALUE}>
           <SelectTrigger>
-            <SelectValue placeholder="Type" />
+            <SelectValue>
+              {(value: string) => (value === ALL_VALUE ? "All types" : value)}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
@@ -176,7 +190,22 @@ function SearchPage() {
         </Select>
       </div>
 
-      {results.length === 0 ? (
+      {hasCriteria ? null : (
+        <Empty>
+          <EmptyHeader>
+            <EmptyMedia variant="icon">
+              <SearchIcon />
+            </EmptyMedia>
+            <EmptyTitle>Search the program materials</EmptyTitle>
+            <EmptyDescription>
+              Type a name, or pick a semester, course, or type to browse by
+              filter.
+            </EmptyDescription>
+          </EmptyHeader>
+        </Empty>
+      )}
+
+      {hasCriteria && results.length === 0 && (
         <Empty>
           <EmptyHeader>
             <EmptyMedia variant="icon">
@@ -188,7 +217,9 @@ function SearchPage() {
             </EmptyDescription>
           </EmptyHeader>
         </Empty>
-      ) : (
+      )}
+
+      {hasCriteria && results.length > 0 && (
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {results.map((node) => (
             <NodeCard
