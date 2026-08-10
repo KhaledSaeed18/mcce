@@ -4,8 +4,6 @@
 @import "@fontsource/archivo-black";
 @import "@fontsource-variable/space-grotesk";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme inline {
   --font-head: var(--font-head);
   --font-sans: var(--font-sans);
@@ -37,66 +35,79 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --border-w: var(--border-w);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-shadow-color: var(--shadow-color);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
 :root {
   --font-head: "Archivo Black", sans-serif;
   --font-sans: "Space Grotesk Variable", sans-serif;
-  --radius: 0;
+  --radius: 0.25rem;
   --background: #fff7e8;
-  --foreground: #000;
-  --card: #fff;
-  --card-foreground: #000;
-  --primary: #ffdc58;
-  --primary-hover: #ffd12e;
-  --primary-foreground: #000;
-  --secondary: #000;
-  --secondary-foreground: #fff;
-  --muted: #efe7d6;
-  --muted-foreground: #6b6355;
-  --accent: #ffe7a3;
-  --accent-foreground: #000;
+  --foreground: #1a1815;
+  --card: #ffffff;
+  --card-foreground: #1a1815;
+  --primary: #ff9f1c;
+  --primary-hover: #f18701;
+  --primary-foreground: #000000;
+  --secondary: #1a1815;
+  --secondary-foreground: #fff7e8;
+  --muted: #f5eedd;
+  --muted-foreground: #6b6459;
+  --accent: #ffe4bd;
+  --accent-foreground: #2b1c05;
   --destructive: #e63946;
   --destructive-foreground: #fff;
-  --border: #000;
-  --input: #fff;
-  --ring: #000;
-}
-
-.dark {
-  --background: #1a1815;
-  --foreground: #f5f0e6;
-  --card: #262320;
-  --card-foreground: #f5f0e6;
-  --primary: #ffdc58;
-  --primary-hover: #ffd12e;
-  --primary-foreground: #000;
-  --secondary: #3a352f;
-  --secondary-foreground: #f5f0e6;
-  --muted: #2e2a24;
-  --muted-foreground: #b3ac9e;
-  --accent: #38342b;
-  --accent-foreground: #f5f0e6;
-  --destructive: #ff6b6b;
-  --destructive-foreground: #1a1815;
-  --border: #000;
-  --input: #262320;
-  --ring: #ffdc58;
+  --border: #000000;
+  --input: #ffffff;
+  --ring: #ff9f1c;
+  --popover: #ffffff;
+  --popover-foreground: #1a1815;
+  --shadow-color: #000000;
+  --chart-1: #ff9f1c;
+  --chart-2: #e63946;
+  --chart-3: #ffdc58;
+  --chart-4: #01ffcc;
+  --chart-5: #c4a1ff;
+  --border-w: 2px;
+  --shadow-xs: 1px 1px 0 0 var(--shadow-color);
+  --shadow-sm: 2px 2px 0 0 var(--shadow-color);
+  --shadow: 3px 3px 0 0 var(--shadow-color);
+  --shadow-md: 4px 4px 0 0 var(--shadow-color);
+  --shadow-lg: 6px 6px 0 0 var(--shadow-color);
+  --shadow-xl: 10px 10px 0 1px var(--shadow-color);
+  --shadow-2xl: 16px 16px 0 1px var(--shadow-color);
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    outline-color: var(--ring);
+    border-color: var(--border);
   }
   body {
-    @apply bg-background text-foreground;
+    color: var(--foreground);
+    background-color: var(--background);
   }
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
   html {
-    @apply font-sans;
+    font-family: var(--font-sans);
   }
   h1,
   h2,
@@ -104,6 +115,6 @@
   h4,
   h5,
   h6 {
-    @apply font-head;
+    font-family: var(--font-head);
   }
 }
