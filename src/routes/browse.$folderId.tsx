@@ -60,7 +60,9 @@ function BrowseFolder() {
               index may be stale.
             </EmptyDescription>
           </EmptyHeader>
-          <Button render={<Link to="/" />}>Back to dashboard</Button>
+          <Button nativeButton={false} render={<Link to="/" />}>
+            Back to dashboard
+          </Button>
         </Empty>
       </main>
     );
@@ -115,7 +117,7 @@ function BrowseFolder() {
         </BreadcrumbList>
       </Breadcrumb>
 
-      <h1 className="truncate font-head text-xl sm:text-2xl">{title}</h1>
+      <h1 className="break-words font-head text-xl sm:text-2xl">{title}</h1>
 
       {children.length === 0 ? (
         <Empty>
