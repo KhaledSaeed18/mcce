@@ -1,0 +1,30 @@
+import { Switch as SwitchPrimitive } from "@base-ui/react/switch";
+
+import { cn } from "@/lib/utils";
+
+function Switch({
+  className,
+  size = "default",
+  ...props
+}: SwitchPrimitive.Root.Props & {
+  size?: "sm" | "default";
+}) {
+  return (
+    <SwitchPrimitive.Root
+      className={cn(
+        "peer group/switch relative inline-flex shrink-0 cursor-pointer items-center border-2 border-foreground outline-none transition-all after:absolute after:-inset-x-3 after:-inset-y-2 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 aria-invalid:border-destructive data-[size=default]:h-6 data-[size=sm]:h-5 data-[size=default]:w-11 data-[size=sm]:w-9 data-disabled:cursor-not-allowed data-checked:bg-primary data-disabled:opacity-50",
+        className
+      )}
+      data-size={size}
+      data-slot="switch"
+      {...props}
+    >
+      <SwitchPrimitive.Thumb
+        className="pointer-events-none mx-0.5 block border-2 border-foreground bg-primary transition-transform data-unchecked:translate-x-0 data-checked:bg-background group-data-[size=default]/switch:size-4 group-data-[size=sm]/switch:size-3 group-data-[size=default]/switch:data-checked:translate-x-5 group-data-[size=sm]/switch:data-checked:translate-x-4"
+        data-slot="switch-thumb"
+      />
+    </SwitchPrimitive.Root>
+  );
+}
+
+export { Switch };
