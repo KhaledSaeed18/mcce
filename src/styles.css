@@ -1,7 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "@fontsource-variable/inter";
+@import "@fontsource/archivo-black";
+@import "@fontsource-variable/space-grotesk";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -39,6 +40,8 @@
 }
 
 :root {
+  --font-head: "Archivo Black", sans-serif;
+  --font-sans: "Space Grotesk Variable", sans-serif;
   --radius: 0;
   --background: #fff7e8;
   --foreground: #000;
@@ -94,5 +97,13 @@
   }
   html {
     @apply font-sans;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-head;
   }
 }
