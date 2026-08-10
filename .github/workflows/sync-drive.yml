@@ -1,0 +1,49 @@
+name: Sync Drive index
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch: {}
+
+concurrency:
+  group: sync-drive
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Crawl Drive and regenerate the index
+        env:
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+        run: pnpm run sync:drive
+
+      - name: Commit and push if the index changed
+        run: |
+          if git diff --quiet -- src/data/drive-index.json; then
+            echo "Drive index unchanged, nothing to commit."
+            exit 0
+          fi
+          git config user.name "mcce-drive-sync[bot]"
+          git config user.email "mcce-drive-sync[bot]@users.noreply.github.com"
+          git add src/data/drive-index.json
+          git commit -m "chore(data): sync drive index" --no-verify
+          git push
