@@ -78,23 +78,22 @@ Every piece of code has exactly one home. Never mix these layers.
 ### Layer map
 
 ```
-app/                  Pages -- compose layouts and sections, no logic
-components/ui/        shadcn primitives -- never modified directly
-components/           Shared presentational components -- JSX only, no data fetching
-hooks/                Custom hooks -- all stateful logic and side effects
-services/             API calls and data access -- no JSX, no React
-lib/                  Pure utilities -- no React, no side effects
-constants/            Named constants and static config
-types/                TypeScript interfaces and types
+src/routes/           TanStack Router file-based routes -- compose layouts and sections, no logic
+src/components/ui/    shadcn/neobrutalism primitives -- never modified directly
+src/components/       Shared presentational components -- JSX only, no data fetching
+src/hooks/            Custom hooks -- all stateful logic and side effects
+src/lib/               Pure utilities and server-side data access (TanStack Start server functions) -- no JSX
+src/config/            Named constants and static config
+src/data/              Generated data artifacts (e.g. the Drive index) -- machine-written, never hand-edited
 ```
 
 ### Rules
 
 - Components contain JSX and event handler wiring only. Business logic belongs in a custom hook.
-- Data fetching happens in Server Components (preferred) or custom hooks. Never in `useEffect` inside a component body.
-- No magic numbers or magic strings inline in JSX or logic. Extract to `constants/`.
-- Types are never defined inline at the call site if they are reused. Move them to `types/`.
-- No component imports a service directly. Data flows down via props or context. Services are called from hooks or Server Components.
+- Data fetching happens in TanStack Start route `loader`s or server functions (`createServerFn`), or in custom hooks for client-only async state. Never in `useEffect` inside a component body for data a loader could fetch.
+- No magic numbers or magic strings inline in JSX or logic. Extract to `src/config/`.
+- Types are never defined inline at the call site if they are reused. Move them to a domain-grouped `types.ts` file next to the code that owns them (e.g. `src/lib/drive/types.ts`), not a single flat top-level dump.
+- No component imports a data-access function directly. Data flows down via props, route loader data, or context. Server-only calls happen in route loaders or server functions, never inside a client component body.
 
 ---
 
@@ -181,10 +180,10 @@ No inline literals for things that could change or that appear more than once.
 
 ## Code Splitting
 
-- Route-level pages are already split by Next.js App Router. Do not fight this.
-- Heavy third-party components (rich text editors, chart libraries, map components) are dynamically imported with `next/dynamic`.
-- Server Components handle data fetching. Client Components handle interactivity. Never use `useEffect` to fetch data that could be fetched on the server.
-- Do not add `"use client"` to a file unless it genuinely needs browser APIs or React state. Keep the server/client boundary as far down the tree as possible.
+- Route-level pages are already split by TanStack Router's file-based routing. Do not fight this.
+- Heavy third-party components (rich text editors, chart libraries, iframe-heavy preview widgets) are lazily loaded with React's `lazy()`/dynamic `import()`, not eagerly bundled into a route that only sometimes needs them.
+- Data fetching happens in route `loader`s or server functions (`createServerFn`). Never use `useEffect` to fetch data a loader could fetch instead.
+- TanStack Start has no Server/Client Component split -- every component can hold state and use browser APIs. Keep server-only code (secrets, service-account credentials, direct API calls) inside server functions and never import it into a client-rendered code path.
 
 ---
 
@@ -287,14 +286,14 @@ Write code that is **accessible, performant, type-safe, and maintainable**. Focu
 - Use top-level regex literals instead of creating them in loops
 - Prefer specific imports over namespace imports
 - Avoid barrel files (index files that re-export everything)
-- Use proper image components (e.g., Next.js `<Image>`) over `<img>` tags
+- Use a properly-sized `<img>` (explicit `width`/`height` or `aspect-ratio`, `loading="lazy"` below the fold) -- this project has no built-in Image component, so dimensions must be set explicitly to avoid layout shift
 
 ### Framework-Specific Guidance
 
-**Next.js:**
-- Use Next.js `<Image>` component for images
-- Use `next/head` or App Router metadata API for head elements
-- Use Server Components for async data fetching instead of async Client Components
+**TanStack Start:**
+- No built-in Image component -- use a plain `<img>` with explicit `width`/`height` and `loading="lazy"` for below-the-fold images.
+- Set head/meta tags via a route's `head` export (root route or per-route), not `next/head`.
+- Fetch data in route `loader`s or `createServerFn` server functions, not in `useEffect`.
 
 **React 19+:**
 - Use ref as a prop instead of `React.forwardRef`
