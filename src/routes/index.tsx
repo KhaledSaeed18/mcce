@@ -4,6 +4,7 @@ import { AboutMcce } from "@/components/about-mcce";
 import { CoursesSection } from "@/components/drive/courses-section";
 import { SourceCard } from "@/components/drive/source-card";
 import { HeroSection } from "@/components/marketing/hero-section";
+import { SectionDivider } from "@/components/marketing/section-divider";
 import { McceFaq } from "@/components/mcce-faq";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PROGRAM_FAQ } from "@/config/faq";
@@ -41,6 +42,8 @@ function Dashboard() {
   return (
     <main className="mx-auto flex max-w-5xl flex-col gap-10 p-4 sm:p-6">
       <HeroSection stats={stats} />
+
+      <SectionDivider />
 
       <div className="flex scroll-mt-20 flex-col gap-6" id="materials">
         <h2 className="font-head text-2xl sm:text-3xl">Program materials</h2>

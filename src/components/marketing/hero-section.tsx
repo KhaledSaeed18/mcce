@@ -21,7 +21,7 @@ export function HeroSection({ stats }: HeroSectionProps) {
       >
         <Badge className="w-fit gap-1.5" variant="outline">
           <span className="size-1.5 rounded-full bg-primary" />
-          {PROGRAM_UNIVERSITY_SHORT} · Communication Engineering, M.S.
+          {PROGRAM_UNIVERSITY_SHORT} · MCCE
         </Badge>
 
         <h1 className="max-w-xl font-head text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
