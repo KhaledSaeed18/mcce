@@ -19,6 +19,10 @@ export const FOOTER_DISCLAIMER =
 
 export const FOOTER_COPYRIGHT = "© 2026 MCCE";
 
+export const FOOTER_CONTACT_EMAIL = "uni@khaledsaeed.tech";
+
+export const FOOTER_GITHUB_URL = "https://github.com/KhaledSaeed18/mcce";
+
 export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
   {
     links: [
