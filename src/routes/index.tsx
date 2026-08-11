@@ -1,15 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AboutMcce } from "@/components/about-mcce";
 import { SourceCard } from "@/components/drive/source-card";
+import { HeroSection } from "@/components/marketing/hero-section";
 import { McceFaq } from "@/components/mcce-faq";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PROGRAM_FAQ } from "@/config/faq";
-import {
-  PROGRAM_NAME,
-  PROGRAM_UNIVERSITY,
-  PROGRAM_UNIVERSITY_SHORT,
-  SITE_URL,
-} from "@/config/site";
+import { SITE_URL } from "@/config/site";
 import { DRIVE_SOURCES } from "@/config/sources";
 import { formatDateTime } from "@/lib/drive/format";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
@@ -26,17 +22,22 @@ export const Route = createFileRoute("/")({
 
 function Dashboard() {
   const driveIndex = Route.useLoaderData();
+  const stats = {
+    fileCount: driveIndex.meta.sources.reduce((sum, s) => sum + s.fileCount, 0),
+    folderCount: driveIndex.meta.sources.reduce(
+      (sum, s) => sum + s.folderCount,
+      0
+    ),
+    generatedAt: driveIndex.meta.generatedAt,
+    sourceCount: DRIVE_SOURCES.length,
+  };
 
   return (
     <main className="mx-auto flex max-w-5xl flex-col gap-10 p-4 sm:p-6">
-      <div className="flex flex-col gap-6">
-        <header className="flex flex-col gap-1">
-          <h1 className="font-head text-2xl sm:text-3xl">Program materials</h1>
-          <p className="text-muted-foreground text-sm">
-            {PROGRAM_NAME} (MCCE), {PROGRAM_UNIVERSITY} (
-            {PROGRAM_UNIVERSITY_SHORT})
-          </p>
-        </header>
+      <HeroSection stats={stats} />
+
+      <div className="flex scroll-mt-20 flex-col gap-6" id="materials">
+        <h2 className="font-head text-2xl sm:text-3xl">Program materials</h2>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {DRIVE_SOURCES.map((source) => {
