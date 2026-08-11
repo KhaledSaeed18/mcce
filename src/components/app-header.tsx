@@ -6,7 +6,7 @@ import { ThemeSwitcher } from "@/components/theme-switcher";
 
 export function AppHeader() {
   return (
-    <header className="relative sticky top-0 z-40 border-b-2 bg-background">
+    <header className="sticky top-0 z-40 border-b-2 bg-background">
       <RailLine side="left" />
       <RailLine side="right" />
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 p-4 sm:px-6">
@@ -18,8 +18,8 @@ export function AppHeader() {
           MCCE
         </Link>
         <div className="flex items-center gap-2">
-          <ThemeSwitcher />
           <CommandPalette />
+          <ThemeSwitcher />
         </div>
       </div>
     </header>
