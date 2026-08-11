@@ -78,6 +78,7 @@ export function CommandPalette() {
     <>
       <Button
         aria-label="Search files and folders"
+        className="h-8"
         onClick={handleOpenClick}
         size="sm"
         variant="outline"
