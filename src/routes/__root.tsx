@@ -12,7 +12,6 @@ import { MarginPattern } from "@/components/margin-pattern";
 import { NotFound } from "@/components/not-found";
 import { PageRails } from "@/components/page-rails";
 import { JsonLd } from "@/components/seo/json-ld";
-import { Toaster } from "@/components/ui/toast";
 import {
   SITE_DESCRIPTION,
   SITE_NAME,
@@ -166,15 +165,13 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <ThemeProvider>
-          <Toaster>
-            <div className="relative flex min-h-dvh flex-col">
-              <AppHeader />
-              <div className="flex-1">{children}</div>
-              <SiteFooter />
-              <MarginPattern />
-              <PageRails />
-            </div>
-          </Toaster>
+          <div className="relative flex min-h-dvh flex-col">
+            <AppHeader />
+            <div className="flex-1">{children}</div>
+            <SiteFooter />
+            <MarginPattern />
+            <PageRails />
+          </div>
         </ThemeProvider>
         <TanStackDevtools
           config={{
