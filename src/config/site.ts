@@ -3,7 +3,7 @@ export const SITE_NAME = "MCCE";
 export const SITE_TITLE =
   "MCCE | LIU M.S. in Computer and Communication Engineering";
 export const SITE_DESCRIPTION =
-  "MCCE is the M.S. in Computer and Communication Engineering at Lebanese International University (LIU). Browse and search program materials by semester and course.";
+  "Browse and search course materials for the LIU M.S. in Computer and Communication Engineering program, organized by semester.";
 export const SITE_OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 export const PROGRAM_NAME = "M.S. in Computer and Communication Engineering";
