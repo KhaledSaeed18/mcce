@@ -1,10 +1,11 @@
+import { ACCENT_COLORS } from "@/config/colors";
 import { cn } from "@/lib/utils";
 
 const SATELLITES = [
-  { color: "#e63946", delay: "delay-0", x: 221, y: 71 },
-  { color: "#ffdc58", delay: "delay-75", x: 371, y: 221 },
-  { color: "#01ffcc", delay: "delay-150", x: 221, y: 371 },
-  { color: "#c4a1ff", delay: "delay-200", x: 71, y: 221 },
+  { color: ACCENT_COLORS[0], delay: "delay-0", x: 221, y: 71 },
+  { color: ACCENT_COLORS[1], delay: "delay-75", x: 371, y: 221 },
+  { color: ACCENT_COLORS[2], delay: "delay-150", x: 221, y: 371 },
+  { color: ACCENT_COLORS[3], delay: "delay-200", x: 71, y: 221 },
 ] as const;
 
 interface LogoMarkProps {

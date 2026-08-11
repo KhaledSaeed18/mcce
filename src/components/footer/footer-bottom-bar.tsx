@@ -1,0 +1,11 @@
+import { FOOTER_COPYRIGHT, FOOTER_DISCLAIMER } from "@/config/footer";
+
+export function FooterBottomBar() {
+  return (
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 px-4 pt-6 pb-8 text-muted-foreground text-xs sm:flex-row sm:items-center sm:justify-between sm:px-6">
+      <p className="text-pretty">
+        {FOOTER_COPYRIGHT} · {FOOTER_DISCLAIMER}
+      </p>
+    </div>
+  );
+}

@@ -1,10 +1,11 @@
+import { ACCENT_COLORS } from "@/config/colors";
 import { cn } from "@/lib/utils";
 
 const RAIL_NODES = [
-  { color: "#e63946", top: 10 },
-  { color: "#ffdc58", top: 36 },
-  { color: "#01ffcc", top: 62 },
-  { color: "#c4a1ff", top: 88 },
+  { color: ACCENT_COLORS[0], top: 10 },
+  { color: ACCENT_COLORS[1], top: 36 },
+  { color: ACCENT_COLORS[2], top: 62 },
+  { color: ACCENT_COLORS[3], top: 88 },
 ] as const;
 
 const RAIL_POSITION = {
