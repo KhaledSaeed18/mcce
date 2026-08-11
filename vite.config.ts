@@ -9,7 +9,11 @@ const config = defineConfig({
   plugins: [
     devtools(),
     tailwindcss(),
-    cloudflare({ viteEnvironment: { name: "ssr" } }),
+    // Vitest shares this config; the workerd runtime it attaches to the
+    // ssr environment breaks the Node-based test runner, so skip it under test.
+    process.env.VITEST
+      ? null
+      : cloudflare({ viteEnvironment: { name: "ssr" } }),
     tanstackStart(),
     viteReact(),
   ],
