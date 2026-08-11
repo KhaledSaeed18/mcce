@@ -2,6 +2,7 @@ import { mergeProps } from "@base-ui/react/merge-props";
 import { useRender } from "@base-ui/react/use-render";
 import { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react";
 import type * as React from "react";
+
 import { cn } from "@/lib/utils";
 
 function Breadcrumb({ className, ...props }: React.ComponentProps<"nav">) {
@@ -47,7 +48,10 @@ function BreadcrumbLink({
     defaultTagName: "a",
     props: mergeProps<"a">(
       {
-        className: cn("transition-colors hover:text-foreground", className),
+        className: cn(
+          "font-head transition-colors hover:text-foreground",
+          className
+        ),
       },
       props
     ),
@@ -63,7 +67,7 @@ function BreadcrumbPage({ className, ...props }: React.ComponentProps<"span">) {
     <span
       aria-current="page"
       aria-disabled="true"
-      className={cn("font-normal text-foreground", className)}
+      className={cn("font-medium text-foreground", className)}
       data-slot="breadcrumb-page"
       {...props}
     />
