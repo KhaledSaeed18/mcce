@@ -20,12 +20,11 @@ export function CoursesSection({ courses }: CoursesSectionProps) {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {courses.map((course, index) => (
           <CourseCard
             color={COURSE_CARD_COLORS[index % COURSE_CARD_COLORS.length]}
             course={course}
-            featured={index === 0}
             key={course.code}
           />
         ))}

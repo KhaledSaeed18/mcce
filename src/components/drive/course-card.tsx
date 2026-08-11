@@ -15,37 +15,23 @@ const CARD_CLASSES = cn(
 interface CourseCardProps {
   color: string;
   course: CourseSummary;
-  featured?: boolean;
 }
 
-export function CourseCard({
-  color,
-  course,
-  featured = false,
-}: CourseCardProps) {
+export function CourseCard({ color, course }: CourseCardProps) {
   const Icon = getCourseIcon(course.code, course.name);
   const semesterLabel = formatSemesterLabel(course.semester);
 
   return (
-    <Link
-      className={cn(featured && "sm:col-span-2")}
-      search={{ course: course.code, q: "" }}
-      to="/search"
-    >
+    <Link search={{ course: course.code, q: "" }} to="/search">
       <Card className={CARD_CLASSES}>
         <CardHeader>
           <div
-            className={cn(
-              "flex items-center justify-center rounded border-2 border-black",
-              featured ? "size-12" : "size-10"
-            )}
+            className="flex size-10 items-center justify-center rounded border-2 border-black"
             style={{ backgroundColor: `var(--${color})` }}
           >
-            <Icon className={featured ? "size-6" : "size-5"} />
+            <Icon className="size-5" />
           </div>
-          <CardTitle className={cn(featured && "text-lg sm:text-xl")}>
-            {course.name}
-          </CardTitle>
+          <CardTitle>{course.name}</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-wrap items-center gap-2">
           <Badge variant="outline">{course.code}</Badge>
