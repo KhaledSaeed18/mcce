@@ -1,0 +1,76 @@
+<svg
+  aria-label="MCCE"
+  role="img"
+  viewBox="0 0 512 512"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect
+    fill="#fff7e8"
+    height="480"
+    rx="70"
+    stroke="#1a1815"
+    stroke-width="18"
+    width="480"
+    x="16"
+    y="16"
+  />
+
+  <g stroke="#1a1815" stroke-linecap="square" stroke-width="16">
+    <line x1="256" x2="256" y1="256" y2="106" />
+    <line x1="256" x2="406" y1="256" y2="256" />
+    <line x1="256" x2="256" y1="256" y2="406" />
+    <line x1="256" x2="106" y1="256" y2="256" />
+  </g>
+
+  <rect
+    fill="#e63946"
+    height="70"
+    rx="14"
+    stroke="#1a1815"
+    stroke-width="12"
+    width="70"
+    x="221"
+    y="71"
+  />
+  <rect
+    fill="#ffdc58"
+    height="70"
+    rx="14"
+    stroke="#1a1815"
+    stroke-width="12"
+    width="70"
+    x="371"
+    y="221"
+  />
+  <rect
+    fill="#01ffcc"
+    height="70"
+    rx="14"
+    stroke="#1a1815"
+    stroke-width="12"
+    width="70"
+    x="221"
+    y="371"
+  />
+  <rect
+    fill="#c4a1ff"
+    height="70"
+    rx="14"
+    stroke="#1a1815"
+    stroke-width="12"
+    width="70"
+    x="71"
+    y="221"
+  />
+
+  <rect
+    fill="#ff9f1c"
+    height="100"
+    rx="18"
+    stroke="#1a1815"
+    stroke-width="14"
+    width="100"
+    x="206"
+    y="206"
+  />
+</svg>
