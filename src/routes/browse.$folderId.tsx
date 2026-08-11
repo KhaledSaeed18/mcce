@@ -68,7 +68,7 @@ function BrowseFolder() {
             </EmptyDescription>
           </EmptyHeader>
           <Button nativeButton={false} render={<Link to="/" />}>
-            Back to dashboard
+            Back to homepage
           </Button>
         </Empty>
       </main>
