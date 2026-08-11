@@ -25,12 +25,13 @@ export function SiteFooter() {
           </div>
 
           <div className="mt-8 flex flex-wrap items-center justify-between gap-3 sm:mt-0">
-            <Badge variant="outline">
+            <Badge className="h-7" variant="outline">
               <span className="size-1.5 rounded-full bg-primary" />
               AUTO-SYNCED FROM DRIVE
             </Badge>
             <Button
               aria-label="Back to top"
+              className="h-7"
               onClick={handleBackToTop}
               size="sm"
               variant="outline"
