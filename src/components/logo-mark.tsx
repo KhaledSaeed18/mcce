@@ -7,11 +7,15 @@ const SATELLITES = [
   { color: "#c4a1ff", delay: "delay-200", x: 71, y: 221 },
 ] as const;
 
-export function LogoMark() {
+interface LogoMarkProps {
+  className?: string;
+}
+
+export function LogoMark({ className }: LogoMarkProps) {
   return (
     <svg
       aria-hidden="true"
-      className="size-7"
+      className={cn("size-7", className)}
       viewBox="52 52 408 408"
       xmlns="http://www.w3.org/2000/svg"
     >

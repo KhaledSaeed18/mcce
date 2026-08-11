@@ -7,6 +7,7 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { AppHeader } from "@/components/app-header";
+import { NotFound } from "@/components/not-found";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Toaster } from "@/components/ui/toast";
 import {
@@ -147,12 +148,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
       },
     ],
   }),
-  notFoundComponent: () => (
-    <main className="container mx-auto p-4 pt-16">
-      <h1>404</h1>
-      <p>The requested page could not be found.</p>
-    </main>
-  ),
+  notFoundComponent: () => <NotFound />,
   shellComponent: RootDocument,
 });
 
