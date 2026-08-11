@@ -1,5 +1,6 @@
 import { CheckIcon, CopyIcon, ExternalLinkIcon } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
+import { PreviewLoadingState } from "@/components/drive/preview-loading-state";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -8,10 +9,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Skeleton } from "@/components/ui/skeleton";
+import { usePreviewLoadState } from "@/hooks/use-preview-load-state";
 import type { DriveNode } from "@/lib/drive/types";
 
-const LOAD_TIMEOUT_MS = 6000;
 const COPIED_FEEDBACK_MS = 2000;
 
 const GOOGLE_NATIVE_PREVIEW_PATH: Record<string, string> = {
@@ -33,7 +33,6 @@ function buildPreviewUrl(node: DriveNode): string | null {
   return `https://drive.google.com/file/d/${node.id}/preview`;
 }
 
-type PreviewStatus = "loading" | "loaded" | "timed-out";
 type CopyStatus = "idle" | "copied" | "failed";
 
 interface FilePreviewDialogProps {
@@ -47,22 +46,11 @@ export function FilePreviewDialog({
   open,
   onOpenChange,
 }: FilePreviewDialogProps) {
-  const [status, setStatus] = useState<PreviewStatus>("loading");
   const [copyStatus, setCopyStatus] = useState<CopyStatus>("idle");
   const previewUrl = buildPreviewUrl(node);
-
-  useEffect(() => {
-    if (!(open && previewUrl)) {
-      setStatus("loading");
-      return;
-    }
-
-    const timer = setTimeout(() => {
-      setStatus((current) => (current === "loading" ? "timed-out" : current));
-    }, LOAD_TIMEOUT_MS);
-
-    return () => clearTimeout(timer);
-  }, [open, previewUrl]);
+  const { status, handleLoad } = usePreviewLoadState(open, previewUrl);
+  const canEmbed =
+    Boolean(previewUrl) && status !== "timed-out" && status !== "unsupported";
 
   useEffect(() => {
     if (copyStatus === "idle") {
@@ -79,8 +67,6 @@ export function FilePreviewDialog({
     );
   }, [node.webViewLink]);
 
-  const handleLoad = useCallback(() => setStatus("loaded"), []);
-
   return (
     <Dialog onOpenChange={onOpenChange} open={open}>
       <DialogContent className="flex h-[80vh] flex-col sm:max-w-4xl">
@@ -89,22 +75,22 @@ export function FilePreviewDialog({
         </DialogHeader>
 
         <div className="relative min-h-0 flex-1 overflow-hidden rounded border-2">
-          {previewUrl && status !== "timed-out" ? (
+          {canEmbed ? (
             <>
-              {status === "loading" && (
-                <Skeleton className="absolute inset-0 rounded-none border-0" />
-              )}
+              {status === "loading" ? <PreviewLoadingState /> : null}
               {/* onLoad is a lifecycle event marking when the embed finished loading, not a user interaction. */}
               {/* biome-ignore lint/a11y/noNoninteractiveElementInteractions: see comment above */}
               <iframe
                 className="size-full"
                 onLoad={handleLoad}
                 sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"
-                src={previewUrl}
+                src={previewUrl ?? undefined}
                 title={node.name}
               />
             </>
-          ) : (
+          ) : null}
+          {!canEmbed && status === "loading" ? <PreviewLoadingState /> : null}
+          {!canEmbed && status !== "loading" ? (
             <div className="flex size-full flex-col items-center justify-center gap-1 p-6 text-center text-muted-foreground text-sm">
               <p>
                 {status === "timed-out"
@@ -113,7 +99,7 @@ export function FilePreviewDialog({
               </p>
               <p>Open it in Google Drive instead.</p>
             </div>
-          )}
+          ) : null}
         </div>
 
         <DialogFooter>
