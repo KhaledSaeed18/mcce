@@ -8,6 +8,7 @@ import {
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { AppHeader } from "@/components/app-header";
 import { Toaster } from "@/components/ui/toast";
+import { THEME_INIT_SCRIPT, ThemeProvider } from "@/hooks/use-theme";
 
 import appCss from "../styles.css?url";
 
@@ -47,15 +48,19 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: trusted, build-time-authored script that sets the theme class before first paint to avoid a flash */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <HeadContent />
       </head>
       <body>
-        <Toaster>
-          <AppHeader />
-          {children}
-        </Toaster>
+        <ThemeProvider>
+          <Toaster>
+            <AppHeader />
+            {children}
+          </Toaster>
+        </ThemeProvider>
         <TanStackDevtools
           config={{
             position: "bottom-right",

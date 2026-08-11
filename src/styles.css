@@ -4,6 +4,8 @@
 @import "@fontsource/archivo-black";
 @import "@fontsource-variable/space-grotesk";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --font-head: var(--font-head);
   --font-sans: var(--font-sans);
@@ -91,6 +93,53 @@
   --shadow-lg: 6px 6px 0 0 var(--shadow-color);
   --shadow-xl: 10px 10px 0 1px var(--shadow-color);
   --shadow-2xl: 16px 16px 0 1px var(--shadow-color);
+  --expo-out: linear(
+    0 0%,
+    0.1684 2.66%,
+    0.3165 5.49%,
+    0.446 8.52%,
+    0.5581 11.78%,
+    0.6535 15.29%,
+    0.7341 19.11%,
+    0.8011 23.3%,
+    0.8557 27.93%,
+    0.8962 32.68%,
+    0.9283 38.01%,
+    0.9529 44.08%,
+    0.9711 51.14%,
+    0.9833 59.06%,
+    0.9915 68.74%,
+    1 100%
+  );
+}
+
+.dark {
+  --background: #0c0a09;
+  --foreground: #f5eedd;
+  --card: #1c1815;
+  --card-foreground: #f5eedd;
+  --primary: #ff9f1c;
+  --primary-hover: #ffb454;
+  --primary-foreground: #000000;
+  --secondary: #f5eedd;
+  --secondary-foreground: #0c0a09;
+  --muted: #1c1815;
+  --muted-foreground: #a39c8f;
+  --accent: #2b2013;
+  --accent-foreground: #ffe4bd;
+  --destructive: #ff6b6b;
+  --destructive-foreground: #0c0a09;
+  --border: #f5eedd;
+  --input: #1c1815;
+  --ring: #ff9f1c;
+  --popover: #1c1815;
+  --popover-foreground: #f5eedd;
+  --shadow-color: #f5eedd;
+  --chart-1: #ff9f1c;
+  --chart-2: #ff6b6b;
+  --chart-3: #ffdc58;
+  --chart-4: #01ffcc;
+  --chart-5: #c4a1ff;
 }
 
 @layer base {
@@ -116,5 +165,34 @@
   h5,
   h6 {
     font-family: var(--font-head);
+  }
+}
+
+@layer base {
+  ::view-transition-group(root) {
+    animation-timing-function: var(--expo-out);
+  }
+
+  ::view-transition-new(root) {
+    mask:
+      url('data:image/svg+xml,<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H40L0 40V0Z" fill="url(%23paint0_linear_16_14)"/><defs><linearGradient id="paint0_linear_16_14" x1="0" y1="0" x2="20.5" y2="20.5" gradientUnits="userSpaceOnUse"><stop stop-color="current"/><stop offset="0.84506" stop-color="current" stop-opacity="0.99"/><stop offset="0.9506" stop-color="current" stop-opacity="0"/><stop offset="1" stop-color="current" stop-opacity="0"/></linearGradient></defs></svg>')
+      top left / 0 no-repeat;
+    mask-origin: top left;
+    animation: theme-toggle-scale 1.5s;
+    animation-fill-mode: both;
+  }
+
+  ::view-transition-old(root),
+  .dark::view-transition-old(root) {
+    z-index: -1;
+    transform-origin: top left;
+    animation: theme-toggle-scale 1.5s;
+    animation-fill-mode: both;
+  }
+
+  @keyframes theme-toggle-scale {
+    to {
+      mask-size: 200vmax;
+    }
   }
 }

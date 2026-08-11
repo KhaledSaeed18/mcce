@@ -88,7 +88,7 @@ export function FilePreviewDialog({
           <DialogTitle className="truncate">{node.name}</DialogTitle>
         </DialogHeader>
 
-        <div className="relative min-h-0 flex-1 overflow-hidden rounded border-2 border-black">
+        <div className="relative min-h-0 flex-1 overflow-hidden rounded border-2">
           {previewUrl && status !== "timed-out" ? (
             <>
               {status === "loading" && (
