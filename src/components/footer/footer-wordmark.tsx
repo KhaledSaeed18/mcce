@@ -15,7 +15,7 @@ export function FooterWordmark() {
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
           {WORDMARK_LETTERS.map((letter) => (
             <span
-              className="flex size-16 items-center justify-center rounded border-2 border-black font-head text-4xl text-black shadow-md transition duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg active:translate-x-0.5 active:translate-y-0.5 sm:size-20 sm:text-5xl"
+              className="flex size-16 items-center justify-center rounded border-2 border-secondary-foreground font-head text-4xl text-black shadow-[4px_4px_0_0_var(--secondary-foreground)] transition duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--secondary-foreground)] active:translate-x-0.5 active:translate-y-0.5 sm:size-20 sm:text-5xl"
               key={letter.char}
               style={{ backgroundColor: `var(--${letter.token})` }}
             >
