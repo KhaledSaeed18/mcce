@@ -3,6 +3,7 @@ import { useCallback } from "react";
 import { FooterBottomBar } from "@/components/footer/footer-bottom-bar";
 import { FooterBrand } from "@/components/footer/footer-brand";
 import { FooterNav } from "@/components/footer/footer-nav";
+import { FooterSeal } from "@/components/footer/footer-seal";
 import { FooterWordmark } from "@/components/footer/footer-wordmark";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -15,15 +16,27 @@ export function SiteFooter() {
   return (
     <footer className="mt-10 flex flex-col sm:mt-14">
       <div className="mx-auto w-full max-w-5xl px-4 sm:px-6">
-        <div className="flex flex-col gap-6 rounded-t border-x-2 border-t-2 bg-card p-4 shadow-md sm:p-6">
-          <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="relative flex flex-col gap-6 rounded-t border-x-2 border-t-2 bg-card p-4 shadow-md sm:p-6">
+          <div
+            aria-hidden="true"
+            className="absolute -top-9 left-1/2 size-[72px] -translate-x-1/2 rotate-[-8deg] rounded-full shadow-md sm:-top-10 sm:size-20"
+          >
+            <FooterSeal className="size-full" />
+          </div>
+
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-3 sm:mt-0">
             <Badge variant="outline">
               <span className="size-1.5 rounded-full bg-primary" />
               AUTO-SYNCED FROM DRIVE
             </Badge>
-            <Button onClick={handleBackToTop} size="sm" variant="outline">
+            <Button
+              aria-label="Back to top"
+              onClick={handleBackToTop}
+              size="sm"
+              variant="outline"
+            >
               <ArrowUpIcon data-icon="inline-start" />
-              Back to top
+              <span className="hidden sm:inline">Back to top</span>
             </Button>
           </div>
 
