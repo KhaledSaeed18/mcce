@@ -167,9 +167,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body>
         <ThemeProvider>
           <Toaster>
-            <div className="relative">
+            <div className="relative flex min-h-dvh flex-col">
               <AppHeader />
-              {children}
+              <div className="flex-1">{children}</div>
               <SiteFooter />
               <MarginPattern />
               <PageRails />
