@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { HeroNetworkLeaf } from "@/components/marketing/hero-network-leaf";
 import { HERO_GRAPHIC_HUB, HERO_GRAPHIC_LEAVES } from "@/config/hero";
 import { DOT_GRID_BACKGROUND } from "@/config/patterns";
+import { Badge } from "../ui/badge";
 
 export function HeroNetworkGraphic() {
   const shouldReduceMotion = useReducedMotion();
@@ -27,9 +28,12 @@ export function HeroNetworkGraphic() {
         style={DOT_GRID_BACKGROUND}
       />
 
-      <span className="absolute top-3 left-3 -rotate-6 rounded border-2 bg-background px-2 py-0.5 font-head text-[10px] tracking-wide">
+      <Badge
+        className="absolute top-3 left-3 -rotate-6 font-head text-[10px] tracking-wide"
+        variant="secondary"
+      >
         auto-synced
-      </span>
+      </Badge>
 
       <svg
         aria-hidden="true"
