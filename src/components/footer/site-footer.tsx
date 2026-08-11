@@ -7,11 +7,16 @@ import { FooterSeal } from "@/components/footer/footer-seal";
 import { FooterWordmark } from "@/components/footer/footer-wordmark";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useSound } from "@/hooks/use-sound";
+import { clickSoftSound } from "@/lib/click-soft";
 
 export function SiteFooter() {
+  const [playClick] = useSound(clickSoftSound, { volume: 0.4 });
+
   const handleBackToTop = useCallback(() => {
+    playClick();
     window.scrollTo({ behavior: "smooth", top: 0 });
-  }, []);
+  }, [playClick]);
 
   return (
     <footer className="mt-10 flex flex-col sm:mt-14">
