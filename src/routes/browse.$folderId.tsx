@@ -18,14 +18,28 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
-import { DRIVE_SOURCES } from "@/config/sources";
+import { SITE_URL } from "@/config/site";
 import { buildChildrenMap } from "@/lib/drive/children-map";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
+import { resolveFolderMeta } from "@/lib/drive/resolve-folder";
 
 export const Route = createFileRoute("/browse/$folderId")({
   component: BrowseFolder,
   loader: ({ context }) =>
     context.queryClient.ensureQueryData(driveIndexQueryOptions),
+  head: ({ loaderData, params }) => {
+    const meta = loaderData
+      ? resolveFolderMeta(loaderData, params.folderId)
+      : null;
+    const title = meta ? `${meta.title} · MCCE` : "MCCE";
+
+    return {
+      links: [
+        { href: `${SITE_URL}/browse/${params.folderId}`, rel: "canonical" },
+      ],
+      meta: [{ title }, { content: "noindex, follow", name: "robots" }],
+    };
+  },
 });
 
 function BrowseFolder() {
@@ -36,17 +50,10 @@ function BrowseFolder() {
     () => buildChildrenMap(driveIndex.nodes),
     [driveIndex.nodes]
   );
-  const nodesById = useMemo(
-    () => new Map(driveIndex.nodes.map((node) => [node.id, node])),
-    [driveIndex.nodes]
-  );
 
-  const currentNode = nodesById.get(folderId);
-  const source = currentNode
-    ? DRIVE_SOURCES.find((s) => s.id === currentNode.sourceId)
-    : DRIVE_SOURCES.find((s) => s.rootFolderId === folderId);
+  const meta = resolveFolderMeta(driveIndex, folderId);
 
-  if (!source) {
+  if (!meta) {
     return (
       <main className="mx-auto max-w-5xl p-4 sm:p-6">
         <Empty>
@@ -68,8 +75,8 @@ function BrowseFolder() {
     );
   }
 
+  const { source, title, node: currentNode } = meta;
   const children = childrenMap.get(folderId) ?? [];
-  const title = currentNode?.name ?? source.label;
   const crumbs = currentNode
     ? currentNode.pathIds.map((id, index) => ({
         id,

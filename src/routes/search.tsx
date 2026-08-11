@@ -18,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { SITE_URL } from "@/config/site";
 import { buildChildrenMap } from "@/lib/drive/children-map";
 import { buildFacetOptions } from "@/lib/drive/facets";
 import { filterNodes } from "@/lib/drive/filter";
@@ -26,6 +27,7 @@ import { searchNodes } from "@/lib/drive/search";
 import type { DriveNodeKind } from "@/lib/drive/types";
 
 const ALL_VALUE = "all";
+const SEARCH_URL = `${SITE_URL}/search`;
 
 interface SearchPageSearch {
   course?: string;
@@ -40,6 +42,18 @@ function readOptionalString(value: unknown): string | undefined {
 
 export const Route = createFileRoute("/search")({
   component: SearchPage,
+  head: () => ({
+    links: [{ href: SEARCH_URL, rel: "canonical" }],
+    meta: [
+      { title: "Search · MCCE" },
+      {
+        content:
+          "Search MCCE program materials by name, semester, course, or file type.",
+        name: "description",
+      },
+      { content: "noindex, follow", name: "robots" },
+    ],
+  }),
   loader: ({ context }) =>
     context.queryClient.ensureQueryData(driveIndexQueryOptions),
   validateSearch: (search: Record<string, unknown>): SearchPageSearch => ({
