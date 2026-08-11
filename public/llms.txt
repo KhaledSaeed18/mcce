@@ -1,0 +1,23 @@
+# MCCE
+
+> MCCE is the M.S. in Computer and Communication Engineering, a two-year graduate program in the Department of Computer and Communications Engineering at Lebanese International University (LIU). This site is an independent, student-built materials browser for the program: it indexes course files from the program's shared drive so they can be searched and browsed by semester, course, and file type.
+
+This site is not an official LIU page. For admissions, curriculum, and official program details, see the official program page linked below.
+
+## Program facts
+
+- Program: M.S. in Computer and Communication Engineering (MCCE)
+- Department: Department of Computer and Communications Engineering (CCE)
+- University: Lebanese International University (LIU)
+- Duration: Two years, combining coursework with a research project
+- Focus areas: telecommunications, data communications, network architecture, wireless systems, optical networking
+
+## Pages
+
+- [Program materials](https://mcce.khaledsaeed.tech/): Browse indexed course materials by source and semester.
+- [Search](https://mcce.khaledsaeed.tech/search): Search materials by name, semester, course, or file type.
+
+## Official sources
+
+- [MCCE graduate program page](https://cce.liu.edu.lb/academic-programs/graduate-programs): Official LIU program page for admissions and curriculum.
+- [Department of Computer and Communications Engineering](https://cce.liu.edu.lb): Official LIU department page.
