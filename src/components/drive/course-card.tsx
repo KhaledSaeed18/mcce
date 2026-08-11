@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { COURSE_ICON_BY_CODE, DEFAULT_COURSE_ICON } from "@/config/courses";
+import { getCourseIcon } from "@/lib/drive/courses";
 import { formatSemesterLabel } from "@/lib/drive/format";
 import type { CourseSummary } from "@/lib/drive/types";
 import { cn } from "@/lib/utils";
@@ -23,7 +23,7 @@ export function CourseCard({
   course,
   featured = false,
 }: CourseCardProps) {
-  const Icon = COURSE_ICON_BY_CODE[course.code] ?? DEFAULT_COURSE_ICON;
+  const Icon = getCourseIcon(course.code, course.name);
   const semesterLabel = formatSemesterLabel(course.semester);
 
   return (
