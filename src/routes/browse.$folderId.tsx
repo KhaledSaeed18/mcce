@@ -55,7 +55,7 @@ function BrowseFolder() {
 
   if (!meta) {
     return (
-      <main className="mx-auto max-w-5xl p-4 sm:p-6">
+      <main className="mx-auto max-w-6xl p-4 sm:p-6">
         <Empty>
           <EmptyHeader>
             <EmptyMedia variant="icon">
@@ -68,7 +68,7 @@ function BrowseFolder() {
             </EmptyDescription>
           </EmptyHeader>
           <Button nativeButton={false} render={<Link to="/" />}>
-            Back to dashboard
+            Back to homepage
           </Button>
         </Empty>
       </main>
@@ -85,7 +85,7 @@ function BrowseFolder() {
     : [];
 
   return (
-    <main className="mx-auto flex max-w-5xl flex-col gap-4 p-4 sm:p-6">
+    <main className="mx-auto flex max-w-6xl flex-col gap-4 p-4 sm:p-6">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>

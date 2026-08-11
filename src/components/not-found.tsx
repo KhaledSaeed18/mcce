@@ -20,7 +20,7 @@ export function NotFound() {
       </div>
 
       <Button nativeButton={false} render={<Link to="/" />}>
-        Back to dashboard
+        Back to homepage
       </Button>
     </main>
   );

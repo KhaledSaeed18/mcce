@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { HeroNetworkLeaf } from "@/components/marketing/hero-network-leaf";
 import { HERO_GRAPHIC_HUB, HERO_GRAPHIC_LEAVES } from "@/config/hero";
+import { DOT_GRID_BACKGROUND } from "@/config/patterns";
 
 export function HeroNetworkGraphic() {
   const shouldReduceMotion = useReducedMotion();
@@ -23,11 +24,7 @@ export function HeroNetworkGraphic() {
     >
       <div
         className="absolute inset-0 opacity-[0.07]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, var(--border) 1px, transparent 1px)",
-          backgroundSize: "22px 22px",
-        }}
+        style={DOT_GRID_BACKGROUND}
       />
 
       <span className="absolute top-3 left-3 -rotate-6 rounded border-2 bg-background px-2 py-0.5 font-head text-[10px] tracking-wide">

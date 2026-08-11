@@ -1,11 +1,14 @@
 import { Link } from "@tanstack/react-router";
 import { useCallback, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { getCourseIcon } from "@/lib/drive/courses";
 import { formatBytes } from "@/lib/drive/format";
 import type { DriveNode } from "@/lib/drive/types";
 import { cn } from "@/lib/utils";
 import { FilePreviewDialog } from "./file-preview-dialog";
 import { KindIcon } from "./kind-icon";
+
+const COURSE_ROOT_DEPTH = 1;
 
 const CARD_CLASSES = cn(
   "h-full cursor-pointer border-2 shadow-md transition duration-200",
@@ -23,20 +26,47 @@ interface NodeCardProps {
 
 function NodeCardBody({ node, childCount }: NodeCardProps) {
   const isFolder = node.kind === "folder";
+  const isCourseRoot =
+    isFolder && node.depth === COURSE_ROOT_DEPTH && Boolean(node.courseCode);
   const subtitle = isFolder
     ? `${childCount ?? 0} item${childCount === 1 ? "" : "s"}`
     : formatBytes(node.sizeBytes);
+  const CourseIcon =
+    isCourseRoot && node.courseCode && node.courseName
+      ? getCourseIcon(node.courseCode, node.courseName)
+      : null;
+  const subtitleText = isCourseRoot ? `Course folder · ${subtitle}` : subtitle;
 
   return (
-    <Card className={CARD_CLASSES}>
+    <Card className={cn(CARD_CLASSES, isCourseRoot && "bg-primary/10")}>
       <CardContent className="flex items-center gap-3">
-        <KindIcon
-          className="size-8 shrink-0 text-muted-foreground"
-          kind={node.kind}
-        />
+        {CourseIcon ? (
+          <div className="flex size-8 shrink-0 items-center justify-center rounded border-2 border-black bg-primary">
+            <CourseIcon className="size-4" />
+          </div>
+        ) : (
+          <KindIcon
+            className="size-8 shrink-0 text-muted-foreground"
+            kind={node.kind}
+          />
+        )}
         <div className="min-w-0 flex-1">
-          <p className="truncate font-medium">{node.name}</p>
-          <p className="truncate text-muted-foreground text-xs">{subtitle}</p>
+          <p
+            className={cn(
+              "truncate font-medium",
+              isCourseRoot && "font-semibold"
+            )}
+          >
+            {node.name}
+          </p>
+          <p
+            className={cn(
+              "truncate text-xs",
+              isCourseRoot ? "text-primary" : "text-muted-foreground"
+            )}
+          >
+            {subtitleText}
+          </p>
         </div>
       </CardContent>
     </Card>

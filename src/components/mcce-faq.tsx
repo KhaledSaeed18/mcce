@@ -8,7 +8,7 @@ import { PROGRAM_FAQ } from "@/config/faq";
 
 export function McceFaq() {
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex scroll-mt-20 flex-col gap-4" id="faq">
       <h2 className="font-head text-xl sm:text-2xl">
         Frequently asked questions
       </h2>

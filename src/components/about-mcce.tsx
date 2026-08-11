@@ -22,7 +22,10 @@ const FACTS: Array<{ label: string; value: string }> = [
 
 export function AboutMcce() {
   return (
-    <section className="flex flex-col gap-4 rounded border-2 bg-card p-4 shadow-md sm:p-6">
+    <section
+      className="flex scroll-mt-20 flex-col gap-4 rounded border-2 bg-card p-4 shadow-md sm:p-6"
+      id="about"
+    >
       <h2 className="font-head text-xl sm:text-2xl">About MCCE</h2>
 
       <p className="text-sm sm:text-base">

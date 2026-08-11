@@ -73,6 +73,13 @@ function SearchPage() {
     () => buildFacetOptions(driveIndex.nodes),
     [driveIndex.nodes]
   );
+  const courseOptions = useMemo(() => {
+    if (!semester) {
+      return facets.courses;
+    }
+    return buildFacetOptions(filterNodes(driveIndex.nodes, { semester }))
+      .courses;
+  }, [driveIndex.nodes, facets.courses, semester]);
   const childrenMap = useMemo(
     () => buildChildrenMap(driveIndex.nodes),
     [driveIndex.nodes]
@@ -109,6 +116,7 @@ function SearchPage() {
   const handleSemesterChange = useCallback(
     (value: string | null) =>
       updateSearch({
+        course: undefined,
         semester: value === null || value === ALL_VALUE ? undefined : value,
       }),
     [updateSearch]
@@ -134,7 +142,7 @@ function SearchPage() {
   );
 
   return (
-    <main className="mx-auto flex max-w-5xl flex-col gap-4 p-4 sm:p-6">
+    <main className="mx-auto flex max-w-6xl flex-col gap-4 p-4 sm:p-6">
       <h1 className="font-head text-xl sm:text-2xl">Search</h1>
 
       <Input
@@ -176,7 +184,7 @@ function SearchPage() {
           <SelectContent>
             <SelectGroup>
               <SelectItem value={ALL_VALUE}>All courses</SelectItem>
-              {facets.courses.map((c) => (
+              {courseOptions.map((c) => (
                 <SelectItem key={c.code} value={c.code}>
                   {c.code}
                 </SelectItem>

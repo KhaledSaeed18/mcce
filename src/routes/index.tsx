@@ -15,7 +15,7 @@ import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import { buildFaqSchema, buildProgramSchema } from "@/lib/seo/schema";
 
 export const Route = createFileRoute("/")({
-  component: Dashboard,
+  component: HomePage,
   head: () => ({
     links: [{ href: SITE_URL, rel: "canonical" }],
   }),
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/")({
     context.queryClient.ensureQueryData(driveIndexQueryOptions),
 });
 
-function Dashboard() {
+function HomePage() {
   const driveIndex = Route.useLoaderData();
   const stats = {
     fileCount: driveIndex.meta.sources.reduce((sum, s) => sum + s.fileCount, 0),
@@ -40,7 +40,7 @@ function Dashboard() {
   );
 
   return (
-    <main className="mx-auto flex max-w-5xl flex-col gap-10 p-4 sm:p-6">
+    <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 sm:p-6">
       <HeroSection stats={stats} />
 
       <SectionDivider />
