@@ -40,7 +40,7 @@ function HomePage() {
   );
 
   return (
-    <main className="mx-auto flex max-w-5xl flex-col gap-10 p-4 sm:p-6">
+    <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 sm:p-6">
       <HeroSection stats={stats} />
 
       <SectionDivider />

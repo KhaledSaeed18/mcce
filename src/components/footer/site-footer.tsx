@@ -20,7 +20,7 @@ export function SiteFooter() {
 
   return (
     <footer className="mt-10 flex flex-col sm:mt-14">
-      <div className="mx-auto w-full max-w-5xl px-4 sm:px-6">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         <div className="relative flex flex-col gap-6 rounded-t border-x-2 border-t-2 bg-card p-4 shadow-md sm:p-6">
           <div
             aria-hidden="true"

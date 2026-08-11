@@ -142,7 +142,7 @@ function SearchPage() {
   );
 
   return (
-    <main className="mx-auto flex max-w-5xl flex-col gap-4 p-4 sm:p-6">
+    <main className="mx-auto flex max-w-6xl flex-col gap-4 p-4 sm:p-6">
       <h1 className="font-head text-xl sm:text-2xl">Search</h1>
 
       <Input

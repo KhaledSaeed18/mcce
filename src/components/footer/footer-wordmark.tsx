@@ -11,7 +11,7 @@ export function FooterWordmark() {
       aria-hidden="true"
       className="relative left-1/2 w-screen -translate-x-1/2 border-y-2 bg-secondary text-secondary-foreground"
     >
-      <div className="mx-auto flex max-w-5xl flex-col items-center gap-5 px-4 py-8 sm:px-6 sm:py-12">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-5 px-4 py-8 sm:px-6 sm:py-12">
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
           {WORDMARK_LETTERS.map((letter) => (
             <span

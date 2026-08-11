@@ -12,7 +12,7 @@ const MARGIN_POSITION = {
   right: "right-0",
 } as const;
 
-const MARGIN_WIDTH = "w-[calc(50%_-_32rem_-_1.5rem)]";
+const MARGIN_WIDTH = "w-[calc(50%_-_36rem_-_1.5rem)]";
 
 type MarginSide = keyof typeof MARGIN_POSITION;
 

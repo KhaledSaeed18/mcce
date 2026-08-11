@@ -9,8 +9,8 @@ const RAIL_NODES = [
 ] as const;
 
 const RAIL_POSITION = {
-  left: "left-[calc(50%_-_32rem_-_1.5rem)]",
-  right: "right-[calc(50%_-_32rem_-_1.5rem)]",
+  left: "left-[calc(50%_-_36rem_-_1.5rem)]",
+  right: "right-[calc(50%_-_36rem_-_1.5rem)]",
 } as const;
 
 type RailSide = keyof typeof RAIL_POSITION;
