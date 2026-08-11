@@ -8,6 +8,7 @@ import {
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { AppHeader } from "@/components/app-header";
 import { NotFound } from "@/components/not-found";
+import { PageRails } from "@/components/page-rails";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Toaster } from "@/components/ui/toast";
 import {
@@ -164,8 +165,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body>
         <ThemeProvider>
           <Toaster>
-            <AppHeader />
-            {children}
+            <div className="relative">
+              <AppHeader />
+              {children}
+              <PageRails />
+            </div>
           </Toaster>
         </ThemeProvider>
         <TanStackDevtools
