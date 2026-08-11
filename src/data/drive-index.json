@@ -1,16 +1,18 @@
 {
   "meta": {
-    "generatedAt": "2026-08-11T11:49:10.347Z",
+    "generatedAt": "2026-08-11T12:41:53.468Z",
     "sources": [
       {
+        "description": "LIU - MCCE | First Year | materials, videos, exercises, and previous exams.",
         "fileCount": 582,
         "folderCount": 189,
         "id": "year1",
         "totalBytes": 13299859460
       },
       {
+        "description": "LIU - MCCE | Second Year | materials, videos, exercises, and previous exams.",
         "fileCount": 0,
-        "folderCount": 0,
+        "folderCount": 4,
         "id": "year2",
         "totalBytes": 0
       }
@@ -27206,6 +27208,112 @@
       "sizeBytes": 388,
       "sourceId": "year1",
       "webViewLink": "https://drive.google.com/file/d/16q-RS7d0gtEqM2temF5U_Mvtw7iiWYSX/view?usp=drivesdk"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": null,
+      "courseName": null,
+      "depth": 0,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+      "isShortcut": false,
+      "kind": "folder",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-08-11T12:29:48.370Z",
+      "name": "Second Year | Fall Semester",
+      "parentId": "1O5i5a7CgmPEwQ7G6MFyM75zIfmtDi5pt",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": null,
+      "sourceId": "year2",
+      "webViewLink": "https://drive.google.com/drive/folders/1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 1,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+      "isShortcut": false,
+      "kind": "folder",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-08-11T12:31:50.400Z",
+      "name": "CENG646 - Data Mining",
+      "parentId": "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": null,
+      "sourceId": "year2",
+      "webViewLink": "https://drive.google.com/drive/folders/1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 1,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+      "isShortcut": false,
+      "kind": "folder",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-08-11T12:31:36.811Z",
+      "name": "CENG645 - Mobile Communication",
+      "parentId": "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": null,
+      "sourceId": "year2",
+      "webViewLink": "https://drive.google.com/drive/folders/1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 1,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+      "isShortcut": false,
+      "kind": "folder",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-08-11T12:31:14.710Z",
+      "name": "CENG625 - Cryptography & Advanced Computer Security",
+      "parentId": "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": null,
+      "sourceId": "year2",
+      "webViewLink": "https://drive.google.com/drive/folders/1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ"
     }
   ]
 }
