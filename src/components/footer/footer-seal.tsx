@@ -19,7 +19,6 @@ const PIN_SEQUENCE = [
   { id: "left-3", x1: 34, x2: 22, y1: 47, y2: 47 },
 ] as const;
 
-const PIN_BASE_COLOR = "var(--border)";
 const PIN_PULSE_COLOR = "var(--primary)";
 const PULSE_STEP_SECONDS = 0.1;
 const PULSE_DURATION_SECONDS = 0.6;
@@ -44,16 +43,19 @@ export function FooterSeal({ className }: FooterSealProps) {
         strokeWidth={5}
       />
 
-      <g strokeLinecap="square" strokeWidth={5}>
+      {/* Static so the theme color stays live; Motion bakes CSS vars to a fixed value once animated. */}
+      <g stroke="var(--border)" strokeLinecap="square" strokeWidth={5}>
+        {PIN_SEQUENCE.map((pin) => (
+          <line key={pin.id} x1={pin.x1} x2={pin.x2} y1={pin.y1} y2={pin.y2} />
+        ))}
+      </g>
+
+      <g stroke={PIN_PULSE_COLOR} strokeLinecap="square" strokeWidth={5}>
         {PIN_SEQUENCE.map((pin, index) => (
           <motion.line
-            animate={
-              shouldReduceMotion
-                ? undefined
-                : { stroke: [PIN_BASE_COLOR, PIN_PULSE_COLOR, PIN_BASE_COLOR] }
-            }
+            animate={shouldReduceMotion ? undefined : { opacity: [0, 1, 0] }}
             key={pin.id}
-            stroke={PIN_BASE_COLOR}
+            opacity={0}
             transition={
               shouldReduceMotion
                 ? undefined
