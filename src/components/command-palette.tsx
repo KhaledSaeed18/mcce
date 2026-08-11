@@ -13,6 +13,8 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import { useSound } from "@/hooks/use-sound";
+import { clickSoftSound } from "@/lib/click-soft";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import { searchNodes } from "@/lib/drive/search";
 import type { DriveNode } from "@/lib/drive/types";
@@ -24,17 +26,28 @@ export function CommandPalette() {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
   const { data: driveIndex } = useQuery(driveIndexQueryOptions);
+  const [playClick] = useSound(clickSoftSound, { volume: 0.4 });
+
+  const handleOpenChange = useCallback(
+    (nextOpen: boolean) => {
+      if (nextOpen) {
+        playClick();
+      }
+      setOpen(nextOpen);
+    },
+    [playClick]
+  );
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if ((event.metaKey || event.ctrlKey) && event.key === "k") {
         event.preventDefault();
-        setOpen((prev) => !prev);
+        handleOpenChange(!open);
       }
     }
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [open, handleOpenChange]);
 
   const results = useMemo(() => {
     if (!(driveIndex && query.trim())) {
@@ -72,7 +85,10 @@ export function CommandPalette() {
     navigate({ search: { q: query }, to: "/search" });
   }, [query, navigate]);
 
-  const handleOpenClick = useCallback(() => setOpen(true), []);
+  const handleOpenClick = useCallback(
+    () => handleOpenChange(true),
+    [handleOpenChange]
+  );
 
   return (
     <>
@@ -89,7 +105,7 @@ export function CommandPalette() {
           ⌘K
         </kbd>
       </Button>
-      <CommandDialog onOpenChange={setOpen} open={open}>
+      <CommandDialog onOpenChange={handleOpenChange} open={open}>
         <Command shouldFilter={false}>
           <CommandInput
             onValueChange={setQuery}
