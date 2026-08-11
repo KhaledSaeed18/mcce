@@ -45,11 +45,21 @@ export interface DriveSource {
   rootFolderId: string;
 }
 
+export interface CourseSummary {
+  code: string;
+  fileCount: number;
+  folderCount: number;
+  name: string;
+  semester: string | null;
+  sourceId: string;
+}
+
 export interface DriveIndex {
   meta: {
     generatedAt: string;
     sources: Array<{
       id: string;
+      description: string | null;
       fileCount: number;
       folderCount: number;
       totalBytes: number;

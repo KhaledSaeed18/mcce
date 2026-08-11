@@ -1,5 +1,6 @@
 const UNITS = ["B", "KB", "MB", "GB", "TB"] as const;
 const UNIT_STEP = 1024;
+const SEMESTER_WORD_PATTERN = /\s*Semester$/;
 
 export function formatBytes(bytes: number | null): string {
   if (bytes === null || bytes <= 0) {
@@ -22,4 +23,15 @@ export function formatDateTime(iso: string): string {
     dateStyle: "medium",
     timeStyle: "short",
   }).format(new Date(iso));
+}
+
+/** "First Year | Fall Semester" -> "First Year · Fall". */
+export function formatSemesterLabel(semester: string | null): string {
+  if (!semester) {
+    return "";
+  }
+  return semester
+    .split("|")
+    .map((part) => part.trim().replace(SEMESTER_WORD_PATTERN, ""))
+    .join(" · ");
 }

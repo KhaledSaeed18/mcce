@@ -1,6 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { FolderOpenIcon } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { formatBytes } from "@/lib/drive/format";
 import type { DriveSource } from "@/lib/drive/types";
 import { cn } from "@/lib/utils";
@@ -12,6 +18,7 @@ const CARD_CLASSES = cn(
 );
 
 interface SourceCardProps {
+  description: string | null;
   fileCount: number;
   folderCount: number;
   source: DriveSource;
@@ -20,6 +27,7 @@ interface SourceCardProps {
 
 export function SourceCard({
   source,
+  description,
   fileCount,
   folderCount,
   totalBytes,
@@ -35,6 +43,9 @@ export function SourceCard({
             <FolderOpenIcon className="size-5" />
           </div>
           <CardTitle>{source.label}</CardTitle>
+          {description ? (
+            <CardDescription>{description}</CardDescription>
+          ) : null}
         </CardHeader>
         <CardContent className="text-muted-foreground text-sm">
           {folderCount} folders · {fileCount} files · {formatBytes(totalBytes)}

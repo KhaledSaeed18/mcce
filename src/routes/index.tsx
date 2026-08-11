@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useMemo } from "react";
 import { AboutMcce } from "@/components/about-mcce";
+import { CoursesSection } from "@/components/drive/courses-section";
 import { SourceCard } from "@/components/drive/source-card";
 import { HeroSection } from "@/components/marketing/hero-section";
 import { McceFaq } from "@/components/mcce-faq";
@@ -7,7 +9,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { PROGRAM_FAQ } from "@/config/faq";
 import { SITE_URL } from "@/config/site";
 import { DRIVE_SOURCES } from "@/config/sources";
-import { formatDateTime } from "@/lib/drive/format";
+import { buildCourseSummaries } from "@/lib/drive/courses";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import { buildFaqSchema, buildProgramSchema } from "@/lib/seo/schema";
 
@@ -31,6 +33,10 @@ function Dashboard() {
     generatedAt: driveIndex.meta.generatedAt,
     sourceCount: DRIVE_SOURCES.length,
   };
+  const courses = useMemo(
+    () => buildCourseSummaries(driveIndex.nodes),
+    [driveIndex.nodes]
+  );
 
   return (
     <main className="mx-auto flex max-w-5xl flex-col gap-10 p-4 sm:p-6">
@@ -46,6 +52,7 @@ function Dashboard() {
             );
             return (
               <SourceCard
+                description={summary?.description ?? null}
                 fileCount={summary?.fileCount ?? 0}
                 folderCount={summary?.folderCount ?? 0}
                 key={source.id}
@@ -55,11 +62,9 @@ function Dashboard() {
             );
           })}
         </div>
-
-        <p className="text-muted-foreground text-xs">
-          Last synced {formatDateTime(driveIndex.meta.generatedAt)}
-        </p>
       </div>
+
+      <CoursesSection courses={courses} />
 
       <AboutMcce />
       <McceFaq />

@@ -48,6 +48,25 @@ async function fetchWithRetry(
   throw new Error("Unreachable: retry loop exhausted without returning");
 }
 
+export async function getFileMetadata(
+  fileId: string,
+  accessToken: string
+): Promise<{ description: string | null }> {
+  const url = new URL(`${DRIVE_FILES_ENDPOINT}/${fileId}`);
+  url.searchParams.set("fields", "description");
+
+  const res = await fetchWithRetry(url, accessToken);
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(
+      `Drive API error fetching metadata for ${fileId}: ${res.status} ${body}`
+    );
+  }
+
+  const body = (await res.json()) as { description?: string };
+  return { description: body.description?.trim() || null };
+}
+
 export async function listChildren(
   parentId: string,
   accessToken: string

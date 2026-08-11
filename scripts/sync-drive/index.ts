@@ -4,10 +4,15 @@ import { DRIVE_SOURCES } from "../../src/config/sources";
 import type { DriveIndex, DriveNode } from "../../src/lib/drive/types";
 import { getAccessToken } from "./auth";
 import { crawlSource } from "./crawl";
+import { getFileMetadata } from "./drive-client";
 
 const OUTPUT_PATH = resolve(process.cwd(), "src/data/drive-index.json");
 
-function summarizeSource(sourceId: string, nodes: DriveNode[]) {
+function summarizeSource(
+  sourceId: string,
+  nodes: DriveNode[],
+  description: string | null
+) {
   const inSource = nodes.filter((node) => node.sourceId === sourceId);
   const fileCount = inSource.filter((node) => node.kind !== "folder").length;
   const folderCount = inSource.filter((node) => node.kind === "folder").length;
@@ -16,7 +21,7 @@ function summarizeSource(sourceId: string, nodes: DriveNode[]) {
     0
   );
 
-  return { fileCount, folderCount, id: sourceId, totalBytes };
+  return { description, fileCount, folderCount, id: sourceId, totalBytes };
 }
 
 async function main() {
@@ -25,18 +30,28 @@ async function main() {
   const perSource = await Promise.all(
     DRIVE_SOURCES.map(async (source) => {
       console.log(`Crawling ${source.label} (${source.rootFolderId})...`);
-      const nodes = await crawlSource(source, accessToken);
+      const [nodes, metadata] = await Promise.all([
+        crawlSource(source, accessToken),
+        getFileMetadata(source.rootFolderId, accessToken),
+      ]);
       console.log(`  -> ${source.label}: ${nodes.length} items`);
-      return nodes;
+      return { description: metadata.description, nodes };
     })
   );
-  const allNodes: DriveNode[] = perSource.flat();
+  const allNodes: DriveNode[] = perSource.flatMap((result) => result.nodes);
+  const descriptionBySourceId = new Map(
+    perSource.map((result, i) => [DRIVE_SOURCES[i].id, result.description])
+  );
 
   const index: DriveIndex = {
     meta: {
       generatedAt: new Date().toISOString(),
       sources: DRIVE_SOURCES.map((source) =>
-        summarizeSource(source.id, allNodes)
+        summarizeSource(
+          source.id,
+          allNodes,
+          descriptionBySourceId.get(source.id) ?? null
+        )
       ),
     },
     nodes: allNodes,
