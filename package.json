@@ -9,6 +9,7 @@
     "deploy": "vite build && wrangler deploy",
     "dev": "vite dev --port 3000",
     "fix": "ultracite fix",
+    "fullcheck": "pnpm typecheck && pnpm knip && pnpm check && pnpm test",
     "knip": "knip",
     "prepare": "lefthook install",
     "preview": "vite build && wrangler dev",
