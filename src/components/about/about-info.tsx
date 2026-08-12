@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   PROGRAM_DEPARTMENT,
   PROGRAM_DURATION_LABEL,
@@ -42,12 +43,14 @@ export function AboutInfo() {
 
       <dl className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {FACTS.map((fact) => (
-          <div className="rounded border-2 bg-card p-3" key={fact.label}>
-            <dt className="text-muted-foreground text-xs uppercase tracking-wide">
-              {fact.label}
-            </dt>
-            <dd className="font-medium text-sm">{fact.value}</dd>
-          </div>
+          <Card key={fact.label} size="sm">
+            <CardContent>
+              <dt className="text-muted-foreground text-xs uppercase tracking-wide">
+                {fact.label}
+              </dt>
+              <dd className="font-medium text-sm">{fact.value}</dd>
+            </CardContent>
+          </Card>
         ))}
       </dl>
 

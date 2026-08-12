@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AboutHero } from "@/components/about/about-hero";
 import { AboutInfo } from "@/components/about/about-info";
+import { AboutPurpose } from "@/components/about/about-purpose";
 import { SITE_URL } from "@/config/site";
 
 const ABOUT_URL = `${SITE_URL}/about`;
@@ -25,6 +26,7 @@ function AboutPage() {
     <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 py-8 sm:p-6 sm:py-14">
       <AboutHero />
       <AboutInfo />
+      <AboutPurpose />
     </main>
   );
 }
