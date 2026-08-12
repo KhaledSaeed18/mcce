@@ -14,13 +14,13 @@ export function AboutHero() {
         ABOUT MCCE
       </Badge>
 
-      <h1 className="max-w-2xl font-head text-3xl leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl">
+      <h1 className="max-w-3xl font-head text-3xl leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl">
         A graduate program,
         <br />
         <span className="text-primary">indexed independently.</span>
       </h1>
 
-      <p className="max-w-2xl text-base text-muted-foreground sm:text-lg">
+      <p className="max-w-3xl text-base text-muted-foreground sm:text-lg">
         What MCCE covers, and why this site exists outside the official page.
       </p>
     </motion.div>

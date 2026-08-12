@@ -14,15 +14,15 @@ export function ContactHero() {
         GET IN TOUCH
       </Badge>
 
-      <h1 className="max-w-xl font-head text-3xl leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl">
-        One person.
+      <h1 className="max-w-3xl font-head text-3xl leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl">
+        Questions, corrections,
         <br />
-        <span className="text-primary">One inbox.</span>
+        <span className="text-primary">or files to add.</span>
       </h1>
 
-      <p className="max-w-lg text-base text-muted-foreground sm:text-lg">
-        MCCE is maintained solo, outside class hours. Email gets straight
-        through.
+      <p className="max-w-3xl text-base text-muted-foreground sm:text-lg">
+        Reach out about anything related to the index, from broken links to
+        missing materials.
       </p>
     </motion.div>
   );

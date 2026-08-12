@@ -29,7 +29,7 @@ export function HeroSection({ stats }: HeroSectionProps) {
           <span className="text-primary">Drive folders</span>.
         </h1>
 
-        <p className="max-w-md text-base text-muted-foreground sm:text-lg">
+        <p className="max-w-xl text-base text-muted-foreground sm:text-lg">
           MCCE indexes every lecture, exam, and slide deck from both years of
           the program. Browse by semester, jump to a course, or search a file by
           name.
