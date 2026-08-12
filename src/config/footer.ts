@@ -23,6 +23,12 @@ export const FOOTER_CONTACT_EMAIL = "uni@khaledsaeed.tech";
 
 export const FOOTER_GITHUB_URL = "https://github.com/KhaledSaeed18/mcce";
 
+export const FOOTER_BUG_REPORT_URL =
+  "https://github.com/KhaledSaeed18/mcce/issues/new?template=bug_report.yml";
+
+export const FOOTER_FEATURE_REQUEST_URL =
+  "https://github.com/KhaledSaeed18/mcce/issues/new?template=feature_request.yml";
+
 export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
   {
     links: [
@@ -48,5 +54,12 @@ export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
       { href: PROGRAM_OFFICIAL_URL, label: "Official program page" },
     ],
     title: "Program",
+  },
+  {
+    links: [
+      { href: FOOTER_BUG_REPORT_URL, label: "Report a bug" },
+      { href: FOOTER_FEATURE_REQUEST_URL, label: "Request a feature" },
+    ],
+    title: "Support",
   },
 ];
