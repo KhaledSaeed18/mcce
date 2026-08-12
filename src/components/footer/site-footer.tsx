@@ -21,10 +21,10 @@ export function SiteFooter() {
   return (
     <footer className="mt-10 flex flex-col sm:mt-14">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
-        <div className="relative flex flex-col gap-6 rounded-t border-x-2 border-t-2 bg-card p-4 shadow-md sm:p-6">
+        <div className="relative flex flex-col gap-6 rounded-t-lg border-x-2 border-t-2 bg-card p-4 shadow-md sm:p-6">
           <div
             aria-hidden="true"
-            className="absolute -top-9 left-1/2 size-[72px] -translate-x-1/2 rotate-[-8deg] rounded-full shadow-md sm:-top-10 sm:size-20"
+            className="absolute -top-9 left-1/2 size-18 -translate-x-1/2 rotate-[-8deg] rounded-full shadow-md sm:-top-10 sm:size-20"
           >
             <FooterSeal className="size-full" />
           </div>

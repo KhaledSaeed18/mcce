@@ -26,7 +26,7 @@ export function SectionDivider() {
       aria-hidden="true"
       className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden py-10 sm:py-14"
     >
-      <div className="w-[110vw] -translate-x-[5vw] -rotate-2 border-y-2 bg-secondary text-secondary-foreground">
+      <div className="w-[110vw] translate-x-[-5vw] -rotate-2 border-y-2 bg-secondary text-secondary-foreground">
         <div className="overflow-hidden py-3">
           <motion.div
             animate={shouldReduceMotion ? undefined : { x: "-50%" }}

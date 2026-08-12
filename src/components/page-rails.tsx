@@ -20,7 +20,7 @@ function Rail({ side }: { side: RailSide }) {
     <div
       aria-hidden="true"
       className={cn(
-        "absolute inset-y-0 hidden w-[2px] xl:block",
+        "absolute inset-y-0 hidden w-0.5 xl:block",
         RAIL_POSITION[side]
       )}
     >
@@ -41,7 +41,7 @@ export function RailLine({ side }: { side: RailSide }) {
     <span
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-y-0 hidden w-[2px] bg-border xl:block",
+        "pointer-events-none absolute inset-y-0 hidden w-0.5 bg-border xl:block",
         RAIL_POSITION[side]
       )}
     />

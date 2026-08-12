@@ -30,7 +30,7 @@ export function LogoMark({ className }: LogoMarkProps) {
       {SATELLITES.map((node) => (
         <rect
           className={cn(
-            "origin-center transition-transform duration-300 ease-out [transform-box:fill-box] motion-safe:group-hover:scale-125 motion-reduce:transition-none",
+            "transform-fill origin-center transition-transform duration-300 ease-out motion-safe:group-hover:scale-125 motion-reduce:transition-none",
             node.delay
           )}
           fill={node.color}

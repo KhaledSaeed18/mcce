@@ -15,10 +15,7 @@ export function ContactContribute() {
       initial={{ opacity: 0, y: 12 }}
       transition={{ delay: 0.2, duration: 0.4 }}
     >
-      <Badge
-        className="absolute -top-3 left-5 rotate-[-3deg]"
-        variant="secondary"
-      >
+      <Badge className="absolute -top-3 left-5 -rotate-3" variant="secondary">
         COMMUNITY SOURCED
       </Badge>
 
