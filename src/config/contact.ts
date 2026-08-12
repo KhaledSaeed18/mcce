@@ -75,3 +75,16 @@ export const CONTACT_MATERIAL_ITEMS: string[] = [
   "Course notes, cheat sheets, or study guides",
   "A heads-up about a missing, wrong, or broken file",
 ];
+
+export interface ContactFormTopic {
+  label: string;
+  value: string;
+}
+
+export const CONTACT_FORM_TOPICS: ContactFormTopic[] = [
+  { label: "Materials to share", value: "materials" },
+  { label: "Something broken", value: "bug" },
+  { label: "An idea or feature", value: "feature" },
+  { label: "General question", value: "general" },
+  { label: "Something else", value: "other" },
+];
