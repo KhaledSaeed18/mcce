@@ -1,28 +1,19 @@
 import { SendIcon } from "lucide-react";
 import { motion } from "motion/react";
+import { ContactCaptchaField } from "@/components/contact/contact-captcha-field";
+import { ContactDetailsFields } from "@/components/contact/contact-details-fields";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { CONTACT_FORM_TOPICS } from "@/config/contact";
 import { useContactForm } from "@/hooks/use-contact-form";
-
-const TOPIC_LABEL_BY_VALUE = new Map(
-  CONTACT_FORM_TOPICS.map((topic) => [topic.value, topic.label])
-);
 
 export function ContactForm() {
   const {
+    captchaRef,
     errors,
+    handleCaptchaExpire,
+    handleCaptchaVerify,
     handleEmailChange,
     handleMessageChange,
     handleSubmit,
@@ -54,51 +45,15 @@ export function ContactForm() {
       </div>
 
       <form className="flex flex-col gap-4" noValidate onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <Field data-invalid={Boolean(errors.email)}>
-            <FieldLabel htmlFor="contact-email">Email</FieldLabel>
-            <Input
-              autoComplete="email"
-              disabled={isSubmitting}
-              id="contact-email"
-              name="email"
-              onChange={handleEmailChange}
-              placeholder="you@example.com"
-              type="email"
-              value={values.email}
-            />
-            <FieldError
-              errors={errors.email ? [{ message: errors.email }] : []}
-            />
-          </Field>
-
-          <Field data-invalid={Boolean(errors.topic)}>
-            <FieldLabel htmlFor="contact-topic">Topic</FieldLabel>
-            <Select
-              disabled={isSubmitting}
-              onValueChange={handleTopicChange}
-              value={values.topic || undefined}
-            >
-              <SelectTrigger className="w-full" id="contact-topic">
-                <SelectValue placeholder="Choose one">
-                  {(value: string) => TOPIC_LABEL_BY_VALUE.get(value)}
-                </SelectValue>
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  {CONTACT_FORM_TOPICS.map((topic) => (
-                    <SelectItem key={topic.value} value={topic.value}>
-                      {topic.label}
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-            <FieldError
-              errors={errors.topic ? [{ message: errors.topic }] : []}
-            />
-          </Field>
-        </div>
+        <ContactDetailsFields
+          disabled={isSubmitting}
+          email={values.email}
+          emailError={errors.email}
+          onEmailChange={handleEmailChange}
+          onTopicChange={handleTopicChange}
+          topic={values.topic}
+          topicError={errors.topic}
+        />
 
         <Field data-invalid={Boolean(errors.message)}>
           <FieldLabel htmlFor="contact-message">Message</FieldLabel>
@@ -115,6 +70,13 @@ export function ContactForm() {
             errors={errors.message ? [{ message: errors.message }] : []}
           />
         </Field>
+
+        <ContactCaptchaField
+          captchaRef={captchaRef}
+          error={errors.captchaToken}
+          onExpire={handleCaptchaExpire}
+          onVerify={handleCaptchaVerify}
+        />
 
         <input
           aria-hidden="true"

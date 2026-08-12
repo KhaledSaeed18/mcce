@@ -1,4 +1,5 @@
 export interface ContactFormValues {
+  captchaToken: string | null;
   email: string;
   message: string;
   topic: string;

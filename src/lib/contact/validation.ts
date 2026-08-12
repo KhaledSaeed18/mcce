@@ -20,6 +20,10 @@ export function validateContactForm(
     errors.topic = "Pick a topic.";
   }
 
+  if (!values.captchaToken) {
+    errors.captchaToken = "Complete the captcha.";
+  }
+
   if (!message) {
     errors.message = "Write a message.";
   } else if (message.length < MESSAGE_MIN_LENGTH) {

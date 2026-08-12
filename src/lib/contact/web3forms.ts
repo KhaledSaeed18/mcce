@@ -21,6 +21,7 @@ export async function submitContactForm(
       access_key: accessKey,
       botcheck: "",
       email: values.email.trim(),
+      "h-captcha-response": values.captchaToken,
       message: values.message.trim(),
       subject: `MCCE contact: ${values.topic}`,
       topic: values.topic,

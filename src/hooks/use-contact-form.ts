@@ -1,4 +1,5 @@
-import { useCallback, useState } from "react";
+import type HCaptcha from "@hcaptcha/react-hcaptcha";
+import { useCallback, useRef, useState } from "react";
 import type {
   ContactFormErrors,
   ContactFormStatus,
@@ -8,6 +9,7 @@ import { validateContactForm } from "@/lib/contact/validation";
 import { submitContactForm } from "@/lib/contact/web3forms";
 
 const INITIAL_VALUES: ContactFormValues = {
+  captchaToken: null,
   email: "",
   message: "",
   topic: "",
@@ -17,6 +19,7 @@ export function useContactForm() {
   const [values, setValues] = useState<ContactFormValues>(INITIAL_VALUES);
   const [errors, setErrors] = useState<ContactFormErrors>({});
   const [status, setStatus] = useState<ContactFormStatus>("idle");
+  const captchaRef = useRef<HCaptcha>(null);
 
   const setField = useCallback(
     <K extends keyof ContactFormValues>(
@@ -46,6 +49,16 @@ export function useContactForm() {
     [setField]
   );
 
+  const handleCaptchaVerify = useCallback(
+    (token: string) => setField("captchaToken", token),
+    [setField]
+  );
+
+  const handleCaptchaExpire = useCallback(
+    () => setField("captchaToken", null),
+    [setField]
+  );
+
   const handleSubmit = useCallback(
     async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
@@ -65,16 +78,23 @@ export function useContactForm() {
           setValues(INITIAL_VALUES);
         } else {
           setStatus("error");
+          setValues((prev) => ({ ...prev, captchaToken: null }));
         }
       } catch {
         setStatus("error");
+        setValues((prev) => ({ ...prev, captchaToken: null }));
+      } finally {
+        captchaRef.current?.resetCaptcha();
       }
     },
     [values]
   );
 
   return {
+    captchaRef,
     errors,
+    handleCaptchaExpire,
+    handleCaptchaVerify,
     handleEmailChange,
     handleMessageChange,
     handleSubmit,
