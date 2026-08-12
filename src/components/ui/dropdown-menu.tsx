@@ -96,6 +96,27 @@ function DropdownMenuItem({
   );
 }
 
+function DropdownMenuLinkItem({
+  className,
+  inset,
+  ...props
+}: MenuPrimitive.LinkItem.Props & {
+  inset?: boolean;
+}) {
+  return (
+    <MenuPrimitive.LinkItem
+      className={cn(
+        "group/dropdown-menu-item relative flex cursor-default select-none items-center gap-1.5 rounded-md px-1.5 py-1 text-sm outline-hidden focus:bg-accent focus:text-accent-foreground data-disabled:pointer-events-none data-inset:pl-7 data-disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        className
+      )}
+      closeOnClick
+      data-inset={inset}
+      data-slot="dropdown-menu-link-item"
+      {...props}
+    />
+  );
+}
+
 function DropdownMenuSub({ ...props }: MenuPrimitive.SubmenuRoot.Props) {
   return <MenuPrimitive.SubmenuRoot data-slot="dropdown-menu-sub" {...props} />;
 }
@@ -257,6 +278,7 @@ export {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuLinkItem,
   DropdownMenuPortal,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
