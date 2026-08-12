@@ -2,7 +2,7 @@ import { PROGRAM_OFFICIAL_URL } from "@/config/site";
 import { DRIVE_SOURCES } from "@/config/sources";
 
 export type FooterNavLink =
-  | { hash?: string; label: string; to: "/" | "/search" }
+  | { hash?: string; label: string; to: "/" | "/search" | "/contact" }
   | { folderId: string; label: string; to: "/browse/$folderId" }
   | { href: string; label: string };
 
@@ -57,6 +57,7 @@ export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
   },
   {
     links: [
+      { label: "Contact", to: "/contact" },
       { href: FOOTER_BUG_REPORT_URL, label: "Report a bug" },
       { href: FOOTER_FEATURE_REQUEST_URL, label: "Request a feature" },
     ],
