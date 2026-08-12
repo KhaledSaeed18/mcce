@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
-import { AboutMcce } from "@/components/about-mcce";
 import { CoursesSection } from "@/components/drive/courses-section";
 import { SourceCard } from "@/components/drive/source-card";
 import { HeroSection } from "@/components/marketing/hero-section";
@@ -69,7 +68,6 @@ function HomePage() {
 
       <CoursesSection courses={courses} />
 
-      <AboutMcce />
       <McceFaq />
 
       <JsonLd data={buildProgramSchema()} />

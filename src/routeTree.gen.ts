@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as BrowseFolderIdRouteImport } from './routes/browse.$folderId'
@@ -17,6 +18,11 @@ import { Route as BrowseFolderIdRouteImport } from './routes/browse.$folderId'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -37,12 +43,14 @@ const BrowseFolderIdRoute = BrowseFolderIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/search': typeof SearchRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/search': typeof SearchRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/search': typeof SearchRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/search' | '/browse/$folderId'
+  fullPaths: '/' | '/about' | '/contact' | '/search' | '/browse/$folderId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/search' | '/browse/$folderId'
-  id: '__root__' | '/' | '/contact' | '/search' | '/browse/$folderId'
+  to: '/' | '/about' | '/contact' | '/search' | '/browse/$folderId'
+  id: '__root__' | '/' | '/about' | '/contact' | '/search' | '/browse/$folderId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   SearchRoute: typeof SearchRoute
   BrowseFolderIdRoute: typeof BrowseFolderIdRoute
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   SearchRoute: SearchRoute,
   BrowseFolderIdRoute: BrowseFolderIdRoute,

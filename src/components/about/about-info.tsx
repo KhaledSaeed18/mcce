@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import {
   PROGRAM_DEPARTMENT,
   PROGRAM_DURATION_LABEL,
@@ -20,13 +21,15 @@ const FACTS: Array<{ label: string; value: string }> = [
   },
 ];
 
-export function AboutMcce() {
+export function AboutInfo() {
   return (
-    <section
-      className="flex scroll-mt-20 flex-col gap-4 rounded border-2 bg-card p-4 shadow-md sm:p-6"
-      id="about"
+    <motion.div
+      animate={{ opacity: 1, y: 0 }}
+      className="flex flex-col gap-4"
+      initial={{ opacity: 0, y: 12 }}
+      transition={{ delay: 0.1, duration: 0.4 }}
     >
-      <h2 className="font-head text-xl sm:text-2xl">About MCCE</h2>
+      <h2 className="font-head text-xl sm:text-2xl">The program</h2>
 
       <p className="text-sm sm:text-base">
         MCCE is the {PROGRAM_NAME}, a graduate program in the{" "}
@@ -37,9 +40,9 @@ export function AboutMcce() {
         mathematics.
       </p>
 
-      <dl className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      <dl className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {FACTS.map((fact) => (
-          <div className="rounded border-2 bg-background p-3" key={fact.label}>
+          <div className="rounded border-2 bg-card p-3" key={fact.label}>
             <dt className="text-muted-foreground text-xs uppercase tracking-wide">
               {fact.label}
             </dt>
@@ -62,6 +65,6 @@ export function AboutMcce() {
         </a>{" "}
         for admissions and curriculum details.
       </p>
-    </section>
+    </motion.div>
   );
 }

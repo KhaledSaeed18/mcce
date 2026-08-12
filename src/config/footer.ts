@@ -2,7 +2,11 @@ import { PROGRAM_OFFICIAL_URL } from "@/config/site";
 import { DRIVE_SOURCES } from "@/config/sources";
 
 export type FooterNavLink =
-  | { hash?: string; label: string; to: "/" | "/search" | "/contact" }
+  | {
+      hash?: string;
+      label: string;
+      to: "/" | "/about" | "/search" | "/contact";
+    }
   | { folderId: string; label: string; to: "/browse/$folderId" }
   | { href: string; label: string };
 
@@ -49,7 +53,7 @@ export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
   },
   {
     links: [
-      { hash: "about", label: "About MCCE", to: "/" },
+      { label: "About MCCE", to: "/about" },
       { hash: "faq", label: "Program FAQ", to: "/" },
       { href: PROGRAM_OFFICIAL_URL, label: "Official program page" },
     ],
