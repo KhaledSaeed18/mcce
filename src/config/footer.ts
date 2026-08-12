@@ -5,7 +5,7 @@ export type FooterNavLink =
   | {
       hash?: string;
       label: string;
-      to: "/" | "/about" | "/search" | "/contact";
+      to: "/" | "/about" | "/faq" | "/search" | "/contact";
     }
   | { folderId: string; label: string; to: "/browse/$folderId" }
   | { href: string; label: string };
@@ -54,7 +54,7 @@ export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
   {
     links: [
       { label: "About MCCE", to: "/about" },
-      { hash: "faq", label: "Program FAQ", to: "/" },
+      { label: "FAQ", to: "/faq" },
       { href: PROGRAM_OFFICIAL_URL, label: "Official program page" },
     ],
     title: "Program",

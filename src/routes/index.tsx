@@ -4,14 +4,12 @@ import { CoursesSection } from "@/components/drive/courses-section";
 import { SourceCard } from "@/components/drive/source-card";
 import { HeroSection } from "@/components/marketing/hero-section";
 import { SectionDivider } from "@/components/marketing/section-divider";
-import { McceFaq } from "@/components/mcce-faq";
 import { JsonLd } from "@/components/seo/json-ld";
-import { PROGRAM_FAQ } from "@/config/faq";
 import { SITE_URL } from "@/config/site";
 import { DRIVE_SOURCES } from "@/config/sources";
 import { buildCourseSummaries } from "@/lib/drive/courses";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
-import { buildFaqSchema, buildProgramSchema } from "@/lib/seo/schema";
+import { buildProgramSchema } from "@/lib/seo/schema";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -68,10 +66,7 @@ function HomePage() {
 
       <CoursesSection courses={courses} />
 
-      <McceFaq />
-
       <JsonLd data={buildProgramSchema()} />
-      <JsonLd data={buildFaqSchema(PROGRAM_FAQ)} />
     </main>
   );
 }
