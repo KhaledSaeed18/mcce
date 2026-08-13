@@ -18,10 +18,15 @@ export function formatBytes(bytes: number | null): string {
   return `${value.toFixed(precision)} ${UNITS[unitIndex]}`;
 }
 
+/** Locale and time zone are pinned so server and client render identical
+ * text -- Intl.DateTimeFormat(undefined, ...) resolves to the runtime's
+ * default locale/time zone, which differs between server and browser and
+ * causes a hydration mismatch (React error #418). */
 export function formatDateTime(iso: string): string {
-  return new Intl.DateTimeFormat(undefined, {
+  return new Intl.DateTimeFormat("en-US", {
     dateStyle: "medium",
     timeStyle: "short",
+    timeZone: "UTC",
   }).format(new Date(iso));
 }
 
