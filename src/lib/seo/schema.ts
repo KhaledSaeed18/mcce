@@ -9,6 +9,8 @@ import {
   SITE_NAME,
   SITE_URL,
 } from "@/config/site";
+import { flattenCourses } from "@/lib/curriculum/lookup";
+import type { CurriculumYear } from "@/lib/curriculum/types";
 
 export function buildWebSiteSchema() {
   return {
@@ -44,6 +46,28 @@ export function buildProgramSchema() {
     },
     sameAs: PROGRAM_OFFICIAL_URL,
     timeToComplete: PROGRAM_DURATION_ISO,
+  };
+}
+
+export function buildCurriculumSchema(years: CurriculumYear[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: flattenCourses(years).map((course, index) => ({
+      "@type": "Course",
+      item: {
+        "@type": "Course",
+        courseCode: course.code,
+        description: course.description ?? undefined,
+        name: course.name,
+        provider: {
+          "@type": "CollegeOrUniversity",
+          name: PROGRAM_UNIVERSITY,
+        },
+      },
+      position: index + 1,
+    })),
+    name: `${PROGRAM_NAME} plan of study`,
   };
 }
 

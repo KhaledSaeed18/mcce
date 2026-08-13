@@ -48,3 +48,12 @@ export function buildCourseSummaries(nodes: DriveNode[]): CourseSummary[] {
 
   return [...byCode.values()].sort((a, b) => b.fileCount - a.fileCount);
 }
+
+/** Course code to its Drive summary, for cross-referencing curriculum courses against indexed materials. */
+export function buildCourseSummaryMap(
+  nodes: DriveNode[]
+): Map<string, CourseSummary> {
+  return new Map(
+    buildCourseSummaries(nodes).map((summary) => [summary.code, summary])
+  );
+}
