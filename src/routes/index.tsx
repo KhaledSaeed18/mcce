@@ -3,7 +3,11 @@ import { useMemo } from "react";
 import { CoursesSection } from "@/components/drive/courses-section";
 import { SourceCard } from "@/components/drive/source-card";
 import { HeroSection } from "@/components/marketing/hero-section";
+import { HomeCtaSection } from "@/components/marketing/home-cta-section";
+import { PageTeaserSection } from "@/components/marketing/page-teaser-section";
+import { ProgramGlanceSection } from "@/components/marketing/program-glance-section";
 import { SectionDivider } from "@/components/marketing/section-divider";
+import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SITE_URL } from "@/config/site";
 import { DRIVE_SOURCES } from "@/config/sources";
@@ -65,6 +69,14 @@ function HomePage() {
       </div>
 
       <CoursesSection courses={courses} />
+
+      <SectionDividerDots />
+
+      <ProgramGlanceSection />
+
+      <PageTeaserSection />
+
+      <HomeCtaSection />
 
       <JsonLd data={buildProgramSchema()} />
     </main>
