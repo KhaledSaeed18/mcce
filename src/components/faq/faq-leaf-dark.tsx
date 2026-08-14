@@ -1,14 +1,9 @@
-interface FaqLeafDarkProps {
-  className?: string;
-}
-
 const PAPER_FILL = "#fff7e8";
 
-export function FaqLeafDark({ className }: FaqLeafDarkProps) {
+export function FaqLeafDark() {
   return (
     <svg
       aria-hidden="true"
-      className={className}
       viewBox="0 0 60 82"
       xmlns="http://www.w3.org/2000/svg"
     >

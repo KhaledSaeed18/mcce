@@ -1,13 +1,33 @@
+import type { MotionProps } from "motion/react";
 import { motion } from "motion/react";
 import { FaqLeaf } from "@/components/faq/faq-leaf";
 import { FaqLeafDark } from "@/components/faq/faq-leaf-dark";
 import { Badge } from "@/components/ui/badge";
 
+const LEAF_DRIFT: MotionProps = {
+  animate: { rotate: [0, 5, -3, 0], y: [0, -8, 0] },
+  transition: {
+    duration: 7,
+    ease: "easeInOut",
+    repeat: Number.POSITIVE_INFINITY,
+  },
+};
+
 export function FaqHero() {
   return (
     <div className="relative">
-      <FaqLeaf className="absolute -top-4 right-6 hidden w-24 lg:block dark:hidden" />
-      <FaqLeafDark className="absolute -top-4 right-6 hidden w-24 lg:dark:block" />
+      <motion.div
+        {...LEAF_DRIFT}
+        className="absolute -top-4 right-6 hidden w-24 lg:block dark:hidden"
+      >
+        <FaqLeaf />
+      </motion.div>
+      <motion.div
+        {...LEAF_DRIFT}
+        className="absolute -top-4 right-6 hidden w-24 lg:dark:block"
+      >
+        <FaqLeafDark />
+      </motion.div>
 
       <motion.div
         animate={{ opacity: 1, y: 0 }}

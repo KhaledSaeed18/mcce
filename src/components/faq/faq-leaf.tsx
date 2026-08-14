@@ -1,12 +1,7 @@
-interface FaqLeafProps {
-  className?: string;
-}
-
-export function FaqLeaf({ className }: FaqLeafProps) {
+export function FaqLeaf() {
   return (
     <svg
       aria-hidden="true"
-      className={className}
       viewBox="0 0 60 82"
       xmlns="http://www.w3.org/2000/svg"
     >
