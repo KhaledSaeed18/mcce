@@ -18,14 +18,11 @@ export function CurriculumYearTabs({
 
   if (years.length <= 1) {
     return firstYear ? (
-      <div className="flex flex-col gap-6">
-        <h2 className="font-head text-2xl sm:text-3xl">{firstYear.label}</h2>
-        <CurriculumYearPanel
-          materialsMap={materialsMap}
-          onSelectCourse={onSelectCourse}
-          year={firstYear}
-        />
-      </div>
+      <CurriculumYearPanel
+        materialsMap={materialsMap}
+        onSelectCourse={onSelectCourse}
+        year={firstYear}
+      />
     ) : null;
   }
 
