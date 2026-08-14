@@ -1,11 +1,9 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { NavLinkItem } from "@/components/nav/nav-link-item";
-import { NAV_BROWSE_LINKS, NAV_PAGE_LINKS } from "@/config/navigation";
-
-const MOBILE_LINKS = [...NAV_BROWSE_LINKS, ...NAV_PAGE_LINKS];
+import { NAV_PAGE_LINKS } from "@/config/navigation";
 
 const LINK_CLASSES =
-  "flex w-fit items-center rounded px-3 py-2.5 font-head text-base underline decoration-2 underline-offset-4 decoration-transparent transition-colors duration-150 hover:decoration-current data-[status=active]:decoration-current";
+  "relative flex w-fit items-center rounded px-3 py-2 font-head text-base after:absolute after:bottom-2 after:left-3 after:right-3 after:h-[2px] after:origin-left after:scale-x-0 after:rounded-[1px] after:bg-primary after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:after:scale-x-100 data-[status=active]:after:scale-x-100";
 
 interface MobileNavPanelProps {
   isOpen: boolean;
@@ -33,7 +31,7 @@ export function MobileNavPanel({
           transition={{ duration: shouldReduceMotion ? 0 : 0.25 }}
         >
           <ul className="mx-auto flex max-w-6xl flex-col gap-1 p-4 sm:px-6">
-            {MOBILE_LINKS.map((link) => (
+            {NAV_PAGE_LINKS.map((link) => (
               <li key={link.label}>
                 <NavLinkItem
                   className={LINK_CLASSES}
