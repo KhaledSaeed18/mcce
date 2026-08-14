@@ -39,14 +39,14 @@ export function CurriculumRequirementList({
   onSelect,
 }: CurriculumRequirementListProps) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex min-w-0 flex-col gap-2">
       <h3 className="text-muted-foreground text-xs uppercase tracking-wide">
         {label}
       </h3>
       {codes.length === 0 ? (
         <p className="text-sm">None</p>
       ) : (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex min-w-0 flex-wrap gap-2">
           {codes.map((code) => (
             <RequirementBadge
               code={code}
