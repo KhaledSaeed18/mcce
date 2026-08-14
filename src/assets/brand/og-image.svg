@@ -25,7 +25,7 @@
     stroke="#1a1815"
     stroke-width="6"
     width="60"
-    x="1080"
+    x="1052"
     y="60"
   />
   <rect
@@ -36,7 +36,7 @@
     stroke-width="6"
     width="60"
     x="60"
-    y="510"
+    y="482"
   />
   <rect
     fill="#ffdc58"
@@ -45,8 +45,8 @@
     stroke="#1a1815"
     stroke-width="6"
     width="60"
-    x="1080"
-    y="510"
+    x="1052"
+    y="482"
   />
 
   <rect fill="#1a1815" height="418" rx="28" width="988" x="106" y="106" />
