@@ -21,6 +21,8 @@ export function AboutCap() {
           strokeLinejoin="round"
           strokeWidth="2.6"
         />
+        <circle cx="22" cy="16.3" fill="#000000" r="1.7" />
+        <circle cx="12" cy="8" fill="#000000" r="1.3" />
       </g>
       <g transform="translate(8.4 10) scale(1.8)">
         <path d={CAP_BOARD} fill="var(--primary)" />
@@ -33,6 +35,8 @@ export function AboutCap() {
           strokeLinejoin="round"
           strokeWidth="2.6"
         />
+        <circle cx="22" cy="16.3" fill="var(--primary)" r="1.7" />
+        <circle cx="12" cy="8" fill="var(--primary)" r="1.3" />
       </g>
     </svg>
   );
