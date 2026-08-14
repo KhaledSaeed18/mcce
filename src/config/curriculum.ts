@@ -214,10 +214,59 @@ const YEAR_2_FALL: CurriculumYear["semesters"][number] = {
   term: "fall",
 };
 
+const YEAR_2_SPRING: CurriculumYear["semesters"][number] = {
+  courses: [
+    {
+      code: "CENG695B",
+      corequisites: [],
+      credits: 3,
+      description: "Supervisor mentored engineering project.",
+      kind: "thesis",
+      name: "Master Thesis Project (Part II)",
+      objectives: [],
+      prerequisites: ["CENG695A"],
+    },
+    {
+      code: "CENG685",
+      corequisites: [],
+      credits: 3,
+      description:
+        "This course provides a thorough understanding of the modern advancements in information security, state-of-the-art techniques, standards and best practices for establishing trust in the digital space. Topics include: Identity and access management; Software development security; Security engineering; Security operations; Asset security; Risk management; Security assessment and testing; Trusted computing and multilevel security.",
+      kind: "course",
+      name: "Information Security",
+      objectives: [],
+      prerequisites: [],
+    },
+    {
+      code: "CENG678",
+      corequisites: [],
+      credits: 3,
+      description: null,
+      kind: "course",
+      name: "Image Processing and Computer Vision",
+      objectives: [],
+      prerequisites: ["CENG675", "CENG566", "EENG527", "ENGG515"],
+    },
+    {
+      code: "CENG679",
+      corequisites: [],
+      credits: 3,
+      description: null,
+      kind: "course",
+      name: "Satellite and Space Communications",
+      objectives: [],
+      prerequisites: ["EENG587", "EENG537", "EENG527"],
+    },
+  ],
+  id: "y2-spring",
+  label: "Spring Semester",
+  term: "spring",
+};
+
 const CURRICULUM_YEAR_2: CurriculumYear = {
   id: "y2",
   label: "Second Year",
-  semesters: [YEAR_2_FALL],
+  semesters: [YEAR_2_FALL, YEAR_2_SPRING],
   year: 2,
 };
 
