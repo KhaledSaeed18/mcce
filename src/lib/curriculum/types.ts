@@ -1,5 +1,5 @@
 export type CurriculumTerm = "fall" | "spring" | "summer";
-export type CurriculumCourseKind = "course" | "lab";
+export type CurriculumCourseKind = "course" | "lab" | "thesis";
 
 export interface CurriculumCourse {
   code: string;

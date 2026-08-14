@@ -155,4 +155,73 @@ const CURRICULUM_YEAR_1: CurriculumYear = {
   year: 1,
 };
 
-export const CURRICULUM: CurriculumYear[] = [CURRICULUM_YEAR_1];
+const YEAR_2_FALL: CurriculumYear["semesters"][number] = {
+  courses: [
+    {
+      code: "CENG695A",
+      corequisites: [],
+      credits: 3,
+      description: "Supervisor mentored engineering project.",
+      kind: "thesis",
+      name: "Master Thesis Project (Part I)",
+      objectives: [],
+      prerequisites: ["EENG537", "EENG527", "CENG557"],
+    },
+    {
+      code: "ENGG550",
+      corequisites: [],
+      credits: 3,
+      description:
+        "This course covers the fundamentals of project management for engineering professionals. It reviews the project management framework in organizations and covers in depth the tools and techniques used in initiating, planning, executing, monitoring, controlling and concluding a project to achieve the set goals within schedule and budget targets. Real life engineering project examples are used to demonstrate the application of project management concepts to engineering projects. The course is aligned with the Project Management Institute's (PMI's) Project Management Body of Knowledge (PMBOK) and helps learners to prepare for PMI certification exams.",
+      kind: "course",
+      name: "Engineering Project Management and Control",
+      objectives: [],
+      prerequisites: [],
+    },
+    {
+      code: "CENG625",
+      corequisites: [],
+      credits: 3,
+      description: null,
+      kind: "course",
+      name: "Cryptography & Advanced Computer Security",
+      objectives: [],
+      prerequisites: ["CENG557", "ENGG515"],
+    },
+    {
+      code: "CENG645",
+      corequisites: [],
+      credits: 3,
+      description: null,
+      kind: "course",
+      name: "Mobile Communication",
+      objectives: [],
+      prerequisites: ["EENG587", "EENG577"],
+    },
+    {
+      code: "CENG646",
+      corequisites: [],
+      credits: 3,
+      description: null,
+      kind: "course",
+      name: "Data Mining",
+      objectives: [],
+      prerequisites: ["CENG566"],
+    },
+  ],
+  id: "y2-fall",
+  label: "Fall Semester",
+  term: "fall",
+};
+
+const CURRICULUM_YEAR_2: CurriculumYear = {
+  id: "y2",
+  label: "Second Year",
+  semesters: [YEAR_2_FALL],
+  year: 2,
+};
+
+export const CURRICULUM: CurriculumYear[] = [
+  CURRICULUM_YEAR_1,
+  CURRICULUM_YEAR_2,
+];

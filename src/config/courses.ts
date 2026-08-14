@@ -17,6 +17,7 @@ import {
   SmartphoneIcon,
   WifiIcon,
 } from "lucide-react";
+import type { CurriculumCourseKind } from "@/lib/curriculum/types";
 
 export const DEFAULT_COURSE_ICON: LucideIcon = BookOpenIcon;
 
@@ -69,3 +70,11 @@ export const COURSE_CARD_COLORS = [
   "chart-4",
   "chart-5",
 ] as const;
+
+/** Badge text for course kinds worth calling out; plain "course" gets no badge. */
+export const COURSE_KIND_BADGE_LABEL: Partial<
+  Record<CurriculumCourseKind, string>
+> = {
+  lab: "Lab",
+  thesis: "Thesis",
+};

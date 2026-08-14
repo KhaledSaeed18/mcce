@@ -2,6 +2,7 @@ import { FolderOpenIcon } from "lucide-react";
 import { useCallback } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { COURSE_KIND_BADGE_LABEL } from "@/config/courses";
 import type { CurriculumCourse } from "@/lib/curriculum/types";
 import { getCourseIcon } from "@/lib/drive/courses";
 import { cn } from "@/lib/utils";
@@ -26,6 +27,7 @@ export function CurriculumCourseCard({
   onSelect,
 }: CurriculumCourseCardProps) {
   const Icon = getCourseIcon(course.code, course.name);
+  const kindBadgeLabel = COURSE_KIND_BADGE_LABEL[course.kind];
   const requirementCount =
     course.prerequisites.length + course.corequisites.length;
   const handleClick = useCallback(
@@ -52,7 +54,9 @@ export function CurriculumCourseCard({
         <CardContent className="flex flex-wrap items-center gap-2">
           <Badge variant="outline">{course.code}</Badge>
           <Badge variant="outline">{course.credits} cr</Badge>
-          {course.kind === "lab" && <Badge variant="secondary">Lab</Badge>}
+          {kindBadgeLabel ? (
+            <Badge variant="secondary">{kindBadgeLabel}</Badge>
+          ) : null}
           {requirementCount > 0 && (
             <span className="text-muted-foreground text-xs">
               {requirementCount} requirement{requirementCount === 1 ? "" : "s"}
