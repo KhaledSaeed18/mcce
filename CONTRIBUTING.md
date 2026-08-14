@@ -243,11 +243,11 @@ refactor/extract-order-hooks
 
 Every push and pull request against `main` runs the following jobs (`.github/workflows/ci.yml`):
 
-- **Lint** — `pnpm check` (Biome via Ultracite)
-- **Typecheck** — `pnpm typecheck`
-- **Test** — `pnpm test`
-- **Knip** — `pnpm knip` (unused files, exports, and dependencies)
-- **Build** — `pnpm build`
+- **Lint**: `pnpm check` (Biome via Ultracite)
+- **Typecheck**: `pnpm typecheck`
+- **Test**: `pnpm test`
+- **Knip**: `pnpm knip` (unused files, exports, and dependencies)
+- **Build**: `pnpm build`
 
 All jobs must pass before a pull request can merge. On merge to `main`, a separate workflow
 deploys the production bundle to Cloudflare Workers.
@@ -260,8 +260,8 @@ yourself unless you are working on the sync script.
 
 Open an issue using the appropriate template:
 
-- **Bug report** — description, reproduction steps, expected behavior, browser and environment.
-- **Feature request** — the problem being solved, the proposed solution, and any alternatives
+- **Bug report**: description, reproduction steps, expected behavior, browser and environment.
+- **Feature request**: the problem being solved, the proposed solution, and any alternatives
   considered.
 
 Search existing issues first to avoid duplicates.

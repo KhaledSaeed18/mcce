@@ -39,20 +39,20 @@ University. For admissions, curriculum, and official program details, see the
 
 ## Features
 
-- **Browse by source and course** — program materials organized by Drive source, semester, and
+- **Browse by source and course**: program materials organized by Drive source, semester, and
   course, with folder and file counts at a glance.
-- **Search** — find material by name, filtered by semester, course, or file type.
-- **File previews** — preview documents, slides, and sheets without leaving the browser.
-- **Plan of study** — a year-by-year curriculum view with semester groups, course requirements,
+- **Search**: find material by name, filtered by semester, course, or file type.
+- **File previews**: preview documents, slides, and sheets without leaving the browser.
+- **Plan of study**: a year-by-year curriculum view with semester groups, course requirements,
   and prerequisite notes.
-- **Curriculum roadmap** — a traceable prerequisite graph across the full program, with credit
+- **Curriculum roadmap**: a traceable prerequisite graph across the full program, with credit
   totals per year and semester.
-- **PDF export** — download, preview, or share the full plan of study as a PDF.
-- **Weekly auto-sync** — a scheduled job re-crawls the source Drive and updates the index, so
+- **PDF export**: download, preview, or share the full plan of study as a PDF.
+- **Weekly auto-sync**: a scheduled job re-crawls the source Drive and updates the index, so
   material doesn't go stale.
-- **Community-sourced contributions** — anyone in the program can send exams, notes, slides, or
+- **Community-sourced contributions**: anyone in the program can send exams, notes, slides, or
   recordings through the contact page to be added to the index.
-- **Installable** — works as a standalone app on desktop and mobile through the site manifest.
+- **Installable**: works as a standalone app on desktop and mobile through the site manifest.
 
 ## Contributing
 
