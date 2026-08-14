@@ -1,11 +1,13 @@
 import { motion } from "motion/react";
 import { FaqLeaf } from "@/components/faq/faq-leaf";
+import { FaqLeafDark } from "@/components/faq/faq-leaf-dark";
 import { Badge } from "@/components/ui/badge";
 
 export function FaqHero() {
   return (
     <div className="relative">
-      <FaqLeaf className="absolute -top-4 -right-4 hidden w-24 -rotate-12 lg:block" />
+      <FaqLeaf className="absolute -top-4 right-6 hidden w-24 lg:block dark:hidden" />
+      <FaqLeafDark className="absolute -top-4 right-6 hidden w-24 lg:dark:block" />
 
       <motion.div
         animate={{ opacity: 1, y: 0 }}
