@@ -1,3 +1,4 @@
+import { CurriculumRoadmap } from "@/components/curriculum/curriculum-roadmap";
 import { CurriculumYearPanel } from "@/components/curriculum/curriculum-year-panel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { CurriculumYear } from "@/lib/curriculum/types";
@@ -5,6 +6,8 @@ import type { CourseSummary } from "@/lib/drive/types";
 
 const FULL_PROGRAM_TAB_ID = "full-program";
 const FULL_PROGRAM_TAB_LABEL = "Full Program";
+const ROADMAP_TAB_ID = "roadmap";
+const ROADMAP_TAB_LABEL = "Roadmap";
 
 interface CurriculumYearTabsProps {
   materialsMap: Map<string, CourseSummary>;
@@ -17,21 +20,13 @@ export function CurriculumYearTabs({
   onSelectCourse,
   years,
 }: CurriculumYearTabsProps) {
-  const [firstYear] = years;
-
-  if (years.length <= 1) {
-    return firstYear ? (
-      <CurriculumYearPanel
-        materialsMap={materialsMap}
-        onSelectCourse={onSelectCourse}
-        year={firstYear}
-      />
-    ) : null;
+  if (years.length === 0) {
+    return null;
   }
 
   return (
     <Tabs className="gap-6" defaultValue={FULL_PROGRAM_TAB_ID}>
-      <TabsList>
+      <TabsList className="max-w-full overflow-x-auto">
         <TabsTrigger value={FULL_PROGRAM_TAB_ID}>
           {FULL_PROGRAM_TAB_LABEL}
         </TabsTrigger>
@@ -40,6 +35,7 @@ export function CurriculumYearTabs({
             {year.label}
           </TabsTrigger>
         ))}
+        <TabsTrigger value={ROADMAP_TAB_ID}>{ROADMAP_TAB_LABEL}</TabsTrigger>
       </TabsList>
 
       <TabsContent value={FULL_PROGRAM_TAB_ID}>
@@ -64,6 +60,10 @@ export function CurriculumYearTabs({
           />
         </TabsContent>
       ))}
+
+      <TabsContent value={ROADMAP_TAB_ID}>
+        <CurriculumRoadmap onSelectCourse={onSelectCourse} years={years} />
+      </TabsContent>
     </Tabs>
   );
 }

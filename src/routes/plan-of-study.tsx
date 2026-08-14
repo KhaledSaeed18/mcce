@@ -5,7 +5,6 @@ import { CurriculumExport } from "@/components/curriculum/curriculum-export";
 import { CurriculumHero } from "@/components/curriculum/curriculum-hero";
 import { CurriculumNotes } from "@/components/curriculum/curriculum-notes";
 import { CurriculumOverview } from "@/components/curriculum/curriculum-overview";
-import { CurriculumRoadmap } from "@/components/curriculum/curriculum-roadmap";
 import { CurriculumYearTabs } from "@/components/curriculum/curriculum-year-tabs";
 import { JsonLd } from "@/components/seo/json-ld";
 import { CURRICULUM } from "@/config/curriculum";
@@ -55,7 +54,6 @@ function PlanOfStudyPage() {
       <CurriculumHero />
       <CurriculumOverview years={CURRICULUM} />
       <CurriculumExport years={CURRICULUM} />
-      <CurriculumRoadmap onSelectCourse={selectCourse} years={CURRICULUM} />
       <CurriculumYearTabs
         materialsMap={materialsMap}
         onSelectCourse={selectCourse}
