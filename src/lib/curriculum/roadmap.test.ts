@@ -22,6 +22,7 @@ function makeCourse(
     name: code,
     objectives: [],
     prerequisites,
+    requirementCategory: "major-elective",
   };
 }
 

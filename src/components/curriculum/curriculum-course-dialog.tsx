@@ -11,7 +11,10 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
-import { COURSE_KIND_BADGE_LABEL } from "@/config/courses";
+import {
+  COURSE_KIND_BADGE_LABEL,
+  COURSE_REQUIREMENT_CATEGORY_LABEL,
+} from "@/config/courses";
 import type { CurriculumCourseContext } from "@/lib/curriculum/types";
 
 interface CurriculumCourseDialogProps {
@@ -42,6 +45,9 @@ export function CurriculumCourseDialog({
           <div className="flex flex-wrap items-center gap-2">
             <Badge variant="outline">{course.code}</Badge>
             <Badge variant="outline">{course.credits} cr</Badge>
+            <Badge variant="default">
+              {COURSE_REQUIREMENT_CATEGORY_LABEL[course.requirementCategory]}
+            </Badge>
             {kindBadgeLabel ? (
               <Badge variant="secondary">{kindBadgeLabel}</Badge>
             ) : null}

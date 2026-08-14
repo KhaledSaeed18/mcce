@@ -17,7 +17,10 @@ import {
   SmartphoneIcon,
   WifiIcon,
 } from "lucide-react";
-import type { CurriculumCourseKind } from "@/lib/curriculum/types";
+import type {
+  CurriculumCourseKind,
+  CurriculumRequirementCategory,
+} from "@/lib/curriculum/types";
 
 export const DEFAULT_COURSE_ICON: LucideIcon = BookOpenIcon;
 
@@ -77,4 +80,14 @@ export const COURSE_KIND_BADGE_LABEL: Partial<
 > = {
   lab: "Lab",
   thesis: "Thesis",
+};
+
+/** Badge text for each degree-requirement category. */
+export const COURSE_REQUIREMENT_CATEGORY_LABEL: Record<
+  CurriculumRequirementCategory,
+  string
+> = {
+  core: "Core Requirement",
+  "major-elective": "Major Elective",
+  "major-requirement": "Major Requirement",
 };

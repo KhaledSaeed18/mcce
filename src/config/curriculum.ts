@@ -17,6 +17,7 @@ const YEAR_1_FALL: CurriculumYear["semesters"][number] = {
         "Use a real-time operating system (FreeRTOS) for multitasking.",
       ],
       prerequisites: [],
+      requirementCategory: "core",
     },
     {
       code: "EENG527",
@@ -32,6 +33,7 @@ const YEAR_1_FALL: CurriculumYear["semesters"][number] = {
         "Introduce the design of FIR and IIR filters and analyze the performance of these filters.",
       ],
       prerequisites: [],
+      requirementCategory: "major-requirement",
     },
     {
       code: "EENG537",
@@ -48,6 +50,7 @@ const YEAR_1_FALL: CurriculumYear["semesters"][number] = {
         "Analyze optimum receivers for the AWGN channel.",
       ],
       prerequisites: [],
+      requirementCategory: "major-requirement",
     },
     {
       code: "ENGG515",
@@ -64,6 +67,7 @@ const YEAR_1_FALL: CurriculumYear["semesters"][number] = {
         "Formulate nonlinear optimization problems and solve these problems using constrained and unconstrained algorithms.",
       ],
       prerequisites: [],
+      requirementCategory: "core",
     },
   ],
   id: "y1-fall",
@@ -87,6 +91,7 @@ const YEAR_1_SPRING: CurriculumYear["semesters"][number] = {
         "Study quality of service and quality of experience in communication networks.",
       ],
       prerequisites: ["ENGG515"],
+      requirementCategory: "major-requirement",
     },
     {
       code: "EENG587",
@@ -103,6 +108,7 @@ const YEAR_1_SPRING: CurriculumYear["semesters"][number] = {
         "Introduce and analyze frequency hopping schemes and multi-user systems.",
       ],
       prerequisites: ["EENG537"],
+      requirementCategory: "major-requirement",
     },
     {
       code: "CENG675",
@@ -114,6 +120,7 @@ const YEAR_1_SPRING: CurriculumYear["semesters"][number] = {
       name: "Multimedia Networks",
       objectives: [],
       prerequisites: ["EENG527"],
+      requirementCategory: "major-elective",
     },
     {
       code: "CENG566",
@@ -130,6 +137,7 @@ const YEAR_1_SPRING: CurriculumYear["semesters"][number] = {
         "Introduce multiple-layer perceptron networks.",
       ],
       prerequisites: ["EENG527", "ENGG515"],
+      requirementCategory: "major-elective",
     },
     {
       code: "CENG566L",
@@ -141,6 +149,7 @@ const YEAR_1_SPRING: CurriculumYear["semesters"][number] = {
       name: "Machine Learning Laboratory",
       objectives: [],
       prerequisites: ["ENGG515", "EENG527"],
+      requirementCategory: "major-elective",
     },
   ],
   id: "y1-spring",
@@ -166,6 +175,7 @@ const YEAR_2_FALL: CurriculumYear["semesters"][number] = {
       name: "Master Thesis Project (Part I)",
       objectives: [],
       prerequisites: ["EENG537", "EENG527", "CENG557"],
+      requirementCategory: "major-requirement",
     },
     {
       code: "ENGG550",
@@ -178,6 +188,7 @@ const YEAR_2_FALL: CurriculumYear["semesters"][number] = {
       note: "Also offered in Spring. Fall is the recommended term.",
       objectives: [],
       prerequisites: [],
+      requirementCategory: "major-elective",
     },
     {
       code: "CENG625",
@@ -188,6 +199,7 @@ const YEAR_2_FALL: CurriculumYear["semesters"][number] = {
       name: "Cryptography & Advanced Computer Security",
       objectives: [],
       prerequisites: ["CENG557", "ENGG515"],
+      requirementCategory: "major-elective",
     },
     {
       code: "CENG645",
@@ -198,6 +210,7 @@ const YEAR_2_FALL: CurriculumYear["semesters"][number] = {
       name: "Mobile Communication",
       objectives: [],
       prerequisites: ["EENG587"],
+      requirementCategory: "major-elective",
     },
     {
       code: "CENG646",
@@ -208,6 +221,7 @@ const YEAR_2_FALL: CurriculumYear["semesters"][number] = {
       name: "Data Mining",
       objectives: [],
       prerequisites: ["CENG566"],
+      requirementCategory: "major-elective",
     },
   ],
   id: "y2-fall",
@@ -226,6 +240,7 @@ const YEAR_2_SPRING: CurriculumYear["semesters"][number] = {
       name: "Master Thesis Project (Part II)",
       objectives: [],
       prerequisites: ["CENG695A"],
+      requirementCategory: "major-requirement",
     },
     {
       code: "CENG685",
@@ -237,6 +252,7 @@ const YEAR_2_SPRING: CurriculumYear["semesters"][number] = {
       name: "Information Security",
       objectives: [],
       prerequisites: [],
+      requirementCategory: "major-requirement",
     },
     {
       code: "CENG678",
@@ -247,6 +263,7 @@ const YEAR_2_SPRING: CurriculumYear["semesters"][number] = {
       name: "Image Processing and Computer Vision",
       objectives: [],
       prerequisites: ["CENG675", "CENG566", "EENG527", "ENGG515"],
+      requirementCategory: "major-elective",
     },
     {
       code: "CENG679",
@@ -257,6 +274,7 @@ const YEAR_2_SPRING: CurriculumYear["semesters"][number] = {
       name: "Satellite and Space Communications",
       objectives: [],
       prerequisites: ["EENG587", "EENG537", "EENG527"],
+      requirementCategory: "major-elective",
     },
   ],
   id: "y2-spring",

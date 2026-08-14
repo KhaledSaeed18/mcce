@@ -1,5 +1,9 @@
 export type CurriculumTerm = "fall" | "spring" | "summer";
 export type CurriculumCourseKind = "course" | "lab" | "thesis";
+export type CurriculumRequirementCategory =
+  | "core"
+  | "major-requirement"
+  | "major-elective";
 
 export interface CurriculumCourse {
   code: string;
@@ -12,6 +16,7 @@ export interface CurriculumCourse {
   note?: string;
   objectives: string[];
   prerequisites: string[];
+  requirementCategory: CurriculumRequirementCategory;
 }
 
 export interface CurriculumSemester {

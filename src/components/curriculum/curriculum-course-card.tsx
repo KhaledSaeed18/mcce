@@ -2,7 +2,10 @@ import { FolderOpenIcon, InfoIcon } from "lucide-react";
 import { useCallback } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { COURSE_KIND_BADGE_LABEL } from "@/config/courses";
+import {
+  COURSE_KIND_BADGE_LABEL,
+  COURSE_REQUIREMENT_CATEGORY_LABEL,
+} from "@/config/courses";
 import type { CurriculumCourse } from "@/lib/curriculum/types";
 import { getCourseIcon } from "@/lib/drive/courses";
 import { cn } from "@/lib/utils";
@@ -54,6 +57,9 @@ export function CurriculumCourseCard({
         <CardContent className="flex flex-wrap items-center gap-2">
           <Badge variant="outline">{course.code}</Badge>
           <Badge variant="outline">{course.credits} cr</Badge>
+          <Badge variant="default">
+            {COURSE_REQUIREMENT_CATEGORY_LABEL[course.requirementCategory]}
+          </Badge>
           {kindBadgeLabel ? (
             <Badge variant="secondary">{kindBadgeLabel}</Badge>
           ) : null}

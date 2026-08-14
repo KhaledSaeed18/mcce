@@ -16,6 +16,7 @@ function makeCourse(credits: number) {
     name: "Test Course",
     objectives: [],
     prerequisites: [],
+    requirementCategory: "major-elective" as const,
   };
 }
 
