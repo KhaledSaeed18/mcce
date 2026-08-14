@@ -1,4 +1,4 @@
-import { DownloadIcon, Loader2Icon, Share2Icon } from "lucide-react";
+import { DownloadIcon, EyeIcon, Loader2Icon, Share2Icon } from "lucide-react";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,8 +10,14 @@ interface CurriculumExportProps {
 }
 
 export function CurriculumExport({ years }: CurriculumExportProps) {
-  const { canShare, handleDownload, handleShare, isGenerating } =
-    useCurriculumPdfExport(years);
+  const {
+    canShare,
+    handleDownload,
+    handlePreview,
+    handleShare,
+    pendingAction,
+  } = useCurriculumPdfExport(years);
+  const isBusy = Boolean(pendingAction);
 
   return (
     <motion.div
@@ -30,12 +36,35 @@ export function CurriculumExport({ years }: CurriculumExportProps) {
 
           <div className="flex flex-wrap gap-2">
             <Button
-              disabled={isGenerating}
-              onClick={handleDownload}
+              disabled={isBusy}
+              onClick={handlePreview}
               size="sm"
               variant="outline"
             >
-              {isGenerating ? (
+              {pendingAction === "preview" ? (
+                <Loader2Icon
+                  className="animate-spin"
+                  data-icon="inline-start"
+                />
+              ) : (
+                <EyeIcon data-icon="inline-start" />
+              )}
+              Preview
+            </Button>
+            {canShare ? (
+              <Button
+                disabled={isBusy}
+                onClick={handleShare}
+                size="sm"
+                variant="outline"
+              >
+                <Share2Icon data-icon="inline-start" />
+                Share
+              </Button>
+            ) : null}
+
+            <Button disabled={isBusy} onClick={handleDownload} size="sm">
+              {pendingAction === "download" ? (
                 <Loader2Icon
                   className="animate-spin"
                   data-icon="inline-start"
@@ -45,13 +74,6 @@ export function CurriculumExport({ years }: CurriculumExportProps) {
               )}
               Download PDF
             </Button>
-
-            {canShare ? (
-              <Button disabled={isGenerating} onClick={handleShare} size="sm">
-                <Share2Icon data-icon="inline-start" />
-                Share
-              </Button>
-            ) : null}
           </div>
         </CardContent>
       </Card>

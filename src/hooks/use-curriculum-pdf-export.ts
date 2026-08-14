@@ -5,9 +5,12 @@ import {
 } from "@/lib/curriculum/pdf";
 import type { CurriculumYear } from "@/lib/curriculum/types";
 
+export type CurriculumPdfAction = "download" | "preview" | "share";
+
 const SHARE_TITLE = "MCCE Plan of Study";
 const SHARE_TEXT =
   "MCCE program courses by year and semester, with prerequisites and corequisites.";
+const PREVIEW_URL_TTL_MS = 60_000;
 
 function canShareFiles(): boolean {
   if (typeof navigator === "undefined" || !navigator.canShare) {
@@ -21,24 +24,37 @@ function canShareFiles(): boolean {
 
 export function useCurriculumPdfExport(years: CurriculumYear[]) {
   const [canShare, setCanShare] = useState(false);
-  const [isGenerating, setIsGenerating] = useState(false);
+  const [pendingAction, setPendingAction] =
+    useState<CurriculumPdfAction | null>(null);
 
   useEffect(() => {
     setCanShare(canShareFiles());
   }, []);
 
   const handleDownload = useCallback(async () => {
-    setIsGenerating(true);
+    setPendingAction("download");
     try {
       const doc = await buildCurriculumPdf(years);
       doc.save(CURRICULUM_PDF_FILE_NAME);
     } finally {
-      setIsGenerating(false);
+      setPendingAction(null);
+    }
+  }, [years]);
+
+  const handlePreview = useCallback(async () => {
+    setPendingAction("preview");
+    try {
+      const doc = await buildCurriculumPdf(years);
+      const url = URL.createObjectURL(doc.output("blob"));
+      window.open(url, "_blank", "noopener");
+      setTimeout(() => URL.revokeObjectURL(url), PREVIEW_URL_TTL_MS);
+    } finally {
+      setPendingAction(null);
     }
   }, [years]);
 
   const handleShare = useCallback(async () => {
-    setIsGenerating(true);
+    setPendingAction("share");
     try {
       const doc = await buildCurriculumPdf(years);
       const file = new File([doc.output("blob")], CURRICULUM_PDF_FILE_NAME, {
@@ -52,9 +68,15 @@ export function useCurriculumPdfExport(years: CurriculumYear[]) {
     } catch {
       // User cancelled the share sheet, or the browser rejected it. Nothing to recover.
     } finally {
-      setIsGenerating(false);
+      setPendingAction(null);
     }
   }, [years]);
 
-  return { canShare, handleDownload, handleShare, isGenerating };
+  return {
+    canShare,
+    handleDownload,
+    handlePreview,
+    handleShare,
+    pendingAction,
+  };
 }
