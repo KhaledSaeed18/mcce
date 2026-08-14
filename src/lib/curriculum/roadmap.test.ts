@@ -7,17 +7,42 @@ import {
   ROADMAP_NODE_WIDTH,
 } from "./roadmap-layout";
 import { traceRoadmap } from "./roadmap-trace";
+import type { CurriculumCourse, CurriculumYear } from "./types";
+
+function makeCourse(
+  code: string,
+  prerequisites: string[] = []
+): CurriculumCourse {
+  return {
+    code,
+    corequisites: [],
+    credits: 3,
+    description: null,
+    kind: "course",
+    name: code,
+    objectives: [],
+    prerequisites,
+  };
+}
+
+function makeYear(courses: CurriculumCourse[]): CurriculumYear {
+  return {
+    id: "y1",
+    label: "First Year",
+    semesters: [
+      { courses, id: "y1-fall", label: "Fall Semester", term: "fall" },
+    ],
+    year: 1,
+  };
+}
 
 describe("buildRoadmapGraph", () => {
-  it("places one node per course plus a node for requirements outside the plan", () => {
+  it("places one node per course in the current plan", () => {
     const graph = buildRoadmapGraph(CURRICULUM);
+    const inPlan = graph.nodes.filter((node) => !node.isMissing);
 
-    const inPlan = graph.nodes.filter((node) => !node.isMissing).length;
-    const missing = graph.nodes.filter((node) => node.isMissing);
-
-    expect(inPlan).toBe(18);
-    expect(missing).toHaveLength(1);
-    expect(missing[0]?.code).toBe("EENG577");
+    expect(inPlan).toHaveLength(18);
+    expect(graph.nodes.filter((node) => node.isMissing)).toHaveLength(0);
   });
 
   it("points every requirement edge at the course that needs it", () => {
@@ -30,10 +55,19 @@ describe("buildRoadmapGraph", () => {
     }
   });
 
-  it("marks outside references so they can be drawn differently", () => {
-    const graph = buildRoadmapGraph(CURRICULUM);
-    const outside = graph.edges.filter((edge) => edge.kind === "outside");
-    expect(outside.some((edge) => edge.to === "CENG645")).toBe(true);
+  it("adds a missing node for a requirement outside the plan", () => {
+    const graph = buildRoadmapGraph([
+      makeYear([makeCourse("CENG600"), makeCourse("CENG601", ["EE500"])]),
+    ]);
+
+    expect(graph.nodes).toHaveLength(3);
+    const missing = graph.nodes.find((node) => node.isMissing);
+    expect(missing?.code).toBe("EE500");
+    expect(
+      graph.edges.some(
+        (edge) => edge.kind === "outside" && edge.from === "EE500"
+      )
+    ).toBe(true);
   });
 });
 

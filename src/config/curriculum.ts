@@ -197,7 +197,7 @@ const YEAR_2_FALL: CurriculumYear["semesters"][number] = {
       kind: "course",
       name: "Mobile Communication",
       objectives: [],
-      prerequisites: ["EENG587", "EENG577"],
+      prerequisites: ["EENG587"],
     },
     {
       code: "CENG646",

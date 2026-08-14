@@ -268,7 +268,7 @@ export function CurriculumRoadmap({
             <p className="text-muted-foreground text-sm">{caption.detail}</p>
           </div>
 
-          <RoadmapLegend />
+          <RoadmapLegend hasMissing={missingCodes.size > 0} />
         </div>
       </div>
     </motion.div>
@@ -415,12 +415,14 @@ function buildCaption(
   return { detail, title: focused.course ? focused.course.name : focused.code };
 }
 
-function RoadmapLegend() {
+function RoadmapLegend({ hasMissing }: { hasMissing: boolean }) {
   const legendItems = [
     { dash: undefined, label: "Prerequisite: take it first" },
     { dash: "8 5", label: "Corequisite: same term" },
-    { dash: "6 5", label: "Not offered: outside the plan" },
   ];
+  if (hasMissing) {
+    legendItems.push({ dash: "6 5", label: "Not offered: outside the plan" });
+  }
 
   return (
     <ul className="flex shrink-0 flex-wrap gap-x-5 gap-y-2 text-muted-foreground text-xs">
