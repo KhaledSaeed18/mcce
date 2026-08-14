@@ -30,7 +30,7 @@ export function CurriculumYearTabs({
   }
 
   return (
-    <Tabs defaultValue={FULL_PROGRAM_TAB_ID}>
+    <Tabs className="gap-6" defaultValue={FULL_PROGRAM_TAB_ID}>
       <TabsList>
         <TabsTrigger value={FULL_PROGRAM_TAB_ID}>
           {FULL_PROGRAM_TAB_LABEL}
