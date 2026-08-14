@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { COURSE_KIND_BADGE_LABEL } from "@/config/courses";
 import { DOT_GRID_BACKGROUND } from "@/config/patterns";
@@ -294,12 +294,27 @@ function RoadmapNodeButton({
   onFocus,
   onSelect,
 }: RoadmapNodeButtonProps) {
+  const pointerTypeRef = useRef("mouse");
+
   const handleBlur = useCallback(onClear, [onClear]);
+  const handlePointerDown = useCallback(
+    (event: React.PointerEvent<HTMLButtonElement>) => {
+      pointerTypeRef.current = event.pointerType;
+    },
+    []
+  );
   const handleClick = useCallback(() => {
-    if (node.course) {
-      onSelect(node.code);
+    if (!node.course) {
+      return;
     }
-  }, [node, onSelect]);
+    // Touch has no hover, so the first tap traces the course and the
+    // second tap (now focused) opens it, matching the desktop hover+click flow.
+    if (pointerTypeRef.current === "touch" && !focused) {
+      onFocus(node.code);
+      return;
+    }
+    onSelect(node.code);
+  }, [focused, node, onFocus, onSelect]);
   const handleFocus = useCallback(
     () => onFocus(node.code),
     [node.code, onFocus]
@@ -331,6 +346,7 @@ function RoadmapNodeButton({
       onFocus={handleFocus}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onPointerDown={handlePointerDown}
       style={{
         borderColor: nodeBorderColor(node, focused),
         borderLeftColor: accent,
