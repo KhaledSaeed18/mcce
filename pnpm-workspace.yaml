@@ -7,3 +7,4 @@ allowBuilds:
   msw: false
   lefthook: true
   workerd: true
+  core-js: true

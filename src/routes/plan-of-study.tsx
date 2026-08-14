@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { CurriculumCourseDialog } from "@/components/curriculum/curriculum-course-dialog";
+import { CurriculumExport } from "@/components/curriculum/curriculum-export";
 import { CurriculumHero } from "@/components/curriculum/curriculum-hero";
 import { CurriculumNotes } from "@/components/curriculum/curriculum-notes";
 import { CurriculumOverview } from "@/components/curriculum/curriculum-overview";
@@ -52,6 +53,7 @@ function PlanOfStudyPage() {
     <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 py-8 sm:p-6 sm:py-14">
       <CurriculumHero />
       <CurriculumOverview years={CURRICULUM} />
+      <CurriculumExport years={CURRICULUM} />
       <CurriculumYearTabs
         materialsMap={materialsMap}
         onSelectCourse={selectCourse}
