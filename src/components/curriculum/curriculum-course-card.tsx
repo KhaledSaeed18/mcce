@@ -1,4 +1,4 @@
-import { FolderOpenIcon } from "lucide-react";
+import { FolderOpenIcon, InfoIcon } from "lucide-react";
 import { useCallback } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -56,6 +56,11 @@ export function CurriculumCourseCard({
           <Badge variant="outline">{course.credits} cr</Badge>
           {kindBadgeLabel ? (
             <Badge variant="secondary">{kindBadgeLabel}</Badge>
+          ) : null}
+          {course.note ? (
+            <span className="text-muted-foreground" title={course.note}>
+              <InfoIcon className="size-3.5" />
+            </span>
           ) : null}
           {requirementCount > 0 && (
             <span className="text-muted-foreground text-xs">

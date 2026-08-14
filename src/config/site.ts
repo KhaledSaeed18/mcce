@@ -13,5 +13,7 @@ export const PROGRAM_UNIVERSITY = "Lebanese International University";
 export const PROGRAM_UNIVERSITY_SHORT = "LIU";
 export const PROGRAM_OFFICIAL_URL =
   "https://cce.liu.edu.lb/academic-programs/graduate-programs";
+export const PROGRAM_OFFICIAL_POS_URL =
+  "https://drive.google.com/file/d/1C4F3wVde8h-Hwikfb5CKXY4LaJ-Xs3i1/view";
 export const PROGRAM_DURATION_ISO = "P2Y";
 export const PROGRAM_DURATION_LABEL = "Two years";

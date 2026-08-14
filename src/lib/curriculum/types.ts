@@ -8,6 +8,8 @@ export interface CurriculumCourse {
   description: string | null;
   kind: CurriculumCourseKind;
   name: string;
+  /** Scheduling caveat worth calling out, e.g. a course offered in more than one term. */
+  note?: string;
   objectives: string[];
   prerequisites: string[];
 }

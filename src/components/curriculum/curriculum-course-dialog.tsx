@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { FolderOpenIcon } from "lucide-react";
+import { FolderOpenIcon, InfoIcon } from "lucide-react";
 import { CurriculumRequirementList } from "@/components/curriculum/curriculum-requirement-list";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -54,6 +54,13 @@ export function CurriculumCourseDialog({
         <p className="text-sm">
           {course.description ?? "No description available yet."}
         </p>
+
+        {course.note ? (
+          <p className="flex items-start gap-2 rounded border-2 bg-muted/50 p-3 text-sm">
+            <InfoIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+            {course.note}
+          </p>
+        ) : null}
 
         <Separator />
 

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { CurriculumCourseDialog } from "@/components/curriculum/curriculum-course-dialog";
 import { CurriculumHero } from "@/components/curriculum/curriculum-hero";
+import { CurriculumNotes } from "@/components/curriculum/curriculum-notes";
 import { CurriculumOverview } from "@/components/curriculum/curriculum-overview";
 import { CurriculumYearTabs } from "@/components/curriculum/curriculum-year-tabs";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -56,6 +57,8 @@ function PlanOfStudyPage() {
         onSelectCourse={selectCourse}
         years={CURRICULUM}
       />
+
+      <CurriculumNotes />
 
       {selectedContext ? (
         <CurriculumCourseDialog

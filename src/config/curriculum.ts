@@ -175,6 +175,7 @@ const YEAR_2_FALL: CurriculumYear["semesters"][number] = {
         "This course covers the fundamentals of project management for engineering professionals. It reviews the project management framework in organizations and covers in depth the tools and techniques used in initiating, planning, executing, monitoring, controlling and concluding a project to achieve the set goals within schedule and budget targets. Real life engineering project examples are used to demonstrate the application of project management concepts to engineering projects. The course is aligned with the Project Management Institute's (PMI's) Project Management Body of Knowledge (PMBOK) and helps learners to prepare for PMI certification exams.",
       kind: "course",
       name: "Engineering Project Management and Control",
+      note: "Also offered in Spring. Fall is the recommended term.",
       objectives: [],
       prerequisites: [],
     },
