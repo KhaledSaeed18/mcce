@@ -14,7 +14,7 @@ export function CurriculumOverview({ years }: CurriculumOverviewProps) {
 
   const facts: Array<{ label: string; value: string }> = [
     { label: "Years", value: String(years.length) },
-    { label: "Credits so far", value: String(getProgramCredits(years)) },
+    { label: "Credits", value: String(getProgramCredits(years)) },
     { label: "Courses", value: String(courses.length - labCount) },
     { label: "Labs", value: String(labCount) },
   ];
