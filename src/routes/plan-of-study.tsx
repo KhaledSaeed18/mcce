@@ -14,6 +14,7 @@ import { getProgramCredits } from "@/lib/curriculum/credits";
 import { buildCourseContextLookup } from "@/lib/curriculum/lookup";
 import { buildCourseSummaryMap } from "@/lib/drive/courses";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
+import { buildPageMeta } from "@/lib/seo/meta";
 import { buildCurriculumSchema } from "@/lib/seo/schema";
 
 const PLAN_OF_STUDY_URL = `${SITE_URL}/plan-of-study`;
@@ -23,13 +24,11 @@ export const Route = createFileRoute("/plan-of-study")({
   component: PlanOfStudyPage,
   head: () => ({
     links: [{ href: PLAN_OF_STUDY_URL, rel: "canonical" }],
-    meta: [
-      { title: "Plan of Study · MCCE" },
-      {
-        content: `The MCCE curriculum by year and semester: ${getProgramCredits(CURRICULUM)} credits so far, with descriptions, objectives, prerequisites, corequisites, and links to indexed materials.`,
-        name: "description",
-      },
-    ],
+    meta: buildPageMeta({
+      description: `The MCCE curriculum by year and semester: ${getProgramCredits(CURRICULUM)} credits so far, with descriptions, objectives, prerequisites, corequisites, and links to indexed materials.`,
+      title: "Plan of Study · MCCE",
+      url: PLAN_OF_STUDY_URL,
+    }),
   }),
   loader: ({ context }) =>
     context.queryClient.ensureQueryData(driveIndexQueryOptions),

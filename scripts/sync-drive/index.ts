@@ -5,8 +5,10 @@ import type { DriveIndex, DriveNode } from "../../src/lib/drive/types";
 import { getAccessToken } from "./auth";
 import { crawlSource } from "./crawl";
 import { getFileMetadata } from "./drive-client";
+import { buildSitemapXml } from "./sitemap";
 
 const OUTPUT_PATH = resolve(process.cwd(), "src/data/drive-index.json");
+const SITEMAP_PATH = resolve(process.cwd(), "public/sitemap.xml");
 
 function summarizeSource(
   sourceId: string,
@@ -60,6 +62,9 @@ async function main() {
   mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
   writeFileSync(OUTPUT_PATH, JSON.stringify(index, null, 2));
   console.log(`Wrote ${allNodes.length} nodes to ${OUTPUT_PATH}`);
+
+  writeFileSync(SITEMAP_PATH, buildSitemapXml(index));
+  console.log(`Wrote sitemap to ${SITEMAP_PATH}`);
 }
 
 main().catch((error: unknown) => {

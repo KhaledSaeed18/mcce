@@ -21,7 +21,11 @@ import {
 import { SITE_URL } from "@/config/site";
 import { buildChildrenMap } from "@/lib/drive/children-map";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
-import { resolveFolderMeta } from "@/lib/drive/resolve-folder";
+import {
+  buildFolderDescription,
+  resolveFolderMeta,
+} from "@/lib/drive/resolve-folder";
+import { buildPageMeta } from "@/lib/seo/meta";
 
 export const Route = createFileRoute("/browse/$folderId")({
   component: BrowseFolder,
@@ -31,13 +35,28 @@ export const Route = createFileRoute("/browse/$folderId")({
     const meta = loaderData
       ? resolveFolderMeta(loaderData, params.folderId)
       : null;
-    const title = meta ? `${meta.title} · MCCE` : "MCCE";
+    const url = `${SITE_URL}/browse/${params.folderId}`;
+
+    if (!meta) {
+      return {
+        links: [{ href: url, rel: "canonical" }],
+        meta: buildPageMeta({
+          description:
+            "This folder isn't in the current index. It may have moved, or the index may be stale.",
+          robots: "noindex, follow",
+          title: "MCCE",
+          url,
+        }),
+      };
+    }
 
     return {
-      links: [
-        { href: `${SITE_URL}/browse/${params.folderId}`, rel: "canonical" },
-      ],
-      meta: [{ title }, { content: "noindex, follow", name: "robots" }],
+      links: [{ href: url, rel: "canonical" }],
+      meta: buildPageMeta({
+        description: buildFolderDescription(meta),
+        title: `${meta.title} · MCCE`,
+        url,
+      }),
     };
   },
 });

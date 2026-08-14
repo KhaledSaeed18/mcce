@@ -26,3 +26,7 @@ export function resolveFolderMeta(
     title: currentNode?.name ?? source.label,
   };
 }
+
+export function buildFolderDescription(meta: FolderMeta): string {
+  return `${meta.title}: course materials for the LIU M.S. in Computer and Communication Engineering program, under ${meta.source.label}.`;
+}

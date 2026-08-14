@@ -5,6 +5,7 @@ import { FaqHero } from "@/components/faq/faq-hero";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PROGRAM_FAQ, PROGRAM_FAQ_GROUPS } from "@/config/faq";
 import { SITE_URL } from "@/config/site";
+import { buildPageMeta } from "@/lib/seo/meta";
 import { buildFaqSchema } from "@/lib/seo/schema";
 
 const FAQ_URL = `${SITE_URL}/faq`;
@@ -13,14 +14,12 @@ export const Route = createFileRoute("/faq")({
   component: FaqPage,
   head: () => ({
     links: [{ href: FAQ_URL, rel: "canonical" }],
-    meta: [
-      { title: "FAQ · MCCE" },
-      {
-        content:
-          "Answers about the MCCE program and how this materials index works.",
-        name: "description",
-      },
-    ],
+    meta: buildPageMeta({
+      description:
+        "Answers about the MCCE program and how this materials index works.",
+      title: "FAQ · MCCE",
+      url: FAQ_URL,
+    }),
   }),
 });
 

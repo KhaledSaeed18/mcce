@@ -25,6 +25,7 @@ import { filterNodes } from "@/lib/drive/filter";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import { searchNodes } from "@/lib/drive/search";
 import type { DriveNodeKind } from "@/lib/drive/types";
+import { buildPageMeta } from "@/lib/seo/meta";
 
 const ALL_VALUE = "all";
 const SEARCH_URL = `${SITE_URL}/search`;
@@ -44,15 +45,13 @@ export const Route = createFileRoute("/search")({
   component: SearchPage,
   head: () => ({
     links: [{ href: SEARCH_URL, rel: "canonical" }],
-    meta: [
-      { title: "Search · MCCE" },
-      {
-        content:
-          "Search MCCE program materials by name, semester, course, or file type.",
-        name: "description",
-      },
-      { content: "noindex, follow", name: "robots" },
-    ],
+    meta: buildPageMeta({
+      description:
+        "Search MCCE program materials by name, semester, course, or file type.",
+      robots: "noindex, follow",
+      title: "Search · MCCE",
+      url: SEARCH_URL,
+    }),
   }),
   loader: ({ context }) =>
     context.queryClient.ensureQueryData(driveIndexQueryOptions),
