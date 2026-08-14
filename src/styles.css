@@ -198,3 +198,15 @@
     }
   }
 }
+
+@keyframes roadmap-edge-flow {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .roadmap-edge-flow {
+    animation: roadmap-edge-flow 0.9s linear infinite;
+  }
+}
