@@ -19,6 +19,7 @@ import {
   SITE_TITLE,
   SITE_URL,
 } from "@/config/site";
+import { useServiceWorker } from "@/hooks/use-service-worker";
 import { THEME_INIT_SCRIPT, ThemeProvider } from "@/hooks/use-theme";
 import { buildWebSiteSchema } from "@/lib/seo/schema";
 
@@ -155,6 +156,8 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  useServiceWorker();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
