@@ -1,11 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { CurriculumCourseDialog } from "@/components/curriculum/curriculum-course-dialog";
 import { CurriculumExport } from "@/components/curriculum/curriculum-export";
 import { CurriculumHero } from "@/components/curriculum/curriculum-hero";
 import { CurriculumNotes } from "@/components/curriculum/curriculum-notes";
 import { CurriculumOverview } from "@/components/curriculum/curriculum-overview";
-import { CurriculumYearTabs } from "@/components/curriculum/curriculum-year-tabs";
+import {
+  CurriculumYearTabs,
+  FULL_PROGRAM_TAB_ID,
+} from "@/components/curriculum/curriculum-year-tabs";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
 import { JsonLd } from "@/components/seo/json-ld";
 import { CURRICULUM } from "@/config/curriculum";
@@ -24,6 +27,7 @@ const courseLookup = buildCourseContextLookup(CURRICULUM);
 
 interface PlanOfStudySearch {
   course?: string;
+  tab?: string;
 }
 
 export const Route = createFileRoute("/plan-of-study")({
@@ -40,16 +44,23 @@ export const Route = createFileRoute("/plan-of-study")({
     context.queryClient.ensureQueryData(driveIndexQueryOptions),
   validateSearch: (search: Record<string, unknown>): PlanOfStudySearch => ({
     course: readOptionalString(search.course),
+    tab: readOptionalString(search.tab),
   }),
 });
 
 function PlanOfStudyPage() {
   const driveIndex = Route.useLoaderData();
-  const { course: selectedCode } = Route.useSearch();
+  const { course: selectedCode, tab } = Route.useSearch();
   const navigate = Route.useNavigate();
   const { handleOpenChange, selectCourse } = useCurriculumSelection({
     navigate,
   });
+
+  const handleTabChange = useCallback(
+    (nextTab: string) =>
+      navigate({ search: (prev) => ({ ...prev, tab: nextTab }) }),
+    [navigate]
+  );
 
   const materialsMap = useMemo(
     () => buildCourseSummaryMap(driveIndex.nodes),
@@ -68,6 +79,8 @@ function PlanOfStudyPage() {
       <CurriculumYearTabs
         materialsMap={materialsMap}
         onSelectCourse={selectCourse}
+        onTabChange={handleTabChange}
+        tab={tab ?? FULL_PROGRAM_TAB_ID}
         years={CURRICULUM}
       />
 

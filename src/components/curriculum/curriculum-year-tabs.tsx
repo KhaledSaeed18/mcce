@@ -1,10 +1,11 @@
+import { useCallback } from "react";
 import { CurriculumRoadmap } from "@/components/curriculum/curriculum-roadmap";
 import { CurriculumYearPanel } from "@/components/curriculum/curriculum-year-panel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { CurriculumYear } from "@/lib/curriculum/types";
 import type { CourseSummary } from "@/lib/drive/types";
 
-const FULL_PROGRAM_TAB_ID = "full-program";
+export const FULL_PROGRAM_TAB_ID = "full-program";
 const FULL_PROGRAM_TAB_LABEL = "Full Program";
 const ROADMAP_TAB_ID = "roadmap";
 const ROADMAP_TAB_LABEL = "Roadmap";
@@ -12,20 +13,29 @@ const ROADMAP_TAB_LABEL = "Roadmap";
 interface CurriculumYearTabsProps {
   materialsMap: Map<string, CourseSummary>;
   onSelectCourse: (code: string) => void;
+  onTabChange: (tab: string) => void;
+  tab: string;
   years: CurriculumYear[];
 }
 
 export function CurriculumYearTabs({
   materialsMap,
   onSelectCourse,
+  onTabChange,
+  tab,
   years,
 }: CurriculumYearTabsProps) {
+  const handleValueChange = useCallback(
+    (value: unknown) => onTabChange(value as string),
+    [onTabChange]
+  );
+
   if (years.length === 0) {
     return null;
   }
 
   return (
-    <Tabs className="gap-6" defaultValue={FULL_PROGRAM_TAB_ID}>
+    <Tabs className="gap-6" onValueChange={handleValueChange} value={tab}>
       <TabsList className="max-w-full overflow-x-auto">
         <TabsTrigger value={FULL_PROGRAM_TAB_ID}>
           {FULL_PROGRAM_TAB_LABEL}
