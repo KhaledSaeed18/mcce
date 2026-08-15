@@ -65,6 +65,12 @@ export const PROGRAM_FAQ: FaqItem[] = [
     category: "site",
     question: "What if a file is missing, broken, or filed wrong?",
   },
+  {
+    answer:
+      "Yes, for pages you've already opened. The site caches them so they keep working without a connection. A page you haven't visited yet still needs network access the first time.",
+    category: "site",
+    question: "Does this site work offline?",
+  },
 ];
 
 export const PROGRAM_FAQ_GROUPS: FaqCategoryGroup[] = [
