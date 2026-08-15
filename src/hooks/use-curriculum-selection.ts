@@ -1,16 +1,33 @@
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 
-/** Tracks which course code is open in the plan-of-study detail dialog. */
-export function useCurriculumSelection() {
-  const [selectedCode, setSelectedCode] = useState<string | null>(null);
+interface CurriculumSelectionSearch {
+  course?: string;
+}
 
-  const selectCourse = useCallback((code: string) => setSelectedCode(code), []);
+interface UseCurriculumSelectionArgs {
+  navigate: (opts: {
+    search: (prev: CurriculumSelectionSearch) => CurriculumSelectionSearch;
+  }) => void;
+}
 
-  const handleOpenChange = useCallback((open: boolean) => {
-    if (!open) {
-      setSelectedCode(null);
-    }
-  }, []);
+/** Drives the plan-of-study course dialog off the `course` URL search param, so a selection is a shareable link. */
+export function useCurriculumSelection({
+  navigate,
+}: UseCurriculumSelectionArgs) {
+  const selectCourse = useCallback(
+    (code: string) =>
+      navigate({ search: (prev) => ({ ...prev, course: code }) }),
+    [navigate]
+  );
 
-  return { handleOpenChange, selectCourse, selectedCode };
+  const handleOpenChange = useCallback(
+    (open: boolean) => {
+      if (!open) {
+        navigate({ search: (prev) => ({ ...prev, course: undefined }) });
+      }
+    },
+    [navigate]
+  );
+
+  return { handleOpenChange, selectCourse };
 }

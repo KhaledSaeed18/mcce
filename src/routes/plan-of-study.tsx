@@ -15,11 +15,16 @@ import { getProgramCredits } from "@/lib/curriculum/credits";
 import { buildCourseContextLookup } from "@/lib/curriculum/lookup";
 import { buildCourseSummaryMap } from "@/lib/drive/courses";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
+import { readOptionalString } from "@/lib/search-params";
 import { buildPageMeta } from "@/lib/seo/meta";
 import { buildCurriculumSchema } from "@/lib/seo/schema";
 
 const PLAN_OF_STUDY_URL = `${SITE_URL}/plan-of-study`;
 const courseLookup = buildCourseContextLookup(CURRICULUM);
+
+interface PlanOfStudySearch {
+  course?: string;
+}
 
 export const Route = createFileRoute("/plan-of-study")({
   component: PlanOfStudyPage,
@@ -33,12 +38,18 @@ export const Route = createFileRoute("/plan-of-study")({
   }),
   loader: ({ context }) =>
     context.queryClient.ensureQueryData(driveIndexQueryOptions),
+  validateSearch: (search: Record<string, unknown>): PlanOfStudySearch => ({
+    course: readOptionalString(search.course),
+  }),
 });
 
 function PlanOfStudyPage() {
   const driveIndex = Route.useLoaderData();
-  const { handleOpenChange, selectCourse, selectedCode } =
-    useCurriculumSelection();
+  const { course: selectedCode } = Route.useSearch();
+  const navigate = Route.useNavigate();
+  const { handleOpenChange, selectCourse } = useCurriculumSelection({
+    navigate,
+  });
 
   const materialsMap = useMemo(
     () => buildCourseSummaryMap(driveIndex.nodes),

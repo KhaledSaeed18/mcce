@@ -25,6 +25,7 @@ import { filterNodes } from "@/lib/drive/filter";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import { searchNodes } from "@/lib/drive/search";
 import type { DriveNodeKind } from "@/lib/drive/types";
+import { readOptionalString } from "@/lib/search-params";
 import { buildPageMeta } from "@/lib/seo/meta";
 
 const ALL_VALUE = "all";
@@ -35,10 +36,6 @@ interface SearchPageSearch {
   kind?: DriveNodeKind;
   q: string;
   semester?: string;
-}
-
-function readOptionalString(value: unknown): string | undefined {
-  return typeof value === "string" && value.length > 0 ? value : undefined;
 }
 
 export const Route = createFileRoute("/search")({
