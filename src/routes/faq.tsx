@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { FaqCategory } from "@/components/faq/faq-category";
 import { FaqCta } from "@/components/faq/faq-cta";
 import { FaqHero } from "@/components/faq/faq-hero";
+import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PROGRAM_FAQ, PROGRAM_FAQ_GROUPS } from "@/config/faq";
 import { SITE_URL } from "@/config/site";
@@ -39,6 +40,8 @@ function FaqPage() {
           />
         ))}
       </div>
+
+      <SectionDividerDots />
 
       <FaqCta />
 

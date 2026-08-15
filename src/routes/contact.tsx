@@ -4,6 +4,7 @@ import { ContactContribute } from "@/components/contact/contact-contribute";
 import { ContactForm } from "@/components/contact/contact-form";
 import { ContactHero } from "@/components/contact/contact-hero";
 import { ContactSupport } from "@/components/contact/contact-support";
+import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
 import { SITE_URL } from "@/config/site";
 import { buildPageMeta } from "@/lib/seo/meta";
 
@@ -27,8 +28,10 @@ function ContactPage() {
     <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 py-8 sm:p-6 sm:py-14">
       <ContactHero />
       <ContactForm />
+      <SectionDividerDots />
       <ContactChannels />
       <ContactSupport />
+      <SectionDividerDots />
       <ContactContribute />
     </main>
   );

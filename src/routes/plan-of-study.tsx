@@ -6,6 +6,7 @@ import { CurriculumHero } from "@/components/curriculum/curriculum-hero";
 import { CurriculumNotes } from "@/components/curriculum/curriculum-notes";
 import { CurriculumOverview } from "@/components/curriculum/curriculum-overview";
 import { CurriculumYearTabs } from "@/components/curriculum/curriculum-year-tabs";
+import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
 import { JsonLd } from "@/components/seo/json-ld";
 import { CURRICULUM } from "@/config/curriculum";
 import { SITE_URL } from "@/config/site";
@@ -58,6 +59,8 @@ function PlanOfStudyPage() {
         onSelectCourse={selectCourse}
         years={CURRICULUM}
       />
+
+      <SectionDividerDots />
 
       <CurriculumNotes />
 
