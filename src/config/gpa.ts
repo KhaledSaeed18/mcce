@@ -33,7 +33,6 @@ export const MCCE_DEGREE_CREDITS = 52;
  * its graduates qualify for the Lebanese Order of Engineers.
  */
 export const GRADUATION_MIN_GPA = 2;
-export const PROBATION_GPA = 2;
 
 export const PROBATION_STATUS: AcademicStanding = {
   label: "Probation",
@@ -64,9 +63,6 @@ export const SCALE_REFERENCES: ScaleReference[] = [
   { average: "60", qualityPoints: 1 },
   { average: "Below 60", qualityPoints: 0 },
 ];
-
-export const LIU_CATALOGUE_URL =
-  "https://syslb.liu.edu.lb/syslbdatadir/Documents/09_University_Catalog.pdf";
 
 /** Axis ticks for the 0 to 4 GPA scale used by every chart on the page. */
 export const GPA_AXIS_TICKS = [4, 3, 2, 1, 0];

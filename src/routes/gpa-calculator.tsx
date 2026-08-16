@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GpaEntryGrid } from "@/components/gpa/gpa-entry-grid";
 import { GpaHero } from "@/components/gpa/gpa-hero";
-import { GpaNotes } from "@/components/gpa/gpa-notes";
 import { GpaProjection } from "@/components/gpa/gpa-projection";
 import { GpaScaleTable } from "@/components/gpa/gpa-scale-table";
 import { GpaStandingSummary } from "@/components/gpa/gpa-standing-summary";
@@ -61,14 +60,13 @@ function GpaCalculatorPage() {
           outcome={target}
           targetGpa={targetGpa}
         />
-        <GpaStorageNote />
       </div>
 
       <SectionDividerDots />
 
       <div className="grid gap-4 lg:grid-cols-2">
         <GpaScaleTable />
-        <GpaNotes />
+        <GpaStorageNote />
       </div>
     </main>
   );
