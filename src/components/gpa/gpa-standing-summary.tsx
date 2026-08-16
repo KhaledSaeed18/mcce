@@ -1,3 +1,4 @@
+import { GpaCreditMeter } from "@/components/gpa/gpa-credit-meter";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { GRADUATION_MIN_GPA, MCCE_DEGREE_CREDITS } from "@/config/gpa";
@@ -42,6 +43,10 @@ export function GpaStandingSummary({ cumulative }: GpaStandingSummaryProps) {
           <p className="font-head text-2xl tabular-nums">
             {cumulative.credits} / {MCCE_DEGREE_CREDITS}
           </p>
+        </div>
+
+        <div className="w-full max-w-56">
+          <GpaCreditMeter credits={cumulative.credits} />
         </div>
 
         <div>
