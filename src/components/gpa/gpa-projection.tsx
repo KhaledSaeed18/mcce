@@ -1,13 +1,18 @@
+import { GpaOutlookTrack } from "@/components/gpa/gpa-outlook-track";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MAX_QUALITY_POINT_AVERAGE, PASSING_AVERAGE } from "@/config/gpa";
 import { formatGpa } from "@/lib/gpa/standing";
 import type { Projection } from "@/lib/gpa/types";
 
 interface GpaProjectionProps {
+  cumulativeGpa: number | null;
   projection: Projection | null;
 }
 
-export function GpaProjection({ projection }: GpaProjectionProps) {
+export function GpaProjection({
+  cumulativeGpa,
+  projection,
+}: GpaProjectionProps) {
   if (!projection) {
     return null;
   }
@@ -42,6 +47,15 @@ export function GpaProjection({ projection }: GpaProjectionProps) {
             {formatGpa(projection.worstCasePassing)}
           </p>
         </div>
+
+        {cumulativeGpa === null ? null : (
+          <div className="sm:col-span-2">
+            <GpaOutlookTrack
+              cumulativeGpa={cumulativeGpa}
+              projection={projection}
+            />
+          </div>
+        )}
       </CardContent>
     </Card>
   );
