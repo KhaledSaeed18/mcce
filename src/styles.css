@@ -85,6 +85,8 @@
   --chart-3: #ffdc58;
   --chart-4: #01ffcc;
   --chart-5: #c4a1ff;
+  --gpa-semester: #d98200;
+  --gpa-cumulative: #7c5cd6;
   --border-w: 2px;
   --shadow-xs: 1px 1px 0 0 var(--shadow-color);
   --shadow-sm: 2px 2px 0 0 var(--shadow-color);
@@ -140,6 +142,8 @@
   --chart-3: #ffdc58;
   --chart-4: #01ffcc;
   --chart-5: #c4a1ff;
+  --gpa-semester: #cf7d10;
+  --gpa-cumulative: #8f6ade;
 }
 
 @layer base {
