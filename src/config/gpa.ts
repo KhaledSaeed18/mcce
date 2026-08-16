@@ -68,6 +68,16 @@ export const SCALE_REFERENCES: ScaleReference[] = [
 export const LIU_CATALOGUE_URL =
   "https://syslb.liu.edu.lb/syslbdatadir/Documents/09_University_Catalog.pdf";
 
+/** Axis ticks for the 0 to 4 GPA scale used by every chart on the page. */
+export const GPA_AXIS_TICKS = [4, 3, 2, 1, 0];
+/** Widest a column is allowed to get, so a two-semester chart stays readable. */
+export const CHART_BAR_MAX_WIDTH = 24;
+/**
+ * Caps plot width to the data. Stretching two semesters across a full-width card
+ * flattens the cumulative line and reads as no movement at all.
+ */
+export const CHART_WIDTH_PER_POINT = 170;
+
 export const GPA_DECIMAL_PLACES = 2;
 export const DEFAULT_TARGET_GPA = 3;
 export const GPA_STORAGE_KEY = "mcce.gpa-calculator.v1";

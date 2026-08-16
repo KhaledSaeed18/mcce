@@ -1,15 +1,24 @@
 import type {
   CurriculumSemester,
+  CurriculumTerm,
   CurriculumYear,
 } from "@/lib/curriculum/types";
 import type { GradeEntry } from "./types";
 
 export type AverageMap = Record<string, number | null>;
 
+const TERM_LABELS: Record<CurriculumTerm, string> = {
+  fall: "Fall",
+  spring: "Spring",
+  summer: "Summer",
+};
+
 export interface GpaSemester {
   entries: GradeEntry[];
   id: string;
   label: string;
+  /** Fits a chart axis, where the full label would need rotating. */
+  shortLabel: string;
 }
 
 function toEntries(
@@ -35,6 +44,7 @@ export function buildGpaSemesters(
       entries: toEntries(semester, averages),
       id: semester.id,
       label: `${year.label}, ${semester.label}`,
+      shortLabel: `Y${year.year} ${TERM_LABELS[semester.term]}`,
     }))
   );
 }
