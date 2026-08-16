@@ -24,15 +24,19 @@ function read(): StoredState {
 }
 
 /**
- * Starts empty on both server and first client render so hydration matches,
- * then loads from storage in an effect.
+ * Null means "storage not read yet", which keeps the first render identical on
+ * the server and the client for hydration, and stops the save effect from
+ * writing the empty initial state over real grades before the load lands.
  */
 export function useGpaAverages() {
-  const [state, setState] = useState<StoredState>(EMPTY);
+  const [state, setState] = useState<StoredState | null>(null);
 
   useEffect(() => setState(read()), []);
 
   useEffect(() => {
+    if (state === null) {
+      return;
+    }
     localStorage.setItem(GPA_STORAGE_KEY, JSON.stringify(state));
   }, [state]);
 
@@ -42,24 +46,26 @@ export function useGpaAverages() {
         ? null
         : Math.min(Math.max(average, 0), MAX_COURSE_AVERAGE);
 
-    setState((prev) => ({
-      ...prev,
-      averages: { ...prev.averages, [code]: clamped },
-    }));
+    setState((previous) => {
+      const base = previous ?? EMPTY;
+
+      return { ...base, averages: { ...base.averages, [code]: clamped } };
+    });
   }, []);
 
   const setTargetGpa = useCallback(
-    (targetGpa: number) => setState((prev) => ({ ...prev, targetGpa })),
+    (targetGpa: number) =>
+      setState((previous) => ({ ...(previous ?? EMPTY), targetGpa })),
     []
   );
 
-  const reset = useCallback(() => setState(EMPTY), []);
+  const reset = useCallback(() => setState({ ...EMPTY, averages: {} }), []);
 
   return {
-    averages: state.averages,
+    averages: state?.averages ?? EMPTY.averages,
     reset,
     setAverage,
     setTargetGpa,
-    targetGpa: state.targetGpa,
+    targetGpa: state?.targetGpa ?? EMPTY.targetGpa,
   };
 }
