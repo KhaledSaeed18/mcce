@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { CURRICULUM } from "@/config/curriculum";
 import { MCCE_DEGREE_CREDITS } from "@/config/gpa";
 import { getSemesterTotals } from "@/lib/gpa/calculate";
+import { buildTrendPoints } from "@/lib/gpa/chart";
 import {
   type AverageMap,
   buildGpaSemesters,
@@ -32,10 +33,19 @@ export function useGpaResults(averages: AverageMap, targetGpa: number) {
     [cumulative]
   );
 
+  const trendPoints = useMemo(() => buildTrendPoints(semesters), [semesters]);
+
   const target = useMemo(
     () => solveTarget(cumulative, MCCE_DEGREE_CREDITS, targetGpa),
     [cumulative, targetGpa]
   );
 
-  return { cumulative, projection, semesters, semesterTotals, target };
+  return {
+    cumulative,
+    projection,
+    semesters,
+    semesterTotals,
+    target,
+    trendPoints,
+  };
 }

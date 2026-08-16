@@ -7,6 +7,7 @@ import { GpaScaleTable } from "@/components/gpa/gpa-scale-table";
 import { GpaStandingSummary } from "@/components/gpa/gpa-standing-summary";
 import { GpaStorageNote } from "@/components/gpa/gpa-storage-note";
 import { GpaTargetPanel } from "@/components/gpa/gpa-target-panel";
+import { GpaTrendCard } from "@/components/gpa/gpa-trend-card";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
 import { SITE_URL } from "@/config/site";
 import { useGpaAverages } from "@/hooks/use-gpa-averages";
@@ -31,8 +32,14 @@ export const Route = createFileRoute("/gpa-calculator")({
 function GpaCalculatorPage() {
   const { averages, reset, setAverage, setTargetGpa, targetGpa } =
     useGpaAverages();
-  const { cumulative, projection, semesterTotals, semesters, target } =
-    useGpaResults(averages, targetGpa);
+  const {
+    cumulative,
+    projection,
+    semesterTotals,
+    semesters,
+    target,
+    trendPoints,
+  } = useGpaResults(averages, targetGpa);
 
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 py-8 sm:p-6 sm:py-14">
@@ -46,15 +53,15 @@ function GpaCalculatorPage() {
         totals={semesterTotals}
       />
 
-      <GpaStorageNote />
-
       <div className="grid gap-4 lg:grid-cols-2">
-        <GpaProjection projection={projection} />
+        <GpaTrendCard points={trendPoints} />
+        <GpaProjection cumulativeGpa={cumulative.gpa} projection={projection} />
         <GpaTargetPanel
           onTargetChange={setTargetGpa}
           outcome={target}
           targetGpa={targetGpa}
         />
+        <GpaStorageNote />
       </div>
 
       <SectionDividerDots />
