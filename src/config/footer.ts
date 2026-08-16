@@ -5,7 +5,14 @@ export type FooterNavLink =
   | {
       hash?: string;
       label: string;
-      to: "/" | "/plan-of-study" | "/about" | "/faq" | "/search" | "/contact";
+      to:
+        | "/"
+        | "/plan-of-study"
+        | "/gpa-calculator"
+        | "/about"
+        | "/faq"
+        | "/search"
+        | "/contact";
     }
   | { folderId: string; label: string; to: "/browse/$folderId" }
   | { href: string; label: string };
@@ -54,6 +61,7 @@ export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
   {
     links: [
       { label: "Plan of study", to: "/plan-of-study" },
+      { label: "GPA calculator", to: "/gpa-calculator" },
       { label: "About MCCE", to: "/about" },
       { label: "FAQ", to: "/faq" },
       { href: PROGRAM_OFFICIAL_URL, label: "Official program page" },
