@@ -28,10 +28,13 @@ describe("buildFacetOptions", () => {
 
     const facets = buildFacetOptions(nodes);
 
-    expect(facets.semesters).toEqual(["Fall", "Spring"]);
+    expect(facets.semesters).toEqual([
+      { label: "Fall", value: "Fall" },
+      { label: "Spring", value: "Spring" },
+    ]);
     expect(facets.courses).toEqual([
-      { code: "CENG675", name: "Multimedia Networks" },
-      { code: "EENG537", name: "Digital Communications" },
+      { label: "CENG675", value: "CENG675" },
+      { label: "EENG537", value: "EENG537" },
     ]);
   });
 
@@ -42,6 +45,9 @@ describe("buildFacetOptions", () => {
       makeNode({ id: "3", kind: "video" }),
     ];
 
-    expect(buildFacetOptions(nodes).kinds).toEqual(["pdf", "video"]);
+    expect(buildFacetOptions(nodes).kinds).toEqual([
+      { label: "pdf", value: "pdf" },
+      { label: "video", value: "video" },
+    ]);
   });
 });

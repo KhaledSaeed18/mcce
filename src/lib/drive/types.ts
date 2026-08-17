@@ -51,6 +51,18 @@ export interface DriveNode {
   webViewLink: string;
 }
 
+export interface FilterOption {
+  label: string;
+  value: string;
+}
+
+export interface SearchFilterValues {
+  course?: string;
+  kind?: DriveNodeKind;
+  q: string;
+  semester?: string;
+}
+
 export interface DriveSource {
   color: string;
   id: string;
