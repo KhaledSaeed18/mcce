@@ -30,4 +30,85 @@ describe("searchNodes", () => {
       searchNodes(nodes, "digital communications").map((n) => n.id)
     ).toEqual(["3"]);
   });
+
+  it("matches tokens in any order and across fields", () => {
+    const tokenNodes = [
+      makeNode({
+        courseCode: "CENG507",
+        id: "paper",
+        name: "Final.pdf",
+        pathNames: ["CENG507 - Embedded Systems", "Exams", "Final.pdf"],
+      }),
+    ];
+
+    expect(searchNodes(tokenNodes, "507 final").map((n) => n.id)).toEqual([
+      "paper",
+    ]);
+    expect(searchNodes(tokenNodes, "final 507").map((n) => n.id)).toEqual([
+      "paper",
+    ]);
+  });
+
+  it("requires every token to match, so more words narrow the result", () => {
+    const tokenNodes = [
+      makeNode({ id: "a", name: "Final.pdf" }),
+      makeNode({ id: "b", name: "Final Solution.pdf" }),
+    ];
+
+    expect(searchNodes(tokenNodes, "final solution").map((n) => n.id)).toEqual([
+      "b",
+    ]);
+  });
+
+  it("ranks a name hit above a path hit", () => {
+    const ranked = [
+      makeNode({
+        id: "path-hit",
+        name: "readme.txt",
+        pathNames: ["Midterm", "readme.txt"],
+      }),
+      makeNode({ id: "name-hit", name: "Midterm.pdf" }),
+    ];
+
+    expect(searchNodes(ranked, "midterm").map((n) => n.id)).toEqual([
+      "name-hit",
+      "path-hit",
+    ]);
+  });
+
+  it("ranks a whole word above the middle of one", () => {
+    const ranked = [
+      makeNode({ id: "partial", name: "prelab2.pdf" }),
+      makeNode({ id: "word", name: "lab2.pdf" }),
+    ];
+
+    expect(searchNodes(ranked, "lab2").map((n) => n.id)).toEqual([
+      "word",
+      "partial",
+    ]);
+  });
+
+  it("puts a file above a folder that scores the same", () => {
+    const ranked = [
+      makeNode({ id: "folder", kind: "folder", name: "Midterm" }),
+      makeNode({ id: "file", kind: "pdf", name: "Midterm" }),
+    ];
+
+    expect(searchNodes(ranked, "midterm").map((n) => n.id)).toEqual([
+      "file",
+      "folder",
+    ]);
+  });
+
+  it("orders equal matches naturally", () => {
+    const ranked = [
+      makeNode({ id: "v10", name: "V10-Assessment.pdf" }),
+      makeNode({ id: "v2", name: "V2-Assessment.pdf" }),
+    ];
+
+    expect(searchNodes(ranked, "assessment").map((n) => n.id)).toEqual([
+      "v2",
+      "v10",
+    ]);
+  });
 });
