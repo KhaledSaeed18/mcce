@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { CourseIndexYear } from "@/components/course/course-index-year";
+import { PageHero } from "@/components/marketing/page-hero";
 import { CURRICULUM } from "@/config/curriculum";
 import { SITE_URL } from "@/config/site";
 import { getProgramCredits } from "@/lib/curriculum/credits";
@@ -34,15 +35,13 @@ function CourseIndexPage() {
   );
 
   return (
-    <main className="mx-auto flex max-w-6xl flex-col gap-8 p-4 sm:p-6">
-      <div className="flex flex-col gap-2">
-        <h1 className="font-head text-xl sm:text-2xl">Courses</h1>
-        <p className="text-muted-foreground text-sm">
-          {COURSE_COUNT} courses across {getProgramCredits(CURRICULUM)} credits.
-          Each one carries its description, prerequisites, and whatever material
-          has reached the Drive.
-        </p>
-      </div>
+    <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 py-8 sm:p-6 sm:py-14">
+      <PageHero
+        badge="COURSES"
+        description={`${COURSE_COUNT} courses across ${getProgramCredits(CURRICULUM)} credits. Each one carries its description, prerequisites, and whatever material has reached the Drive.`}
+        highlight="course by course."
+        title="The whole program,"
+      />
 
       {CURRICULUM.map((year) => (
         <CourseIndexYear

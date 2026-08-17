@@ -3,6 +3,7 @@ import { BookmarkIcon } from "lucide-react";
 import { useMemo } from "react";
 import { FilePreviewHost } from "@/components/drive/file-preview-host";
 import { NodeGrid } from "@/components/drive/node-grid";
+import { PageHero } from "@/components/marketing/page-hero";
 import { useSavedNodes } from "@/components/providers/saved-nodes-provider";
 import {
   Empty,
@@ -47,14 +48,13 @@ function SavedPage() {
   );
 
   return (
-    <main className="mx-auto flex max-w-6xl flex-col gap-4 p-4 sm:p-6">
-      <div className="flex flex-col gap-2">
-        <h1 className="font-head text-xl sm:text-2xl">Saved</h1>
-        <p className="text-muted-foreground text-sm">
-          Kept in this browser only. Nothing is sent anywhere, and clearing site
-          data clears this list.
-        </p>
-      </div>
+    <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 py-8 sm:p-6 sm:py-14">
+      <PageHero
+        badge="SAVED"
+        description="Kept in this browser only. Nothing is sent anywhere, and clearing site data clears this list."
+        highlight="in one place."
+        title="The files you kept,"
+      />
 
       {saved.length === 0 ? (
         <Empty>

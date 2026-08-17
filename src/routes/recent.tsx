@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ClockIcon } from "lucide-react";
 import { useMemo } from "react";
 import { FilePreviewHost } from "@/components/drive/file-preview-host";
+import { PageHero } from "@/components/marketing/page-hero";
 import { RecentBatchSection } from "@/components/recent/recent-batch-section";
 import {
   Empty,
@@ -43,13 +44,13 @@ function RecentPage() {
   const batches = useMemo(() => buildRecentBatches(driveIndex), [driveIndex]);
 
   return (
-    <main className="mx-auto flex max-w-6xl flex-col gap-6 p-4 sm:p-6">
-      <div className="flex flex-col gap-2">
-        <h1 className="font-head text-xl sm:text-2xl">Recently added</h1>
-        <p className="text-muted-foreground text-sm">
-          What each weekly sync found that the one before it did not.
-        </p>
-      </div>
+    <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 py-8 sm:p-6 sm:py-14">
+      <PageHero
+        badge="RECENTLY ADDED"
+        description="What each weekly sync found that the one before it did not, newest first."
+        highlight="since the last sync."
+        title="Everything new,"
+      />
 
       {batches.length === 0 ? (
         <Empty>

@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { FilePreviewHost } from "@/components/drive/file-preview-host";
 import { ExamCourseJump } from "@/components/exams/exam-course-jump";
 import { ExamCourseSection } from "@/components/exams/exam-course-section";
+import { PageHero } from "@/components/marketing/page-hero";
 import { SITE_URL } from "@/config/site";
 import { buildExamGroups } from "@/lib/drive/exams";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
@@ -40,17 +41,15 @@ function ExamsPage() {
   const total = groups.reduce((sum, group) => sum + group.total, 0);
 
   return (
-    <main className="mx-auto flex max-w-6xl flex-col gap-6 p-4 sm:p-6">
-      <div className="flex flex-col gap-2">
-        <h1 className="font-head text-xl sm:text-2xl">Past exams</h1>
-        <p className="text-muted-foreground text-sm">
-          {total} papers across {groups.length} courses, newest term first.
-          Papers whose name records no year are grouped at the end of each
-          course.
-        </p>
-      </div>
-
-      <ExamCourseJump groups={groups} />
+    <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 py-8 sm:p-6 sm:py-14">
+      <PageHero
+        badge="PAST EXAMS"
+        description={`${total} papers across ${groups.length} courses, newest term first. Papers whose name records no year are grouped at the end of each course.`}
+        highlight="grouped by term."
+        title="Every past paper,"
+      >
+        <ExamCourseJump groups={groups} />
+      </PageHero>
 
       {groups.map((group) => (
         <ExamCourseSection group={group} key={group.code} />
