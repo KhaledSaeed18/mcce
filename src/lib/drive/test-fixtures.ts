@@ -12,6 +12,7 @@ export function makeNode(
     iconLink: null,
     isShortcut: false,
     kind: "other",
+    materialType: "other",
     mimeType: "application/octet-stream",
     modifiedTime: "2026-01-01T00:00:00.000Z",
     name: overrides.id,
@@ -21,6 +22,7 @@ export function makeNode(
     semester: null,
     sizeBytes: null,
     sourceId: "year1",
+    termLabel: null,
     webViewLink: `https://drive.google.com/file/d/${overrides.id}/view`,
     ...overrides,
   };

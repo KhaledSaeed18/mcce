@@ -2,6 +2,8 @@ import type { DriveNode, DriveSource } from "../../src/lib/drive/types";
 import { classifyKind, extensionOf, parseCourseFolderName } from "./classify";
 import type { DriveApiFile } from "./drive-client";
 import { listChildren } from "./drive-client";
+import { classifyMaterialType } from "./material-type";
+import { parseTermLabel } from "./term-label";
 
 const CONCURRENCY = 5;
 const FOLDER_MIME_TYPE = "application/vnd.google-apps.folder";
@@ -55,6 +57,11 @@ function toNode(item: QueueItem, source: DriveSource): DriveNode {
   const { file, parentId, depth, pathIds, pathNames } = item;
   const isFolder = file.mimeType === FOLDER_MIME_TYPE;
   const facets = deriveFacets(item, isFolder);
+  // A folder's own name is the deepest segment of its path; a file's is not.
+  const folderSegments = isFolder
+    ? [...facets.categoryPath, file.name]
+    : facets.categoryPath;
+  const fileName = isFolder ? null : file.name;
 
   return {
     categoryPath: facets.categoryPath,
@@ -66,6 +73,7 @@ function toNode(item: QueueItem, source: DriveSource): DriveNode {
     id: file.id,
     isShortcut: file.mimeType === SHORTCUT_MIME_TYPE,
     kind: classifyKind(file.mimeType, file.name),
+    materialType: classifyMaterialType(folderSegments, fileName),
     mimeType: file.mimeType,
     modifiedTime: file.modifiedTime,
     // Named explicitly (not spread) so a facet field can never shadow a Drive-sourced field.
@@ -76,6 +84,7 @@ function toNode(item: QueueItem, source: DriveSource): DriveNode {
     semester: facets.semester,
     sizeBytes: file.size ? Number(file.size) : null,
     sourceId: source.id,
+    termLabel: parseTermLabel(folderSegments, fileName),
     webViewLink:
       file.webViewLink ?? `https://drive.google.com/file/d/${file.id}/view`,
   };

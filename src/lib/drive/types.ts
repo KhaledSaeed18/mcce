@@ -10,6 +10,15 @@ export type DriveNodeKind =
   | "archive"
   | "other";
 
+export type MaterialType =
+  | "lecture"
+  | "exam"
+  | "exercise"
+  | "assignment"
+  | "lab"
+  | "book"
+  | "other";
+
 export interface DriveNode {
   /** Folder names between the course folder and this node, at whatever depth the course uses. */
   categoryPath: string[];
@@ -23,6 +32,8 @@ export interface DriveNode {
   id: string;
   isShortcut: boolean;
   kind: DriveNodeKind;
+  /** What the material is for, normalised at sync time from folder names that vary by instructor. */
+  materialType: MaterialType;
   mimeType: string;
   modifiedTime: string;
   name: string;
@@ -35,6 +46,8 @@ export interface DriveNode {
   /** Null for folders and native Google Docs/Sheets/Slides. */
   sizeBytes: number | null;
   sourceId: string;
+  /** Academic year the item records in its own name or folder, e.g. "Fall 2025-2026". */
+  termLabel: string | null;
   webViewLink: string;
 }
 
