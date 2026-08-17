@@ -10,7 +10,10 @@ import {
   SITE_URL,
 } from "@/config/site";
 import { flattenCourses } from "@/lib/curriculum/lookup";
-import type { CurriculumYear } from "@/lib/curriculum/types";
+import type {
+  CurriculumCourseContext,
+  CurriculumYear,
+} from "@/lib/curriculum/types";
 
 export function buildWebSiteSchema() {
   return {
@@ -68,6 +71,33 @@ export function buildCurriculumSchema(years: CurriculumYear[]) {
       position: index + 1,
     })),
     name: `${PROGRAM_NAME} plan of study`,
+  };
+}
+
+export function buildCourseSchema(context: CurriculumCourseContext) {
+  const { course, semester, year } = context;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    courseCode: course.code,
+    description: course.description ?? undefined,
+    hasCourseInstance: {
+      "@type": "CourseInstance",
+      courseMode: "onsite",
+      name: `${year.label}, ${semester.label}`,
+    },
+    isPartOf: {
+      "@type": "EducationalOccupationalProgram",
+      name: PROGRAM_NAME,
+      url: `${SITE_URL}/plan-of-study`,
+    },
+    name: course.name,
+    provider: {
+      "@type": "CollegeOrUniversity",
+      name: PROGRAM_UNIVERSITY,
+    },
+    url: `${SITE_URL}/course/${course.code}`,
   };
 }
 

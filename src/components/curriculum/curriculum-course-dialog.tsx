@@ -103,22 +103,15 @@ export function CurriculumCourseDialog({
         </div>
 
         <DialogFooter>
-          {fileCount ? (
-            <Button
-              nativeButton={false}
-              render={
-                <Link search={{ course: course.code, q: "" }} to="/search" />
-              }
-            >
-              <FolderOpenIcon data-icon="inline-start" />
-              {`View materials (${fileCount})`}
-            </Button>
-          ) : (
-            <Button disabled>
-              <FolderOpenIcon data-icon="inline-start" />
-              No materials indexed yet
-            </Button>
-          )}
+          <Button
+            nativeButton={false}
+            render={<Link params={{ code: course.code }} to="/course/$code" />}
+          >
+            <FolderOpenIcon data-icon="inline-start" />
+            {fileCount
+              ? `Course page (${fileCount} files)`
+              : "Course page, no material yet"}
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

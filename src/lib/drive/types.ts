@@ -99,6 +99,12 @@ export interface ExamCourseGroup {
   total: number;
 }
 
+export interface CourseMaterialGroup {
+  items: DriveNode[];
+  label: string;
+  type: MaterialType;
+}
+
 export interface RecentCourseGroup {
   code: string;
   items: DriveNode[];

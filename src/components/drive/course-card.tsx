@@ -24,8 +24,8 @@ export function CourseCard({ color, course }: CourseCardProps) {
   return (
     <Link
       className="block h-full"
-      search={{ course: course.code, q: "" }}
-      to="/search"
+      params={{ code: course.code }}
+      to="/course/$code"
     >
       <Card className={CARD_CLASSES}>
         <CardHeader>

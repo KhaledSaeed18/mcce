@@ -1,4 +1,6 @@
+import { CURRICULUM } from "../../src/config/curriculum";
 import { SITE_URL } from "../../src/config/site";
+import { flattenCourses } from "../../src/lib/curriculum/lookup";
 import type { DriveIndex } from "../../src/lib/drive/types";
 
 interface StaticPage {
@@ -47,6 +49,17 @@ export function buildSitemapXml(index: DriveIndex): string {
     )
   );
 
+  // Every curriculum course, not only the ones with material: the page carries
+  // the description, credits, and prerequisites either way.
+  const courseEntries = flattenCourses(CURRICULUM).map((course) =>
+    buildUrlEntry(
+      `${SITE_URL}/course/${course.code}`,
+      generatedDate,
+      "weekly",
+      "0.8"
+    )
+  );
+
   const folderEntries = index.nodes
     .filter((node) => node.kind === "folder")
     .map((node) =>
@@ -62,6 +75,7 @@ export function buildSitemapXml(index: DriveIndex): string {
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ...staticEntries,
+    ...courseEntries,
     ...folderEntries,
     "</urlset>",
   ].join("\n")}\n`;
