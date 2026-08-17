@@ -1,11 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { getCourseIcon } from "@/lib/drive/courses";
 import { formatBytes } from "@/lib/drive/format";
 import type { DriveNode } from "@/lib/drive/types";
 import { cn } from "@/lib/utils";
-import { FilePreviewDialog } from "./file-preview-dialog";
 import { KindIcon } from "./kind-icon";
 
 const COURSE_ROOT_DEPTH = 1;
@@ -73,21 +72,12 @@ function NodeCardBody({ node, childCount }: NodeCardProps) {
   );
 }
 
-function FileNodeCard({ node }: { node: DriveNode }) {
-  const [open, setOpen] = useState(false);
-  const handleOpen = useCallback(() => setOpen(true), []);
-
-  return (
-    <>
-      <button className={FOCUS_RING_CLASSES} onClick={handleOpen} type="button">
-        <NodeCardBody node={node} />
-      </button>
-      <FilePreviewDialog node={node} onOpenChange={setOpen} open={open} />
-    </>
-  );
-}
-
 export function NodeCard({ node, childCount }: NodeCardProps) {
+  const toFilePreview = useCallback(
+    (prev: Record<string, unknown>) => ({ ...prev, file: node.id }),
+    [node.id]
+  );
+
   if (node.kind === "folder") {
     return (
       <Link
@@ -100,5 +90,11 @@ export function NodeCard({ node, childCount }: NodeCardProps) {
     );
   }
 
-  return <FileNodeCard node={node} />;
+  // The preview lives in the URL, so the card is a link: shareable, and the
+  // back button closes it.
+  return (
+    <Link className={FOCUS_RING_CLASSES} search={toFilePreview} to=".">
+      <NodeCardBody node={node} />
+    </Link>
+  );
 }

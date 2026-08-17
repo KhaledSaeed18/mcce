@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback } from "react";
+import { FilePreviewHost } from "@/components/drive/file-preview-host";
 import { SearchFilters } from "@/components/drive/search-filters";
 import { SearchResults } from "@/components/drive/search-results";
 import { SITE_URL } from "@/config/site";
@@ -7,6 +8,7 @@ import { useDriveSearch } from "@/hooks/use-drive-search";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import type {
   DriveNodeKind,
+  FilePreviewSearch,
   MaterialType,
   SearchFilterValues,
 } from "@/lib/drive/types";
@@ -29,8 +31,11 @@ export const Route = createFileRoute("/search")({
   }),
   loader: ({ context }) =>
     context.queryClient.ensureQueryData(driveIndexQueryOptions),
-  validateSearch: (search: Record<string, unknown>): SearchFilterValues => ({
+  validateSearch: (
+    search: Record<string, unknown>
+  ): SearchFilterValues & FilePreviewSearch => ({
     course: readOptionalString(search.course),
+    file: readOptionalString(search.file),
     kind: readOptionalString(search.kind) as DriveNodeKind | undefined,
     material: readOptionalString(search.material) as MaterialType | undefined,
     q: typeof search.q === "string" ? search.q : "",
@@ -69,6 +74,8 @@ function SearchPage() {
         hasCriteria={hasCriteria}
         results={results}
       />
+
+      <FilePreviewHost nodes={driveIndex.nodes} />
     </main>
   );
 }

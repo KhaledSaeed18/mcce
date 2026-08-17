@@ -1,10 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
+import { FilePreviewHost } from "@/components/drive/file-preview-host";
 import { ExamCourseJump } from "@/components/exams/exam-course-jump";
 import { ExamCourseSection } from "@/components/exams/exam-course-section";
 import { SITE_URL } from "@/config/site";
 import { buildExamGroups } from "@/lib/drive/exams";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
+import type { FilePreviewSearch } from "@/lib/drive/types";
+import { readOptionalString } from "@/lib/search-params";
 import { buildPageMeta } from "@/lib/seo/meta";
 
 const EXAMS_URL = `${SITE_URL}/exams`;
@@ -23,6 +26,9 @@ export const Route = createFileRoute("/exams")({
   }),
   loader: ({ context }) =>
     context.queryClient.ensureQueryData(driveIndexQueryOptions),
+  validateSearch: (search: Record<string, unknown>): FilePreviewSearch => ({
+    file: readOptionalString(search.file),
+  }),
 });
 
 function ExamsPage() {
@@ -49,6 +55,8 @@ function ExamsPage() {
       {groups.map((group) => (
         <ExamCourseSection group={group} key={group.code} />
       ))}
+
+      <FilePreviewHost nodes={driveIndex.nodes} />
     </main>
   );
 }

@@ -56,6 +56,11 @@ export interface FilterOption {
   value: string;
 }
 
+/** The file whose preview the URL is asking for, on any route that lists files. */
+export interface FilePreviewSearch {
+  file?: string;
+}
+
 export interface SearchFilterValues {
   course?: string;
   kind?: DriveNodeKind;

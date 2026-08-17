@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { FolderIcon } from "lucide-react";
 import { useMemo } from "react";
+import { FilePreviewHost } from "@/components/drive/file-preview-host";
 import { FolderBreadcrumb } from "@/components/drive/folder-breadcrumb";
 import { FolderNotFound } from "@/components/drive/folder-not-found";
 import { NodeGrid } from "@/components/drive/node-grid";
@@ -14,6 +15,8 @@ import {
 import { buildChildrenMap } from "@/lib/drive/children-map";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import { resolveFolderMeta } from "@/lib/drive/resolve-folder";
+import type { FilePreviewSearch } from "@/lib/drive/types";
+import { readOptionalString } from "@/lib/search-params";
 import { buildFolderHead } from "@/lib/seo/folder-head";
 
 export const Route = createFileRoute("/browse/$folderId")({
@@ -22,6 +25,9 @@ export const Route = createFileRoute("/browse/$folderId")({
     context.queryClient.ensureQueryData(driveIndexQueryOptions),
   head: ({ loaderData, params }) =>
     buildFolderHead(loaderData, params.folderId),
+  validateSearch: (search: Record<string, unknown>): FilePreviewSearch => ({
+    file: readOptionalString(search.file),
+  }),
 });
 
 function BrowseFolder() {
@@ -67,6 +73,8 @@ function BrowseFolder() {
       ) : (
         <NodeGrid childrenMap={childrenMap} nodes={children} />
       )}
+
+      <FilePreviewHost nodes={driveIndex.nodes} />
     </main>
   );
 }

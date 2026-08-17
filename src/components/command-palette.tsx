@@ -62,6 +62,14 @@ export function CommandPalette() {
       setQuery("");
       if (node.kind === "folder") {
         navigate({ params: { folderId: node.id }, to: "/browse/$folderId" });
+      } else if (node.parentId) {
+        // Land in the folder the file lives in, with its preview open, rather
+        // than leaving the site for Drive.
+        navigate({
+          params: { folderId: node.parentId },
+          search: { file: node.id },
+          to: "/browse/$folderId",
+        });
       } else {
         window.open(node.webViewLink, "_blank", "noopener");
       }
