@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ExamsRouteImport } from './routes/exams'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GpaCalculatorRouteImport } from './routes/gpa-calculator'
 import { Route as PlanOfStudyRouteImport } from './routes/plan-of-study'
@@ -31,6 +32,11 @@ const AboutRoute = AboutRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExamsRoute = ExamsRouteImport.update({
+  id: '/exams',
+  path: '/exams',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/exams': typeof ExamsRoute
   '/faq': typeof FaqRoute
   '/gpa-calculator': typeof GpaCalculatorRoute
   '/plan-of-study': typeof PlanOfStudyRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/exams': typeof ExamsRoute
   '/faq': typeof FaqRoute
   '/gpa-calculator': typeof GpaCalculatorRoute
   '/plan-of-study': typeof PlanOfStudyRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/exams': typeof ExamsRoute
   '/faq': typeof FaqRoute
   '/gpa-calculator': typeof GpaCalculatorRoute
   '/plan-of-study': typeof PlanOfStudyRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/exams'
     | '/faq'
     | '/gpa-calculator'
     | '/plan-of-study'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/exams'
     | '/faq'
     | '/gpa-calculator'
     | '/plan-of-study'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/exams'
     | '/faq'
     | '/gpa-calculator'
     | '/plan-of-study'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  ExamsRoute: typeof ExamsRoute
   FaqRoute: typeof FaqRoute
   GpaCalculatorRoute: typeof GpaCalculatorRoute
   PlanOfStudyRoute: typeof PlanOfStudyRoute
@@ -155,6 +168,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exams': {
+      id: '/exams'
+      path: '/exams'
+      fullPath: '/exams'
+      preLoaderRoute: typeof ExamsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -199,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  ExamsRoute: ExamsRoute,
   FaqRoute: FaqRoute,
   GpaCalculatorRoute: GpaCalculatorRoute,
   PlanOfStudyRoute: PlanOfStudyRoute,

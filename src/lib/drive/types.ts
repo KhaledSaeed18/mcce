@@ -80,6 +80,18 @@ export interface CourseSummary {
   sourceId: string;
 }
 
+export interface ExamTermGroup {
+  items: DriveNode[];
+  label: string;
+}
+
+export interface ExamCourseGroup {
+  code: string;
+  name: string;
+  terms: ExamTermGroup[];
+  total: number;
+}
+
 export interface DriveIndexStats {
   fileCount: number;
   folderCount: number;
