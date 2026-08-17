@@ -20,6 +20,7 @@ import { Route as RecentRouteImport } from './routes/recent'
 import { Route as SavedRouteImport } from './routes/saved'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as BrowseFolderIdRouteImport } from './routes/browse.$folderId'
+import { Route as CourseIndexRouteImport } from './routes/course.index'
 import { Route as CourseCodeRouteImport } from './routes/course.$code'
 
 const IndexRoute = IndexRouteImport.update({
@@ -77,6 +78,11 @@ const BrowseFolderIdRoute = BrowseFolderIdRouteImport.update({
   path: '/browse/$folderId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CourseIndexRoute = CourseIndexRouteImport.update({
+  id: '/course/',
+  path: '/course/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CourseCodeRoute = CourseCodeRouteImport.update({
   id: '/course/$code',
   path: '/course/$code',
@@ -96,6 +102,7 @@ export interface FileRoutesByFullPath {
   '/search': typeof SearchRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
+  '/course/': typeof CourseIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -110,6 +117,7 @@ export interface FileRoutesByTo {
   '/search': typeof SearchRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
+  '/course': typeof CourseIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -125,6 +133,7 @@ export interface FileRoutesById {
   '/search': typeof SearchRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
+  '/course/': typeof CourseIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -141,6 +150,7 @@ export interface FileRouteTypes {
     | '/search'
     | '/browse/$folderId'
     | '/course/$code'
+    | '/course/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
     | '/search'
     | '/browse/$folderId'
     | '/course/$code'
+    | '/course'
   id:
     | '__root__'
     | '/'
@@ -169,6 +180,7 @@ export interface FileRouteTypes {
     | '/search'
     | '/browse/$folderId'
     | '/course/$code'
+    | '/course/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -184,6 +196,7 @@ export interface RootRouteChildren {
   SearchRoute: typeof SearchRoute
   BrowseFolderIdRoute: typeof BrowseFolderIdRoute
   CourseCodeRoute: typeof CourseCodeRoute
+  CourseIndexRoute: typeof CourseIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -265,6 +278,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BrowseFolderIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/course/': {
+      id: '/course/'
+      path: '/course'
+      fullPath: '/course/'
+      preLoaderRoute: typeof CourseIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/course/$code': {
       id: '/course/$code'
       path: '/course/$code'
@@ -288,6 +308,7 @@ const rootRouteChildren: RootRouteChildren = {
   SearchRoute: SearchRoute,
   BrowseFolderIdRoute: BrowseFolderIdRoute,
   CourseCodeRoute: CourseCodeRoute,
+  CourseIndexRoute: CourseIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

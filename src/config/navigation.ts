@@ -7,6 +7,7 @@ export interface NavLink {
     | "/"
     | "/plan-of-study"
     | "/gpa-calculator"
+    | "/course"
     | "/exams"
     | "/about"
     | "/faq"
@@ -14,6 +15,7 @@ export interface NavLink {
 }
 
 export const NAV_PAGE_LINKS: NavLink[] = [
+  { label: "Courses", to: "/course" },
   { label: "Past Exams", to: "/exams" },
   { label: "Plan of Study", to: "/plan-of-study" },
   { label: "GPA Calculator", to: "/gpa-calculator" },

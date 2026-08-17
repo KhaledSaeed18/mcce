@@ -9,6 +9,7 @@ export type FooterNavLink =
         | "/"
         | "/plan-of-study"
         | "/gpa-calculator"
+        | "/course"
         | "/exams"
         | "/recent"
         | "/saved"
@@ -48,6 +49,7 @@ export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
     links: [
       { label: "Homepage", to: "/" },
       { label: "Search files", to: "/search" },
+      { label: "All courses", to: "/course" },
       { label: "Past exams", to: "/exams" },
       { label: "Recently added", to: "/recent" },
       { label: "Saved", to: "/saved" },
