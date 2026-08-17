@@ -13,7 +13,6 @@
   <a href="https://github.com/KhaledSaeed18/mcce/actions"><img src="https://shieldcn.dev/github/ci/KhaledSaeed18/mcce.svg" alt="CI" /></a>
   <a href="https://github.com/KhaledSaeed18/mcce/blob/main/LICENSE"><img src="https://shieldcn.dev/github/license/KhaledSaeed18/mcce.svg" alt="License" /></a>
   <a href="https://github.com/KhaledSaeed18/mcce/commits/main"><img src="https://shieldcn.dev/github/last-commit/KhaledSaeed18/mcce.svg" alt="Last commit" /></a>
-  <a href="https://github.com/KhaledSaeed18/mcce/stargazers"><img src="https://shieldcn.dev/github/stars/KhaledSaeed18/mcce.svg" alt="Stars" /></a>
   <a href="./CONTRIBUTING.md"><img src="https://shieldcn.dev/badge/PRs-welcome-16a34a.svg?logo=lu:GitPullRequest" alt="PRs welcome" /></a>
 </p>
 
