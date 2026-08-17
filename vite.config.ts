@@ -7,6 +7,14 @@ import { defineConfig } from "vite";
 
 const config = defineConfig({
   build: { sourcemap: true },
+  /**
+   * Base UI is consumed through deep subpath imports, which Vite discovers one
+   * entry at a time. Without this the internals they share (CompositeList and
+   * friends) can be served outside the optimized bundle, against a second copy
+   * of React whose hook dispatcher is null -- the accordion on /faq then throws
+   * "Cannot read properties of null (reading 'useRef')".
+   */
+  optimizeDeps: { include: ["@base-ui/react/*"] },
   plugins: [
     devtools(),
     tailwindcss(),
