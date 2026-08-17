@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { GpaCopyLinkButton } from "@/components/gpa/gpa-copy-link-button";
 import { GpaExportActions } from "@/components/gpa/gpa-export-actions";
 import { GpaExportSectionToggle } from "@/components/gpa/gpa-export-section-toggle";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -64,7 +65,9 @@ export function GpaExportCard({
           onJson={exportJson}
           onPdf={exportPdf}
           pending={pending}
-        />
+        >
+          <GpaCopyLinkButton semesters={semesters} />
+        </GpaExportActions>
 
         {hasSection ? null : (
           <p className="text-muted-foreground text-xs">

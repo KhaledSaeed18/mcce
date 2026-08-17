@@ -49,6 +49,13 @@ export function useGpaAverages() {
     });
   }, []);
 
+  /** One write for a whole incoming set, rather than one per course. */
+  const setAverages = useCallback(
+    (averages: AverageMap) =>
+      setState((previous) => ({ ...(previous ?? EMPTY), averages })),
+    []
+  );
+
   const setTargetGpa = useCallback(
     (targetGpa: number) =>
       setState((previous) => ({ ...(previous ?? EMPTY), targetGpa })),
@@ -61,6 +68,7 @@ export function useGpaAverages() {
     averages: state?.averages ?? EMPTY.averages,
     reset,
     setAverage,
+    setAverages,
     setTargetGpa,
     targetGpa: state?.targetGpa ?? EMPTY.targetGpa,
   };

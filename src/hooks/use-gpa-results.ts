@@ -3,6 +3,7 @@ import { CURRICULUM } from "@/config/curriculum";
 import { MCCE_DEGREE_CREDITS } from "@/config/gpa";
 import { getSemesterTotals } from "@/lib/gpa/calculate";
 import { buildTrendPoints } from "@/lib/gpa/chart";
+import { buildContributions } from "@/lib/gpa/contribution";
 import {
   type AverageMap,
   buildGpaSemesters,
@@ -35,12 +36,18 @@ export function useGpaResults(averages: AverageMap, targetGpa: number) {
 
   const trendPoints = useMemo(() => buildTrendPoints(semesters), [semesters]);
 
+  const contributions = useMemo(
+    () => buildContributions(getAllEntries(semesters), cumulative),
+    [cumulative, semesters]
+  );
+
   const target = useMemo(
     () => solveTarget(cumulative, MCCE_DEGREE_CREDITS, targetGpa),
     [cumulative, targetGpa]
   );
 
   return {
+    contributions,
     cumulative,
     projection,
     semesters,

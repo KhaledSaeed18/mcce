@@ -1,20 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GpaEntryGrid } from "@/components/gpa/gpa-entry-grid";
-import { GpaExportCard } from "@/components/gpa/gpa-export-card";
 import { GpaHero } from "@/components/gpa/gpa-hero";
-import { GpaProjection } from "@/components/gpa/gpa-projection";
-import { GpaScaleTable } from "@/components/gpa/gpa-scale-table";
+import { GpaInsightGrid } from "@/components/gpa/gpa-insight-grid";
+import { GpaResourcesGrid } from "@/components/gpa/gpa-resources-grid";
+import { GpaSharedLinkDialog } from "@/components/gpa/gpa-shared-link-dialog";
 import { GpaStandingSummary } from "@/components/gpa/gpa-standing-summary";
-import { GpaStorageNote } from "@/components/gpa/gpa-storage-note";
-import { GpaTargetPanel } from "@/components/gpa/gpa-target-panel";
-import { GpaTrendCard } from "@/components/gpa/gpa-trend-card";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
+import { GPA_CALCULATOR_PATH, GPA_SHARE_PARAM } from "@/config/gpa";
 import { SITE_URL } from "@/config/site";
 import { useGpaAverages } from "@/hooks/use-gpa-averages";
+import { useGpaLinkImport } from "@/hooks/use-gpa-link-import";
 import { useGpaResults } from "@/hooks/use-gpa-results";
+import { toShareSearch } from "@/lib/gpa/share/search";
 import { buildPageMeta } from "@/lib/seo/meta";
 
-const GPA_CALCULATOR_URL = `${SITE_URL}/gpa-calculator`;
+const GPA_CALCULATOR_URL = `${SITE_URL}${GPA_CALCULATOR_PATH}`;
 
 export const Route = createFileRoute("/gpa-calculator")({
   component: GpaCalculatorPage,
@@ -27,58 +27,61 @@ export const Route = createFileRoute("/gpa-calculator")({
       url: GPA_CALCULATOR_URL,
     }),
   }),
+  validateSearch: toShareSearch,
 });
 
 function GpaCalculatorPage() {
-  const { averages, reset, setAverage, setTargetGpa, targetGpa } =
+  const search = Route.useSearch();
+  const navigate = Route.useNavigate();
+  const { averages, reset, setAverage, setAverages, setTargetGpa, targetGpa } =
     useGpaAverages();
-  const {
-    cumulative,
-    projection,
-    semesterTotals,
-    semesters,
-    target,
-    trendPoints,
-  } = useGpaResults(averages, targetGpa);
+  const results = useGpaResults(averages, targetGpa);
+  const { apply, dismiss, grades, hasLink } = useGpaLinkImport({
+    navigate,
+    onApply: setAverages,
+    value: search[GPA_SHARE_PARAM],
+  });
 
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 py-8 sm:p-6 sm:py-14">
       <GpaHero />
-      <GpaStandingSummary cumulative={cumulative} />
+      <GpaStandingSummary cumulative={results.cumulative} />
 
       <GpaEntryGrid
         onAverageChange={setAverage}
         onReset={reset}
-        semesters={semesters}
-        totals={semesterTotals}
+        semesters={results.semesters}
+        totals={results.semesterTotals}
       />
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        <GpaTrendCard points={trendPoints} />
-        <GpaProjection cumulativeGpa={cumulative.gpa} projection={projection} />
-        <GpaTargetPanel
-          onTargetChange={setTargetGpa}
-          outcome={target}
-          targetGpa={targetGpa}
-        />
-      </div>
+      <GpaInsightGrid
+        contributions={results.contributions}
+        cumulativeGpa={results.cumulative.gpa}
+        onTargetChange={setTargetGpa}
+        projection={results.projection}
+        target={results.target}
+        targetGpa={targetGpa}
+        trendPoints={results.trendPoints}
+      />
 
       <SectionDividerDots />
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        <GpaExportCard
-          cumulative={cumulative}
-          projection={projection}
-          semesters={semesters}
-          target={target}
-          targetGpa={targetGpa}
-          trend={trendPoints}
+      <GpaResourcesGrid
+        cumulative={results.cumulative}
+        projection={results.projection}
+        semesters={results.semesters}
+        target={results.target}
+        targetGpa={targetGpa}
+        trendPoints={results.trendPoints}
+      />
+
+      {hasLink ? (
+        <GpaSharedLinkDialog
+          grades={grades}
+          onApply={apply}
+          onDismiss={dismiss}
         />
-        <div className="flex flex-col gap-4">
-          <GpaScaleTable />
-          <GpaStorageNote />
-        </div>
-      </div>
+      ) : null}
     </main>
   );
 }

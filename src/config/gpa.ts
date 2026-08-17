@@ -75,5 +75,23 @@ export const CHART_BAR_MAX_WIDTH = 24;
 export const CHART_WIDTH_PER_POINT = 170;
 
 export const GPA_DECIMAL_PLACES = 2;
+/**
+ * A single course moves the cumulative figure by hundredths, so two decimals
+ * would print every contribution as 0.00.
+ */
+export const CONTRIBUTION_DECIMAL_PLACES = 3;
 export const DEFAULT_TARGET_GPA = 3;
 export const GPA_STORAGE_KEY = "mcce.gpa-calculator.v1";
+
+export const GPA_CALCULATOR_PATH = "/gpa-calculator";
+
+/** Carries a whole set of averages, positional in curriculum order. */
+export const GPA_SHARE_PARAM = "g";
+/**
+ * Averages are clamped to zero and above, so a minus sign can only ever be a
+ * separator. A dot would collide with a fractional average.
+ */
+export const GPA_SHARE_SEPARATOR = "-";
+export const GPA_SHARE_UNGRADED = "x";
+/** How long the copy-link button stays in its confirmed state. */
+export const COPY_FEEDBACK_MS = 2000;

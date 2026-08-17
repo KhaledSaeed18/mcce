@@ -1,4 +1,5 @@
 import {
+  CONTRIBUTION_DECIMAL_PLACES,
   GPA_DECIMAL_PLACES,
   GPA_STATUSES,
   GRADUATION_MIN_GPA,
@@ -22,4 +23,11 @@ export function formatGpa(gpa: number): string {
   const factor = 10 ** GPA_DECIMAL_PLACES;
 
   return (Math.trunc(gpa * factor) / factor).toFixed(GPA_DECIMAL_PLACES);
+}
+
+/** Signed, because the sign is the whole reading of a diverging bar. */
+export function formatContribution(contribution: number): string {
+  const rounded = contribution.toFixed(CONTRIBUTION_DECIMAL_PLACES);
+
+  return contribution > 0 ? `+${rounded}` : rounded;
 }
