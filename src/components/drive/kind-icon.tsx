@@ -1,5 +1,6 @@
 import {
   FileArchiveIcon,
+  FileCodeIcon,
   FileIcon,
   FileSpreadsheetIcon,
   FileTextIcon,
@@ -22,6 +23,7 @@ const ICON_BY_KIND: Record<DriveNodeKind, typeof FileIcon> = {
   pdf: FileTextIcon,
   sheet: FileSpreadsheetIcon,
   slides: PresentationIcon,
+  text: FileCodeIcon,
   video: VideoIcon,
 };
 

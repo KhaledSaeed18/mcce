@@ -6,6 +6,7 @@ export type DriveNodeKind =
   | "slides"
   | "video"
   | "audio"
+  | "text"
   | "image"
   | "archive"
   | "other";
