@@ -47,6 +47,22 @@ describe("buildChildrenMap", () => {
     ]);
   });
 
+  it("orders numbered names by value, not by digit", () => {
+    const nodes = [
+      makeNode({ id: "l10", kind: "folder", name: "Lecture 10" }),
+      makeNode({ id: "l2", kind: "folder", name: "Lecture 2" }),
+      makeNode({ id: "l1", kind: "folder", name: "Lecture 1" }),
+    ];
+
+    const map = buildChildrenMap(nodes);
+
+    expect(map.get("root")?.map((node) => node.id)).toEqual([
+      "l1",
+      "l2",
+      "l10",
+    ]);
+  });
+
   it("skips nodes with no parentId", () => {
     const nodes = [makeNode({ id: "orphan", parentId: null })];
 

@@ -7,10 +7,13 @@ function compareNodes(a: DriveNode, b: DriveNode): number {
   if (a.kind !== "folder" && b.kind === "folder") {
     return 1;
   }
-  return a.name.localeCompare(b.name);
+  return a.name.localeCompare(b.name, undefined, {
+    numeric: true,
+    sensitivity: "base",
+  });
 }
 
-/** Groups nodes by parentId, folders before files, alphabetical within each group. */
+/** Groups nodes by parentId, folders before files, natural order within each group. */
 export function buildChildrenMap(nodes: DriveNode[]): Map<string, DriveNode[]> {
   const map = new Map<string, DriveNode[]>();
 
