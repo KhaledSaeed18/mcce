@@ -1,4 +1,4 @@
-import { NodeCard } from "@/components/drive/node-card";
+import { NodeGrid } from "@/components/drive/node-grid";
 import { UNRECORDED_TERM_LABEL } from "@/config/exams";
 import type { ExamTermGroup as ExamTermGroupData } from "@/lib/drive/types";
 import { cn } from "@/lib/utils";
@@ -26,11 +26,7 @@ export function ExamTermGroup({ group }: ExamTermGroupProps) {
         </span>
       </div>
 
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {group.items.map((node) => (
-          <NodeCard key={node.id} node={node} />
-        ))}
-      </div>
+      <NodeGrid nodes={group.items} />
     </div>
   );
 }

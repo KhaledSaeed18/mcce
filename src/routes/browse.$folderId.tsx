@@ -1,16 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { FolderIcon } from "lucide-react";
-import { Fragment, useMemo } from "react";
-import { NodeCard } from "@/components/drive/node-card";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
+import { useMemo } from "react";
+import { FolderBreadcrumb } from "@/components/drive/folder-breadcrumb";
+import { FolderNotFound } from "@/components/drive/folder-not-found";
+import { NodeGrid } from "@/components/drive/node-grid";
 import {
   Empty,
   EmptyDescription,
@@ -18,47 +11,17 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
-import { SITE_URL } from "@/config/site";
 import { buildChildrenMap } from "@/lib/drive/children-map";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
-import {
-  buildFolderDescription,
-  resolveFolderMeta,
-} from "@/lib/drive/resolve-folder";
-import { buildPageMeta } from "@/lib/seo/meta";
+import { resolveFolderMeta } from "@/lib/drive/resolve-folder";
+import { buildFolderHead } from "@/lib/seo/folder-head";
 
 export const Route = createFileRoute("/browse/$folderId")({
   component: BrowseFolder,
   loader: ({ context }) =>
     context.queryClient.ensureQueryData(driveIndexQueryOptions),
-  head: ({ loaderData, params }) => {
-    const meta = loaderData
-      ? resolveFolderMeta(loaderData, params.folderId)
-      : null;
-    const url = `${SITE_URL}/browse/${params.folderId}`;
-
-    if (!meta) {
-      return {
-        links: [{ href: url, rel: "canonical" }],
-        meta: buildPageMeta({
-          description:
-            "This folder isn't in the current index. It may have moved, or the index may be stale.",
-          robots: "noindex, follow",
-          title: "MCCE",
-          url,
-        }),
-      };
-    }
-
-    return {
-      links: [{ href: url, rel: "canonical" }],
-      meta: buildPageMeta({
-        description: buildFolderDescription(meta),
-        title: `${meta.title} · MCCE`,
-        url,
-      }),
-    };
-  },
+  head: ({ loaderData, params }) =>
+    buildFolderHead(loaderData, params.folderId),
 });
 
 function BrowseFolder() {
@@ -73,25 +36,7 @@ function BrowseFolder() {
   const meta = resolveFolderMeta(driveIndex, folderId);
 
   if (!meta) {
-    return (
-      <main className="mx-auto max-w-6xl p-4 sm:p-6">
-        <Empty>
-          <EmptyHeader>
-            <EmptyMedia variant="icon">
-              <FolderIcon />
-            </EmptyMedia>
-            <EmptyTitle>Folder not found</EmptyTitle>
-            <EmptyDescription>
-              This folder isn't in the current index. It may have moved, or the
-              index may be stale.
-            </EmptyDescription>
-          </EmptyHeader>
-          <Button nativeButton={false} render={<Link to="/" />}>
-            Back to homepage
-          </Button>
-        </Empty>
-      </main>
-    );
+    return <FolderNotFound />;
   }
 
   const { source, title, node: currentNode } = meta;
@@ -105,43 +50,7 @@ function BrowseFolder() {
 
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-4 p-4 sm:p-6">
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink
-              render={
-                <Link
-                  params={{ folderId: source.rootFolderId }}
-                  to="/browse/$folderId"
-                />
-              }
-            >
-              {source.label}
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          {crumbs.map((crumb, index) => (
-            <Fragment key={crumb.id}>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                {index === crumbs.length - 1 ? (
-                  <BreadcrumbPage>{crumb.name}</BreadcrumbPage>
-                ) : (
-                  <BreadcrumbLink
-                    render={
-                      <Link
-                        params={{ folderId: crumb.id }}
-                        to="/browse/$folderId"
-                      />
-                    }
-                  >
-                    {crumb.name}
-                  </BreadcrumbLink>
-                )}
-              </BreadcrumbItem>
-            </Fragment>
-          ))}
-        </BreadcrumbList>
-      </Breadcrumb>
+      <FolderBreadcrumb crumbs={crumbs} source={source} />
 
       <h1 className="break-words font-head text-xl sm:text-2xl">{title}</h1>
 
@@ -156,19 +65,7 @@ function BrowseFolder() {
           </EmptyHeader>
         </Empty>
       ) : (
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {children.map((node) => (
-            <NodeCard
-              childCount={
-                node.kind === "folder"
-                  ? (childrenMap.get(node.id)?.length ?? 0)
-                  : undefined
-              }
-              key={node.id}
-              node={node}
-            />
-          ))}
-        </div>
+        <NodeGrid childrenMap={childrenMap} nodes={children} />
       )}
     </main>
   );

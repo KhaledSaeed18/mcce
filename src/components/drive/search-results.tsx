@@ -1,4 +1,4 @@
-import { NodeCard } from "@/components/drive/node-card";
+import { NodeGrid } from "@/components/drive/node-grid";
 import { SearchEmptyState } from "@/components/drive/search-empty-state";
 import type { DriveNode } from "@/lib/drive/types";
 
@@ -31,19 +31,5 @@ export function SearchResults({
     );
   }
 
-  return (
-    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-      {results.map((node) => (
-        <NodeCard
-          childCount={
-            node.kind === "folder"
-              ? (childrenMap.get(node.id)?.length ?? 0)
-              : undefined
-          }
-          key={node.id}
-          node={node}
-        />
-      ))}
-    </div>
-  );
+  return <NodeGrid childrenMap={childrenMap} nodes={results} />;
 }
