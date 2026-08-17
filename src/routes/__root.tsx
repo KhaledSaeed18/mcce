@@ -149,6 +149,12 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         rel: "manifest",
         href: "/manifest.json",
       },
+      {
+        rel: "alternate",
+        type: "application/rss+xml",
+        title: "MCCE: recently added",
+        href: "/feed.xml",
+      },
     ],
   }),
   notFoundComponent: () => <NotFound />,

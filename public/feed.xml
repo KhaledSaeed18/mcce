@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MCCE: recently added</title>
+    <link>https://mcce.khaledsaeed.tech/recent</link>
+    <description>Material added to the MCCE index, updated weekly.</description>
+    <lastBuildDate>Mon, 17 Aug 2026 06:41:16 GMT</lastBuildDate>
+    <atom:link href="https://mcce.khaledsaeed.tech/feed.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

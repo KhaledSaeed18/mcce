@@ -6,10 +6,12 @@ import { getAccessToken } from "./auth";
 import { type CrawledNode, crawlSource } from "./crawl";
 import { stampFirstSeen } from "./diff";
 import { getFileMetadata } from "./drive-client";
+import { buildFeedXml } from "./feed";
 import { buildSitemapXml } from "./sitemap";
 
 const OUTPUT_PATH = resolve(process.cwd(), "src/data/drive-index.json");
 const SITEMAP_PATH = resolve(process.cwd(), "public/sitemap.xml");
+const FEED_PATH = resolve(process.cwd(), "public/feed.xml");
 
 /** Missing on a first run and after a checkout without the artifact; both mean "nothing to diff". */
 function readPreviousIndex(): DriveIndex | null {
@@ -83,6 +85,9 @@ async function main() {
 
   writeFileSync(SITEMAP_PATH, buildSitemapXml(index));
   console.log(`Wrote sitemap to ${SITEMAP_PATH}`);
+
+  writeFileSync(FEED_PATH, buildFeedXml(index));
+  console.log(`Wrote feed to ${FEED_PATH}`);
 }
 
 main().catch((error: unknown) => {
