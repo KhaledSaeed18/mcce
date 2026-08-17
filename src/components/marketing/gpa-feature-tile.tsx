@@ -34,7 +34,7 @@ export function GpaFeatureTile() {
                   {point.gpa.toFixed(2)}
                 </span>
                 <div
-                  className="w-full rounded-t-sm border-2 bg-[var(--gpa-semester)]"
+                  className="w-full rounded-t-sm border-2 bg-(--gpa-semester)"
                   style={{
                     height: `${(point.gpa / MAX_QUALITY_POINTS) * 100}%`,
                   }}
@@ -53,11 +53,6 @@ export function GpaFeatureTile() {
               </span>
             ))}
           </div>
-
-          <p className="text-muted-foreground text-xs">
-            Dashed line: the {GRADUATION_MIN_GPA.toFixed(1)} cumulative GPA
-            needed to graduate.
-          </p>
         </div>
       </FeatureTile>
     </Link>
