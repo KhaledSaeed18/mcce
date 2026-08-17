@@ -1,4 +1,5 @@
 import { TERM_RANK, UNRECORDED_TERM_LABEL } from "@/config/exams";
+import { compareNaturally } from "./natural-sort";
 import type { DriveNode } from "./types";
 
 const TERM_LABEL_PATTERN = /^(?:(\w+)\s+)?(\d{4})-\d{4}$/;
@@ -42,8 +43,5 @@ export function compareExamNodes(a: DriveNode, b: DriveNode): number {
   if (stageDelta !== 0) {
     return stageDelta;
   }
-  return a.name.localeCompare(b.name, undefined, {
-    numeric: true,
-    sensitivity: "base",
-  });
+  return compareNaturally(a.name, b.name);
 }

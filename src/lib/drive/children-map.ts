@@ -1,3 +1,4 @@
+import { compareNaturally } from "./natural-sort";
 import type { DriveNode } from "./types";
 
 function compareNodes(a: DriveNode, b: DriveNode): number {
@@ -7,10 +8,7 @@ function compareNodes(a: DriveNode, b: DriveNode): number {
   if (a.kind !== "folder" && b.kind === "folder") {
     return 1;
   }
-  return a.name.localeCompare(b.name, undefined, {
-    numeric: true,
-    sensitivity: "base",
-  });
+  return compareNaturally(a.name, b.name);
 }
 
 /** Groups nodes by parentId, folders before files, natural order within each group. */
