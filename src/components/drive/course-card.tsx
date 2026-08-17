@@ -22,7 +22,11 @@ export function CourseCard({ color, course }: CourseCardProps) {
   const semesterLabel = formatSemesterLabel(course.semester);
 
   return (
-    <Link search={{ course: course.code, q: "" }} to="/search">
+    <Link
+      className="block h-full"
+      search={{ course: course.code, q: "" }}
+      to="/search"
+    >
       <Card className={CARD_CLASSES}>
         <CardHeader>
           <div

@@ -3,14 +3,13 @@ import { ArrowRightIcon } from "lucide-react";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useReveal } from "@/hooks/use-reveal";
 
 export function HomeCtaSection() {
+  const reveal = useReveal();
+
   return (
-    <motion.section
-      animate={{ opacity: 1, y: 0 }}
-      initial={{ opacity: 0, y: 12 }}
-      transition={{ duration: 0.4 }}
-    >
+    <motion.section {...reveal.single}>
       <Card className="border-2 bg-secondary text-secondary-foreground shadow-md">
         <CardContent className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-1">

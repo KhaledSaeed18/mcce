@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import { FeatureLinkCard } from "@/components/marketing/feature-link-card";
 import { FeatureTile } from "@/components/marketing/feature-tile";
 import { GpaFeatureTile } from "@/components/marketing/gpa-feature-tile";
@@ -5,23 +6,29 @@ import { PlanFeatureTile } from "@/components/marketing/plan-feature-tile";
 import { SearchFeatureTile } from "@/components/marketing/search-feature-tile";
 import { Badge } from "@/components/ui/badge";
 import { FEATURE_CARDS, OFFLINE_FEATURE } from "@/config/features";
+import { useReveal } from "@/hooks/use-reveal";
 
 export function FeatureGridSection() {
+  const reveal = useReveal();
+
   return (
     <section className="flex flex-col gap-6">
-      <div className="flex flex-col gap-1">
+      <motion.div className="flex flex-col gap-1" {...reveal.single}>
         <h2 className="font-head text-2xl sm:text-3xl">More than the files</h2>
         <p className="text-muted-foreground text-sm">
           The rest of the site, one click away.
         </p>
-      </div>
+      </motion.div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
-        <div className="lg:col-span-4">
+      <motion.div
+        className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6"
+        {...reveal.group}
+      >
+        <motion.div className="lg:col-span-4" {...reveal.item}>
           <SearchFeatureTile />
-        </div>
+        </motion.div>
 
-        <div className="lg:col-span-2">
+        <motion.div className="lg:col-span-2" {...reveal.item}>
           <FeatureTile
             color={OFFLINE_FEATURE.color}
             description={OFFLINE_FEATURE.description}
@@ -36,22 +43,22 @@ export function FeatureGridSection() {
               ))}
             </ul>
           </FeatureTile>
-        </div>
+        </motion.div>
 
-        <div className="lg:col-span-3">
+        <motion.div className="lg:col-span-3" {...reveal.item}>
           <GpaFeatureTile />
-        </div>
+        </motion.div>
 
-        <div className="lg:col-span-3">
+        <motion.div className="lg:col-span-3" {...reveal.item}>
           <PlanFeatureTile />
-        </div>
+        </motion.div>
 
         {FEATURE_CARDS.map((item) => (
-          <div className="lg:col-span-2" key={item.to}>
+          <motion.div className="lg:col-span-2" key={item.to} {...reveal.item}>
             <FeatureLinkCard item={item} />
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
