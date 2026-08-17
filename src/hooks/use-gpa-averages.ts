@@ -5,6 +5,7 @@ import {
   MAX_COURSE_AVERAGE,
 } from "@/config/gpa";
 import type { AverageMap } from "@/lib/gpa/entries";
+import { readJson, writeJson } from "@/lib/storage";
 
 interface StoredState {
   averages: AverageMap;
@@ -13,14 +14,9 @@ interface StoredState {
 
 const EMPTY: StoredState = { averages: {}, targetGpa: DEFAULT_TARGET_GPA };
 
+/** Spread over EMPTY so a payload written before a field existed still loads. */
 function read(): StoredState {
-  try {
-    const raw = localStorage.getItem(GPA_STORAGE_KEY);
-
-    return raw ? { ...EMPTY, ...JSON.parse(raw) } : EMPTY;
-  } catch {
-    return EMPTY;
-  }
+  return { ...EMPTY, ...readJson<Partial<StoredState>>(GPA_STORAGE_KEY, {}) };
 }
 
 /**
@@ -37,7 +33,7 @@ export function useGpaAverages() {
     if (state === null) {
       return;
     }
-    localStorage.setItem(GPA_STORAGE_KEY, JSON.stringify(state));
+    writeJson(GPA_STORAGE_KEY, state);
   }, [state]);
 
   const setAverage = useCallback((code: string, average: number | null) => {
