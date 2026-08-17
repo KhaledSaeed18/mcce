@@ -10,6 +10,7 @@ interface StaticPage {
 const STATIC_PAGES: StaticPage[] = [
   { changefreq: "weekly", path: "/", priority: "1.0" },
   { changefreq: "weekly", path: "/exams", priority: "0.9" },
+  { changefreq: "weekly", path: "/recent", priority: "0.7" },
   { changefreq: "weekly", path: "/plan-of-study", priority: "0.8" },
   { changefreq: "monthly", path: "/gpa-calculator", priority: "0.8" },
   { changefreq: "monthly", path: "/about", priority: "0.6" },

@@ -99,6 +99,18 @@ export interface ExamCourseGroup {
   total: number;
 }
 
+export interface RecentCourseGroup {
+  code: string;
+  items: DriveNode[];
+  name: string | null;
+}
+
+export interface RecentBatch {
+  addedAt: string;
+  courses: RecentCourseGroup[];
+  total: number;
+}
+
 export interface DriveIndexStats {
   fileCount: number;
   folderCount: number;

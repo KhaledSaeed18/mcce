@@ -16,6 +16,7 @@ import { Route as ExamsRouteImport } from './routes/exams'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GpaCalculatorRouteImport } from './routes/gpa-calculator'
 import { Route as PlanOfStudyRouteImport } from './routes/plan-of-study'
+import { Route as RecentRouteImport } from './routes/recent'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as BrowseFolderIdRouteImport } from './routes/browse.$folderId'
 
@@ -54,6 +55,11 @@ const PlanOfStudyRoute = PlanOfStudyRouteImport.update({
   path: '/plan-of-study',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RecentRoute = RecentRouteImport.update({
+  id: '/recent',
+  path: '/recent',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/gpa-calculator': typeof GpaCalculatorRoute
   '/plan-of-study': typeof PlanOfStudyRoute
+  '/recent': typeof RecentRoute
   '/search': typeof SearchRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/gpa-calculator': typeof GpaCalculatorRoute
   '/plan-of-study': typeof PlanOfStudyRoute
+  '/recent': typeof RecentRoute
   '/search': typeof SearchRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/gpa-calculator': typeof GpaCalculatorRoute
   '/plan-of-study': typeof PlanOfStudyRoute
+  '/recent': typeof RecentRoute
   '/search': typeof SearchRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/gpa-calculator'
     | '/plan-of-study'
+    | '/recent'
     | '/search'
     | '/browse/$folderId'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/gpa-calculator'
     | '/plan-of-study'
+    | '/recent'
     | '/search'
     | '/browse/$folderId'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/gpa-calculator'
     | '/plan-of-study'
+    | '/recent'
     | '/search'
     | '/browse/$folderId'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   GpaCalculatorRoute: typeof GpaCalculatorRoute
   PlanOfStudyRoute: typeof PlanOfStudyRoute
+  RecentRoute: typeof RecentRoute
   SearchRoute: typeof SearchRoute
   BrowseFolderIdRoute: typeof BrowseFolderIdRoute
 }
@@ -198,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlanOfStudyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/recent': {
+      id: '/recent'
+      path: '/recent'
+      fullPath: '/recent'
+      preLoaderRoute: typeof RecentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/search': {
       id: '/search'
       path: '/search'
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   GpaCalculatorRoute: GpaCalculatorRoute,
   PlanOfStudyRoute: PlanOfStudyRoute,
+  RecentRoute: RecentRoute,
   SearchRoute: SearchRoute,
   BrowseFolderIdRoute: BrowseFolderIdRoute,
 }

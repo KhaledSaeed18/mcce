@@ -6,6 +6,7 @@ import { FeatureGridSection } from "@/components/marketing/feature-grid-section"
 import { HeroSection } from "@/components/marketing/hero-section";
 import { HomeCtaSection } from "@/components/marketing/home-cta-section";
 import { ProgramGlanceSection } from "@/components/marketing/program-glance-section";
+import { RecentStrip } from "@/components/marketing/recent-strip";
 import { SectionDivider } from "@/components/marketing/section-divider";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
 import { SyncSection } from "@/components/marketing/sync-section";
@@ -14,6 +15,7 @@ import { SITE_URL } from "@/config/site";
 import { DRIVE_SOURCES } from "@/config/sources";
 import { buildCourseSummaries } from "@/lib/drive/courses";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
+import { buildRecentBatches } from "@/lib/drive/recent";
 import { buildIndexStats } from "@/lib/drive/stats";
 import { buildProgramSchema } from "@/lib/seo/schema";
 
@@ -36,10 +38,18 @@ function HomePage() {
     () => buildCourseSummaries(driveIndex.nodes),
     [driveIndex.nodes]
   );
+  const [latestBatch] = useMemo(
+    () => buildRecentBatches(driveIndex),
+    [driveIndex]
+  );
 
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 sm:p-6">
       <HeroSection stats={stats} />
+
+      {latestBatch ? (
+        <RecentStrip addedAt={latestBatch.addedAt} count={latestBatch.total} />
+      ) : null}
 
       <SectionDivider />
 

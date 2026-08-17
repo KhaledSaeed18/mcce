@@ -30,6 +30,14 @@ export function formatDateTime(iso: string): string {
   }).format(new Date(iso));
 }
 
+/** Date only, pinned for the same hydration reason as `formatDateTime`. */
+export function formatDate(iso: string): string {
+  return new Intl.DateTimeFormat("en-US", {
+    dateStyle: "medium",
+    timeZone: "UTC",
+  }).format(new Date(iso));
+}
+
 /** "First Year | Fall Semester" -> "First Year · Fall". */
 export function formatSemesterLabel(semester: string | null): string {
   if (!semester) {
