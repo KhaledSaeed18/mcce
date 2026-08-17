@@ -31,5 +31,5 @@ export function SearchResults({
     );
   }
 
-  return <NodeGrid childrenMap={childrenMap} nodes={results} />;
+  return <NodeGrid childrenMap={childrenMap} nodes={results} showPath />;
 }

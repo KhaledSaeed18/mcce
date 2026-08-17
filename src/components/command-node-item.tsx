@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { KindIcon } from "@/components/drive/kind-icon";
 import { CommandItem } from "@/components/ui/command";
+import { formatNodePath } from "@/lib/drive/node-path";
 import type { DriveNode } from "@/lib/drive/types";
 
 interface CommandNodeItemProps {
@@ -22,7 +23,7 @@ export function CommandNodeItem({ node, onSelect }: CommandNodeItemProps) {
       <div className="flex min-w-0 flex-col">
         <span className="truncate">{node.name}</span>
         <span className="truncate text-muted-foreground text-xs">
-          {node.pathNames.slice(0, -1).join(" / ")}
+          {formatNodePath(node)}
         </span>
       </div>
     </CommandItem>
