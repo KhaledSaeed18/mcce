@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { EmptySourceCard } from "@/components/drive/empty-source-card";
 import { SourceCard } from "@/components/drive/source-card";
 import { DRIVE_SOURCES } from "@/config/sources";
 import { useReveal } from "@/hooks/use-reveal";
@@ -29,13 +30,17 @@ export function SourcesSection({ sourceSummaries }: SourcesSectionProps) {
 
           return (
             <motion.div key={source.id} {...reveal.item}>
-              <SourceCard
-                description={summary?.description ?? null}
-                fileCount={summary?.fileCount ?? 0}
-                folderCount={summary?.folderCount ?? 0}
-                source={source}
-                totalBytes={summary?.totalBytes ?? 0}
-              />
+              {summary?.fileCount ? (
+                <SourceCard
+                  description={summary.description}
+                  fileCount={summary.fileCount}
+                  folderCount={summary.folderCount}
+                  source={source}
+                  totalBytes={summary.totalBytes}
+                />
+              ) : (
+                <EmptySourceCard source={source} />
+              )}
             </motion.div>
           );
         })}
