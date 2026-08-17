@@ -20,6 +20,7 @@ export function CommandPalette() {
     handleOpenChange,
     open,
     query,
+    recent,
     results,
     setQuery,
   } = useCommandPalette();
@@ -52,9 +53,22 @@ export function CommandPalette() {
             value={query}
           />
           <CommandList>
-            <CommandEmpty>
-              {query.trim() ? "No matches." : "Start typing to search."}
-            </CommandEmpty>
+            {recent.length === 0 && (
+              <CommandEmpty>
+                {query.trim() ? "No matches." : "Start typing to search."}
+              </CommandEmpty>
+            )}
+            {recent.length > 0 && (
+              <CommandGroup heading="Recently opened">
+                {recent.map((node) => (
+                  <CommandNodeItem
+                    key={node.id}
+                    node={node}
+                    onSelect={goToNode}
+                  />
+                ))}
+              </CommandGroup>
+            )}
             {results.length > 0 && (
               <CommandGroup heading="Results">
                 {results.map((node) => (

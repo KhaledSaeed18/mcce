@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useRecentNodes } from "@/components/providers/recent-nodes-provider";
 import { COMMAND_RESULT_LIMIT } from "@/config/navigation";
 import { useSound } from "@/hooks/use-sound";
 import { clickSoftSound } from "@/lib/click-soft";
+import { resolveNodeIds } from "@/lib/drive/by-id";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import { searchNodes } from "@/lib/drive/search";
 import type { DriveNode } from "@/lib/drive/types";
@@ -14,6 +16,7 @@ export function useCommandPalette() {
   const navigate = useNavigate();
   const { data: driveIndex } = useQuery(driveIndexQueryOptions);
   const [playClick] = useSound(clickSoftSound, { volume: 0.4 });
+  const { ids: recentIds } = useRecentNodes();
 
   const handleOpenChange = useCallback(
     (nextOpen: boolean) => {
@@ -42,6 +45,16 @@ export function useCommandPalette() {
     }
     return searchNodes(driveIndex.nodes, query).slice(0, COMMAND_RESULT_LIMIT);
   }, [driveIndex, query]);
+
+  // The palette's empty state was blank until a key was pressed; recents give
+  // the most common next action something to be.
+  const recent = useMemo(
+    () =>
+      driveIndex && !query.trim()
+        ? resolveNodeIds(driveIndex.nodes, recentIds)
+        : [],
+    [driveIndex, query, recentIds]
+  );
 
   const goToNode = useCallback(
     (node: DriveNode) => {
@@ -76,6 +89,7 @@ export function useCommandPalette() {
     handleOpenChange,
     open,
     query,
+    recent,
     results,
     setQuery,
   };

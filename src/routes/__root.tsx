@@ -11,6 +11,8 @@ import { SiteFooter } from "@/components/footer/site-footer";
 import { MarginPattern } from "@/components/margin-pattern";
 import { NotFound } from "@/components/not-found";
 import { PageRails } from "@/components/page-rails";
+import { RecentNodesProvider } from "@/components/providers/recent-nodes-provider";
+import { SavedNodesProvider } from "@/components/providers/saved-nodes-provider";
 import { JsonLd } from "@/components/seo/json-ld";
 import {
   SITE_DESCRIPTION,
@@ -174,13 +176,17 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <ThemeProvider>
-          <div className="relative flex min-h-dvh flex-col">
-            <AppHeader />
-            <div className="flex-1">{children}</div>
-            <SiteFooter />
-            <MarginPattern />
-            <PageRails />
-          </div>
+          <SavedNodesProvider>
+            <RecentNodesProvider>
+              <div className="relative flex min-h-dvh flex-col">
+                <AppHeader />
+                <div className="flex-1">{children}</div>
+                <SiteFooter />
+                <MarginPattern />
+                <PageRails />
+              </div>
+            </RecentNodesProvider>
+          </SavedNodesProvider>
         </ThemeProvider>
         <TanStackDevtools
           config={{

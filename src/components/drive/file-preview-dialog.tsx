@@ -1,6 +1,13 @@
-import { CheckIcon, CopyIcon, ExternalLinkIcon } from "lucide-react";
+import {
+  BookmarkCheckIcon,
+  BookmarkIcon,
+  CheckIcon,
+  CopyIcon,
+  ExternalLinkIcon,
+} from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { PreviewLoadingState } from "@/components/drive/preview-loading-state";
+import { useSavedNodes } from "@/components/providers/saved-nodes-provider";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -47,6 +54,11 @@ export function FilePreviewDialog({
   onOpenChange,
 }: FilePreviewDialogProps) {
   const [copyStatus, setCopyStatus] = useState<CopyStatus>("idle");
+  const { isSaved, toggle } = useSavedNodes();
+  const handleToggleSaved = useCallback(
+    () => toggle(node.id),
+    [node.id, toggle]
+  );
   const previewUrl = buildPreviewUrl(node);
   const { status, handleLoad } = usePreviewLoadState(open, previewUrl);
   const canEmbed =
@@ -103,6 +115,18 @@ export function FilePreviewDialog({
         </div>
 
         <DialogFooter>
+          <Button
+            aria-pressed={isSaved(node.id)}
+            onClick={handleToggleSaved}
+            variant="outline"
+          >
+            {isSaved(node.id) ? (
+              <BookmarkCheckIcon data-icon="inline-start" />
+            ) : (
+              <BookmarkIcon data-icon="inline-start" />
+            )}
+            {isSaved(node.id) ? "Saved" : "Save"}
+          </Button>
           <Button onClick={handleCopyLink} variant="outline">
             {copyStatus === "copied" ? (
               <CheckIcon data-icon="inline-start" />
