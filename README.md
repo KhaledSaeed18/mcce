@@ -29,6 +29,9 @@ available to everyone in the program.
 MCCE indexes the shared Drive folders behind both of those channels into one place: a site to
 browse, search, and link to material by semester and course. It re-syncs from Drive on a weekly
 schedule, so the index tracks what's actually shared without anyone maintaining it by hand.
+Alongside the index, it carries the parts of the program that are otherwise scattered across
+PDFs and screenshots: the plan of study, the prerequisite roadmap, and a GPA calculator on the
+program's grading scale.
 
 This is an independent, student-built site. It is not an official page of Lebanese International
 University. For admissions, curriculum, and official program details, see the
@@ -41,17 +44,27 @@ University. For admissions, curriculum, and official program details, see the
 - **Browse by source and course**: program materials organized by Drive source, semester, and
   course, with folder and file counts at a glance.
 - **Search**: find material by name, filtered by semester, course, or file type.
+- **Command palette**: jump straight to a file from anywhere on the site.
 - **File previews**: preview documents, slides, and sheets without leaving the browser.
 - **Plan of study**: a year-by-year curriculum view with semester groups, course requirements,
   and prerequisite notes.
 - **Curriculum roadmap**: a traceable prerequisite graph across the full program, with credit
   totals per year and semester.
-- **PDF export**: download, preview, or share the full plan of study as a PDF.
+- **GPA calculator**: semester and cumulative GPA on the program's 4.0 scale, with a trend chart,
+  an end-of-program projection, and the course average needed to reach a target. Entries stay in
+  the browser, nothing is sent anywhere.
+- **Exports**: download, preview, or share the plan of study as a PDF, and the GPA report as PDF,
+  CSV, or JSON.
 - **Weekly auto-sync**: a scheduled job re-crawls the source Drive and updates the index, so
   material doesn't go stale.
+- **FAQ and about pages**: how the program is structured, and how syncing, search, and file
+  access work here.
 - **Community-sourced contributions**: anyone in the program can send exams, notes, slides, or
   recordings through the contact page to be added to the index.
+- **Works offline**: the index is cached on first visit, so browsing and search keep working with
+  no connection, no sign-in, and no tracking.
 - **Installable**: works as a standalone app on desktop and mobile through the site manifest.
+- **Light and dark themes**: follows the system setting, or set it manually.
 
 ## Contributing
 
