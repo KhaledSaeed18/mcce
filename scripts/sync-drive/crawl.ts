@@ -5,6 +5,9 @@ import { listChildren } from "./drive-client";
 import { classifyMaterialType } from "./material-type";
 import { parseTermLabel } from "./term-label";
 
+/** The crawl cannot know when an id was first seen; `stampFirstSeen` adds that afterwards. */
+export type CrawledNode = Omit<DriveNode, "firstSeenAt">;
+
 const CONCURRENCY = 5;
 const FOLDER_MIME_TYPE = "application/vnd.google-apps.folder";
 const SHORTCUT_MIME_TYPE = "application/vnd.google-apps.shortcut";
@@ -53,7 +56,7 @@ function deriveFacets(item: QueueItem, isFolder: boolean): Facets {
   };
 }
 
-function toNode(item: QueueItem, source: DriveSource): DriveNode {
+function toNode(item: QueueItem, source: DriveSource): CrawledNode {
   const { file, parentId, depth, pathIds, pathNames } = item;
   const isFolder = file.mimeType === FOLDER_MIME_TYPE;
   const facets = deriveFacets(item, isFolder);
@@ -118,8 +121,8 @@ async function mapWithConcurrency<T, R>(
 export async function crawlSource(
   source: DriveSource,
   accessToken: string
-): Promise<DriveNode[]> {
-  const nodes: DriveNode[] = [];
+): Promise<CrawledNode[]> {
+  const nodes: CrawledNode[] = [];
 
   const rootItem: QueueItem = {
     depth: -1,

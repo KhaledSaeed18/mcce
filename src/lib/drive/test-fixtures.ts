@@ -9,6 +9,7 @@ export function makeNode(
     courseName: null,
     depth: 0,
     extension: null,
+    firstSeenAt: "2026-01-01T00:00:00.000Z",
     iconLink: null,
     isShortcut: false,
     kind: "other",

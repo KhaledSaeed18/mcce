@@ -28,6 +28,8 @@ export interface DriveNode {
   /** 0 = a source's root folder. */
   depth: number;
   extension: string | null;
+  /** When a sync first saw this id, which is not the same as when Drive last touched it. */
+  firstSeenAt: string;
   iconLink: string | null;
   id: string;
   isShortcut: boolean;
@@ -106,6 +108,12 @@ export interface DriveIndexStats {
 
 export interface DriveIndex {
   meta: {
+    /**
+     * The run that stamped every node at once because there was nothing to diff
+     * against. Nodes still carrying it were not added then, they were merely
+     * seen first then, so they must not be reported as new.
+     */
+    baselineAt: string;
     generatedAt: string;
     sources: Array<{
       id: string;
