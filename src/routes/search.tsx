@@ -5,7 +5,11 @@ import { SearchResults } from "@/components/drive/search-results";
 import { SITE_URL } from "@/config/site";
 import { useDriveSearch } from "@/hooks/use-drive-search";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
-import type { DriveNodeKind, SearchFilterValues } from "@/lib/drive/types";
+import type {
+  DriveNodeKind,
+  MaterialType,
+  SearchFilterValues,
+} from "@/lib/drive/types";
 import { readOptionalString } from "@/lib/search-params";
 import { buildPageMeta } from "@/lib/seo/meta";
 
@@ -17,7 +21,7 @@ export const Route = createFileRoute("/search")({
     links: [{ href: SEARCH_URL, rel: "canonical" }],
     meta: buildPageMeta({
       description:
-        "Search MCCE program materials by name, semester, course, or file type.",
+        "Search MCCE program materials by name, semester, course, material, or file type.",
       robots: "noindex, follow",
       title: "Search · MCCE",
       url: SEARCH_URL,
@@ -28,6 +32,7 @@ export const Route = createFileRoute("/search")({
   validateSearch: (search: Record<string, unknown>): SearchFilterValues => ({
     course: readOptionalString(search.course),
     kind: readOptionalString(search.kind) as DriveNodeKind | undefined,
+    material: readOptionalString(search.material) as MaterialType | undefined,
     q: typeof search.q === "string" ? search.q : "",
     semester: readOptionalString(search.semester),
   }),

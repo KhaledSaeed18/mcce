@@ -1,8 +1,9 @@
-import type { DriveNode, DriveNodeKind } from "./types";
+import type { DriveNode, DriveNodeKind, MaterialType } from "./types";
 
 export interface DriveFilters {
   courseCode?: string;
   kind?: DriveNodeKind;
+  materialType?: MaterialType;
   semester?: string;
   sourceId?: string;
 }
@@ -22,6 +23,9 @@ export function filterNodes(
       return false;
     }
     if (filters.kind && node.kind !== filters.kind) {
+      return false;
+    }
+    if (filters.materialType && node.materialType !== filters.materialType) {
       return false;
     }
     return true;

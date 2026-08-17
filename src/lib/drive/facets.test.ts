@@ -50,4 +50,17 @@ describe("buildFacetOptions", () => {
       { label: "video", value: "video" },
     ]);
   });
+
+  it("orders material types by the configured order, not alphabetically", () => {
+    const nodes = [
+      makeNode({ id: "1", materialType: "exam" }),
+      makeNode({ id: "2", materialType: "lecture" }),
+      makeNode({ id: "3", materialType: "exam" }),
+    ];
+
+    expect(buildFacetOptions(nodes).materialTypes).toEqual([
+      { label: "Lectures", value: "lecture" },
+      { label: "Exams", value: "exam" },
+    ]);
+  });
 });

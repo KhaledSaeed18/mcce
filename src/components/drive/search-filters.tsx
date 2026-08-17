@@ -2,7 +2,11 @@ import { useCallback } from "react";
 import { SearchFilterSelect } from "@/components/drive/search-filter-select";
 import { Input } from "@/components/ui/input";
 import type { FacetOptions } from "@/lib/drive/facets";
-import type { DriveNodeKind, SearchFilterValues } from "@/lib/drive/types";
+import type {
+  DriveNodeKind,
+  MaterialType,
+  SearchFilterValues,
+} from "@/lib/drive/types";
 
 interface SearchFiltersProps {
   courseOptions: FacetOptions["courses"];
@@ -41,6 +45,12 @@ export function SearchFilters({
     [onChange]
   );
 
+  const handleMaterialChange = useCallback(
+    (material: string | undefined) =>
+      onChange({ material: material as MaterialType | undefined }),
+    [onChange]
+  );
+
   return (
     <>
       <Input
@@ -63,7 +73,13 @@ export function SearchFilters({
           value={values.course}
         />
         <SearchFilterSelect
-          allLabel="All types"
+          allLabel="All material"
+          onValueChange={handleMaterialChange}
+          options={facets.materialTypes}
+          value={values.material}
+        />
+        <SearchFilterSelect
+          allLabel="All file types"
           onValueChange={handleKindChange}
           options={facets.kinds}
           value={values.kind}

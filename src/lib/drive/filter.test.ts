@@ -8,6 +8,7 @@ describe("filterNodes", () => {
       courseCode: "EENG537",
       id: "1",
       kind: "pdf",
+      materialType: "exam",
       semester: "Fall",
       sourceId: "year1",
     }),
@@ -15,6 +16,7 @@ describe("filterNodes", () => {
       courseCode: "CENG675",
       id: "2",
       kind: "video",
+      materialType: "lecture",
       semester: "Spring",
       sourceId: "year1",
     }),
@@ -22,6 +24,7 @@ describe("filterNodes", () => {
       courseCode: "EENG537",
       id: "3",
       kind: "video",
+      materialType: "exam",
       semester: "Fall",
       sourceId: "year2",
     }),
@@ -44,6 +47,12 @@ describe("filterNodes", () => {
         (n) => n.id
       )
     ).toEqual(["3"]);
+  });
+
+  it("filters by material type across file kinds", () => {
+    expect(
+      filterNodes(nodes, { materialType: "exam" }).map((n) => n.id)
+    ).toEqual(["1", "3"]);
   });
 
   it("filters by source", () => {

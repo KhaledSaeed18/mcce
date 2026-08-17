@@ -59,6 +59,7 @@ export interface FilterOption {
 export interface SearchFilterValues {
   course?: string;
   kind?: DriveNodeKind;
+  material?: MaterialType;
   q: string;
   semester?: string;
 }

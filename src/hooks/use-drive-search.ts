@@ -6,7 +6,7 @@ import { searchNodes } from "@/lib/drive/search";
 import type { DriveNode, SearchFilterValues } from "@/lib/drive/types";
 
 export function useDriveSearch(nodes: DriveNode[], values: SearchFilterValues) {
-  const { q, semester, course, kind } = values;
+  const { q, semester, course, kind, material } = values;
 
   const facets = useMemo(() => buildFacetOptions(nodes), [nodes]);
   const childrenMap = useMemo(() => buildChildrenMap(nodes), [nodes]);
@@ -19,7 +19,7 @@ export function useDriveSearch(nodes: DriveNode[], values: SearchFilterValues) {
   }, [nodes, facets.courses, semester]);
 
   const hasCriteria =
-    q.trim().length > 0 || Boolean(semester || course || kind);
+    q.trim().length > 0 || Boolean(semester || course || kind || material);
 
   const results = useMemo(() => {
     if (!hasCriteria) {
@@ -28,10 +28,11 @@ export function useDriveSearch(nodes: DriveNode[], values: SearchFilterValues) {
     const filtered = filterNodes(nodes, {
       courseCode: course,
       kind,
+      materialType: material,
       semester,
     });
     return searchNodes(filtered, q);
-  }, [nodes, q, semester, course, kind, hasCriteria]);
+  }, [nodes, q, semester, course, kind, material, hasCriteria]);
 
   return { childrenMap, courseOptions, facets, hasCriteria, results };
 }

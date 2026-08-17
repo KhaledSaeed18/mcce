@@ -16,7 +16,7 @@ export function SearchResults({
   if (!hasCriteria) {
     return (
       <SearchEmptyState
-        description="Type a name, or pick a semester, course, or type to browse by filter."
+        description="Type a name, or filter by semester, course, material, or file type."
         title="Search the program materials"
       />
     );
