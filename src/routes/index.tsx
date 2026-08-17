@@ -53,6 +53,8 @@ function HomePage() {
 
       <FeatureGridSection />
 
+      <SectionDividerDots />
+
       <SyncSection stats={stats} />
 
       <HomeCtaSection />
