@@ -9,6 +9,8 @@ export type FooterNavLink =
         | "/"
         | "/plan-of-study"
         | "/gpa-calculator"
+        | "/exams"
+        | "/recent"
         | "/about"
         | "/faq"
         | "/search"
@@ -45,6 +47,8 @@ export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
     links: [
       { label: "Homepage", to: "/" },
       { label: "Search files", to: "/search" },
+      { label: "Past exams", to: "/exams" },
+      { label: "Recently added", to: "/recent" },
       {
         folderId: DRIVE_SOURCES[0].rootFolderId,
         label: "First Year",
