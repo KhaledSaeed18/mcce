@@ -41,8 +41,7 @@ export function NodeCardBody({
 
   return (
     <Card className={cn(CARD_CLASSES, isCourseRoot && "bg-primary/10")}>
-      {/* Right padding leaves room for the save button sitting above the link. */}
-      <CardContent className="flex items-center gap-3 pr-11">
+      <CardContent className="flex items-center gap-3">
         {CourseIcon ? (
           <div className="flex size-8 shrink-0 items-center justify-center rounded border-2 border-black bg-primary">
             <CourseIcon className="size-4" />

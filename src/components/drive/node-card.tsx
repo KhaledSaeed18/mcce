@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useCallback } from "react";
 import { NodeCardBody } from "@/components/drive/node-card-body";
-import { SaveNodeButton } from "@/components/drive/save-node-button";
 import type { DriveNode } from "@/lib/drive/types";
 
 const FOCUS_RING_CLASSES =
@@ -19,31 +18,23 @@ export function NodeCard({ node, childCount, showPath }: NodeCardProps) {
     [node.id]
   );
 
-  const isFolder = node.kind === "folder";
+  if (node.kind === "folder") {
+    return (
+      <Link
+        className={FOCUS_RING_CLASSES}
+        params={{ folderId: node.id }}
+        to="/browse/$folderId"
+      >
+        <NodeCardBody childCount={childCount} node={node} showPath={showPath} />
+      </Link>
+    );
+  }
 
+  // The preview lives in the URL, so the card is a link: shareable, and the
+  // back button closes it.
   return (
-    <div className="relative h-full">
-      {isFolder ? (
-        <Link
-          className={FOCUS_RING_CLASSES}
-          params={{ folderId: node.id }}
-          to="/browse/$folderId"
-        >
-          <NodeCardBody
-            childCount={childCount}
-            node={node}
-            showPath={showPath}
-          />
-        </Link>
-      ) : (
-        // The preview lives in the URL, so the card is a link: shareable, and
-        // the back button closes it.
-        <Link className={FOCUS_RING_CLASSES} search={toFilePreview} to=".">
-          <NodeCardBody node={node} showPath={showPath} />
-        </Link>
-      )}
-
-      <SaveNodeButton name={node.name} nodeId={node.id} />
-    </div>
+    <Link className={FOCUS_RING_CLASSES} search={toFilePreview} to=".">
+      <NodeCardBody node={node} showPath={showPath} />
+    </Link>
   );
 }
