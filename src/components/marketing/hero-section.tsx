@@ -2,12 +2,12 @@ import { motion } from "motion/react";
 import { HeroActions } from "@/components/marketing/hero-actions";
 import { HeroNetworkGraphic } from "@/components/marketing/hero-network-graphic";
 import { HeroStats } from "@/components/marketing/hero-stats";
-import type { HeroStatsData } from "@/components/marketing/types";
 import { Badge } from "@/components/ui/badge";
 import { PROGRAM_UNIVERSITY_SHORT } from "@/config/site";
+import type { DriveIndexStats } from "@/lib/drive/types";
 
 interface HeroSectionProps {
-  stats: HeroStatsData;
+  stats: DriveIndexStats;
 }
 
 export function HeroSection({ stats }: HeroSectionProps) {

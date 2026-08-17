@@ -1,8 +1,8 @@
-import type { HeroStatsData } from "@/components/marketing/types";
 import { formatDateTime } from "@/lib/drive/format";
+import type { DriveIndexStats } from "@/lib/drive/types";
 
 interface HeroStatsProps {
-  stats: HeroStatsData;
+  stats: DriveIndexStats;
 }
 
 export function HeroStats({ stats }: HeroStatsProps) {

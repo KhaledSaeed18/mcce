@@ -54,6 +54,13 @@ export interface CourseSummary {
   sourceId: string;
 }
 
+export interface DriveIndexStats {
+  fileCount: number;
+  folderCount: number;
+  generatedAt: string;
+  sourceCount: number;
+}
+
 export interface DriveIndex {
   meta: {
     generatedAt: string;

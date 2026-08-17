@@ -1,18 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { CoursesSection } from "@/components/drive/courses-section";
-import { SourceCard } from "@/components/drive/source-card";
+import { SourcesSection } from "@/components/drive/sources-section";
+import { FeatureGridSection } from "@/components/marketing/feature-grid-section";
 import { HeroSection } from "@/components/marketing/hero-section";
 import { HomeCtaSection } from "@/components/marketing/home-cta-section";
-import { PageTeaserSection } from "@/components/marketing/page-teaser-section";
 import { ProgramGlanceSection } from "@/components/marketing/program-glance-section";
 import { SectionDivider } from "@/components/marketing/section-divider";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
+import { SyncSection } from "@/components/marketing/sync-section";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SITE_URL } from "@/config/site";
 import { DRIVE_SOURCES } from "@/config/sources";
 import { buildCourseSummaries } from "@/lib/drive/courses";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
+import { buildIndexStats } from "@/lib/drive/stats";
 import { buildProgramSchema } from "@/lib/seo/schema";
 
 export const Route = createFileRoute("/")({
@@ -26,15 +28,10 @@ export const Route = createFileRoute("/")({
 
 function HomePage() {
   const driveIndex = Route.useLoaderData();
-  const stats = {
-    fileCount: driveIndex.meta.sources.reduce((sum, s) => sum + s.fileCount, 0),
-    folderCount: driveIndex.meta.sources.reduce(
-      (sum, s) => sum + s.folderCount,
-      0
-    ),
-    generatedAt: driveIndex.meta.generatedAt,
-    sourceCount: DRIVE_SOURCES.length,
-  };
+  const stats = useMemo(
+    () => buildIndexStats(driveIndex, DRIVE_SOURCES.length),
+    [driveIndex]
+  );
   const courses = useMemo(
     () => buildCourseSummaries(driveIndex.nodes),
     [driveIndex.nodes]
@@ -46,27 +43,7 @@ function HomePage() {
 
       <SectionDivider />
 
-      <div className="flex scroll-mt-20 flex-col gap-6" id="materials">
-        <h2 className="font-head text-2xl sm:text-3xl">Program materials</h2>
-
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {DRIVE_SOURCES.map((source) => {
-            const summary = driveIndex.meta.sources.find(
-              (s) => s.id === source.id
-            );
-            return (
-              <SourceCard
-                description={summary?.description ?? null}
-                fileCount={summary?.fileCount ?? 0}
-                folderCount={summary?.folderCount ?? 0}
-                key={source.id}
-                source={source}
-                totalBytes={summary?.totalBytes ?? 0}
-              />
-            );
-          })}
-        </div>
-      </div>
+      <SourcesSection sourceSummaries={driveIndex.meta.sources} />
 
       <CoursesSection courses={courses} />
 
@@ -74,7 +51,9 @@ function HomePage() {
 
       <ProgramGlanceSection />
 
-      <PageTeaserSection />
+      <FeatureGridSection />
+
+      <SyncSection stats={stats} />
 
       <HomeCtaSection />
 

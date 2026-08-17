@@ -8,10 +8,3 @@ export interface HeroLeafNode {
   x: number;
   y: number;
 }
-
-export interface HeroStatsData {
-  fileCount: number;
-  folderCount: number;
-  generatedAt: string;
-  sourceCount: number;
-}
