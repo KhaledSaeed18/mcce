@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const MIN_LOADING_MS = 700;
-const LOAD_TIMEOUT_MS = 6000;
+/** Drive's viewer is slow the first time it renders a given file. */
+const LOAD_TIMEOUT_MS = 12_000;
 
 export type PreviewStatus = "loading" | "loaded" | "timed-out" | "unsupported";
 

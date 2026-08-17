@@ -6,6 +6,7 @@ import {
   ExternalLinkIcon,
 } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
+import { PreviewFallback } from "@/components/drive/preview-fallback";
 import { PreviewLoadingState } from "@/components/drive/preview-loading-state";
 import { useSavedNodes } from "@/components/providers/saved-nodes-provider";
 import { Button } from "@/components/ui/button";
@@ -61,8 +62,9 @@ export function FilePreviewDialog({
   );
   const previewUrl = buildPreviewUrl(node);
   const { status, handleLoad } = usePreviewLoadState(open, previewUrl);
-  const canEmbed =
-    Boolean(previewUrl) && status !== "timed-out" && status !== "unsupported";
+  // Kept mounted through a timeout: a slow embed that arrives late then
+  // replaces the message instead of being stuck behind it forever.
+  const canEmbed = Boolean(previewUrl);
 
   useEffect(() => {
     if (copyStatus === "idle") {
@@ -88,29 +90,19 @@ export function FilePreviewDialog({
 
         <div className="relative min-h-0 flex-1 overflow-hidden rounded border-2">
           {canEmbed ? (
-            <>
-              {status === "loading" ? <PreviewLoadingState /> : null}
-              {/* onLoad is a lifecycle event marking when the embed finished loading, not a user interaction. */}
-              {/* biome-ignore lint/a11y/noNoninteractiveElementInteractions: see comment above */}
-              <iframe
-                className="size-full"
-                onLoad={handleLoad}
-                sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"
-                src={previewUrl ?? undefined}
-                title={node.name}
-              />
-            </>
+            /* onLoad is a lifecycle event marking when the embed finished loading, not a user interaction. */
+            /* biome-ignore lint/a11y/noNoninteractiveElementInteractions: see comment above */
+            <iframe
+              className="size-full"
+              onLoad={handleLoad}
+              sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"
+              src={previewUrl ?? undefined}
+              title={node.name}
+            />
           ) : null}
-          {!canEmbed && status === "loading" ? <PreviewLoadingState /> : null}
-          {!canEmbed && status !== "loading" ? (
-            <div className="flex size-full flex-col items-center justify-center gap-1 p-6 text-center text-muted-foreground text-sm">
-              <p>
-                {status === "timed-out"
-                  ? "Preview is taking a while to load."
-                  : "This file type can't be previewed here."}
-              </p>
-              <p>Open it in Google Drive instead.</p>
-            </div>
+          {status === "loading" ? <PreviewLoadingState /> : null}
+          {status === "timed-out" || status === "unsupported" ? (
+            <PreviewFallback slow={status === "timed-out"} />
           ) : null}
         </div>
 
