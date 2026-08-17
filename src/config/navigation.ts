@@ -1,3 +1,6 @@
+/** The command palette shows a shortlist; the search page is where everything is. */
+export const COMMAND_RESULT_LIMIT = 8;
+
 export interface NavLink {
   label: string;
   to:
