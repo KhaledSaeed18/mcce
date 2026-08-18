@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Card, CardContent } from "@/components/ui/card";
+import { FactCard } from "@/components/fact-card";
 import { getProgramFacts } from "@/lib/curriculum/credits";
 import type { CurriculumYear } from "@/lib/curriculum/types";
 
@@ -18,14 +18,7 @@ export function CurriculumOverview({ years }: CurriculumOverviewProps) {
       transition={{ delay: 0.1, duration: 0.4 }}
     >
       {facts.map((fact) => (
-        <Card key={fact.label} size="sm">
-          <CardContent>
-            <dt className="text-muted-foreground text-xs uppercase tracking-wide">
-              {fact.label}
-            </dt>
-            <dd className="font-head text-2xl">{fact.value}</dd>
-          </CardContent>
-        </Card>
+        <FactCard key={fact.label} label={fact.label} value={fact.value} />
       ))}
     </motion.dl>
   );

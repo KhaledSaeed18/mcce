@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Card, CardContent } from "@/components/ui/card";
+import { FactCard } from "@/components/fact-card";
 import {
   PROGRAM_DEPARTMENT,
   PROGRAM_DURATION_LABEL,
@@ -43,14 +43,12 @@ export function AboutInfo() {
 
       <dl className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {FACTS.map((fact) => (
-          <Card key={fact.label} size="sm">
-            <CardContent>
-              <dt className="text-muted-foreground text-xs uppercase tracking-wide">
-                {fact.label}
-              </dt>
-              <dd className="font-medium text-sm">{fact.value}</dd>
-            </CardContent>
-          </Card>
+          <FactCard
+            key={fact.label}
+            label={fact.label}
+            value={fact.value}
+            valueClassName="font-medium font-sans text-sm"
+          />
         ))}
       </dl>
 

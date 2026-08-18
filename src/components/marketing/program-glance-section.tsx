@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRightIcon } from "lucide-react";
 import { motion } from "motion/react";
-import { Card, CardContent } from "@/components/ui/card";
+import { FactCard } from "@/components/fact-card";
 import { CURRICULUM } from "@/config/curriculum";
 import { useReveal } from "@/hooks/use-reveal";
 import { getProgramFacts } from "@/lib/curriculum/credits";
@@ -39,16 +39,12 @@ export function ProgramGlanceSection() {
         {...reveal.group}
       >
         {PROGRAM_FACTS.map((fact) => (
-          <motion.div key={fact.label} {...reveal.item}>
-            <Card size="sm">
-              <CardContent>
-                <dt className="text-muted-foreground text-xs uppercase tracking-wide">
-                  {fact.label}
-                </dt>
-                <dd className="font-head text-2xl">{fact.value}</dd>
-              </CardContent>
-            </Card>
-          </motion.div>
+          <FactCard
+            key={fact.label}
+            label={fact.label}
+            value={fact.value}
+            {...reveal.item}
+          />
         ))}
       </motion.dl>
     </section>
