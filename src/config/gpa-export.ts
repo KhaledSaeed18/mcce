@@ -84,8 +84,7 @@ export const PDF_SEMESTER_COLOR: readonly [number, number, number] = [
 export const PDF_CUMULATIVE_COLOR: readonly [number, number, number] = [
   124, 92, 214,
 ];
-/** The contribution bars reuse the on-page pairing: purple lifts, red drags. */
-export const PDF_LIFT_COLOR = PDF_CUMULATIVE_COLOR;
+/** The contribution bars reuse the on-page pairing: the cumulative purple lifts, red drags. */
 export const PDF_DRAG_COLOR: readonly [number, number, number] = [230, 57, 70];
 
 /* Contribution chart layout, in points. */

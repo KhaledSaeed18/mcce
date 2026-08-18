@@ -4,8 +4,8 @@ import {
   PDF_CONTRIBUTION_LABEL_WIDTH,
   PDF_CONTRIBUTION_ROW_HEIGHT,
   PDF_CONTRIBUTION_VALUE_WIDTH,
+  PDF_CUMULATIVE_COLOR,
   PDF_DRAG_COLOR,
-  PDF_LIFT_COLOR,
   PDF_MUTED_COLOR,
   PDF_TEXT_COLOR,
 } from "@/config/gpa-export";
@@ -38,7 +38,7 @@ function drawRow(
   doc.setTextColor(...PDF_TEXT_COLOR);
   doc.text(contribution.code, box.left, y);
 
-  doc.setFillColor(...(isLift ? PDF_LIFT_COLOR : PDF_DRAG_COLOR));
+  doc.setFillColor(...(isLift ? PDF_CUMULATIVE_COLOR : PDF_DRAG_COLOR));
   doc.rect(
     isLift ? box.centre : box.centre - length,
     y - PDF_CONTRIBUTION_BAR_HEIGHT + 1,
