@@ -55,25 +55,14 @@ function GpaCalculatorPage() {
       />
 
       <GpaInsightGrid
-        contributions={results.contributions}
-        cumulativeGpa={results.cumulative.gpa}
         onTargetChange={setTargetGpa}
-        projection={results.projection}
-        target={results.target}
+        results={results}
         targetGpa={targetGpa}
-        trendPoints={results.trendPoints}
       />
 
       <SectionDividerDots />
 
-      <GpaResourcesGrid
-        cumulative={results.cumulative}
-        projection={results.projection}
-        semesters={results.semesters}
-        target={results.target}
-        targetGpa={targetGpa}
-        trendPoints={results.trendPoints}
-      />
+      <GpaResourcesGrid results={results} targetGpa={targetGpa} />
 
       {hasLink ? (
         <GpaSharedLinkDialog

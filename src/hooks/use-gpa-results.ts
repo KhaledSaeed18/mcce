@@ -12,6 +12,9 @@ import {
 import { project } from "@/lib/gpa/projection";
 import { solveTarget } from "@/lib/gpa/target";
 
+/** Every figure the page derives, passed to sections as one bundle. */
+export type GpaResults = ReturnType<typeof useGpaResults>;
+
 /** Derives every figure on the page from the entered averages. */
 export function useGpaResults(averages: AverageMap, targetGpa: number) {
   const semesters = useMemo(
