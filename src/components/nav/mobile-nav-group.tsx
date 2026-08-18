@@ -83,8 +83,11 @@ export function MobileNavGroup({
         />
       </button>
 
+      {/* initial={false}: the group holding the current page starts open, and
+       * animating that open as the menu itself wipes in reads as two competing
+       * moves. Later toggles still animate. */}
       {shouldRenderPanel ? (
-        <AnimatePresence>
+        <AnimatePresence initial={false}>
           {isExpanded ? (
             <motion.div
               animate={{ height: "auto", opacity: 1 }}

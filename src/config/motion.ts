@@ -40,9 +40,6 @@ export const NAV_CARD_GROUP_VARIANTS: Variants = {
   visible: { transition: { delayChildren: 0.04, staggerChildren: 0.03 } },
 };
 
-/** Matches the sheet's close keyframe, so it stays mounted until it is gone. */
-export const NAV_SHEET_EXIT_MS = 320;
-
 /** Group panels collapse on a tween so the unmount can be timed against it. */
 export const NAV_GROUP_EXIT_MS = 280;
 export const NAV_GROUP_TRANSITION: Transition = {
