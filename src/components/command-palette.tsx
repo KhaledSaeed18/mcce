@@ -34,14 +34,14 @@ export function CommandPalette() {
     <>
       <Button
         aria-label="Search files and folders"
-        className="h-8"
+        className="size-8 p-0 lg:size-auto lg:h-8 lg:px-3"
         onClick={handleOpenClick}
         size="sm"
         variant="outline"
       >
         <SearchIcon data-icon="inline-start" />
-        <span className="hidden sm:inline">Search</span>
-        <kbd className="hidden rounded border-2 bg-muted px-1 font-sans text-xs sm:inline">
+        <span className="hidden lg:inline">Search</span>
+        <kbd className="hidden rounded border-2 bg-muted px-1 font-sans text-xs lg:inline">
           ⌘K
         </kbd>
       </Button>

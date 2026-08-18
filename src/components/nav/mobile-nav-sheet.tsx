@@ -1,20 +1,12 @@
-import { Link } from "@tanstack/react-router";
-import { XIcon } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useRef } from "react";
-import { LogoMark } from "@/components/logo-mark";
 import { MobileNavGroups } from "@/components/nav/mobile-nav-groups";
-import { Button } from "@/components/ui/button";
-import {
-  NAV_SHEET_CLOSED_CLIP,
-  NAV_SHEET_EXIT_MS,
-  NAV_SHEET_EXIT_TRANSITION,
-  NAV_SHEET_OPEN_CLIP,
-  NAV_SHEET_TRANSITION,
-} from "@/config/motion";
+import { NAV_SHEET_EXIT_MS } from "@/config/motion";
 import { DOT_GRID_BACKGROUND } from "@/config/patterns";
 import { useDelayedUnmount } from "@/hooks/use-delayed-unmount";
-import { useFocusTrap } from "@/hooks/use-focus-trap";
+
+/* Sits under the header bar rather than over it, so the search and theme
+ * buttons stay where they are while the menu is open. */
+const SHEET_CLASSES =
+  "absolute inset-x-0 top-full h-[calc(100dvh-100%)] overflow-y-auto overscroll-contain bg-background px-4 pb-8 duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top-6 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-top-6 sm:px-6 lg:hidden";
 
 interface MobileNavSheetProps {
   isOpen: boolean;
@@ -27,65 +19,23 @@ export function MobileNavSheet({
   onClose,
   panelId,
 }: MobileNavSheetProps) {
-  const sheetRef = useRef<HTMLDivElement>(null);
-  const shouldReduceMotion = useReducedMotion();
   const shouldRender = useDelayedUnmount(isOpen, NAV_SHEET_EXIT_MS);
-
-  useFocusTrap(sheetRef, isOpen);
 
   if (!shouldRender) {
     return null;
   }
 
   return (
-    <AnimatePresence>
-      {isOpen ? (
-        <motion.div
-          animate={{ clipPath: NAV_SHEET_OPEN_CLIP }}
-          aria-label="Site menu"
-          aria-modal="true"
-          className="fixed inset-0 z-50 flex flex-col bg-background lg:hidden"
-          exit={{
-            clipPath: NAV_SHEET_CLOSED_CLIP,
-            transition: NAV_SHEET_EXIT_TRANSITION,
-          }}
-          id={panelId}
-          initial={{ clipPath: NAV_SHEET_CLOSED_CLIP }}
-          key="mobile-nav-sheet"
-          ref={sheetRef}
-          role="dialog"
-          style={DOT_GRID_BACKGROUND}
-          transition={
-            shouldReduceMotion ? { duration: 0 } : NAV_SHEET_TRANSITION
-          }
-        >
-          <div className="flex items-center justify-between gap-4 border-b-2 bg-background p-4 sm:px-6">
-            <Link
-              className="group flex items-center gap-2 font-head text-lg"
-              onClick={onClose}
-              to="/"
-            >
-              <LogoMark />
-              MCCE
-            </Link>
-            <Button
-              aria-label="Close menu"
-              className="size-8 p-0"
-              onClick={onClose}
-              size="sm"
-              variant="outline"
-            >
-              <XIcon />
-            </Button>
-          </div>
-
-          <div className="flex-1 overflow-y-auto overscroll-contain px-4 pb-6 sm:px-6">
-            <div className="mt-5">
-              <MobileNavGroups onNavigate={onClose} />
-            </div>
-          </div>
-        </motion.div>
-      ) : null}
-    </AnimatePresence>
+    <div
+      aria-label="Site menu"
+      aria-modal="true"
+      className={SHEET_CLASSES}
+      data-state={isOpen ? "open" : "closed"}
+      id={panelId}
+      role="dialog"
+      style={DOT_GRID_BACKGROUND}
+    >
+      <MobileNavGroups onNavigate={onClose} />
+    </div>
   );
 }

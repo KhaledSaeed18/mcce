@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-/** Keeps an overlay mounted for the length of its close animation. Motion's
- * AnimatePresence does not release its child on this version, so the exit is
- * timed here instead. */
+/** Keeps an overlay mounted for the length of its close animation, so the
+ * element can play its exit before it leaves the tree. */
 export function useDelayedUnmount(isOpen: boolean, exitMs: number) {
   const [isExiting, setIsExiting] = useState(false);
   const wasOpen = useRef(isOpen);

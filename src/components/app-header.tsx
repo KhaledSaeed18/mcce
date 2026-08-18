@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { useRef } from "react";
 import { CommandPalette } from "@/components/command-palette";
 import { LogoMark } from "@/components/logo-mark";
 import { DesktopNav } from "@/components/nav/desktop-nav";
@@ -6,15 +7,24 @@ import { MobileMenuToggle } from "@/components/nav/mobile-menu-toggle";
 import { MobileNavSheet } from "@/components/nav/mobile-nav-sheet";
 import { RailLine } from "@/components/page-rails";
 import { ThemeSwitcher } from "@/components/theme-switcher";
+import { useFocusTrap } from "@/hooks/use-focus-trap";
 import { useMobileMenu } from "@/hooks/use-mobile-menu";
 
 const MOBILE_NAV_PANEL_ID = "mobile-nav-panel";
 
 export function AppHeader() {
+  const headerRef = useRef<HTMLElement>(null);
   const { close, isOpen, toggle } = useMobileMenu();
 
+  // The sheet opens inside the header, so the trap covers both the bar and the
+  // menu below it and the search and theme buttons stay reachable.
+  useFocusTrap(headerRef, isOpen);
+
   return (
-    <header className="sticky top-0 z-40 border-b-2 bg-background">
+    <header
+      className="sticky top-0 z-50 border-b-2 bg-background"
+      ref={headerRef}
+    >
       <RailLine side="left" />
       <RailLine side="right" />
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 p-4 sm:px-6">

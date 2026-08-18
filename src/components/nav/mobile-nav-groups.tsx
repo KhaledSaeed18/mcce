@@ -10,7 +10,7 @@ export function MobileNavGroups({ onNavigate }: MobileNavGroupsProps) {
   const { activeGroupValue, expandedValue, toggleGroup } = useNavAccordion();
 
   return (
-    <ul className="flex flex-col border-t-2">
+    <ul className="flex flex-col">
       {NAV_GROUPS.map((group, index) => (
         <MobileNavGroup
           group={group}
