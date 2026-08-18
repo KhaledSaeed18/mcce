@@ -1,10 +1,12 @@
 import type { GpaTrendPoint } from "@/lib/gpa/chart";
+import type { CourseContribution } from "@/lib/gpa/contribution";
 import type { GpaTotals, Projection, TargetOutcome } from "@/lib/gpa/types";
 
 export type GpaExportSection =
   | "summary"
   | "courses"
   | "chart"
+  | "contribution"
   | "projection"
   | "target";
 
@@ -36,6 +38,7 @@ export interface GpaExportSemester {
 }
 
 export interface GpaExportPayload {
+  contributions: CourseContribution[];
   cumulative: GpaTotals;
   degreeCredits: number;
   generatedAt: string;

@@ -15,6 +15,7 @@ export function GpaResourcesGrid({
   return (
     <div className="grid gap-4 lg:grid-cols-2">
       <GpaExportCard
+        contributions={results.contributions}
         cumulative={results.cumulative}
         projection={results.projection}
         semesters={results.semesters}

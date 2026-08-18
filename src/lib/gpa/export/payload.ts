@@ -1,6 +1,7 @@
 import { MCCE_DEGREE_CREDITS } from "@/config/gpa";
 import { getSemesterTotals } from "@/lib/gpa/calculate";
 import type { GpaTrendPoint } from "@/lib/gpa/chart";
+import type { CourseContribution } from "@/lib/gpa/contribution";
 import type { GpaSemester } from "@/lib/gpa/entries";
 import { getQualityPoints } from "@/lib/gpa/scale";
 import { getStanding } from "@/lib/gpa/standing";
@@ -8,6 +9,7 @@ import type { GpaTotals, Projection, TargetOutcome } from "@/lib/gpa/types";
 import type { GpaExportPayload, GpaExportSemester } from "./types";
 
 interface BuildPayloadInput {
+  contributions: CourseContribution[];
   cumulative: GpaTotals;
   projection: Projection | null;
   semesters: GpaSemester[];
@@ -41,6 +43,7 @@ function toExportSemester(
 
 /** One serialisable snapshot every format renders from, so they cannot drift. */
 export function buildExportPayload({
+  contributions,
   cumulative,
   projection,
   semesters,
@@ -53,6 +56,7 @@ export function buildExportPayload({
   );
 
   return {
+    contributions,
     cumulative,
     degreeCredits: MCCE_DEGREE_CREDITS,
     generatedAt: new Date().toISOString(),

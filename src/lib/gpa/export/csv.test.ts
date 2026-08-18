@@ -6,6 +6,7 @@ function makePayload(
   courses: GpaExportPayload["semesters"][number]["courses"]
 ): GpaExportPayload {
   return {
+    contributions: [],
     cumulative: { credits: 3, gpa: 3.5, qualityPoints: 10.5 },
     degreeCredits: 52,
     generatedAt: "2026-08-16T00:00:00.000Z",

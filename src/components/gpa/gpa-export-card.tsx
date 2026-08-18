@@ -7,10 +7,12 @@ import { GPA_EXPORT_SECTION_OPTIONS } from "@/config/gpa-export";
 import { useGpaExport } from "@/hooks/use-gpa-export";
 import { useGpaExportSections } from "@/hooks/use-gpa-export-sections";
 import type { GpaTrendPoint } from "@/lib/gpa/chart";
+import type { CourseContribution } from "@/lib/gpa/contribution";
 import type { GpaSemester } from "@/lib/gpa/entries";
 import type { GpaTotals, Projection, TargetOutcome } from "@/lib/gpa/types";
 
 interface GpaExportCardProps {
+  contributions: CourseContribution[];
   cumulative: GpaTotals;
   projection: Projection | null;
   semesters: GpaSemester[];
@@ -20,6 +22,7 @@ interface GpaExportCardProps {
 }
 
 export function GpaExportCard({
+  contributions,
   cumulative,
   projection,
   semesters,
@@ -28,8 +31,16 @@ export function GpaExportCard({
   trend,
 }: GpaExportCardProps) {
   const input = useMemo(
-    () => ({ cumulative, projection, semesters, target, targetGpa, trend }),
-    [cumulative, projection, semesters, target, targetGpa, trend]
+    () => ({
+      contributions,
+      cumulative,
+      projection,
+      semesters,
+      target,
+      targetGpa,
+      trend,
+    }),
+    [contributions, cumulative, projection, semesters, target, targetGpa, trend]
   );
   const { sections, toggleSection } = useGpaExportSections();
   const { canShare, error, exportCsv, exportJson, exportPdf, pending } =

@@ -2,12 +2,14 @@ import type { jsPDF } from "jspdf";
 import {
   PDF_BRAND_COLOR,
   PDF_CHART_HEIGHT,
+  PDF_CONTRIBUTION_ROW_HEIGHT,
   PDF_HEADER_HEIGHT,
   PDF_MUTED_COLOR,
   PDF_PAGE_MARGIN,
   PDF_PAPER_COLOR,
   PDF_TEXT_COLOR,
 } from "@/config/gpa-export";
+import { getPeakContribution } from "@/lib/gpa/chart";
 import { formatGpa } from "@/lib/gpa/standing";
 import { drawTrendChart } from "./pdf-chart";
 import {
@@ -16,6 +18,7 @@ import {
   fillPageBackground,
   loadLogoDataUrl,
 } from "./pdf-chrome";
+import { drawContributionChart } from "./pdf-contribution";
 import {
   drawHeading,
   drawProjection,
@@ -126,6 +129,23 @@ export async function buildGpaPdf(
     cursorY = drawTrendChart(
       doc,
       payload.trend,
+      PDF_PAGE_MARGIN,
+      cursorY,
+      contentWidth
+    );
+  }
+
+  if (sections.contribution && payload.contributions.length > 0) {
+    const peak = getPeakContribution(payload.contributions);
+
+    ensureSpace(
+      payload.contributions.length * PDF_CONTRIBUTION_ROW_HEIGHT + 40
+    );
+    cursorY = drawHeading(doc, "What is moving your GPA", cursorY);
+    cursorY = drawContributionChart(
+      doc,
+      payload.contributions,
+      peak,
       PDF_PAGE_MARGIN,
       cursorY,
       contentWidth

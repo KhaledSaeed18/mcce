@@ -16,6 +16,7 @@ export const PREVIEW_URL_TTL_MS = 60_000;
 
 export const DEFAULT_EXPORT_SECTIONS: GpaExportSections = {
   chart: true,
+  contribution: true,
   courses: true,
   projection: true,
   summary: true,
@@ -38,6 +39,11 @@ export const GPA_EXPORT_SECTION_OPTIONS: GpaExportSectionOption[] = [
     description: "Semester GPA against the cumulative line",
     id: "chart",
     label: "GPA chart",
+  },
+  {
+    description: "Every graded course against your cumulative GPA",
+    id: "contribution",
+    label: "Course contributions",
   },
   {
     description: "The highest and lowest final GPA still reachable",
@@ -78,3 +84,12 @@ export const PDF_SEMESTER_COLOR: readonly [number, number, number] = [
 export const PDF_CUMULATIVE_COLOR: readonly [number, number, number] = [
   124, 92, 214,
 ];
+/** The contribution bars reuse the on-page pairing: purple lifts, red drags. */
+export const PDF_LIFT_COLOR = PDF_CUMULATIVE_COLOR;
+export const PDF_DRAG_COLOR: readonly [number, number, number] = [230, 57, 70];
+
+/* Contribution chart layout, in points. */
+export const PDF_CONTRIBUTION_ROW_HEIGHT = 14;
+export const PDF_CONTRIBUTION_BAR_HEIGHT = 7;
+export const PDF_CONTRIBUTION_LABEL_WIDTH = 62;
+export const PDF_CONTRIBUTION_VALUE_WIDTH = 40;
