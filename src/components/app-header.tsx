@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { CommandPalette } from "@/components/command-palette";
 import { LogoMark } from "@/components/logo-mark";
+import { DesktopNav } from "@/components/nav/desktop-nav";
 import { MobileMenuToggle } from "@/components/nav/mobile-menu-toggle";
-import { MobileNavPanel } from "@/components/nav/mobile-nav-panel";
-import { SiteNav } from "@/components/nav/site-nav";
+import { MobileNavSheet } from "@/components/nav/mobile-nav-sheet";
 import { RailLine } from "@/components/page-rails";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { useMobileMenu } from "@/hooks/use-mobile-menu";
@@ -25,7 +25,7 @@ export function AppHeader() {
           <LogoMark />
           MCCE
         </Link>
-        <SiteNav />
+        <DesktopNav />
         <div className="flex items-center gap-2">
           <CommandPalette />
           <ThemeSwitcher />
@@ -36,9 +36,9 @@ export function AppHeader() {
           />
         </div>
       </div>
-      <MobileNavPanel
+      <MobileNavSheet
         isOpen={isOpen}
-        onNavigate={close}
+        onClose={close}
         panelId={MOBILE_NAV_PANEL_ID}
       />
     </header>

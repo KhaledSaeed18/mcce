@@ -23,3 +23,49 @@ export const REVEAL_GROUP_VARIANTS: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: REVEAL_STAGGER_SECONDS } },
 };
+
+/** Nav panels open on their own, so their children pace off the panel mount
+ * rather than the scroll position the reveal variants above key on. */
+export const NAV_CARD_VARIANTS: Variants = {
+  hidden: { opacity: 0, y: 8 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.25, ease: "easeOut" },
+    y: 0,
+  },
+};
+
+export const NAV_CARD_GROUP_VARIANTS: Variants = {
+  hidden: {},
+  visible: { transition: { delayChildren: 0.04, staggerChildren: 0.03 } },
+};
+
+/** The sheet wipes down from behind the header rather than fading, so the
+ * header it came out of stays the anchor for where the menu lives. */
+export const NAV_SHEET_EXIT_MS = 320;
+export const NAV_SHEET_OPEN_CLIP = "inset(0 0 0% 0)";
+export const NAV_SHEET_CLOSED_CLIP = "inset(0 0 100% 0)";
+
+export const NAV_SHEET_TRANSITION: Transition = {
+  duration: 0.42,
+  ease: [0.22, 1, 0.36, 1],
+};
+
+export const NAV_SHEET_EXIT_TRANSITION: Transition = { duration: 0.3 };
+
+/** Group panels collapse on a tween so the unmount can be timed against it. */
+export const NAV_GROUP_EXIT_MS = 280;
+export const NAV_GROUP_TRANSITION: Transition = {
+  duration: 0.32,
+  ease: [0.22, 1, 0.36, 1],
+};
+
+export const NAV_SHEET_ROW_VARIANTS: Variants = {
+  hidden: { opacity: 0, x: -24 },
+  visible: { opacity: 1, transition: { duration: 0.3, ease: "easeOut" }, x: 0 },
+};
+
+export const NAV_SHEET_GROUP_VARIANTS: Variants = {
+  hidden: {},
+  visible: { transition: { delayChildren: 0.06, staggerChildren: 0.05 } },
+};

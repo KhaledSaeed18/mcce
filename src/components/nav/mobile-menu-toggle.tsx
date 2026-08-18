@@ -1,5 +1,8 @@
-import { MenuIcon, XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+const BAR_CLASSES =
+  "absolute h-[2px] w-4 rounded-[1px] bg-current transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]";
 
 interface MobileMenuToggleProps {
   isOpen: boolean;
@@ -22,7 +25,17 @@ export function MobileMenuToggle({
       size="sm"
       variant="outline"
     >
-      {isOpen ? <XIcon /> : <MenuIcon />}
+      <span
+        aria-hidden="true"
+        className="relative flex size-4 items-center justify-center"
+      >
+        <span
+          className={cn(BAR_CLASSES, isOpen ? "rotate-45" : "-translate-y-1")}
+        />
+        <span
+          className={cn(BAR_CLASSES, isOpen ? "-rotate-45" : "translate-y-1")}
+        />
+      </span>
     </Button>
   );
 }
