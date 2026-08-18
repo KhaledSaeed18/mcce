@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { HeroActions } from "@/components/marketing/hero-actions";
-import { HeroNetworkGraphic } from "@/components/marketing/hero-network-graphic";
+import { HeroPanel } from "@/components/marketing/hero-panel";
+import { HeroQuickLinks } from "@/components/marketing/hero-quick-links";
 import { HeroStats } from "@/components/marketing/hero-stats";
 import { Badge } from "@/components/ui/badge";
 import { PROGRAM_UNIVERSITY_SHORT } from "@/config/site";
@@ -19,23 +20,26 @@ export function HeroSection({ stats }: HeroSectionProps) {
         initial={{ opacity: 0, y: 12 }}
         transition={{ duration: 0.4 }}
       >
-        <Badge className="w-fit gap-1.5" variant="outline">
-          <span className="size-1.5 rounded-full bg-primary" />
-          {PROGRAM_UNIVERSITY_SHORT} · MCCE
-        </Badge>
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge className="w-fit gap-1.5" variant="outline">
+            <span className="size-1.5 rounded-full bg-primary" />
+            {PROGRAM_UNIVERSITY_SHORT} · MCCE
+          </Badge>
+        </div>
 
         <h1 className="max-w-xl font-head text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-          Stop digging through{" "}
-          <span className="text-primary">Drive folders</span>.
+          The whole program, <span className="text-primary">indexed</span>.
         </h1>
 
         <p className="max-w-xl text-base text-muted-foreground sm:text-lg">
-          MCCE indexes every lecture, exam, and slide deck from both years of
-          the program. Browse by semester, jump to a course, or search a file by
-          name.
+          Slides, past exams, problem sets, and recordings from both years of
+          MCCE, pulled straight from the program's Drive and kept in sync. On
+          top of the files: search across every name, the plan of study with its
+          prerequisites, and a GPA calculator on the program's scale.
         </p>
 
         <HeroActions />
+        <HeroQuickLinks />
         <HeroStats stats={stats} />
       </motion.div>
 
@@ -44,7 +48,7 @@ export function HeroSection({ stats }: HeroSectionProps) {
         initial={{ opacity: 0, scale: 0.96 }}
         transition={{ delay: 0.1, duration: 0.4 }}
       >
-        <HeroNetworkGraphic />
+        <HeroPanel />
       </motion.div>
     </section>
   );

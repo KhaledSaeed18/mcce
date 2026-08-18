@@ -1,8 +1,13 @@
 import { motion, useReducedMotion } from "motion/react";
+import { HeroNetworkEdges } from "@/components/marketing/hero-network-edges";
 import { HeroNetworkLeaf } from "@/components/marketing/hero-network-leaf";
-import { HERO_GRAPHIC_HUB, HERO_GRAPHIC_LEAVES } from "@/config/hero";
+import { HeroNetworkTool } from "@/components/marketing/hero-network-tool";
+import {
+  HERO_GRAPHIC_HUB,
+  HERO_GRAPHIC_LEAVES,
+  HERO_GRAPHIC_TOOLS,
+} from "@/config/hero";
 import { DOT_GRID_BACKGROUND } from "@/config/patterns";
-import { Badge } from "../ui/badge";
 
 export function HeroNetworkGraphic() {
   const shouldReduceMotion = useReducedMotion();
@@ -19,44 +24,13 @@ export function HeroNetworkGraphic() {
       };
 
   return (
-    <div
-      aria-hidden="true"
-      className="relative aspect-square w-full overflow-hidden rounded border-2 bg-card shadow-xl"
-    >
+    <div className="relative aspect-square w-full overflow-hidden">
       <div
         className="absolute inset-0 opacity-[0.07]"
         style={DOT_GRID_BACKGROUND}
       />
 
-      <Badge
-        className="absolute top-3 left-3 -rotate-6 font-head text-[10px] tracking-wide"
-        variant="secondary"
-      >
-        auto-synced
-      </Badge>
-
-      <svg
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full"
-        preserveAspectRatio="none"
-        viewBox="0 0 100 100"
-      >
-        {HERO_GRAPHIC_LEAVES.map((leaf, index) => (
-          <motion.line
-            animate={{ opacity: 1 }}
-            initial={{ opacity: shouldReduceMotion ? 1 : 0 }}
-            key={leaf.label}
-            stroke="var(--border)"
-            strokeWidth={1.5}
-            transition={{ delay: 0.15 * index, duration: 0.3 }}
-            vectorEffect="non-scaling-stroke"
-            x1={HERO_GRAPHIC_HUB.x}
-            x2={leaf.x}
-            y1={HERO_GRAPHIC_HUB.y}
-            y2={leaf.y}
-          />
-        ))}
-      </svg>
+      <HeroNetworkEdges />
 
       <motion.div
         animate={shouldReduceMotion ? undefined : { scale: [1, 1.05, 1] }}
@@ -79,6 +53,14 @@ export function HeroNetworkGraphic() {
           animationDelay={0.35 + index * 0.1}
           key={leaf.label}
           leaf={leaf}
+        />
+      ))}
+
+      {HERO_GRAPHIC_TOOLS.map((tool, index) => (
+        <HeroNetworkTool
+          animationDelay={0.6 + index * 0.1}
+          key={tool.label}
+          tool={tool}
         />
       ))}
     </div>

@@ -1,10 +1,19 @@
 import {
+  BookmarkIcon,
+  CalculatorIcon,
   FileSpreadsheetIcon,
   FileTextIcon,
+  LibraryIcon,
+  MapIcon,
   PresentationIcon,
+  SearchIcon,
   VideoIcon,
 } from "lucide-react";
-import type { HeroLeafNode } from "@/components/marketing/types";
+import type {
+  HeroLeafNode,
+  HeroQuickLink,
+  HeroToolNode,
+} from "@/components/marketing/types";
 
 export const HERO_GRAPHIC_HUB = { x: 50, y: 50 };
 
@@ -41,4 +50,22 @@ export const HERO_GRAPHIC_LEAVES: HeroLeafNode[] = [
     x: 20,
     y: 50,
   },
+];
+
+/** Corners, so they never collide with the cardinal material nodes or the
+ * labels those nodes carry. */
+export const HERO_GRAPHIC_TOOLS: HeroToolNode[] = [
+  { icon: SearchIcon, label: "Search", x: 21, y: 20 },
+  { icon: MapIcon, label: "Plan", x: 79, y: 20 },
+  { icon: CalculatorIcon, label: "GPA", x: 21, y: 80 },
+  { icon: BookmarkIcon, label: "Saved", x: 79, y: 80 },
+];
+
+/** The pages a first-time reader would otherwise only find in the nav menu.
+ * Search sits in the hero buttons instead, so it is left out here. */
+export const HERO_QUICK_LINKS: HeroQuickLink[] = [
+  { icon: LibraryIcon, label: "All courses", to: "/course" },
+  { icon: FileTextIcon, label: "Past exams", to: "/exams" },
+  { icon: MapIcon, label: "Plan of study", to: "/plan-of-study" },
+  { icon: CalculatorIcon, label: "GPA calculator", to: "/gpa-calculator" },
 ];
