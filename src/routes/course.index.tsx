@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { CourseIndexYear } from "@/components/course/course-index-year";
 import { PageHero } from "@/components/marketing/page-hero";
+import { JsonLd } from "@/components/seo/json-ld";
 import { CURRICULUM } from "@/config/curriculum";
 import { SITE_URL } from "@/config/site";
 import { getProgramCredits } from "@/lib/curriculum/credits";
@@ -9,6 +10,7 @@ import { flattenCourses } from "@/lib/curriculum/lookup";
 import { buildCourseSummaryMap } from "@/lib/drive/courses";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { buildCurriculumSchema } from "@/lib/seo/schema";
 
 const COURSES_URL = `${SITE_URL}/course`;
 const COURSE_COUNT = flattenCourses(CURRICULUM).length;
@@ -50,6 +52,8 @@ function CourseIndexPage() {
           year={year}
         />
       ))}
+
+      <JsonLd data={buildCurriculumSchema(CURRICULUM)} />
     </main>
   );
 }
