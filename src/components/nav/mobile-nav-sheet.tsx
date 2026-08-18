@@ -1,5 +1,5 @@
 import { MobileNavGroups } from "@/components/nav/mobile-nav-groups";
-import { DOT_GRID_BACKGROUND } from "@/config/patterns";
+import { DOT_GRID_BACKGROUND_MUTED } from "@/config/patterns";
 
 /* Sits under the header bar rather than over it, so the search and theme
  * buttons stay where they are while the menu is open. It opens with a wipe but
@@ -30,7 +30,7 @@ export function MobileNavSheet({
       className={SHEET_CLASSES}
       id={panelId}
       role="dialog"
-      style={DOT_GRID_BACKGROUND}
+      style={DOT_GRID_BACKGROUND_MUTED}
     >
       <MobileNavGroups onNavigate={onClose} />
     </div>
