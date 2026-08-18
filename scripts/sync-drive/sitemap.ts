@@ -19,6 +19,8 @@ const STATIC_PAGES: StaticPage[] = [
   { changefreq: "monthly", path: "/about", priority: "0.6" },
   { changefreq: "monthly", path: "/faq", priority: "0.6" },
   { changefreq: "monthly", path: "/contact", priority: "0.5" },
+  { changefreq: "monthly", path: "/sitemap", priority: "0.4" },
+  { changefreq: "monthly", path: "/legal", priority: "0.3" },
 ];
 
 function buildUrlEntry(

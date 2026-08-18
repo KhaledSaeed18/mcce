@@ -16,7 +16,9 @@ export type FooterNavLink =
         | "/about"
         | "/faq"
         | "/search"
-        | "/contact";
+        | "/contact"
+        | "/legal"
+        | "/sitemap";
     }
   | { folderId: string; label: string; to: "/browse/$folderId" }
   | { href: string; label: string };
@@ -81,6 +83,8 @@ export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
       { label: "Contact", to: "/contact" },
       { href: FOOTER_BUG_REPORT_URL, label: "Report a bug" },
       { href: FOOTER_FEATURE_REQUEST_URL, label: "Request a feature" },
+      { label: "Privacy and terms", to: "/legal" },
+      { label: "Sitemap", to: "/sitemap" },
     ],
     title: "Support",
   },

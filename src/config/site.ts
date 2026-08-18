@@ -11,6 +11,7 @@ export const PROGRAM_DEPARTMENT =
   "Department of Computer and Communications Engineering";
 export const PROGRAM_UNIVERSITY = "Lebanese International University";
 export const PROGRAM_UNIVERSITY_SHORT = "LIU";
+export const PROGRAM_UNIVERSITY_URL = "https://liu.edu.lb";
 export const PROGRAM_OFFICIAL_URL =
   "https://cce.liu.edu.lb/academic-programs/graduate-programs";
 export const PROGRAM_OFFICIAL_POS_URL =

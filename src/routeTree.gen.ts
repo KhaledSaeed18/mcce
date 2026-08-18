@@ -15,10 +15,12 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ExamsRouteImport } from './routes/exams'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GpaCalculatorRouteImport } from './routes/gpa-calculator'
+import { Route as LegalRouteImport } from './routes/legal'
 import { Route as PlanOfStudyRouteImport } from './routes/plan-of-study'
 import { Route as RecentRouteImport } from './routes/recent'
 import { Route as SavedRouteImport } from './routes/saved'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as SitemapRouteImport } from './routes/sitemap'
 import { Route as BrowseFolderIdRouteImport } from './routes/browse.$folderId'
 import { Route as CourseIndexRouteImport } from './routes/course.index'
 import { Route as CourseCodeRouteImport } from './routes/course.$code'
@@ -53,6 +55,11 @@ const GpaCalculatorRoute = GpaCalculatorRouteImport.update({
   path: '/gpa-calculator',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegalRoute = LegalRouteImport.update({
+  id: '/legal',
+  path: '/legal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PlanOfStudyRoute = PlanOfStudyRouteImport.update({
   id: '/plan-of-study',
   path: '/plan-of-study',
@@ -71,6 +78,11 @@ const SavedRoute = SavedRouteImport.update({
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapRoute = SitemapRouteImport.update({
+  id: '/sitemap',
+  path: '/sitemap',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BrowseFolderIdRoute = BrowseFolderIdRouteImport.update({
@@ -96,10 +108,12 @@ export interface FileRoutesByFullPath {
   '/exams': typeof ExamsRoute
   '/faq': typeof FaqRoute
   '/gpa-calculator': typeof GpaCalculatorRoute
+  '/legal': typeof LegalRoute
   '/plan-of-study': typeof PlanOfStudyRoute
   '/recent': typeof RecentRoute
   '/saved': typeof SavedRoute
   '/search': typeof SearchRoute
+  '/sitemap': typeof SitemapRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
   '/course/': typeof CourseIndexRoute
@@ -111,10 +125,12 @@ export interface FileRoutesByTo {
   '/exams': typeof ExamsRoute
   '/faq': typeof FaqRoute
   '/gpa-calculator': typeof GpaCalculatorRoute
+  '/legal': typeof LegalRoute
   '/plan-of-study': typeof PlanOfStudyRoute
   '/recent': typeof RecentRoute
   '/saved': typeof SavedRoute
   '/search': typeof SearchRoute
+  '/sitemap': typeof SitemapRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
   '/course': typeof CourseIndexRoute
@@ -127,10 +143,12 @@ export interface FileRoutesById {
   '/exams': typeof ExamsRoute
   '/faq': typeof FaqRoute
   '/gpa-calculator': typeof GpaCalculatorRoute
+  '/legal': typeof LegalRoute
   '/plan-of-study': typeof PlanOfStudyRoute
   '/recent': typeof RecentRoute
   '/saved': typeof SavedRoute
   '/search': typeof SearchRoute
+  '/sitemap': typeof SitemapRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
   '/course/': typeof CourseIndexRoute
@@ -144,10 +162,12 @@ export interface FileRouteTypes {
     | '/exams'
     | '/faq'
     | '/gpa-calculator'
+    | '/legal'
     | '/plan-of-study'
     | '/recent'
     | '/saved'
     | '/search'
+    | '/sitemap'
     | '/browse/$folderId'
     | '/course/$code'
     | '/course/'
@@ -159,10 +179,12 @@ export interface FileRouteTypes {
     | '/exams'
     | '/faq'
     | '/gpa-calculator'
+    | '/legal'
     | '/plan-of-study'
     | '/recent'
     | '/saved'
     | '/search'
+    | '/sitemap'
     | '/browse/$folderId'
     | '/course/$code'
     | '/course'
@@ -174,10 +196,12 @@ export interface FileRouteTypes {
     | '/exams'
     | '/faq'
     | '/gpa-calculator'
+    | '/legal'
     | '/plan-of-study'
     | '/recent'
     | '/saved'
     | '/search'
+    | '/sitemap'
     | '/browse/$folderId'
     | '/course/$code'
     | '/course/'
@@ -190,10 +214,12 @@ export interface RootRouteChildren {
   ExamsRoute: typeof ExamsRoute
   FaqRoute: typeof FaqRoute
   GpaCalculatorRoute: typeof GpaCalculatorRoute
+  LegalRoute: typeof LegalRoute
   PlanOfStudyRoute: typeof PlanOfStudyRoute
   RecentRoute: typeof RecentRoute
   SavedRoute: typeof SavedRoute
   SearchRoute: typeof SearchRoute
+  SitemapRoute: typeof SitemapRoute
   BrowseFolderIdRoute: typeof BrowseFolderIdRoute
   CourseCodeRoute: typeof CourseCodeRoute
   CourseIndexRoute: typeof CourseIndexRoute
@@ -243,6 +269,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GpaCalculatorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legal': {
+      id: '/legal'
+      path: '/legal'
+      fullPath: '/legal'
+      preLoaderRoute: typeof LegalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/plan-of-study': {
       id: '/plan-of-study'
       path: '/plan-of-study'
@@ -269,6 +302,13 @@ declare module '@tanstack/react-router' {
       path: '/search'
       fullPath: '/search'
       preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap': {
+      id: '/sitemap'
+      path: '/sitemap'
+      fullPath: '/sitemap'
+      preLoaderRoute: typeof SitemapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/browse/$folderId': {
@@ -302,10 +342,12 @@ const rootRouteChildren: RootRouteChildren = {
   ExamsRoute: ExamsRoute,
   FaqRoute: FaqRoute,
   GpaCalculatorRoute: GpaCalculatorRoute,
+  LegalRoute: LegalRoute,
   PlanOfStudyRoute: PlanOfStudyRoute,
   RecentRoute: RecentRoute,
   SavedRoute: SavedRoute,
   SearchRoute: SearchRoute,
+  SitemapRoute: SitemapRoute,
   BrowseFolderIdRoute: BrowseFolderIdRoute,
   CourseCodeRoute: CourseCodeRoute,
   CourseIndexRoute: CourseIndexRoute,

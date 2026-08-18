@@ -55,7 +55,7 @@ export const OFFLINE_FEATURE = {
   description:
     "The index is cached on first visit, so browsing and search keep working with no connection and no sign-in.",
   icon: WifiOffIcon,
-  points: ["Installable", "No sign-in", "Cached index", "No tracking"],
+  points: ["Installable", "No sign-in", "Cached index", "No ads"],
   title: "Works offline",
 } as const;
 
