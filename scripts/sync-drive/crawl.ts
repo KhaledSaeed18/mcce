@@ -65,6 +65,7 @@ function toNode(item: QueueItem, source: DriveSource): CrawledNode {
     ? [...facets.categoryPath, file.name]
     : facets.categoryPath;
   const fileName = isFolder ? null : file.name;
+  const materialType = classifyMaterialType(folderSegments, fileName);
 
   return {
     categoryPath: facets.categoryPath,
@@ -76,7 +77,7 @@ function toNode(item: QueueItem, source: DriveSource): CrawledNode {
     id: file.id,
     isShortcut: file.mimeType === SHORTCUT_MIME_TYPE,
     kind: classifyKind(file.mimeType, file.name),
-    materialType: classifyMaterialType(folderSegments, fileName),
+    materialType,
     mimeType: file.mimeType,
     modifiedTime: file.modifiedTime,
     // Named explicitly (not spread) so a facet field can never shadow a Drive-sourced field.
@@ -87,7 +88,10 @@ function toNode(item: QueueItem, source: DriveSource): CrawledNode {
     semester: facets.semester,
     sizeBytes: file.size ? Number(file.size) : null,
     sourceId: source.id,
-    termLabel: parseTermLabel(folderSegments, fileName),
+    termLabel: parseTermLabel(folderSegments, fileName, {
+      materialType,
+      semester: facets.semester,
+    }),
     webViewLink:
       file.webViewLink ?? `https://drive.google.com/file/d/${file.id}/view`,
   };
