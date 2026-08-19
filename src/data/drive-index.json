@@ -1,7 +1,7 @@
 {
   "meta": {
     "baselineAt": "2026-08-17T06:41:16.505Z",
-    "generatedAt": "2026-08-19T09:27:41.052Z",
+    "generatedAt": "2026-08-19T09:40:37.876Z",
     "sources": [
       {
         "description": "LIU - MCCE | First Year | materials, videos, exercises, and previous exams.",
@@ -12,10 +12,10 @@
       },
       {
         "description": "LIU - MCCE | Second Year | materials, videos, exercises, and previous exams.",
-        "fileCount": 0,
+        "fileCount": 1,
         "folderCount": 4,
         "id": "year2",
-        "totalBytes": 0
+        "totalBytes": 4983
       }
     ]
   },
@@ -29459,6 +29459,34 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1jfaeCdJv-UrOO77QW4tOstISSCameo3j/view?usp=drivesdk",
       "firstSeenAt": "2026-08-17T06:41:16.505Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": null,
+      "courseName": null,
+      "depth": 0,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1rpInCi6UNAv0ZUoTEdptqtWXazww9hqdMHO5H7SlZUk",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-08-19T09:39:22.775Z",
+      "name": "README (start here)",
+      "parentId": "1O5i5a7CgmPEwQ7G6MFyM75zIfmtDi5pt",
+      "pathIds": [
+        "1rpInCi6UNAv0ZUoTEdptqtWXazww9hqdMHO5H7SlZUk"
+      ],
+      "pathNames": [
+        "README (start here)"
+      ],
+      "semester": null,
+      "sizeBytes": 4983,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1rpInCi6UNAv0ZUoTEdptqtWXazww9hqdMHO5H7SlZUk/edit?usp=drivesdk",
+      "firstSeenAt": "2026-08-19T09:40:37.876Z"
     },
     {
       "categoryPath": [],
