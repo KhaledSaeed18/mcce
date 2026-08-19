@@ -55,6 +55,12 @@ export const PROGRAM_FAQ: FaqItem[] = [
   },
   {
     answer:
+      "Yes. Both year folders open straight in Drive: LIU | MCCE 1 for the first year and LIU | MCCE 2 for the second. The links sit on the homepage, in the footer, on the courses page beside each year, and on the sitemap. Every folder page also carries a link to the same folder in Drive.",
+    category: "site",
+    question: "Can I open the Drive folders directly?",
+  },
+  {
+    answer:
       "Yes. Send exams, notes, slides, or recordings through the contact page, in whatever shape they're in. Sorting them into the right semester and course happens from there.",
     category: "site",
     question: "Can I add materials I have?",
