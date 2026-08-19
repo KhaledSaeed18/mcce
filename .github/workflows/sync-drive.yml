@@ -36,14 +36,17 @@ jobs:
           GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
         run: pnpm run sync:drive
 
-      - name: Commit and push if the index changed
+      - name: Commit and push the regenerated index
         run: |
-          if git diff --quiet -- src/data/drive-index.json public/sitemap.xml; then
-            echo "Drive index unchanged, nothing to commit."
-            exit 0
-          fi
           git config user.name "mcce-drive-sync[bot]"
           git config user.email "mcce-drive-sync[bot]@users.noreply.github.com"
           git add src/data/drive-index.json public/sitemap.xml public/feed.xml
+          # Every artifact carries the run's own generatedAt, which the site
+          # shows as "Last sync", so a run with no new material still has a
+          # timestamp worth publishing. This only guards an empty commit.
+          if git diff --cached --quiet; then
+            echo "Nothing staged, skipping commit."
+            exit 0
+          fi
           git commit -m "chore(data): sync drive index" --no-verify
           git push
