@@ -3,32 +3,42 @@ import type { MaterialType } from "../../src/lib/drive/types";
 import { classifyMaterialType } from "./material-type";
 
 describe("classifyMaterialType", () => {
-  const cases: [string, string[], MaterialType][] = [
-    ["Material", ["Material"], "lecture"],
-    ["Materials", ["Materials"], "lecture"],
-    ["Material+Summaries", ["Material+Summaries"], "lecture"],
-    ["Exams", ["Exams"], "exam"],
-    ["[OLD]Exams", ["[OLD]Exams"], "exam"],
-    ["Assessments | 2025-2026", ["Assessments | 2025-2026"], "exam"],
-    [
-      "Ungraded Self Assessments | 2025-2026",
-      ["Ungraded Self Assessments | 2025-2026"],
-      "exam",
-    ],
-    [
-      "CENG507 | Assessments-Fall-2025-2026",
-      ["CENG507 | Assessments-Fall-2025-2026"],
-      "exam",
-    ],
-    ["Exercises", ["Exercises"], "exercise"],
-    ["Homeworks+Exercises", ["Homeworks+Exercises"], "assignment"],
-    ["Assignments", ["Assignments"], "assignment"],
-    ["Experiments", ["Experiments"], "lab"],
-    ["Book", ["Book"], "book"],
+  const canonical: [string[], MaterialType][] = [
+    [["Lectures"], "lecture"],
+    [["Exams"], "exam"],
+    [["Exams", "Midterm"], "exam"],
+    [["Exams", "Final"], "exam"],
+    [["Assessments"], "assessment"],
+    [["Self Assessments"], "assessment"],
+    [["Exercises"], "exercise"],
+    [["Assignments"], "assignment"],
+    [["Labs"], "lab"],
+    [["Books"], "book"],
   ];
 
-  for (const [name, segments, expected] of cases) {
-    it(`reads ${name} as ${expected}`, () => {
+  for (const [segments, expected] of canonical) {
+    it(`reads ${segments.join("/")} as ${expected}`, () => {
+      expect(classifyMaterialType(segments, null)).toBe(expected);
+    });
+  }
+
+  // Folder names the reorganisation replaced. Anything uploaded into a folder
+  // named the old way should still land in the right place.
+  const legacy: [string[], MaterialType][] = [
+    [["Material"], "lecture"],
+    [["Materials"], "lecture"],
+    [["Material+Summaries"], "lecture"],
+    [["[OLD]Exams"], "exam"],
+    [["Assessments | 2025-2026"], "assessment"],
+    [["Ungraded Self Assessments | 2025-2026"], "assessment"],
+    [["CENG507 | Assessments-Fall-2025-2026"], "assessment"],
+    [["Homeworks+Exercises"], "assignment"],
+    [["Experiments"], "lab"],
+    [["Book"], "book"],
+  ];
+
+  for (const [segments, expected] of legacy) {
+    it(`still reads legacy ${segments.join("/")} as ${expected}`, () => {
       expect(classifyMaterialType(segments, null)).toBe(expected);
     });
   }
@@ -37,18 +47,15 @@ describe("classifyMaterialType", () => {
     expect(classifyMaterialType(["Exams+Assignments"], null)).toBe("exam");
   });
 
-  it("lets the deepest folder override its parents", () => {
+  it("lets a named deeper folder override its parents", () => {
     expect(
-      classifyMaterialType(
-        ["Exams+Assignments", "Assignments | 2025-2026", "Assignment3"],
-        null
-      )
+      classifyMaterialType(["Exams", "Assignments", "Assignment 03"], null)
     ).toBe("assignment");
   });
 
   it("inherits from a parent when the deepest folder says nothing", () => {
     expect(
-      classifyMaterialType(["Materials", "Lecture 3", "MATLAB codes"], null)
+      classifyMaterialType(["Lectures", "Lecture 03", "MATLAB"], null)
     ).toBe("lecture");
   });
 
@@ -58,7 +65,7 @@ describe("classifyMaterialType", () => {
 
   it("keeps the folder answer over a file name that disagrees", () => {
     expect(
-      classifyMaterialType(["Material", "Lecture 5"], "Exam review.pdf")
+      classifyMaterialType(["Lectures", "Lecture 05"], "Exam review.pdf")
     ).toBe("lecture");
   });
 
