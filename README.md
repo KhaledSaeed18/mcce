@@ -43,9 +43,12 @@ University. For admissions, curriculum, and official program details, see the
 
 - **Browse by source and course**: program materials organized by Drive source, semester, and
   course, with folder and file counts at a glance.
-- **Search**: find material by name, filtered by semester, course, or file type.
+- **Search**: find material by name, filtered by semester, course, material type, or file type.
 - **Command palette**: jump straight to a file from anywhere on the site.
 - **File previews**: preview documents, slides, and sheets without leaving the browser.
+- **Past exams**: every indexed midterm, final, and assessment in one view, grouped by course and
+  by the term it was sat, with papers that record no year kept at the end of each course.
+- **Saved files**: keep a shortlist of files while browsing. It stays in the browser.
 - **Plan of study**: a year-by-year curriculum view with semester groups, course requirements,
   and prerequisite notes.
 - **Curriculum roadmap**: a traceable prerequisite graph across the full program, with credit
@@ -57,6 +60,7 @@ University. For admissions, curriculum, and official program details, see the
   CSV, or JSON.
 - **Weekly auto-sync**: a scheduled job re-crawls the source Drive and updates the index, so
   material doesn't go stale.
+- **Recently added**: what each sync picked up, grouped by course, with an RSS feed to follow.
 - **FAQ and about pages**: how the program is structured, and how syncing, search, and file
   access work here.
 - **Community-sourced contributions**: anyone in the program can send exams, notes, slides, or
