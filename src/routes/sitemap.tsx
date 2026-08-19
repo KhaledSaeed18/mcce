@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
 import { SitemapBrowseGroup } from "@/components/sitemap/sitemap-browse-group";
 import { SitemapCourseGroup } from "@/components/sitemap/sitemap-course-group";
+import { SitemapDriveGroup } from "@/components/sitemap/sitemap-drive-group";
 import { SitemapGroup } from "@/components/sitemap/sitemap-group";
 import { SitemapHero } from "@/components/sitemap/sitemap-hero";
 import { SITE_URL } from "@/config/site";
@@ -39,6 +40,8 @@ function SitemapPage() {
       ))}
 
       <SitemapBrowseGroup />
+
+      <SitemapDriveGroup />
 
       <SectionDividerDots />
 

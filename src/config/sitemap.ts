@@ -1,6 +1,7 @@
 import {
   BookOpenIcon,
   CompassIcon,
+  ExternalLinkIcon,
   FolderTreeIcon,
   type LucideIcon,
   ScaleIcon,
@@ -144,6 +145,13 @@ export const SITEMAP_BROWSE_GROUP = {
   icon: FolderTreeIcon,
   label: "Drive folders",
   value: "browse",
+} as const;
+
+export const SITEMAP_DRIVE_GROUP = {
+  color: "chart-1",
+  icon: ExternalLinkIcon,
+  label: "Drive folders, direct",
+  value: "drive",
 } as const;
 
 export const SITEMAP_COURSES_GROUP = {
