@@ -13,6 +13,7 @@ export type DriveNodeKind =
 
 export type MaterialType =
   | "lecture"
+  | "assessment"
   | "exam"
   | "exercise"
   | "assignment"

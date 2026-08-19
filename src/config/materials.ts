@@ -4,6 +4,7 @@ import type { MaterialType } from "@/lib/drive/types";
 export const MATERIAL_TYPES: MaterialType[] = [
   "lecture",
   "exam",
+  "assessment",
   "exercise",
   "assignment",
   "lab",
@@ -11,7 +12,17 @@ export const MATERIAL_TYPES: MaterialType[] = [
   "other",
 ];
 
+/**
+ * The types that describe a sat paper. These are what the exams page collects
+ * and the only ones whose file names are worth reading a term out of.
+ */
+export const PAPER_MATERIAL_TYPES: ReadonlySet<MaterialType> = new Set([
+  "assessment",
+  "exam",
+]);
+
 export const MATERIAL_TYPE_LABELS: Record<MaterialType, string> = {
+  assessment: "Assessments",
   assignment: "Assignments",
   book: "Books",
   exam: "Exams",
