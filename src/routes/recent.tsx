@@ -68,7 +68,7 @@ function RecentPage() {
         </Empty>
       ) : (
         batches.map((batch) => (
-          <RecentBatchSection batch={batch} key={batch.addedAt} />
+          <RecentBatchSection batch={batch} key={batch.day} />
         ))
       )}
 

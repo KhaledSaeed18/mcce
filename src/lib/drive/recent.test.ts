@@ -24,7 +24,7 @@ describe("buildRecentBatches", () => {
     expect(buildRecentBatches(index)).toEqual([]);
   });
 
-  it("groups by sync run, newest first", () => {
+  it("groups by day, newest first", () => {
     const index = makeIndex([
       makeNode({ firstSeenAt: RUN_TWO, id: "older", kind: "pdf" }),
       makeNode({ firstSeenAt: RUN_THREE, id: "newer", kind: "pdf" }),
@@ -35,6 +35,21 @@ describe("buildRecentBatches", () => {
 
     expect(batches.map((batch) => batch.addedAt)).toEqual([RUN_THREE, RUN_TWO]);
     expect(batches.map((batch) => batch.total)).toEqual([1, 1]);
+  });
+
+  it("merges runs that landed on the same day", () => {
+    const laterSameDay = "2026-08-08T12:00:00.000Z";
+    const index = makeIndex([
+      makeNode({ firstSeenAt: RUN_TWO, id: "morning", kind: "pdf" }),
+      makeNode({ firstSeenAt: laterSameDay, id: "afternoon", kind: "pdf" }),
+    ]);
+
+    const batches = buildRecentBatches(index);
+
+    expect(batches).toHaveLength(1);
+    expect(batches[0].total).toBe(2);
+    expect(batches[0].day).toBe("2026-08-08");
+    expect(batches[0].addedAt).toBe(laterSameDay);
   });
 
   it("leaves folders out, since a new folder is not new material", () => {

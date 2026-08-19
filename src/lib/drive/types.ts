@@ -114,8 +114,11 @@ export interface RecentCourseGroup {
 }
 
 export interface RecentBatch {
+  /** Latest sync instant of the day, used for feed timestamps. */
   addedAt: string;
   courses: RecentCourseGroup[];
+  /** UTC date the batch is grouped and keyed by. */
+  day: string;
   total: number;
 }
 
