@@ -53,6 +53,22 @@ describe("classifyMaterialType", () => {
     ).toBe("assignment");
   });
 
+  it("keeps a numbered folder from overriding the category above it", () => {
+    expect(classifyMaterialType(["Self Assessments", "Lecture 06"], null)).toBe(
+      "assessment"
+    );
+    expect(classifyMaterialType(["Labs", "Experiment 04"], null)).toBe("lab");
+    expect(classifyMaterialType(["Exercises", "Set 03"], null)).toBe(
+      "exercise"
+    );
+  });
+
+  it("still reads a numbered folder when nothing above it says anything", () => {
+    expect(classifyMaterialType(["Graph Theory", "Lecture 02"], null)).toBe(
+      "lecture"
+    );
+  });
+
   it("inherits from a parent when the deepest folder says nothing", () => {
     expect(
       classifyMaterialType(["Lectures", "Lecture 03", "MATLAB"], null)

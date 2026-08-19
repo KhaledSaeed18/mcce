@@ -15,6 +15,14 @@ const SEGMENT_PATTERNS: [MaterialType, RegExp][] = [
   ["lecture", /lecture|material|slide|chapter|note|summar|session/i],
 ];
 
+/**
+ * A numbered folder groups one week's worth of files; it does not say what they
+ * are. "Self Assessments / Lecture 06" holds self-assessments, so the category
+ * folder above has to outrank the numbered one below it.
+ */
+const NUMBERED_GROUP =
+  /^(?:lecture|chapter|set|assignment|homework|experiment|assessment)s?\s*\d+(?:\s*[&+-]\s*\d+)?$/i;
+
 function matchSegment(segment: string): MaterialType | null {
   for (const [type, pattern] of SEGMENT_PATTERNS) {
     if (pattern.test(segment)) {
@@ -24,20 +32,38 @@ function matchSegment(segment: string): MaterialType | null {
   return null;
 }
 
+function matchDeepestFirst(
+  segments: string[],
+  skipNumbered: boolean
+): MaterialType | null {
+  for (const segment of [...segments].reverse()) {
+    if (skipNumbered && NUMBERED_GROUP.test(segment.trim())) {
+      continue;
+    }
+    const match = matchSegment(segment);
+    if (match) {
+      return match;
+    }
+  }
+  return null;
+}
+
 /**
  * Folders win over the file name, and the deepest folder wins over its parents,
- * so "Exams / Assignments / Assignment 03" reads as an assignment rather than
- * inheriting the exam label from the top of the path.
+ * except that a bare numbered folder defers to the category folder above it.
  */
 export function classifyMaterialType(
   folderSegments: string[],
   fileName: string | null
 ): MaterialType {
-  for (const segment of [...folderSegments].reverse()) {
-    const match = matchSegment(segment);
-    if (match) {
-      return match;
-    }
+  const fromCategory = matchDeepestFirst(folderSegments, true);
+  if (fromCategory) {
+    return fromCategory;
+  }
+
+  const fromNumbered = matchDeepestFirst(folderSegments, false);
+  if (fromNumbered) {
+    return fromNumbered;
   }
 
   if (fileName) {
