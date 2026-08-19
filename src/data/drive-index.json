@@ -1,14 +1,14 @@
 {
   "meta": {
     "baselineAt": "2026-08-17T06:41:16.505Z",
-    "generatedAt": "2026-08-18T21:07:54.771Z",
+    "generatedAt": "2026-08-19T09:27:41.052Z",
     "sources": [
       {
         "description": "LIU - MCCE | First Year | materials, videos, exercises, and previous exams.",
-        "fileCount": 582,
+        "fileCount": 580,
         "folderCount": 194,
         "id": "year1",
-        "totalBytes": 13299859460
+        "totalBytes": 13299676437
       },
       {
         "description": "LIU - MCCE | Second Year | materials, videos, exercises, and previous exams.",
@@ -25,84 +25,28 @@
       "courseCode": null,
       "courseName": null,
       "depth": 0,
-      "extension": "pdf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
-      "id": "1Flsl6yOq-tiRCvhQrsQGlXIZj1ncA0ic",
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1zGPfqMT-wfGFHBQ7DoN_av2HELe--lMSeASjlclYpuk",
       "isShortcut": false,
-      "kind": "pdf",
+      "kind": "doc",
       "materialType": "other",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-01-23T12:10:30.677Z",
-      "name": "MCCE-CourseDescription.pdf",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-08-19T09:24:11.643Z",
+      "name": "README (start here)",
       "parentId": "15A8bxA33GichTPcZkyXxaZnP_dRyryTq",
       "pathIds": [
-        "1Flsl6yOq-tiRCvhQrsQGlXIZj1ncA0ic"
+        "1zGPfqMT-wfGFHBQ7DoN_av2HELe--lMSeASjlclYpuk"
       ],
       "pathNames": [
-        "MCCE-CourseDescription.pdf"
+        "README (start here)"
       ],
       "semester": null,
-      "sizeBytes": 36205,
+      "sizeBytes": 5172,
       "sourceId": "year1",
       "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1Flsl6yOq-tiRCvhQrsQGlXIZj1ncA0ic/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-17T06:41:16.505Z"
-    },
-    {
-      "categoryPath": [],
-      "courseCode": null,
-      "courseName": null,
-      "depth": 0,
-      "extension": "pdf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
-      "id": "1i-r5Oiw5QIAQkFP3HyLyomrluHzuAeyS",
-      "isShortcut": false,
-      "kind": "pdf",
-      "materialType": "other",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-01-23T12:10:14.948Z",
-      "name": "MCCE-PlanOfStudy.pdf",
-      "parentId": "15A8bxA33GichTPcZkyXxaZnP_dRyryTq",
-      "pathIds": [
-        "1i-r5Oiw5QIAQkFP3HyLyomrluHzuAeyS"
-      ],
-      "pathNames": [
-        "MCCE-PlanOfStudy.pdf"
-      ],
-      "semester": null,
-      "sizeBytes": 76892,
-      "sourceId": "year1",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1i-r5Oiw5QIAQkFP3HyLyomrluHzuAeyS/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-17T06:41:16.505Z"
-    },
-    {
-      "categoryPath": [],
-      "courseCode": null,
-      "courseName": null,
-      "depth": 0,
-      "extension": "pdf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
-      "id": "1jdC0wRAJiwhA4xFDNH-uTdTj6NT7RmwG",
-      "isShortcut": false,
-      "kind": "pdf",
-      "materialType": "other",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-01-23T12:09:56.757Z",
-      "name": "MCCE-ContractSheet.pdf",
-      "parentId": "15A8bxA33GichTPcZkyXxaZnP_dRyryTq",
-      "pathIds": [
-        "1jdC0wRAJiwhA4xFDNH-uTdTj6NT7RmwG"
-      ],
-      "pathNames": [
-        "MCCE-ContractSheet.pdf"
-      ],
-      "semester": null,
-      "sizeBytes": 76821,
-      "sourceId": "year1",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1jdC0wRAJiwhA4xFDNH-uTdTj6NT7RmwG/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-17T06:41:16.505Z"
+      "webViewLink": "https://docs.google.com/document/d/1zGPfqMT-wfGFHBQ7DoN_av2HELe--lMSeASjlclYpuk/edit?usp=drivesdk",
+      "firstSeenAt": "2026-08-19T09:27:41.052Z"
     },
     {
       "categoryPath": [],
@@ -172,7 +116,7 @@
       "kind": "text",
       "materialType": "other",
       "mimeType": "text/rtf",
-      "modifiedTime": "2026-01-23T10:34:03.000Z",
+      "modifiedTime": "2026-08-19T09:26:04.393Z",
       "name": "README.rtf",
       "parentId": "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
       "pathIds": [
@@ -184,7 +128,7 @@
         "README.rtf"
       ],
       "semester": "First Year | Spring Semester",
-      "sizeBytes": 795,
+      "sizeBytes": 1679,
       "sourceId": "year1",
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/17xIHO7cfLRDpCBch-qenEdEAczj0HwFP/view?usp=drivesdk",
@@ -352,7 +296,7 @@
       "kind": "text",
       "materialType": "other",
       "mimeType": "text/rtf",
-      "modifiedTime": "2026-01-23T10:32:19.000Z",
+      "modifiedTime": "2026-08-19T09:26:01.104Z",
       "name": "README.rtf",
       "parentId": "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
       "pathIds": [
@@ -364,7 +308,7 @@
         "README.rtf"
       ],
       "semester": "First Year | Fall Semester",
-      "sizeBytes": 795,
+      "sizeBytes": 1634,
       "sourceId": "year1",
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1JGxodw8eLoG7r7hUsn-vd6ln_9rjSQ0o/view?usp=drivesdk",
