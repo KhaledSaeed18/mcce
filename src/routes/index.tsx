@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { CoursesSection } from "@/components/drive/courses-section";
 import { SourcesSection } from "@/components/drive/sources-section";
+import { DriveDirectSection } from "@/components/marketing/drive-direct-section";
 import { FeatureGridSection } from "@/components/marketing/feature-grid-section";
 import { HeroSection } from "@/components/marketing/hero-section";
 import { HomeCtaSection } from "@/components/marketing/home-cta-section";
@@ -56,6 +57,10 @@ function HomePage() {
       <SourcesSection sourceSummaries={driveIndex.meta.sources} />
 
       <CoursesSection courses={courses} />
+
+      <SectionDividerDots />
+
+      <DriveDirectSection />
 
       <SectionDividerDots />
 
