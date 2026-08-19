@@ -3,6 +3,7 @@ import type { LucideIcon } from "lucide-react";
 interface SitemapSectionHeadingProps {
   color: string;
   count: number;
+  countLabel?: string;
   icon: LucideIcon;
   label: string;
 }
@@ -10,6 +11,7 @@ interface SitemapSectionHeadingProps {
 export function SitemapSectionHeading({
   color,
   count,
+  countLabel = "pages",
   icon: Icon,
   label,
 }: SitemapSectionHeadingProps) {
@@ -22,7 +24,9 @@ export function SitemapSectionHeading({
         <Icon className="size-4 text-black" />
       </span>
       <h2 className="font-head text-lg sm:text-xl">{label}</h2>
-      <span className="text-muted-foreground text-xs">{count} pages</span>
+      <span className="text-muted-foreground text-xs">
+        {count} {countLabel}
+      </span>
     </div>
   );
 }
