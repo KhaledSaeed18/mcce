@@ -1,3 +1,4 @@
+import { expandToken } from "@/config/search";
 import type { DriveNode } from "./types";
 
 /** A hit in the name beats a hit in an ancestor folder, and a whole word beats part of one. */
@@ -27,7 +28,7 @@ interface Haystacks {
   path: string;
 }
 
-function scoreToken(token: string, haystacks: Haystacks): number {
+function scoreVariant(token: string, haystacks: Haystacks): number {
   if (hasWordStart(haystacks.name, token)) {
     return NAME_WORD_SCORE;
   }
@@ -38,6 +39,15 @@ function scoreToken(token: string, haystacks: Haystacks): number {
     return COURSE_CODE_SCORE;
   }
   return haystacks.path.includes(token) ? PATH_SCORE : 0;
+}
+
+/** A token scores on whichever of its synonyms lands best, so a retired word still finds its material. */
+function scoreToken(token: string, haystacks: Haystacks): number {
+  let best = 0;
+  for (const variant of expandToken(token)) {
+    best = Math.max(best, scoreVariant(variant, haystacks));
+  }
+  return best;
 }
 
 /** Zero unless every token matches somewhere, so extra words narrow rather than widen. */

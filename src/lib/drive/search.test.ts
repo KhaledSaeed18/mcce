@@ -112,3 +112,43 @@ describe("searchNodes", () => {
     ]);
   });
 });
+
+describe("searchNodes synonyms", () => {
+  const nodes = [
+    makeNode({
+      id: "lecture",
+      name: "Lecture 03.pdf",
+      pathNames: [
+        "First Year | Fall Semester",
+        "CENG507 - Embedded Systems",
+        "Lectures",
+        "Lecture 03.pdf",
+      ],
+    }),
+    makeNode({
+      id: "assessment",
+      name: "V1-Assessment1-Spring-2025-2026.pdf",
+      pathNames: [
+        "First Year | Spring Semester",
+        "CENG566 - Machine Learning",
+        "Assessments",
+        "V1-Assessment1-Spring-2025-2026.pdf",
+      ],
+    }),
+  ];
+
+  it("still finds lectures under the folder name they used to have", () => {
+    expect(searchNodes(nodes, "material").map((n) => n.id)).toEqual([
+      "lecture",
+    ]);
+    expect(searchNodes(nodes, "slides").map((n) => n.id)).toEqual(["lecture"]);
+  });
+
+  it("finds assessments by the word students actually use", () => {
+    expect(searchNodes(nodes, "quiz").map((n) => n.id)).toEqual(["assessment"]);
+  });
+
+  it("keeps requiring every token to match", () => {
+    expect(searchNodes(nodes, "material nonsense")).toEqual([]);
+  });
+});
