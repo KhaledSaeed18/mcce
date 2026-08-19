@@ -1,4 +1,5 @@
 import { UNRECORDED_TERM_LABEL } from "@/config/exams";
+import { PAPER_MATERIAL_TYPES } from "@/config/materials";
 import { compareExamNodes, compareTermLabels } from "./exam-order";
 import type { DriveNode, ExamCourseGroup, ExamTermGroup } from "./types";
 
@@ -7,7 +8,7 @@ type ExamPaper = DriveNode & { courseCode: string };
 function isExamPaper(node: DriveNode): node is ExamPaper {
   return (
     node.kind !== "folder" &&
-    node.materialType === "exam" &&
+    PAPER_MATERIAL_TYPES.has(node.materialType) &&
     node.courseCode !== null
   );
 }
