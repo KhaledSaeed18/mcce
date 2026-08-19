@@ -32,6 +32,7 @@ and how to submit them.
 | Animation | [motion](https://motion.dev) only. No GSAP, Lenis, or other animation libraries |
 | Icons | lucide-react |
 | Data fetching | TanStack Query, TanStack Router SSR query integration |
+| Data source | Google Drive API v3, read through a service account |
 | Forms | Web3Forms (contact form), hCaptcha |
 | PDF export | jsPDF, jspdf-autotable |
 | Build tool | Vite 8 |
@@ -54,16 +55,19 @@ src/
   routes/         TanStack Router file-based routes. Compose layouts and sections, no logic.
   components/
     ui/           shadcn/Base UI primitives. Never modify these directly, use shadcn CLI to update.
-    <domain>/     Shared presentational components (about, contact, curriculum, drive, faq,
-                  footer, marketing, nav, seo). JSX only, no data fetching.
+    <domain>/     Shared presentational components (about, contact, course, curriculum, drive,
+                  exams, faq, footer, gpa, legal, marketing, nav, providers, recent, seo,
+                  sitemap). JSX only, no data fetching.
   hooks/          Custom hooks. All stateful logic and side effects live here.
   lib/            Pure utilities and server-side data access (TanStack Start server functions).
-                  No JSX. Grouped by domain (contact, curriculum, drive, seo).
+                  No JSX. Grouped by domain (contact, curriculum, drive, gpa, seo).
   config/         Named constants and static config, grouped by domain.
   data/           Generated data artifacts (the Drive index). Machine-written, never hand-edited.
   assets/         Static brand assets.
 scripts/
-  sync-drive/     Standalone script that crawls Google Drive and regenerates the Drive index.
+  sync-drive/     Crawls Google Drive and regenerates the Drive index, sitemap, and feed.
+  organize-drive/ Normalises the Drive folders and file names the index is built from.
+                  Read its README before running it, it writes to the shared Drive.
 ```
 
 Full architecture, naming, and file-size rules are documented in `AGENTS.md` (symlinked as
@@ -104,7 +108,8 @@ runs `ultracite fix` on staged JS/TS/JSON/CSS files automatically.
 | `pnpm test` | Run the Vitest suite once |
 | `pnpm knip` | Detect unused files, exports, and dependencies |
 | `pnpm fullcheck` | Run typecheck, knip, check, and test together |
-| `pnpm sync:drive` | Crawl Google Drive and regenerate `src/data/drive-index.json` |
+| `pnpm sync:drive` | Crawl Google Drive and regenerate the index, sitemap, and feed |
+| `pnpm organize:drive` | Dry-run the Drive folder and file name normalisation. Pass `apply` to write, `rollback` to undo |
 | `pnpm cf-typegen` | Generate Cloudflare Worker types from `wrangler.jsonc` |
 
 Run `pnpm fullcheck` before opening a pull request. It is the same set of checks CI runs.
@@ -168,7 +173,7 @@ naming judgment, and the design anti-patterns section.
 ## Testing
 
 Tests are written with Vitest and jsdom, and live next to the code they cover as `*.test.ts`
-(see `src/lib/curriculum/` and `src/lib/drive/` for examples).
+(see `src/lib/curriculum/`, `src/lib/drive/`, and `scripts/` for examples).
 
 - Assertions belong inside `it()`/`test()` blocks.
 - No `.only` or `.skip` in committed code.
@@ -252,9 +257,11 @@ Every push and pull request against `main` runs the following jobs (`.github/wor
 All jobs must pass before a pull request can merge. On merge to `main`, a separate workflow
 deploys the production bundle to Cloudflare Workers.
 
-A scheduled workflow (`sync-drive.yml`) re-crawls Google Drive weekly and commits an updated
-`src/data/drive-index.json` when the source material changes. You do not need to run this
-yourself unless you are working on the sync script.
+A scheduled workflow (`sync-drive.yml`) re-crawls Google Drive weekly and commits the regenerated
+`src/data/drive-index.json`, `public/sitemap.xml`, and `public/feed.xml`. Each carries the run's
+own timestamp, which the site shows as the last sync, so the commit lands every week whether or
+not new material appeared. You do not need to run this yourself unless you are working on the
+sync script.
 
 ## Reporting bugs and requesting features
 
