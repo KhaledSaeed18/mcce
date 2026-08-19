@@ -15,10 +15,16 @@ function loadCredentials(): Record<string, unknown> {
   return JSON.parse(readFileSync(keyPath, "utf8"));
 }
 
-export async function getAccessToken(): Promise<string> {
+export const DRIVE_READONLY_SCOPE =
+  "https://www.googleapis.com/auth/drive.readonly";
+export const DRIVE_WRITE_SCOPE = "https://www.googleapis.com/auth/drive";
+
+export async function getAccessToken(
+  scope: string = DRIVE_READONLY_SCOPE
+): Promise<string> {
   const auth = new GoogleAuth({
     credentials: loadCredentials(),
-    scopes: ["https://www.googleapis.com/auth/drive.readonly"],
+    scopes: [scope],
   });
 
   const client = await auth.getClient();
