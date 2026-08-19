@@ -75,6 +75,8 @@ export interface SearchFilterValues {
 
 export interface DriveSource {
   color: string;
+  /** The folder's own name in Drive, which differs from the label used on this site. */
+  driveLabel: string;
   id: string;
   label: string;
   rootFolderId: string;
