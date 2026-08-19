@@ -1,3 +1,4 @@
+import { FooterDriveLinks } from "@/components/footer/footer-drive-links";
 import { LogoMark } from "@/components/logo-mark";
 import { FOOTER_TAGLINE } from "@/config/footer";
 
@@ -10,6 +11,8 @@ export function FooterBrand() {
       </div>
 
       <p className="text-muted-foreground text-sm">{FOOTER_TAGLINE}</p>
+
+      <FooterDriveLinks />
     </div>
   );
 }
