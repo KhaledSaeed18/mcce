@@ -6,6 +6,7 @@ import {
   FileTextIcon,
   FolderIcon,
   GraduationCapIcon,
+  HardDriveIcon,
   HomeIcon,
   InfoIcon,
   LibraryIcon,
@@ -18,6 +19,7 @@ import {
   ShieldQuestionIcon,
 } from "lucide-react";
 import type { COURSE_CARD_COLORS } from "@/config/courses";
+import { DRIVE_DIRECT_LINKS } from "@/config/drive-links";
 import { PROGRAM_OFFICIAL_POS_URL, PROGRAM_OFFICIAL_URL } from "@/config/site";
 import { DRIVE_SOURCES } from "@/config/sources";
 
@@ -103,6 +105,12 @@ const BROWSE_ENTRIES: NavEntry[] = [
     icon: FolderIcon,
     label: source.label,
     to: "/browse/$folderId" as const,
+  })),
+  ...DRIVE_DIRECT_LINKS.map((link) => ({
+    description: `Opens ${link.driveLabel} in Google Drive, outside this site.`,
+    href: link.href,
+    icon: HardDriveIcon,
+    label: `${link.label} in Drive`,
   })),
 ];
 
