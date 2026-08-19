@@ -72,7 +72,7 @@ export function MobileNavGroup({
             ) : null}
           </span>
           <span className="truncate text-muted-foreground text-xs">
-            {group.entries.length} pages
+            {group.entries.length} links
           </span>
         </span>
         <ChevronDownIcon

@@ -29,7 +29,7 @@ export function MegaMenuPanel({ group }: MegaMenuPanelProps) {
           {group.tagline}
         </p>
         <span className="mt-auto font-head text-muted-foreground text-xs">
-          {group.entries.length} pages
+          {group.entries.length} links
         </span>
       </div>
 
