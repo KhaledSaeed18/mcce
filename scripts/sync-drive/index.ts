@@ -7,6 +7,7 @@ import { type CrawledNode, crawlSource } from "./crawl";
 import { stampFirstSeen } from "./diff";
 import { getFileMetadata } from "./drive-client";
 import { buildFeedXml } from "./feed";
+import { buildChangedUrls, submitToIndexNow } from "./indexnow";
 import { buildSitemapXml } from "./sitemap";
 
 const OUTPUT_PATH = resolve(process.cwd(), "src/data/drive-index.json");
@@ -88,6 +89,8 @@ async function main() {
 
   writeFileSync(FEED_PATH, buildFeedXml(index));
   console.log(`Wrote feed to ${FEED_PATH}`);
+
+  await submitToIndexNow(buildChangedUrls(nodes, generatedAt));
 }
 
 main().catch((error: unknown) => {
