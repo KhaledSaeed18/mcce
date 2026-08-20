@@ -14,6 +14,7 @@ import { PageRails } from "@/components/page-rails";
 import { RecentNodesProvider } from "@/components/providers/recent-nodes-provider";
 import { SavedNodesProvider } from "@/components/providers/saved-nodes-provider";
 import { JsonLd } from "@/components/seo/json-ld";
+import { GA_MEASUREMENT_ID } from "@/config/analytics";
 import {
   SITE_DESCRIPTION,
   SITE_NAME,
@@ -158,6 +159,18 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         href: "/feed.xml",
       },
     ],
+    scripts:
+      import.meta.env.PROD && GA_MEASUREMENT_ID
+        ? [
+            {
+              src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`,
+              async: true,
+            },
+            {
+              children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","${GA_MEASUREMENT_ID}");`,
+            },
+          ]
+        : [],
   }),
   notFoundComponent: () => <NotFound />,
   shellComponent: RootDocument,
