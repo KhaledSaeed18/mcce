@@ -4,10 +4,12 @@ import { buildPageMeta } from "@/lib/seo/meta";
 
 function buildDescription(context: CurriculumCourseContext): string {
   const { course, semester, year } = context;
-  const summary =
-    course.description ??
-    `${course.credits} credits, ${year.label}, ${semester.label}.`;
-  return `${course.code}, ${course.name}. Lectures, exams, exercises, and labs indexed from the program Drive. ${summary}`;
+
+  if (course.description) {
+    return `${course.code}, ${course.name}. ${course.description}`;
+  }
+
+  return `${course.code}, ${course.name}. ${course.credits} credits, ${year.label}, ${semester.label}. Lectures, exams, exercises, and labs indexed from the program Drive.`;
 }
 
 /** Head tags for a course page, which has to cover codes the curriculum does not list. */
