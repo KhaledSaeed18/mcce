@@ -12,10 +12,50 @@ This site is not an official LIU page. For admissions, curriculum, and official 
 - Duration: Two years, combining coursework with a research project
 - Focus areas: telecommunications, data communications, network architecture, wireless systems, optical networking
 
+## Curriculum
+
+- CENG507: Embedded Systems
+- EENG527: Digital Signal Processing
+- EENG537: Digital Communications
+- ENGG515: Advanced Engineering Mathematics
+- CENG557: Advanced Network Architectures
+- EENG587: Wireless Communication
+- CENG675: Multimedia Networks
+- CENG566: Machine Learning
+- CENG566L: Machine Learning Laboratory
+- CENG695A: Master Thesis Project (Part I)
+- ENGG550: Engineering Project Management and Control
+- CENG625: Cryptography & Advanced Computer Security
+- CENG645: Mobile Communication
+- CENG646: Data Mining
+- CENG695B: Master Thesis Project (Part II)
+- CENG685: Information Security
+- CENG678: Image Processing and Computer Vision
+- CENG679: Satellite and Space Communications
+
+Each course has its own page at `https://mcce.khaledsaeed.tech/course/{code}`, for example [CENG557](https://mcce.khaledsaeed.tech/course/CENG557).
+
+## Frequently asked
+
+- What does MCCE stand for? M.S. in Computer and Communication Engineering, a two-year graduate program at LIU.
+- Is this site official? No. It is an independent, student-built materials browser, not affiliated with LIU.
+- How current is the material? The index re-syncs from the shared Drive automatically about once a week.
+- Do I need an account? Not for the site itself. Files open in Google Drive using your own Google account.
+- Can I add materials I have? Yes, through the contact page.
+
+See [the full FAQ](https://mcce.khaledsaeed.tech/faq) for more.
+
 ## Pages
 
 - [Program materials](https://mcce.khaledsaeed.tech/): Browse indexed course materials by source and semester.
 - [Search](https://mcce.khaledsaeed.tech/search): Search materials by name, semester, course, or file type.
+- [All courses](https://mcce.khaledsaeed.tech/course): Every course in the curriculum, grouped by year and semester.
+- [Past exams](https://mcce.khaledsaeed.tech/exams): Past exams and quizzes pulled out of the course folders.
+- [Plan of study](https://mcce.khaledsaeed.tech/plan-of-study): The full two-year curriculum, semester by semester.
+- [GPA calculator](https://mcce.khaledsaeed.tech/gpa-calculator): Calculate a GPA against the program's grading scale.
+- [About](https://mcce.khaledsaeed.tech/about): What this site is and how the index is built.
+- [FAQ](https://mcce.khaledsaeed.tech/faq): Answers about the program and the site.
+- [Contact](https://mcce.khaledsaeed.tech/contact): Report missing material or send files to add.
 
 ## Official sources
 
