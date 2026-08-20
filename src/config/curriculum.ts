@@ -18,6 +18,12 @@ const YEAR_1_FALL: CurriculumYear["semesters"][number] = {
       ],
       prerequisites: [],
       requirementCategory: "core",
+      topics: [
+        "ARM Cortex-M architecture",
+        "Real-time embedded systems",
+        "FreeRTOS",
+        "Sensor interfacing",
+      ],
     },
     {
       code: "EENG527",
@@ -34,6 +40,12 @@ const YEAR_1_FALL: CurriculumYear["semesters"][number] = {
       ],
       prerequisites: [],
       requirementCategory: "major-requirement",
+      topics: [
+        "Analog to digital conversion",
+        "Sampling and quantization",
+        "Z-transform",
+        "FIR and IIR filter design",
+      ],
     },
     {
       code: "EENG537",
@@ -51,6 +63,13 @@ const YEAR_1_FALL: CurriculumYear["semesters"][number] = {
       ],
       prerequisites: [],
       requirementCategory: "major-requirement",
+      topics: [
+        "AWGN channel model",
+        "Digital modulation",
+        "Optimum receiver design",
+        "Channel coding",
+        "Synchronization",
+      ],
     },
     {
       code: "ENGG515",
@@ -68,6 +87,11 @@ const YEAR_1_FALL: CurriculumYear["semesters"][number] = {
       ],
       prerequisites: [],
       requirementCategory: "core",
+      topics: [
+        "Operations research",
+        "Graph theory",
+        "Statistics and statistical inference",
+      ],
     },
   ],
   id: "y1-fall",
@@ -92,6 +116,13 @@ const YEAR_1_SPRING: CurriculumYear["semesters"][number] = {
       ],
       prerequisites: ["ENGG515"],
       requirementCategory: "major-requirement",
+      topics: [
+        "SONET/SDH",
+        "ATM",
+        "MPLS",
+        "Quality of Service (QoS)",
+        "Quality of Experience (QoE)",
+      ],
     },
     {
       code: "EENG587",
@@ -109,6 +140,13 @@ const YEAR_1_SPRING: CurriculumYear["semesters"][number] = {
       ],
       prerequisites: ["EENG537"],
       requirementCategory: "major-requirement",
+      topics: [
+        "Multipath fading",
+        "MIMO and space-time coding",
+        "OFDM",
+        "Spread-spectrum techniques",
+        "Link budget analysis",
+      ],
     },
     {
       code: "CENG675",
@@ -121,6 +159,12 @@ const YEAR_1_SPRING: CurriculumYear["semesters"][number] = {
       objectives: [],
       prerequisites: ["EENG527"],
       requirementCategory: "major-elective",
+      topics: [
+        "Image, video, and audio coding",
+        "Compression standards",
+        "Content distribution",
+        "Watermarking and encryption",
+      ],
     },
     {
       code: "CENG566",
@@ -138,6 +182,14 @@ const YEAR_1_SPRING: CurriculumYear["semesters"][number] = {
       ],
       prerequisites: ["EENG527", "ENGG515"],
       requirementCategory: "major-elective",
+      topics: [
+        "Supervised learning",
+        "Unsupervised learning",
+        "Reinforcement learning",
+        "Decision trees",
+        "Clustering",
+        "Pattern recognition",
+      ],
     },
     {
       code: "CENG566L",
@@ -189,6 +241,11 @@ const YEAR_2_FALL: CurriculumYear["semesters"][number] = {
       objectives: [],
       prerequisites: [],
       requirementCategory: "major-elective",
+      topics: [
+        "Project management framework",
+        "PMBOK / PMI certification prep",
+        "Schedule and budget control",
+      ],
     },
     {
       code: "CENG625",
@@ -253,6 +310,13 @@ const YEAR_2_SPRING: CurriculumYear["semesters"][number] = {
       objectives: [],
       prerequisites: [],
       requirementCategory: "major-requirement",
+      topics: [
+        "Identity and access management",
+        "Software development security",
+        "Security operations",
+        "Risk management",
+        "Trusted computing",
+      ],
     },
     {
       code: "CENG678",

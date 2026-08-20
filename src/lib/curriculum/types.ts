@@ -17,6 +17,8 @@ export interface CurriculumCourse {
   objectives: string[];
   prerequisites: string[];
   requirementCategory: CurriculumRequirementCategory;
+  /** Short topic names pulled from the description, for a scannable list beyond the prose. */
+  topics?: string[];
 }
 
 export interface CurriculumSemester {
