@@ -5,6 +5,7 @@ import { CourseMaterials } from "@/components/course/course-materials";
 import { CourseNotFound } from "@/components/course/course-not-found";
 import { CourseQuickLinks } from "@/components/course/course-quick-links";
 import { CourseRequirements } from "@/components/course/course-requirements";
+import { CourseTopics } from "@/components/course/course-topics";
 import { FilePreviewHost } from "@/components/drive/file-preview-host";
 import { JsonLd } from "@/components/seo/json-ld";
 import { CURRICULUM } from "@/config/curriculum";
@@ -57,7 +58,9 @@ function CoursePage() {
     <main className="mx-auto flex max-w-6xl flex-col gap-6 p-4 sm:p-6">
       <CourseHeader context={context} />
 
-      <CourseRequirements course={context.course} lookup={courseLookup} />
+      <CourseTopics topics={context.course.topics ?? []} />
+
+      <CourseRequirements context={context} lookup={courseLookup} />
 
       <CourseQuickLinks code={code} folderId={folderId} />
 
