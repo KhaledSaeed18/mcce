@@ -8,6 +8,7 @@ import { CourseRequirements } from "@/components/course/course-requirements";
 import { FilePreviewHost } from "@/components/drive/file-preview-host";
 import { JsonLd } from "@/components/seo/json-ld";
 import { CURRICULUM } from "@/config/curriculum";
+import { SITE_URL } from "@/config/site";
 import { buildCourseContextLookup } from "@/lib/curriculum/lookup";
 import {
   buildCourseMaterials,
@@ -17,7 +18,7 @@ import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import type { FilePreviewSearch } from "@/lib/drive/types";
 import { readOptionalString } from "@/lib/search-params";
 import { buildCourseHead } from "@/lib/seo/course-head";
-import { buildCourseSchema } from "@/lib/seo/schema";
+import { buildBreadcrumbSchema, buildCourseSchema } from "@/lib/seo/schema";
 
 const courseLookup = buildCourseContextLookup(CURRICULUM);
 
@@ -64,6 +65,13 @@ function CoursePage() {
 
       <FilePreviewHost nodes={driveIndex.nodes} />
       <JsonLd data={buildCourseSchema(context)} />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", url: SITE_URL },
+          { name: "All courses", url: `${SITE_URL}/course` },
+          { name: context.course.name, url: `${SITE_URL}/course/${code}` },
+        ])}
+      />
     </main>
   );
 }

@@ -120,3 +120,21 @@ export function buildFaqSchema(entries: FaqEntry[]) {
     })),
   };
 }
+
+interface BreadcrumbEntry {
+  name: string;
+  url: string;
+}
+
+export function buildBreadcrumbSchema(entries: BreadcrumbEntry[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: entries.map((entry, index) => ({
+      "@type": "ListItem",
+      item: entry.url,
+      name: entry.name,
+      position: index + 1,
+    })),
+  };
+}
