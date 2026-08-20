@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AboutHero } from "@/components/about/about-hero";
 import { AboutInfo } from "@/components/about/about-info";
 import { AboutPurpose } from "@/components/about/about-purpose";
+import { AboutTrust } from "@/components/about/about-trust";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
 import { SITE_URL } from "@/config/site";
 import { buildPageMeta } from "@/lib/seo/meta";
@@ -28,6 +29,8 @@ function AboutPage() {
       <AboutInfo />
       <SectionDividerDots />
       <AboutPurpose />
+      <SectionDividerDots />
+      <AboutTrust />
     </main>
   );
 }
