@@ -43,6 +43,10 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         content: "width=device-width, initial-scale=1",
       },
       {
+        name: "msvalidate.01",
+        content: "D8515B3C28C31200A7D886BF913D9D7F",
+      },
+      {
         title: SITE_TITLE,
       },
       {
