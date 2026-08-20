@@ -1,5 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { CalculatorIcon, FolderOpenIcon, SearchIcon } from "lucide-react";
+import {
+  CalculatorIcon,
+  FolderOpenIcon,
+  ListTreeIcon,
+  SearchIcon,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface CourseQuickLinksProps {
@@ -35,6 +40,14 @@ export function CourseQuickLinks({ code, folderId }: CourseQuickLinksProps) {
       >
         <CalculatorIcon data-icon="inline-start" />
         GPA calculator
+      </Button>
+      <Button
+        nativeButton={false}
+        render={<Link to="/plan-of-study" />}
+        variant="outline"
+      >
+        <ListTreeIcon data-icon="inline-start" />
+        Plan of study
       </Button>
     </div>
   );
