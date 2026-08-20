@@ -63,8 +63,11 @@ export function buildSitemapXml(index: DriveIndex): string {
     )
   );
 
+  // Only course-level folders (depth 1, one per course) get a sitemap entry.
+  // Deeper folders (lectures, exams, labs, ...) are thin, near-duplicate
+  // listings that would dilute crawl budget away from the pages worth ranking.
   const folderEntries = index.nodes
-    .filter((node) => node.kind === "folder")
+    .filter((node) => node.kind === "folder" && node.depth === 1)
     .map((node) =>
       buildUrlEntry(
         `${SITE_URL}/browse/${node.id}`,
