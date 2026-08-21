@@ -7,6 +7,7 @@ import {
   setThemeWithTransition,
   useTheme,
 } from "@/hooks/use-theme";
+import { useThemeHotkey } from "@/hooks/use-theme-hotkey";
 import { clickSoftSound } from "@/lib/click-soft";
 
 const DARK_QUERY = "(prefers-color-scheme: dark)";
@@ -47,6 +48,8 @@ export function ThemeSwitcher() {
     setThemeWithTransition(getToggledTheme(theme), setTheme);
   }, [theme, setTheme, playClick]);
 
+  useThemeHotkey();
+
   // biome-ignore lint/suspicious/noUnnecessaryConditions: useIsMounted's getSnapshot/getServerSnapshot pair intentionally differ -- the documented useSyncExternalStore pattern for a hydration-safe "mounted" flag -- which Biome's static analysis can't see across the client/server split.
   if (!isMounted) {
     return <div className="size-8" />;
@@ -58,6 +61,7 @@ export function ThemeSwitcher() {
       className="size-8 p-0"
       onClick={handleToggle}
       size="sm"
+      title={`${isDark ? "Switch to light theme" : "Switch to dark theme"} (D)`}
       variant="outline"
     >
       {isDark ? <MoonIcon /> : <SunIcon />}

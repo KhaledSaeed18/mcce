@@ -27,6 +27,9 @@ import { DRIVE_SOURCES } from "@/config/sources";
 /** The command palette shows a shortlist; the search page is where everything is. */
 export const COMMAND_RESULT_LIMIT = 8;
 
+/** Bare "d", or Cmd/Ctrl+Shift+D, toggles light and dark. */
+export const THEME_HOTKEY_KEY = "d";
+
 export type NavRoute =
   | "/"
   | "/search"
