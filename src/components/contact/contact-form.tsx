@@ -75,8 +75,10 @@ export function ContactForm() {
           onVerify={handleCaptchaVerify}
         />
 
+        {/* Honeypot: hidden from sight and from assistive tech, so only bots fill it. */}
         <input
           aria-hidden="true"
+          aria-label="Leave this field empty"
           autoComplete="off"
           className="hidden"
           name="botcheck"
