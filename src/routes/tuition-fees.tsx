@@ -1,11 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
+import { JsonLd } from "@/components/seo/json-ld";
 import { TuitionCalculator } from "@/components/tuition/tuition-calculator";
 import { TuitionHero } from "@/components/tuition/tuition-hero";
 import { TuitionReferenceTable } from "@/components/tuition/tuition-reference-table";
-import { SITE_URL } from "@/config/site";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import { TUITION_PAGE_PATH } from "@/config/tuition";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { buildBreadcrumbSchema, buildTuitionSchema } from "@/lib/seo/schema";
 
 const TUITION_URL = `${SITE_URL}${TUITION_PAGE_PATH}`;
 
@@ -29,6 +31,14 @@ function TuitionFeesPage() {
       <TuitionReferenceTable />
       <SectionDividerDots />
       <TuitionCalculator />
+
+      <JsonLd data={buildTuitionSchema()} />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: SITE_NAME, url: SITE_URL },
+          { name: "Tuition and fees", url: TUITION_URL },
+        ])}
+      />
     </main>
   );
 }

@@ -1,4 +1,8 @@
 import {
+  ADMISSIONS_PAGE_PATH,
+  type AdmissionsTrack,
+} from "@/config/admissions";
+import {
   PROGRAM_DEPARTMENT,
   PROGRAM_DURATION_ISO,
   PROGRAM_NAME,
@@ -9,6 +13,11 @@ import {
   SITE_NAME,
   SITE_URL,
 } from "@/config/site";
+import {
+  TUITION_PAGE_PATH,
+  TUITION_REGISTRATION_USD_YEARLY,
+  TUITION_USD_PER_CREDIT,
+} from "@/config/tuition";
 import { flattenCourses } from "@/lib/curriculum/lookup";
 import type {
   CurriculumCourseContext,
@@ -136,5 +145,71 @@ export function buildBreadcrumbSchema(entries: BreadcrumbEntry[]) {
       name: entry.name,
       position: index + 1,
     })),
+  };
+}
+
+export function buildTuitionSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "EducationalOccupationalProgram",
+    alternateName: "MCCE",
+    name: PROGRAM_NAME,
+    offers: [
+      {
+        "@type": "Offer",
+        category: "Tuition",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: TUITION_USD_PER_CREDIT,
+          priceCurrency: "USD",
+          referenceQuantity: {
+            "@type": "QuantitativeValue",
+            unitText: "credit",
+            value: 1,
+          },
+        },
+      },
+      {
+        "@type": "Offer",
+        category: "Registration fee",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          billingDuration: 1,
+          billingIncrement: 1,
+          price: TUITION_REGISTRATION_USD_YEARLY,
+          priceCurrency: "USD",
+          unitText: "year",
+        },
+      },
+    ],
+    programType: "Master's degree",
+    provider: {
+      "@type": "CollegeOrUniversity",
+      alternateName: PROGRAM_UNIVERSITY_SHORT,
+      name: PROGRAM_UNIVERSITY,
+      url: "https://cce.liu.edu.lb",
+    },
+    timeToComplete: PROGRAM_DURATION_ISO,
+    url: `${SITE_URL}${TUITION_PAGE_PATH}`,
+  };
+}
+
+export function buildAdmissionsSchema(tracks: AdmissionsTrack[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    description:
+      "The admissions flow for the LIU MCCE graduate program, with separate tracks for LIU and non-LIU bachelor graduates.",
+    name: `How to apply to the ${PROGRAM_NAME}`,
+    step: tracks.map((track) => ({
+      "@type": "HowToSection",
+      itemListElement: track.steps.map((step, index) => ({
+        "@type": "HowToStep",
+        position: index + 1,
+        text: step,
+      })),
+      name: track.label,
+    })),
+    url: `${SITE_URL}${ADMISSIONS_PAGE_PATH}`,
   };
 }

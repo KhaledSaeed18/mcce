@@ -2,10 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AdmissionsDetails } from "@/components/admissions/admissions-details";
 import { AdmissionsHero } from "@/components/admissions/admissions-hero";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
-import { SITE_URL } from "@/config/site";
+import { JsonLd } from "@/components/seo/json-ld";
+import { ADMISSIONS_PAGE_PATH, ADMISSIONS_TRACKS } from "@/config/admissions";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { buildAdmissionsSchema, buildBreadcrumbSchema } from "@/lib/seo/schema";
 
-const ADMISSIONS_URL = `${SITE_URL}/admissions`;
+const ADMISSIONS_URL = `${SITE_URL}${ADMISSIONS_PAGE_PATH}`;
 
 export const Route = createFileRoute("/admissions")({
   component: AdmissionsPage,
@@ -26,6 +29,14 @@ function AdmissionsPage() {
       <AdmissionsHero />
       <SectionDividerDots />
       <AdmissionsDetails />
+
+      <JsonLd data={buildAdmissionsSchema(ADMISSIONS_TRACKS)} />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: SITE_NAME, url: SITE_URL },
+          { name: "Admissions guide", url: ADMISSIONS_URL },
+        ])}
+      />
     </main>
   );
 }

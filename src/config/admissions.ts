@@ -1,3 +1,5 @@
+export const ADMISSIONS_PAGE_PATH = "/admissions";
+
 export interface AdmissionsTrack {
   gpaRequirement: string;
   id: "liu" | "non-liu";
