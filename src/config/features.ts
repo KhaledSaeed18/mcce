@@ -84,6 +84,14 @@ export const GPA_PREVIEW_POINTS: GpaPreviewPoint[] = [
   { gpa: 3.1, label: "Y2 S" },
 ];
 
+/** Condensed version of the admissions flow, drawn in the home admissions tile.
+ * The real tracks and their full steps live in `config/admissions`. */
+export const ADMISSIONS_PREVIEW_STEPS = [
+  "Apply and open a file",
+  "The School of Engineering reviews it",
+  "Accepted, then the curriculum is set",
+] as const;
+
 export interface SyncStep {
   body: string;
   title: string;

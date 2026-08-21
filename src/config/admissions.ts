@@ -4,6 +4,8 @@ export interface AdmissionsTrack {
   gpaRequirement: string;
   id: "liu" | "non-liu";
   label: string;
+  /** Fits the home tile and other tight rows, where the full label wraps. */
+  shortLabel: string;
   steps: string[];
 }
 
@@ -25,6 +27,7 @@ export const ADMISSIONS_TRACKS: AdmissionsTrack[] = [
       "Major GPA and cumulative GPA of at least 2.0 for LIU bachelor graduates.",
     id: "liu",
     label: "For LIU bachelor graduates",
+    shortLabel: "LIU graduates",
     steps: [
       "Submit the application through the admissions office.",
       "Admissions opens a file including your official transcript and bachelor clearance status.",
@@ -38,6 +41,7 @@ export const ADMISSIONS_TRACKS: AdmissionsTrack[] = [
       "Major GPA of at least 2.25 for bachelor graduates from recognized institutions licensed by the Ministry of Higher Education.",
     id: "non-liu",
     label: "For non-LIU bachelor graduates",
+    shortLabel: "Non-LIU graduates",
     steps: [
       "Submit an application to the registrar office.",
       "Registrar opens a file with your official mailed transcript, certified degree, certified identification, and supporting documents.",

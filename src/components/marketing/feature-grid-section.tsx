@@ -1,8 +1,10 @@
 import { motion } from "motion/react";
+import { AdmissionsFeatureTile } from "@/components/marketing/admissions-feature-tile";
 import { FeatureTile } from "@/components/marketing/feature-tile";
 import { GpaFeatureTile } from "@/components/marketing/gpa-feature-tile";
 import { PlanFeatureTile } from "@/components/marketing/plan-feature-tile";
 import { SearchFeatureTile } from "@/components/marketing/search-feature-tile";
+import { TuitionFeatureTile } from "@/components/marketing/tuition-feature-tile";
 import { Badge } from "@/components/ui/badge";
 import { OFFLINE_FEATURE } from "@/config/features";
 import { useReveal } from "@/hooks/use-reveal";
@@ -50,6 +52,14 @@ export function FeatureGridSection() {
 
         <motion.div className="lg:col-span-3" {...reveal.item}>
           <PlanFeatureTile />
+        </motion.div>
+
+        <motion.div className="lg:col-span-2" {...reveal.item}>
+          <AdmissionsFeatureTile />
+        </motion.div>
+
+        <motion.div className="lg:col-span-4" {...reveal.item}>
+          <TuitionFeatureTile />
         </motion.div>
       </motion.div>
     </section>
