@@ -13,6 +13,7 @@ import { NotFound } from "@/components/not-found";
 import { PageRails } from "@/components/page-rails";
 import { RecentNodesProvider } from "@/components/providers/recent-nodes-provider";
 import { SavedNodesProvider } from "@/components/providers/saved-nodes-provider";
+import { RouteError } from "@/components/route-error";
 import { JsonLd } from "@/components/seo/json-ld";
 import { GA_MEASUREMENT_ID } from "@/config/analytics";
 import {
@@ -176,6 +177,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
           ]
         : [],
   }),
+  errorComponent: RouteError,
   notFoundComponent: () => <NotFound />,
   shellComponent: RootDocument,
 });
