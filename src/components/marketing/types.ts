@@ -23,6 +23,8 @@ export type HeroQuickLinkRoute =
   | "/exams"
   | "/plan-of-study"
   | "/gpa-calculator"
+  | "/admissions"
+  | "/tuition-fees"
   | "/recent";
 
 export interface HeroQuickLink {

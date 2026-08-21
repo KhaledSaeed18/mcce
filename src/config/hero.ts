@@ -1,8 +1,9 @@
 import {
-  BookmarkIcon,
   CalculatorIcon,
+  DollarSignIcon,
   FileSpreadsheetIcon,
   FileTextIcon,
+  GraduationCapIcon,
   LibraryIcon,
   MapIcon,
   PresentationIcon,
@@ -58,7 +59,7 @@ export const HERO_GRAPHIC_TOOLS: HeroToolNode[] = [
   { icon: SearchIcon, label: "Search", x: 21, y: 20 },
   { icon: MapIcon, label: "Plan", x: 79, y: 20 },
   { icon: CalculatorIcon, label: "GPA", x: 21, y: 80 },
-  { icon: BookmarkIcon, label: "Saved", x: 79, y: 80 },
+  { icon: DollarSignIcon, label: "Fees", x: 79, y: 80 },
 ];
 
 /** The pages a first-time reader would otherwise only find in the nav menu.
@@ -68,4 +69,6 @@ export const HERO_QUICK_LINKS: HeroQuickLink[] = [
   { icon: FileTextIcon, label: "Past exams", to: "/exams" },
   { icon: MapIcon, label: "Plan of study", to: "/plan-of-study" },
   { icon: CalculatorIcon, label: "GPA calculator", to: "/gpa-calculator" },
+  { icon: DollarSignIcon, label: "Tuition and fees", to: "/tuition-fees" },
+  { icon: GraduationCapIcon, label: "Admissions", to: "/admissions" },
 ];
