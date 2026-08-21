@@ -53,10 +53,15 @@ export function CommandPalette() {
             value={query}
           />
           <CommandList>
-            {recent.length === 0 && (
-              <CommandEmpty>
-                {query.trim() ? "No matches." : "Start typing to search."}
-              </CommandEmpty>
+            {!(query.trim() || recent.length) && (
+              <CommandEmpty>Start typing to search.</CommandEmpty>
+            )}
+            {/* The "More" group keeps an item mounted, so CommandEmpty never
+                fires on a fruitless query and this branch has to cover it. */}
+            {Boolean(query.trim()) && results.length === 0 && (
+              <p className="py-6 text-center text-muted-foreground text-sm">
+                No files or folders match "{query}".
+              </p>
             )}
             {recent.length > 0 && (
               <CommandGroup heading="Recently opened">
