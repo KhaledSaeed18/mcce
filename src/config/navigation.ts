@@ -3,6 +3,7 @@ import {
   CalculatorIcon,
   ClockIcon,
   CompassIcon,
+  DollarSignIcon,
   FileTextIcon,
   FolderIcon,
   GraduationCapIcon,
@@ -34,6 +35,7 @@ export type NavRoute =
   | "/recent"
   | "/saved"
   | "/admissions"
+  | "/tuition-fees"
   | "/plan-of-study"
   | "/gpa-calculator"
   | "/about"
@@ -116,6 +118,13 @@ const BROWSE_ENTRIES: NavEntry[] = [
 ];
 
 const PROGRAM_ENTRIES: NavEntry[] = [
+  {
+    description:
+      "Reference tuition numbers and plan credits for each semester.",
+    icon: DollarSignIcon,
+    label: "Tuition and fees",
+    to: "/tuition-fees",
+  },
   {
     description: "The full plan with prerequisites drawn as a roadmap.",
     icon: MapIcon,

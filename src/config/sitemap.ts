@@ -20,6 +20,7 @@ export interface SitemapEntry {
     | "/recent"
     | "/saved"
     | "/admissions"
+    | "/tuition-fees"
     | "/plan-of-study"
     | "/gpa-calculator"
     | "/about"
@@ -92,6 +93,12 @@ export const SITEMAP_GROUPS: SitemapGroup[] = [
           "Graduate admissions requirements, LIU and non-LIU tracks, and official contact points.",
         label: "Admissions guide",
         to: "/admissions",
+      },
+      {
+        description:
+          "Official tuition reference numbers and a year fee planner with exports.",
+        label: "Tuition and fees",
+        to: "/tuition-fees",
       },
       {
         description:
