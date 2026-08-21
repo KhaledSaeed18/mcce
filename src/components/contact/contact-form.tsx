@@ -6,7 +6,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Textarea } from "@/components/ui/textarea";
+import { CONTACT_FORM_STATUS_MESSAGE } from "@/config/contact";
 import { useContactForm } from "@/hooks/use-contact-form";
+import { cn } from "@/lib/utils";
 
 export function ContactForm() {
   const {
@@ -22,6 +24,10 @@ export function ContactForm() {
     values,
   } = useContactForm();
   const isSubmitting = status === "submitting";
+  const statusMessage =
+    status === "error" || status === "success"
+      ? CONTACT_FORM_STATUS_MESSAGE[status]
+      : "";
 
   return (
     <motion.section
@@ -92,16 +98,18 @@ export function ContactForm() {
             <SendIcon data-icon="inline-end" />
           </Button>
 
-          {status === "success" && (
-            <span className="text-primary text-sm">
-              Message sent. Thanks for reaching out.
-            </span>
-          )}
-          {status === "error" && (
-            <span className="text-destructive text-sm">
-              Something went wrong. Email works too.
-            </span>
-          )}
+          {/* Always mounted, so the live region exists before a result lands in
+              it and the change is announced rather than missed. */}
+          <span
+            aria-live="polite"
+            className={cn(
+              "text-sm",
+              status === "error" ? "text-destructive" : "text-primary"
+            )}
+            role="status"
+          >
+            {statusMessage}
+          </span>
         </div>
       </form>
     </motion.section>

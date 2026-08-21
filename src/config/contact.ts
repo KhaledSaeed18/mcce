@@ -93,3 +93,9 @@ export const CONTACT_FORM_TOPICS: ContactFormTopic[] = [
   { label: "General question", value: "general" },
   { label: "Something else", value: "other" },
 ];
+
+export const CONTACT_FORM_STATUS_MESSAGE: Record<"error" | "success", string> =
+  {
+    error: "Something went wrong. Email works too.",
+    success: "Message sent. Thanks for reaching out.",
+  };
