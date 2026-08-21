@@ -7,6 +7,7 @@ export type FooterNavLink =
       label: string;
       to:
         | "/"
+        | "/admissions"
         | "/plan-of-study"
         | "/gpa-calculator"
         | "/course"
@@ -75,6 +76,7 @@ export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
       { label: "Plan of study", to: "/plan-of-study" },
       { label: "GPA calculator", to: "/gpa-calculator" },
       { label: "About MCCE", to: "/about" },
+      { label: "Admissions guide", to: "/admissions" },
       { label: "FAQ", to: "/faq" },
       { href: PROGRAM_OFFICIAL_URL, label: "Official program page" },
     ],

@@ -33,6 +33,7 @@ export type NavRoute =
   | "/exams"
   | "/recent"
   | "/saved"
+  | "/admissions"
   | "/plan-of-study"
   | "/gpa-calculator"
   | "/about"
@@ -126,6 +127,12 @@ const PROGRAM_ENTRIES: NavEntry[] = [
     icon: CalculatorIcon,
     label: "GPA calculator",
     to: "/gpa-calculator",
+  },
+  {
+    description: "Admissions steps, required documents, and contact emails.",
+    icon: GraduationCapIcon,
+    label: "Admissions guide",
+    to: "/admissions",
   },
   {
     description: "The plan of study as published by the department.",

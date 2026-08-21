@@ -19,6 +19,7 @@ export interface SitemapEntry {
     | "/exams"
     | "/recent"
     | "/saved"
+    | "/admissions"
     | "/plan-of-study"
     | "/gpa-calculator"
     | "/about"
@@ -86,6 +87,12 @@ export const SITEMAP_GROUPS: SitemapGroup[] = [
   {
     color: "chart-3",
     entries: [
+      {
+        description:
+          "Graduate admissions requirements, LIU and non-LIU tracks, and official contact points.",
+        label: "Admissions guide",
+        to: "/admissions",
+      },
       {
         description:
           "The full plan of study with prerequisites drawn as a roadmap.",
