@@ -33,3 +33,22 @@ export interface TuitionScenario {
   calculation: TuitionCalculation;
   plan: TuitionPlan;
 }
+
+export interface TuitionRateReference {
+  lbpPerCredit: number;
+  nssfLbpYearly: number;
+  registrationUsdYearly: number;
+  usdPerCredit: number;
+}
+
+/** One snapshot every export format renders from, so PDF, CSV, and JSON cannot drift. */
+export interface TuitionExportPayload {
+  academicYear: string;
+  annualProjection: TuitionBreakdown;
+  chargeSemesterLabel: string;
+  generatedAt: string;
+  plan: TuitionPlan;
+  program: string;
+  rates: TuitionRateReference;
+  semesters: TuitionSemesterBreakdown[];
+}
