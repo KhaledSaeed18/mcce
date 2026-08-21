@@ -1,14 +1,7 @@
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
+import { TuitionPlanSelect } from "@/components/tuition/tuition-plan-select";
 import { TuitionSemesterCreditsField } from "@/components/tuition/tuition-semester-credits-field";
 import { TuitionToggleRow } from "@/components/tuition/tuition-toggle-row";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import {
   TUITION_MAX_SEMESTERS_PER_YEAR,
   TUITION_MIN_SEMESTERS_PER_YEAR,
@@ -31,7 +24,11 @@ const SEMESTER_COUNT_OPTIONS = Array.from(
   {
     length: TUITION_MAX_SEMESTERS_PER_YEAR - TUITION_MIN_SEMESTERS_PER_YEAR + 1,
   },
-  (_, index) => TUITION_MIN_SEMESTERS_PER_YEAR + index
+  (_, index) => {
+    const count = String(TUITION_MIN_SEMESTERS_PER_YEAR + index);
+
+    return { label: count, value: count };
+  }
 );
 
 export function TuitionPlanControls({
@@ -46,13 +43,22 @@ export function TuitionPlanControls({
   semesters,
 }: TuitionPlanControlsProps) {
   const handleSemesterCountChange = useCallback(
-    (value: string | null) => onSemesterCountChange(Number(value)),
+    (value: string) => onSemesterCountChange(Number(value)),
     [onSemesterCountChange]
   );
 
   const handleChargeSemesterChange = useCallback(
-    (value: string | null) => onChargeSemesterChange(Number(value)),
+    (value: string) => onChargeSemesterChange(Number(value)),
     [onChargeSemesterChange]
+  );
+
+  const chargeSemesterOptions = useMemo(
+    () =>
+      semesters.map((semester, index) => ({
+        label: semester.label,
+        value: String(index),
+      })),
+    [semesters]
   );
 
   const chargeSemesterLabel =
@@ -61,49 +67,19 @@ export function TuitionPlanControls({
   return (
     <div className="flex flex-col gap-4">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div className="flex flex-col gap-1.5">
-          <span className="font-medium text-sm">Semesters this year</span>
-          <Select
-            onValueChange={handleSemesterCountChange}
-            value={String(semesters.length)}
-          >
-            <SelectTrigger className="w-full">
-              <SelectValue>{() => String(semesters.length)}</SelectValue>
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                {SEMESTER_COUNT_OPTIONS.map((count) => (
-                  <SelectItem key={count} value={String(count)}>
-                    {count}
-                  </SelectItem>
-                ))}
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </div>
+        <TuitionPlanSelect
+          label="Semesters this year"
+          onValueChange={handleSemesterCountChange}
+          options={SEMESTER_COUNT_OPTIONS}
+          value={String(semesters.length)}
+        />
 
-        <div className="flex flex-col gap-1.5">
-          <span className="font-medium text-sm">
-            Semester billed yearly charges
-          </span>
-          <Select
-            onValueChange={handleChargeSemesterChange}
-            value={String(chargeSemesterIndex)}
-          >
-            <SelectTrigger className="w-full">
-              <SelectValue>{() => chargeSemesterLabel}</SelectValue>
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                {semesters.map((semester, index) => (
-                  <SelectItem key={semester.label} value={String(index)}>
-                    {semester.label}
-                  </SelectItem>
-                ))}
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </div>
+        <TuitionPlanSelect
+          label="Semester billed yearly charges"
+          onValueChange={handleChargeSemesterChange}
+          options={chargeSemesterOptions}
+          value={String(chargeSemesterIndex)}
+        />
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
