@@ -119,13 +119,6 @@ const BROWSE_ENTRIES: NavEntry[] = [
 
 const PROGRAM_ENTRIES: NavEntry[] = [
   {
-    description:
-      "Reference tuition numbers and plan credits for each semester.",
-    icon: DollarSignIcon,
-    label: "Tuition and fees",
-    to: "/tuition-fees",
-  },
-  {
     description: "The full plan with prerequisites drawn as a roadmap.",
     icon: MapIcon,
     label: "Plan of study",
@@ -136,6 +129,13 @@ const PROGRAM_ENTRIES: NavEntry[] = [
     icon: CalculatorIcon,
     label: "GPA calculator",
     to: "/gpa-calculator",
+  },
+  {
+    description:
+      "Reference tuition numbers and plan credits for each semester.",
+    icon: DollarSignIcon,
+    label: "Tuition and fees",
+    to: "/tuition-fees",
   },
   {
     description: "Admissions steps, required documents, and contact emails.",

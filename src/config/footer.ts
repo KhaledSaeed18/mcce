@@ -74,9 +74,9 @@ export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
   },
   {
     links: [
-      { label: "Tuition and fees", to: "/tuition-fees" },
       { label: "Plan of study", to: "/plan-of-study" },
       { label: "GPA calculator", to: "/gpa-calculator" },
+      { label: "Tuition and fees", to: "/tuition-fees" },
       { label: "About MCCE", to: "/about" },
       { label: "Admissions guide", to: "/admissions" },
       { label: "FAQ", to: "/faq" },
