@@ -23,6 +23,7 @@ export function CurriculumCourseCard({
 
   return (
     <button
+      aria-label={`Open ${course.code}, ${course.name}`}
       className="block w-full focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
       onClick={handleClick}
       type="button"
