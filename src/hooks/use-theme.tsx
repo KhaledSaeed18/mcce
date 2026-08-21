@@ -74,6 +74,25 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
+/** The switcher and the keyboard shortcut both flip whatever is on screen now,
+ * so the resolution of "system" has to be shared between them. */
+export function getToggledTheme(theme: Theme): "dark" | "light" {
+  const isDark = theme === "system" ? getSystemTheme() : theme === "dark";
+  return isDark ? "light" : "dark";
+}
+
+/** Falls back to a plain set where the View Transitions API is missing. */
+export function setThemeWithTransition(
+  next: Theme,
+  setTheme: (theme: Theme) => void
+) {
+  if (typeof document.startViewTransition !== "function") {
+    setTheme(next);
+    return;
+  }
+  document.startViewTransition(() => setTheme(next));
+}
+
 export function useTheme(): ThemeContextValue {
   const context = useContext(ThemeContext);
   if (!context) {
