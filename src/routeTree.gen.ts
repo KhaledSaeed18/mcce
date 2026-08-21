@@ -22,6 +22,7 @@ import { Route as RecentRouteImport } from './routes/recent'
 import { Route as SavedRouteImport } from './routes/saved'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as SitemapRouteImport } from './routes/sitemap'
+import { Route as TuitionFeesRouteImport } from './routes/tuition-fees'
 import { Route as BrowseFolderIdRouteImport } from './routes/browse.$folderId'
 import { Route as CourseIndexRouteImport } from './routes/course.index'
 import { Route as CourseCodeRouteImport } from './routes/course.$code'
@@ -91,6 +92,11 @@ const SitemapRoute = SitemapRouteImport.update({
   path: '/sitemap',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TuitionFeesRoute = TuitionFeesRouteImport.update({
+  id: '/tuition-fees',
+  path: '/tuition-fees',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BrowseFolderIdRoute = BrowseFolderIdRouteImport.update({
   id: '/browse/$folderId',
   path: '/browse/$folderId',
@@ -121,6 +127,7 @@ export interface FileRoutesByFullPath {
   '/saved': typeof SavedRoute
   '/search': typeof SearchRoute
   '/sitemap': typeof SitemapRoute
+  '/tuition-fees': typeof TuitionFeesRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
   '/course/': typeof CourseIndexRoute
@@ -139,6 +146,7 @@ export interface FileRoutesByTo {
   '/saved': typeof SavedRoute
   '/search': typeof SearchRoute
   '/sitemap': typeof SitemapRoute
+  '/tuition-fees': typeof TuitionFeesRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
   '/course': typeof CourseIndexRoute
@@ -158,6 +166,7 @@ export interface FileRoutesById {
   '/saved': typeof SavedRoute
   '/search': typeof SearchRoute
   '/sitemap': typeof SitemapRoute
+  '/tuition-fees': typeof TuitionFeesRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
   '/course/': typeof CourseIndexRoute
@@ -178,6 +187,7 @@ export interface FileRouteTypes {
     | '/saved'
     | '/search'
     | '/sitemap'
+    | '/tuition-fees'
     | '/browse/$folderId'
     | '/course/$code'
     | '/course/'
@@ -196,6 +206,7 @@ export interface FileRouteTypes {
     | '/saved'
     | '/search'
     | '/sitemap'
+    | '/tuition-fees'
     | '/browse/$folderId'
     | '/course/$code'
     | '/course'
@@ -214,6 +225,7 @@ export interface FileRouteTypes {
     | '/saved'
     | '/search'
     | '/sitemap'
+    | '/tuition-fees'
     | '/browse/$folderId'
     | '/course/$code'
     | '/course/'
@@ -233,6 +245,7 @@ export interface RootRouteChildren {
   SavedRoute: typeof SavedRoute
   SearchRoute: typeof SearchRoute
   SitemapRoute: typeof SitemapRoute
+  TuitionFeesRoute: typeof TuitionFeesRoute
   BrowseFolderIdRoute: typeof BrowseFolderIdRoute
   CourseCodeRoute: typeof CourseCodeRoute
   CourseIndexRoute: typeof CourseIndexRoute
@@ -331,6 +344,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tuition-fees': {
+      id: '/tuition-fees'
+      path: '/tuition-fees'
+      fullPath: '/tuition-fees'
+      preLoaderRoute: typeof TuitionFeesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/browse/$folderId': {
       id: '/browse/$folderId'
       path: '/browse/$folderId'
@@ -369,6 +389,7 @@ const rootRouteChildren: RootRouteChildren = {
   SavedRoute: SavedRoute,
   SearchRoute: SearchRoute,
   SitemapRoute: SitemapRoute,
+  TuitionFeesRoute: TuitionFeesRoute,
   BrowseFolderIdRoute: BrowseFolderIdRoute,
   CourseCodeRoute: CourseCodeRoute,
   CourseIndexRoute: CourseIndexRoute,
