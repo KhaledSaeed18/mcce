@@ -4,6 +4,7 @@ import { CoursesSection } from "@/components/drive/courses-section";
 import { SourcesSection } from "@/components/drive/sources-section";
 import { DriveDirectSection } from "@/components/marketing/drive-direct-section";
 import { FeatureGridSection } from "@/components/marketing/feature-grid-section";
+import { FeatureLinksSection } from "@/components/marketing/feature-links-section";
 import { HeroSection } from "@/components/marketing/hero-section";
 import { HomeCtaSection } from "@/components/marketing/home-cta-section";
 import { ProgramGlanceSection } from "@/components/marketing/program-glance-section";
@@ -67,6 +68,10 @@ function HomePage() {
       <ProgramGlanceSection />
 
       <FeatureGridSection />
+
+      <SectionDividerDots />
+
+      <FeatureLinksSection />
 
       <SectionDividerDots />
 

@@ -1,11 +1,10 @@
 import { motion } from "motion/react";
-import { FeatureLinkCard } from "@/components/marketing/feature-link-card";
 import { FeatureTile } from "@/components/marketing/feature-tile";
 import { GpaFeatureTile } from "@/components/marketing/gpa-feature-tile";
 import { PlanFeatureTile } from "@/components/marketing/plan-feature-tile";
 import { SearchFeatureTile } from "@/components/marketing/search-feature-tile";
 import { Badge } from "@/components/ui/badge";
-import { FEATURE_CARDS, OFFLINE_FEATURE } from "@/config/features";
+import { OFFLINE_FEATURE } from "@/config/features";
 import { useReveal } from "@/hooks/use-reveal";
 
 export function FeatureGridSection() {
@@ -52,12 +51,6 @@ export function FeatureGridSection() {
         <motion.div className="lg:col-span-3" {...reveal.item}>
           <PlanFeatureTile />
         </motion.div>
-
-        {FEATURE_CARDS.map((item) => (
-          <motion.div className="lg:col-span-2" key={item.to} {...reveal.item}>
-            <FeatureLinkCard item={item} />
-          </motion.div>
-        ))}
       </motion.div>
     </section>
   );
