@@ -14,7 +14,7 @@ export function AdmissionsDetails() {
       <Card>
         <CardHeader>
           <CardTitle>
-            Requirements for new students (non-LIU bachelor graduates)
+            <h2>Requirements for new students (non-LIU bachelor graduates)</h2>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -30,7 +30,9 @@ export function AdmissionsDetails() {
         {ADMISSIONS_TRACKS.map((track) => (
           <Card key={track.id}>
             <CardHeader>
-              <CardTitle>{track.label}</CardTitle>
+              <CardTitle>
+                <h2>{track.label}</h2>
+              </CardTitle>
             </CardHeader>
 
             <CardContent className="flex flex-col gap-4">
@@ -47,7 +49,9 @@ export function AdmissionsDetails() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Application window and notes</CardTitle>
+          <CardTitle>
+            <h2>Application window and notes</h2>
+          </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3 text-sm sm:text-base">
           <p>{ADMISSIONS_PROGRAM_WINDOW}</p>
@@ -57,9 +61,11 @@ export function AdmissionsDetails() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="inline-flex items-center gap-2">
-            <MailIcon className="size-4" />
-            Official contacts
+          <CardTitle>
+            <h2 className="inline-flex items-center gap-2">
+              <MailIcon className="size-4" />
+              Official contacts
+            </h2>
           </CardTitle>
         </CardHeader>
         <CardContent>

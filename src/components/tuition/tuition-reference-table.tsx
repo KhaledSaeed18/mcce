@@ -20,7 +20,7 @@ export function TuitionReferenceTable() {
     <Card>
       <CardHeader>
         <CardTitle>
-          Official reference snapshot ({TUITION_ACADEMIC_YEAR_LABEL})
+          <h2>Official reference snapshot ({TUITION_ACADEMIC_YEAR_LABEL})</h2>
         </CardTitle>
       </CardHeader>
 

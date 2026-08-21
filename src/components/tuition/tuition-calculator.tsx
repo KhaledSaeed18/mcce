@@ -31,7 +31,9 @@ export function TuitionCalculator() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Tuition calculator</CardTitle>
+        <CardTitle>
+          <h2>Tuition calculator</h2>
+        </CardTitle>
       </CardHeader>
 
       <CardContent className="flex flex-col gap-6">
