@@ -1,4 +1,5 @@
 import { useCallback, useMemo } from "react";
+import { TuitionCurrencyControls } from "@/components/tuition/tuition-currency-controls";
 import { TuitionPlanSelect } from "@/components/tuition/tuition-plan-select";
 import { TuitionSemesterCreditsField } from "@/components/tuition/tuition-semester-credits-field";
 import { TuitionToggleRow } from "@/components/tuition/tuition-toggle-row";
@@ -16,8 +17,12 @@ interface TuitionPlanControlsProps {
   onCreditsChange: (index: number, credits: number) => void;
   onIncludeNssfChange: (checked: boolean) => void;
   onIncludeRegistrationChange: (checked: boolean) => void;
+  onRateChange: (rate: number) => void;
   onSemesterCountChange: (count: number) => void;
+  onShowAllInUsdChange: (checked: boolean) => void;
   semesters: TuitionSemesterBreakdown[];
+  showAllInUsd: boolean;
+  usdToLbpRate: number;
 }
 
 const SEMESTER_COUNT_OPTIONS = Array.from(
@@ -39,8 +44,12 @@ export function TuitionPlanControls({
   onCreditsChange,
   onIncludeNssfChange,
   onIncludeRegistrationChange,
+  onRateChange,
   onSemesterCountChange,
+  onShowAllInUsdChange,
   semesters,
+  showAllInUsd,
+  usdToLbpRate,
 }: TuitionPlanControlsProps) {
   const handleSemesterCountChange = useCallback(
     (value: string) => onSemesterCountChange(Number(value)),
@@ -111,6 +120,13 @@ export function TuitionPlanControls({
           onCheckedChange={onIncludeNssfChange}
         />
       </div>
+
+      <TuitionCurrencyControls
+        onRateChange={onRateChange}
+        onShowAllInUsdChange={onShowAllInUsdChange}
+        showAllInUsd={showAllInUsd}
+        usdToLbpRate={usdToLbpRate}
+      />
     </div>
   );
 }
