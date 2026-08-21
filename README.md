@@ -30,8 +30,9 @@ MCCE indexes the shared Drive folders behind both of those channels into one pla
 browse, search, and link to material by semester and course. It re-syncs from Drive on a weekly
 schedule, so the index tracks what's actually shared without anyone maintaining it by hand.
 Alongside the index, it carries the parts of the program that are otherwise scattered across
-PDFs and screenshots: the plan of study, the prerequisite roadmap, and a GPA calculator on the
-program's grading scale.
+PDFs and screenshots: the plan of study, the prerequisite roadmap, a GPA calculator on the
+program's grading scale, the admissions flow, and the tuition numbers with a planner to work
+a year's fees out from them.
 
 This is an independent, student-built site. It is not an official page of Lebanese International
 University. For admissions, curriculum, and official program details, see the
@@ -49,6 +50,9 @@ University. For admissions, curriculum, and official program details, see the
 - **Past exams**: every indexed midterm, final, and assessment in one view, grouped by course and
   by the term it was sat, with papers that record no year kept at the end of each course.
 - **Saved files**: keep a shortlist of files while browsing. It stays in the browser.
+- **Course pages**: one page per course with its description, objectives, topics, credits,
+  prerequisites and corequisites, the other courses sat in the same semester, and every indexed
+  file for it.
 - **Plan of study**: a year-by-year curriculum view with semester groups, course requirements,
   and prerequisite notes.
 - **Curriculum roadmap**: a traceable prerequisite graph across the full program, with credit
@@ -56,11 +60,20 @@ University. For admissions, curriculum, and official program details, see the
 - **GPA calculator**: semester and cumulative GPA on the program's 4.0 scale, with a trend chart,
   an end-of-program projection, and the course average needed to reach a target. Entries stay in
   the browser, nothing is sent anywhere.
-- **Exports**: download, preview, or share the plan of study as a PDF, and the GPA report as PDF,
-  CSV, or JSON.
+- **Admissions guide**: the graduate admissions flow in one place, with the documents and fees
+  required, separate step-by-step tracks for LIU and non-LIU bachelor graduates, the GPA bar for
+  each, the application window, and the offices to contact.
+- **Tuition and fees**: the official per credit and per year rates in both USD and LBP, plus a
+  planner that turns the credits you intend to take each semester into semester and year totals,
+  with registration and NSSF charges, and an option to convert the LBP side at a rate you set.
+- **Exports**: download, preview, or share the plan of study, a GPA report, or a tuition plan as
+  a PDF. The GPA report and the tuition plan also export as CSV or JSON.
 - **Weekly auto-sync**: a scheduled job re-crawls the source Drive and updates the index, so
   material doesn't go stale.
 - **Recently added**: what each sync picked up, grouped by course, with an RSS feed to follow.
+- **Open in Drive**: direct links into the shared Drive folders, from the home page, the footer,
+  the sitemap, each course year, and any folder being browsed, for when the index is not the
+  fastest way in.
 - **FAQ and about pages**: how the program is structured, and how syncing, search, and file
   access work here.
 - **Community-sourced contributions**: anyone in the program can send exams, notes, slides, or
