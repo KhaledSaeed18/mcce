@@ -35,3 +35,10 @@ export const TUITION_MAX_CREDITS_PER_SEMESTER = 21;
 
 export const TUITION_YEARLY_CHARGE_NOTE =
   "Registration and NSSF are yearly charges billed in one semester, usually fall, not split across semesters.";
+
+export const TUITION_DEFAULT_USD_TO_LBP_RATE = 89_000;
+export const TUITION_MIN_USD_TO_LBP_RATE = 1;
+export const TUITION_USD_TO_LBP_RATE_STEP = 1000;
+
+export const TUITION_RATE_NOTE =
+  "LBP charges are converted at the rate you set, then added to the USD total.";

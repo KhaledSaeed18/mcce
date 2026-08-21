@@ -21,7 +21,9 @@ function toCleanCredits(value: number): number {
 }
 
 const EMPTY_BREAKDOWN: TuitionBreakdown = {
+  combinedUsd: 0,
   credits: 0,
+  lbpAsUsd: 0,
   nssfLbp: 0,
   registrationUsd: 0,
   totalLbp: 0,
@@ -33,7 +35,9 @@ const EMPTY_BREAKDOWN: TuitionBreakdown = {
 function sumBreakdowns(items: TuitionBreakdown[]): TuitionBreakdown {
   return items.reduce<TuitionBreakdown>(
     (total, item) => ({
+      combinedUsd: total.combinedUsd + item.combinedUsd,
       credits: total.credits + item.credits,
+      lbpAsUsd: total.lbpAsUsd + item.lbpAsUsd,
       nssfLbp: total.nssfLbp + item.nssfLbp,
       registrationUsd: total.registrationUsd + item.registrationUsd,
       totalLbp: total.totalLbp + item.totalLbp,
@@ -43,6 +47,15 @@ function sumBreakdowns(items: TuitionBreakdown[]): TuitionBreakdown {
     }),
     EMPTY_BREAKDOWN
   );
+}
+
+/** A rate of zero or less cannot convert anything, so the LBP side stays out of the USD total. */
+export function convertLbpToUsd(lbp: number, usdToLbpRate: number): number {
+  if (!(Number.isFinite(usdToLbpRate) && usdToLbpRate > 0)) {
+    return 0;
+  }
+
+  return Math.round((lbp / usdToLbpRate) * 100) / 100;
 }
 
 function buildSemester(
@@ -62,14 +75,20 @@ function buildSemester(
   const nssfLbp =
     carriesYearlyCharges && plan.includeNssf ? TUITION_NSSF_LBP_YEARLY : 0;
 
+  const totalLbp = tuitionLbp + nssfLbp;
+  const totalUsd = tuitionUsd + registrationUsd;
+  const lbpAsUsd = convertLbpToUsd(totalLbp, plan.usdToLbpRate);
+
   return {
     carriesYearlyCharges,
+    combinedUsd: totalUsd + lbpAsUsd,
     credits,
     label: TUITION_SEMESTER_LABELS[index] ?? `Semester ${index + 1}`,
+    lbpAsUsd,
     nssfLbp,
     registrationUsd,
-    totalLbp: tuitionLbp + nssfLbp,
-    totalUsd: tuitionUsd + registrationUsd,
+    totalLbp,
+    totalUsd,
     tuitionLbp,
     tuitionUsd,
   };

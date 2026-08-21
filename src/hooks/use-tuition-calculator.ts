@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
+import { TUITION_DEFAULT_USD_TO_LBP_RATE } from "@/config/tuition";
 import { buildTuitionCalculation } from "@/lib/tuition/calc";
 import {
   clampSemesterCount,
@@ -13,6 +14,10 @@ export function useTuitionCalculator() {
   const [chargeSemesterIndex, setChargeSemesterIndex] = useState(0);
   const [includeRegistration, setIncludeRegistration] = useState(true);
   const [includeNssf, setIncludeNssf] = useState(true);
+  const [showAllInUsd, setShowAllInUsd] = useState(false);
+  const [usdToLbpRate, setUsdToLbpRate] = useState(
+    TUITION_DEFAULT_USD_TO_LBP_RATE
+  );
 
   const setSemesterCount = useCallback((value: number) => {
     const count = clampSemesterCount(value);
@@ -33,8 +38,17 @@ export function useTuitionCalculator() {
       creditsPerSemester,
       includeNssf,
       includeRegistration,
+      showAllInUsd,
+      usdToLbpRate,
     }),
-    [chargeSemesterIndex, creditsPerSemester, includeNssf, includeRegistration]
+    [
+      chargeSemesterIndex,
+      creditsPerSemester,
+      includeNssf,
+      includeRegistration,
+      showAllInUsd,
+      usdToLbpRate,
+    ]
   );
 
   const calculation = useMemo(() => buildTuitionCalculation(plan), [plan]);
@@ -47,5 +61,7 @@ export function useTuitionCalculator() {
     setIncludeNssf,
     setIncludeRegistration,
     setSemesterCount,
+    setShowAllInUsd,
+    setUsdToLbpRate,
   };
 }

@@ -1,5 +1,7 @@
 export interface TuitionBreakdown {
+  combinedUsd: number;
   credits: number;
+  lbpAsUsd: number;
   nssfLbp: number;
   registrationUsd: number;
   totalLbp: number;
@@ -23,6 +25,8 @@ export interface TuitionPlan {
   creditsPerSemester: number[];
   includeNssf: boolean;
   includeRegistration: boolean;
+  showAllInUsd: boolean;
+  usdToLbpRate: number;
 }
 
 export interface TuitionScenario {
