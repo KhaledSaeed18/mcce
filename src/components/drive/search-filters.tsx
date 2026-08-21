@@ -1,12 +1,15 @@
 import { useCallback } from "react";
 import { SearchFilterSelect } from "@/components/drive/search-filter-select";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import type { FacetOptions } from "@/lib/drive/facets";
 import type {
   DriveNodeKind,
   MaterialType,
   SearchFilterValues,
 } from "@/lib/drive/types";
+
+const QUERY_INPUT_ID = "drive-search-query";
 
 interface SearchFiltersProps {
   courseOptions: FacetOptions["courses"];
@@ -53,11 +56,17 @@ export function SearchFilters({
 
   return (
     <>
-      <Input
-        onChange={handleQueryChange}
-        placeholder="Search files and folders..."
-        value={values.q}
-      />
+      <div>
+        <Label className="sr-only" htmlFor={QUERY_INPUT_ID}>
+          Search files and folders
+        </Label>
+        <Input
+          id={QUERY_INPUT_ID}
+          onChange={handleQueryChange}
+          placeholder="Search files and folders..."
+          value={values.q}
+        />
+      </div>
 
       <div className="flex flex-wrap gap-2">
         <SearchFilterSelect
