@@ -1,18 +1,23 @@
 import { useCallback, useEffect, useState } from "react";
 import {
+  TUITION_CSV_FILE_NAME,
+  TUITION_JSON_FILE_NAME,
+  TUITION_PDF_FILE_NAME,
+  TUITION_SHARE_TEXT,
+  TUITION_SHARE_TITLE,
+} from "@/config/tuition-export";
+import {
   canShareFile,
   downloadBlob,
   openBlob,
 } from "@/lib/gpa/export/download";
-import { buildTuitionCsv } from "@/lib/tuition/export-csv";
-import { buildTuitionPdf } from "@/lib/tuition/export-pdf";
+import { buildTuitionCsv } from "@/lib/tuition/export/csv";
+import { buildTuitionExportPayload } from "@/lib/tuition/export/payload";
+import { buildTuitionPdf } from "@/lib/tuition/export/pdf";
 import type { TuitionScenario } from "@/lib/tuition/types";
 
 type TuitionExportAction = "download" | "preview" | "share";
 
-const TUITION_CSV_FILE_NAME = "mcce-tuition.csv";
-const TUITION_JSON_FILE_NAME = "mcce-tuition.json";
-const TUITION_PDF_FILE_NAME = "mcce-tuition-report.pdf";
 const PDF_TYPE = "application/pdf";
 
 export function useTuitionExport(scenario: TuitionScenario) {
@@ -47,7 +52,7 @@ export function useTuitionExport(scenario: TuitionScenario) {
   const exportPdf = useCallback(
     (action: TuitionExportAction) =>
       run(action, async () => {
-        const doc = await buildTuitionPdf(scenario);
+        const doc = await buildTuitionPdf(buildTuitionExportPayload(scenario));
         const blob = doc.output("blob");
 
         if (action === "preview") {
@@ -61,8 +66,8 @@ export function useTuitionExport(scenario: TuitionScenario) {
 
         await navigator.share({
           files: [new File([blob], TUITION_PDF_FILE_NAME, { type: PDF_TYPE })],
-          text: "Tuition planning report for MCCE.",
-          title: "MCCE tuition report",
+          text: TUITION_SHARE_TEXT,
+          title: TUITION_SHARE_TITLE,
         });
       }),
     [scenario, run]
@@ -71,7 +76,7 @@ export function useTuitionExport(scenario: TuitionScenario) {
   const exportCsv = useCallback(
     () =>
       run("download", () => {
-        const csv = buildTuitionCsv(scenario);
+        const csv = buildTuitionCsv(buildTuitionExportPayload(scenario));
 
         downloadBlob(
           new Blob([csv], { type: "text/csv;charset=utf-8" }),
@@ -84,7 +89,11 @@ export function useTuitionExport(scenario: TuitionScenario) {
   const exportJson = useCallback(
     () =>
       run("download", () => {
-        const json = JSON.stringify(scenario, null, 2);
+        const json = JSON.stringify(
+          buildTuitionExportPayload(scenario),
+          null,
+          2
+        );
 
         downloadBlob(
           new Blob([json], { type: "application/json" }),
