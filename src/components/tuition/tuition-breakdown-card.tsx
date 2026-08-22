@@ -1,4 +1,8 @@
 import { TuitionBreakdownRow } from "@/components/tuition/tuition-breakdown-row";
+import {
+  TuitionCardFooter,
+  TuitionCardTotal,
+} from "@/components/tuition/tuition-card-footer";
 import { formatLbp, formatUsd } from "@/lib/tuition/calc";
 import type { TuitionBreakdown } from "@/lib/tuition/types";
 
@@ -34,11 +38,6 @@ export function TuitionBreakdownCard({
           value={formatUsd(breakdown.registrationUsd)}
         />
         <TuitionBreakdownRow
-          label="Total (USD)"
-          value={formatUsd(breakdown.totalUsd)}
-        />
-        <div className="border-t pt-2" />
-        <TuitionBreakdownRow
           label="Tuition (LBP)"
           value={formatLbp(breakdown.tuitionLbp)}
         />
@@ -46,11 +45,18 @@ export function TuitionBreakdownCard({
           label="NSSF (LBP)"
           value={formatLbp(breakdown.nssfLbp)}
         />
-        <TuitionBreakdownRow
+      </dl>
+
+      <TuitionCardFooter>
+        <TuitionCardTotal
+          label="Total (USD)"
+          value={formatUsd(breakdown.totalUsd)}
+        />
+        <TuitionCardTotal
           label="Total (LBP)"
           value={formatLbp(breakdown.totalLbp)}
         />
-      </dl>
+      </TuitionCardFooter>
     </div>
   );
 }

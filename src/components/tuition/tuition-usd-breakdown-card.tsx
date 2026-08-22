@@ -1,5 +1,8 @@
 import { TuitionBreakdownRow } from "@/components/tuition/tuition-breakdown-row";
-import { TuitionTotalRow } from "@/components/tuition/tuition-total-row";
+import {
+  TuitionCardFooter,
+  TuitionCardTotal,
+} from "@/components/tuition/tuition-card-footer";
 import { formatUsd } from "@/lib/tuition/calc";
 import type { TuitionBreakdown } from "@/lib/tuition/types";
 
@@ -38,11 +41,14 @@ export function TuitionUsdBreakdownCard({
           label="LBP charges converted"
           value={formatUsd(breakdown.lbpAsUsd)}
         />
-        <TuitionTotalRow
+      </dl>
+
+      <TuitionCardFooter>
+        <TuitionCardTotal
           label="Total in USD"
           value={formatUsd(breakdown.combinedUsd)}
         />
-      </dl>
+      </TuitionCardFooter>
     </div>
   );
 }
