@@ -37,6 +37,12 @@ export function TuitionBreakdownCard({
           label="Registration (USD)"
           value={formatUsd(breakdown.registrationUsd)}
         />
+        {breakdown.financialAidUsd > 0 ? (
+          <TuitionBreakdownRow
+            label="Financial aid (USD)"
+            value={`-${formatUsd(breakdown.financialAidUsd)}`}
+          />
+        ) : null}
         <TuitionBreakdownRow
           label="Tuition (LBP)"
           value={formatLbp(breakdown.tuitionLbp)}
@@ -45,6 +51,12 @@ export function TuitionBreakdownCard({
           label="NSSF (LBP)"
           value={formatLbp(breakdown.nssfLbp)}
         />
+        {breakdown.financialAidLbp > 0 ? (
+          <TuitionBreakdownRow
+            label="Financial aid (LBP)"
+            value={`-${formatLbp(breakdown.financialAidLbp)}`}
+          />
+        ) : null}
       </dl>
 
       <TuitionCardFooter>

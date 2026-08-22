@@ -44,3 +44,12 @@ export const TUITION_USD_TO_LBP_RATE_STEP = 1000;
 
 export const TUITION_RATE_NOTE =
   "LBP charges are converted at the rate you set, then added to the USD total.";
+
+export const TUITION_FINANCIAL_AID_COVERAGE_OPTIONS = [
+  { label: "LBP only", value: "lbp-only" },
+  { label: "USD only", value: "usd-only" },
+  { label: "Both (LBP + USD)", value: "both" },
+] as const;
+
+export const TUITION_FINANCIAL_AID_NOTE =
+  "Financial aid reduces tuition fees only. Registration and NSSF are not covered.";

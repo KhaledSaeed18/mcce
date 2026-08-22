@@ -4,6 +4,7 @@ import { TuitionPlanControls } from "@/components/tuition/tuition-plan-controls"
 import { TuitionResultsGrid } from "@/components/tuition/tuition-results-grid";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
+  TUITION_FINANCIAL_AID_NOTE,
   TUITION_RATE_NOTE,
   TUITION_YEARLY_CHARGE_NOTE,
 } from "@/config/tuition";
@@ -16,6 +17,9 @@ export function TuitionCalculator() {
     plan,
     setChargeSemesterIndex,
     setCreditsAt,
+    setFinancialAidCoverage,
+    setFinancialAidPercent,
+    setIncludeFinancialAid,
     setIncludeNssf,
     setIncludeRegistration,
     setSemesterCount,
@@ -39,10 +43,16 @@ export function TuitionCalculator() {
       <CardContent className="flex flex-col gap-6">
         <TuitionPlanControls
           chargeSemesterIndex={plan.chargeSemesterIndex}
+          financialAidCoverage={plan.financialAidCoverage}
+          financialAidPercent={plan.financialAidPercent}
+          includeFinancialAid={plan.includeFinancialAid}
           includeNssf={plan.includeNssf}
           includeRegistration={plan.includeRegistration}
           onChargeSemesterChange={setChargeSemesterIndex}
           onCreditsChange={setCreditsAt}
+          onFinancialAidCoverageChange={setFinancialAidCoverage}
+          onFinancialAidPercentChange={setFinancialAidPercent}
+          onIncludeFinancialAidChange={setIncludeFinancialAid}
           onIncludeNssfChange={setIncludeNssf}
           onIncludeRegistrationChange={setIncludeRegistration}
           onRateChange={setUsdToLbpRate}
@@ -60,6 +70,9 @@ export function TuitionCalculator() {
 
         <div className="flex flex-col gap-1 text-muted-foreground text-xs">
           <p>{TUITION_YEARLY_CHARGE_NOTE}</p>
+          {plan.includeFinancialAid ? (
+            <p>{TUITION_FINANCIAL_AID_NOTE}</p>
+          ) : null}
           {plan.showAllInUsd ? <p>{TUITION_RATE_NOTE}</p> : null}
         </div>
 

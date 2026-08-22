@@ -2,10 +2,14 @@ import { useCallback, useEffect, useState } from "react";
 import { TUITION_STORAGE_KEY } from "@/config/tuition";
 import { readJson, writeJson } from "@/lib/storage";
 import { createDefaultCredits } from "@/lib/tuition/plan";
+import type { TuitionFinancialAidCoverage } from "@/lib/tuition/types";
 
 interface StoredState {
   chargeSemesterIndex: number;
   creditsPerSemester: number[];
+  financialAidCoverage: TuitionFinancialAidCoverage;
+  financialAidPercent: number;
+  includeFinancialAid: boolean;
   includeNssf: boolean;
   includeRegistration: boolean;
   showAllInUsd: boolean;
@@ -15,6 +19,9 @@ interface StoredState {
 const EMPTY: StoredState = {
   chargeSemesterIndex: 0,
   creditsPerSemester: createDefaultCredits(),
+  financialAidCoverage: "lbp-only",
+  financialAidPercent: 40,
+  includeFinancialAid: false,
   includeNssf: true,
   includeRegistration: true,
   showAllInUsd: false,
@@ -91,6 +98,33 @@ export function useTuitionCalculatorStorage() {
     []
   );
 
+  const setIncludeFinancialAid = useCallback(
+    (checked: boolean) =>
+      setState((previous) => ({
+        ...(previous ?? EMPTY),
+        includeFinancialAid: checked,
+      })),
+    []
+  );
+
+  const setFinancialAidPercent = useCallback(
+    (percent: number) =>
+      setState((previous) => ({
+        ...(previous ?? EMPTY),
+        financialAidPercent: percent,
+      })),
+    []
+  );
+
+  const setFinancialAidCoverage = useCallback(
+    (coverage: TuitionFinancialAidCoverage) =>
+      setState((previous) => ({
+        ...(previous ?? EMPTY),
+        financialAidCoverage: coverage,
+      })),
+    []
+  );
+
   const reset = useCallback(
     () => setState({ ...EMPTY, creditsPerSemester: createDefaultCredits() }),
     []
@@ -100,12 +134,21 @@ export function useTuitionCalculatorStorage() {
     chargeSemesterIndex:
       state?.chargeSemesterIndex ?? EMPTY.chargeSemesterIndex,
     creditsPerSemester: state?.creditsPerSemester ?? EMPTY.creditsPerSemester,
+    financialAidCoverage:
+      state?.financialAidCoverage ?? EMPTY.financialAidCoverage,
+    financialAidPercent:
+      state?.financialAidPercent ?? EMPTY.financialAidPercent,
+    includeFinancialAid:
+      state?.includeFinancialAid ?? EMPTY.includeFinancialAid,
     includeNssf: state?.includeNssf ?? EMPTY.includeNssf,
     includeRegistration:
       state?.includeRegistration ?? EMPTY.includeRegistration,
     reset,
     setChargeSemesterIndex,
     setCreditsPerSemester,
+    setFinancialAidCoverage,
+    setFinancialAidPercent,
+    setIncludeFinancialAid,
     setIncludeNssf,
     setIncludeRegistration,
     setShowAllInUsd,

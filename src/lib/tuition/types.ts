@@ -1,6 +1,11 @@
+export type TuitionFinancialAidCoverage = "lbp-only" | "usd-only" | "both";
+
 export interface TuitionBreakdown {
   combinedUsd: number;
   credits: number;
+  financialAidLbp: number;
+  financialAidLbpAsUsd: number;
+  financialAidUsd: number;
   lbpAsUsd: number;
   nssfLbp: number;
   registrationUsd: number;
@@ -23,6 +28,9 @@ export interface TuitionCalculation {
 export interface TuitionPlan {
   chargeSemesterIndex: number;
   creditsPerSemester: number[];
+  financialAidCoverage: TuitionFinancialAidCoverage;
+  financialAidPercent: number;
+  includeFinancialAid: boolean;
   includeNssf: boolean;
   includeRegistration: boolean;
   showAllInUsd: boolean;

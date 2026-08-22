@@ -17,6 +17,9 @@ export function TuitionUsdBreakdownCard({
   subtitle,
   title,
 }: TuitionUsdBreakdownCardProps) {
+  const totalFinancialAidUsd =
+    breakdown.financialAidUsd + breakdown.financialAidLbpAsUsd;
+
   return (
     <div className="rounded border-2 bg-card p-4">
       <h3 className="font-head text-sm">{title}</h3>
@@ -37,6 +40,12 @@ export function TuitionUsdBreakdownCard({
           label="Registration"
           value={formatUsd(breakdown.registrationUsd)}
         />
+        {totalFinancialAidUsd > 0 ? (
+          <TuitionBreakdownRow
+            label="Financial aid"
+            value={`-${formatUsd(totalFinancialAidUsd)}`}
+          />
+        ) : null}
         <TuitionBreakdownRow
           label="LBP charges converted"
           value={formatUsd(breakdown.lbpAsUsd)}
