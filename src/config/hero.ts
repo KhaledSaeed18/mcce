@@ -62,9 +62,9 @@ export const HERO_GRAPHIC_TOOLS: HeroToolNode[] = [
   { icon: DollarSignIcon, label: "Fees", x: 79, y: 80 },
 ];
 
-/** The pages a first-time reader would otherwise only find in the nav menu.
- * Search sits in the hero buttons instead, so it is left out here. */
+/** The pages a first-time reader would otherwise only find in the nav menu. */
 export const HERO_QUICK_LINKS: HeroQuickLink[] = [
+  { icon: SearchIcon, label: "Search", to: "/search" },
   { icon: LibraryIcon, label: "All courses", to: "/course" },
   { icon: FileTextIcon, label: "Past exams", to: "/exams" },
   { icon: MapIcon, label: "Plan of study", to: "/plan-of-study" },

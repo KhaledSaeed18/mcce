@@ -1,5 +1,4 @@
-import { Link } from "@tanstack/react-router";
-import { ArrowRightIcon, SearchIcon } from "lucide-react";
+import { ArrowRightIcon } from "lucide-react";
 import { useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { useSound } from "@/hooks/use-sound";
@@ -12,26 +11,15 @@ export function HeroActions() {
   const handleClick = useCallback(() => playClick(), [playClick]);
 
   return (
-    <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center">
-      <Button
-        nativeButton={false}
-        onClick={handleClick}
-        render={<a href={MATERIALS_SECTION_HREF} />}
-        size="lg"
-      >
-        Browse materials
-        <ArrowRightIcon data-icon="inline-end" />
-      </Button>
-      <Button
-        nativeButton={false}
-        onClick={handleClick}
-        render={<Link search={{ q: "" }} to="/search" />}
-        size="lg"
-        variant="outline"
-      >
-        <SearchIcon data-icon="inline-start" />
-        Search files
-      </Button>
-    </div>
+    <Button
+      className="w-full sm:w-fit"
+      nativeButton={false}
+      onClick={handleClick}
+      render={<a href={MATERIALS_SECTION_HREF} />}
+      size="lg"
+    >
+      Browse materials
+      <ArrowRightIcon data-icon="inline-end" />
+    </Button>
   );
 }

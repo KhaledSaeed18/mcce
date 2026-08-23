@@ -25,7 +25,8 @@ export type HeroQuickLinkRoute =
   | "/gpa-calculator"
   | "/admissions"
   | "/tuition-fees"
-  | "/recent";
+  | "/recent"
+  | "/search";
 
 export interface HeroQuickLink {
   icon: LucideIcon;
