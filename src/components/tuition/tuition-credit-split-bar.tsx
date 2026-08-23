@@ -14,12 +14,12 @@ export function TuitionCreditSplitBar() {
     <div className="flex flex-col gap-2">
       <div className="flex h-8 overflow-hidden rounded border-2">
         <div
-          className="flex items-center justify-center bg-chart-2 font-head text-xs"
+          className="flex items-center justify-center bg-chart-2 font-head text-black text-xs"
           style={{ width: `${CASH_SHARE}%` }}
         >
           {TUITION_USD_PER_CREDIT}
         </div>
-        <div className="flex flex-1 items-center justify-center border-l-2 bg-chart-4 font-head text-xs">
+        <div className="flex flex-1 items-center justify-center border-black border-l-2 bg-chart-4 font-head text-black text-xs">
           {LBP_UNITS_PER_CREDIT}
         </div>
       </div>
