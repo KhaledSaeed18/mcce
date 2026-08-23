@@ -4,6 +4,8 @@ import { TuitionPlanControls } from "@/components/tuition/tuition-plan-controls"
 import { TuitionResultsGrid } from "@/components/tuition/tuition-results-grid";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
+  TUITION_AID_LBP_SHARE_PERCENT,
+  TUITION_AID_SPILLOVER_NOTE,
   TUITION_FINANCIAL_AID_NOTE,
   TUITION_NSSF_CHARGE_NOTE,
   TUITION_RATE_NOTE,
@@ -29,6 +31,10 @@ export function TuitionCalculator() {
     () => ({ calculation, plan }),
     [calculation, plan]
   );
+
+  const aidReachesCashUsd =
+    plan.includeFinancialAid &&
+    plan.financialAidPercent > TUITION_AID_LBP_SHARE_PERCENT;
 
   return (
     <Card>
@@ -67,6 +73,7 @@ export function TuitionCalculator() {
           {plan.includeFinancialAid ? (
             <p>{TUITION_FINANCIAL_AID_NOTE}</p>
           ) : null}
+          {aidReachesCashUsd ? <p>{TUITION_AID_SPILLOVER_NOTE}</p> : null}
           {plan.showAllInUsd ? <p>{TUITION_RATE_NOTE}</p> : null}
         </div>
 

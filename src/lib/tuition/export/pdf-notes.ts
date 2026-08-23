@@ -1,5 +1,7 @@
 import type { jsPDF } from "jspdf";
 import {
+  TUITION_AID_LBP_SHARE_PERCENT,
+  TUITION_AID_SPILLOVER_NOTE,
   TUITION_NSSF_CHARGE_NOTE,
   TUITION_OFFICIAL_PAGE_URL,
   TUITION_PRICE_CHANGE_NOTE,
@@ -15,9 +17,15 @@ import type { TuitionExportPayload } from "@/lib/tuition/types";
 const LINE_HEIGHT = 12;
 
 export function buildNotes(payload: TuitionExportPayload): string[] {
+  const { plan } = payload;
+  const aidReachesCashUsd =
+    plan.includeFinancialAid &&
+    plan.financialAidPercent > TUITION_AID_LBP_SHARE_PERCENT;
+
   return [
     TUITION_NSSF_CHARGE_NOTE,
-    ...(payload.plan.showAllInUsd ? [TUITION_RATE_NOTE] : []),
+    ...(aidReachesCashUsd ? [TUITION_AID_SPILLOVER_NOTE] : []),
+    ...(plan.showAllInUsd ? [TUITION_RATE_NOTE] : []),
     TUITION_PRICE_CHANGE_NOTE,
     TUITION_WARNING_NOTE,
     `Official tuition page: ${TUITION_OFFICIAL_PAGE_URL}`,

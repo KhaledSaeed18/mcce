@@ -2,15 +2,10 @@ import { TuitionAidExample } from "@/components/tuition/tuition-aid-example";
 import { TuitionCreditSplitBar } from "@/components/tuition/tuition-credit-split-bar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
+  TUITION_AID_SPILLOVER_NOTE,
   TUITION_UNITS_PER_CREDIT,
-  TUITION_USD_PER_CREDIT,
 } from "@/config/tuition";
 import { buildAidExample } from "@/lib/tuition/aid-example";
-
-const LBP_SHARE =
-  ((TUITION_UNITS_PER_CREDIT - TUITION_USD_PER_CREDIT) /
-    TUITION_UNITS_PER_CREDIT) *
-  100;
 
 export function TuitionAidExplainer() {
   const example = buildAidExample();
@@ -39,11 +34,7 @@ export function TuitionAidExplainer() {
         <TuitionAidExample example={example} />
 
         <div className="space-y-1 text-muted-foreground text-sm">
-          <p>
-            The LBP side can absorb the discount up to{" "}
-            {Math.round(LBP_SHARE * 10) / 10}% of tuition. Above that the LBP
-            charges reach zero and the leftover comes off the cash USD tuition.
-          </p>
+          <p>{TUITION_AID_SPILLOVER_NOTE}</p>
           <p>
             Registration and NSSF are outside tuition, so no percent covers
             them.

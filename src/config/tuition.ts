@@ -59,5 +59,15 @@ export const TUITION_MAX_FINANCIAL_AID_PERCENT = 100;
 export const TUITION_AID_EXAMPLE_CREDITS = 12;
 export const TUITION_AID_EXAMPLE_PERCENT = 40;
 
+/** The LBP half of the credit price, so aid up to this share never reaches the cash USD side. */
+export const TUITION_AID_LBP_SHARE_PERCENT =
+  Math.round(
+    ((TUITION_UNITS_PER_CREDIT - TUITION_USD_PER_CREDIT) /
+      TUITION_UNITS_PER_CREDIT) *
+      1000
+  ) / 10;
+
+export const TUITION_AID_SPILLOVER_NOTE = `Aid up to ${TUITION_AID_LBP_SHARE_PERCENT}% of tuition comes off the LBP charges only, which is where every common award lands. Past that the LBP charges reach zero, so this planner takes the rest off the cash USD tuition.`;
+
 export const TUITION_FINANCIAL_AID_NOTE =
   "Aid is a percent of the whole credit price, not of each currency, and the discount comes off the LBP charges first. Registration and NSSF are not covered.";
