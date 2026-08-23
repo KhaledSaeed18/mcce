@@ -22,7 +22,7 @@ import type { TuitionPlan } from "@/lib/tuition/types";
 const PREVIEW_PLAN: TuitionPlan = {
   creditsPerSemester: createDefaultCredits(),
   financialAidPercent: 40,
-  includeFinancialAid: false,
+  includeFinancialAid: true,
   includeNssf: false,
   includeRegistration: true,
   showAllInUsd: false,

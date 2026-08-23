@@ -16,7 +16,7 @@ interface StoredState {
 const EMPTY: StoredState = {
   creditsPerSemester: createDefaultCredits(),
   financialAidPercent: 40,
-  includeFinancialAid: false,
+  includeFinancialAid: true,
   includeNssf: true,
   includeRegistration: true,
   showAllInUsd: false,
