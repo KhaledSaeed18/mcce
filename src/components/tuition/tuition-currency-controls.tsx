@@ -15,7 +15,7 @@ export function TuitionCurrencyControls({
   usdToLbpRate,
 }: TuitionCurrencyControlsProps) {
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
       <TuitionToggleRow
         checked={showAllInUsd}
         description="Converts the LBP charges and shows one total in USD."

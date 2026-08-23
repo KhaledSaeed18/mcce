@@ -10,6 +10,7 @@ import {
   TUITION_MIN_SEMESTERS_PER_YEAR,
 } from "@/config/tuition";
 import type { TuitionSemesterBreakdown } from "@/lib/tuition/types";
+import { cn } from "@/lib/utils";
 
 interface TuitionPlanControlsProps {
   financialAidPercent: number;
@@ -28,6 +29,13 @@ interface TuitionPlanControlsProps {
   showAllInUsd: boolean;
   usdToLbpRate: number;
 }
+
+/** One row for the whole plan: the semester count plus one field per semester. */
+const SEMESTER_GRID_COLUMNS: Record<number, string> = {
+  1: "lg:grid-cols-2",
+  2: "lg:grid-cols-3",
+  3: "lg:grid-cols-4",
+};
 
 const SEMESTER_COUNT_OPTIONS = Array.from(
   {
@@ -64,16 +72,19 @@ export function TuitionPlanControls({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div
+        className={cn(
+          "grid grid-cols-1 gap-4",
+          SEMESTER_GRID_COLUMNS[semesters.length]
+        )}
+      >
         <TuitionPlanSelect
           label="Semesters this year"
           onValueChange={handleSemesterCountChange}
           options={SEMESTER_COUNT_OPTIONS}
           value={String(semesters.length)}
         />
-      </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         {semesters.map((semester, index) => (
           <TuitionSemesterCreditsField
             credits={semester.credits}
@@ -85,7 +96,7 @@ export function TuitionPlanControls({
         ))}
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <TuitionToggleRow
           checked={includeRegistration}
           description="Adds the registration fee in every semester."
@@ -102,22 +113,22 @@ export function TuitionPlanControls({
         />
       </div>
 
-      <TuitionToggleRow
-        checked={includeFinancialAid}
-        description={TUITION_FINANCIAL_AID_NOTE}
-        id="financial-aid-switch"
-        label="Financial aid"
-        onCheckedChange={onIncludeFinancialAidChange}
-      />
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <TuitionToggleRow
+          checked={includeFinancialAid}
+          description={TUITION_FINANCIAL_AID_NOTE}
+          id="financial-aid-switch"
+          label="Financial aid"
+          onCheckedChange={onIncludeFinancialAidChange}
+        />
 
-      {includeFinancialAid ? (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {includeFinancialAid ? (
           <TuitionFinancialAidField
             onPercentChange={onFinancialAidPercentChange}
             percent={financialAidPercent}
           />
-        </div>
-      ) : null}
+        ) : null}
+      </div>
 
       <TuitionCurrencyControls
         onRateChange={onRateChange}
