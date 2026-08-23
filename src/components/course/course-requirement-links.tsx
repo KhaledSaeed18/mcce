@@ -1,5 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { Badge } from "@/components/ui/badge";
+import {
+  REQUIREMENT_CHIP_CLASSNAME,
+  RequirementChipLabel,
+} from "@/components/curriculum/requirement-chip";
 import type { CurriculumCourseContext } from "@/lib/curriculum/types";
 
 interface CourseRequirementLinksProps {
@@ -28,15 +31,15 @@ export function CourseRequirementLinks({
         <div className="flex min-w-0 flex-wrap gap-2">
           {codes.map((code) => (
             <Link
-              className="focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+              className={REQUIREMENT_CHIP_CLASSNAME}
               key={code}
               params={{ code }}
               to="/course/$code"
             >
-              <Badge className="cursor-pointer" variant="outline">
-                {code}
-                {lookup.get(code) ? `, ${lookup.get(code)?.course.name}` : ""}
-              </Badge>
+              <RequirementChipLabel
+                code={code}
+                name={lookup.get(code)?.course.name}
+              />
             </Link>
           ))}
         </div>

@@ -1,5 +1,8 @@
 import { useCallback } from "react";
-import { Badge } from "@/components/ui/badge";
+import {
+  REQUIREMENT_CHIP_CLASSNAME,
+  RequirementChipLabel,
+} from "@/components/curriculum/requirement-chip";
 import type { CurriculumCourseContext } from "@/lib/curriculum/types";
 
 interface RequirementBadgeProps {
@@ -13,14 +16,14 @@ function RequirementBadge({ code, context, onSelect }: RequirementBadgeProps) {
 
   return (
     <button
-      className="focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+      className={REQUIREMENT_CHIP_CLASSNAME}
       onClick={handleClick}
       type="button"
     >
-      <Badge className="cursor-pointer" variant="outline">
-        {code}
-        {context ? `, ${context.course.name}` : ""}
-      </Badge>
+      <RequirementChipLabel
+        code={code}
+        name={context ? context.course.name : undefined}
+      />
     </button>
   );
 }
