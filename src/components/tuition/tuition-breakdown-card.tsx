@@ -31,7 +31,7 @@ export function TuitionBreakdownCard({
         />
         <TuitionBreakdownRow
           label="Tuition (USD)"
-          value={formatUsd(breakdown.tuitionUsd)}
+          value={formatUsd(breakdown.grossTuitionUsd)}
         />
         <TuitionBreakdownRow
           label="Registration (USD)"
@@ -45,7 +45,7 @@ export function TuitionBreakdownCard({
         ) : null}
         <TuitionBreakdownRow
           label="Tuition (LBP)"
-          value={formatLbp(breakdown.tuitionLbp)}
+          value={formatLbp(breakdown.grossTuitionLbp)}
         />
         <TuitionBreakdownRow
           label="NSSF (LBP)"

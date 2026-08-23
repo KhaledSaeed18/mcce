@@ -4,25 +4,19 @@ import { TuitionPlanSelect } from "@/components/tuition/tuition-plan-select";
 import { TuitionSemesterCreditsField } from "@/components/tuition/tuition-semester-credits-field";
 import { TuitionToggleRow } from "@/components/tuition/tuition-toggle-row";
 import {
-  TUITION_FINANCIAL_AID_COVERAGE_OPTIONS,
   TUITION_MAX_SEMESTERS_PER_YEAR,
   TUITION_MIN_SEMESTERS_PER_YEAR,
 } from "@/config/tuition";
-import type {
-  TuitionFinancialAidCoverage,
-  TuitionSemesterBreakdown,
-} from "@/lib/tuition/types";
+import type { TuitionSemesterBreakdown } from "@/lib/tuition/types";
 
 interface TuitionPlanControlsProps {
   chargeSemesterIndex: number;
-  financialAidCoverage: TuitionFinancialAidCoverage;
   financialAidPercent: number;
   includeFinancialAid: boolean;
   includeNssf: boolean;
   includeRegistration: boolean;
   onChargeSemesterChange: (index: number) => void;
   onCreditsChange: (index: number, credits: number) => void;
-  onFinancialAidCoverageChange: (coverage: TuitionFinancialAidCoverage) => void;
   onFinancialAidPercentChange: (percent: number) => void;
   onIncludeFinancialAidChange: (checked: boolean) => void;
   onIncludeNssfChange: (checked: boolean) => void;
@@ -54,14 +48,12 @@ const FINANCIAL_AID_PERCENT_OPTIONS = Array.from({ length: 10 }, (_, index) => {
 
 export function TuitionPlanControls({
   chargeSemesterIndex,
-  financialAidCoverage,
   financialAidPercent,
   includeFinancialAid,
   includeNssf,
   includeRegistration,
   onChargeSemesterChange,
   onCreditsChange,
-  onFinancialAidCoverageChange,
   onFinancialAidPercentChange,
   onIncludeFinancialAidChange,
   onIncludeNssfChange,
@@ -86,12 +78,6 @@ export function TuitionPlanControls({
   const handleFinancialAidPercentChange = useCallback(
     (value: string) => onFinancialAidPercentChange(Number(value)),
     [onFinancialAidPercentChange]
-  );
-
-  const handleFinancialAidCoverageChange = useCallback(
-    (value: string) =>
-      onFinancialAidCoverageChange(value as TuitionFinancialAidCoverage),
-    [onFinancialAidCoverageChange]
   );
 
   const chargeSemesterOptions = useMemo(
@@ -169,12 +155,6 @@ export function TuitionPlanControls({
             onValueChange={handleFinancialAidPercentChange}
             options={FINANCIAL_AID_PERCENT_OPTIONS}
             value={String(financialAidPercent)}
-          />
-          <TuitionPlanSelect
-            label="Financial aid covers"
-            onValueChange={handleFinancialAidCoverageChange}
-            options={[...TUITION_FINANCIAL_AID_COVERAGE_OPTIONS]}
-            value={financialAidCoverage}
           />
         </div>
       ) : null}

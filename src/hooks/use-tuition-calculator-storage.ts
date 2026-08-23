@@ -2,12 +2,10 @@ import { useCallback, useEffect, useState } from "react";
 import { TUITION_STORAGE_KEY } from "@/config/tuition";
 import { readJson, writeJson } from "@/lib/storage";
 import { createDefaultCredits } from "@/lib/tuition/plan";
-import type { TuitionFinancialAidCoverage } from "@/lib/tuition/types";
 
 interface StoredState {
   chargeSemesterIndex: number;
   creditsPerSemester: number[];
-  financialAidCoverage: TuitionFinancialAidCoverage;
   financialAidPercent: number;
   includeFinancialAid: boolean;
   includeNssf: boolean;
@@ -19,7 +17,6 @@ interface StoredState {
 const EMPTY: StoredState = {
   chargeSemesterIndex: 0,
   creditsPerSemester: createDefaultCredits(),
-  financialAidCoverage: "lbp-only",
   financialAidPercent: 40,
   includeFinancialAid: false,
   includeNssf: true,
@@ -116,15 +113,6 @@ export function useTuitionCalculatorStorage() {
     []
   );
 
-  const setFinancialAidCoverage = useCallback(
-    (coverage: TuitionFinancialAidCoverage) =>
-      setState((previous) => ({
-        ...(previous ?? EMPTY),
-        financialAidCoverage: coverage,
-      })),
-    []
-  );
-
   const reset = useCallback(
     () => setState({ ...EMPTY, creditsPerSemester: createDefaultCredits() }),
     []
@@ -134,8 +122,6 @@ export function useTuitionCalculatorStorage() {
     chargeSemesterIndex:
       state?.chargeSemesterIndex ?? EMPTY.chargeSemesterIndex,
     creditsPerSemester: state?.creditsPerSemester ?? EMPTY.creditsPerSemester,
-    financialAidCoverage:
-      state?.financialAidCoverage ?? EMPTY.financialAidCoverage,
     financialAidPercent:
       state?.financialAidPercent ?? EMPTY.financialAidPercent,
     includeFinancialAid:
@@ -146,7 +132,6 @@ export function useTuitionCalculatorStorage() {
     reset,
     setChargeSemesterIndex,
     setCreditsPerSemester,
-    setFinancialAidCoverage,
     setFinancialAidPercent,
     setIncludeFinancialAid,
     setIncludeNssf,

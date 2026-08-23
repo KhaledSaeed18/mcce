@@ -17,7 +17,6 @@ export function TuitionCalculator() {
     plan,
     setChargeSemesterIndex,
     setCreditsAt,
-    setFinancialAidCoverage,
     setFinancialAidPercent,
     setIncludeFinancialAid,
     setIncludeNssf,
@@ -43,14 +42,12 @@ export function TuitionCalculator() {
       <CardContent className="flex flex-col gap-6">
         <TuitionPlanControls
           chargeSemesterIndex={plan.chargeSemesterIndex}
-          financialAidCoverage={plan.financialAidCoverage}
           financialAidPercent={plan.financialAidPercent}
           includeFinancialAid={plan.includeFinancialAid}
           includeNssf={plan.includeNssf}
           includeRegistration={plan.includeRegistration}
           onChargeSemesterChange={setChargeSemesterIndex}
           onCreditsChange={setCreditsAt}
-          onFinancialAidCoverageChange={setFinancialAidCoverage}
           onFinancialAidPercentChange={setFinancialAidPercent}
           onIncludeFinancialAidChange={setIncludeFinancialAid}
           onIncludeNssfChange={setIncludeNssf}

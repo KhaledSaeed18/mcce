@@ -7,39 +7,68 @@ import type {
 
 const YEAR_LABEL = "Year total";
 
-function toUsdRow(label: string, breakdown: TuitionBreakdown): string[] {
-  return [
-    label,
-    String(breakdown.credits),
-    formatUsd(breakdown.tuitionUsd),
-    formatUsd(breakdown.registrationUsd),
-    formatUsd(breakdown.totalUsd),
-  ];
+type RowBuilder = (label: string, breakdown: TuitionBreakdown) => string[];
+
+function withAid(
+  cells: string[],
+  hasAid: boolean,
+  aid: string,
+  total: string
+): string[] {
+  return hasAid ? [...cells, aid, total] : [...cells, total];
 }
 
-function toConvertedRow(label: string, breakdown: TuitionBreakdown): string[] {
-  return [
-    ...toUsdRow(label, breakdown).slice(0, 4),
-    formatUsd(breakdown.lbpAsUsd),
-    formatUsd(breakdown.combinedUsd),
-  ];
+function toUsdRow(hasAid: boolean): RowBuilder {
+  return (label, breakdown) =>
+    withAid(
+      [
+        label,
+        String(breakdown.credits),
+        formatUsd(breakdown.grossTuitionUsd),
+        formatUsd(breakdown.registrationUsd),
+      ],
+      hasAid,
+      `-${formatUsd(breakdown.financialAidUsd)}`,
+      formatUsd(breakdown.totalUsd)
+    );
 }
 
-function toLbpRow(label: string, breakdown: TuitionBreakdown): string[] {
-  return [
-    label,
-    String(breakdown.credits),
-    formatLbp(breakdown.tuitionLbp),
-    formatLbp(breakdown.nssfLbp),
-    formatLbp(breakdown.totalLbp),
-  ];
+function toConvertedRow(hasAid: boolean): RowBuilder {
+  return (label, breakdown) =>
+    withAid(
+      [
+        label,
+        String(breakdown.credits),
+        formatUsd(breakdown.grossTuitionUsd),
+        formatUsd(breakdown.registrationUsd),
+        formatUsd(breakdown.grossLbpAsUsd),
+      ],
+      hasAid,
+      `-${formatUsd(breakdown.financialAidUsd + breakdown.financialAidLbpAsUsd)}`,
+      formatUsd(breakdown.combinedUsd)
+    );
+}
+
+function toLbpRow(hasAid: boolean): RowBuilder {
+  return (label, breakdown) =>
+    withAid(
+      [
+        label,
+        String(breakdown.credits),
+        formatLbp(breakdown.grossTuitionLbp),
+        formatLbp(breakdown.nssfLbp),
+      ],
+      hasAid,
+      `-${formatLbp(breakdown.financialAidLbp)}`,
+      formatLbp(breakdown.totalLbp)
+    );
 }
 
 function toTable(
   title: string,
   head: string[],
   payload: TuitionExportPayload,
-  toRow: (label: string, breakdown: TuitionBreakdown) => string[]
+  toRow: RowBuilder
 ): TuitionTable {
   return {
     body: payload.semesters.map((semester) => toRow(semester.label, semester)),
@@ -50,7 +79,14 @@ function toTable(
 }
 
 export function buildTables(payload: TuitionExportPayload): TuitionTable[] {
-  if (payload.plan.showAllInUsd) {
+  const { annualProjection: annual, plan } = payload;
+  const hasUsdAid = annual.financialAidUsd > 0;
+  const hasLbpAid = annual.financialAidLbp > 0;
+  const toHead = (hasAid: boolean) => (hasAid ? ["Financial aid"] : []);
+
+  if (plan.showAllInUsd) {
+    const hasAid = hasUsdAid || hasLbpAid;
+
     return [
       toTable(
         "Semester by semester, everything in USD",
@@ -60,10 +96,11 @@ export function buildTables(payload: TuitionExportPayload): TuitionTable[] {
           "Tuition",
           "Registration",
           "LBP converted",
+          ...toHead(hasAid),
           "Total",
         ],
         payload,
-        toConvertedRow
+        toConvertedRow(hasAid)
       ),
     ];
   }
@@ -71,15 +108,22 @@ export function buildTables(payload: TuitionExportPayload): TuitionTable[] {
   return [
     toTable(
       "Semester by semester, billed in USD",
-      ["Semester", "Credits", "Tuition", "Registration", "Total"],
+      [
+        "Semester",
+        "Credits",
+        "Tuition",
+        "Registration",
+        ...toHead(hasUsdAid),
+        "Total",
+      ],
       payload,
-      toUsdRow
+      toUsdRow(hasUsdAid)
     ),
     toTable(
       "Semester by semester, billed in LBP",
-      ["Semester", "Credits", "Tuition", "NSSF", "Total"],
+      ["Semester", "Credits", "Tuition", "NSSF", ...toHead(hasLbpAid), "Total"],
       payload,
-      toLbpRow
+      toLbpRow(hasLbpAid)
     ),
   ];
 }

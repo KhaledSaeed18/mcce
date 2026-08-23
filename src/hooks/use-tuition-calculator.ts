@@ -8,7 +8,6 @@ export function useTuitionCalculator() {
   const {
     creditsPerSemester,
     chargeSemesterIndex,
-    financialAidCoverage,
     financialAidPercent,
     includeFinancialAid,
     includeNssf,
@@ -18,7 +17,6 @@ export function useTuitionCalculator() {
     reset,
     setCreditsPerSemester,
     setChargeSemesterIndex,
-    setFinancialAidCoverage,
     setFinancialAidPercent,
     setIncludeFinancialAid,
     setIncludeNssf,
@@ -56,7 +54,6 @@ export function useTuitionCalculator() {
     () => ({
       chargeSemesterIndex,
       creditsPerSemester,
-      financialAidCoverage,
       financialAidPercent,
       includeFinancialAid,
       includeNssf,
@@ -67,7 +64,6 @@ export function useTuitionCalculator() {
     [
       chargeSemesterIndex,
       creditsPerSemester,
-      financialAidCoverage,
       financialAidPercent,
       includeFinancialAid,
       includeNssf,
@@ -85,7 +81,6 @@ export function useTuitionCalculator() {
     reset,
     setChargeSemesterIndex,
     setCreditsAt,
-    setFinancialAidCoverage,
     setFinancialAidPercent,
     setIncludeFinancialAid,
     setIncludeNssf,

@@ -34,7 +34,7 @@ export function TuitionUsdBreakdownCard({
         />
         <TuitionBreakdownRow
           label="Tuition"
-          value={formatUsd(breakdown.tuitionUsd)}
+          value={formatUsd(breakdown.grossTuitionUsd)}
         />
         <TuitionBreakdownRow
           label="Registration"
@@ -48,7 +48,7 @@ export function TuitionUsdBreakdownCard({
         ) : null}
         <TuitionBreakdownRow
           label="LBP charges converted"
-          value={formatUsd(breakdown.lbpAsUsd)}
+          value={formatUsd(breakdown.grossLbpAsUsd)}
         />
       </dl>
 

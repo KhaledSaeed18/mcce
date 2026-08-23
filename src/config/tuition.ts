@@ -45,11 +45,13 @@ export const TUITION_USD_TO_LBP_RATE_STEP = 1000;
 export const TUITION_RATE_NOTE =
   "LBP charges are converted at the rate you set, then added to the USD total.";
 
-export const TUITION_FINANCIAL_AID_COVERAGE_OPTIONS = [
-  { label: "LBP only", value: "lbp-only" },
-  { label: "USD only", value: "usd-only" },
-  { label: "Both (LBP + USD)", value: "both" },
-] as const;
+/**
+ * LIU bills one credit as 285 accounting units: 135 paid in cash USD and 150 paid in LBP at an
+ * internal rate of 50,000. Financial aid is a percent of those 285 units, and the whole discount
+ * comes off the LBP charges, which is why a 40% aid cuts the LBP bill by far more than 40%.
+ */
+export const TUITION_UNITS_PER_CREDIT = 285;
+export const TUITION_INTERNAL_LBP_RATE = 50_000;
 
 export const TUITION_FINANCIAL_AID_NOTE =
-  "Financial aid reduces tuition fees only. Registration and NSSF are not covered.";
+  "Aid is a percent of the whole credit price, not of each currency, and the discount comes off the LBP charges first. Registration and NSSF are not covered.";

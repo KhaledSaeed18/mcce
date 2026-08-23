@@ -5,6 +5,7 @@ import {
   TUITION_SEMESTER_LABELS,
   TUITION_USD_PER_CREDIT,
 } from "@/config/tuition";
+import { buildFinancialAid } from "@/lib/tuition/financial-aid";
 import type {
   TuitionBreakdown,
   TuitionCalculation,
@@ -26,6 +27,9 @@ const EMPTY_BREAKDOWN: TuitionBreakdown = {
   financialAidLbp: 0,
   financialAidLbpAsUsd: 0,
   financialAidUsd: 0,
+  grossLbpAsUsd: 0,
+  grossTuitionLbp: 0,
+  grossTuitionUsd: 0,
   lbpAsUsd: 0,
   nssfLbp: 0,
   registrationUsd: 0,
@@ -44,6 +48,9 @@ function sumBreakdowns(items: TuitionBreakdown[]): TuitionBreakdown {
       financialAidLbpAsUsd:
         total.financialAidLbpAsUsd + item.financialAidLbpAsUsd,
       financialAidUsd: total.financialAidUsd + item.financialAidUsd,
+      grossLbpAsUsd: total.grossLbpAsUsd + item.grossLbpAsUsd,
+      grossTuitionLbp: total.grossTuitionLbp + item.grossTuitionLbp,
+      grossTuitionUsd: total.grossTuitionUsd + item.grossTuitionUsd,
       lbpAsUsd: total.lbpAsUsd + item.lbpAsUsd,
       nssfLbp: total.nssfLbp + item.nssfLbp,
       registrationUsd: total.registrationUsd + item.registrationUsd,
@@ -56,13 +63,17 @@ function sumBreakdowns(items: TuitionBreakdown[]): TuitionBreakdown {
   );
 }
 
-/** A rate of zero or less cannot convert anything, so the LBP side stays out of the USD total. */
+/**
+ * A rate of zero or less cannot convert anything, so the LBP side stays out of the USD total.
+ * Every USD figure is printed without cents, so converting to whole dollars keeps the printed
+ * rows adding up to the printed total.
+ */
 export function convertLbpToUsd(lbp: number, usdToLbpRate: number): number {
   if (!(Number.isFinite(usdToLbpRate) && usdToLbpRate > 0)) {
     return 0;
   }
 
-  return Math.round((lbp / usdToLbpRate) * 100) / 100;
+  return Math.round(lbp / usdToLbpRate);
 }
 
 function buildSemester(
@@ -73,8 +84,8 @@ function buildSemester(
   const credits = toCleanCredits(rawCredits);
   const carriesYearlyCharges = index === plan.chargeSemesterIndex;
 
-  const rawTuitionUsd = credits * TUITION_USD_PER_CREDIT;
-  const rawTuitionLbp = credits * TUITION_LBP_PER_CREDIT;
+  const grossTuitionUsd = credits * TUITION_USD_PER_CREDIT;
+  const grossTuitionLbp = credits * TUITION_LBP_PER_CREDIT;
   const registrationUsd =
     carriesYearlyCharges && plan.includeRegistration
       ? TUITION_REGISTRATION_USD_YEARLY
@@ -82,38 +93,27 @@ function buildSemester(
   const nssfLbp =
     carriesYearlyCharges && plan.includeNssf ? TUITION_NSSF_LBP_YEARLY : 0;
 
-  let tuitionUsd = rawTuitionUsd;
-  let tuitionLbp = rawTuitionLbp;
-  let financialAidUsd = 0;
-  let financialAidLbp = 0;
+  const { financialAidLbp, financialAidUsd } = buildFinancialAid(
+    plan,
+    credits,
+    grossTuitionUsd,
+    grossTuitionLbp
+  );
 
-  if (plan.includeFinancialAid && plan.financialAidPercent > 0) {
-    const rate = plan.financialAidPercent / 100;
-
-    if (
-      plan.financialAidCoverage === "usd-only" ||
-      plan.financialAidCoverage === "both"
-    ) {
-      financialAidUsd = Math.round(rawTuitionUsd * rate * 100) / 100;
-      tuitionUsd = rawTuitionUsd - financialAidUsd;
-    }
-
-    if (
-      plan.financialAidCoverage === "lbp-only" ||
-      plan.financialAidCoverage === "both"
-    ) {
-      financialAidLbp = Math.round(rawTuitionLbp * rate);
-      tuitionLbp = rawTuitionLbp - financialAidLbp;
-    }
-  }
-
+  const tuitionUsd = grossTuitionUsd - financialAidUsd;
+  const tuitionLbp = grossTuitionLbp - financialAidLbp;
   const totalLbp = tuitionLbp + nssfLbp;
   const totalUsd = tuitionUsd + registrationUsd;
-  const lbpAsUsd = convertLbpToUsd(totalLbp, plan.usdToLbpRate);
+
+  /* Each converted figure comes from the same parts the rows show, so the USD rows still add up to the USD total. */
+  const grossLbpAsUsd =
+    convertLbpToUsd(grossTuitionLbp, plan.usdToLbpRate) +
+    convertLbpToUsd(nssfLbp, plan.usdToLbpRate);
   const financialAidLbpAsUsd = convertLbpToUsd(
     financialAidLbp,
     plan.usdToLbpRate
   );
+  const lbpAsUsd = grossLbpAsUsd - financialAidLbpAsUsd;
 
   return {
     carriesYearlyCharges,
@@ -122,6 +122,9 @@ function buildSemester(
     financialAidLbp,
     financialAidLbpAsUsd,
     financialAidUsd,
+    grossLbpAsUsd,
+    grossTuitionLbp,
+    grossTuitionUsd,
     label: TUITION_SEMESTER_LABELS[index] ?? `Semester ${index + 1}`,
     lbpAsUsd,
     nssfLbp,

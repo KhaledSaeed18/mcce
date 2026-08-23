@@ -30,6 +30,12 @@ export function buildPlanFacts(
         : "Not included",
     ],
     [
+      "Financial aid",
+      plan.includeFinancialAid && plan.financialAidPercent > 0
+        ? `${plan.financialAidPercent}% of tuition, taken off the LBP charges first`
+        : "Not included",
+    ],
+    [
       "Tuition per credit",
       `${formatUsd(rates.usdPerCredit)} and ${formatLbp(rates.lbpPerCredit)}`,
     ],

@@ -25,6 +25,10 @@ function buildSettingRows(payload: TuitionExportPayload): string[] {
       toYesNo(plan.includeRegistration),
     ]),
     toCsvRow(["Include NSSF", toYesNo(plan.includeNssf)]),
+    toCsvRow(["Financial aid", toYesNo(plan.includeFinancialAid)]),
+    ...(plan.includeFinancialAid
+      ? [toCsvRow(["Financial aid percent", plan.financialAidPercent])]
+      : []),
     toCsvRow(["Show everything in USD", toYesNo(plan.showAllInUsd)]),
     ...(plan.showAllInUsd
       ? [toCsvRow(["USD to LBP rate", plan.usdToLbpRate])]
@@ -51,11 +55,13 @@ function buildTableHeader(showAllInUsd: boolean): string {
     "Carries yearly charges",
     "Tuition USD",
     "Registration USD",
+    "Financial aid USD",
     "Total USD",
     "Tuition LBP",
     "NSSF LBP",
+    "Financial aid LBP",
     "Total LBP",
-    ...(showAllInUsd ? ["LBP converted to USD", "Total in USD"] : []),
+    ...(showAllInUsd ? ["LBP charges converted to USD", "Total in USD"] : []),
   ]);
 }
 
@@ -69,13 +75,15 @@ function buildBreakdownRow(
     label,
     breakdown.credits,
     carriesYearlyCharges,
-    breakdown.tuitionUsd,
+    breakdown.grossTuitionUsd,
     breakdown.registrationUsd,
+    -breakdown.financialAidUsd,
     breakdown.totalUsd,
-    breakdown.tuitionLbp,
+    breakdown.grossTuitionLbp,
     breakdown.nssfLbp,
+    -breakdown.financialAidLbp,
     breakdown.totalLbp,
-    ...(showAllInUsd ? [breakdown.lbpAsUsd, breakdown.combinedUsd] : []),
+    ...(showAllInUsd ? [breakdown.grossLbpAsUsd, breakdown.combinedUsd] : []),
   ]);
 }
 
