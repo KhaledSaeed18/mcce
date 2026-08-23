@@ -16,6 +16,7 @@ export function CourseIndexCard({
 }: CourseIndexCardProps) {
   return (
     <Link
+      aria-label={`${course.name} (${course.code})`}
       className="block w-full focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
       params={{ code: course.code }}
       to="/course/$code"

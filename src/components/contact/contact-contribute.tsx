@@ -1,11 +1,12 @@
 import { CheckIcon, MailIcon } from "lucide-react";
 import { motion } from "motion/react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
   CONTACT_MATERIAL_ITEMS,
   CONTACT_MATERIALS_MAILTO_HREF,
 } from "@/config/contact";
+import { cn } from "@/lib/utils";
 
 export function ContactContribute() {
   return (
@@ -46,15 +47,13 @@ export function ContactContribute() {
         ))}
       </ul>
 
-      <Button
-        className="w-fit"
-        nativeButton={false}
-        render={<a href={CONTACT_MATERIALS_MAILTO_HREF} />}
-        size="lg"
+      <a
+        className={cn(buttonVariants({ size: "lg" }), "w-fit")}
+        href={CONTACT_MATERIALS_MAILTO_HREF}
       >
         <MailIcon data-icon="inline-start" />
         Email your materials
-      </Button>
+      </a>
     </motion.section>
   );
 }
