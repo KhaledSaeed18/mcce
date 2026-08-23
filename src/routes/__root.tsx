@@ -6,6 +6,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { AppErrorBoundary } from "@/components/app-error-boundary";
 import { AppHeader } from "@/components/app-header";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { MarginPattern } from "@/components/margin-pattern";
@@ -197,13 +198,15 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <ThemeProvider>
           <SavedNodesProvider>
             <RecentNodesProvider>
-              <div className="relative flex min-h-dvh flex-col">
-                <AppHeader />
-                <div className="flex-1">{children}</div>
-                <SiteFooter />
-                <MarginPattern />
-                <PageRails />
-              </div>
+              <AppErrorBoundary>
+                <div className="relative flex min-h-dvh flex-col">
+                  <AppHeader />
+                  <div className="flex-1">{children}</div>
+                  <SiteFooter />
+                  <MarginPattern />
+                  <PageRails />
+                </div>
+              </AppErrorBoundary>
             </RecentNodesProvider>
           </SavedNodesProvider>
         </ThemeProvider>
