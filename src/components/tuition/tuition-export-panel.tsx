@@ -12,9 +12,12 @@ export function TuitionExportPanel({ scenario }: TuitionExportPanelProps) {
 
   return (
     <div className="flex flex-col gap-3 rounded border-2 bg-card p-4">
-      <p className="text-muted-foreground text-sm">
-        Export this scenario as PDF, CSV, or JSON.
-      </p>
+      <div>
+        <h3 className="font-head text-sm">Export</h3>
+        <p className="mt-1 text-muted-foreground text-xs">
+          This scenario as PDF, CSV, or JSON.
+        </p>
+      </div>
 
       <TuitionExportActions
         canShare={canShare}

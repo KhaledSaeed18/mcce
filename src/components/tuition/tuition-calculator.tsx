@@ -66,7 +66,9 @@ export function TuitionCalculator() {
         <TuitionResultsGrid
           calculation={calculation}
           showAllInUsd={plan.showAllInUsd}
-        />
+        >
+          <TuitionExportPanel scenario={scenario} />
+        </TuitionResultsGrid>
 
         <div className="flex flex-col gap-1 text-muted-foreground text-xs">
           <p>{TUITION_NSSF_CHARGE_NOTE}</p>
@@ -76,8 +78,6 @@ export function TuitionCalculator() {
           {aidReachesCashUsd ? <p>{TUITION_AID_SPILLOVER_NOTE}</p> : null}
           {plan.showAllInUsd ? <p>{TUITION_RATE_NOTE}</p> : null}
         </div>
-
-        <TuitionExportPanel scenario={scenario} />
       </CardContent>
     </Card>
   );
