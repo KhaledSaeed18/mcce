@@ -1,3 +1,4 @@
+import type { LinkProps } from "@tanstack/react-router";
 import {
   AtSignIcon,
   BugIcon,
@@ -17,8 +18,10 @@ export interface ContactLink {
   description: string;
   external: boolean;
   eyebrow: string;
-  href: string;
+  /** Either an outside address, or `to` for a route this site owns. */
+  href?: string;
   icon: LucideIcon;
+  to?: LinkProps["to"];
   value: string;
 }
 
