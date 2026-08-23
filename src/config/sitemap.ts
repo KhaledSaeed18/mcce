@@ -90,9 +90,9 @@ export const SITEMAP_GROUPS: SitemapGroup[] = [
     entries: [
       {
         description:
-          "Graduate admissions requirements, LIU and non-LIU tracks, and official contact points.",
-        label: "Admissions guide",
-        to: "/admissions",
+          "The full plan of study with prerequisites drawn as a roadmap.",
+        label: "Plan of study",
+        to: "/plan-of-study",
       },
       {
         description:
@@ -102,15 +102,15 @@ export const SITEMAP_GROUPS: SitemapGroup[] = [
       },
       {
         description:
-          "The full plan of study with prerequisites drawn as a roadmap.",
-        label: "Plan of study",
-        to: "/plan-of-study",
-      },
-      {
-        description:
           "Semester and cumulative GPA on the program's grading scale.",
         label: "GPA calculator",
         to: "/gpa-calculator",
+      },
+      {
+        description:
+          "Graduate admissions requirements, LIU and non-LIU tracks, and official contact points.",
+        label: "Admissions guide",
+        to: "/admissions",
       },
     ],
     icon: BookOpenIcon,
