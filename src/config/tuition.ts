@@ -53,5 +53,8 @@ export const TUITION_RATE_NOTE =
 export const TUITION_UNITS_PER_CREDIT = 285;
 export const TUITION_INTERNAL_LBP_RATE = 50_000;
 
+export const TUITION_AID_EXAMPLE_CREDITS = 12;
+export const TUITION_AID_EXAMPLE_PERCENT = 40;
+
 export const TUITION_FINANCIAL_AID_NOTE =
   "Aid is a percent of the whole credit price, not of each currency, and the discount comes off the LBP charges first. Registration and NSSF are not covered.";

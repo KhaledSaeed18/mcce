@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
 import { JsonLd } from "@/components/seo/json-ld";
+import { TuitionAidExplainer } from "@/components/tuition/tuition-aid-explainer";
 import { TuitionCalculator } from "@/components/tuition/tuition-calculator";
 import { TuitionHero } from "@/components/tuition/tuition-hero";
 import { TuitionReferenceTable } from "@/components/tuition/tuition-reference-table";
@@ -29,6 +30,7 @@ function TuitionFeesPage() {
     <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 py-8 sm:p-6 sm:py-14">
       <TuitionHero />
       <TuitionReferenceTable />
+      <TuitionAidExplainer />
       <SectionDividerDots />
       <TuitionCalculator />
 
