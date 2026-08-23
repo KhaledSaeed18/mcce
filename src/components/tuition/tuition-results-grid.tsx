@@ -23,9 +23,9 @@ export function TuitionResultsGrid({
           breakdown={semester}
           key={semester.label}
           subtitle={
-            semester.carriesYearlyCharges
-              ? "Carries the yearly registration and NSSF."
-              : "Tuition only."
+            semester.carriesNssf
+              ? "Carries the yearly NSSF."
+              : "Tuition and registration only."
           }
           title={`${semester.label} semester`}
         />

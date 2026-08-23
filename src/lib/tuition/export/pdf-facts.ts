@@ -16,11 +16,11 @@ export function buildPlanFacts(
         .join(" · "),
     ],
     ["Credits for the year", String(payload.annualProjection.credits)],
-    ["Yearly charges billed in", payload.chargeSemesterLabel],
+    ["NSSF billed in", payload.chargeSemesterLabel],
     [
-      "Yearly registration",
+      "Registration",
       plan.includeRegistration
-        ? `Included, ${formatUsd(rates.registrationUsdYearly)} per year`
+        ? `Included, ${formatUsd(rates.registrationUsdPerSemester)} per semester`
         : "Not included",
     ],
     [

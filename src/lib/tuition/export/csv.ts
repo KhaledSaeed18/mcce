@@ -19,11 +19,8 @@ function buildSettingRows(payload: TuitionExportPayload): string[] {
     toCsvRow(["Program", payload.program]),
     toCsvRow(["Generated", payload.generatedAt]),
     toCsvRow(["Semesters this year", payload.semesters.length]),
-    toCsvRow(["Yearly charges billed in", payload.chargeSemesterLabel]),
-    toCsvRow([
-      "Include yearly registration",
-      toYesNo(plan.includeRegistration),
-    ]),
+    toCsvRow(["NSSF billed in", payload.chargeSemesterLabel]),
+    toCsvRow(["Include registration", toYesNo(plan.includeRegistration)]),
     toCsvRow(["Include NSSF", toYesNo(plan.includeNssf)]),
     toCsvRow(["Financial aid", toYesNo(plan.includeFinancialAid)]),
     ...(plan.includeFinancialAid
@@ -43,7 +40,10 @@ function buildReferenceRows(payload: TuitionExportPayload): string[] {
     toCsvRow(["Reference rate", "Value"]),
     toCsvRow(["Tuition per credit (USD)", rates.usdPerCredit]),
     toCsvRow(["Tuition per credit (LBP)", rates.lbpPerCredit]),
-    toCsvRow(["Registration per year (USD)", rates.registrationUsdYearly]),
+    toCsvRow([
+      "Registration per semester (USD)",
+      rates.registrationUsdPerSemester,
+    ]),
     toCsvRow(["NSSF per year (LBP)", rates.nssfLbpYearly]),
   ];
 }
@@ -52,7 +52,7 @@ function buildTableHeader(showAllInUsd: boolean): string {
   return toCsvRow([
     "Period",
     "Credits",
-    "Carries yearly charges",
+    "Carries NSSF",
     "Tuition USD",
     "Registration USD",
     "Financial aid USD",
@@ -68,13 +68,13 @@ function buildTableHeader(showAllInUsd: boolean): string {
 function buildBreakdownRow(
   label: string,
   breakdown: TuitionBreakdown,
-  carriesYearlyCharges: CsvValue,
+  carriesNssf: CsvValue,
   showAllInUsd: boolean
 ): string {
   return toCsvRow([
     label,
     breakdown.credits,
-    carriesYearlyCharges,
+    carriesNssf,
     breakdown.grossTuitionUsd,
     breakdown.registrationUsd,
     -breakdown.financialAidUsd,
@@ -100,7 +100,7 @@ export function buildTuitionCsv(payload: TuitionExportPayload): string {
       buildBreakdownRow(
         semester.label,
         semester,
-        toYesNo(semester.carriesYearlyCharges),
+        toYesNo(semester.carriesNssf),
         showAllInUsd
       )
     ),

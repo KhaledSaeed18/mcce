@@ -15,7 +15,7 @@ import {
 } from "@/config/site";
 import {
   TUITION_PAGE_PATH,
-  TUITION_REGISTRATION_USD_YEARLY,
+  TUITION_REGISTRATION_USD_PER_SEMESTER,
   TUITION_USD_PER_CREDIT,
 } from "@/config/tuition";
 import { flattenCourses } from "@/lib/curriculum/lookup";
@@ -176,9 +176,9 @@ export function buildTuitionSchema() {
           "@type": "UnitPriceSpecification",
           billingDuration: 1,
           billingIncrement: 1,
-          price: TUITION_REGISTRATION_USD_YEARLY,
+          price: TUITION_REGISTRATION_USD_PER_SEMESTER,
           priceCurrency: "USD",
-          unitText: "year",
+          unitText: "semester",
         },
       },
     ],

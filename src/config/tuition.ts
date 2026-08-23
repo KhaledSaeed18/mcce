@@ -12,7 +12,7 @@ export const TUITION_NUMBER_OF_YEARS = 2;
 export const TUITION_TOTAL_USD_PER_YEAR = 3510;
 export const TUITION_TOTAL_LBP_PER_YEAR = 195_000_000;
 
-export const TUITION_REGISTRATION_USD_YEARLY = 150;
+export const TUITION_REGISTRATION_USD_PER_SEMESTER = 150;
 export const TUITION_NSSF_LBP_YEARLY = 8_400_000;
 
 export const TUITION_OFFICIAL_PAGE_URL =
@@ -34,7 +34,7 @@ export const TUITION_DEFAULT_CREDITS_PER_SEMESTER = 13;
 export const TUITION_MAX_CREDITS_PER_SEMESTER = 21;
 
 export const TUITION_YEARLY_CHARGE_NOTE =
-  "Registration and NSSF are yearly charges billed in one semester, usually fall, not split across semesters.";
+  "NSSF is a yearly charge billed in one semester, usually fall, not split across semesters. Registration is charged every semester.";
 
 export const TUITION_STORAGE_KEY = "mcce.tuition-calculator.v1";
 

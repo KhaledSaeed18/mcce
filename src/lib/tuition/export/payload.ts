@@ -3,7 +3,7 @@ import {
   TUITION_ACADEMIC_YEAR_LABEL,
   TUITION_LBP_PER_CREDIT,
   TUITION_NSSF_LBP_YEARLY,
-  TUITION_REGISTRATION_USD_YEARLY,
+  TUITION_REGISTRATION_USD_PER_SEMESTER,
   TUITION_USD_PER_CREDIT,
 } from "@/config/tuition";
 import type {
@@ -27,7 +27,7 @@ export function buildTuitionExportPayload(
     rates: {
       lbpPerCredit: TUITION_LBP_PER_CREDIT,
       nssfLbpYearly: TUITION_NSSF_LBP_YEARLY,
-      registrationUsdYearly: TUITION_REGISTRATION_USD_YEARLY,
+      registrationUsdPerSemester: TUITION_REGISTRATION_USD_PER_SEMESTER,
       usdPerCredit: TUITION_USD_PER_CREDIT,
     },
     semesters: calculation.semesters,

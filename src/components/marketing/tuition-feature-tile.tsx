@@ -6,7 +6,7 @@ import {
   TUITION_ACADEMIC_YEAR_LABEL,
   TUITION_DEFAULT_USD_TO_LBP_RATE,
   TUITION_LBP_PER_CREDIT,
-  TUITION_REGISTRATION_USD_YEARLY,
+  TUITION_REGISTRATION_USD_PER_SEMESTER,
   TUITION_USD_PER_CREDIT,
 } from "@/config/tuition";
 import {
@@ -37,7 +37,10 @@ const PREVIEW_ROWS = [
     amount: semester.tuitionUsd,
     label: `${semester.label} · ${semester.credits} credits`,
   })),
-  { amount: TUITION_REGISTRATION_USD_YEARLY, label: "Registration, yearly" },
+  {
+    amount: TUITION_REGISTRATION_USD_PER_SEMESTER,
+    label: "Registration, per semester",
+  },
 ];
 
 export function TuitionFeatureTile() {

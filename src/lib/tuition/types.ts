@@ -17,7 +17,7 @@ export interface TuitionBreakdown {
 }
 
 export interface TuitionSemesterBreakdown extends TuitionBreakdown {
-  carriesYearlyCharges: boolean;
+  carriesNssf: boolean;
   label: string;
 }
 
@@ -45,7 +45,7 @@ export interface TuitionScenario {
 export interface TuitionRateReference {
   lbpPerCredit: number;
   nssfLbpYearly: number;
-  registrationUsdYearly: number;
+  registrationUsdPerSemester: number;
   usdPerCredit: number;
 }
 

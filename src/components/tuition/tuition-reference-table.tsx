@@ -7,7 +7,7 @@ import {
   TUITION_NUMBER_OF_YEARS,
   TUITION_PRICE_CHANGE_NOTE,
   TUITION_PROGRAM_LABEL,
-  TUITION_REGISTRATION_USD_YEARLY,
+  TUITION_REGISTRATION_USD_PER_SEMESTER,
   TUITION_TOTAL_LBP_PER_YEAR,
   TUITION_TOTAL_USD_PER_YEAR,
   TUITION_USD_PER_CREDIT,
@@ -67,8 +67,8 @@ export function TuitionReferenceTable() {
 
         <div className="space-y-1 text-sm">
           <p>
-            Registration fees: {formatUsd(TUITION_REGISTRATION_USD_YEARLY)} per
-            year.
+            Registration fees:{" "}
+            {formatUsd(TUITION_REGISTRATION_USD_PER_SEMESTER)} per semester.
           </p>
           <p>
             NSSF: {formatLbp(TUITION_NSSF_LBP_YEARLY)} yearly, if applicable.

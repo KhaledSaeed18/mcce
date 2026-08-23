@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { TUITION_MAX_CREDITS_PER_SEMESTER } from "@/config/tuition";
 
 interface TuitionSemesterCreditsFieldProps {
-  carriesYearlyCharges: boolean;
+  carriesNssf: boolean;
   credits: number;
   index: number;
   label: string;
@@ -12,7 +12,7 @@ interface TuitionSemesterCreditsFieldProps {
 }
 
 export function TuitionSemesterCreditsField({
-  carriesYearlyCharges,
+  carriesNssf,
   credits,
   index,
   label,
@@ -32,9 +32,7 @@ export function TuitionSemesterCreditsField({
     <label className="flex flex-col gap-1.5" htmlFor={inputId}>
       <span className="flex items-center gap-2 font-medium text-sm">
         {label} credits
-        {carriesYearlyCharges ? (
-          <Badge variant="secondary">Yearly charges</Badge>
-        ) : null}
+        {carriesNssf ? <Badge variant="secondary">NSSF</Badge> : null}
       </span>
       <Input
         id={inputId}

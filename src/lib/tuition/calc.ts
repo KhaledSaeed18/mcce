@@ -1,7 +1,7 @@
 import {
   TUITION_LBP_PER_CREDIT,
   TUITION_NSSF_LBP_YEARLY,
-  TUITION_REGISTRATION_USD_YEARLY,
+  TUITION_REGISTRATION_USD_PER_SEMESTER,
   TUITION_SEMESTER_LABELS,
   TUITION_USD_PER_CREDIT,
 } from "@/config/tuition";
@@ -82,16 +82,14 @@ function buildSemester(
   plan: TuitionPlan
 ): TuitionSemesterBreakdown {
   const credits = toCleanCredits(rawCredits);
-  const carriesYearlyCharges = index === plan.chargeSemesterIndex;
+  const carriesNssf = index === plan.chargeSemesterIndex;
 
   const grossTuitionUsd = credits * TUITION_USD_PER_CREDIT;
   const grossTuitionLbp = credits * TUITION_LBP_PER_CREDIT;
-  const registrationUsd =
-    carriesYearlyCharges && plan.includeRegistration
-      ? TUITION_REGISTRATION_USD_YEARLY
-      : 0;
-  const nssfLbp =
-    carriesYearlyCharges && plan.includeNssf ? TUITION_NSSF_LBP_YEARLY : 0;
+  const registrationUsd = plan.includeRegistration
+    ? TUITION_REGISTRATION_USD_PER_SEMESTER
+    : 0;
+  const nssfLbp = carriesNssf && plan.includeNssf ? TUITION_NSSF_LBP_YEARLY : 0;
 
   const { financialAidLbp, financialAidUsd } = buildFinancialAid(
     plan,
@@ -116,7 +114,7 @@ function buildSemester(
   const lbpAsUsd = grossLbpAsUsd - financialAidLbpAsUsd;
 
   return {
-    carriesYearlyCharges,
+    carriesNssf,
     combinedUsd: totalUsd + lbpAsUsd,
     credits,
     financialAidLbp,

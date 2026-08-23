@@ -103,7 +103,7 @@ export function TuitionPlanControls({
         />
 
         <TuitionPlanSelect
-          label="Semester billed yearly charges"
+          label="Semester billed NSSF"
           onValueChange={handleChargeSemesterChange}
           options={chargeSemesterOptions}
           value={String(chargeSemesterIndex)}
@@ -113,7 +113,7 @@ export function TuitionPlanControls({
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         {semesters.map((semester, index) => (
           <TuitionSemesterCreditsField
-            carriesYearlyCharges={semester.carriesYearlyCharges}
+            carriesNssf={semester.carriesNssf}
             credits={semester.credits}
             index={index}
             key={semester.label}
@@ -126,9 +126,9 @@ export function TuitionPlanControls({
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <TuitionToggleRow
           checked={includeRegistration}
-          description={`Adds the yearly registration in ${chargeSemesterLabel}.`}
+          description="Adds the registration fee in every semester."
           id="registration-switch"
-          label="Include yearly registration"
+          label="Include registration"
           onCheckedChange={onIncludeRegistrationChange}
         />
         <TuitionToggleRow
