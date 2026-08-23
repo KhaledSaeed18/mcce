@@ -131,6 +131,16 @@ describe("buildTuitionCalculation", () => {
     );
   });
 
+  it("keeps a typed out of range percent from over discounting", () => {
+    const [fall] = buildTuitionCalculation(
+      plan({ financialAidPercent: 500, includeFinancialAid: true })
+    ).semesters;
+
+    expect(fall.financialAidLbp).toBe(12 * TUITION_LBP_PER_CREDIT);
+    expect(fall.financialAidUsd).toBe(12 * TUITION_USD_PER_CREDIT);
+    expect(fall.totalUsd).toBe(TUITION_REGISTRATION_USD_PER_SEMESTER);
+  });
+
   it("never discounts registration or NSSF", () => {
     const [fall] = buildTuitionCalculation(
       plan({ financialAidPercent: 100, includeFinancialAid: true })

@@ -1,7 +1,9 @@
 import {
   TUITION_DEFAULT_CREDITS_PER_SEMESTER,
   TUITION_DEFAULT_SEMESTERS_PER_YEAR,
+  TUITION_MAX_FINANCIAL_AID_PERCENT,
   TUITION_MAX_SEMESTERS_PER_YEAR,
+  TUITION_MIN_FINANCIAL_AID_PERCENT,
   TUITION_MIN_SEMESTERS_PER_YEAR,
 } from "@/config/tuition";
 
@@ -35,4 +37,16 @@ export function resizeCredits(current: number[], count: number): number[] {
     ...current,
     ...Array.from({ length: count - current.length }, () => fallback),
   ];
+}
+
+/** Keeps a decimal a student actually receives, and only pulls the value back into range. */
+export function clampFinancialAidPercent(value: number): number {
+  if (!Number.isFinite(value)) {
+    return TUITION_MIN_FINANCIAL_AID_PERCENT;
+  }
+
+  return Math.min(
+    TUITION_MAX_FINANCIAL_AID_PERCENT,
+    Math.max(TUITION_MIN_FINANCIAL_AID_PERCENT, value)
+  );
 }

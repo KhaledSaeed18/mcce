@@ -1,9 +1,11 @@
 import { useCallback } from "react";
 import { TuitionCurrencyControls } from "@/components/tuition/tuition-currency-controls";
+import { TuitionFinancialAidField } from "@/components/tuition/tuition-financial-aid-field";
 import { TuitionPlanSelect } from "@/components/tuition/tuition-plan-select";
 import { TuitionSemesterCreditsField } from "@/components/tuition/tuition-semester-credits-field";
 import { TuitionToggleRow } from "@/components/tuition/tuition-toggle-row";
 import {
+  TUITION_FINANCIAL_AID_NOTE,
   TUITION_MAX_SEMESTERS_PER_YEAR,
   TUITION_MIN_SEMESTERS_PER_YEAR,
 } from "@/config/tuition";
@@ -38,12 +40,6 @@ const SEMESTER_COUNT_OPTIONS = Array.from(
   }
 );
 
-const FINANCIAL_AID_PERCENT_OPTIONS = Array.from({ length: 10 }, (_, index) => {
-  const percent = String(10 + index * 10);
-
-  return { label: `${percent}%`, value: percent };
-});
-
 export function TuitionPlanControls({
   financialAidPercent,
   includeFinancialAid,
@@ -64,11 +60,6 @@ export function TuitionPlanControls({
   const handleSemesterCountChange = useCallback(
     (value: string) => onSemesterCountChange(Number(value)),
     [onSemesterCountChange]
-  );
-
-  const handleFinancialAidPercentChange = useCallback(
-    (value: string) => onFinancialAidPercentChange(Number(value)),
-    [onFinancialAidPercentChange]
   );
 
   return (
@@ -113,7 +104,7 @@ export function TuitionPlanControls({
 
       <TuitionToggleRow
         checked={includeFinancialAid}
-        description="Reduces tuition fees by a percentage. Registration and NSSF are not covered."
+        description={TUITION_FINANCIAL_AID_NOTE}
         id="financial-aid-switch"
         label="Financial aid"
         onCheckedChange={onIncludeFinancialAidChange}
@@ -121,11 +112,9 @@ export function TuitionPlanControls({
 
       {includeFinancialAid ? (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <TuitionPlanSelect
-            label="Financial aid percent"
-            onValueChange={handleFinancialAidPercentChange}
-            options={FINANCIAL_AID_PERCENT_OPTIONS}
-            value={String(financialAidPercent)}
+          <TuitionFinancialAidField
+            onPercentChange={onFinancialAidPercentChange}
+            percent={financialAidPercent}
           />
         </div>
       ) : null}
