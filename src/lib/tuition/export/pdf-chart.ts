@@ -48,6 +48,21 @@ function sumSegments(row: TuitionChartRow): number {
   return row.segments.reduce((total, segment) => total + segment.value, 0);
 }
 
+/** Every charge drawn in any bar needs a swatch, not only the ones in the first row. */
+function toLegendSegments(rows: TuitionChartRow[]): TuitionChartSegment[] {
+  const seen = new Map<string, TuitionChartSegment>();
+
+  for (const row of rows) {
+    for (const segment of row.segments) {
+      if (!seen.has(segment.label)) {
+        seen.set(segment.label, segment);
+      }
+    }
+  }
+
+  return [...seen.values()];
+}
+
 function drawLegend(
   doc: jsPDF,
   segments: TuitionChartSegment[],
@@ -121,5 +136,5 @@ export function drawCompositionChart(
     y += TUITION_PDF_BAR_ROW_HEIGHT;
   }
 
-  return drawLegend(doc, visibleRows.at(0)?.segments ?? [], y + 2);
+  return drawLegend(doc, toLegendSegments(visibleRows), y + 2);
 }
