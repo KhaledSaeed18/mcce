@@ -1,6 +1,5 @@
 import {
   CSV_BLANK_ROW,
-  type CsvValue,
   toCsvFile,
   toCsvRow,
   toYesNo,
@@ -19,7 +18,6 @@ function buildSettingRows(payload: TuitionExportPayload): string[] {
     toCsvRow(["Program", payload.program]),
     toCsvRow(["Generated", payload.generatedAt]),
     toCsvRow(["Semesters this year", payload.semesters.length]),
-    toCsvRow(["NSSF billed in", payload.chargeSemesterLabel]),
     toCsvRow(["Include registration", toYesNo(plan.includeRegistration)]),
     toCsvRow(["Include NSSF", toYesNo(plan.includeNssf)]),
     toCsvRow(["Financial aid", toYesNo(plan.includeFinancialAid)]),
@@ -52,7 +50,6 @@ function buildTableHeader(showAllInUsd: boolean): string {
   return toCsvRow([
     "Period",
     "Credits",
-    "Carries NSSF",
     "Tuition USD",
     "Registration USD",
     "Financial aid USD",
@@ -68,13 +65,11 @@ function buildTableHeader(showAllInUsd: boolean): string {
 function buildBreakdownRow(
   label: string,
   breakdown: TuitionBreakdown,
-  carriesNssf: CsvValue,
   showAllInUsd: boolean
 ): string {
   return toCsvRow([
     label,
     breakdown.credits,
-    carriesNssf,
     breakdown.grossTuitionUsd,
     breakdown.registrationUsd,
     -breakdown.financialAidUsd,
@@ -97,13 +92,9 @@ export function buildTuitionCsv(payload: TuitionExportPayload): string {
     CSV_BLANK_ROW,
     buildTableHeader(showAllInUsd),
     ...payload.semesters.map((semester) =>
-      buildBreakdownRow(
-        semester.label,
-        semester,
-        toYesNo(semester.carriesNssf),
-        showAllInUsd
-      )
+      buildBreakdownRow(semester.label, semester, showAllInUsd)
     ),
-    buildBreakdownRow("Year total", payload.annualProjection, "", showAllInUsd),
+    buildBreakdownRow("NSSF, yearly", payload.yearlyCharges, showAllInUsd),
+    buildBreakdownRow("Year total", payload.annualProjection, showAllInUsd),
   ]);
 }

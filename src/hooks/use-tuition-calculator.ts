@@ -7,7 +7,6 @@ import type { TuitionPlan } from "@/lib/tuition/types";
 export function useTuitionCalculator() {
   const {
     creditsPerSemester,
-    chargeSemesterIndex,
     financialAidPercent,
     includeFinancialAid,
     includeNssf,
@@ -16,7 +15,6 @@ export function useTuitionCalculator() {
     usdToLbpRate,
     reset,
     setCreditsPerSemester,
-    setChargeSemesterIndex,
     setFinancialAidPercent,
     setIncludeFinancialAid,
     setIncludeNssf,
@@ -26,18 +24,11 @@ export function useTuitionCalculator() {
   } = useTuitionCalculatorStorage();
 
   const setSemesterCount = useCallback(
-    (value: number) => {
-      const count = clampSemesterCount(value);
-
-      setCreditsPerSemester(resizeCredits(creditsPerSemester, count));
-      setChargeSemesterIndex(Math.min(chargeSemesterIndex, count - 1));
-    },
-    [
-      creditsPerSemester,
-      chargeSemesterIndex,
-      setChargeSemesterIndex,
-      setCreditsPerSemester,
-    ]
+    (value: number) =>
+      setCreditsPerSemester(
+        resizeCredits(creditsPerSemester, clampSemesterCount(value))
+      ),
+    [creditsPerSemester, setCreditsPerSemester]
   );
 
   const setCreditsAt = useCallback(
@@ -52,7 +43,6 @@ export function useTuitionCalculator() {
 
   const plan = useMemo<TuitionPlan>(
     () => ({
-      chargeSemesterIndex,
       creditsPerSemester,
       financialAidPercent,
       includeFinancialAid,
@@ -62,7 +52,6 @@ export function useTuitionCalculator() {
       usdToLbpRate,
     }),
     [
-      chargeSemesterIndex,
       creditsPerSemester,
       financialAidPercent,
       includeFinancialAid,
@@ -79,7 +68,6 @@ export function useTuitionCalculator() {
     calculation,
     plan,
     reset,
-    setChargeSemesterIndex,
     setCreditsAt,
     setFinancialAidPercent,
     setIncludeFinancialAid,

@@ -5,8 +5,8 @@ import { TuitionResultsGrid } from "@/components/tuition/tuition-results-grid";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   TUITION_FINANCIAL_AID_NOTE,
+  TUITION_NSSF_CHARGE_NOTE,
   TUITION_RATE_NOTE,
-  TUITION_YEARLY_CHARGE_NOTE,
 } from "@/config/tuition";
 import { useTuitionCalculator } from "@/hooks/use-tuition-calculator";
 import type { TuitionScenario } from "@/lib/tuition/types";
@@ -15,7 +15,6 @@ export function TuitionCalculator() {
   const {
     calculation,
     plan,
-    setChargeSemesterIndex,
     setCreditsAt,
     setFinancialAidPercent,
     setIncludeFinancialAid,
@@ -41,12 +40,10 @@ export function TuitionCalculator() {
 
       <CardContent className="flex flex-col gap-6">
         <TuitionPlanControls
-          chargeSemesterIndex={plan.chargeSemesterIndex}
           financialAidPercent={plan.financialAidPercent}
           includeFinancialAid={plan.includeFinancialAid}
           includeNssf={plan.includeNssf}
           includeRegistration={plan.includeRegistration}
-          onChargeSemesterChange={setChargeSemesterIndex}
           onCreditsChange={setCreditsAt}
           onFinancialAidPercentChange={setFinancialAidPercent}
           onIncludeFinancialAidChange={setIncludeFinancialAid}
@@ -66,7 +63,7 @@ export function TuitionCalculator() {
         />
 
         <div className="flex flex-col gap-1 text-muted-foreground text-xs">
-          <p>{TUITION_YEARLY_CHARGE_NOTE}</p>
+          <p>{TUITION_NSSF_CHARGE_NOTE}</p>
           {plan.includeFinancialAid ? (
             <p>{TUITION_FINANCIAL_AID_NOTE}</p>
           ) : null}

@@ -20,7 +20,6 @@ import type { TuitionPlan } from "@/lib/tuition/types";
 /** The default plan the calculator opens on, kept in USD only so the tile does
  * not have to explain a conversion rate it cannot let the reader change. */
 const PREVIEW_PLAN: TuitionPlan = {
-  chargeSemesterIndex: 0,
   creditsPerSemester: createDefaultCredits(),
   financialAidPercent: 40,
   includeFinancialAid: false,

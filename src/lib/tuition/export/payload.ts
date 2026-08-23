@@ -15,12 +15,10 @@ export function buildTuitionExportPayload(
   scenario: TuitionScenario
 ): TuitionExportPayload {
   const { calculation, plan } = scenario;
-  const chargeSemester = calculation.semesters[plan.chargeSemesterIndex];
 
   return {
     academicYear: TUITION_ACADEMIC_YEAR_LABEL,
     annualProjection: calculation.annualProjection,
-    chargeSemesterLabel: chargeSemester?.label ?? "",
     generatedAt: new Date().toISOString(),
     plan,
     program: PROGRAM_NAME,
@@ -31,5 +29,6 @@ export function buildTuitionExportPayload(
       usdPerCredit: TUITION_USD_PER_CREDIT,
     },
     semesters: calculation.semesters,
+    yearlyCharges: calculation.yearlyCharges,
   };
 }

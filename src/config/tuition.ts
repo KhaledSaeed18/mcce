@@ -33,8 +33,8 @@ export const TUITION_DEFAULT_SEMESTERS_PER_YEAR = 2;
 export const TUITION_DEFAULT_CREDITS_PER_SEMESTER = 13;
 export const TUITION_MAX_CREDITS_PER_SEMESTER = 21;
 
-export const TUITION_YEARLY_CHARGE_NOTE =
-  "NSSF is a yearly charge billed in one semester, usually fall, not split across semesters. Registration is charged every semester.";
+export const TUITION_NSSF_CHARGE_NOTE =
+  "NSSF is a separate yearly payment, not billed with a semester, so it is added once in the annual projection. Registration is charged every semester.";
 
 export const TUITION_STORAGE_KEY = "mcce.tuition-calculator.v1";
 

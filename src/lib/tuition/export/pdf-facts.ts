@@ -16,7 +16,6 @@ export function buildPlanFacts(
         .join(" · "),
     ],
     ["Credits for the year", String(payload.annualProjection.credits)],
-    ["NSSF billed in", payload.chargeSemesterLabel],
     [
       "Registration",
       plan.includeRegistration

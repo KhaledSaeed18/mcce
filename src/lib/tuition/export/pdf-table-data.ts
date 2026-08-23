@@ -6,6 +6,7 @@ import type {
 } from "@/lib/tuition/types";
 
 const YEAR_LABEL = "Year total";
+const NSSF_LABEL = "NSSF, yearly";
 
 type RowBuilder = (label: string, breakdown: TuitionBreakdown) => string[];
 
@@ -68,10 +69,20 @@ function toTable(
   title: string,
   head: string[],
   payload: TuitionExportPayload,
-  toRow: RowBuilder
+  toRow: RowBuilder,
+  showsNssf: boolean
 ): TuitionTable {
+  const body = payload.semesters.map((semester) =>
+    toRow(semester.label, semester)
+  );
+
+  /* NSSF is paid once for the year, so it gets its own row instead of hiding inside a semester. */
+  if (showsNssf && payload.yearlyCharges.nssfLbp > 0) {
+    body.push(toRow(NSSF_LABEL, payload.yearlyCharges));
+  }
+
   return {
-    body: payload.semesters.map((semester) => toRow(semester.label, semester)),
+    body,
     foot: [toRow(YEAR_LABEL, payload.annualProjection)],
     head,
     title,
@@ -100,7 +111,8 @@ export function buildTables(payload: TuitionExportPayload): TuitionTable[] {
           "Total",
         ],
         payload,
-        toConvertedRow(hasAid)
+        toConvertedRow(hasAid),
+        true
       ),
     ];
   }
@@ -117,13 +129,15 @@ export function buildTables(payload: TuitionExportPayload): TuitionTable[] {
         "Total",
       ],
       payload,
-      toUsdRow(hasUsdAid)
+      toUsdRow(hasUsdAid),
+      false
     ),
     toTable(
       "Semester by semester, billed in LBP",
       ["Semester", "Credits", "Tuition", "NSSF", ...toHead(hasLbpAid), "Total"],
       payload,
-      toLbpRow(hasLbpAid)
+      toLbpRow(hasLbpAid),
+      true
     ),
   ];
 }

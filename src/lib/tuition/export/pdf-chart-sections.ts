@@ -9,6 +9,7 @@ import type {
   TuitionChartSegment,
 } from "@/lib/tuition/export/pdf-chart";
 import type {
+  TuitionBreakdown,
   TuitionExportPayload,
   TuitionSemesterBreakdown,
 } from "@/lib/tuition/types";
@@ -37,6 +38,25 @@ function toRows(
   }));
 }
 
+/** NSSF is paid once for the year, so it gets its own bar instead of one inside a semester. */
+function toYearlyRows(
+  payload: TuitionExportPayload,
+  toValue: (breakdown: TuitionBreakdown) => number
+): TuitionChartRow[] {
+  const value = toValue(payload.yearlyCharges);
+
+  if (value <= 0) {
+    return [];
+  }
+
+  return [
+    {
+      label: "NSSF",
+      segments: [toSegment("NSSF", TUITION_PDF_NSSF_COLOR, value)],
+    },
+  ];
+}
+
 export function buildChartSections(
   payload: TuitionExportPayload
 ): TuitionChartSection[] {
@@ -46,15 +66,26 @@ export function buildChartSections(
     return [
       {
         formatValue: formatUsd,
-        rows: toRows(semesters, (semester) => [
-          toSegment("Tuition", TUITION_PDF_TUITION_COLOR, semester.tuitionUsd),
-          toSegment(
-            "Registration",
-            TUITION_PDF_REGISTRATION_COLOR,
-            semester.registrationUsd
-          ),
-          toSegment("LBP converted", TUITION_PDF_NSSF_COLOR, semester.lbpAsUsd),
-        ]),
+        rows: [
+          ...toRows(semesters, (semester) => [
+            toSegment(
+              "Tuition",
+              TUITION_PDF_TUITION_COLOR,
+              semester.tuitionUsd
+            ),
+            toSegment(
+              "Registration",
+              TUITION_PDF_REGISTRATION_COLOR,
+              semester.registrationUsd
+            ),
+            toSegment(
+              "LBP converted",
+              TUITION_PDF_NSSF_COLOR,
+              semester.lbpAsUsd
+            ),
+          ]),
+          ...toYearlyRows(payload, (breakdown) => breakdown.lbpAsUsd),
+        ],
         title: "Cost per semester, in USD",
       },
     ];
@@ -75,10 +106,12 @@ export function buildChartSections(
     },
     {
       formatValue: formatLbp,
-      rows: toRows(semesters, (semester) => [
-        toSegment("Tuition", TUITION_PDF_TUITION_COLOR, semester.tuitionLbp),
-        toSegment("NSSF", TUITION_PDF_NSSF_COLOR, semester.nssfLbp),
-      ]),
+      rows: [
+        ...toRows(semesters, (semester) => [
+          toSegment("Tuition", TUITION_PDF_TUITION_COLOR, semester.tuitionLbp),
+        ]),
+        ...toYearlyRows(payload, (breakdown) => breakdown.nssfLbp),
+      ],
       title: "Cost per semester, billed in LBP",
     },
   ];

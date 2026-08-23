@@ -4,7 +4,6 @@ import { readJson, writeJson } from "@/lib/storage";
 import { createDefaultCredits } from "@/lib/tuition/plan";
 
 interface StoredState {
-  chargeSemesterIndex: number;
   creditsPerSemester: number[];
   financialAidPercent: number;
   includeFinancialAid: boolean;
@@ -15,7 +14,6 @@ interface StoredState {
 }
 
 const EMPTY: StoredState = {
-  chargeSemesterIndex: 0,
   creditsPerSemester: createDefaultCredits(),
   financialAidPercent: 40,
   includeFinancialAid: false,
@@ -49,15 +47,6 @@ export function useTuitionCalculatorStorage() {
       setState((previous) => ({
         ...(previous ?? EMPTY),
         creditsPerSemester: credits,
-      })),
-    []
-  );
-
-  const setChargeSemesterIndex = useCallback(
-    (index: number) =>
-      setState((previous) => ({
-        ...(previous ?? EMPTY),
-        chargeSemesterIndex: index,
       })),
     []
   );
@@ -119,8 +108,6 @@ export function useTuitionCalculatorStorage() {
   );
 
   return {
-    chargeSemesterIndex:
-      state?.chargeSemesterIndex ?? EMPTY.chargeSemesterIndex,
     creditsPerSemester: state?.creditsPerSemester ?? EMPTY.creditsPerSemester,
     financialAidPercent:
       state?.financialAidPercent ?? EMPTY.financialAidPercent,
@@ -130,7 +117,6 @@ export function useTuitionCalculatorStorage() {
     includeRegistration:
       state?.includeRegistration ?? EMPTY.includeRegistration,
     reset,
-    setChargeSemesterIndex,
     setCreditsPerSemester,
     setFinancialAidPercent,
     setIncludeFinancialAid,

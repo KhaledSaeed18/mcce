@@ -82,15 +82,12 @@ function buildSemester(
   plan: TuitionPlan
 ): TuitionSemesterBreakdown {
   const credits = toCleanCredits(rawCredits);
-  const carriesNssf = index === plan.chargeSemesterIndex;
 
   const grossTuitionUsd = credits * TUITION_USD_PER_CREDIT;
   const grossTuitionLbp = credits * TUITION_LBP_PER_CREDIT;
   const registrationUsd = plan.includeRegistration
     ? TUITION_REGISTRATION_USD_PER_SEMESTER
     : 0;
-  const nssfLbp = carriesNssf && plan.includeNssf ? TUITION_NSSF_LBP_YEARLY : 0;
-
   const { financialAidLbp, financialAidUsd } = buildFinancialAid(
     plan,
     credits,
@@ -100,13 +97,11 @@ function buildSemester(
 
   const tuitionUsd = grossTuitionUsd - financialAidUsd;
   const tuitionLbp = grossTuitionLbp - financialAidLbp;
-  const totalLbp = tuitionLbp + nssfLbp;
+  const totalLbp = tuitionLbp;
   const totalUsd = tuitionUsd + registrationUsd;
 
   /* Each converted figure comes from the same parts the rows show, so the USD rows still add up to the USD total. */
-  const grossLbpAsUsd =
-    convertLbpToUsd(grossTuitionLbp, plan.usdToLbpRate) +
-    convertLbpToUsd(nssfLbp, plan.usdToLbpRate);
+  const grossLbpAsUsd = convertLbpToUsd(grossTuitionLbp, plan.usdToLbpRate);
   const financialAidLbpAsUsd = convertLbpToUsd(
     financialAidLbp,
     plan.usdToLbpRate
@@ -114,7 +109,6 @@ function buildSemester(
   const lbpAsUsd = grossLbpAsUsd - financialAidLbpAsUsd;
 
   return {
-    carriesNssf,
     combinedUsd: totalUsd + lbpAsUsd,
     credits,
     financialAidLbp,
@@ -125,7 +119,7 @@ function buildSemester(
     grossTuitionUsd,
     label: TUITION_SEMESTER_LABELS[index] ?? `Semester ${index + 1}`,
     lbpAsUsd,
-    nssfLbp,
+    nssfLbp: 0,
     registrationUsd,
     totalLbp,
     totalUsd,
@@ -134,12 +128,32 @@ function buildSemester(
   };
 }
 
+/** NSSF is a separate yearly payment, so it sits beside the semesters instead of inside one. */
+function buildYearlyCharges(plan: TuitionPlan): TuitionBreakdown {
+  const nssfLbp = plan.includeNssf ? TUITION_NSSF_LBP_YEARLY : 0;
+  const lbpAsUsd = convertLbpToUsd(nssfLbp, plan.usdToLbpRate);
+
+  return {
+    ...EMPTY_BREAKDOWN,
+    combinedUsd: lbpAsUsd,
+    grossLbpAsUsd: lbpAsUsd,
+    lbpAsUsd,
+    nssfLbp,
+    totalLbp: nssfLbp,
+  };
+}
+
 export function buildTuitionCalculation(plan: TuitionPlan): TuitionCalculation {
   const semesters = plan.creditsPerSemester.map((credits, index) =>
     buildSemester(credits, index, plan)
   );
+  const yearlyCharges = buildYearlyCharges(plan);
 
-  return { annualProjection: sumBreakdowns(semesters), semesters };
+  return {
+    annualProjection: sumBreakdowns([...semesters, yearlyCharges]),
+    semesters,
+    yearlyCharges,
+  };
 }
 
 export function formatUsd(value: number): string {

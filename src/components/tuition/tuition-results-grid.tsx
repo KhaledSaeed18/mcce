@@ -12,6 +12,11 @@ export function TuitionResultsGrid({
   showAllInUsd,
 }: TuitionResultsGridProps) {
   const semesterCount = calculation.semesters.length;
+  const semesterLabel = semesterCount === 1 ? "semester" : "semesters";
+  const annualSubtitle =
+    calculation.yearlyCharges.nssfLbp > 0
+      ? `Sum of ${semesterCount} ${semesterLabel} and the yearly NSSF.`
+      : `Sum of ${semesterCount} ${semesterLabel}.`;
   const BreakdownCard = showAllInUsd
     ? TuitionUsdBreakdownCard
     : TuitionBreakdownCard;
@@ -22,18 +27,14 @@ export function TuitionResultsGrid({
         <BreakdownCard
           breakdown={semester}
           key={semester.label}
-          subtitle={
-            semester.carriesNssf
-              ? "Carries the yearly NSSF."
-              : "Tuition and registration only."
-          }
+          subtitle="Tuition and registration."
           title={`${semester.label} semester`}
         />
       ))}
 
       <BreakdownCard
         breakdown={calculation.annualProjection}
-        subtitle={`Sum of ${semesterCount} ${semesterCount === 1 ? "semester" : "semesters"}.`}
+        subtitle={annualSubtitle}
         title="Annual projection"
       />
     </div>

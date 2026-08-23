@@ -1,10 +1,8 @@
 import { type ChangeEvent, useCallback } from "react";
-import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { TUITION_MAX_CREDITS_PER_SEMESTER } from "@/config/tuition";
 
 interface TuitionSemesterCreditsFieldProps {
-  carriesNssf: boolean;
   credits: number;
   index: number;
   label: string;
@@ -12,7 +10,6 @@ interface TuitionSemesterCreditsFieldProps {
 }
 
 export function TuitionSemesterCreditsField({
-  carriesNssf,
   credits,
   index,
   label,
@@ -30,10 +27,7 @@ export function TuitionSemesterCreditsField({
 
   return (
     <label className="flex flex-col gap-1.5" htmlFor={inputId}>
-      <span className="flex items-center gap-2 font-medium text-sm">
-        {label} credits
-        {carriesNssf ? <Badge variant="secondary">NSSF</Badge> : null}
-      </span>
+      <span className="font-medium text-sm">{label} credits</span>
       <Input
         id={inputId}
         max={TUITION_MAX_CREDITS_PER_SEMESTER}

@@ -1,10 +1,10 @@
 import type { jsPDF } from "jspdf";
 import {
+  TUITION_NSSF_CHARGE_NOTE,
   TUITION_OFFICIAL_PAGE_URL,
   TUITION_PRICE_CHANGE_NOTE,
   TUITION_RATE_NOTE,
   TUITION_WARNING_NOTE,
-  TUITION_YEARLY_CHARGE_NOTE,
 } from "@/config/tuition";
 import {
   TUITION_PDF_MUTED_COLOR,
@@ -16,7 +16,7 @@ const LINE_HEIGHT = 12;
 
 export function buildNotes(payload: TuitionExportPayload): string[] {
   return [
-    TUITION_YEARLY_CHARGE_NOTE,
+    TUITION_NSSF_CHARGE_NOTE,
     ...(payload.plan.showAllInUsd ? [TUITION_RATE_NOTE] : []),
     TUITION_PRICE_CHANGE_NOTE,
     TUITION_WARNING_NOTE,

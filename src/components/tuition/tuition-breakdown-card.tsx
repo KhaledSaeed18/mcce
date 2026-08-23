@@ -47,10 +47,12 @@ export function TuitionBreakdownCard({
           label="Tuition (LBP)"
           value={formatLbp(breakdown.grossTuitionLbp)}
         />
-        <TuitionBreakdownRow
-          label="NSSF (LBP)"
-          value={formatLbp(breakdown.nssfLbp)}
-        />
+        {breakdown.nssfLbp > 0 ? (
+          <TuitionBreakdownRow
+            label="NSSF (LBP)"
+            value={formatLbp(breakdown.nssfLbp)}
+          />
+        ) : null}
         {breakdown.financialAidLbp > 0 ? (
           <TuitionBreakdownRow
             label="Financial aid (LBP)"

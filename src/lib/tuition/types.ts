@@ -17,17 +17,16 @@ export interface TuitionBreakdown {
 }
 
 export interface TuitionSemesterBreakdown extends TuitionBreakdown {
-  carriesNssf: boolean;
   label: string;
 }
 
 export interface TuitionCalculation {
   annualProjection: TuitionBreakdown;
   semesters: TuitionSemesterBreakdown[];
+  yearlyCharges: TuitionBreakdown;
 }
 
 export interface TuitionPlan {
-  chargeSemesterIndex: number;
   creditsPerSemester: number[];
   financialAidPercent: number;
   includeFinancialAid: boolean;
@@ -53,10 +52,10 @@ export interface TuitionRateReference {
 export interface TuitionExportPayload {
   academicYear: string;
   annualProjection: TuitionBreakdown;
-  chargeSemesterLabel: string;
   generatedAt: string;
   plan: TuitionPlan;
   program: string;
   rates: TuitionRateReference;
   semesters: TuitionSemesterBreakdown[];
+  yearlyCharges: TuitionBreakdown;
 }

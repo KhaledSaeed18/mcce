@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 import { TuitionCurrencyControls } from "@/components/tuition/tuition-currency-controls";
 import { TuitionPlanSelect } from "@/components/tuition/tuition-plan-select";
 import { TuitionSemesterCreditsField } from "@/components/tuition/tuition-semester-credits-field";
@@ -10,12 +10,10 @@ import {
 import type { TuitionSemesterBreakdown } from "@/lib/tuition/types";
 
 interface TuitionPlanControlsProps {
-  chargeSemesterIndex: number;
   financialAidPercent: number;
   includeFinancialAid: boolean;
   includeNssf: boolean;
   includeRegistration: boolean;
-  onChargeSemesterChange: (index: number) => void;
   onCreditsChange: (index: number, credits: number) => void;
   onFinancialAidPercentChange: (percent: number) => void;
   onIncludeFinancialAidChange: (checked: boolean) => void;
@@ -47,12 +45,10 @@ const FINANCIAL_AID_PERCENT_OPTIONS = Array.from({ length: 10 }, (_, index) => {
 });
 
 export function TuitionPlanControls({
-  chargeSemesterIndex,
   financialAidPercent,
   includeFinancialAid,
   includeNssf,
   includeRegistration,
-  onChargeSemesterChange,
   onCreditsChange,
   onFinancialAidPercentChange,
   onIncludeFinancialAidChange,
@@ -70,27 +66,10 @@ export function TuitionPlanControls({
     [onSemesterCountChange]
   );
 
-  const handleChargeSemesterChange = useCallback(
-    (value: string) => onChargeSemesterChange(Number(value)),
-    [onChargeSemesterChange]
-  );
-
   const handleFinancialAidPercentChange = useCallback(
     (value: string) => onFinancialAidPercentChange(Number(value)),
     [onFinancialAidPercentChange]
   );
-
-  const chargeSemesterOptions = useMemo(
-    () =>
-      semesters.map((semester, index) => ({
-        label: semester.label,
-        value: String(index),
-      })),
-    [semesters]
-  );
-
-  const chargeSemesterLabel =
-    semesters[chargeSemesterIndex]?.label ?? semesters[0]?.label ?? "";
 
   return (
     <div className="flex flex-col gap-4">
@@ -101,19 +80,11 @@ export function TuitionPlanControls({
           options={SEMESTER_COUNT_OPTIONS}
           value={String(semesters.length)}
         />
-
-        <TuitionPlanSelect
-          label="Semester billed NSSF"
-          onValueChange={handleChargeSemesterChange}
-          options={chargeSemesterOptions}
-          value={String(chargeSemesterIndex)}
-        />
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         {semesters.map((semester, index) => (
           <TuitionSemesterCreditsField
-            carriesNssf={semester.carriesNssf}
             credits={semester.credits}
             index={index}
             key={semester.label}
@@ -133,7 +104,7 @@ export function TuitionPlanControls({
         />
         <TuitionToggleRow
           checked={includeNssf}
-          description={`Adds the yearly NSSF in ${chargeSemesterLabel}.`}
+          description="Adds the yearly NSSF once, outside the semester totals."
           id="nssf-switch"
           label="Include NSSF"
           onCheckedChange={onIncludeNssfChange}
