@@ -1,4 +1,5 @@
 import {
+  TUITION_PDF_LBP_COLOR,
   TUITION_PDF_NSSF_COLOR,
   TUITION_PDF_REGISTRATION_COLOR,
   TUITION_PDF_TUITION_COLOR,
@@ -80,13 +81,13 @@ export function buildChartSections(
             ),
             toSegment(
               "LBP converted",
-              TUITION_PDF_NSSF_COLOR,
+              TUITION_PDF_LBP_COLOR,
               semester.lbpAsUsd
             ),
           ]),
           ...toYearlyRows(payload, (breakdown) => breakdown.lbpAsUsd),
         ],
-        title: "Cost per semester, in USD",
+        title: "Charges, everything in USD",
       },
     ];
   }
@@ -102,7 +103,7 @@ export function buildChartSections(
           semester.registrationUsd
         ),
       ]),
-      title: "Cost per semester, billed in USD",
+      title: "Charges billed in USD",
     },
     {
       formatValue: formatLbp,
@@ -112,7 +113,7 @@ export function buildChartSections(
         ]),
         ...toYearlyRows(payload, (breakdown) => breakdown.nssfLbp),
       ],
-      title: "Cost per semester, billed in LBP",
+      title: "Charges billed in LBP",
     },
   ];
 }

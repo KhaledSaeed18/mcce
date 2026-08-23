@@ -3,6 +3,7 @@ import {
   TUITION_PDF_CARD_COLOR,
   TUITION_PDF_MUTED_COLOR,
   TUITION_PDF_PAGE_MARGIN,
+  TUITION_PDF_RULE_COLOR,
   TUITION_PDF_TEXT_COLOR,
   TUITION_PDF_TILE_HEIGHT,
 } from "@/config/tuition-export";
@@ -13,16 +14,36 @@ export interface TuitionPdfTile {
 }
 
 const FACT_VALUE_X = TUITION_PDF_PAGE_MARGIN + 170;
+const SECTION_GAP = 16;
 const FACT_ROW_HEIGHT = 15;
 const TILE_GAP = 12;
 
-export function drawHeading(doc: jsPDF, text: string, cursorY: number): number {
+/** A rule above every heading, so sections read as separate blocks rather than one run of rows. */
+export function drawHeading(
+  doc: jsPDF,
+  text: string,
+  cursorY: number,
+  contentWidth: number
+): number {
+  const ruleY = cursorY + SECTION_GAP;
+
+  doc.setDrawColor(...TUITION_PDF_RULE_COLOR);
+  doc.setLineWidth(0.75);
+  doc.line(
+    TUITION_PDF_PAGE_MARGIN,
+    ruleY,
+    TUITION_PDF_PAGE_MARGIN + contentWidth,
+    ruleY
+  );
+
+  const textY = ruleY + SECTION_GAP;
+
   doc.setFont("helvetica", "bold");
   doc.setFontSize(13);
   doc.setTextColor(...TUITION_PDF_TEXT_COLOR);
-  doc.text(text, TUITION_PDF_PAGE_MARGIN, cursorY);
+  doc.text(text, TUITION_PDF_PAGE_MARGIN, textY);
 
-  return cursorY + 16;
+  return textY + 16;
 }
 
 export function drawFacts(

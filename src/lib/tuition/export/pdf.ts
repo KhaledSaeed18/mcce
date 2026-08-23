@@ -21,7 +21,9 @@ import {
   loadLogoDataUrl,
 } from "@/lib/tuition/export/pdf-chrome";
 import {
+  buildAidFacts,
   buildPlanFacts,
+  buildRateSummary,
   buildTotalTiles,
 } from "@/lib/tuition/export/pdf-facts";
 import {
@@ -44,20 +46,29 @@ import type { TuitionExportPayload } from "@/lib/tuition/types";
 function drawSubtitle(
   doc: jsPDF,
   payload: TuitionExportPayload,
-  cursorY: number
+  cursorY: number,
+  contentWidth: number
 ): number {
   const semesterCount = payload.semesters.length;
+  const generated = new Date(payload.generatedAt).toLocaleDateString();
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(10);
   doc.setTextColor(...TUITION_PDF_MUTED_COLOR);
   doc.text(
-    `${payload.academicYear} · ${semesterCount} semester${semesterCount === 1 ? "" : "s"} · ${payload.annualProjection.credits} credits`,
+    `Generated ${generated} · ${semesterCount} semester${semesterCount === 1 ? "" : "s"} · ${payload.annualProjection.credits} credits`,
     TUITION_PDF_PAGE_MARGIN,
     cursorY
   );
 
-  return cursorY + 26;
+  doc.setFontSize(8);
+  const rateLines = doc.splitTextToSize(
+    buildRateSummary(payload),
+    contentWidth
+  );
+  doc.text(rateLines, TUITION_PDF_PAGE_MARGIN, cursorY + 14);
+
+  return cursorY + 14 + rateLines.length * 11;
 }
 
 export async function buildTuitionPdf(
@@ -78,7 +89,12 @@ export async function buildTuitionPdf(
   fillPageBackground(doc);
   drawHeader(doc, logoDataUrl);
 
-  let cursorY = drawSubtitle(doc, payload, TUITION_PDF_HEADER_HEIGHT + 26);
+  let cursorY = drawSubtitle(
+    doc,
+    payload,
+    TUITION_PDF_HEADER_HEIGHT + 26,
+    contentWidth
+  );
 
   const ensureSpace = (height: number) => {
     if (cursorY + height > pageHeight - TUITION_PDF_PAGE_MARGIN) {
@@ -89,10 +105,10 @@ export async function buildTuitionPdf(
   };
 
   ensureSpace(TUITION_PDF_TILE_HEIGHT + 40);
-  cursorY = drawHeading(doc, "What the year costs", cursorY);
+  cursorY = drawHeading(doc, "What the year costs", cursorY, contentWidth);
   cursorY = drawTiles(doc, buildTotalTiles(payload), cursorY, contentWidth);
 
-  cursorY = drawHeading(doc, "Your plan", cursorY);
+  cursorY = drawHeading(doc, "Your plan", cursorY, contentWidth);
   cursorY = drawFacts(doc, buildPlanFacts(payload), cursorY);
 
   for (const section of buildChartSections(payload)) {
@@ -104,7 +120,7 @@ export async function buildTuitionPdf(
       payload.semesters.length * TUITION_PDF_BAR_ROW_HEIGHT +
         TUITION_PDF_CHART_CHROME_HEIGHT
     );
-    cursorY = drawHeading(doc, section.title, cursorY);
+    cursorY = drawHeading(doc, section.title, cursorY, contentWidth);
     cursorY = drawCompositionChart(
       doc,
       {
@@ -121,17 +137,30 @@ export async function buildTuitionPdf(
       payload.semesters.length * TUITION_PDF_TABLE_ROW_HEIGHT +
         TUITION_PDF_TABLE_CHROME_HEIGHT
     );
-    cursorY = drawHeading(doc, table.title, cursorY);
+    cursorY = drawHeading(doc, table.title, cursorY, contentWidth);
     cursorY = drawTable(doc, autoTable, table, cursorY);
+  }
+
+  const aidFacts = buildAidFacts(payload);
+
+  if (aidFacts.length > 0) {
+    ensureSpace(aidFacts.length * TUITION_PDF_TABLE_ROW_HEIGHT + 60);
+    cursorY = drawHeading(
+      doc,
+      "How financial aid is billed",
+      cursorY,
+      contentWidth
+    );
+    cursorY = drawFacts(doc, aidFacts, cursorY);
   }
 
   const notes = buildNotes(payload);
 
-  ensureSpace(measureNotes(doc, notes, contentWidth) + 26);
-  cursorY = drawHeading(doc, "Notes", cursorY);
+  ensureSpace(measureNotes(doc, notes, contentWidth) + 46);
+  cursorY = drawHeading(doc, "Notes", cursorY, contentWidth);
   drawNotes(doc, notes, cursorY, contentWidth);
 
-  drawFooters(doc, payload.generatedAt);
+  drawFooters(doc);
 
   return doc;
 }

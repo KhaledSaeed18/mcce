@@ -1,6 +1,53 @@
+import {
+  TUITION_INTERNAL_LBP_RATE,
+  TUITION_UNITS_PER_CREDIT,
+  TUITION_USD_PER_CREDIT,
+} from "@/config/tuition";
 import { formatLbp, formatUsd } from "@/lib/tuition/calc";
 import type { TuitionPdfTile } from "@/lib/tuition/export/pdf-sections";
 import type { TuitionExportPayload } from "@/lib/tuition/types";
+
+/** The rates every number in the report was built from, stated once under the title. */
+export function buildRateSummary(payload: TuitionExportPayload): string {
+  const { plan, rates } = payload;
+  const parts = [
+    `${formatUsd(rates.usdPerCredit)} and ${formatLbp(rates.lbpPerCredit)} per credit`,
+    `registration ${formatUsd(rates.registrationUsdPerSemester)} per semester`,
+    `NSSF ${formatLbp(rates.nssfLbpYearly)} per year`,
+    ...(plan.includeFinancialAid && plan.financialAidPercent > 0
+      ? [`financial aid ${plan.financialAidPercent}%`]
+      : []),
+    ...(plan.showAllInUsd ? [`1 USD = ${formatLbp(plan.usdToLbpRate)}`] : []),
+  ];
+
+  return `Rates: ${parts.join(" · ")}`;
+}
+
+/** Empty when no aid applies, so the section is skipped rather than printed blank. */
+export function buildAidFacts(
+  payload: TuitionExportPayload
+): [string, string][] {
+  const { plan } = payload;
+
+  if (!(plan.includeFinancialAid && plan.financialAidPercent > 0)) {
+    return [];
+  }
+
+  const lbpUnits = TUITION_UNITS_PER_CREDIT - TUITION_USD_PER_CREDIT;
+
+  return [
+    [
+      "Credit price",
+      `${TUITION_UNITS_PER_CREDIT} per credit: ${formatUsd(TUITION_USD_PER_CREDIT)} in cash USD, plus ${lbpUnits} billed as ${formatLbp(payload.rates.lbpPerCredit)} at ${TUITION_INTERNAL_LBP_RATE.toLocaleString("en-US")}`,
+    ],
+    [
+      "Aid basis",
+      `${plan.financialAidPercent}% of the full credit price, not of each currency`,
+    ],
+    ["Taken from", "The LBP charges first, then the cash USD tuition"],
+    ["Not covered", "Registration and NSSF"],
+  ];
+}
 
 export function buildPlanFacts(
   payload: TuitionExportPayload

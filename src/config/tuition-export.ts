@@ -36,6 +36,9 @@ export const TUITION_PDF_TEXT_COLOR: readonly [number, number, number] = [
 export const TUITION_PDF_MUTED_COLOR: readonly [number, number, number] = [
   110, 110, 110,
 ];
+export const TUITION_PDF_RULE_COLOR: readonly [number, number, number] = [
+  228, 205, 168,
+];
 
 /** One color per charge, reused by the bars and their legend. */
 export const TUITION_PDF_TUITION_COLOR: readonly [number, number, number] = [
@@ -45,4 +48,7 @@ export const TUITION_PDF_REGISTRATION_COLOR: readonly [number, number, number] =
   [124, 92, 214];
 export const TUITION_PDF_NSSF_COLOR: readonly [number, number, number] = [
   14, 149, 148,
+];
+export const TUITION_PDF_LBP_COLOR: readonly [number, number, number] = [
+  26, 106, 176,
 ];

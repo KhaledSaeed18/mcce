@@ -10,6 +10,19 @@ const NSSF_LABEL = "NSSF, yearly";
 
 type RowBuilder = (label: string, breakdown: TuitionBreakdown) => string[];
 
+/** The yearly NSSF row belongs to no semester, so its credits cell stays blank. */
+function toCredits(breakdown: TuitionBreakdown): string {
+  return breakdown.credits > 0 ? String(breakdown.credits) : "";
+}
+
+/** A zero discount is printed as a plain zero, so no row ever reads "-$0". */
+function toDeduction(
+  value: number,
+  format: (amount: number) => string
+): string {
+  return value > 0 ? `-${format(value)}` : format(0);
+}
+
 function withAid(
   cells: string[],
   hasAid: boolean,
@@ -24,12 +37,12 @@ function toUsdRow(hasAid: boolean): RowBuilder {
     withAid(
       [
         label,
-        String(breakdown.credits),
+        toCredits(breakdown),
         formatUsd(breakdown.grossTuitionUsd),
         formatUsd(breakdown.registrationUsd),
       ],
       hasAid,
-      `-${formatUsd(breakdown.financialAidUsd)}`,
+      toDeduction(breakdown.financialAidUsd, formatUsd),
       formatUsd(breakdown.totalUsd)
     );
 }
@@ -39,13 +52,16 @@ function toConvertedRow(hasAid: boolean): RowBuilder {
     withAid(
       [
         label,
-        String(breakdown.credits),
+        toCredits(breakdown),
         formatUsd(breakdown.grossTuitionUsd),
         formatUsd(breakdown.registrationUsd),
         formatUsd(breakdown.grossLbpAsUsd),
       ],
       hasAid,
-      `-${formatUsd(breakdown.financialAidUsd + breakdown.financialAidLbpAsUsd)}`,
+      toDeduction(
+        breakdown.financialAidUsd + breakdown.financialAidLbpAsUsd,
+        formatUsd
+      ),
       formatUsd(breakdown.combinedUsd)
     );
 }
@@ -55,12 +71,12 @@ function toLbpRow(hasAid: boolean): RowBuilder {
     withAid(
       [
         label,
-        String(breakdown.credits),
+        toCredits(breakdown),
         formatLbp(breakdown.grossTuitionLbp),
         formatLbp(breakdown.nssfLbp),
       ],
       hasAid,
-      `-${formatLbp(breakdown.financialAidLbp)}`,
+      toDeduction(breakdown.financialAidLbp, formatLbp),
       formatLbp(breakdown.totalLbp)
     );
 }
@@ -100,7 +116,7 @@ export function buildTables(payload: TuitionExportPayload): TuitionTable[] {
 
     return [
       toTable(
-        "Semester by semester, everything in USD",
+        "Breakdown, everything in USD",
         [
           "Semester",
           "Credits",
@@ -119,7 +135,7 @@ export function buildTables(payload: TuitionExportPayload): TuitionTable[] {
 
   return [
     toTable(
-      "Semester by semester, billed in USD",
+      "Breakdown billed in USD",
       [
         "Semester",
         "Credits",
@@ -133,7 +149,7 @@ export function buildTables(payload: TuitionExportPayload): TuitionTable[] {
       false
     ),
     toTable(
-      "Semester by semester, billed in LBP",
+      "Breakdown billed in LBP",
       ["Semester", "Credits", "Tuition", "NSSF", ...toHead(hasLbpAid), "Total"],
       payload,
       toLbpRow(hasLbpAid),

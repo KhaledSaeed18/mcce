@@ -70,10 +70,9 @@ export function drawHeader(doc: jsPDF, logoDataUrl: string | null) {
   }
 }
 
-export function drawFooters(doc: jsPDF, generatedAt: string) {
+export function drawFooters(doc: jsPDF) {
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
-  const stamp = new Date(generatedAt).toLocaleDateString();
   const pageCount = doc.getNumberOfPages();
 
   for (let page = 1; page <= pageCount; page += 1) {
@@ -81,11 +80,7 @@ export function drawFooters(doc: jsPDF, generatedAt: string) {
     doc.setFont("helvetica", "normal");
     doc.setFontSize(8);
     doc.setTextColor(...TUITION_PDF_MUTED_COLOR);
-    doc.text(
-      `${FOOTER_DISCLAIMER} Generated ${stamp}.`,
-      TUITION_PDF_PAGE_MARGIN,
-      pageHeight - 20
-    );
+    doc.text(FOOTER_DISCLAIMER, TUITION_PDF_PAGE_MARGIN, pageHeight - 20);
     doc.text(
       `${SITE_URL} · ${page} of ${pageCount}`,
       pageWidth - TUITION_PDF_PAGE_MARGIN,
