@@ -1,3 +1,7 @@
+import { BugIcon, MessageCircleIcon } from "lucide-react";
+import type { ContactLink } from "@/config/contact";
+import { FOOTER_BUG_REPORT_URL } from "@/config/footer";
+
 export const TUITION_PAGE_PATH = "/tuition-fees";
 
 export const TUITION_ACADEMIC_YEAR_LABEL = "2025/2026";
@@ -71,3 +75,24 @@ export const TUITION_AID_SPILLOVER_NOTE = `Aid up to ${TUITION_AID_LBP_SHARE_PER
 
 export const TUITION_FINANCIAL_AID_NOTE =
   "Aid is a percent of the whole credit price, not of each currency, and the discount comes off the LBP charges first. Registration and NSSF are not covered.";
+
+export const TUITION_SUPPORT_LINKS: ContactLink[] = [
+  {
+    color: "chart-2",
+    description: "A rate that changed, or a total that misses your statement.",
+    external: true,
+    eyebrow: "Something off",
+    href: FOOTER_BUG_REPORT_URL,
+    icon: BugIcon,
+    value: "Report a bug",
+  },
+  {
+    color: "chart-1",
+    description: "Ask about a charge, or send what your own bill shows.",
+    external: false,
+    eyebrow: "Anything else",
+    icon: MessageCircleIcon,
+    to: "/contact",
+    value: "Get in touch",
+  },
+];

@@ -5,6 +5,7 @@ import { TuitionAidExplainer } from "@/components/tuition/tuition-aid-explainer"
 import { TuitionCalculator } from "@/components/tuition/tuition-calculator";
 import { TuitionHero } from "@/components/tuition/tuition-hero";
 import { TuitionReferenceTable } from "@/components/tuition/tuition-reference-table";
+import { TuitionSupportLinks } from "@/components/tuition/tuition-support-links";
 import { SITE_NAME, SITE_URL } from "@/config/site";
 import { TUITION_PAGE_PATH } from "@/config/tuition";
 import { buildPageMeta } from "@/lib/seo/meta";
@@ -33,6 +34,8 @@ function TuitionFeesPage() {
       <TuitionAidExplainer />
       <SectionDividerDots />
       <TuitionCalculator />
+      <SectionDividerDots />
+      <TuitionSupportLinks />
 
       <JsonLd data={buildTuitionSchema()} />
       <JsonLd
