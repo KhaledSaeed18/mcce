@@ -1,19 +1,15 @@
+import { TuitionReferenceCard } from "@/components/tuition/tuition-reference-card";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   TUITION_ACADEMIC_YEAR_LABEL,
-  TUITION_AVERAGE_CREDITS_PER_YEAR,
-  TUITION_LBP_PER_CREDIT,
   TUITION_NSSF_LBP_YEARLY,
-  TUITION_NUMBER_OF_YEARS,
   TUITION_PRICE_CHANGE_NOTE,
   TUITION_PROGRAM_LABEL,
   TUITION_REGISTRATION_USD_PER_SEMESTER,
-  TUITION_TOTAL_LBP_PER_YEAR,
-  TUITION_TOTAL_USD_PER_YEAR,
-  TUITION_USD_PER_CREDIT,
   TUITION_WARNING_NOTE,
 } from "@/config/tuition";
 import { formatLbp, formatUsd } from "@/lib/tuition/calc";
+import { TUITION_REFERENCE_FACTS } from "@/lib/tuition/reference";
 
 export function TuitionReferenceTable() {
   return (
@@ -25,45 +21,33 @@ export function TuitionReferenceTable() {
       </CardHeader>
 
       <CardContent className="space-y-4">
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-180 border-collapse text-left text-sm">
-            <thead>
-              <tr className="border-foreground/20 border-b-2">
-                <th className="py-2 pr-3">Faculty</th>
-                <th className="py-2 pr-3">Average credits/year</th>
-                <th className="py-2 pr-3">No. of years</th>
-                <th className="py-2 pr-3">USD per credit</th>
-                <th className="py-2 pr-3">Total USD/year</th>
-                <th className="py-2 pr-3">LBP per credit</th>
-                <th className="py-2">Total LBP/year</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr className="border-foreground/10 border-b">
-                <td className="py-3 pr-3 font-medium">
-                  {TUITION_PROGRAM_LABEL}
-                </td>
-                <td className="py-3 pr-3">
-                  {TUITION_AVERAGE_CREDITS_PER_YEAR}
-                </td>
-                <td className="py-3 pr-3">{TUITION_NUMBER_OF_YEARS}</td>
-                <td className="py-3 pr-3">
-                  {formatUsd(TUITION_USD_PER_CREDIT)}
-                </td>
-                <td className="py-3 pr-3">
-                  {formatUsd(TUITION_TOTAL_USD_PER_YEAR)}
-                </td>
-                <td className="py-3 pr-3">
-                  {formatLbp(TUITION_LBP_PER_CREDIT)}
-                </td>
-                <td className="py-3">
-                  {formatLbp(TUITION_TOTAL_LBP_PER_YEAR)}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="md:hidden">
+          <TuitionReferenceCard />
         </div>
+
+        <table className="hidden w-full border-collapse text-left text-sm md:table">
+          <thead>
+            <tr className="border-foreground/20 border-b-2">
+              <th className="py-2 pr-3">Faculty</th>
+              {TUITION_REFERENCE_FACTS.map((fact) => (
+                <th className="py-2 pr-3 last:pr-0" key={fact.label}>
+                  {fact.label}
+                </th>
+              ))}
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr className="border-foreground/10 border-b">
+              <td className="py-3 pr-3 font-medium">{TUITION_PROGRAM_LABEL}</td>
+              {TUITION_REFERENCE_FACTS.map((fact) => (
+                <td className="py-3 pr-3 last:pr-0" key={fact.label}>
+                  {fact.value}
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
 
         <div className="space-y-1 text-sm">
           <p>
