@@ -41,27 +41,17 @@ const inputGroupAddonVariants = cva(
   }
 );
 
-function focusInputGroupControl(event: React.MouseEvent<HTMLDivElement>) {
-  if ((event.target as HTMLElement).closest("button")) {
-    return;
-  }
-  event.currentTarget.parentElement?.querySelector("input")?.focus();
-}
-
 function InputGroupAddon({
   className,
   align = "inline-start",
   ...props
 }: React.ComponentProps<"div"> & VariantProps<typeof inputGroupAddonVariants>) {
   return (
-    // biome-ignore lint/a11y/useKeyWithClickEvents: decorative click-to-focus convenience; the input remains independently keyboard-accessible via Tab
-    // biome-ignore lint/a11y/noNoninteractiveElementInteractions: same as above
     // biome-ignore lint/a11y/useSemanticElements: addon wraps buttons/text/inputs, not a literal form fieldset
     <div
       className={cn(inputGroupAddonVariants({ align }), className)}
       data-align={align}
       data-slot="input-group-addon"
-      onClick={focusInputGroupControl}
       role="group"
       {...props}
     />

@@ -72,7 +72,7 @@ function CommandInput({
             "w-full text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
             className
           )}
-          data-slot="command-input"
+          data-slot="input-group-control"
           {...props}
         />
         <InputGroupAddon>
