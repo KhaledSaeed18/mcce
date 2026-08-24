@@ -2,7 +2,11 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRightIcon } from "lucide-react";
 import { PageHero } from "@/components/marketing/page-hero";
 import { TextLink } from "@/components/text-link";
-import { PROGRAM_OFFICIAL_POS_URL, PROGRAM_OFFICIAL_URL } from "@/config/site";
+import {
+  PROGRAM_OFFICIAL_POS_URL,
+  PROGRAM_OFFICIAL_URL,
+  PROGRAM_SCHOOL_URL,
+} from "@/config/site";
 
 export function AdmissionsHero() {
   return (
@@ -15,7 +19,7 @@ export function AdmissionsHero() {
       <div className="flex flex-wrap items-center gap-3 text-sm">
         <TextLink href={PROGRAM_OFFICIAL_URL}>Official graduate page</TextLink>
 
-        <TextLink href={PROGRAM_OFFICIAL_URL}>
+        <TextLink href={PROGRAM_SCHOOL_URL}>
           School of Engineering page for more info
         </TextLink>
 
