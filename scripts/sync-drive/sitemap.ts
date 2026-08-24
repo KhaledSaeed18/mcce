@@ -2,29 +2,120 @@ import { CURRICULUM } from "../../src/config/curriculum";
 import { SITE_URL } from "../../src/config/site";
 import { flattenCourses } from "../../src/lib/curriculum/lookup";
 import type { DriveIndex } from "../../src/lib/drive/types";
+import { buildCourseDateMap, getIndexDate } from "./sitemap-dates";
+
+/**
+ * Stands in for a date on pages whose content is the Drive index itself. They
+ * follow the newest indexed file instead of a date written here.
+ */
+const TRACKS_INDEX = "tracks-index";
+
+/**
+ * What a course page says when the course has no indexed material yet: its
+ * description, credits, and prerequisites, all of which come from CURRICULUM.
+ */
+const CURRICULUM_LASTMOD = "2026-08-21";
 
 interface StaticPage {
   changefreq: "monthly" | "weekly";
+  /**
+   * The date this page's own content last changed in a way worth recrawling,
+   * or TRACKS_INDEX to follow the Drive index. Bump it by hand when you change
+   * what the page says. A refactor, a rename, or a formatting pass is not a
+   * content change, and stamping one here only teaches crawlers to distrust
+   * every date in this file.
+   */
+  lastmod: string | typeof TRACKS_INDEX;
   path: string;
   priority: string;
 }
 
 const STATIC_PAGES: StaticPage[] = [
-  { changefreq: "weekly", path: "/", priority: "1.0" },
-  { changefreq: "weekly", path: "/course", priority: "0.9" },
-  { changefreq: "weekly", path: "/exams", priority: "0.9" },
-  { changefreq: "weekly", path: "/recent", priority: "0.7" },
-  { changefreq: "monthly", path: "/search", priority: "0.7" },
-  { changefreq: "weekly", path: "/plan-of-study", priority: "0.8" },
-  { changefreq: "monthly", path: "/cce", priority: "0.8" },
-  { changefreq: "monthly", path: "/admissions", priority: "0.8" },
-  { changefreq: "monthly", path: "/tuition-fees", priority: "0.8" },
-  { changefreq: "monthly", path: "/gpa-calculator", priority: "0.8" },
-  { changefreq: "monthly", path: "/about", priority: "0.6" },
-  { changefreq: "monthly", path: "/faq", priority: "0.6" },
-  { changefreq: "monthly", path: "/contact", priority: "0.5" },
-  { changefreq: "monthly", path: "/sitemap", priority: "0.4" },
-  { changefreq: "monthly", path: "/legal", priority: "0.3" },
+  { changefreq: "weekly", lastmod: TRACKS_INDEX, path: "/", priority: "1.0" },
+  {
+    changefreq: "weekly",
+    lastmod: TRACKS_INDEX,
+    path: "/course",
+    priority: "0.9",
+  },
+  {
+    changefreq: "weekly",
+    lastmod: TRACKS_INDEX,
+    path: "/exams",
+    priority: "0.9",
+  },
+  {
+    changefreq: "weekly",
+    lastmod: TRACKS_INDEX,
+    path: "/recent",
+    priority: "0.7",
+  },
+  {
+    changefreq: "monthly",
+    lastmod: "2026-08-19",
+    path: "/search",
+    priority: "0.7",
+  },
+  {
+    changefreq: "monthly",
+    lastmod: "2026-08-23",
+    path: "/plan-of-study",
+    priority: "0.8",
+  },
+  {
+    changefreq: "monthly",
+    lastmod: "2026-08-24",
+    path: "/cce",
+    priority: "0.8",
+  },
+  {
+    changefreq: "monthly",
+    lastmod: "2026-08-24",
+    path: "/admissions",
+    priority: "0.8",
+  },
+  {
+    changefreq: "monthly",
+    lastmod: "2026-08-23",
+    path: "/tuition-fees",
+    priority: "0.8",
+  },
+  {
+    changefreq: "monthly",
+    lastmod: "2026-08-18",
+    path: "/gpa-calculator",
+    priority: "0.8",
+  },
+  {
+    changefreq: "monthly",
+    lastmod: "2026-08-21",
+    path: "/about",
+    priority: "0.6",
+  },
+  {
+    changefreq: "monthly",
+    lastmod: "2026-08-19",
+    path: "/faq",
+    priority: "0.6",
+  },
+  {
+    changefreq: "monthly",
+    lastmod: "2026-08-23",
+    path: "/contact",
+    priority: "0.5",
+  },
+  {
+    changefreq: "monthly",
+    lastmod: "2026-08-24",
+    path: "/sitemap",
+    priority: "0.4",
+  },
+  {
+    changefreq: "monthly",
+    lastmod: "2026-08-18",
+    path: "/legal",
+    priority: "0.3",
+  },
 ];
 
 function buildUrlEntry(
@@ -43,14 +134,23 @@ function buildUrlEntry(
   ].join("\n");
 }
 
-/** One sitemap entry per static page plus every indexed Drive folder, so course folders are discoverable directly. */
+/**
+ * One sitemap entry per static page plus every indexed Drive folder, so course
+ * folders are discoverable directly.
+ *
+ * Every lastmod here has to describe the URL it sits on. Stamping the run's own
+ * timestamp across the file would move every date every week whether or not
+ * anything changed, which is the pattern search engines read as noise and stop
+ * trusting.
+ */
 export function buildSitemapXml(index: DriveIndex): string {
-  const generatedDate = index.meta.generatedAt.slice(0, 10);
+  const indexDate = getIndexDate(index);
+  const courseDates = buildCourseDateMap(index.nodes);
 
   const staticEntries = STATIC_PAGES.map((page) =>
     buildUrlEntry(
       `${SITE_URL}${page.path}`,
-      generatedDate,
+      page.lastmod === TRACKS_INDEX ? indexDate : page.lastmod,
       page.changefreq,
       page.priority
     )
@@ -61,7 +161,7 @@ export function buildSitemapXml(index: DriveIndex): string {
   const courseEntries = flattenCourses(CURRICULUM).map((course) =>
     buildUrlEntry(
       `${SITE_URL}/course/${course.code}`,
-      generatedDate,
+      courseDates.get(course.code) ?? CURRICULUM_LASTMOD,
       "weekly",
       "0.8"
     )
