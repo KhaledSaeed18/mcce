@@ -41,6 +41,7 @@ export type NavRoute =
   | "/tuition-fees"
   | "/plan-of-study"
   | "/gpa-calculator"
+  | "/cce"
   | "/about"
   | "/faq"
   | "/contact"
@@ -145,6 +146,12 @@ const PROGRAM_ENTRIES: NavEntry[] = [
     icon: GraduationCapIcon,
     label: "Admissions guide",
     to: "/admissions",
+  },
+  {
+    description: "The CENG and TENG bachelor programs in the same department.",
+    icon: LibraryIcon,
+    label: "CCE undergraduate",
+    to: "/cce",
   },
   {
     description: "The plan of study as published by the department.",

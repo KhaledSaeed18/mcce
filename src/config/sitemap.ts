@@ -23,6 +23,7 @@ export interface SitemapEntry {
     | "/tuition-fees"
     | "/plan-of-study"
     | "/gpa-calculator"
+    | "/cce"
     | "/about"
     | "/faq"
     | "/contact"
@@ -111,6 +112,12 @@ export const SITEMAP_GROUPS: SitemapGroup[] = [
           "Graduate admissions requirements, LIU and non-LIU tracks, and official contact points.",
         label: "Admissions guide",
         to: "/admissions",
+      },
+      {
+        description:
+          "The CENG and TENG bachelor programs in the same department, with the full plan of study.",
+        label: "CCE undergraduate programs",
+        to: "/cce",
       },
     ],
     icon: BookOpenIcon,
