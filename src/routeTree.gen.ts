@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
+import { Route as CceRouteImport } from './routes/cce'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ExamsRouteImport } from './routes/exams'
 import { Route as FaqRouteImport } from './routes/faq'
@@ -40,6 +41,11 @@ const AboutRoute = AboutRouteImport.update({
 const AdmissionsRoute = AdmissionsRouteImport.update({
   id: '/admissions',
   path: '/admissions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CceRoute = CceRouteImport.update({
+  id: '/cce',
+  path: '/cce',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -117,6 +123,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admissions': typeof AdmissionsRoute
+  '/cce': typeof CceRoute
   '/contact': typeof ContactRoute
   '/exams': typeof ExamsRoute
   '/faq': typeof FaqRoute
@@ -136,6 +143,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admissions': typeof AdmissionsRoute
+  '/cce': typeof CceRoute
   '/contact': typeof ContactRoute
   '/exams': typeof ExamsRoute
   '/faq': typeof FaqRoute
@@ -156,6 +164,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admissions': typeof AdmissionsRoute
+  '/cce': typeof CceRoute
   '/contact': typeof ContactRoute
   '/exams': typeof ExamsRoute
   '/faq': typeof FaqRoute
@@ -177,6 +186,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admissions'
+    | '/cce'
     | '/contact'
     | '/exams'
     | '/faq'
@@ -196,6 +206,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admissions'
+    | '/cce'
     | '/contact'
     | '/exams'
     | '/faq'
@@ -215,6 +226,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admissions'
+    | '/cce'
     | '/contact'
     | '/exams'
     | '/faq'
@@ -235,6 +247,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AdmissionsRoute: typeof AdmissionsRoute
+  CceRoute: typeof CceRoute
   ContactRoute: typeof ContactRoute
   ExamsRoute: typeof ExamsRoute
   FaqRoute: typeof FaqRoute
@@ -272,6 +285,13 @@ declare module '@tanstack/react-router' {
       path: '/admissions'
       fullPath: '/admissions'
       preLoaderRoute: typeof AdmissionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cce': {
+      id: '/cce'
+      path: '/cce'
+      fullPath: '/cce'
+      preLoaderRoute: typeof CceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -379,6 +399,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AdmissionsRoute: AdmissionsRoute,
+  CceRoute: CceRoute,
   ContactRoute: ContactRoute,
   ExamsRoute: ExamsRoute,
   FaqRoute: FaqRoute,
