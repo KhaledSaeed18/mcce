@@ -71,24 +71,28 @@ export function SearchFilters({
       <div className="flex flex-wrap gap-2">
         <SearchFilterSelect
           allLabel="All semesters"
+          label="Semester"
           onValueChange={handleSemesterChange}
           options={facets.semesters}
           value={values.semester}
         />
         <SearchFilterSelect
           allLabel="All courses"
+          label="Course"
           onValueChange={handleCourseChange}
           options={courseOptions}
           value={values.course}
         />
         <SearchFilterSelect
           allLabel="All material"
+          label="Material"
           onValueChange={handleMaterialChange}
           options={facets.materialTypes}
           value={values.material}
         />
         <SearchFilterSelect
           allLabel="All file types"
+          label="File type"
           onValueChange={handleKindChange}
           options={facets.kinds}
           value={values.kind}

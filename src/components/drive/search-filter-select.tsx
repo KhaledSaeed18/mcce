@@ -14,6 +14,7 @@ const ALL_VALUE = "all";
 
 interface SearchFilterSelectProps {
   allLabel: string;
+  label: string;
   onValueChange: (value: string | undefined) => void;
   options: FilterOption[];
   value: string | undefined;
@@ -21,6 +22,7 @@ interface SearchFilterSelectProps {
 
 export function SearchFilterSelect({
   allLabel,
+  label,
   onValueChange,
   options,
   value,
@@ -36,7 +38,7 @@ export function SearchFilterSelect({
 
   return (
     <Select onValueChange={handleValueChange} value={value ?? ALL_VALUE}>
-      <SelectTrigger>
+      <SelectTrigger aria-label={label}>
         <SelectValue>{() => selectedLabel}</SelectValue>
       </SelectTrigger>
       <SelectContent>
