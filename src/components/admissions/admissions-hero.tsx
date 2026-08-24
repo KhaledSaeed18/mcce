@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRightIcon, ExternalLinkIcon } from "lucide-react";
+import { ArrowRightIcon } from "lucide-react";
 import { PageHero } from "@/components/marketing/page-hero";
+import { TextLink } from "@/components/text-link";
 import { PROGRAM_OFFICIAL_POS_URL, PROGRAM_OFFICIAL_URL } from "@/config/site";
 
 export function AdmissionsHero() {
@@ -12,35 +13,15 @@ export function AdmissionsHero() {
       title="Admissions steps,"
     >
       <div className="flex flex-wrap items-center gap-3 text-sm">
-        <a
-          className="inline-flex items-center gap-1.5 underline underline-offset-2 hover:text-primary"
-          href={PROGRAM_OFFICIAL_URL}
-          rel="noopener"
-          target="_blank"
-        >
-          Official graduate page
-          <ExternalLinkIcon className="size-3.5" />
-        </a>
+        <TextLink href={PROGRAM_OFFICIAL_URL}>Official graduate page</TextLink>
 
-        <a
-          className="inline-flex items-center gap-1.5 underline underline-offset-2 hover:text-primary"
-          href={PROGRAM_OFFICIAL_URL}
-          rel="noopener"
-          target="_blank"
-        >
+        <TextLink href={PROGRAM_OFFICIAL_URL}>
           School of Engineering page for more info
-          <ExternalLinkIcon className="size-3.5" />
-        </a>
+        </TextLink>
 
-        <a
-          className="inline-flex items-center gap-1.5 underline underline-offset-2 hover:text-primary"
-          href={PROGRAM_OFFICIAL_POS_URL}
-          rel="noopener"
-          target="_blank"
-        >
+        <TextLink href={PROGRAM_OFFICIAL_POS_URL}>
           Official plan of study (PDF)
-          <ExternalLinkIcon className="size-3.5" />
-        </a>
+        </TextLink>
 
         <Link
           className="inline-flex items-center gap-1.5 underline underline-offset-2 hover:text-primary"
