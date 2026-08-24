@@ -58,6 +58,7 @@ See [the full FAQ](https://mcce.khaledsaeed.tech/faq) for more.
 - [About](https://mcce.khaledsaeed.tech/about): What this site is and how the index is built.
 - [FAQ](https://mcce.khaledsaeed.tech/faq): Answers about the program and the site.
 - [Contact](https://mcce.khaledsaeed.tech/contact): Report missing material or send files to add.
+- [CCE undergraduate programs](https://mcce.khaledsaeed.tech/cce): Reference page for the department's two bachelor programs, CENG and TENG.
 
 ## Admissions
 
@@ -83,7 +84,21 @@ Reference figures for the 2025/2026 academic year, subject to change without not
 
 See [tuition and fees](https://mcce.khaledsaeed.tech/tuition-fees) for a per semester planner.
 
+## CCE undergraduate programs
+
+The same department runs two bachelor programs. This site does not index their materials; it carries one reference page for them at https://mcce.khaledsaeed.tech/cce.
+
+- B.S. in Computer Engineering (CENG): 108 credits, three years.
+- B.S. in Communications Engineering (TENG, major code BTENG): 108 credits, three years.
+- The two tracks share 40 of their 41 courses. CENG takes CENG470 Data Structures and Analysis of Algorithms; TENG takes EENG388 Electromagnetic Fields and Waves instead.
+- CENG major electives: CENG460 Operating Systems and CENG470, 6 credits from a list of two, so both are taken.
+- TENG major elective: 3 credits from CENG460 or CENG480 Introduction to GIS. CENG480 has not been opening, so the choice is CENG460.
+- Both tracks take one general education elective, 3 credits, from a university-wide list that changes between terms.
+- Official page: https://cce.liu.edu.lb/academic-programs/undergraduate-programs
+
 ## Official sources
 
 - [MCCE graduate program page](https://cce.liu.edu.lb/academic-programs/graduate-programs): Official LIU program page for admissions and curriculum.
 - [Department of Computer and Communications Engineering](https://cce.liu.edu.lb): Official LIU department page.
+- [CCE undergraduate programs](https://cce.liu.edu.lb/academic-programs/undergraduate-programs): Official LIU page for the CENG and TENG bachelor programs.
+- [LIU School of Engineering](https://liu.edu.lb/cms26/public/page.php?slug=school-of-engineering): Official page for the school the department sits in.
