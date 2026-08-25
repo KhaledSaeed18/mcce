@@ -13,6 +13,12 @@
       "skillPath": "skills/frontend-design/SKILL.md",
       "computedHash": "4eabc66183767153e404b39d1b839b1c37f2d82d86f0a0d7e880a579d8d62336"
     },
+    "oil-motion": {
+      "source": "oil-oil/oil-motion",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "e458dff8b8afac16ba01bb2542d48e997f7c706ebd2a8579a24cef499e229112"
+    },
     "shadcn": {
       "source": "shadcn/ui",
       "sourceType": "github",

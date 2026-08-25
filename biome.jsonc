@@ -6,7 +6,11 @@
     "ultracite/biome/vitest"
   ],
   "files": {
-    "includes": ["!src/data/drive-index.json"]
+    "includes": [
+      "!src/data/drive-index.json",
+      "!.claude/skills",
+      "!.agents/skills"
+    ]
   },
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json"
 }
