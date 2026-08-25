@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { LoopingProgress } from "@/hooks/use-looping-progress";
+import { ABOUT_MARK_LOOP } from "./about-mark";
 import { CONTACT_MARK_LOOP } from "./contact-mark";
 import { PLAN_MARK_LOOP } from "./plan-mark";
 import { SYNC_LOOP } from "./sync-diagram";
@@ -8,6 +9,7 @@ const LOOPS: [string, LoopingProgress][] = [
   ["sync diagram", SYNC_LOOP],
   ["plan mark", PLAN_MARK_LOOP],
   ["contact mark", CONTACT_MARK_LOOP],
+  ["about mark", ABOUT_MARK_LOOP],
 ];
 
 /** Every looping drawing rewinds to its rest state mid-cycle. If that rewind

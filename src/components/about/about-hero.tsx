@@ -1,18 +1,15 @@
-import { AboutCap } from "@/components/about/about-cap";
-import { AboutCapDark } from "@/components/about/about-cap-dark";
+import { AboutBrandMark } from "@/components/about/about-brand-mark";
 import { PageHero } from "@/components/marketing/page-hero";
-import { PageHeroDecoration } from "@/components/marketing/page-hero-decoration";
+import { PageHeroMotion } from "@/components/marketing/page-hero-motion";
 
 export function AboutHero() {
   return (
     <PageHero
       badge="ABOUT MCCE"
       decoration={
-        <PageHeroDecoration
-          dark={<AboutCapDark />}
-          light={<AboutCap />}
-          width="w-40"
-        />
+        <PageHeroMotion width="w-36">
+          <AboutBrandMark />
+        </PageHeroMotion>
       }
       description="What MCCE covers, and why this site exists outside the official page."
       highlight="indexed independently."
