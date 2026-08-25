@@ -1,4 +1,5 @@
 import type { LoopingProgress } from "@/hooks/use-looping-progress";
+import type { StaggerWindow } from "@/hooks/use-staggered-entry";
 
 /** Kept at the clipboard's box so the mark drops into the same hero slot. */
 export const PLAN_MARK_WIDTH = 60;
@@ -22,8 +23,11 @@ export const PLAN_ROWS = [
   { barWidth: 10, centerY: 54 },
 ];
 
-export const PLAN_ROW_STAGGER = 0.14;
-export const PLAN_ROW_DURATION = 0.18;
+export const PLAN_ROW_WINDOW: StaggerWindow = {
+  duration: 0.18,
+  stagger: 0.14,
+  start: 0,
+};
 
 /** Bows out to the left margin so it reads as a link between two courses
  * rather than another rule on the page. */

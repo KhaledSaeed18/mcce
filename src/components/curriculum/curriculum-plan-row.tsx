@@ -4,9 +4,10 @@ import {
   PLAN_BAR_X,
   PLAN_MARKER_SIZE,
   PLAN_MARKER_X,
+  PLAN_ROW_WINDOW,
   PLAN_ROWS,
 } from "@/config/plan-mark";
-import { usePlanMarkRow } from "@/hooks/use-plan-mark-row";
+import { useStaggeredEntry } from "@/hooks/use-staggered-entry";
 
 interface CurriculumPlanRowProps {
   index: number;
@@ -15,17 +16,17 @@ interface CurriculumPlanRowProps {
 
 export function CurriculumPlanRow({ index, progress }: CurriculumPlanRowProps) {
   const row = PLAN_ROWS[index];
-  const { opacity, markerScale, barScaleX } = usePlanMarkRow(progress, index);
+  const entry = useStaggeredEntry(progress, index, PLAN_ROW_WINDOW);
   const markerY = row.centerY - PLAN_MARKER_SIZE / 2;
 
   return (
-    <motion.g style={{ opacity }}>
+    <motion.g style={{ opacity: entry }}>
       <motion.rect
         fill="var(--primary-foreground)"
         height={PLAN_MARKER_SIZE}
         rx={1}
         style={{
-          scale: markerScale,
+          scale: entry,
           transformOrigin: `${PLAN_MARKER_X + PLAN_MARKER_SIZE / 2}px ${row.centerY}px`,
         }}
         width={PLAN_MARKER_SIZE}
@@ -37,7 +38,7 @@ export function CurriculumPlanRow({ index, progress }: CurriculumPlanRowProps) {
         height={PLAN_BAR_HEIGHT}
         rx={1.75}
         style={{
-          scaleX: barScaleX,
+          scaleX: entry,
           transformOrigin: `${PLAN_BAR_X}px ${row.centerY}px`,
         }}
         width={row.barWidth}
