@@ -1,10 +1,17 @@
+import { LegalPadlockMark } from "@/components/legal/legal-padlock-mark";
 import { PageHero } from "@/components/marketing/page-hero";
+import { PageHeroMotion } from "@/components/marketing/page-hero-motion";
 import { LEGAL_LAST_UPDATED } from "@/config/legal";
 
 export function LegalHero() {
   return (
     <PageHero
       badge="LEGAL"
+      decoration={
+        <PageHeroMotion width="w-32">
+          <LegalPadlockMark />
+        </PageHeroMotion>
+      }
       description="What this site stores, what it sends elsewhere, and what it is not."
       highlight="written plainly."
       title="Privacy and terms,"
