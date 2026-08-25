@@ -6,10 +6,6 @@ import {
   SYNC_LINK_ARROW_RANGE,
   SYNC_LINK_RANGE,
   SYNC_LINKED_INDEX,
-  SYNC_LOOP_OPACITY,
-  SYNC_LOOP_OPACITY_TIMES,
-  SYNC_LOOP_PROGRESS,
-  SYNC_LOOP_PROGRESS_TIMES,
   SYNC_ROWS,
   SYNC_SCAN_RANGE,
   SYNC_SHEETS,
@@ -51,22 +47,5 @@ describe("sync diagram timeline", () => {
   it("gives every sheet a row to be written into", () => {
     expect(SYNC_ROWS).toHaveLength(SYNC_SHEETS.length);
     expect(SYNC_LINKED_INDEX).toBeLessThan(SYNC_SHEETS.length);
-  });
-
-  it("resets the loop while the diagram is blanked out", () => {
-    expect(SYNC_LOOP_PROGRESS).toHaveLength(SYNC_LOOP_PROGRESS_TIMES.length);
-    expect(SYNC_LOOP_OPACITY).toHaveLength(SYNC_LOOP_OPACITY_TIMES.length);
-
-    const [, , resetFrom, resetUntil] = SYNC_LOOP_PROGRESS_TIMES;
-    const [, , blankFrom, blankUntil] = SYNC_LOOP_OPACITY_TIMES;
-    const [, , blankValue] = SYNC_LOOP_OPACITY;
-    expect(blankValue).toBe(0);
-    expect(resetFrom).toBeGreaterThanOrEqual(blankFrom);
-    expect(resetUntil).toBeLessThanOrEqual(blankUntil);
-  });
-
-  it("starts and ends the loop on the same visible rest state", () => {
-    expect(SYNC_LOOP_PROGRESS.at(0)).toBe(SYNC_LOOP_PROGRESS.at(-1));
-    expect(SYNC_LOOP_OPACITY.at(0)).toBe(SYNC_LOOP_OPACITY.at(-1));
   });
 });

@@ -1,3 +1,5 @@
+import type { LoopingProgress } from "@/hooks/use-looping-progress";
+
 export const SYNC_DIAGRAM_WIDTH = 640;
 export const SYNC_DIAGRAM_HEIGHT = 220;
 export const SYNC_DIAGRAM_STROKE = 2.5;
@@ -136,11 +138,12 @@ export const SYNC_LIFT_SCALE = 1.18;
 export const SYNC_DIMMED_OPACITY = 0.4;
 export const SYNC_SHEET_ENTRY_SCALE = 0.6;
 
-export const SYNC_LOOP_SECONDS = 9;
-
 /** Builds to the finished state, holds it, then resets to rest inside the
  * blanked-out window so the restart is never seen. */
-export const SYNC_LOOP_PROGRESS = [0, 1, 1, 0, 0] as const;
-export const SYNC_LOOP_PROGRESS_TIMES = [0, 0.55, 0.89, 0.9, 1] as const;
-export const SYNC_LOOP_OPACITY = [1, 1, 0, 0, 1] as const;
-export const SYNC_LOOP_OPACITY_TIMES = [0, 0.82, 0.88, 0.94, 1] as const;
+export const SYNC_LOOP: LoopingProgress = {
+  durationSeconds: 9,
+  opacity: [1, 1, 0, 0, 1],
+  opacityTimes: [0, 0.82, 0.88, 0.94, 1],
+  progress: [0, 1, 1, 0, 0],
+  progressTimes: [0, 0.55, 0.89, 0.9, 1],
+};

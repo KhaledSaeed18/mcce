@@ -4,10 +4,11 @@ import {
   SYNC_DIAGRAM_WIDTH,
   SYNC_FOLDERS,
   SYNC_LINKED_INDEX,
+  SYNC_LOOP,
   SYNC_ROWS,
   SYNC_SHEETS,
 } from "@/config/sync-diagram";
-import { useSyncLoop } from "@/hooks/use-sync-loop";
+import { useLoopingProgress } from "@/hooks/use-looping-progress";
 import { SyncDiagramFolder } from "./sync-diagram-folder";
 import { SyncDiagramLink } from "./sync-diagram-link";
 import { SyncDiagramRow } from "./sync-diagram-row";
@@ -22,7 +23,7 @@ const SHEET_ORDER = SYNC_SHEETS.map((_sheet, index) => index).sort(
 );
 
 export function SyncDiagram() {
-  const { progress, opacity } = useSyncLoop();
+  const { progress, opacity } = useLoopingProgress(SYNC_LOOP);
 
   return (
     <div className="px-5 pt-5 sm:px-6 sm:pt-6">
