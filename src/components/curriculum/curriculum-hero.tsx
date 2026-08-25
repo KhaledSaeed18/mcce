@@ -1,18 +1,15 @@
-import { CurriculumClipboard } from "@/components/curriculum/curriculum-clipboard";
-import { CurriculumClipboardDark } from "@/components/curriculum/curriculum-clipboard-dark";
+import { CurriculumPlanMark } from "@/components/curriculum/curriculum-plan-mark";
 import { PageHero } from "@/components/marketing/page-hero";
-import { PageHeroDecoration } from "@/components/marketing/page-hero-decoration";
+import { PageHeroMotion } from "@/components/marketing/page-hero-motion";
 
 export function CurriculumHero() {
   return (
     <PageHero
       badge="PLAN OF STUDY"
       decoration={
-        <PageHeroDecoration
-          dark={<CurriculumClipboardDark />}
-          light={<CurriculumClipboard />}
-          width="w-40"
-        />
+        <PageHeroMotion width="w-40">
+          <CurriculumPlanMark />
+        </PageHeroMotion>
       }
       description="Every course in the MCCE program: description, objectives, credits, and how each one connects to the next through prerequisites and corequisites. Open a course to see the details, or jump straight to its indexed materials."
       highlight="semester by semester."

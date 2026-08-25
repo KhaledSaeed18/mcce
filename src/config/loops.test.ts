@@ -1,8 +1,12 @@
 import { describe, expect, it } from "vitest";
 import type { LoopingProgress } from "@/hooks/use-looping-progress";
+import { PLAN_MARK_LOOP } from "./plan-mark";
 import { SYNC_LOOP } from "./sync-diagram";
 
-const LOOPS: [string, LoopingProgress][] = [["sync diagram", SYNC_LOOP]];
+const LOOPS: [string, LoopingProgress][] = [
+  ["sync diagram", SYNC_LOOP],
+  ["plan mark", PLAN_MARK_LOOP],
+];
 
 /** Every looping drawing rewinds to its rest state mid-cycle. If that rewind
  * drifts outside the blanked window the reader sees the animation snap
