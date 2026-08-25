@@ -1,18 +1,15 @@
-import { ContactMail } from "@/components/contact/contact-mail";
-import { ContactMailDark } from "@/components/contact/contact-mail-dark";
+import { ContactConversationMark } from "@/components/contact/contact-conversation-mark";
 import { PageHero } from "@/components/marketing/page-hero";
-import { PageHeroDecoration } from "@/components/marketing/page-hero-decoration";
+import { PageHeroMotion } from "@/components/marketing/page-hero-motion";
 
 export function ContactHero() {
   return (
     <PageHero
       badge="GET IN TOUCH"
       decoration={
-        <PageHeroDecoration
-          dark={<ContactMailDark />}
-          light={<ContactMail />}
-          width="w-32"
-        />
+        <PageHeroMotion width="w-32">
+          <ContactConversationMark />
+        </PageHeroMotion>
       }
       description="Reach out about anything related to the index, from broken links to missing materials."
       highlight="or files to add."
