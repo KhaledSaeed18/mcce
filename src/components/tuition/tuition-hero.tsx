@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRightIcon, ExternalLinkIcon } from "lucide-react";
 import { PageHero } from "@/components/marketing/page-hero";
+import { PageHeroMotion } from "@/components/marketing/page-hero-motion";
+import { TuitionStackMark } from "@/components/tuition/tuition-stack-mark";
 import { PROGRAM_OFFICIAL_URL } from "@/config/site";
 import { TUITION_OFFICIAL_PAGE_URL } from "@/config/tuition";
 
@@ -8,6 +10,11 @@ export function TuitionHero() {
   return (
     <PageHero
       badge="TUITION AND FEES"
+      decoration={
+        <PageHeroMotion width="w-32">
+          <TuitionStackMark />
+        </PageHeroMotion>
+      }
       description="Official tuition references for MCCE, plus a calculator for the credits you plan to take in each semester of the year."
       highlight="with a year planner."
       title="Tuition details,"
