@@ -1,4 +1,4 @@
-import { HeroNetworkGraphic } from "@/components/marketing/hero-network-graphic";
+import { HeroSearchDemo } from "@/components/marketing/hero-search-demo";
 import { Badge } from "@/components/ui/badge";
 
 export function HeroPanel() {
@@ -20,7 +20,7 @@ export function HeroPanel() {
         </Badge>
       </div>
 
-      <HeroNetworkGraphic />
+      <HeroSearchDemo />
     </div>
   );
 }
