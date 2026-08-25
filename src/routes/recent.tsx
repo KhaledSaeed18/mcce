@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ClockIcon } from "lucide-react";
 import { useMemo } from "react";
 import { FilePreviewHost } from "@/components/drive/file-preview-host";
-import { PageHero } from "@/components/marketing/page-hero";
 import { RecentBatchSection } from "@/components/recent/recent-batch-section";
+import { RecentHero } from "@/components/recent/recent-hero";
 import {
   Empty,
   EmptyDescription,
@@ -45,12 +45,7 @@ function RecentPage() {
 
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 py-8 sm:p-6 sm:py-14">
-      <PageHero
-        badge="RECENTLY ADDED"
-        description="What each weekly sync found that the one before it did not, newest first."
-        highlight="since the last sync."
-        title="Everything new,"
-      />
+      <RecentHero />
 
       {batches.length === 0 ? (
         <Empty>
