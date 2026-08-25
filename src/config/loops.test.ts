@@ -4,6 +4,7 @@ import { ABOUT_MARK_LOOP } from "./about-mark";
 import { ADMISSIONS_MARK_LOOP } from "./admissions-mark";
 import { CCE_MARK_LOOP } from "./cce-mark";
 import { CONTACT_MARK_LOOP } from "./contact-mark";
+import { COURSE_MARK_LOOP } from "./course-mark";
 import { EXAMS_MARK_LOOP } from "./exams-mark";
 import { GPA_MARK_LOOP } from "./gpa-mark";
 import { LEGAL_MARK_LOOP } from "./legal-mark";
@@ -28,6 +29,7 @@ const LOOPS: [string, LoopingProgress][] = [
   ["saved mark", SAVED_MARK_LOOP],
   ["recent mark", RECENT_MARK_LOOP],
   ["exams mark", EXAMS_MARK_LOOP],
+  ["course mark", COURSE_MARK_LOOP],
 ];
 
 /** Every looping drawing rewinds to its rest state mid-cycle. If that rewind
