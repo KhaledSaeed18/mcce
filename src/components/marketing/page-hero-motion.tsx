@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import type { ReactNode } from "react";
-import { HERO_DECORATION_POSITION, HERO_DRIFT } from "@/config/page-hero";
+import { HERO_DECORATION_POSITION } from "@/config/page-hero";
+import { useHeroDrift } from "@/hooks/use-hero-drift";
 import { useIsLargeScreen } from "@/hooks/use-is-large-screen";
 
 interface PageHeroMotionProps {
@@ -14,16 +15,14 @@ interface PageHeroMotionProps {
  * `lg`, so a phone never runs a loop it has no room to show. */
 export function PageHeroMotion({ children, width }: PageHeroMotionProps) {
   const isLargeScreen = useIsLargeScreen();
+  const drift = useHeroDrift();
 
   if (!isLargeScreen) {
     return null;
   }
 
   return (
-    <motion.div
-      {...HERO_DRIFT}
-      className={`${HERO_DECORATION_POSITION} ${width}`}
-    >
+    <motion.div {...drift} className={`${HERO_DECORATION_POSITION} ${width}`}>
       {children}
     </motion.div>
   );

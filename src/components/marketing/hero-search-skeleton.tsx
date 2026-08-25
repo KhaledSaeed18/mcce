@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { HERO_SEARCH_QUERIES } from "@/config/hero-search";
 
 const PULSE_SECONDS = 0.9;
@@ -7,11 +7,15 @@ const ROWS = Array.from({ length: ROW_COUNT }, (_row, index) => index);
 const BAR_WIDTHS = ["70%", "52%", "64%", "44%"];
 
 export function HeroSearchSkeleton() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <ul className="flex flex-col gap-2">
       {ROWS.map((row) => (
         <motion.li
-          animate={{ opacity: [0.35, 0.7, 0.35] }}
+          animate={
+            shouldReduceMotion ? undefined : { opacity: [0.35, 0.7, 0.35] }
+          }
           className="flex items-center gap-2.5 rounded border-2 border-dashed px-2 py-1.5"
           key={row}
           transition={{
