@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import type { LoopingProgress } from "@/hooks/use-looping-progress";
 import { ABOUT_MARK_LOOP } from "./about-mark";
 import { ADMISSIONS_MARK_LOOP } from "./admissions-mark";
+import { CCE_MARK_LOOP } from "./cce-mark";
 import { CONTACT_MARK_LOOP } from "./contact-mark";
 import { GPA_MARK_LOOP } from "./gpa-mark";
 import { LEGAL_MARK_LOOP } from "./legal-mark";
@@ -20,6 +21,7 @@ const LOOPS: [string, LoopingProgress][] = [
   ["admissions mark", ADMISSIONS_MARK_LOOP],
   ["legal mark", LEGAL_MARK_LOOP],
   ["sitemap mark", SITEMAP_MARK_LOOP],
+  ["cce mark", CCE_MARK_LOOP],
 ];
 
 /** Every looping drawing rewinds to its rest state mid-cycle. If that rewind
