@@ -4,6 +4,7 @@ import { DOT_GRID_BACKGROUND } from "@/config/patterns";
 import { useReveal } from "@/hooks/use-reveal";
 import { formatDateTime } from "@/lib/drive/format";
 import type { DriveIndexStats } from "@/lib/drive/types";
+import { SyncDiagram } from "./sync-diagram";
 
 const PULSE_SECONDS = 2.4;
 
@@ -36,6 +37,10 @@ export function SyncSection({ stats }: SyncSectionProps) {
           className="absolute inset-0 opacity-[0.07]"
           style={DOT_GRID_BACKGROUND}
         />
+
+        <div className="relative">
+          <SyncDiagram />
+        </div>
 
         <motion.ol
           className="relative grid gap-6 p-5 sm:grid-cols-3 sm:p-6"

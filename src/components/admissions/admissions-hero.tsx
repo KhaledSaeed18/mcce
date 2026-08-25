@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRightIcon } from "lucide-react";
+import { AdmissionsChecklistMark } from "@/components/admissions/admissions-checklist-mark";
 import { PageHero } from "@/components/marketing/page-hero";
+import { PageHeroMotion } from "@/components/marketing/page-hero-motion";
 import { TextLink } from "@/components/text-link";
 import {
   PROGRAM_OFFICIAL_POS_URL,
@@ -12,6 +14,11 @@ export function AdmissionsHero() {
   return (
     <PageHero
       badge="PROGRAM ADMISSIONS"
+      decoration={
+        <PageHeroMotion width="w-32">
+          <AdmissionsChecklistMark />
+        </PageHeroMotion>
+      }
       description="A clearer summary of the LIU School of Engineering graduate admissions flow for MCCE, with separate tracks for LIU and non-LIU applicants."
       highlight="without the maze."
       title="Admissions steps,"

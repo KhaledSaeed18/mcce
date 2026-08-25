@@ -1,15 +1,7 @@
-import type { MotionProps } from "motion/react";
 import { motion } from "motion/react";
 import type { ReactNode } from "react";
-
-const DRIFT: MotionProps = {
-  animate: { rotate: [0, 5, -3, 0], y: [0, -8, 0] },
-  transition: {
-    duration: 7,
-    ease: "easeInOut",
-    repeat: Number.POSITIVE_INFINITY,
-  },
-};
+import { HERO_DECORATION_POSITION } from "@/config/page-hero";
+import { useHeroDrift } from "@/hooks/use-hero-drift";
 
 interface PageHeroDecorationProps {
   dark: ReactNode;
@@ -24,17 +16,19 @@ export function PageHeroDecoration({
   light,
   width,
 }: PageHeroDecorationProps) {
+  const drift = useHeroDrift();
+
   return (
     <>
       <motion.div
-        {...DRIFT}
-        className={`absolute -top-4 right-6 hidden ${width} lg:block dark:hidden`}
+        {...drift}
+        className={`${HERO_DECORATION_POSITION} hidden ${width} lg:block dark:hidden`}
       >
         {light}
       </motion.div>
       <motion.div
-        {...DRIFT}
-        className={`absolute -top-4 right-6 hidden ${width} lg:dark:block`}
+        {...drift}
+        className={`${HERO_DECORATION_POSITION} hidden ${width} lg:dark:block`}
       >
         {dark}
       </motion.div>

@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRightIcon } from "lucide-react";
+import { CceTracksMark } from "@/components/cce/cce-tracks-mark";
 import { PageHero } from "@/components/marketing/page-hero";
+import { PageHeroMotion } from "@/components/marketing/page-hero-motion";
 import { TextLink } from "@/components/text-link";
 import { CCE_OFFICIAL_UNDERGRADUATE_URL } from "@/config/cce/content";
 import { PROGRAM_SCHOOL_URL } from "@/config/site";
@@ -9,6 +11,11 @@ export function CceHero() {
   return (
     <PageHero
       badge="LIU CCE UNDERGRADUATE PROGRAMS"
+      decoration={
+        <PageHeroMotion width="w-32">
+          <CceTracksMark />
+        </PageHeroMotion>
+      }
       description="The two bachelor programs in the LIU Department of Computer and Communications Engineering, Computer Engineering (CENG) and Communications Engineering (TENG), on one page: 108 credits, three years, the full plan of study, and every prerequisite."
       highlight="on one page."
       title="LIU CCE bachelor,"

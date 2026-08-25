@@ -1,22 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-
-export interface HeroLeafNode {
-  color: string;
-  icon: LucideIcon;
-  label: string;
-  labelClassName: string;
-  x: number;
-  y: number;
-}
-
-/** The outer tier of the hero graphic: the tools built on top of the index,
- * drawn as unlabelled satellites of the same hub the material nodes hang off. */
-export interface HeroToolNode {
-  icon: LucideIcon;
-  label: string;
-  x: number;
-  y: number;
-}
+import type { DriveNodeKind } from "@/lib/drive/types";
 
 export type HeroQuickLinkRoute =
   | "/course"
@@ -32,4 +15,18 @@ export interface HeroQuickLink {
   icon: LucideIcon;
   label: string;
   to: HeroQuickLinkRoute;
+}
+
+export interface HeroSearchResult {
+  courseCode: string;
+  kind: DriveNodeKind;
+  materialType: string;
+  name: string;
+}
+
+export interface HeroSearchQuery {
+  results: HeroSearchResult[];
+  term: string;
+  /** How many files in the index actually match the term, not just the rows shown. */
+  total: number;
 }
