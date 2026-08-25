@@ -25,10 +25,7 @@ export function CurriculumPlanRow({ index, progress }: CurriculumPlanRowProps) {
         fill="var(--primary-foreground)"
         height={PLAN_MARKER_SIZE}
         rx={1}
-        style={{
-          scale: entry,
-          transformOrigin: `${PLAN_MARKER_X + PLAN_MARKER_SIZE / 2}px ${row.centerY}px`,
-        }}
+        style={{ scale: entry }}
         width={PLAN_MARKER_SIZE}
         x={PLAN_MARKER_X}
         y={markerY}
@@ -37,10 +34,7 @@ export function CurriculumPlanRow({ index, progress }: CurriculumPlanRowProps) {
         fill="var(--primary-foreground)"
         height={PLAN_BAR_HEIGHT}
         rx={1.75}
-        style={{
-          scaleX: entry,
-          transformOrigin: `${PLAN_BAR_X}px ${row.centerY}px`,
-        }}
+        style={{ originX: 0, scaleX: entry }}
         width={row.barWidth}
         x={PLAN_BAR_X}
         y={row.centerY - PLAN_BAR_HEIGHT / 2}

@@ -23,11 +23,9 @@ export function SyncDiagramSheet({ index, progress }: SyncDiagramSheetProps) {
   return (
     <motion.g style={{ opacity, x, y }}>
       <motion.g
-        style={{
-          rotate,
-          scale,
-          transformOrigin: `${SYNC_SHEET_WIDTH / 2}px ${SYNC_SHEET_HEIGHT / 2}px`,
-        }}
+        // Motion pins SVG transforms to the element's own fill box, so the
+        // sheet already turns about its centre without an explicit origin.
+        style={{ rotate, scale }}
       >
         <rect
           fill="var(--card)"

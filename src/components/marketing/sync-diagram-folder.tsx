@@ -49,10 +49,7 @@ export function SyncDiagramFolder({ index, progress }: SyncDiagramFolderProps) {
         height={SYNC_FOLDER_HEIGHT - FLAP_TOP}
         stroke="var(--border)"
         strokeWidth={SYNC_DIAGRAM_STROKE}
-        style={{
-          rotate,
-          transformOrigin: `${SYNC_FOLDER_WIDTH / 2}px ${SYNC_FOLDER_HEIGHT}px`,
-        }}
+        style={{ originX: 0.5, originY: 1, rotate }}
         width={SYNC_FOLDER_WIDTH}
         y={FLAP_TOP}
       />
