@@ -2,8 +2,10 @@ import type { HeroSearchQuery } from "@/components/marketing/types";
 import type { DriveNodeKind } from "@/lib/drive/types";
 
 /** Every row below is a real file in the indexed Drive, and every total is the
- * real match count for that term. The panel is decorative, but it should not
- * advertise material the program does not actually have. */
+ * number of indexed files whose own name carries that term. The panel is
+ * decorative, but it should not advertise material the program does not
+ * actually have, so `hero-search.test.ts` holds both claims against the index
+ * a Drive sync last wrote. */
 export const HERO_SEARCH_QUERIES: HeroSearchQuery[] = [
   {
     results: [
