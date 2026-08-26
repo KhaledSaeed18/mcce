@@ -93,5 +93,3 @@ export const GPA_SHARE_PARAM = "g";
  */
 export const GPA_SHARE_SEPARATOR = "-";
 export const GPA_SHARE_UNGRADED = "x";
-/** How long the copy-link button stays in its confirmed state. */
-export const COPY_FEEDBACK_MS = 2000;
