@@ -5,7 +5,7 @@ import {
   CopyIcon,
   ExternalLinkIcon,
 } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
 import { PreviewFallback } from "@/components/drive/preview-fallback";
 import { PreviewLoadingState } from "@/components/drive/preview-loading-state";
 import { useSavedNodes } from "@/components/providers/saved-nodes-provider";
@@ -17,10 +17,12 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { usePreviewLoadState } from "@/hooks/use-preview-load-state";
 import type { DriveNode } from "@/lib/drive/types";
 
-const COPIED_FEEDBACK_MS = 2000;
+const COPY_BLOCKED_MESSAGE =
+  "Copying was blocked. Use Open in Google Drive instead.";
 
 const GOOGLE_NATIVE_PREVIEW_PATH: Record<string, string> = {
   "application/vnd.google-apps.document": "document",
@@ -41,8 +43,6 @@ function buildPreviewUrl(node: DriveNode): string | null {
   return `https://drive.google.com/file/d/${node.id}/preview`;
 }
 
-type CopyStatus = "idle" | "copied" | "failed";
-
 interface FilePreviewDialogProps {
   node: DriveNode;
   onOpenChange: (open: boolean) => void;
@@ -54,7 +54,7 @@ export function FilePreviewDialog({
   open,
   onOpenChange,
 }: FilePreviewDialogProps) {
-  const [copyStatus, setCopyStatus] = useState<CopyStatus>("idle");
+  const { copy, hasFailed, isCopied } = useCopyToClipboard();
   const { isSaved, toggle } = useSavedNodes();
   const handleToggleSaved = useCallback(
     () => toggle(node.id),
@@ -66,20 +66,10 @@ export function FilePreviewDialog({
   // replaces the message instead of being stuck behind it forever.
   const canEmbed = Boolean(previewUrl);
 
-  useEffect(() => {
-    if (copyStatus === "idle") {
-      return;
-    }
-    const timer = setTimeout(() => setCopyStatus("idle"), COPIED_FEEDBACK_MS);
-    return () => clearTimeout(timer);
-  }, [copyStatus]);
-
-  const handleCopyLink = useCallback(() => {
-    navigator.clipboard.writeText(node.webViewLink).then(
-      () => setCopyStatus("copied"),
-      () => setCopyStatus("failed")
-    );
-  }, [node.webViewLink]);
+  const handleCopyLink = useCallback(
+    () => copy(node.webViewLink),
+    [copy, node.webViewLink]
+  );
 
   return (
     <Dialog onOpenChange={onOpenChange} open={open}>
@@ -106,6 +96,12 @@ export function FilePreviewDialog({
           ) : null}
         </div>
 
+        {hasFailed ? (
+          <p className="text-destructive text-xs" role="alert">
+            {COPY_BLOCKED_MESSAGE}
+          </p>
+        ) : null}
+
         <DialogFooter>
           <Button
             aria-pressed={isSaved(node.id)}
@@ -120,12 +116,12 @@ export function FilePreviewDialog({
             {isSaved(node.id) ? "Saved" : "Save"}
           </Button>
           <Button onClick={handleCopyLink} variant="outline">
-            {copyStatus === "copied" ? (
+            {isCopied ? (
               <CheckIcon data-icon="inline-start" />
             ) : (
               <CopyIcon data-icon="inline-start" />
             )}
-            {copyStatus === "copied" ? "Copied" : "Copy link"}
+            {isCopied ? "Copied" : "Copy link"}
           </Button>
           <Button
             nativeButton={false}

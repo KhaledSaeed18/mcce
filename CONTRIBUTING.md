@@ -40,7 +40,7 @@ and how to submit them.
 | Language | TypeScript, strict mode |
 | Linting/formatting | Biome, via [Ultracite](https://ultracite.dev) preset |
 | Unused code detection | Knip |
-| Testing | Vitest, jsdom |
+| Testing | Vitest, node environment |
 | Git hooks | Lefthook |
 | Package manager | pnpm (`pnpm@11.11.0`, workspace-enabled) |
 
@@ -172,12 +172,16 @@ naming judgment, and the design anti-patterns section.
 
 ## Testing
 
-Tests are written with Vitest and jsdom, and live next to the code they cover as `*.test.ts`
+Tests are written with Vitest and live next to the code they cover as `*.test.ts`
 (see `src/lib/curriculum/`, `src/lib/drive/`, and `scripts/` for examples).
+
+The suite runs in Vitest's default node environment. There is no DOM environment configured and
+no component or hook tests, so a test that needs one would have to set that up first.
 
 - Assertions belong inside `it()`/`test()` blocks.
 - No `.only` or `.skip` in committed code.
 - Keep `describe` nesting flat.
+- Tests build plain fixtures and call the code directly. Nothing in the suite mocks a module.
 - New logic in `src/lib/` should ship with tests when it has meaningful branching or edge cases.
 
 Run the suite with:
