@@ -46,7 +46,7 @@ export function SiteFooter() {
             </Button>
           </div>
 
-          <div className="flex flex-col gap-10 sm:flex-row sm:justify-between">
+          <div className="flex flex-col gap-10 lg:flex-row lg:gap-58">
             <FooterBrand />
             <FooterNav />
           </div>
