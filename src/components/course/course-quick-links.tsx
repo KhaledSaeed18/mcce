@@ -19,7 +19,6 @@ export function CourseQuickLinks({ code, folderId }: CourseQuickLinksProps) {
         <Button
           nativeButton={false}
           render={<Link params={{ folderId }} to="/browse/$folderId" />}
-          variant="outline"
         >
           <FolderOpenIcon data-icon="inline-start" />
           Browse the folder
