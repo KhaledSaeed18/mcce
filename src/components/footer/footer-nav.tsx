@@ -3,10 +3,10 @@ import { ExternalLinkIcon } from "lucide-react";
 import { FOOTER_NAV_COLUMNS, type FooterNavLink } from "@/config/footer";
 
 const LINK_CLASSES =
-  "-mx-2 -my-1 inline-flex max-w-full items-center gap-1 rounded border-2 border-transparent px-1.5 py-0.5 text-sm transition duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:border-border hover:bg-muted hover:shadow-sm active:translate-x-0.5 active:translate-y-0.5";
+  "inline-flex max-w-full items-center gap-1 rounded border-2 border-transparent px-1.5 py-0.5 text-sm transition duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:border-border hover:bg-muted hover:shadow-sm active:translate-x-0.5 active:translate-y-0.5";
 
 function FooterNavItem({ link }: { link: FooterNavLink }) {
-  const label = <span className="truncate">{link.label}</span>;
+  const label = <span>{link.label}</span>;
 
   if ("href" in link) {
     return (
