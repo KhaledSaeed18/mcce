@@ -1,6 +1,7 @@
 import { MailIcon } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
+  ADMISSIONS_CHANGE_OF_MAJOR,
   ADMISSIONS_CONTACT_EMAILS,
   ADMISSIONS_CURRENT_LIU_NOTE,
   ADMISSIONS_NON_LIU_REQUIREMENTS,
@@ -56,6 +57,7 @@ export function AdmissionsDetails() {
         <CardContent className="space-y-3 text-sm sm:text-base">
           <p>{ADMISSIONS_PROGRAM_WINDOW}</p>
           <p>{ADMISSIONS_CURRENT_LIU_NOTE}</p>
+          <p>{ADMISSIONS_CHANGE_OF_MAJOR}</p>
         </CardContent>
       </Card>
 

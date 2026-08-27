@@ -17,7 +17,7 @@ export const ADMISSIONS_NON_LIU_REQUIREMENTS: string[] = [
   "One copy of family civil status record.",
   "One recent passport-size color photo.",
   "All Lebanese applicants must submit national social security papers (daman), if available, or pay $135 and fill the required papers at the social security office.",
-  "Application fee: $50 (non-refundable).",
+  "Application fee: $50 non-refundable (at a rate of 50,000 LBP per $1).",
   "English entrance exam fee: $20.",
 ];
 
@@ -29,7 +29,7 @@ export const ADMISSIONS_TRACKS: AdmissionsTrack[] = [
     label: "For LIU bachelor graduates",
     shortLabel: "LIU graduates",
     steps: [
-      "Submit the application through the admissions office.",
+      "Submit an application through the admissions office or online via the student portal.",
       "Admissions opens a file including your official transcript and bachelor clearance status.",
       "The file is sent to the School of Engineering for evaluation.",
       "The school returns acceptance or rejection, typically within 72 hours.",
@@ -43,7 +43,7 @@ export const ADMISSIONS_TRACKS: AdmissionsTrack[] = [
     label: "For non-LIU bachelor graduates",
     shortLabel: "Non-LIU graduates",
     steps: [
-      "Submit an application to the registrar office.",
+      "Submit an application to the registrar office or online via the student portal.",
       "Registrar opens a file with your official mailed transcript, certified degree, certified identification, and supporting documents.",
       "The file and English exam result are sent to the School of Engineering by a designated registrar officer.",
       "The school studies the file and returns acceptance or rejection, typically within 72 hours.",
@@ -55,8 +55,11 @@ export const ADMISSIONS_TRACKS: AdmissionsTrack[] = [
 export const ADMISSIONS_PROGRAM_WINDOW =
   "Master program applications should be submitted before the end of September and before the end of the first week of the fall semester. Applicants may still be assessed during the year based on their bachelor background.";
 
+export const ADMISSIONS_CHANGE_OF_MAJOR =
+  "To change your major from an undergraduate program (CENG or TENG) to the MCCE graduate program, go to Online Services, select Change of Major, set the request type to 'Undergraduate to Graduate', select the MCCE graduate major, choose the semester, and click submit. A request will be sent with a pending/in-progress status.";
+
 export const ADMISSIONS_CURRENT_LIU_NOTE =
-  "If you are already an LIU student, pass by the admissions office to fill out an application form and pay the $50 non-refundable application fee.";
+  "If you are already an LIU student, you can submit an application through the admissions office or online via the student portal and pay the $50 non-refundable application fee (at a rate of 50,000 LBP per $1).";
 
 export const ADMISSIONS_CONTACT_EMAILS: string[] = [
   "admissions@liu.edu.lb",
