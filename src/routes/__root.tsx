@@ -24,6 +24,7 @@ import {
   SITE_TITLE,
   SITE_URL,
 } from "@/config/site";
+import { useIsChromelessRoute } from "@/hooks/use-is-chromeless-route";
 import { useServiceWorker } from "@/hooks/use-service-worker";
 import { THEME_INIT_SCRIPT, ThemeProvider } from "@/hooks/use-theme";
 import { buildWebSiteSchema } from "@/lib/seo/schema";
@@ -183,6 +184,24 @@ export const Route = createRootRouteWithContext<RouterContext>()({
   shellComponent: RootDocument,
 });
 
+function AppShell({ children }: { children: React.ReactNode }) {
+  const isChromeless = useIsChromelessRoute();
+
+  if (isChromeless) {
+    return <div className="relative flex h-dvh flex-col">{children}</div>;
+  }
+
+  return (
+    <div className="relative flex min-h-dvh flex-col">
+      <AppHeader />
+      <div className="flex-1">{children}</div>
+      <SiteFooter />
+      <MarginPattern />
+      <PageRails />
+    </div>
+  );
+}
+
 function RootDocument({ children }: { children: React.ReactNode }) {
   useServiceWorker();
 
@@ -199,13 +218,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <SavedNodesProvider>
             <RecentNodesProvider>
               <AppErrorBoundary>
-                <div className="relative flex min-h-dvh flex-col">
-                  <AppHeader />
-                  <div className="flex-1">{children}</div>
-                  <SiteFooter />
-                  <MarginPattern />
-                  <PageRails />
-                </div>
+                <AppShell>{children}</AppShell>
               </AppErrorBoundary>
             </RecentNodesProvider>
           </SavedNodesProvider>
