@@ -1,14 +1,14 @@
 {
   "meta": {
     "baselineAt": "2026-08-17T06:41:16.505Z",
-    "generatedAt": "2026-08-24T06:43:16.162Z",
+    "generatedAt": "2026-08-28T21:10:27.467Z",
     "sources": [
       {
         "description": "LIU - MCCE | First Year | materials, videos, exercises, and previous exams.",
-        "fileCount": 580,
-        "folderCount": 194,
+        "fileCount": 592,
+        "folderCount": 197,
         "id": "year1",
-        "totalBytes": 13299676437
+        "totalBytes": 13318220436
       },
       {
         "description": "LIU - MCCE | Second Year | materials, videos, exercises, and previous exams.",
@@ -1113,6 +1113,38 @@
       "depth": 2,
       "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1Bq3CyS6ffDjwXttGk2jYJsTxTdFQ26PZ",
+      "isShortcut": false,
+      "kind": "folder",
+      "materialType": "assignment",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-08-28T20:03:36.546Z",
+      "name": "Project",
+      "parentId": "1432OoeuqOyaf-cNuDrYiAr6vcuy7k3Ee",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1432OoeuqOyaf-cNuDrYiAr6vcuy7k3Ee",
+        "1Bq3CyS6ffDjwXttGk2jYJsTxTdFQ26PZ"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "CENG507 - Embedded Systems",
+        "Project"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": null,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1Bq3CyS6ffDjwXttGk2jYJsTxTdFQ26PZ",
+      "firstSeenAt": "2026-08-28T21:10:27.467Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG507",
+      "courseName": "Embedded Systems",
+      "depth": 2,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
       "id": "1XuIl_2wz7PZSVh6ckcGpLA0c5K1PqnFG",
       "isShortcut": false,
       "kind": "folder",
@@ -1233,6 +1265,38 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/drive/folders/1IZZ-HqPSNpcu5jyr5ngKppIX5ippqvuj",
       "firstSeenAt": "2026-08-17T06:41:16.505Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "EENG527",
+      "courseName": "Digital Signal Processing",
+      "depth": 2,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
+      "isShortcut": false,
+      "kind": "folder",
+      "materialType": "assignment",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-08-28T20:44:31.880Z",
+      "name": "Project",
+      "parentId": "1DxWIAF_1v9ghF2VaXfsbDOOIyo5mg1yy",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1DxWIAF_1v9ghF2VaXfsbDOOIyo5mg1yy",
+        "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "EENG527 - Digital Signal Processing",
+        "Project"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": null,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
+      "firstSeenAt": "2026-08-28T21:10:27.467Z"
     },
     {
       "categoryPath": [],
@@ -5420,6 +5484,78 @@
     },
     {
       "categoryPath": [
+        "Project"
+      ],
+      "courseCode": "CENG507",
+      "courseName": "Embedded Systems",
+      "depth": 3,
+      "extension": "md",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/text/markdown",
+      "id": "1lVBNChSRWuC6FvyZPKBaT1UZT00puOYy",
+      "isShortcut": false,
+      "kind": "text",
+      "materialType": "assignment",
+      "mimeType": "text/markdown",
+      "modifiedTime": "2026-08-28T20:42:53.907Z",
+      "name": "CENG507-Part2-Project.md",
+      "parentId": "1Bq3CyS6ffDjwXttGk2jYJsTxTdFQ26PZ",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1432OoeuqOyaf-cNuDrYiAr6vcuy7k3Ee",
+        "1Bq3CyS6ffDjwXttGk2jYJsTxTdFQ26PZ",
+        "1lVBNChSRWuC6FvyZPKBaT1UZT00puOYy"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "CENG507 - Embedded Systems",
+        "Project",
+        "CENG507-Part2-Project.md"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": 3583,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1lVBNChSRWuC6FvyZPKBaT1UZT00puOYy/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-28T21:10:27.467Z"
+    },
+    {
+      "categoryPath": [
+        "Project"
+      ],
+      "courseCode": "CENG507",
+      "courseName": "Embedded Systems",
+      "depth": 3,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1LB5j4KfUE7v3KaXzcjvuAw5oB-S6XnYL",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "assignment",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-08-28T20:04:55.694Z",
+      "name": "CENG507-ProjectDescription.pdf",
+      "parentId": "1Bq3CyS6ffDjwXttGk2jYJsTxTdFQ26PZ",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1432OoeuqOyaf-cNuDrYiAr6vcuy7k3Ee",
+        "1Bq3CyS6ffDjwXttGk2jYJsTxTdFQ26PZ",
+        "1LB5j4KfUE7v3KaXzcjvuAw5oB-S6XnYL"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "CENG507 - Embedded Systems",
+        "Project",
+        "CENG507-ProjectDescription.pdf"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": 564477,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1LB5j4KfUE7v3KaXzcjvuAw5oB-S6XnYL/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-28T21:10:27.467Z"
+    },
+    {
+      "categoryPath": [
         "Exams"
       ],
       "courseCode": "CENG507",
@@ -6353,6 +6489,150 @@
       "termLabel": "Fall 2025-2026",
       "webViewLink": "https://drive.google.com/file/d/1uOaZAhzNQNmQ9wCyJVFp_Hg7641c1SR4/view?usp=drivesdk",
       "firstSeenAt": "2026-08-17T06:41:16.505Z"
+    },
+    {
+      "categoryPath": [
+        "Project"
+      ],
+      "courseCode": "EENG527",
+      "courseName": "Digital Signal Processing",
+      "depth": 3,
+      "extension": "md",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/text/markdown",
+      "id": "1f2k44NyBjYDH70qwm_nhMzOdfTlTwuZx",
+      "isShortcut": false,
+      "kind": "text",
+      "materialType": "assignment",
+      "mimeType": "text/markdown",
+      "modifiedTime": "2026-08-28T20:54:08.000Z",
+      "name": "EENG527-Project-Overview.md",
+      "parentId": "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1DxWIAF_1v9ghF2VaXfsbDOOIyo5mg1yy",
+        "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
+        "1f2k44NyBjYDH70qwm_nhMzOdfTlTwuZx"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "EENG527 - Digital Signal Processing",
+        "Project",
+        "EENG527-Project-Overview.md"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": 4120,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1f2k44NyBjYDH70qwm_nhMzOdfTlTwuZx/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-28T21:10:27.467Z"
+    },
+    {
+      "categoryPath": [
+        "Project"
+      ],
+      "courseCode": "EENG527",
+      "courseName": "Digital Signal Processing",
+      "depth": 3,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1LaMlQC17pGqO1j0iTfr0_H9aR04HYePQ",
+      "isShortcut": false,
+      "kind": "folder",
+      "materialType": "assignment",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-08-28T20:47:16.321Z",
+      "name": "PartB-AudioFiles",
+      "parentId": "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1DxWIAF_1v9ghF2VaXfsbDOOIyo5mg1yy",
+        "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
+        "1LaMlQC17pGqO1j0iTfr0_H9aR04HYePQ"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "EENG527 - Digital Signal Processing",
+        "Project",
+        "PartB-AudioFiles"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": null,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1LaMlQC17pGqO1j0iTfr0_H9aR04HYePQ",
+      "firstSeenAt": "2026-08-28T21:10:27.467Z"
+    },
+    {
+      "categoryPath": [
+        "Project"
+      ],
+      "courseCode": "EENG527",
+      "courseName": "Digital Signal Processing",
+      "depth": 3,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1DVZjJEHYhSic9bRIoQNXVaRQWWyl-rwe",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "assignment",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-08-28T20:46:46.825Z",
+      "name": "[BOOK]DSP-Using-Matlab.pdf",
+      "parentId": "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1DxWIAF_1v9ghF2VaXfsbDOOIyo5mg1yy",
+        "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
+        "1DVZjJEHYhSic9bRIoQNXVaRQWWyl-rwe"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "EENG527 - Digital Signal Processing",
+        "Project",
+        "[BOOK]DSP-Using-Matlab.pdf"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": 12904737,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1DVZjJEHYhSic9bRIoQNXVaRQWWyl-rwe/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-28T21:10:27.467Z"
+    },
+    {
+      "categoryPath": [
+        "Project"
+      ],
+      "courseCode": "EENG527",
+      "courseName": "Digital Signal Processing",
+      "depth": 3,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1ZvbyQtsXp-Z2EXjC6eAKcxRNtPo8gJyw",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "assignment",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2025-11-24T19:56:24.000Z",
+      "name": "DSP-ProjectOverview.pdf",
+      "parentId": "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1DxWIAF_1v9ghF2VaXfsbDOOIyo5mg1yy",
+        "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
+        "1ZvbyQtsXp-Z2EXjC6eAKcxRNtPo8gJyw"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "EENG527 - Digital Signal Processing",
+        "Project",
+        "DSP-ProjectOverview.pdf"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": 744960,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1ZvbyQtsXp-Z2EXjC6eAKcxRNtPo8gJyw/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-28T21:10:27.467Z"
     },
     {
       "categoryPath": [
@@ -19754,6 +20034,279 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1LeT6lvqstoIbJynd0p0FOBXhpphVjZoh/view?usp=drivesdk",
       "firstSeenAt": "2026-08-17T06:41:16.505Z"
+    },
+    {
+      "categoryPath": [
+        "Project",
+        "PartB-AudioFiles"
+      ],
+      "courseCode": "EENG527",
+      "courseName": "Digital Signal Processing",
+      "depth": 4,
+      "extension": "wav",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/audio/wav",
+      "id": "1rTgOC9jBqkeaClv1nayxw3Nkjp0O5BZP",
+      "isShortcut": false,
+      "kind": "audio",
+      "materialType": "assignment",
+      "mimeType": "audio/wav",
+      "modifiedTime": "2025-11-24T18:00:46.000Z",
+      "name": "audio_v7.wav",
+      "parentId": "1LaMlQC17pGqO1j0iTfr0_H9aR04HYePQ",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1DxWIAF_1v9ghF2VaXfsbDOOIyo5mg1yy",
+        "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
+        "1LaMlQC17pGqO1j0iTfr0_H9aR04HYePQ",
+        "1rTgOC9jBqkeaClv1nayxw3Nkjp0O5BZP"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "EENG527 - Digital Signal Processing",
+        "Project",
+        "PartB-AudioFiles",
+        "audio_v7.wav"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": 617446,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1rTgOC9jBqkeaClv1nayxw3Nkjp0O5BZP/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-28T21:10:27.467Z"
+    },
+    {
+      "categoryPath": [
+        "Project",
+        "PartB-AudioFiles"
+      ],
+      "courseCode": "EENG527",
+      "courseName": "Digital Signal Processing",
+      "depth": 4,
+      "extension": "wav",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/audio/wav",
+      "id": "1P0lJkaAwqGakWlfieVoqjA-Kzz-qw3gg",
+      "isShortcut": false,
+      "kind": "audio",
+      "materialType": "assignment",
+      "mimeType": "audio/wav",
+      "modifiedTime": "2025-11-24T16:43:26.000Z",
+      "name": "audio_v6.wav",
+      "parentId": "1LaMlQC17pGqO1j0iTfr0_H9aR04HYePQ",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1DxWIAF_1v9ghF2VaXfsbDOOIyo5mg1yy",
+        "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
+        "1LaMlQC17pGqO1j0iTfr0_H9aR04HYePQ",
+        "1P0lJkaAwqGakWlfieVoqjA-Kzz-qw3gg"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "EENG527 - Digital Signal Processing",
+        "Project",
+        "PartB-AudioFiles",
+        "audio_v6.wav"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": 617446,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1P0lJkaAwqGakWlfieVoqjA-Kzz-qw3gg/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-28T21:10:27.467Z"
+    },
+    {
+      "categoryPath": [
+        "Project",
+        "PartB-AudioFiles"
+      ],
+      "courseCode": "EENG527",
+      "courseName": "Digital Signal Processing",
+      "depth": 4,
+      "extension": "wav",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/audio/wav",
+      "id": "1-nSE3JuozFSczM89tAujoxP82rjvb_Xm",
+      "isShortcut": false,
+      "kind": "audio",
+      "materialType": "assignment",
+      "mimeType": "audio/wav",
+      "modifiedTime": "2025-11-21T12:36:28.000Z",
+      "name": "audio_v5.wav",
+      "parentId": "1LaMlQC17pGqO1j0iTfr0_H9aR04HYePQ",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1DxWIAF_1v9ghF2VaXfsbDOOIyo5mg1yy",
+        "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
+        "1LaMlQC17pGqO1j0iTfr0_H9aR04HYePQ",
+        "1-nSE3JuozFSczM89tAujoxP82rjvb_Xm"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "EENG527 - Digital Signal Processing",
+        "Project",
+        "PartB-AudioFiles",
+        "audio_v5.wav"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": 617446,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1-nSE3JuozFSczM89tAujoxP82rjvb_Xm/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-28T21:10:27.467Z"
+    },
+    {
+      "categoryPath": [
+        "Project",
+        "PartB-AudioFiles"
+      ],
+      "courseCode": "EENG527",
+      "courseName": "Digital Signal Processing",
+      "depth": 4,
+      "extension": "wav",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/audio/wav",
+      "id": "1t1aA76QbymUlloxjyfDyrpdu11GrOGOW",
+      "isShortcut": false,
+      "kind": "audio",
+      "materialType": "assignment",
+      "mimeType": "audio/wav",
+      "modifiedTime": "2025-11-21T12:36:00.000Z",
+      "name": "audio_v4.wav",
+      "parentId": "1LaMlQC17pGqO1j0iTfr0_H9aR04HYePQ",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1DxWIAF_1v9ghF2VaXfsbDOOIyo5mg1yy",
+        "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
+        "1LaMlQC17pGqO1j0iTfr0_H9aR04HYePQ",
+        "1t1aA76QbymUlloxjyfDyrpdu11GrOGOW"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "EENG527 - Digital Signal Processing",
+        "Project",
+        "PartB-AudioFiles",
+        "audio_v4.wav"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": 617446,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1t1aA76QbymUlloxjyfDyrpdu11GrOGOW/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-28T21:10:27.467Z"
+    },
+    {
+      "categoryPath": [
+        "Project",
+        "PartB-AudioFiles"
+      ],
+      "courseCode": "EENG527",
+      "courseName": "Digital Signal Processing",
+      "depth": 4,
+      "extension": "wav",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/audio/wav",
+      "id": "1KFe_MFM0g0WVXN2x7N-PkkBoax9ovKe7",
+      "isShortcut": false,
+      "kind": "audio",
+      "materialType": "assignment",
+      "mimeType": "audio/wav",
+      "modifiedTime": "2025-11-21T12:35:26.000Z",
+      "name": "audio_v3.wav",
+      "parentId": "1LaMlQC17pGqO1j0iTfr0_H9aR04HYePQ",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1DxWIAF_1v9ghF2VaXfsbDOOIyo5mg1yy",
+        "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
+        "1LaMlQC17pGqO1j0iTfr0_H9aR04HYePQ",
+        "1KFe_MFM0g0WVXN2x7N-PkkBoax9ovKe7"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "EENG527 - Digital Signal Processing",
+        "Project",
+        "PartB-AudioFiles",
+        "audio_v3.wav"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": 617446,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1KFe_MFM0g0WVXN2x7N-PkkBoax9ovKe7/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-28T21:10:27.467Z"
+    },
+    {
+      "categoryPath": [
+        "Project",
+        "PartB-AudioFiles"
+      ],
+      "courseCode": "EENG527",
+      "courseName": "Digital Signal Processing",
+      "depth": 4,
+      "extension": "wav",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/audio/wav",
+      "id": "1XbJc-AlvYa6gvsP48vIAF5cVfXfYsdcC",
+      "isShortcut": false,
+      "kind": "audio",
+      "materialType": "assignment",
+      "mimeType": "audio/wav",
+      "modifiedTime": "2025-11-21T12:34:42.000Z",
+      "name": "audio_v2.wav",
+      "parentId": "1LaMlQC17pGqO1j0iTfr0_H9aR04HYePQ",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1DxWIAF_1v9ghF2VaXfsbDOOIyo5mg1yy",
+        "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
+        "1LaMlQC17pGqO1j0iTfr0_H9aR04HYePQ",
+        "1XbJc-AlvYa6gvsP48vIAF5cVfXfYsdcC"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "EENG527 - Digital Signal Processing",
+        "Project",
+        "PartB-AudioFiles",
+        "audio_v2.wav"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": 617446,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1XbJc-AlvYa6gvsP48vIAF5cVfXfYsdcC/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-28T21:10:27.467Z"
+    },
+    {
+      "categoryPath": [
+        "Project",
+        "PartB-AudioFiles"
+      ],
+      "courseCode": "EENG527",
+      "courseName": "Digital Signal Processing",
+      "depth": 4,
+      "extension": "wav",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/audio/wav",
+      "id": "1lyDZAX-3lDeycA-G2H420g4lqNIYJOWj",
+      "isShortcut": false,
+      "kind": "audio",
+      "materialType": "assignment",
+      "mimeType": "audio/wav",
+      "modifiedTime": "2025-11-21T12:31:12.000Z",
+      "name": "audio_v1.wav",
+      "parentId": "1LaMlQC17pGqO1j0iTfr0_H9aR04HYePQ",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1DxWIAF_1v9ghF2VaXfsbDOOIyo5mg1yy",
+        "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
+        "1LaMlQC17pGqO1j0iTfr0_H9aR04HYePQ",
+        "1lyDZAX-3lDeycA-G2H420g4lqNIYJOWj"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "EENG527 - Digital Signal Processing",
+        "Project",
+        "PartB-AudioFiles",
+        "audio_v1.wav"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": 617446,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1lyDZAX-3lDeycA-G2H420g4lqNIYJOWj/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-28T21:10:27.467Z"
     },
     {
       "categoryPath": [
