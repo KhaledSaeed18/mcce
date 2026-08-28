@@ -26,7 +26,6 @@ export function EditorFileBar({
   const title = node ? node.name : EDITOR_EMPTY_TITLE;
 
   return (
-    /* Equal side columns keep the wordmark centred on the bar, not on what is left over. */
     <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 border-b-2 bg-background p-3">
       <div className="flex min-w-0 items-center gap-3">
         <Button
@@ -45,7 +44,7 @@ export function EditorFileBar({
 
       <EditorBrand />
 
-      <div className="flex items-center justify-end gap-3">
+      <div className="flex items-stretch justify-end gap-2">
         {node ? <OpenInDriveButton href={node.webViewLink} /> : null}
         {isFullscreenSupported ? (
           <FullscreenButton
