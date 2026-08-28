@@ -1,20 +1,27 @@
 import { PanelLeftIcon } from "lucide-react";
 import { OpenInDriveButton } from "@/components/drive/open-in-drive-button";
 import { EditorBrand } from "@/components/pdf-editor/editor-brand";
+import { FullscreenButton } from "@/components/pdf-editor/fullscreen-button";
 import { Button } from "@/components/ui/button";
 import { EDITOR_EMPTY_TITLE } from "@/config/pdf-editor";
 import type { DriveNode } from "@/lib/drive/types";
 
 interface EditorFileBarProps {
   isBrowserOpen: boolean;
+  isFullscreen: boolean;
+  isFullscreenSupported: boolean;
   node: DriveNode | null;
   onToggleBrowser: () => void;
+  onToggleFullscreen: () => void;
 }
 
 export function EditorFileBar({
   isBrowserOpen,
+  isFullscreen,
+  isFullscreenSupported,
   node,
   onToggleBrowser,
+  onToggleFullscreen,
 }: EditorFileBarProps) {
   const title = node ? node.name : EDITOR_EMPTY_TITLE;
 
@@ -38,8 +45,14 @@ export function EditorFileBar({
 
       <EditorBrand />
 
-      <div className="flex justify-end">
+      <div className="flex items-center justify-end gap-3">
         {node ? <OpenInDriveButton href={node.webViewLink} /> : null}
+        {isFullscreenSupported ? (
+          <FullscreenButton
+            isFullscreen={isFullscreen}
+            onToggle={onToggleFullscreen}
+          />
+        ) : null}
       </div>
     </div>
   );

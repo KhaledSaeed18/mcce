@@ -57,6 +57,9 @@ export const EDITOR_CONTROL_HEIGHT_CLASS = "h-9";
 /** The select primitive sets its height from a data attribute, which a plain h-9 cannot outweigh. */
 export const EDITOR_SELECT_HEIGHT_CLASS = "data-[size=default]:h-9";
 
+/** Matches the shortcut video players use, so it needs no explaining. */
+export const FULLSCREEN_HOTKEY_KEY = "f";
+
 export const EDITOR_BRAND_LABEL = "Editor";
 
 /** Shown in the file bar before a file is picked. */

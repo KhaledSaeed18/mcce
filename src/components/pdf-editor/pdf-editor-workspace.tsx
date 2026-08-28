@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
 import { EditorStatus } from "@/components/pdf-editor/editor-status";
 import { EditorToolbar } from "@/components/pdf-editor/editor-toolbar";
@@ -6,6 +6,7 @@ import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
 import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
 import { DEFAULT_EXPORT_NAME, EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
 import { useEditorTools } from "@/hooks/use-editor-tools";
+import { useFullscreen } from "@/hooks/use-fullscreen";
 import { usePdfAnnotations } from "@/hooks/use-pdf-annotations";
 import { usePdfDocument } from "@/hooks/use-pdf-document";
 import { usePdfExport } from "@/hooks/use-pdf-export";
@@ -20,6 +21,12 @@ interface PdfEditorWorkspaceProps {
 }
 
 export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
+  const rootRef = useRef<HTMLElement>(null);
+  const {
+    isFullscreen,
+    isSupported: isFullscreenSupported,
+    toggle: toggleFullscreen,
+  } = useFullscreen(rootRef);
   const [isBrowserOpen, setIsBrowserOpen] = useState(true);
   const [textDraft, setTextDraft] = useState<TextDraft | null>(null);
 
@@ -59,11 +66,18 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
   const settings = { color, fontSize, strokeWidth, tool };
 
   return (
-    <main className={cn("flex flex-col", EDITOR_HEIGHT_CLASS)}>
+    /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
+    <main
+      className={cn("flex flex-col bg-background", EDITOR_HEIGHT_CLASS)}
+      ref={rootRef}
+    >
       <EditorFileBar
         isBrowserOpen={isBrowserOpen}
+        isFullscreen={isFullscreen}
+        isFullscreenSupported={isFullscreenSupported}
         node={node}
         onToggleBrowser={toggleBrowser}
+        onToggleFullscreen={toggleFullscreen}
       />
       <div className="flex min-h-0 flex-1">
         {isBrowserOpen ? (
