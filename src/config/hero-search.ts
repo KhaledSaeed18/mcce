@@ -95,7 +95,7 @@ export const HERO_SEARCH_QUERIES: HeroSearchQuery[] = [
       },
     ],
     term: "lab",
-    total: 8,
+    total: 9,
   },
 ];
 
