@@ -1,9 +1,11 @@
+import { Link } from "@tanstack/react-router";
 import {
   BookmarkCheckIcon,
   BookmarkIcon,
   CheckIcon,
   CopyIcon,
   ExternalLinkIcon,
+  PencilRulerIcon,
 } from "lucide-react";
 import { useCallback } from "react";
 import { PreviewFallback } from "@/components/drive/preview-fallback";
@@ -115,6 +117,18 @@ export function FilePreviewDialog({
             )}
             {isSaved(node.id) ? "Saved" : "Save"}
           </Button>
+          {node.kind === "pdf" ? (
+            <Button
+              nativeButton={false}
+              render={
+                <Link search={{ file: node.id }} target="_blank" to="/editor" />
+              }
+              variant="outline"
+            >
+              <PencilRulerIcon data-icon="inline-start" />
+              Open in editor
+            </Button>
+          ) : null}
           <Button onClick={handleCopyLink} variant="outline">
             {isCopied ? (
               <CheckIcon data-icon="inline-start" />
