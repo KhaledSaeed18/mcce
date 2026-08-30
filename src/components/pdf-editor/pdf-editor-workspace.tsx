@@ -6,6 +6,7 @@ import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
 import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
 import { DEFAULT_EXPORT_NAME, EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
 import { useAnnotationFont } from "@/hooks/use-annotation-font";
+import { useEditorHotkeys } from "@/hooks/use-editor-hotkeys";
 import { useEditorTools } from "@/hooks/use-editor-tools";
 import { useFullscreen } from "@/hooks/use-fullscreen";
 import { usePdfAnnotations } from "@/hooks/use-pdf-annotations";
@@ -57,6 +58,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     tool,
   } = useEditorTools();
   const { resetZoom, zoom, zoomIn, zoomOut } = usePdfZoom();
+  useEditorHotkeys({ onRedo: redo, onUndo: undo });
   const { exportPdf, status: exportStatus } = usePdfExport({
     annotations,
     bytes,

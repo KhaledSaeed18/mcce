@@ -102,6 +102,9 @@ export const EDITOR_SELECT_HEIGHT_CLASS = "data-[size=default]:h-9";
 /** Matches the shortcut video players use, so it needs no explaining. */
 export const FULLSCREEN_HOTKEY_KEY = "f";
 
+export const UNDO_HOTKEY_KEY = "z";
+export const REDO_HOTKEY_KEY = "y";
+
 export const EDITOR_BRAND_LABEL = "Editor";
 
 /** Shown in the file bar before a file is picked. */
