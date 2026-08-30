@@ -5,7 +5,7 @@ import {
   TEXT_HIGHLIGHT_PADDING,
   TEXT_HIGHLIGHT_WIDTH,
 } from "@/config/pdf-editor";
-import { getTextBox } from "./text-metrics";
+import { getTextBox, layoutText } from "./text-layout";
 import type {
   Annotation,
   PenAnnotation,
@@ -60,10 +60,13 @@ function drawText(
   ctx: CanvasRenderingContext2D,
   annotation: TextAnnotation
 ): void {
+  const { lineHeight, lines } = layoutText(annotation);
   ctx.fillStyle = annotation.color;
   ctx.font = `${annotation.fontSize}px ${ANNOTATION_FONT_FAMILY}`;
   ctx.textBaseline = "alphabetic";
-  ctx.fillText(annotation.text, annotation.x, annotation.y);
+  for (const [index, line] of lines.entries()) {
+    ctx.fillText(line, annotation.x, annotation.y + index * lineHeight);
+  }
 }
 
 /** Outlines the text under the pointer, so it reads as something that can be moved. */

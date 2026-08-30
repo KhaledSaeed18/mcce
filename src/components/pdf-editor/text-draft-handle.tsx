@@ -15,14 +15,14 @@ export function TextDraftHandle({ onMove, zoom }: TextDraftHandleProps) {
   return (
     <button
       aria-label="Move this text"
-      className="flex h-full cursor-grab touch-none items-center rounded-l border-2 border-r-0 bg-secondary px-1 text-secondary-foreground active:cursor-grabbing"
+      className="absolute bottom-full left-0 mb-1 flex size-5 cursor-grab touch-none items-center justify-center rounded-sm border-2 bg-secondary text-secondary-foreground active:cursor-grabbing"
       onPointerCancel={handlePointerUp}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       type="button"
     >
-      <GripVerticalIcon className="size-4" />
+      <GripVerticalIcon className="size-3" />
     </button>
   );
 }

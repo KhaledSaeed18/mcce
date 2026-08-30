@@ -1,10 +1,16 @@
 import { useCallback } from "react";
+import { useTextCommit } from "@/hooks/use-text-commit";
 import { clampTextAnchor } from "@/lib/pdf-editor/bounds";
-import { buildText } from "@/lib/pdf-editor/build-annotation";
-import { getTextBox } from "@/lib/pdf-editor/text-metrics";
+import {
+  getFieldBox,
+  getFieldWidth,
+  resizeTextBox,
+  withBoundedWidth,
+} from "@/lib/pdf-editor/text-box";
 import type {
   AnnotationActions,
   PageSize,
+  TextBoxEdge,
   TextDraft,
 } from "@/lib/pdf-editor/types";
 
@@ -16,7 +22,7 @@ interface TextDraftOptions {
 }
 
 /**
- * The field being typed into, and what its release does: write new text, rewrite
+ * The box being typed into, and what leaving it does: write new text, rewrite
  * the text it was opened on, or remove that text once it has been emptied.
  */
 export function useTextDraft({
@@ -25,49 +31,58 @@ export function useTextDraft({
   onChange,
   size,
 }: TextDraftOptions) {
+  const commit = useTextCommit({ actions, draft, onChange, size });
+
   const place = useCallback(
-    (next: TextDraft) =>
-      onChange({ ...next, ...clampTextAnchor(next, getTextBox(next), size) }),
+    (next: TextDraft) => {
+      const bounded = withBoundedWidth(next, size);
+      onChange({
+        ...bounded,
+        ...clampTextAnchor(bounded, getFieldBox(bounded), size),
+      });
+    },
     [onChange, size]
   );
 
   const cancel = useCallback(() => onChange(null), [onChange]);
 
-  const move = useCallback(
-    (dx: number, dy: number) => {
-      if (!draft) {
-        return;
+  const withDraft = useCallback(
+    (change: (current: TextDraft) => TextDraft) => {
+      if (draft) {
+        place(change(draft));
       }
-      place({ ...draft, x: draft.x + dx, y: draft.y + dy });
     },
     [draft, place]
   );
 
-  const commit = useCallback(
-    (value: string) => {
-      if (!draft) {
-        return;
-      }
-      const text = value.trim();
-      onChange(null);
-      if (!text) {
-        // Emptying a field is how text already on the page is taken off it.
-        if (draft.id) {
-          actions.remove(draft.id);
-        }
-        return;
-      }
-      const annotation = buildText(draft, text);
-      const anchor = clampTextAnchor(annotation, getTextBox(annotation), size);
-      const placed = { ...annotation, ...anchor };
-      if (draft.id) {
-        actions.replace(placed);
-        return;
-      }
-      actions.add(placed);
-    },
-    [actions, draft, onChange, size]
+  const edit = useCallback(
+    (text: string) => withDraft((current) => ({ ...current, text })),
+    [withDraft]
   );
 
-  return { cancel, commit, move, request: place };
+  const move = useCallback(
+    (dx: number, dy: number) =>
+      withDraft((current) => ({
+        ...current,
+        x: current.x + dx,
+        y: current.y + dy,
+      })),
+    [withDraft]
+  );
+
+  const resize = useCallback(
+    (edge: TextBoxEdge, dx: number) =>
+      withDraft((current) =>
+        resizeTextBox(
+          // The field shows a minimum width, so a drag starts from that.
+          { ...current, width: current.width ?? getFieldWidth(current) },
+          edge,
+          dx,
+          size
+        )
+      ),
+    [size, withDraft]
+  );
+
+  return { cancel, commit, edit, move, request: place, resize };
 }

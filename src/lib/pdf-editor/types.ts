@@ -27,21 +27,19 @@ export interface ShapeAnnotation extends AnnotationBase {
   y: number;
 }
 
-export interface TextAnnotation extends AnnotationBase {
+/** What it takes to lay text out, which a committed annotation and a draft both have. */
+export interface TextGeometry {
   fontSize: number;
   text: string;
-  type: "text";
+  /** The width text wraps at, absent while the box still grows with its content. */
+  width?: number;
   x: number;
   /** Baseline of the first line. */
   y: number;
 }
 
-/** What it takes to measure text, which a committed annotation and a draft both have. */
-export interface TextGeometry {
-  fontSize: number;
-  text: string;
-  x: number;
-  y: number;
+export interface TextAnnotation extends AnnotationBase, TextGeometry {
+  type: "text";
 }
 
 export type Annotation = PenAnnotation | ShapeAnnotation | TextAnnotation;
@@ -66,6 +64,9 @@ export interface TextDraft extends TextGeometry {
   id?: string;
   pageIndex: number;
 }
+
+/** Which side of a text box a resize drag has hold of. */
+export type TextBoxEdge = "left" | "right";
 
 /** Every way the page list can change the markup, kept together as they travel down. */
 export interface AnnotationActions {

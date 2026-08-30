@@ -1,7 +1,7 @@
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import { useRef } from "react";
 import { AnnotationCanvas } from "@/components/pdf-editor/annotation-canvas";
-import { TextDraftInput } from "@/components/pdf-editor/text-draft-input";
+import { TextDraftField } from "@/components/pdf-editor/text-draft-field";
 import { PLACEHOLDER_PAGE_SIZE } from "@/config/pdf-editor";
 import { useInViewport } from "@/hooks/use-in-viewport";
 import { usePdfPageRender } from "@/hooks/use-pdf-page-render";
@@ -38,7 +38,7 @@ export function PdfPage({
   const isVisible = useInViewport(containerRef);
   const { canvasRef, size } = usePdfPageRender(doc, pageIndex, zoom, isVisible);
   const pageSize = size ?? PLACEHOLDER_PAGE_SIZE;
-  const { cancel, commit, move, request } = useTextDraft({
+  const { cancel, commit, edit, move, request, resize } = useTextDraft({
     actions,
     draft: textDraft,
     onChange: onTextDraftChange,
@@ -66,13 +66,13 @@ export function PdfPage({
         />
       ) : null}
       {textDraft ? (
-        <TextDraftInput
+        <TextDraftField
           draft={textDraft}
-          key={textDraft.id ?? "new"}
           onCancel={cancel}
           onCommit={commit}
+          onEdit={edit}
           onMove={move}
-          size={pageSize}
+          onResize={resize}
           zoom={zoom}
         />
       ) : null}

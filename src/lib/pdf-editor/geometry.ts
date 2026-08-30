@@ -1,5 +1,5 @@
 import { ERASER_TOLERANCE } from "@/config/pdf-editor";
-import { getTextBox } from "./text-metrics";
+import { getTextBox } from "./text-layout";
 import type { Annotation, Box, Point } from "./types";
 
 /** A drag can end above or left of where it started; shapes are stored positive. */

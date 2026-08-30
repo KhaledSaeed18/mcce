@@ -24,6 +24,7 @@ export function toDraft(annotation: TextAnnotation): TextDraft {
     id: annotation.id,
     pageIndex: annotation.pageIndex,
     text: annotation.text,
+    width: annotation.width,
     x: annotation.x,
     y: annotation.y,
   };

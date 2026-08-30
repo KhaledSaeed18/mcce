@@ -52,6 +52,7 @@ export function buildText(draft: TextDraft, text: string): TextAnnotation {
     pageIndex: draft.pageIndex,
     text,
     type: "text",
+    width: draft.width,
     x: draft.x,
     y: draft.y,
   };

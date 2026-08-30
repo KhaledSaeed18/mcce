@@ -48,14 +48,17 @@ describe("clampBox", () => {
 
 describe("clampTextAnchor", () => {
   it("leaves text that already fits where it is", () => {
-    expect(clampText({ x: 100, y: 200 }, 80)).toEqual({ x: 100, y: 200 });
+    const anchor = clampText({ x: 100, y: 200 }, 80);
+
+    expect(anchor.x).toBe(100);
+    expect(anchor.y).toBeCloseTo(200);
   });
 
   it("keeps text from hanging off the left or the top", () => {
-    expect(clampText({ x: -50, y: 4 }, 80)).toEqual({
-      x: PAGE_INSET,
-      y: PAGE_INSET + ASCENT,
-    });
+    const anchor = clampText({ x: -50, y: 4 }, 80);
+
+    expect(anchor.x).toBe(PAGE_INSET);
+    expect(anchor.y).toBeCloseTo(PAGE_INSET + ASCENT);
   });
 
   it("keeps text from hanging off the right", () => {

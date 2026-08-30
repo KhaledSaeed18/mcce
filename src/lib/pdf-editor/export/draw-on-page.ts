@@ -1,4 +1,5 @@
 import type { PDFFont, PDFPage } from "pdf-lib";
+import { layoutText } from "../text-layout";
 import type {
   Annotation,
   PenAnnotation,
@@ -55,13 +56,17 @@ function drawText(
   annotation: TextAnnotation,
   font: PDFFont
 ): void {
-  page.drawText(annotation.text, {
-    color: hexToRgb(annotation.color),
-    font,
-    size: annotation.fontSize,
-    x: annotation.x,
-    y: flipY(page, annotation.y),
-  });
+  const { lineHeight, lines } = layoutText(annotation);
+  const color = hexToRgb(annotation.color);
+  for (const [index, line] of lines.entries()) {
+    page.drawText(line, {
+      color,
+      font,
+      size: annotation.fontSize,
+      x: annotation.x,
+      y: flipY(page, annotation.y + index * lineHeight),
+    });
+  }
 }
 
 export function drawAnnotationOnPage(

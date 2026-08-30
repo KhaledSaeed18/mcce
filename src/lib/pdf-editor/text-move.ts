@@ -1,5 +1,5 @@
 import { clampTextAnchor } from "./bounds";
-import { getTextBox } from "./text-metrics";
+import { getTextBox } from "./text-layout";
 import type { PageSize, Point, TextAnnotation } from "./types";
 
 /** How far text can follow the pointer before its box would leave the page. */
