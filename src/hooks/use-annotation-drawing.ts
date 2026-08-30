@@ -4,6 +4,7 @@ import { useTextTool } from "@/hooks/use-text-tool";
 import { toPagePoint } from "@/lib/pdf-editor/pointer";
 import type {
   Annotation,
+  PageSize,
   Point,
   TextDraft,
   ToolSettings,
@@ -17,6 +18,7 @@ interface AnnotationDrawingOptions {
   onTextRequest: (draft: TextDraft) => void;
   pageIndex: number;
   settings: ToolSettings;
+  size: PageSize;
   zoom: number;
 }
 
@@ -29,6 +31,7 @@ export function useAnnotationDrawing({
   onTextRequest,
   pageIndex,
   settings,
+  size,
   zoom,
 }: AnnotationDrawingOptions) {
   const text = useTextTool({
@@ -36,9 +39,10 @@ export function useAnnotationDrawing({
     onMoveText,
     onTextRequest,
     pageIndex,
+    size,
     zoom,
   });
-  const shapes = useShapeDrawing({ onAdd, pageIndex, settings, zoom });
+  const shapes = useShapeDrawing({ onAdd, pageIndex, settings, size, zoom });
   const isErasingRef = useRef(false);
 
   const handlePointerDown = useCallback(
@@ -52,12 +56,12 @@ export function useAnnotationDrawing({
       if (settings.tool === "eraser") {
         event.currentTarget.setPointerCapture(event.pointerId);
         isErasingRef.current = true;
-        onErase(pageIndex, toPagePoint(event, zoom));
+        onErase(pageIndex, toPagePoint(event, zoom, size));
         return;
       }
       shapes.handleDown(event);
     },
-    [onErase, pageIndex, settings.tool, shapes, text, zoom]
+    [onErase, pageIndex, settings.tool, shapes, size, text, zoom]
   );
 
   const handlePointerMove = useCallback(
@@ -69,13 +73,13 @@ export function useAnnotationDrawing({
       if (settings.tool === "eraser") {
         // biome-ignore lint/suspicious/noUnnecessaryConditions: set by the press handler, a sibling callback the analyzer cannot see across
         if (isErasingRef.current) {
-          onErase(pageIndex, toPagePoint(event, zoom));
+          onErase(pageIndex, toPagePoint(event, zoom, size));
         }
         return;
       }
       shapes.handleMove(event);
     },
-    [onErase, pageIndex, settings.tool, shapes, text, zoom]
+    [onErase, pageIndex, settings.tool, shapes, size, text, zoom]
   );
 
   const handlePointerUp = useCallback(
@@ -93,11 +97,15 @@ export function useAnnotationDrawing({
     [settings.tool, shapes, text]
   );
 
+  const handlePointerLeave = useCallback(() => text.handleLeave(), [text]);
+
   return {
     draft: shapes.draft,
     drag: text.drag,
     handlePointerDown,
+    handlePointerLeave,
     handlePointerMove,
     handlePointerUp,
+    hoveredTextId: settings.tool === "text" ? text.hoveredId : null,
   };
 }

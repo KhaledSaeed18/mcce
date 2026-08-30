@@ -1,5 +1,6 @@
 import { ERASER_TOLERANCE } from "@/config/pdf-editor";
-import type { Annotation, Point } from "./types";
+import { getTextBox } from "./text-metrics";
+import type { Annotation, Box, Point } from "./types";
 
 /** A drag can end above or left of where it started; shapes are stored positive. */
 export function normalizeRect(start: Point, end: Point) {
@@ -18,10 +19,7 @@ function isNearPoints(points: Point[], target: Point): boolean {
   );
 }
 
-function isInsideBox(
-  box: { height: number; width: number; x: number; y: number },
-  target: Point
-): boolean {
+function isInsideBox(box: Box, target: Point): boolean {
   return (
     target.x >= box.x - ERASER_TOLERANCE &&
     target.x <= box.x + box.width + ERASER_TOLERANCE &&
@@ -39,15 +37,7 @@ export function isAnnotationHit(
     return isNearPoints(annotation.points, target);
   }
   if (annotation.type === "text") {
-    return isInsideBox(
-      {
-        height: annotation.fontSize,
-        width: annotation.text.length * annotation.fontSize * 0.5,
-        x: annotation.x,
-        y: annotation.y - annotation.fontSize,
-      },
-      target
-    );
+    return isInsideBox(getTextBox(annotation), target);
   }
   return isInsideBox(annotation, target);
 }

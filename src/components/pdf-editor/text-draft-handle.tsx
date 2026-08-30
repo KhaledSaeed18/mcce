@@ -15,7 +15,7 @@ export function TextDraftHandle({ onMove, zoom }: TextDraftHandleProps) {
   return (
     <button
       aria-label="Move this text"
-      className="flex h-9 cursor-grab touch-none items-center rounded-l border-2 border-r-0 bg-secondary px-1 text-secondary-foreground active:cursor-grabbing"
+      className="flex h-full cursor-grab touch-none items-center rounded-l border-2 border-r-0 bg-secondary px-1 text-secondary-foreground active:cursor-grabbing"
       onPointerCancel={handlePointerUp}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}

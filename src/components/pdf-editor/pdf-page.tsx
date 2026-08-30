@@ -1,11 +1,11 @@
 import type { PDFDocumentProxy } from "pdfjs-dist";
-import { useCallback, useRef } from "react";
+import { useRef } from "react";
 import { AnnotationCanvas } from "@/components/pdf-editor/annotation-canvas";
 import { TextDraftInput } from "@/components/pdf-editor/text-draft-input";
 import { PLACEHOLDER_PAGE_SIZE } from "@/config/pdf-editor";
 import { useInViewport } from "@/hooks/use-in-viewport";
 import { usePdfPageRender } from "@/hooks/use-pdf-page-render";
-import { buildText } from "@/lib/pdf-editor/build-annotation";
+import { useTextDraft } from "@/hooks/use-text-draft";
 import type {
   Annotation,
   Point,
@@ -41,47 +41,23 @@ export function PdfPage({
   const containerRef = useRef<HTMLDivElement>(null);
   const isVisible = useInViewport(containerRef);
   const { canvasRef, size } = usePdfPageRender(doc, pageIndex, zoom, isVisible);
-
-  const handleCancelText = useCallback(
-    () => onTextDraftChange(null),
-    [onTextDraftChange]
-  );
-
-  const handleMoveDraft = useCallback(
-    (dx: number, dy: number) => {
-      if (!textDraft) {
-        return;
-      }
-      onTextDraftChange({
-        ...textDraft,
-        x: textDraft.x + dx,
-        y: textDraft.y + dy,
-      });
-    },
-    [onTextDraftChange, textDraft]
-  );
-
-  const handleCommitText = useCallback(
-    (text: string) => {
-      if (!textDraft) {
-        return;
-      }
-      onAdd(
-        buildText(text, { x: textDraft.x, y: textDraft.y }, pageIndex, settings)
-      );
-      onTextDraftChange(null);
-    },
-    [onAdd, onTextDraftChange, pageIndex, settings, textDraft]
-  );
+  const pageSize = size ?? PLACEHOLDER_PAGE_SIZE;
+  const { cancel, commit, move, request } = useTextDraft({
+    draft: textDraft,
+    onAdd,
+    onChange: onTextDraftChange,
+    pageIndex,
+    settings,
+    size: pageSize,
+    zoom,
+  });
 
   return (
+    /* Nothing may spill past the sheet: the markup layers stop where the page does. */
     <div
-      className="relative border-2 bg-card shadow-md"
+      className="relative overflow-hidden border-2 bg-card shadow-md"
       ref={containerRef}
-      style={{
-        height: (size ?? PLACEHOLDER_PAGE_SIZE).height * zoom,
-        width: (size ?? PLACEHOLDER_PAGE_SIZE).width * zoom,
-      }}
+      style={{ height: pageSize.height * zoom, width: pageSize.width * zoom }}
     >
       <canvas className="block" ref={canvasRef} />
       {size ? (
@@ -90,7 +66,7 @@ export function PdfPage({
           onAdd={onAdd}
           onErase={onErase}
           onMoveText={onMoveText}
-          onTextRequest={onTextDraftChange}
+          onTextRequest={request}
           pageIndex={pageIndex}
           settings={settings}
           size={size}
@@ -101,9 +77,9 @@ export function PdfPage({
         <TextDraftInput
           draft={textDraft}
           fontSize={settings.fontSize}
-          onCancel={handleCancelText}
-          onCommit={handleCommitText}
-          onMove={handleMoveDraft}
+          onCancel={cancel}
+          onCommit={commit}
+          onMove={move}
           zoom={zoom}
         />
       ) : null}

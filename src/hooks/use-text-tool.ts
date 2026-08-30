@@ -1,13 +1,15 @@
 import { type PointerEvent, useCallback } from "react";
 import { useTextDrag } from "@/hooks/use-text-drag";
+import { useTextHover } from "@/hooks/use-text-hover";
 import { toPagePoint } from "@/lib/pdf-editor/pointer";
-import type { Annotation, TextDraft } from "@/lib/pdf-editor/types";
+import type { Annotation, PageSize, TextDraft } from "@/lib/pdf-editor/types";
 
 interface TextToolOptions {
   annotations: Annotation[];
   onMoveText: (id: string, dx: number, dy: number) => void;
   onTextRequest: (draft: TextDraft) => void;
   pageIndex: number;
+  size: PageSize;
   zoom: number;
 }
 
@@ -17,26 +19,33 @@ export function useTextTool({
   onMoveText,
   onTextRequest,
   pageIndex,
+  size,
   zoom,
 }: TextToolOptions) {
   const { drag, end, move, start } = useTextDrag({
     annotations,
     onMove: onMoveText,
     pageIndex,
+    size,
   });
+  const hover = useTextHover(annotations, pageIndex);
 
   const handleDown = useCallback(
     (event: PointerEvent<HTMLCanvasElement>) => {
-      if (start(toPagePoint(event, zoom))) {
+      if (start(toPagePoint(event, zoom, size))) {
         event.currentTarget.setPointerCapture(event.pointerId);
       }
     },
-    [start, zoom]
+    [size, start, zoom]
   );
 
   const handleMove = useCallback(
-    (event: PointerEvent<HTMLCanvasElement>) => move(toPagePoint(event, zoom)),
-    [move, zoom]
+    (event: PointerEvent<HTMLCanvasElement>) => {
+      const point = toPagePoint(event, zoom, size);
+      move(point);
+      hover.update(point);
+    },
+    [hover, move, size, zoom]
   );
 
   const handleUp = useCallback(
@@ -45,11 +54,18 @@ export function useTextTool({
       if (end()) {
         return;
       }
-      const point = toPagePoint(event, zoom);
+      const point = toPagePoint(event, zoom, size);
       onTextRequest({ pageIndex, x: point.x, y: point.y });
     },
-    [end, onTextRequest, pageIndex, zoom]
+    [end, onTextRequest, pageIndex, size, zoom]
   );
 
-  return { drag, handleDown, handleMove, handleUp };
+  return {
+    drag,
+    handleDown,
+    handleLeave: hover.clear,
+    handleMove,
+    handleUp,
+    hoveredId: hover.hoveredId,
+  };
 }

@@ -46,6 +46,31 @@ export const DEFAULT_FONT_SIZE = 16;
 /** Page-space radius around the pointer that counts as touching a stroke. */
 export const ERASER_TOLERANCE = 6;
 
+/** Helvetica sits roughly this far above and below its baseline, as a share of the font size. */
+export const TEXT_ASCENT_RATIO = 0.8;
+export const TEXT_DESCENT_RATIO = 0.2;
+
+/** Used only where no canvas exists to measure with, which is server-side rendering. */
+export const TEXT_WIDTH_FALLBACK_RATIO = 0.5;
+
+/** Keeps clamped markup off the very edge of the page. */
+export const PAGE_INSET = 2;
+
+/** The outline that marks the text under the pointer as movable. */
+export const TEXT_HIGHLIGHT_PADDING = 3;
+export const TEXT_HIGHLIGHT_ALPHA = 0.7;
+export const TEXT_HIGHLIGHT_WIDTH = 1;
+export const TEXT_HIGHLIGHT_DASH = [4, 3];
+
+/** The draft field's on-screen width, which is also what keeps it inside the page. */
+export const TEXT_DRAFT_WIDTH = 224;
+
+/** Tall enough for the icon handle before the font size takes over. */
+export const TEXT_DRAFT_MIN_HEIGHT = 36;
+
+/** Leaves room above and below the glyphs so a large font is not clipped. */
+export const TEXT_DRAFT_HEIGHT_RATIO = 1.6;
+
 /** A drag shorter than this is a click, not a shape. */
 export const MIN_SHAPE_SIZE = 4;
 

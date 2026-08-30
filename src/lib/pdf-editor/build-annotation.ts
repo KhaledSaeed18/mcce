@@ -1,7 +1,13 @@
 import { MIN_SHAPE_SIZE } from "@/config/pdf-editor";
 import { normalizeRect } from "./geometry";
 import { createAnnotationId } from "./pointer";
-import type { Annotation, EditorTool, Point, ToolSettings } from "./types";
+import type {
+  Annotation,
+  EditorTool,
+  Point,
+  TextAnnotation,
+  ToolSettings,
+} from "./types";
 
 /** The live shape while a drag is in progress, and what gets committed on release. */
 export function buildShape(
@@ -41,7 +47,7 @@ export function buildText(
   point: Point,
   pageIndex: number,
   settings: ToolSettings
-): Annotation {
+): TextAnnotation {
   return {
     color: settings.color,
     fontSize: settings.fontSize,

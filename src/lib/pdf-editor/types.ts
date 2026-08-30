@@ -43,6 +43,14 @@ export interface PageSize {
   width: number;
 }
 
+/** A rectangle in page space, used for hit tests and for keeping markup on the page. */
+export interface Box {
+  height: number;
+  width: number;
+  x: number;
+  y: number;
+}
+
 /** Where a text annotation is being typed, before it is committed. */
 export interface TextDraft {
   pageIndex: number;

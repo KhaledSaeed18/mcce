@@ -5,12 +5,18 @@ import {
   isShapeTooSmall,
 } from "@/lib/pdf-editor/build-annotation";
 import { toPagePoint } from "@/lib/pdf-editor/pointer";
-import type { Annotation, Point, ToolSettings } from "@/lib/pdf-editor/types";
+import type {
+  Annotation,
+  PageSize,
+  Point,
+  ToolSettings,
+} from "@/lib/pdf-editor/types";
 
 interface ShapeDrawingOptions {
   onAdd: (annotation: Annotation) => void;
   pageIndex: number;
   settings: ToolSettings;
+  size: PageSize;
   zoom: number;
 }
 
@@ -19,6 +25,7 @@ export function useShapeDrawing({
   onAdd,
   pageIndex,
   settings,
+  size,
   zoom,
 }: ShapeDrawingOptions) {
   const [draft, setDraft] = useState<Annotation | null>(null);
@@ -34,7 +41,7 @@ export function useShapeDrawing({
 
   const handleDown = useCallback(
     (event: PointerEvent<HTMLCanvasElement>) => {
-      const point = toPagePoint(event, zoom);
+      const point = toPagePoint(event, zoom, size);
       event.currentTarget.setPointerCapture(event.pointerId);
       startRef.current = point;
       pointsRef.current = [point];
@@ -44,7 +51,7 @@ export function useShapeDrawing({
           : buildShape("rect", point, point, pageIndex, settings)
       );
     },
-    [pageIndex, settings, updateDraft, zoom]
+    [pageIndex, settings, size, updateDraft, zoom]
   );
 
   const handleMove = useCallback(
@@ -54,7 +61,7 @@ export function useShapeDrawing({
       if (!origin) {
         return;
       }
-      const point = toPagePoint(event, zoom);
+      const point = toPagePoint(event, zoom, size);
 
       if (settings.tool === "pen") {
         pointsRef.current = [...pointsRef.current, point];
@@ -67,7 +74,7 @@ export function useShapeDrawing({
         );
       }
     },
-    [pageIndex, settings, updateDraft, zoom]
+    [pageIndex, settings, size, updateDraft, zoom]
   );
 
   const handleUp = useCallback(() => {

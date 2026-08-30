@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { MAX_RENDER_DPR } from "@/config/pdf-editor";
 import { useAnnotationDrawing } from "@/hooks/use-annotation-drawing";
-import { drawAnnotation } from "@/lib/pdf-editor/draw";
+import { drawAnnotation, drawTextHighlight } from "@/lib/pdf-editor/draw";
 import { withDrag } from "@/lib/pdf-editor/move";
 import type {
   Annotation,
@@ -19,6 +19,21 @@ const CURSOR_BY_TOOL: Record<ToolSettings["tool"], string> = {
   rect: "cursor-crosshair",
   text: "cursor-text",
 };
+
+/** Text under the pointer offers a grab, so a move reads as available before it starts. */
+function resolveCursor(
+  tool: ToolSettings["tool"],
+  isOverText: boolean,
+  isMoving: boolean
+): string {
+  if (tool !== "text") {
+    return CURSOR_BY_TOOL[tool];
+  }
+  if (isMoving) {
+    return "cursor-grabbing";
+  }
+  return isOverText ? "cursor-grab" : CURSOR_BY_TOOL.text;
+}
 
 interface AnnotationCanvasProps {
   annotations: Annotation[];
@@ -44,17 +59,26 @@ export function AnnotationCanvas({
   zoom,
 }: AnnotationCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { draft, drag, handlePointerDown, handlePointerMove, handlePointerUp } =
-    useAnnotationDrawing({
-      annotations,
-      onAdd,
-      onErase,
-      onMoveText,
-      onTextRequest,
-      pageIndex,
-      settings,
-      zoom,
-    });
+  const {
+    draft,
+    drag,
+    handlePointerDown,
+    handlePointerLeave,
+    handlePointerMove,
+    handlePointerUp,
+    hoveredTextId,
+  } = useAnnotationDrawing({
+    annotations,
+    onAdd,
+    onErase,
+    onMoveText,
+    onTextRequest,
+    pageIndex,
+    settings,
+    size,
+    zoom,
+  });
+  const highlightId = drag?.id ?? hoveredTextId;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -72,20 +96,24 @@ export function AnnotationCanvas({
 
     for (const annotation of withDrag(annotations, drag)) {
       drawAnnotation(ctx, annotation);
+      if (annotation.type === "text" && annotation.id === highlightId) {
+        drawTextHighlight(ctx, annotation);
+      }
     }
     if (draft) {
       drawAnnotation(ctx, draft);
     }
-  }, [annotations, draft, drag, size, zoom]);
+  }, [annotations, draft, drag, highlightId, size, zoom]);
 
   return (
     <canvas
       className={cn(
         "absolute inset-0 touch-none",
-        CURSOR_BY_TOOL[settings.tool]
+        resolveCursor(settings.tool, hoveredTextId !== null, drag !== null)
       )}
       onPointerCancel={handlePointerUp}
       onPointerDown={handlePointerDown}
+      onPointerLeave={handlePointerLeave}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       ref={canvasRef}

@@ -6,6 +6,7 @@ import {
 } from "react";
 import { TextDraftHandle } from "@/components/pdf-editor/text-draft-handle";
 import { Input } from "@/components/ui/input";
+import { getDraftBox, getDraftSize } from "@/lib/pdf-editor/text-metrics";
 import type { TextDraft } from "@/lib/pdf-editor/types";
 
 interface TextDraftInputProps {
@@ -26,6 +27,8 @@ export function TextDraftInput({
   zoom,
 }: TextDraftInputProps) {
   const [value, setValue] = useState("");
+  const box = getDraftBox(draft, fontSize, zoom);
+  const { height, width } = getDraftSize(fontSize, zoom);
 
   const commit = useCallback(() => {
     const trimmed = value.trim();
@@ -56,16 +59,13 @@ export function TextDraftInput({
   return (
     <div
       className="absolute z-10 flex items-stretch"
-      style={{
-        left: draft.x * zoom,
-        top: draft.y * zoom - fontSize * zoom,
-      }}
+      style={{ height, left: box.x * zoom, top: box.y * zoom, width }}
     >
       <TextDraftHandle onMove={onMove} zoom={zoom} />
       <Input
         aria-label="Annotation text"
         autoFocus
-        className="w-48 rounded-l-none bg-card"
+        className="h-full flex-1 rounded-l-none bg-card"
         onBlur={commit}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
