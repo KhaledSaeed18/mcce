@@ -6,15 +6,13 @@ import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
 import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
 import { DEFAULT_EXPORT_NAME, EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
 import { useAnnotationFont } from "@/hooks/use-annotation-font";
-import { useEditorHotkeys } from "@/hooks/use-editor-hotkeys";
+import { useEditorMarkup } from "@/hooks/use-editor-markup";
 import { useEditorTools } from "@/hooks/use-editor-tools";
 import { useFullscreen } from "@/hooks/use-fullscreen";
-import { usePdfAnnotations } from "@/hooks/use-pdf-annotations";
 import { usePdfDocument } from "@/hooks/use-pdf-document";
 import { usePdfExport } from "@/hooks/use-pdf-export";
 import { usePdfZoom } from "@/hooks/use-pdf-zoom";
 import type { DriveNode } from "@/lib/drive/types";
-import type { TextDraft } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
 interface PdfEditorWorkspaceProps {
@@ -30,23 +28,9 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     toggle: toggleFullscreen,
   } = useFullscreen(rootRef);
   const [isBrowserOpen, setIsBrowserOpen] = useState(true);
-  const [textDraft, setTextDraft] = useState<TextDraft | null>(null);
 
   const { bytes, doc, status } = usePdfDocument(node?.id);
   const isFontReady = useAnnotationFont();
-  const {
-    add,
-    annotations,
-    canRedo,
-    canUndo,
-    clear,
-    eraseAt,
-    move,
-    redo,
-    remove,
-    replace,
-    undo,
-  } = usePdfAnnotations(node?.id);
   const {
     color,
     fontSize,
@@ -57,8 +41,21 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     strokeWidth,
     tool,
   } = useEditorTools();
+  const {
+    actions,
+    annotations,
+    canRedo,
+    canUndo,
+    changeColor,
+    changeFontSize,
+    clear,
+    draft: textDraft,
+    openDraft,
+    redo,
+    selectedId,
+    undo,
+  } = useEditorMarkup({ fileId: node?.id, setColor, setFontSize });
   const { resetZoom, zoom, zoomIn, zoomOut } = usePdfZoom();
-  useEditorHotkeys({ onRedo: redo, onUndo: undo });
   const { exportPdf, status: exportStatus } = usePdfExport({
     annotations,
     bytes,
@@ -69,14 +66,8 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     () => setIsBrowserOpen((open) => !open),
     []
   );
+
   const settings = { color, fontSize, strokeWidth, tool };
-  const actions = {
-    add,
-    erase: eraseAt,
-    moveText: move,
-    remove,
-    replace,
-  };
 
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
@@ -104,9 +95,9 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
             exportStatus={exportStatus}
             fontSize={fontSize}
             onClear={clear}
-            onColorChange={setColor}
+            onColorChange={changeColor}
             onExport={exportPdf}
-            onFontSizeChange={setFontSize}
+            onFontSizeChange={changeFontSize}
             onRedo={redo}
             onResetZoom={resetZoom}
             onStrokeWidthChange={setStrokeWidth}
@@ -124,7 +115,8 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
                 actions={actions}
                 annotations={annotations}
                 doc={doc}
-                onTextDraftChange={setTextDraft}
+                onTextDraftChange={openDraft}
+                selectedId={selectedId}
                 settings={settings}
                 textDraft={textDraft}
                 zoom={zoom}

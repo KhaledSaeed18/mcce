@@ -20,6 +20,18 @@ export function findTextAt(
   return null;
 }
 
+/** The selected text, when it is one of these and it is on this page. */
+export function findText(
+  annotations: Annotation[],
+  id: string | null
+): TextAnnotation | null {
+  if (!id) {
+    return null;
+  }
+  const target = annotations.find((annotation) => annotation.id === id);
+  return target?.type === "text" ? target : null;
+}
+
 export function shiftAnnotation(
   annotation: Annotation,
   dx: number,

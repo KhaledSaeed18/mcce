@@ -13,6 +13,7 @@ interface PdfPageListProps {
   annotations: Annotation[];
   doc: PDFDocumentProxy;
   onTextDraftChange: (draft: TextDraft | null) => void;
+  selectedId: string | null;
   settings: ToolSettings;
   textDraft: TextDraft | null;
   zoom: number;
@@ -23,6 +24,7 @@ export function PdfPageList({
   annotations,
   doc,
   onTextDraftChange,
+  selectedId,
   settings,
   textDraft,
   zoom,
@@ -44,6 +46,7 @@ export function PdfPageList({
           key={pageIndex}
           onTextDraftChange={onTextDraftChange}
           pageIndex={pageIndex}
+          selectedId={selectedId}
           settings={settings}
           textDraft={textDraft?.pageIndex === pageIndex ? textDraft : null}
           zoom={zoom}

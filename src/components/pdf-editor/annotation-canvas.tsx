@@ -7,6 +7,7 @@ import type {
   Annotation,
   AnnotationActions,
   PageSize,
+  TextAnnotation,
   TextDraft,
   ToolSettings,
 } from "@/lib/pdf-editor/types";
@@ -42,6 +43,10 @@ interface AnnotationCanvasProps {
   editingId: string | null;
   onDraft: (draft: TextDraft) => void;
   pageIndex: number;
+  /** A box mid-resize, drawn at the width the pointer is holding it at. */
+  preview: TextAnnotation | null;
+  /** Framed by its own overlay, so it needs no hover ring of its own. */
+  selectedId: string | null;
   settings: ToolSettings;
   size: PageSize;
   zoom: number;
@@ -53,6 +58,8 @@ export function AnnotationCanvas({
   editingId,
   onDraft,
   pageIndex,
+  preview,
+  selectedId,
   settings,
   size,
   zoom,
@@ -61,6 +68,7 @@ export function AnnotationCanvas({
   const {
     draft,
     drag,
+    handleDoubleClick,
     handlePointerDown,
     handlePointerLeave,
     handlePointerMove,
@@ -75,7 +83,8 @@ export function AnnotationCanvas({
     size,
     zoom,
   });
-  const highlightId = drag?.id ?? hoveredTextId;
+  const hoverId = hoveredTextId === selectedId ? null : hoveredTextId;
+  const highlightId = drag?.id ?? hoverId;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -91,10 +100,11 @@ export function AnnotationCanvas({
     ctx.setTransform(zoom * dpr, 0, 0, zoom * dpr, 0, 0);
     ctx.clearRect(0, 0, size.width, size.height);
 
-    for (const annotation of withDrag(annotations, drag)) {
-      if (annotation.id === editingId) {
+    for (const stored of withDrag(annotations, drag)) {
+      if (stored.id === editingId) {
         continue;
       }
+      const annotation = preview?.id === stored.id ? preview : stored;
       drawAnnotation(ctx, annotation);
       if (annotation.type === "text" && annotation.id === highlightId) {
         drawTextHighlight(ctx, annotation);
@@ -103,7 +113,7 @@ export function AnnotationCanvas({
     if (draft) {
       drawAnnotation(ctx, draft);
     }
-  }, [annotations, draft, drag, editingId, highlightId, size, zoom]);
+  }, [annotations, draft, drag, editingId, highlightId, preview, size, zoom]);
 
   return (
     <canvas
@@ -111,6 +121,7 @@ export function AnnotationCanvas({
         "absolute inset-0 touch-none",
         resolveCursor(settings.tool, hoveredTextId !== null, drag !== null)
       )}
+      onDoubleClick={handleDoubleClick}
       onPointerCancel={handlePointerUp}
       onPointerDown={handlePointerDown}
       onPointerLeave={handlePointerLeave}

@@ -59,7 +59,11 @@ export function EditorToolbar({
   zoom,
 }: EditorToolbarProps) {
   return (
-    <div className="flex flex-wrap items-center gap-3 border-b-2 bg-card p-3">
+    <div
+      aria-label="Markup tools"
+      className="flex flex-wrap items-center gap-3 border-b-2 bg-card p-3"
+      role="toolbar"
+    >
       <ToolPicker onSelect={onToolChange} value={tool} />
       <Separator
         className={EDITOR_CONTROL_HEIGHT_CLASS}

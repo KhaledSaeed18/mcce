@@ -44,8 +44,10 @@ export function useTextCommit({
     };
     if (draft.id) {
       actions.replace(placed);
-      return;
+    } else {
+      actions.add(placed);
     }
-    actions.add(placed);
+    // What was just written stays selected, the way it does elsewhere.
+    actions.select(placed.id);
   }, [actions, draft, onChange, size]);
 }

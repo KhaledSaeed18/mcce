@@ -75,6 +75,7 @@ export interface AnnotationActions {
   moveText: (id: string, dx: number, dy: number) => void;
   remove: (id: string) => void;
   replace: (annotation: Annotation) => void;
+  select: (id: string | null) => void;
 }
 
 export interface ToolSettings {

@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { EDITOR_CONTROL_HEIGHT_CLASS } from "@/config/pdf-editor";
+import { preventFocus } from "@/lib/prevent-focus";
 import { cn } from "@/lib/utils";
 
 interface ColorSwatchProps {
@@ -21,6 +22,7 @@ export function ColorSwatch({ color, isActive, onSelect }: ColorSwatchProps) {
         isActive ? "shadow-md" : "shadow-xs"
       )}
       onClick={handleClick}
+      onMouseDown={preventFocus}
       style={{ backgroundColor: color }}
       type="button"
     />

@@ -1,7 +1,7 @@
 import { type PointerEvent, useCallback } from "react";
 import { useTextDrag } from "@/hooks/use-text-drag";
 import { useTextHover } from "@/hooks/use-text-hover";
-import { buildDraft, toDraft } from "@/lib/pdf-editor/build-draft";
+import { useTextOpen } from "@/hooks/use-text-open";
 import { toPagePoint } from "@/lib/pdf-editor/pointer";
 import type {
   Annotation,
@@ -14,6 +14,7 @@ interface TextToolOptions {
   annotations: Annotation[];
   onDraft: (draft: TextDraft) => void;
   onMoveText: (id: string, dx: number, dy: number) => void;
+  onSelect: (id: string | null) => void;
   pageIndex: number;
   settings: ToolSettings;
   size: PageSize;
@@ -22,7 +23,8 @@ interface TextToolOptions {
 
 /**
  * Pressing text already on the page picks it up: drag to move it, release
- * without moving to open it for editing. Pressing anywhere else writes new text.
+ * without moving to select it, press again to open it for typing. Pressing
+ * anywhere else writes new text.
  *
  * Every field opens on the release, because the click that follows a press would
  * move focus to the canvas and blur the new field away as it appeared.
@@ -31,6 +33,7 @@ export function useTextTool({
   annotations,
   onDraft,
   onMoveText,
+  onSelect,
   pageIndex,
   settings,
   size,
@@ -43,6 +46,14 @@ export function useTextTool({
     size,
   });
   const hover = useTextHover(annotations, pageIndex);
+  const open = useTextOpen({
+    annotations,
+    onDraft,
+    pageIndex,
+    settings,
+    size,
+    zoom,
+  });
 
   const handleDown = useCallback(
     (event: PointerEvent<HTMLCanvasElement>) => {
@@ -67,17 +78,18 @@ export function useTextTool({
       const pressed = end();
       if (pressed) {
         if (!pressed.moved) {
-          onDraft(toDraft(pressed.target));
+          onSelect(pressed.target.id);
         }
         return;
       }
-      onDraft(buildDraft(toPagePoint(event, zoom, size), pageIndex, settings));
+      open.openAt(event);
     },
-    [end, onDraft, pageIndex, settings, size, zoom]
+    [end, onSelect, open]
   );
 
   return {
     drag,
+    handleDoubleClick: open.openOn,
     handleDown,
     handleLeave: hover.clear,
     handleMove,

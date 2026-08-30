@@ -105,6 +105,10 @@ export const FULLSCREEN_HOTKEY_KEY = "f";
 export const UNDO_HOTKEY_KEY = "z";
 export const REDO_HOTKEY_KEY = "y";
 
+/** Both keys remove on a Mac keyboard, where only one of them is printed. */
+export const DELETE_HOTKEY_KEYS: readonly string[] = ["Delete", "Backspace"];
+export const DESELECT_HOTKEY_KEY = "Escape";
+
 export const EDITOR_BRAND_LABEL = "Editor";
 
 /** Shown in the file bar before a file is picked. */

@@ -57,6 +57,7 @@ export function useAnnotationDrawing({
     annotations,
     onDraft,
     onMoveText: actions.moveText,
+    onSelect: actions.select,
     pageIndex,
     settings,
     size,
@@ -75,6 +76,7 @@ export function useAnnotationDrawing({
   return {
     draft: shapes.draft,
     drag: text.drag,
+    handleDoubleClick: text.handleDoubleClick,
     handlePointerDown: active.handleDown,
     handlePointerLeave: text.handleLeave,
     handlePointerMove: active.handleMove,
