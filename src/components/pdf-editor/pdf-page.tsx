@@ -3,7 +3,10 @@ import { useRef } from "react";
 import { AnnotationCanvas } from "@/components/pdf-editor/annotation-canvas";
 import { TextDraftField } from "@/components/pdf-editor/text-draft-field";
 import { TextSelectionBox } from "@/components/pdf-editor/text-selection-box";
-import { PLACEHOLDER_PAGE_SIZE } from "@/config/pdf-editor";
+import {
+  PAGE_INDEX_ATTRIBUTE,
+  PLACEHOLDER_PAGE_SIZE,
+} from "@/config/pdf-editor";
 import { useInViewport } from "@/hooks/use-in-viewport";
 import { usePdfPageRender } from "@/hooks/use-pdf-page-render";
 import { useTextBoxResize } from "@/hooks/use-text-box-resize";
@@ -44,6 +47,7 @@ export function PdfPage({
   const { canvasRef, size } = usePdfPageRender(doc, pageIndex, zoom, isVisible);
   const pageSize = size ?? PLACEHOLDER_PAGE_SIZE;
   const selected = findText(annotations, selectedId);
+  const pageMarker = { [PAGE_INDEX_ATTRIBUTE]: pageIndex };
   const { cancel, commit, edit, move, request, resize } = useTextDraft({
     actions,
     draft: textDraft,
@@ -59,7 +63,8 @@ export function PdfPage({
   return (
     /* Nothing may spill past the sheet: the markup layers stop where the page does. */
     <div
-      className="relative overflow-hidden border-2 bg-card shadow-md"
+      {...pageMarker}
+      className="relative scroll-mt-6 overflow-hidden border-2 bg-card shadow-md"
       ref={containerRef}
       style={{ height: pageSize.height * zoom, width: pageSize.width * zoom }}
     >

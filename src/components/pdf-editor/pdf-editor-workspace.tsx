@@ -12,6 +12,7 @@ import { useFullscreen } from "@/hooks/use-fullscreen";
 import { usePdfDocument } from "@/hooks/use-pdf-document";
 import { usePdfExport } from "@/hooks/use-pdf-export";
 import { usePdfZoom } from "@/hooks/use-pdf-zoom";
+import { useVisiblePage } from "@/hooks/use-visible-page";
 import type { DriveNode } from "@/lib/drive/types";
 import { cn } from "@/lib/utils";
 
@@ -22,6 +23,7 @@ interface PdfEditorWorkspaceProps {
 
 export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
   const rootRef = useRef<HTMLElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const {
     isFullscreen,
     isSupported: isFullscreenSupported,
@@ -56,6 +58,9 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     undo,
   } = useEditorMarkup({ fileId: node?.id, setColor, setFontSize });
   const { resetZoom, zoom, zoomIn, zoomOut } = usePdfZoom();
+  const isDocumentShown = Boolean(doc) && isFontReady;
+  const pageCount = doc && isDocumentShown ? doc.numPages : 0;
+  const { activeIndex, goToPage } = useVisiblePage(scrollRef, pageCount);
   const { exportPdf, status: exportStatus } = usePdfExport({
     annotations,
     bytes,
@@ -68,6 +73,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
   );
 
   const settings = { color, fontSize, strokeWidth, tool };
+  const pages = { activeIndex, goToPage, pageCount };
 
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
@@ -105,12 +111,16 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
             onUndo={undo}
             onZoomIn={zoomIn}
             onZoomOut={zoomOut}
+            pages={pages}
             strokeWidth={strokeWidth}
             tool={tool}
             zoom={zoom}
           />
-          <div className="flex min-h-0 flex-1 flex-col overflow-auto bg-muted">
-            {doc && isFontReady ? (
+          <div
+            className="flex min-h-0 flex-1 flex-col overflow-auto bg-muted"
+            ref={scrollRef}
+          >
+            {doc && isDocumentShown ? (
               <PdfPageList
                 actions={actions}
                 annotations={annotations}

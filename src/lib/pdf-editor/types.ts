@@ -65,6 +65,13 @@ export interface TextDraft extends TextGeometry {
   pageIndex: number;
 }
 
+/** Where the reader is in the document, and how to move them somewhere else. */
+export interface PageNavigation {
+  activeIndex: number;
+  goToPage: (index: number) => void;
+  pageCount: number;
+}
+
 /** Which side of a text box a resize drag has hold of. */
 export type TextBoxEdge = "left" | "right";
 

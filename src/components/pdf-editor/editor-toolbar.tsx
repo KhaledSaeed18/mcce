@@ -1,6 +1,7 @@
 import { DownloadIcon, LoaderIcon } from "lucide-react";
 import { ColorSwatches } from "@/components/pdf-editor/color-swatches";
 import { HistoryControls } from "@/components/pdf-editor/history-controls";
+import { PageControls } from "@/components/pdf-editor/page-controls";
 import { SizeSelect } from "@/components/pdf-editor/size-select";
 import { ToolPicker } from "@/components/pdf-editor/tool-picker";
 import { ZoomControls } from "@/components/pdf-editor/zoom-controls";
@@ -12,7 +13,7 @@ import {
   STROKE_WIDTHS,
 } from "@/config/pdf-editor";
 import type { PdfExportStatus } from "@/hooks/use-pdf-export";
-import type { EditorTool } from "@/lib/pdf-editor/types";
+import type { EditorTool, PageNavigation } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
 interface EditorToolbarProps {
@@ -32,6 +33,7 @@ interface EditorToolbarProps {
   onUndo: () => void;
   onZoomIn: () => void;
   onZoomOut: () => void;
+  pages: PageNavigation;
   strokeWidth: number;
   tool: EditorTool;
   zoom: number;
@@ -54,6 +56,7 @@ export function EditorToolbar({
   onUndo,
   onZoomIn,
   onZoomOut,
+  pages,
   strokeWidth,
   tool,
   zoom,
@@ -102,6 +105,7 @@ export function EditorToolbar({
         className={EDITOR_CONTROL_HEIGHT_CLASS}
         orientation="vertical"
       />
+      {pages.pageCount > 0 ? <PageControls {...pages} /> : null}
       <ZoomControls
         onReset={onResetZoom}
         onZoomIn={onZoomIn}

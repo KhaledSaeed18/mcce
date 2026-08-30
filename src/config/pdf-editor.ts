@@ -21,6 +21,13 @@ export const DEFAULT_ZOOM = 1.25;
  * list has something to scroll and observe. */
 export const PLACEHOLDER_PAGE_SIZE = { height: 792, width: 612 };
 
+/** Marks each page in the scroller so the one on screen can be found and scrolled to. */
+export const PAGE_INDEX_ATTRIBUTE = "data-page-index";
+
+/** Collapses the observed area to a line across the middle of the scroller, so
+ * exactly one page counts as the one being read. */
+export const VISIBLE_PAGE_ROOT_MARGIN = "-50% 0px -50% 0px";
+
 /** Above this the canvas costs more memory than the sharpness is worth. */
 export const MAX_RENDER_DPR = 2;
 
