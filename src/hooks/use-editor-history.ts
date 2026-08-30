@@ -1,20 +1,27 @@
 import { useCallback, useState } from "react";
-import type { Annotation } from "@/lib/pdf-editor/types";
+import type { EditorSnapshot } from "@/lib/pdf-editor/types";
 
 interface HistoryState {
-  future: Annotation[][];
-  past: Annotation[][];
-  present: Annotation[];
+  future: EditorSnapshot[];
+  past: EditorSnapshot[];
+  present: EditorSnapshot;
 }
 
-const EMPTY: HistoryState = { future: [], past: [], present: [] };
+const EMPTY_SNAPSHOT: EditorSnapshot = { annotations: [], pages: [] };
 
-/** Undo steps are whole snapshots: annotation lists are small, diffing them is not worth it. */
-export function useAnnotationHistory() {
+const EMPTY: HistoryState = {
+  future: [],
+  past: [],
+  present: EMPTY_SNAPSHOT,
+};
+
+/** Undo steps are whole snapshots: a file's markup and pages are small enough that
+ * diffing them is not worth it. */
+export function useEditorHistory() {
   const [history, setHistory] = useState<HistoryState>(EMPTY);
 
   const commit = useCallback(
-    (next: (current: Annotation[]) => Annotation[]) =>
+    (next: (current: EditorSnapshot) => EditorSnapshot) =>
       setHistory((state) => ({
         future: [],
         past: [...state.past, state.present],
@@ -23,10 +30,10 @@ export function useAnnotationHistory() {
     []
   );
 
-  /** Replaces the list without a history entry, for hydrating a stored file. */
+  /** Replaces the snapshot without a history entry, for hydrating a stored file. */
   const reset = useCallback(
-    (annotations: Annotation[]) =>
-      setHistory({ future: [], past: [], present: annotations }),
+    (snapshot: EditorSnapshot) =>
+      setHistory({ future: [], past: [], present: snapshot }),
     []
   );
 
@@ -63,12 +70,12 @@ export function useAnnotationHistory() {
   );
 
   return {
-    annotations: history.present,
     canRedo: history.future.length > 0,
     canUndo: history.past.length > 0,
     commit,
     redo,
     reset,
+    snapshot: history.present,
     undo,
   };
 }

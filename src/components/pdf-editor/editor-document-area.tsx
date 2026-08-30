@@ -13,6 +13,7 @@ interface EditorDocumentAreaProps {
   isRailOpen: boolean;
   layout: EditorPage[];
   navigation: PageNavigation;
+  onRemovePage: (id: string) => void;
   scrollRef: RefObject<HTMLDivElement | null>;
   sizes: PageSize[];
 }
@@ -24,6 +25,7 @@ export function EditorDocumentArea({
   isRailOpen,
   layout,
   navigation,
+  onRemovePage,
   scrollRef,
   sizes,
 }: EditorDocumentAreaProps) {
@@ -34,6 +36,7 @@ export function EditorDocumentArea({
           activeIndex={navigation.activeIndex}
           doc={doc}
           layout={layout}
+          onRemove={onRemovePage}
           onSelect={navigation.goToPage}
           sizes={sizes}
         />

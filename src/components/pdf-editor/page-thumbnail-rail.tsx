@@ -13,6 +13,7 @@ interface PageThumbnailRailProps {
   activeIndex: number;
   doc: PDFDocumentProxy;
   layout: EditorPage[];
+  onRemove: (id: string) => void;
   onSelect: (index: number) => void;
   sizes: PageSize[];
 }
@@ -21,6 +22,7 @@ export function PageThumbnailRail({
   activeIndex,
   doc,
   layout,
+  onRemove,
   onSelect,
   sizes,
 }: PageThumbnailRailProps) {
@@ -40,13 +42,15 @@ export function PageThumbnailRail({
     >
       {pages.map(({ page, position, size }) => (
         <PageThumbnail
+          canRemove={layout.length > 1}
           doc={doc}
           isActive={position === activeIndex}
           key={page.id}
+          onRemove={onRemove}
           onSelect={onSelect}
+          page={page}
           position={position}
           size={size}
-          sourceIndex={page.sourceIndex}
         />
       ))}
     </nav>

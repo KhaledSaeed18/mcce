@@ -18,3 +18,20 @@ export function buildPages(pageCount: number): EditorPage[] {
     sourceIndex,
   }));
 }
+
+/** A document has to keep a page, so the last one left is not removable. */
+export function withoutPage(pages: EditorPage[], id: string): EditorPage[] {
+  if (pages.length < 2) {
+    return pages;
+  }
+  return pages.filter((page) => page.id !== id);
+}
+
+/** Pages the file no longer has, from markup saved against a file since replaced. */
+export function withKnownPages(
+  pages: EditorPage[],
+  pageCount: number
+): EditorPage[] {
+  const known = pages.filter((page) => page.sourceIndex < pageCount);
+  return known.length > 0 ? known : buildPages(pageCount);
+}

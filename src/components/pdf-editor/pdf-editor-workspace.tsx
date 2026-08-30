@@ -35,8 +35,6 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     useEditorPanels();
 
   const { bytes, doc, status } = usePdfDocument(node?.id);
-  const { activeSize, isDocumentShown, layout, navigation, sizes } =
-    useEditorPages(scrollRef, doc);
   const viewport = useElementSize(scrollRef);
   const {
     color,
@@ -48,26 +46,23 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     strokeWidth,
     tool,
   } = useEditorTools();
-  const {
-    actions,
-    annotations,
-    canRedo,
-    canUndo,
-    changeColor,
-    changeFontSize,
-    clear,
-    draft: textDraft,
-    openDraft,
-    redo,
-    selectedId,
-    undo,
-  } = useEditorMarkup({ fileId: node?.id, setColor, setFontSize });
+  const markup = useEditorMarkup({
+    fileId: node?.id,
+    pageCount: doc?.numPages ?? 0,
+    setColor,
+    setFontSize,
+  });
+  const { activeSize, isDocumentShown, navigation, sizes } = useEditorPages(
+    scrollRef,
+    doc,
+    markup.pages
+  );
   const zoom = usePdfZoom({ pageSize: activeSize, viewport });
   const { exportPdf, status: exportStatus } = usePdfExport({
-    annotations,
+    annotations: markup.annotations,
     bytes,
     fileName: node ? node.name : DEFAULT_EXPORT_NAME,
-    layout,
+    layout: markup.pages,
   });
 
   const settings = { color, fontSize, strokeWidth, tool };
@@ -94,20 +89,20 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
         ) : null}
         <div className="flex min-w-0 flex-1 flex-col">
           <EditorToolbar
-            canRedo={canRedo}
-            canUndo={canUndo}
+            canRedo={markup.canRedo}
+            canUndo={markup.canUndo}
             color={color}
             exportStatus={exportStatus}
             fontSize={fontSize}
             navigation={navigation}
-            onClear={clear}
-            onColorChange={changeColor}
+            onClear={markup.clear}
+            onColorChange={markup.changeColor}
             onExport={exportPdf}
-            onFontSizeChange={changeFontSize}
-            onRedo={redo}
+            onFontSizeChange={markup.changeFontSize}
+            onRedo={markup.redo}
             onStrokeWidthChange={setStrokeWidth}
             onToolChange={setTool}
-            onUndo={undo}
+            onUndo={markup.undo}
             strokeWidth={strokeWidth}
             tool={tool}
             zoom={zoom}
@@ -115,21 +110,22 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
           <EditorDocumentArea
             doc={doc}
             isRailOpen={isRailOpen}
-            layout={layout}
+            layout={markup.pages}
             navigation={navigation}
+            onRemovePage={markup.removePage}
             scrollRef={scrollRef}
             sizes={sizes}
           >
             {doc && isDocumentShown ? (
               <PdfPageList
-                actions={actions}
-                annotations={annotations}
+                actions={markup.actions}
+                annotations={markup.annotations}
                 doc={doc}
-                onTextDraftChange={openDraft}
-                pages={layout}
-                selectedId={selectedId}
+                onTextDraftChange={markup.openDraft}
+                pages={markup.pages}
+                selectedId={markup.selectedId}
                 settings={settings}
-                textDraft={textDraft}
+                textDraft={markup.draft}
                 zoom={zoom.value}
               />
             ) : (

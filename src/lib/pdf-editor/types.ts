@@ -77,6 +77,16 @@ export interface EditorPage {
   sourceIndex: number;
 }
 
+/**
+ * Everything about a file that the reader can change and take back: the markup
+ * and the pages it sits on. They move together because removing a page removes
+ * what was written on it.
+ */
+export interface EditorSnapshot {
+  annotations: Annotation[];
+  pages: EditorPage[];
+}
+
 /** Whether the zoom is a number the reader picked or one fitted to the window. */
 export type ZoomMode = "custom" | "fit-page" | "fit-width";
 

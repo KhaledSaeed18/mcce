@@ -10,7 +10,10 @@ export const PDF_PROXY_CACHE_CONTROL = "public, max-age=3600";
 /** Where the copied pdf.js font files are served from, also used by the copy step. */
 export const PDF_STANDARD_FONTS_PATH = "/pdfjs/standard_fonts/";
 
+/** Markup only, from before pages could be edited. Still read, never written. */
 export const PDF_ANNOTATIONS_KEY_PREFIX = "mcce.pdf-annotations.v1";
+
+export const PDF_DOCUMENT_KEY_PREFIX = "mcce.pdf-document.v1";
 
 /** The page list's padding and borders, which a fitted page has to leave room for. */
 export const PAGE_FIT_PADDING = 56;

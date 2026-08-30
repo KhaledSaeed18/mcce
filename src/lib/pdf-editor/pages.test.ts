@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildPageId, buildPages } from "./pages";
+import { buildPageId, buildPages, withKnownPages, withoutPage } from "./pages";
 
 describe("buildPageId", () => {
   it("derives an identity from a page's place in the file", () => {
@@ -27,5 +27,42 @@ describe("buildPages", () => {
     expect(pages.map((page) => page.id)).toEqual(
       pages.map((page) => buildPageId(page.sourceIndex))
     );
+  });
+});
+
+describe("withoutPage", () => {
+  it("takes the named page out", () => {
+    const pages = withoutPage(buildPages(3), "p1");
+
+    expect(pages.map((page) => page.id)).toEqual(["p0", "p2"]);
+  });
+
+  it("keeps the last page, because a document needs one", () => {
+    const pages = buildPages(1);
+
+    expect(withoutPage(pages, "p0")).toEqual(pages);
+  });
+
+  it("leaves the list alone when the page is not in it", () => {
+    expect(withoutPage(buildPages(2), "p9")).toHaveLength(2);
+  });
+});
+
+describe("withKnownPages", () => {
+  it("keeps pages the file still has", () => {
+    expect(withKnownPages(buildPages(3), 3)).toHaveLength(3);
+  });
+
+  it("drops pages a shorter file no longer has", () => {
+    expect(withKnownPages(buildPages(5), 2).map((page) => page.id)).toEqual([
+      "p0",
+      "p1",
+    ]);
+  });
+
+  it("starts over when nothing stored matches the file", () => {
+    const stored = [{ id: "p9", rotation: 0, sourceIndex: 9 }];
+
+    expect(withKnownPages(stored, 2)).toEqual(buildPages(2));
   });
 });

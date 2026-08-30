@@ -1,7 +1,10 @@
-import { PDF_ANNOTATIONS_KEY_PREFIX } from "@/config/pdf-editor";
+import {
+  PDF_ANNOTATIONS_KEY_PREFIX,
+  PDF_DOCUMENT_KEY_PREFIX,
+} from "@/config/pdf-editor";
 import { readJson, writeJson } from "@/lib/storage";
-import { buildPageId } from "./pages";
-import type { Annotation } from "./types";
+import { buildPageId, buildPages, withKnownPages } from "./pages";
+import type { Annotation, EditorSnapshot } from "./types";
 
 /** Markup on disk, which may predate pages being pointed at by identity. */
 interface StoredAnnotation {
@@ -14,6 +17,10 @@ function buildKey(fileId: string): string {
   return `${PDF_ANNOTATIONS_KEY_PREFIX}.${fileId}`;
 }
 
+function buildDocumentKey(fileId: string): string {
+  return `${PDF_DOCUMENT_KEY_PREFIX}.${fileId}`;
+}
+
 /** The one cast in the editor that is honest: what comes back off disk is untyped. */
 function withPageId(stored: StoredAnnotation): Annotation {
   const { pageIndex, ...annotation } = stored;
@@ -23,13 +30,31 @@ function withPageId(stored: StoredAnnotation): Annotation {
   };
 }
 
-export function readAnnotations(fileId: string): Annotation[] {
+function readAnnotations(fileId: string): Annotation[] {
   return readJson<StoredAnnotation[]>(buildKey(fileId), []).map(withPageId);
 }
 
-export function writeAnnotations(
+const NOTHING_STORED: EditorSnapshot = { annotations: [], pages: [] };
+
+/** What was left open on this file last time, or the file as it arrives. */
+export function readDocument(
   fileId: string,
-  annotations: Annotation[]
-): void {
-  writeJson(buildKey(fileId), annotations);
+  pageCount: number
+): EditorSnapshot {
+  const stored = readJson<EditorSnapshot>(
+    buildDocumentKey(fileId),
+    NOTHING_STORED
+  );
+  // A stored file always has pages, so their absence means there is none.
+  if (stored.pages.length > 0) {
+    return {
+      annotations: stored.annotations,
+      pages: withKnownPages(stored.pages, pageCount),
+    };
+  }
+  return { annotations: readAnnotations(fileId), pages: buildPages(pageCount) };
+}
+
+export function writeDocument(fileId: string, snapshot: EditorSnapshot): void {
+  writeJson(buildDocumentKey(fileId), snapshot);
 }

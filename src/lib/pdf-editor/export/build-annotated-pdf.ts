@@ -1,5 +1,6 @@
 import { PDFDocument } from "pdf-lib";
 import type { Annotation, EditorPage } from "../types";
+import { applyLayout } from "./apply-layout";
 import { drawAnnotationOnPage } from "./draw-on-page";
 import { embedAnnotationFont } from "./embed-font";
 
@@ -13,6 +14,7 @@ export async function buildAnnotatedPdf(
   layout: EditorPage[]
 ): Promise<Uint8Array> {
   const pdf = await PDFDocument.load(source);
+  applyLayout(pdf, layout);
   const pages = pdf.getPages();
   const positionById = new Map(
     layout.map((page, position) => [page.id, position])

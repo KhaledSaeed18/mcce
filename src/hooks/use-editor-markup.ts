@@ -1,11 +1,13 @@
 import { useCallback } from "react";
+import { useEditorDocument } from "@/hooks/use-editor-document";
 import { useEditorHotkeys } from "@/hooks/use-editor-hotkeys";
 import { useEditorText } from "@/hooks/use-editor-text";
-import { usePdfAnnotations } from "@/hooks/use-pdf-annotations";
 import type { AnnotationActions } from "@/lib/pdf-editor/types";
 
 interface EditorMarkupOptions {
   fileId: string | undefined;
+  /** The file's own page count, which a stored page list is checked against. */
+  pageCount: number;
   setColor: (color: string) => void;
   setFontSize: (fontSize: number) => void;
 }
@@ -13,6 +15,7 @@ interface EditorMarkupOptions {
 /** One file's markup: what is on the page, what is selected, and the keys for both. */
 export function useEditorMarkup({
   fileId,
+  pageCount,
   setColor,
   setFontSize,
 }: EditorMarkupOptions) {
@@ -24,11 +27,13 @@ export function useEditorMarkup({
     clear,
     eraseAt,
     move,
+    pages,
     redo,
     remove,
+    removePage,
     replace,
     undo,
-  } = usePdfAnnotations(fileId);
+  } = useEditorDocument(fileId, pageCount);
   const {
     changeColor,
     changeFontSize,
@@ -72,7 +77,9 @@ export function useEditorMarkup({
     clear,
     draft,
     openDraft,
+    pages,
     redo,
+    removePage,
     selectedId,
     undo,
   };
