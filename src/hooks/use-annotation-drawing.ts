@@ -38,6 +38,7 @@ interface AnnotationDrawingOptions {
   annotations: Annotation[];
   onDraft: (draft: TextDraft) => void;
   pageId: string;
+  rotation: number;
   settings: ToolSettings;
   size: PageSize;
   zoom: number;
@@ -50,6 +51,7 @@ export function useAnnotationDrawing({
   onDraft,
   pageId,
   settings,
+  rotation,
   size,
   zoom,
 }: AnnotationDrawingOptions) {
@@ -59,14 +61,22 @@ export function useAnnotationDrawing({
     onMoveText: actions.moveText,
     onSelect: actions.select,
     pageId,
+    rotation,
     settings,
     size,
     zoom,
   });
-  const eraser = useEraser({ onErase: actions.erase, pageId, size, zoom });
+  const eraser = useEraser({
+    onErase: actions.erase,
+    pageId,
+    rotation,
+    size,
+    zoom,
+  });
   const shapes = useShapeDrawing({
     onAdd: actions.add,
     pageId,
+    rotation,
     settings,
     size,
     zoom,

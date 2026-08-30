@@ -1,4 +1,4 @@
-import { PDFDocument } from "pdf-lib";
+import { degrees, PDFDocument } from "pdf-lib";
 import { describe, expect, it } from "vitest";
 import { buildPages } from "../pages";
 import type { EditorPage } from "../types";
@@ -46,5 +46,29 @@ describe("applyLayout", () => {
     applyLayout(pdf, [third, first, second]);
 
     expect(widths(pdf)).toEqual([102, 100, 101]);
+  });
+});
+
+describe("applyLayout turning pages", () => {
+  it("turns a page as far as the editor has turned it", async () => {
+    const pdf = await makeDocument(2);
+    const layout = buildPages(2);
+    layout[0].rotation = 90;
+
+    applyLayout(pdf, layout);
+
+    expect(pdf.getPage(0).getRotation().angle).toBe(90);
+    expect(pdf.getPage(1).getRotation().angle).toBe(0);
+  });
+
+  it("adds the turn to the one the page already had", async () => {
+    const pdf = await makeDocument(1);
+    pdf.getPage(0).setRotation(degrees(90));
+    const layout = buildPages(1);
+    layout[0].rotation = 180;
+
+    applyLayout(pdf, layout);
+
+    expect(pdf.getPage(0).getRotation().angle).toBe(270);
   });
 });

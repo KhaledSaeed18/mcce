@@ -114,6 +114,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
             navigation={navigation}
             onRemovePage={markup.removePage}
             onReorderPage={markup.reorderPage}
+            onRotatePage={markup.rotatePage}
             scrollRef={scrollRef}
             sizes={sizes}
           >

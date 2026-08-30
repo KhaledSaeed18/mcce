@@ -30,6 +30,12 @@ export const PLACEHOLDER_PAGE_SIZE = { height: 792, width: 612 };
 /** How wide a page is drawn in the thumbnail rail, in screen pixels. */
 export const THUMBNAIL_WIDTH = 116;
 
+/** Pages turn in quarter turns, clockwise, and come back round after four. */
+export const PAGE_QUARTER_TURN = 90;
+export const PAGE_HALF_TURN = 180;
+export const PAGE_THREE_QUARTER_TURN = 270;
+export const PAGE_FULL_TURN = 360;
+
 /** Marks each thumbnail so a drag can work out which page it is over. */
 export const RAIL_POSITION_ATTRIBUTE = "data-rail-position";
 

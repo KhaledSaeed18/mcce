@@ -15,6 +15,7 @@ import type {
 interface ShapeDrawingOptions {
   onAdd: (annotation: Annotation) => void;
   pageId: string;
+  rotation: number;
   settings: ToolSettings;
   size: PageSize;
   zoom: number;
@@ -25,6 +26,7 @@ export function useShapeDrawing({
   onAdd,
   pageId,
   settings,
+  rotation,
   size,
   zoom,
 }: ShapeDrawingOptions) {
@@ -41,7 +43,7 @@ export function useShapeDrawing({
 
   const handleDown = useCallback(
     (event: PointerEvent<HTMLCanvasElement>) => {
-      const point = toPagePoint(event, zoom, size);
+      const point = toPagePoint(event, zoom, size, rotation);
       event.currentTarget.setPointerCapture(event.pointerId);
       startRef.current = point;
       pointsRef.current = [point];
@@ -51,7 +53,7 @@ export function useShapeDrawing({
           : buildShape("rect", point, point, pageId, settings)
       );
     },
-    [pageId, settings, size, updateDraft, zoom]
+    [pageId, rotation, settings, size, updateDraft, zoom]
   );
 
   const handleMove = useCallback(
@@ -61,7 +63,7 @@ export function useShapeDrawing({
       if (!origin) {
         return;
       }
-      const point = toPagePoint(event, zoom, size);
+      const point = toPagePoint(event, zoom, size, rotation);
 
       if (settings.tool === "pen") {
         pointsRef.current = [...pointsRef.current, point];
@@ -72,7 +74,7 @@ export function useShapeDrawing({
         updateDraft(buildShape(settings.tool, origin, point, pageId, settings));
       }
     },
-    [pageId, settings, size, updateDraft, zoom]
+    [pageId, rotation, settings, size, updateDraft, zoom]
   );
 
   const handleUp = useCallback(() => {

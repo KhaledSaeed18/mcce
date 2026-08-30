@@ -16,6 +16,7 @@ interface TextToolOptions {
   onMoveText: (id: string, dx: number, dy: number) => void;
   onSelect: (id: string | null) => void;
   pageId: string;
+  rotation: number;
   settings: ToolSettings;
   size: PageSize;
   zoom: number;
@@ -36,6 +37,7 @@ export function useTextTool({
   onSelect,
   pageId,
   settings,
+  rotation,
   size,
   zoom,
 }: TextToolOptions) {
@@ -50,6 +52,7 @@ export function useTextTool({
     annotations,
     onDraft,
     pageId,
+    rotation,
     settings,
     size,
     zoom,
@@ -57,20 +60,20 @@ export function useTextTool({
 
   const handleDown = useCallback(
     (event: PointerEvent<HTMLCanvasElement>) => {
-      if (start(toPagePoint(event, zoom, size))) {
+      if (start(toPagePoint(event, zoom, size, rotation))) {
         event.currentTarget.setPointerCapture(event.pointerId);
       }
     },
-    [size, start, zoom]
+    [rotation, size, start, zoom]
   );
 
   const handleMove = useCallback(
     (event: PointerEvent<HTMLCanvasElement>) => {
-      const point = toPagePoint(event, zoom, size);
+      const point = toPagePoint(event, zoom, size, rotation);
       move(point);
       hover.update(point);
     },
-    [hover, move, size, zoom]
+    [hover, move, rotation, size, zoom]
   );
 
   const handleUp = useCallback(

@@ -5,21 +5,28 @@ import type { PageSize, Point } from "@/lib/pdf-editor/types";
 interface EraserOptions {
   onErase: (pageId: string, point: Point) => void;
   pageId: string;
+  rotation: number;
   size: PageSize;
   zoom: number;
 }
 
 /** Rubs markup out along the pointer's path for as long as the press lasts. */
-export function useEraser({ onErase, pageId, size, zoom }: EraserOptions) {
+export function useEraser({
+  onErase,
+  pageId,
+  rotation,
+  size,
+  zoom,
+}: EraserOptions) {
   const isErasingRef = useRef(false);
 
   const handleDown = useCallback(
     (event: PointerEvent<HTMLCanvasElement>) => {
       event.currentTarget.setPointerCapture(event.pointerId);
       isErasingRef.current = true;
-      onErase(pageId, toPagePoint(event, zoom, size));
+      onErase(pageId, toPagePoint(event, zoom, size, rotation));
     },
-    [onErase, pageId, size, zoom]
+    [onErase, pageId, rotation, size, zoom]
   );
 
   const handleMove = useCallback(
@@ -28,9 +35,9 @@ export function useEraser({ onErase, pageId, size, zoom }: EraserOptions) {
       if (!isErasingRef.current) {
         return;
       }
-      onErase(pageId, toPagePoint(event, zoom, size));
+      onErase(pageId, toPagePoint(event, zoom, size, rotation));
     },
-    [onErase, pageId, size, zoom]
+    [onErase, pageId, rotation, size, zoom]
   );
 
   const handleUp = useCallback(() => {

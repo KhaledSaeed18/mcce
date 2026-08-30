@@ -3,13 +3,19 @@ import { useDragMove } from "@/hooks/use-drag-move";
 
 interface TextDraftHandleProps {
   onMove: (dx: number, dy: number) => void;
+  rotation: number;
   zoom: number;
 }
 
-export function TextDraftHandle({ onMove, zoom }: TextDraftHandleProps) {
+export function TextDraftHandle({
+  onMove,
+  rotation,
+  zoom,
+}: TextDraftHandleProps) {
   const { handlePointerDown, handlePointerMove, handlePointerUp } = useDragMove(
     zoom,
-    onMove
+    onMove,
+    rotation
   );
 
   return (

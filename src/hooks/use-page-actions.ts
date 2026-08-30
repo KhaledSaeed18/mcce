@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { movePage, withoutPage } from "@/lib/pdf-editor/pages";
+import { movePage, turnPage, withoutPage } from "@/lib/pdf-editor/pages";
 import type { EditorSnapshot } from "@/lib/pdf-editor/types";
 
 type Commit = (next: (current: EditorSnapshot) => EditorSnapshot) => void;
@@ -33,5 +33,14 @@ export function usePageActions(commit: Commit) {
     [commit]
   );
 
-  return { removePage, reorderPage };
+  const rotatePage = useCallback(
+    (id: string) =>
+      commit((current) => ({
+        ...current,
+        pages: turnPage(current.pages, id),
+      })),
+    [commit]
+  );
+
+  return { removePage, reorderPage, rotatePage };
 }

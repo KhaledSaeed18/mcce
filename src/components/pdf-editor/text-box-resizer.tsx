@@ -13,6 +13,7 @@ interface TextBoxResizerProps {
   /** Called on release, for a caller that turns a whole drag into one change. */
   onEnd?: () => void;
   onResize: (edge: TextBoxEdge, dx: number) => void;
+  rotation: number;
   zoom: number;
 }
 
@@ -21,6 +22,7 @@ export function TextBoxResizer({
   edge,
   onEnd,
   onResize,
+  rotation,
   zoom,
 }: TextBoxResizerProps) {
   const handleMove = useCallback(
@@ -29,7 +31,8 @@ export function TextBoxResizer({
   );
   const { handlePointerDown, handlePointerMove, handlePointerUp } = useDragMove(
     zoom,
-    handleMove
+    handleMove,
+    rotation
   );
 
   const handleUp = useCallback(() => {

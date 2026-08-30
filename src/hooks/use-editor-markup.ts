@@ -32,6 +32,7 @@ export function useEditorMarkup({
     remove,
     removePage,
     reorderPage,
+    rotatePage,
     replace,
     undo,
   } = useEditorDocument(fileId, pageCount);
@@ -82,6 +83,7 @@ export function useEditorMarkup({
     redo,
     removePage,
     reorderPage,
+    rotatePage,
     selectedId,
     undo,
   };

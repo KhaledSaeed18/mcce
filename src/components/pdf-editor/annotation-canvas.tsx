@@ -3,6 +3,10 @@ import { MAX_RENDER_DPR } from "@/config/pdf-editor";
 import { useAnnotationDrawing } from "@/hooks/use-annotation-drawing";
 import { drawAnnotation, drawTextHighlight } from "@/lib/pdf-editor/draw";
 import { withDrag } from "@/lib/pdf-editor/move";
+import {
+  getRenderedSize,
+  getRotationTransform,
+} from "@/lib/pdf-editor/rotation";
 import type {
   Annotation,
   AnnotationActions,
@@ -45,6 +49,8 @@ interface AnnotationCanvasProps {
   pageId: string;
   /** A box mid-resize, drawn at the width the pointer is holding it at. */
   preview: TextAnnotation | null;
+  /** Quarter turns the page has been given, which the markup is drawn through. */
+  rotation: number;
   /** Framed by its own overlay, so it needs no hover ring of its own. */
   selectedId: string | null;
   settings: ToolSettings;
@@ -59,12 +65,15 @@ export function AnnotationCanvas({
   onDraft,
   pageId,
   preview,
+  rotation,
   selectedId,
   settings,
   size,
   zoom,
 }: AnnotationCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const rendered = getRenderedSize(size, rotation);
+  const transform = getRotationTransform(size, rotation);
   const {
     draft,
     drag,
@@ -79,6 +88,7 @@ export function AnnotationCanvas({
     annotations,
     onDraft,
     pageId,
+    rotation,
     settings,
     size,
     zoom,
@@ -95,10 +105,14 @@ export function AnnotationCanvas({
     }
 
     const dpr = Math.min(window.devicePixelRatio || 1, MAX_RENDER_DPR);
-    canvas.width = size.width * zoom * dpr;
-    canvas.height = size.height * zoom * dpr;
+    canvas.width = rendered.width * zoom * dpr;
+    canvas.height = rendered.height * zoom * dpr;
     ctx.setTransform(zoom * dpr, 0, 0, zoom * dpr, 0, 0);
-    ctx.clearRect(0, 0, size.width, size.height);
+    ctx.clearRect(0, 0, rendered.width, rendered.height);
+    // Markup is held in the page's upright space, so the context is turned to
+    // match the page rather than every coordinate being rewritten.
+    ctx.translate(transform.tx, transform.ty);
+    ctx.rotate(transform.angle);
 
     for (const stored of withDrag(annotations, drag)) {
       if (stored.id === editingId) {
@@ -113,7 +127,20 @@ export function AnnotationCanvas({
     if (draft) {
       drawAnnotation(ctx, draft);
     }
-  }, [annotations, draft, drag, editingId, highlightId, preview, size, zoom]);
+  }, [
+    annotations,
+    draft,
+    drag,
+    editingId,
+    highlightId,
+    preview,
+    rendered.height,
+    rendered.width,
+    transform.angle,
+    transform.tx,
+    transform.ty,
+    zoom,
+  ]);
 
   return (
     <canvas
@@ -128,7 +155,7 @@ export function AnnotationCanvas({
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       ref={canvasRef}
-      style={{ height: size.height * zoom, width: size.width * zoom }}
+      style={{ height: rendered.height * zoom, width: rendered.width * zoom }}
     />
   );
 }

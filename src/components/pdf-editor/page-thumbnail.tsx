@@ -1,4 +1,4 @@
-import { Trash2Icon } from "lucide-react";
+import { RotateCwIcon, Trash2Icon } from "lucide-react";
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import {
   type ComponentProps,
@@ -11,6 +11,7 @@ import { RAIL_POSITION_ATTRIBUTE, THUMBNAIL_WIDTH } from "@/config/pdf-editor";
 import { useInViewport } from "@/hooks/use-in-viewport";
 import { usePdfPageRender } from "@/hooks/use-pdf-page-render";
 import { useScrollIntoView } from "@/hooks/use-scroll-into-view";
+import { getRenderedSize } from "@/lib/pdf-editor/rotation";
 import type { EditorPage, PageSize } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
@@ -23,6 +24,7 @@ interface PageThumbnailProps {
   isActive: boolean;
   isDragging: boolean;
   onRemove: (id: string) => void;
+  onRotate: (id: string) => void;
   onSelect: (position: number) => void;
   page: EditorPage;
   /** Where the page sits now, which is what it is labelled and jumped to by. */
@@ -37,6 +39,7 @@ export function PageThumbnail({
   isActive,
   isDragging,
   onRemove,
+  onRotate,
   onSelect,
   page,
   position,
@@ -44,12 +47,14 @@ export function PageThumbnail({
 }: PageThumbnailProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const isVisible = useInViewport(wrapperRef);
-  const zoom = THUMBNAIL_WIDTH / size.width;
+  const rendered = getRenderedSize(size, page.rotation);
+  const zoom = THUMBNAIL_WIDTH / rendered.width;
   const { canvasRef } = usePdfPageRender(
     doc,
     page.sourceIndex,
     zoom,
-    isVisible
+    isVisible,
+    page.rotation
   );
   useScrollIntoView(wrapperRef, isActive);
 
@@ -63,7 +68,12 @@ export function PageThumbnail({
     [onRemove, page.id]
   );
 
-  /** Reaching for the bin is not the start of carrying the page somewhere. */
+  const handleRotate = useCallback(
+    () => onRotate(page.id),
+    [onRotate, page.id]
+  );
+
+  /** Reaching for a button on the page is not the start of carrying it somewhere. */
   const handleRemovePointerDown = useCallback(
     (event: PointerEvent<HTMLButtonElement>) => event.stopPropagation(),
     []
@@ -92,9 +102,22 @@ export function PageThumbnail({
             isActive ? "border-primary shadow-md" : "shadow-xs"
           )}
           ref={canvasRef}
-          style={{ height: size.height * zoom, width: THUMBNAIL_WIDTH }}
+          style={{ height: rendered.height * zoom, width: THUMBNAIL_WIDTH }}
         />
       </button>
+      <Button
+        aria-label={`Turn page ${position + 1}`}
+        className={cn(
+          "absolute -top-2 -left-2 size-7 opacity-0 transition-opacity focus-visible:opacity-100 group-hover:opacity-100",
+          isActive && "opacity-100"
+        )}
+        onClick={handleRotate}
+        onPointerDown={handleRemovePointerDown}
+        size="icon"
+        variant="outline"
+      >
+        <RotateCwIcon />
+      </Button>
       {canRemove ? (
         <Button
           aria-label={`Remove page ${position + 1}`}

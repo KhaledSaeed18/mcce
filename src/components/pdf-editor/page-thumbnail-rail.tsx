@@ -25,6 +25,7 @@ interface PageThumbnailRailProps {
   layout: EditorPage[];
   onMove: (from: number, to: number) => void;
   onRemove: (id: string) => void;
+  onRotate: (id: string) => void;
   onSelect: (index: number) => void;
   sizes: PageSize[];
 }
@@ -35,6 +36,7 @@ export function PageThumbnailRail({
   layout,
   onMove,
   onRemove,
+  onRotate,
   onSelect,
   sizes,
 }: PageThumbnailRailProps) {
@@ -65,6 +67,7 @@ export function PageThumbnailRail({
             isActive={position === activeIndex}
             isDragging={drag?.from === position}
             onRemove={onRemove}
+            onRotate={onRotate}
             onSelect={onSelect}
             page={page}
             position={position}

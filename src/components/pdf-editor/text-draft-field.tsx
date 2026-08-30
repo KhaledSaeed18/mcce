@@ -19,6 +19,7 @@ interface TextDraftFieldProps {
   onEdit: (text: string) => void;
   onMove: (dx: number, dy: number) => void;
   onResize: (edge: TextBoxEdge, dx: number) => void;
+  rotation: number;
   zoom: number;
 }
 
@@ -30,6 +31,7 @@ export function TextDraftField({
   onEdit,
   onMove,
   onResize,
+  rotation,
   zoom,
 }: TextDraftFieldProps) {
   const fieldRef = useRef<HTMLTextAreaElement>(null);
@@ -59,12 +61,22 @@ export function TextDraftField({
 
   return (
     <div
-      className="absolute z-10"
+      className="pointer-events-auto absolute z-10"
       style={{ left: box.x * zoom, top: box.y * zoom, width: width * zoom }}
     >
-      <TextDraftHandle onMove={onMove} zoom={zoom} />
-      <TextBoxResizer edge="left" onResize={onResize} zoom={zoom} />
-      <TextBoxResizer edge="right" onResize={onResize} zoom={zoom} />
+      <TextDraftHandle onMove={onMove} rotation={rotation} zoom={zoom} />
+      <TextBoxResizer
+        edge="left"
+        onResize={onResize}
+        rotation={rotation}
+        zoom={zoom}
+      />
+      <TextBoxResizer
+        edge="right"
+        onResize={onResize}
+        rotation={rotation}
+        zoom={zoom}
+      />
       <textarea
         aria-label="Annotation text"
         autoFocus

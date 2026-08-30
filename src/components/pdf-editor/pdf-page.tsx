@@ -1,6 +1,7 @@
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import { useRef } from "react";
 import { AnnotationCanvas } from "@/components/pdf-editor/annotation-canvas";
+import { PageOverlayLayer } from "@/components/pdf-editor/page-overlay-layer";
 import { TextDraftField } from "@/components/pdf-editor/text-draft-field";
 import { TextSelectionBox } from "@/components/pdf-editor/text-selection-box";
 import {
@@ -12,6 +13,7 @@ import { usePdfPageRender } from "@/hooks/use-pdf-page-render";
 import { useTextBoxResize } from "@/hooks/use-text-box-resize";
 import { useTextDraft } from "@/hooks/use-text-draft";
 import { findText } from "@/lib/pdf-editor/move";
+import { getRenderedSize } from "@/lib/pdf-editor/rotation";
 import type {
   Annotation,
   AnnotationActions,
@@ -52,9 +54,11 @@ export function PdfPage({
     doc,
     page.sourceIndex,
     zoom,
-    isVisible
+    isVisible,
+    page.rotation
   );
   const pageSize = size ?? PLACEHOLDER_PAGE_SIZE;
+  const rendered = getRenderedSize(pageSize, page.rotation);
   const selected = findText(annotations, selectedId);
   const pageMarker = { [PAGE_INDEX_ATTRIBUTE]: position };
   const { cancel, commit, edit, move, request, resize } = useTextDraft({
@@ -75,7 +79,7 @@ export function PdfPage({
       {...pageMarker}
       className="relative scroll-mt-6 overflow-hidden border-2 bg-card shadow-md"
       ref={containerRef}
-      style={{ height: pageSize.height * zoom, width: pageSize.width * zoom }}
+      style={{ height: rendered.height * zoom, width: rendered.width * zoom }}
     >
       <canvas className="block" ref={canvasRef} />
       {size ? (
@@ -86,31 +90,36 @@ export function PdfPage({
           onDraft={request}
           pageId={page.id}
           preview={selection.preview}
+          rotation={page.rotation}
           selectedId={selectedId}
           settings={settings}
           size={size}
           zoom={zoom}
         />
       ) : null}
-      {selected && !textDraft ? (
-        <TextSelectionBox
-          annotation={selection.preview ?? selected}
-          onResize={selection.resize}
-          onResizeEnd={selection.end}
-          zoom={zoom}
-        />
-      ) : null}
-      {textDraft ? (
-        <TextDraftField
-          draft={textDraft}
-          onCancel={cancel}
-          onCommit={commit}
-          onEdit={edit}
-          onMove={move}
-          onResize={resize}
-          zoom={zoom}
-        />
-      ) : null}
+      <PageOverlayLayer rotation={page.rotation} size={pageSize} zoom={zoom}>
+        {selected && !textDraft ? (
+          <TextSelectionBox
+            annotation={selection.preview ?? selected}
+            onResize={selection.resize}
+            onResizeEnd={selection.end}
+            rotation={page.rotation}
+            zoom={zoom}
+          />
+        ) : null}
+        {textDraft ? (
+          <TextDraftField
+            draft={textDraft}
+            onCancel={cancel}
+            onCommit={commit}
+            onEdit={edit}
+            onMove={move}
+            onResize={resize}
+            rotation={page.rotation}
+            zoom={zoom}
+          />
+        ) : null}
+      </PageOverlayLayer>
     </div>
   );
 }

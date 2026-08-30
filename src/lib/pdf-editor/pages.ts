@@ -1,3 +1,4 @@
+import { PAGE_FULL_TURN, PAGE_QUARTER_TURN } from "@/config/pdf-editor";
 import type { EditorPage } from "./types";
 
 /**
@@ -25,6 +26,18 @@ export function withoutPage(pages: EditorPage[], id: string): EditorPage[] {
     return pages;
   }
   return pages.filter((page) => page.id !== id);
+}
+
+/** Turns one page a quarter further round, coming back upright after four. */
+export function turnPage(pages: EditorPage[], id: string): EditorPage[] {
+  return pages.map((page) =>
+    page.id === id
+      ? {
+          ...page,
+          rotation: (page.rotation + PAGE_QUARTER_TURN) % PAGE_FULL_TURN,
+        }
+      : page
+  );
 }
 
 /** Takes the page at one place in the list and puts it back in at another. */

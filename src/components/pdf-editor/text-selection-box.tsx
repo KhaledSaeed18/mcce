@@ -6,6 +6,7 @@ interface TextSelectionBoxProps {
   annotation: TextAnnotation;
   onResize: (edge: TextBoxEdge, dx: number) => void;
   onResizeEnd: () => void;
+  rotation: number;
   zoom: number;
 }
 
@@ -18,6 +19,7 @@ export function TextSelectionBox({
   annotation,
   onResize,
   onResizeEnd,
+  rotation,
   zoom,
 }: TextSelectionBoxProps) {
   const box = getTextBox(annotation);
@@ -37,12 +39,14 @@ export function TextSelectionBox({
         edge="left"
         onEnd={onResizeEnd}
         onResize={onResize}
+        rotation={rotation}
         zoom={zoom}
       />
       <TextBoxResizer
         edge="right"
         onEnd={onResizeEnd}
         onResize={onResize}
+        rotation={rotation}
         zoom={zoom}
       />
     </div>

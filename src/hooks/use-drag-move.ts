@@ -1,9 +1,11 @@
 import { type PointerEvent, useCallback, useRef } from "react";
+import { toBaseDelta } from "@/lib/pdf-editor/rotation";
 
-/** Drag handlers that report movement in page units, whatever the current zoom. */
+/** Drag handlers reporting movement in page units, whatever the zoom or the turn. */
 export function useDragMove(
   zoom: number,
-  onMove: (dx: number, dy: number) => void
+  onMove: (dx: number, dy: number) => void,
+  rotation = 0
 ) {
   const lastRef = useRef<{ x: number; y: number } | null>(null);
 
@@ -22,9 +24,16 @@ export function useDragMove(
         return;
       }
       lastRef.current = { x: event.clientX, y: event.clientY };
-      onMove((event.clientX - last.x) / zoom, (event.clientY - last.y) / zoom);
+      const delta = toBaseDelta(
+        {
+          x: (event.clientX - last.x) / zoom,
+          y: (event.clientY - last.y) / zoom,
+        },
+        rotation
+      );
+      onMove(delta.x, delta.y);
     },
-    [onMove, zoom]
+    [onMove, rotation, zoom]
   );
 
   const handlePointerUp = useCallback(() => {
