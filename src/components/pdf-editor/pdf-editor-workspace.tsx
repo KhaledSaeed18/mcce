@@ -35,10 +35,8 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     useEditorPanels();
 
   const { bytes, doc, status } = usePdfDocument(node?.id);
-  const { activeSize, isDocumentShown, pages, sizes } = useEditorPages(
-    scrollRef,
-    doc
-  );
+  const { activeSize, isDocumentShown, layout, navigation, sizes } =
+    useEditorPages(scrollRef, doc);
   const viewport = useElementSize(scrollRef);
   const {
     color,
@@ -69,6 +67,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     annotations,
     bytes,
     fileName: node ? node.name : DEFAULT_EXPORT_NAME,
+    layout,
   });
 
   const settings = { color, fontSize, strokeWidth, tool };
@@ -100,6 +99,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
             color={color}
             exportStatus={exportStatus}
             fontSize={fontSize}
+            navigation={navigation}
             onClear={clear}
             onColorChange={changeColor}
             onExport={exportPdf}
@@ -108,7 +108,6 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
             onStrokeWidthChange={setStrokeWidth}
             onToolChange={setTool}
             onUndo={undo}
-            pages={pages}
             strokeWidth={strokeWidth}
             tool={tool}
             zoom={zoom}
@@ -116,7 +115,8 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
           <EditorDocumentArea
             doc={doc}
             isRailOpen={isRailOpen}
-            pages={pages}
+            layout={layout}
+            navigation={navigation}
             scrollRef={scrollRef}
             sizes={sizes}
           >
@@ -126,6 +126,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
                 annotations={annotations}
                 doc={doc}
                 onTextDraftChange={openDraft}
+                pages={layout}
                 selectedId={selectedId}
                 settings={settings}
                 textDraft={textDraft}

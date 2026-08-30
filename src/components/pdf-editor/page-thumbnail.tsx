@@ -11,26 +11,29 @@ interface PageThumbnailProps {
   doc: PDFDocumentProxy;
   isActive: boolean;
   onSelect: (index: number) => void;
-  pageIndex: number;
+  /** Where the page sits now, which is what it is labelled and jumped to by. */
+  position: number;
   size: PageSize;
+  sourceIndex: number;
 }
 
 export function PageThumbnail({
   doc,
   isActive,
   onSelect,
-  pageIndex,
+  position,
   size,
+  sourceIndex,
 }: PageThumbnailProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const isVisible = useInViewport(buttonRef);
   const zoom = THUMBNAIL_WIDTH / size.width;
-  const { canvasRef } = usePdfPageRender(doc, pageIndex, zoom, isVisible);
+  const { canvasRef } = usePdfPageRender(doc, sourceIndex, zoom, isVisible);
   useScrollIntoView(buttonRef, isActive);
 
   const handleClick = useCallback(
-    () => onSelect(pageIndex),
-    [onSelect, pageIndex]
+    () => onSelect(position),
+    [onSelect, position]
   );
 
   return (
@@ -55,7 +58,7 @@ export function PageThumbnail({
           isActive ? "text-foreground" : "text-muted-foreground"
         )}
       >
-        {pageIndex + 1}
+        {position + 1}
       </span>
     </button>
   );

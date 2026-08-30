@@ -4,14 +4,14 @@ import type { Annotation, Point, TextAnnotation } from "./types";
 /** Topmost first: later annotations are drawn over earlier ones, so they win a shared point. */
 export function findTextAt(
   annotations: Annotation[],
-  pageIndex: number,
+  pageId: string,
   point: Point
 ): TextAnnotation | null {
   for (let index = annotations.length - 1; index >= 0; index -= 1) {
     const annotation = annotations[index];
     if (
       annotation.type === "text" &&
-      annotation.pageIndex === pageIndex &&
+      annotation.pageId === pageId &&
       isAnnotationHit(annotation, point)
     ) {
       return annotation;

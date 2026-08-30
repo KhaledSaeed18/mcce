@@ -42,7 +42,7 @@ interface AnnotationCanvasProps {
   /** The text currently open in a field, which that field draws instead. */
   editingId: string | null;
   onDraft: (draft: TextDraft) => void;
-  pageIndex: number;
+  pageId: string;
   /** A box mid-resize, drawn at the width the pointer is holding it at. */
   preview: TextAnnotation | null;
   /** Framed by its own overlay, so it needs no hover ring of its own. */
@@ -57,7 +57,7 @@ export function AnnotationCanvas({
   annotations,
   editingId,
   onDraft,
-  pageIndex,
+  pageId,
   preview,
   selectedId,
   settings,
@@ -78,7 +78,7 @@ export function AnnotationCanvas({
     actions,
     annotations,
     onDraft,
-    pageIndex,
+    pageId,
     settings,
     size,
     zoom,

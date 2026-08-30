@@ -33,12 +33,11 @@ export function usePdfAnnotations(fileId: string | undefined) {
   );
 
   const eraseAt = useCallback(
-    (pageIndex: number, point: Point) =>
+    (pageId: string, point: Point) =>
       commit((current) =>
         current.filter(
           (annotation) =>
-            annotation.pageIndex !== pageIndex ||
-            !isAnnotationHit(annotation, point)
+            annotation.pageId !== pageId || !isAnnotationHit(annotation, point)
         )
       ),
     [commit]

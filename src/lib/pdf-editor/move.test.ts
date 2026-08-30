@@ -6,7 +6,7 @@ const TEXT: Annotation = {
   color: "#000000",
   fontSize: 16,
   id: "note",
-  pageIndex: 0,
+  pageId: "p0",
   text: "hello",
   type: "text",
   x: 10,
@@ -16,7 +16,7 @@ const TEXT: Annotation = {
 const STROKE: Annotation = {
   color: "#000000",
   id: "line",
-  pageIndex: 0,
+  pageId: "p0",
   points: [{ x: 0, y: 0 }],
   type: "pen",
   width: 2,

@@ -1,5 +1,5 @@
 import { PDFDocument } from "pdf-lib";
-import type { Annotation } from "../types";
+import type { Annotation, EditorPage } from "../types";
 import { drawAnnotationOnPage } from "./draw-on-page";
 import { embedAnnotationFont } from "./embed-font";
 
@@ -9,17 +9,22 @@ import { embedAnnotationFont } from "./embed-font";
  */
 export async function buildAnnotatedPdf(
   source: ArrayBuffer,
-  annotations: Annotation[]
+  annotations: Annotation[],
+  layout: EditorPage[]
 ): Promise<Uint8Array> {
   const pdf = await PDFDocument.load(source);
   const pages = pdf.getPages();
+  const positionById = new Map(
+    layout.map((page, position) => [page.id, position])
+  );
   // Markup with no text in it has no reason to carry a font at all.
   const font = annotations.some((annotation) => annotation.type === "text")
     ? await embedAnnotationFont(pdf)
     : null;
 
   for (const annotation of annotations) {
-    const page = pages[annotation.pageIndex];
+    const position = positionById.get(annotation.pageId) ?? -1;
+    const page = pages[position];
     if (page) {
       drawAnnotationOnPage(page, annotation, font);
     }

@@ -14,7 +14,7 @@ import type {
 
 interface ShapeDrawingOptions {
   onAdd: (annotation: Annotation) => void;
-  pageIndex: number;
+  pageId: string;
   settings: ToolSettings;
   size: PageSize;
   zoom: number;
@@ -23,7 +23,7 @@ interface ShapeDrawingOptions {
 /** The pen and the two shapes: a draft follows the pointer and is committed on release. */
 export function useShapeDrawing({
   onAdd,
-  pageIndex,
+  pageId,
   settings,
   size,
   zoom,
@@ -47,11 +47,11 @@ export function useShapeDrawing({
       pointsRef.current = [point];
       updateDraft(
         settings.tool === "pen"
-          ? buildStroke([point], pageIndex, settings)
-          : buildShape("rect", point, point, pageIndex, settings)
+          ? buildStroke([point], pageId, settings)
+          : buildShape("rect", point, point, pageId, settings)
       );
     },
-    [pageIndex, settings, size, updateDraft, zoom]
+    [pageId, settings, size, updateDraft, zoom]
   );
 
   const handleMove = useCallback(
@@ -65,16 +65,14 @@ export function useShapeDrawing({
 
       if (settings.tool === "pen") {
         pointsRef.current = [...pointsRef.current, point];
-        updateDraft(buildStroke(pointsRef.current, pageIndex, settings));
+        updateDraft(buildStroke(pointsRef.current, pageId, settings));
         return;
       }
       if (settings.tool === "rect" || settings.tool === "ellipse") {
-        updateDraft(
-          buildShape(settings.tool, origin, point, pageIndex, settings)
-        );
+        updateDraft(buildShape(settings.tool, origin, point, pageId, settings));
       }
     },
-    [pageIndex, settings, size, updateDraft, zoom]
+    [pageId, settings, size, updateDraft, zoom]
   );
 
   const handleUp = useCallback(() => {

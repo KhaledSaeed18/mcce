@@ -3,13 +3,13 @@ import type { Point, TextAnnotation, TextDraft, ToolSettings } from "./types";
 /** A field for text that does not exist yet, styled by whatever the toolbar holds. */
 export function buildDraft(
   point: Point,
-  pageIndex: number,
+  pageId: string,
   settings: ToolSettings
 ): TextDraft {
   return {
     color: settings.color,
     fontSize: settings.fontSize,
-    pageIndex,
+    pageId,
     text: "",
     x: point.x,
     y: point.y,
@@ -22,7 +22,7 @@ export function toDraft(annotation: TextAnnotation): TextDraft {
     color: annotation.color,
     fontSize: annotation.fontSize,
     id: annotation.id,
-    pageIndex: annotation.pageIndex,
+    pageId: annotation.pageId,
     text: annotation.text,
     width: annotation.width,
     x: annotation.x,

@@ -26,6 +26,7 @@ interface EditorToolbarProps {
   color: string;
   exportStatus: PdfExportStatus;
   fontSize: number;
+  navigation: PageNavigation;
   onClear: () => void;
   onColorChange: (color: string) => void;
   onExport: () => void;
@@ -34,7 +35,6 @@ interface EditorToolbarProps {
   onStrokeWidthChange: (width: number) => void;
   onToolChange: (tool: EditorTool) => void;
   onUndo: () => void;
-  pages: PageNavigation;
   strokeWidth: number;
   tool: EditorTool;
   zoom: ZoomControl;
@@ -53,8 +53,8 @@ export function EditorToolbar({
   onRedo,
   onStrokeWidthChange,
   onToolChange,
+  navigation,
   onUndo,
-  pages,
   strokeWidth,
   tool,
   zoom,
@@ -103,7 +103,7 @@ export function EditorToolbar({
         className={EDITOR_CONTROL_HEIGHT_CLASS}
         orientation="vertical"
       />
-      {pages.pageCount > 0 ? <PageControls {...pages} /> : null}
+      {navigation.pageCount > 0 ? <PageControls {...navigation} /> : null}
       <ZoomControls {...zoom} />
       <Button
         className={cn("ml-auto", EDITOR_CONTROL_HEIGHT_CLASS)}

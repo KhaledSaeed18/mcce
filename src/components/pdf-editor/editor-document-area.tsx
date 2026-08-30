@@ -1,13 +1,18 @@
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import type { ReactNode, RefObject } from "react";
 import { PageThumbnailRail } from "@/components/pdf-editor/page-thumbnail-rail";
-import type { PageNavigation, PageSize } from "@/lib/pdf-editor/types";
+import type {
+  EditorPage,
+  PageNavigation,
+  PageSize,
+} from "@/lib/pdf-editor/types";
 
 interface EditorDocumentAreaProps {
   children: ReactNode;
   doc: PDFDocumentProxy | null;
   isRailOpen: boolean;
-  pages: PageNavigation;
+  layout: EditorPage[];
+  navigation: PageNavigation;
   scrollRef: RefObject<HTMLDivElement | null>;
   sizes: PageSize[];
 }
@@ -17,7 +22,8 @@ export function EditorDocumentArea({
   children,
   doc,
   isRailOpen,
-  pages,
+  layout,
+  navigation,
   scrollRef,
   sizes,
 }: EditorDocumentAreaProps) {
@@ -25,9 +31,10 @@ export function EditorDocumentArea({
     <div className="flex min-h-0 flex-1">
       {isRailOpen && doc ? (
         <PageThumbnailRail
-          activeIndex={pages.activeIndex}
+          activeIndex={navigation.activeIndex}
           doc={doc}
-          onSelect={pages.goToPage}
+          layout={layout}
+          onSelect={navigation.goToPage}
           sizes={sizes}
         />
       ) : null}

@@ -1,9 +1,9 @@
 import type { PDFDocumentProxy } from "pdfjs-dist";
-import { useMemo } from "react";
 import { PdfPage } from "@/components/pdf-editor/pdf-page";
 import type {
   Annotation,
   AnnotationActions,
+  EditorPage,
   TextDraft,
   ToolSettings,
 } from "@/lib/pdf-editor/types";
@@ -13,6 +13,7 @@ interface PdfPageListProps {
   annotations: Annotation[];
   doc: PDFDocumentProxy;
   onTextDraftChange: (draft: TextDraft | null) => void;
+  pages: EditorPage[];
   selectedId: string | null;
   settings: ToolSettings;
   textDraft: TextDraft | null;
@@ -24,31 +25,28 @@ export function PdfPageList({
   annotations,
   doc,
   onTextDraftChange,
+  pages,
   selectedId,
   settings,
   textDraft,
   zoom,
 }: PdfPageListProps) {
-  const pageIndexes = useMemo(
-    () => Array.from({ length: doc.numPages }, (_, index) => index),
-    [doc.numPages]
-  );
-
   return (
     <div className="flex flex-col items-center gap-6 p-6">
-      {pageIndexes.map((pageIndex) => (
+      {pages.map((page, position) => (
         <PdfPage
           actions={actions}
           annotations={annotations.filter(
-            (annotation) => annotation.pageIndex === pageIndex
+            (annotation) => annotation.pageId === page.id
           )}
           doc={doc}
-          key={pageIndex}
+          key={page.id}
           onTextDraftChange={onTextDraftChange}
-          pageIndex={pageIndex}
+          page={page}
+          position={position}
           selectedId={selectedId}
           settings={settings}
-          textDraft={textDraft?.pageIndex === pageIndex ? textDraft : null}
+          textDraft={textDraft?.pageId === page.id ? textDraft : null}
           zoom={zoom}
         />
       ))}

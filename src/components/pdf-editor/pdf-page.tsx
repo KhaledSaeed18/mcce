@@ -15,6 +15,7 @@ import { findText } from "@/lib/pdf-editor/move";
 import type {
   Annotation,
   AnnotationActions,
+  EditorPage,
   TextDraft,
   ToolSettings,
 } from "@/lib/pdf-editor/types";
@@ -24,7 +25,9 @@ interface PdfPageProps {
   annotations: Annotation[];
   doc: PDFDocumentProxy;
   onTextDraftChange: (draft: TextDraft | null) => void;
-  pageIndex: number;
+  page: EditorPage;
+  /** Where the page sits in the document now, which is what the scroller counts. */
+  position: number;
   selectedId: string | null;
   settings: ToolSettings;
   textDraft: TextDraft | null;
@@ -36,7 +39,8 @@ export function PdfPage({
   annotations,
   doc,
   onTextDraftChange,
-  pageIndex,
+  page,
+  position,
   selectedId,
   settings,
   textDraft,
@@ -44,10 +48,15 @@ export function PdfPage({
 }: PdfPageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const isVisible = useInViewport(containerRef);
-  const { canvasRef, size } = usePdfPageRender(doc, pageIndex, zoom, isVisible);
+  const { canvasRef, size } = usePdfPageRender(
+    doc,
+    page.sourceIndex,
+    zoom,
+    isVisible
+  );
   const pageSize = size ?? PLACEHOLDER_PAGE_SIZE;
   const selected = findText(annotations, selectedId);
-  const pageMarker = { [PAGE_INDEX_ATTRIBUTE]: pageIndex };
+  const pageMarker = { [PAGE_INDEX_ATTRIBUTE]: position };
   const { cancel, commit, edit, move, request, resize } = useTextDraft({
     actions,
     draft: textDraft,
@@ -75,7 +84,7 @@ export function PdfPage({
           annotations={annotations}
           editingId={textDraft?.id ?? null}
           onDraft={request}
-          pageIndex={pageIndex}
+          pageId={page.id}
           preview={selection.preview}
           selectedId={selectedId}
           settings={settings}

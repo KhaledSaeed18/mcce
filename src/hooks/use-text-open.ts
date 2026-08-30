@@ -12,7 +12,7 @@ import type {
 interface TextOpenOptions {
   annotations: Annotation[];
   onDraft: (draft: TextDraft) => void;
-  pageIndex: number;
+  pageId: string;
   settings: ToolSettings;
   size: PageSize;
   zoom: number;
@@ -22,29 +22,29 @@ interface TextOpenOptions {
 export function useTextOpen({
   annotations,
   onDraft,
-  pageIndex,
+  pageId,
   settings,
   size,
   zoom,
 }: TextOpenOptions) {
   const openAt = useCallback(
     (event: PointerEvent<HTMLCanvasElement>) =>
-      onDraft(buildDraft(toPagePoint(event, zoom, size), pageIndex, settings)),
-    [onDraft, pageIndex, settings, size, zoom]
+      onDraft(buildDraft(toPagePoint(event, zoom, size), pageId, settings)),
+    [onDraft, pageId, settings, size, zoom]
   );
 
   const openOn = useCallback(
     (event: PointerEvent<HTMLCanvasElement>) => {
       const target = findTextAt(
         annotations,
-        pageIndex,
+        pageId,
         toPagePoint(event, zoom, size)
       );
       if (target) {
         onDraft(toDraft(target));
       }
     },
-    [annotations, onDraft, pageIndex, size, zoom]
+    [annotations, onDraft, pageId, size, zoom]
   );
 
   return { openAt, openOn };

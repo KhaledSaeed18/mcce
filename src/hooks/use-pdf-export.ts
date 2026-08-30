@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { downloadBlob } from "@/lib/gpa/export/download";
 import { buildAnnotatedFileName } from "@/lib/pdf-editor/file-name";
-import type { Annotation } from "@/lib/pdf-editor/types";
+import type { Annotation, EditorPage } from "@/lib/pdf-editor/types";
 
 export type PdfExportStatus = "idle" | "working" | "error";
 
@@ -9,6 +9,7 @@ interface PdfExportOptions {
   annotations: Annotation[];
   bytes: ArrayBuffer | null;
   fileName: string;
+  layout: EditorPage[];
 }
 
 /** Writes the markup into a copy of the original and hands it to the browser. */
@@ -16,6 +17,7 @@ export function usePdfExport({
   annotations,
   bytes,
   fileName,
+  layout,
 }: PdfExportOptions) {
   const [status, setStatus] = useState<PdfExportStatus>("idle");
 
@@ -28,14 +30,14 @@ export function usePdfExport({
       const { buildAnnotatedPdf } = await import(
         "@/lib/pdf-editor/export/build-annotated-pdf"
       );
-      const result = await buildAnnotatedPdf(bytes, annotations);
+      const result = await buildAnnotatedPdf(bytes, annotations, layout);
       const blob = new Blob([result as BlobPart], { type: "application/pdf" });
       downloadBlob(blob, buildAnnotatedFileName(fileName));
       setStatus("idle");
     } catch {
       setStatus("error");
     }
-  }, [annotations, bytes, fileName]);
+  }, [annotations, bytes, fileName, layout]);
 
   return { exportPdf, status };
 }

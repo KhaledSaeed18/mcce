@@ -12,7 +12,7 @@ import type {
 interface TextDragOptions {
   annotations: Annotation[];
   onMove: (id: string, dx: number, dy: number) => void;
-  pageIndex: number;
+  pageId: string;
   size: PageSize;
 }
 
@@ -26,7 +26,7 @@ export interface TextDragResult {
 export function useTextDrag({
   annotations,
   onMove,
-  pageIndex,
+  pageId,
   size,
 }: TextDragOptions) {
   const [drag, setDrag] = useState<AnnotationDrag | null>(null);
@@ -44,7 +44,7 @@ export function useTextDrag({
   /** True when the press landed on text, which means it starts a move rather than a new field. */
   const start = useCallback(
     (point: Point) => {
-      const target = findTextAt(annotations, pageIndex, point);
+      const target = findTextAt(annotations, pageId, point);
       if (!target) {
         return false;
       }
@@ -54,7 +54,7 @@ export function useTextDrag({
       update({ dx: 0, dy: 0, id: target.id });
       return true;
     },
-    [annotations, pageIndex, update]
+    [annotations, pageId, update]
   );
 
   const move = useCallback(

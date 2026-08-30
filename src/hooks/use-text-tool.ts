@@ -15,7 +15,7 @@ interface TextToolOptions {
   onDraft: (draft: TextDraft) => void;
   onMoveText: (id: string, dx: number, dy: number) => void;
   onSelect: (id: string | null) => void;
-  pageIndex: number;
+  pageId: string;
   settings: ToolSettings;
   size: PageSize;
   zoom: number;
@@ -34,7 +34,7 @@ export function useTextTool({
   onDraft,
   onMoveText,
   onSelect,
-  pageIndex,
+  pageId,
   settings,
   size,
   zoom,
@@ -42,14 +42,14 @@ export function useTextTool({
   const { drag, end, move, start } = useTextDrag({
     annotations,
     onMove: onMoveText,
-    pageIndex,
+    pageId,
     size,
   });
-  const hover = useTextHover(annotations, pageIndex);
+  const hover = useTextHover(annotations, pageId);
   const open = useTextOpen({
     annotations,
     onDraft,
-    pageIndex,
+    pageId,
     settings,
     size,
     zoom,

@@ -15,14 +15,14 @@ export function buildShape(
   tool: Extract<EditorTool, "ellipse" | "rect">,
   start: Point,
   end: Point,
-  pageIndex: number,
+  pageId: string,
   settings: ToolSettings
 ): Annotation {
   return {
     ...normalizeRect(start, end),
     color: settings.color,
     id: createAnnotationId(),
-    pageIndex,
+    pageId,
     strokeWidth: settings.strokeWidth,
     type: tool,
   };
@@ -30,13 +30,13 @@ export function buildShape(
 
 export function buildStroke(
   points: Point[],
-  pageIndex: number,
+  pageId: string,
   settings: ToolSettings
 ): Annotation {
   return {
     color: settings.color,
     id: createAnnotationId(),
-    pageIndex,
+    pageId,
     points,
     type: "pen",
     width: settings.strokeWidth,
@@ -49,7 +49,7 @@ export function buildText(draft: TextDraft, text: string): TextAnnotation {
     color: draft.color,
     fontSize: draft.fontSize,
     id: draft.id ?? createAnnotationId(),
-    pageIndex: draft.pageIndex,
+    pageId: draft.pageId,
     text,
     type: "text",
     width: draft.width,

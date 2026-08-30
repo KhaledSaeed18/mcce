@@ -9,7 +9,8 @@ export interface Point {
 interface AnnotationBase {
   color: string;
   id: string;
-  pageIndex: number;
+  /** The page this belongs to, by identity, so it survives pages moving. */
+  pageId: string;
 }
 
 export interface PenAnnotation extends AnnotationBase {
@@ -62,7 +63,18 @@ export interface TextDraft extends TextGeometry {
   color: string;
   /** Set while existing text is being edited, and empty while new text is written. */
   id?: string;
-  pageIndex: number;
+  pageId: string;
+}
+
+/**
+ * A page as the editor holds it, which is not necessarily how the file holds it:
+ * which page of the file it shows, and how far it has been turned from upright.
+ */
+export interface EditorPage {
+  id: string;
+  /** Quarter turns clockwise, on top of the page's own orientation. */
+  rotation: number;
+  sourceIndex: number;
 }
 
 /** Whether the zoom is a number the reader picked or one fitted to the window. */
@@ -91,7 +103,7 @@ export type TextBoxEdge = "left" | "right";
 /** Every way the page list can change the markup, kept together as they travel down. */
 export interface AnnotationActions {
   add: (annotation: Annotation) => void;
-  erase: (pageIndex: number, point: Point) => void;
+  erase: (pageId: string, point: Point) => void;
   moveText: (id: string, dx: number, dy: number) => void;
   remove: (id: string) => void;
   replace: (annotation: Annotation) => void;
