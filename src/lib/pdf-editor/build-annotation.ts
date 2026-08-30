@@ -6,6 +6,7 @@ import type {
   EditorTool,
   Point,
   TextAnnotation,
+  TextDraft,
   ToolSettings,
 } from "./types";
 
@@ -42,21 +43,17 @@ export function buildStroke(
   };
 }
 
-export function buildText(
-  text: string,
-  point: Point,
-  pageIndex: number,
-  settings: ToolSettings
-): TextAnnotation {
+/** Keeps the draft's id when there is one, so editing replaces rather than duplicates. */
+export function buildText(draft: TextDraft, text: string): TextAnnotation {
   return {
-    color: settings.color,
-    fontSize: settings.fontSize,
-    id: createAnnotationId(),
-    pageIndex,
+    color: draft.color,
+    fontSize: draft.fontSize,
+    id: draft.id ?? createAnnotationId(),
+    pageIndex: draft.pageIndex,
     text,
     type: "text",
-    x: point.x,
-    y: point.y,
+    x: draft.x,
+    y: draft.y,
   };
 }
 

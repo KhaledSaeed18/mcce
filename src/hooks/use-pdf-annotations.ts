@@ -44,6 +44,23 @@ export function usePdfAnnotations(fileId: string | undefined) {
     [commit]
   );
 
+  const remove = useCallback(
+    (id: string) =>
+      commit((current) => current.filter((annotation) => annotation.id !== id)),
+    [commit]
+  );
+
+  /** Editing keeps the annotation's id, so the rewritten text stays in drawing order. */
+  const replace = useCallback(
+    (next: Annotation) =>
+      commit((current) =>
+        current.map((annotation) =>
+          annotation.id === next.id ? next : annotation
+        )
+      ),
+    [commit]
+  );
+
   const move = useCallback(
     (id: string, dx: number, dy: number) =>
       commit((current) =>
@@ -67,6 +84,8 @@ export function usePdfAnnotations(fileId: string | undefined) {
     eraseAt,
     move,
     redo,
+    remove,
+    replace,
     undo,
   };
 }

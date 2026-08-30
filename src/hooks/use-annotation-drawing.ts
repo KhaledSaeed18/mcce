@@ -1,21 +1,42 @@
-import { type PointerEvent, useCallback, useRef } from "react";
+import type { PointerEvent } from "react";
+import { useEraser } from "@/hooks/use-eraser";
 import { useShapeDrawing } from "@/hooks/use-shape-drawing";
 import { useTextTool } from "@/hooks/use-text-tool";
-import { toPagePoint } from "@/lib/pdf-editor/pointer";
 import type {
   Annotation,
+  AnnotationActions,
+  EditorTool,
   PageSize,
-  Point,
   TextDraft,
   ToolSettings,
 } from "@/lib/pdf-editor/types";
 
+interface PointerHandlers {
+  handleDown: (event: PointerEvent<HTMLCanvasElement>) => void;
+  handleMove: (event: PointerEvent<HTMLCanvasElement>) => void;
+  handleUp: (event: PointerEvent<HTMLCanvasElement>) => void;
+}
+
+interface Tools {
+  eraser: PointerHandlers;
+  shapes: PointerHandlers;
+  text: PointerHandlers;
+}
+
+function pickTool(tool: EditorTool, tools: Tools): PointerHandlers {
+  if (tool === "text") {
+    return tools.text;
+  }
+  if (tool === "eraser") {
+    return tools.eraser;
+  }
+  return tools.shapes;
+}
+
 interface AnnotationDrawingOptions {
+  actions: AnnotationActions;
   annotations: Annotation[];
-  onAdd: (annotation: Annotation) => void;
-  onErase: (pageIndex: number, point: Point) => void;
-  onMoveText: (id: string, dx: number, dy: number) => void;
-  onTextRequest: (draft: TextDraft) => void;
+  onDraft: (draft: TextDraft) => void;
   pageIndex: number;
   settings: ToolSettings;
   size: PageSize;
@@ -24,11 +45,9 @@ interface AnnotationDrawingOptions {
 
 /** Routes one page's pointer events to whichever tool is selected. */
 export function useAnnotationDrawing({
+  actions,
   annotations,
-  onAdd,
-  onErase,
-  onMoveText,
-  onTextRequest,
+  onDraft,
   pageIndex,
   settings,
   size,
@@ -36,76 +55,30 @@ export function useAnnotationDrawing({
 }: AnnotationDrawingOptions) {
   const text = useTextTool({
     annotations,
-    onMoveText,
-    onTextRequest,
+    onDraft,
+    onMoveText: actions.moveText,
     pageIndex,
+    settings,
     size,
     zoom,
   });
-  const shapes = useShapeDrawing({ onAdd, pageIndex, settings, size, zoom });
-  const isErasingRef = useRef(false);
-
-  const handlePointerDown = useCallback(
-    (event: PointerEvent<HTMLCanvasElement>) => {
-      // Text waits for the release: the click that follows a press would move
-      // focus to the canvas and blur the new field away as it appeared.
-      if (settings.tool === "text") {
-        text.handleDown(event);
-        return;
-      }
-      if (settings.tool === "eraser") {
-        event.currentTarget.setPointerCapture(event.pointerId);
-        isErasingRef.current = true;
-        onErase(pageIndex, toPagePoint(event, zoom, size));
-        return;
-      }
-      shapes.handleDown(event);
-    },
-    [onErase, pageIndex, settings.tool, shapes, size, text, zoom]
-  );
-
-  const handlePointerMove = useCallback(
-    (event: PointerEvent<HTMLCanvasElement>) => {
-      if (settings.tool === "text") {
-        text.handleMove(event);
-        return;
-      }
-      if (settings.tool === "eraser") {
-        // biome-ignore lint/suspicious/noUnnecessaryConditions: set by the press handler, a sibling callback the analyzer cannot see across
-        if (isErasingRef.current) {
-          onErase(pageIndex, toPagePoint(event, zoom, size));
-        }
-        return;
-      }
-      shapes.handleMove(event);
-    },
-    [onErase, pageIndex, settings.tool, shapes, size, text, zoom]
-  );
-
-  const handlePointerUp = useCallback(
-    (event: PointerEvent<HTMLCanvasElement>) => {
-      if (settings.tool === "text") {
-        text.handleUp(event);
-        return;
-      }
-      if (settings.tool === "eraser") {
-        isErasingRef.current = false;
-        return;
-      }
-      shapes.handleUp();
-    },
-    [settings.tool, shapes, text]
-  );
-
-  const handlePointerLeave = useCallback(() => text.handleLeave(), [text]);
+  const eraser = useEraser({ onErase: actions.erase, pageIndex, size, zoom });
+  const shapes = useShapeDrawing({
+    onAdd: actions.add,
+    pageIndex,
+    settings,
+    size,
+    zoom,
+  });
+  const active = pickTool(settings.tool, { eraser, shapes, text });
 
   return {
     draft: shapes.draft,
     drag: text.drag,
-    handlePointerDown,
-    handlePointerLeave,
-    handlePointerMove,
-    handlePointerUp,
+    handlePointerDown: active.handleDown,
+    handlePointerLeave: text.handleLeave,
+    handlePointerMove: active.handleMove,
+    handlePointerUp: active.handleUp,
     hoveredTextId: settings.tool === "text" ? text.hoveredId : null,
   };
 }

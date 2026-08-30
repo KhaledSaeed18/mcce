@@ -74,6 +74,9 @@ export const TEXT_DRAFT_HEIGHT_RATIO = 1.6;
 /** A drag shorter than this is a click, not a shape. */
 export const MIN_SHAPE_SIZE = 4;
 
+/** Below this a press on text is a click that opens it for editing, not a move. */
+export const TEXT_MOVE_TOLERANCE = 3;
+
 export const DEFAULT_TOOL: EditorTool = "pen";
 
 /** Every toolbar control is pinned to the icon buttons' height so the row reads as one strip. */

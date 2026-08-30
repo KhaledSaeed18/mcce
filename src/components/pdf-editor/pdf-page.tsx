@@ -8,17 +8,15 @@ import { usePdfPageRender } from "@/hooks/use-pdf-page-render";
 import { useTextDraft } from "@/hooks/use-text-draft";
 import type {
   Annotation,
-  Point,
+  AnnotationActions,
   TextDraft,
   ToolSettings,
 } from "@/lib/pdf-editor/types";
 
 interface PdfPageProps {
+  actions: AnnotationActions;
   annotations: Annotation[];
   doc: PDFDocumentProxy;
-  onAdd: (annotation: Annotation) => void;
-  onErase: (pageIndex: number, point: Point) => void;
-  onMoveText: (id: string, dx: number, dy: number) => void;
   onTextDraftChange: (draft: TextDraft | null) => void;
   pageIndex: number;
   settings: ToolSettings;
@@ -27,11 +25,9 @@ interface PdfPageProps {
 }
 
 export function PdfPage({
+  actions,
   annotations,
   doc,
-  onAdd,
-  onErase,
-  onMoveText,
   onTextDraftChange,
   pageIndex,
   settings,
@@ -43,13 +39,10 @@ export function PdfPage({
   const { canvasRef, size } = usePdfPageRender(doc, pageIndex, zoom, isVisible);
   const pageSize = size ?? PLACEHOLDER_PAGE_SIZE;
   const { cancel, commit, move, request } = useTextDraft({
+    actions,
     draft: textDraft,
-    onAdd,
     onChange: onTextDraftChange,
-    pageIndex,
-    settings,
     size: pageSize,
-    zoom,
   });
 
   return (
@@ -62,11 +55,10 @@ export function PdfPage({
       <canvas className="block" ref={canvasRef} />
       {size ? (
         <AnnotationCanvas
+          actions={actions}
           annotations={annotations}
-          onAdd={onAdd}
-          onErase={onErase}
-          onMoveText={onMoveText}
-          onTextRequest={request}
+          editingId={textDraft?.id ?? null}
+          onDraft={request}
           pageIndex={pageIndex}
           settings={settings}
           size={size}
@@ -76,10 +68,11 @@ export function PdfPage({
       {textDraft ? (
         <TextDraftInput
           draft={textDraft}
-          fontSize={settings.fontSize}
+          key={textDraft.id ?? "new"}
           onCancel={cancel}
           onCommit={commit}
           onMove={move}
+          size={pageSize}
           zoom={zoom}
         />
       ) : null}

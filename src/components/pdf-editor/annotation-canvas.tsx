@@ -5,8 +5,8 @@ import { drawAnnotation, drawTextHighlight } from "@/lib/pdf-editor/draw";
 import { withDrag } from "@/lib/pdf-editor/move";
 import type {
   Annotation,
+  AnnotationActions,
   PageSize,
-  Point,
   TextDraft,
   ToolSettings,
 } from "@/lib/pdf-editor/types";
@@ -36,11 +36,11 @@ function resolveCursor(
 }
 
 interface AnnotationCanvasProps {
+  actions: AnnotationActions;
   annotations: Annotation[];
-  onAdd: (annotation: Annotation) => void;
-  onErase: (pageIndex: number, point: Point) => void;
-  onMoveText: (id: string, dx: number, dy: number) => void;
-  onTextRequest: (draft: TextDraft) => void;
+  /** The text currently open in a field, which that field draws instead. */
+  editingId: string | null;
+  onDraft: (draft: TextDraft) => void;
   pageIndex: number;
   settings: ToolSettings;
   size: PageSize;
@@ -48,11 +48,10 @@ interface AnnotationCanvasProps {
 }
 
 export function AnnotationCanvas({
+  actions,
   annotations,
-  onAdd,
-  onErase,
-  onMoveText,
-  onTextRequest,
+  editingId,
+  onDraft,
   pageIndex,
   settings,
   size,
@@ -68,11 +67,9 @@ export function AnnotationCanvas({
     handlePointerUp,
     hoveredTextId,
   } = useAnnotationDrawing({
+    actions,
     annotations,
-    onAdd,
-    onErase,
-    onMoveText,
-    onTextRequest,
+    onDraft,
     pageIndex,
     settings,
     size,
@@ -95,6 +92,9 @@ export function AnnotationCanvas({
     ctx.clearRect(0, 0, size.width, size.height);
 
     for (const annotation of withDrag(annotations, drag)) {
+      if (annotation.id === editingId) {
+        continue;
+      }
       drawAnnotation(ctx, annotation);
       if (annotation.type === "text" && annotation.id === highlightId) {
         drawTextHighlight(ctx, annotation);
@@ -103,7 +103,7 @@ export function AnnotationCanvas({
     if (draft) {
       drawAnnotation(ctx, draft);
     }
-  }, [annotations, draft, drag, highlightId, size, zoom]);
+  }, [annotations, draft, drag, editingId, highlightId, size, zoom]);
 
   return (
     <canvas

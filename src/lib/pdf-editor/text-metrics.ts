@@ -7,7 +7,7 @@ import {
   TEXT_DRAFT_WIDTH,
   TEXT_WIDTH_FALLBACK_RATIO,
 } from "@/config/pdf-editor";
-import type { Box, PageSize, TextAnnotation, TextDraft } from "./types";
+import type { Box, PageSize, TextDraft, TextGeometry } from "./types";
 
 let measureContext: CanvasRenderingContext2D | null = null;
 
@@ -36,12 +36,12 @@ export function measureTextWidth(text: string, fontSize: number): number {
  * The rectangle a committed text occupies. Its anchor is the baseline, so the
  * box reaches above it by the ascent and below it by the descent.
  */
-export function getTextBox(annotation: TextAnnotation): Box {
+export function getTextBox(text: TextGeometry): Box {
   return {
-    height: annotation.fontSize * (TEXT_ASCENT_RATIO + TEXT_DESCENT_RATIO),
-    width: measureTextWidth(annotation.text, annotation.fontSize),
-    x: annotation.x,
-    y: annotation.y - annotation.fontSize * TEXT_ASCENT_RATIO,
+    height: text.fontSize * (TEXT_ASCENT_RATIO + TEXT_DESCENT_RATIO),
+    width: measureTextWidth(text.text, text.fontSize),
+    x: text.x,
+    y: text.y - text.fontSize * TEXT_ASCENT_RATIO,
   };
 }
 
@@ -56,18 +56,17 @@ export function getDraftSize(fontSize: number, zoom: number): PageSize {
   };
 }
 
-/** The same field in page units, so it can be kept on the page like any text box. */
-export function getDraftBox(
-  draft: TextDraft,
-  fontSize: number,
-  zoom: number
-): Box {
-  const { height, width } = getDraftSize(fontSize, zoom);
+/** The same field in page units, centred on the text it stands in for. */
+export function getDraftBox(draft: TextDraft, zoom: number): Box {
+  const { height, width } = getDraftSize(draft.fontSize, zoom);
   const pageHeight = height / zoom;
   return {
     height: pageHeight,
     width: width / zoom,
     x: draft.x,
-    y: draft.y - fontSize * TEXT_ASCENT_RATIO - (pageHeight - fontSize) / 2,
+    y:
+      draft.y -
+      draft.fontSize * TEXT_ASCENT_RATIO -
+      (pageHeight - draft.fontSize) / 2,
   };
 }

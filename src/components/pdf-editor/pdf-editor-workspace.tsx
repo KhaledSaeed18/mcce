@@ -40,6 +40,8 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     eraseAt,
     move,
     redo,
+    remove,
+    replace,
     undo,
   } = usePdfAnnotations(node?.id);
   const {
@@ -64,6 +66,13 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     []
   );
   const settings = { color, fontSize, strokeWidth, tool };
+  const actions = {
+    add,
+    erase: eraseAt,
+    moveText: move,
+    remove,
+    replace,
+  };
 
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
@@ -108,11 +117,9 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
           <div className="flex min-h-0 flex-1 flex-col overflow-auto bg-muted">
             {doc ? (
               <PdfPageList
+                actions={actions}
                 annotations={annotations}
                 doc={doc}
-                onAdd={add}
-                onErase={eraseAt}
-                onMoveText={move}
                 onTextDraftChange={setTextDraft}
                 settings={settings}
                 textDraft={textDraft}

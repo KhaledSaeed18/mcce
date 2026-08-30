@@ -1,47 +1,34 @@
 import { useCallback } from "react";
 import { clampTextAnchor } from "@/lib/pdf-editor/bounds";
 import { buildText } from "@/lib/pdf-editor/build-annotation";
-import { getDraftBox, getTextBox } from "@/lib/pdf-editor/text-metrics";
+import { getTextBox } from "@/lib/pdf-editor/text-metrics";
 import type {
-  Annotation,
+  AnnotationActions,
   PageSize,
   TextDraft,
-  ToolSettings,
 } from "@/lib/pdf-editor/types";
 
 interface TextDraftOptions {
+  actions: AnnotationActions;
   draft: TextDraft | null;
-  onAdd: (annotation: Annotation) => void;
   onChange: (draft: TextDraft | null) => void;
-  pageIndex: number;
-  settings: ToolSettings;
   size: PageSize;
-  zoom: number;
 }
 
 /**
- * The field being typed into, kept on its page: the field itself while it is
- * open and placed, and the text it commits, which is measured and placed again.
+ * The field being typed into, and what its release does: write new text, rewrite
+ * the text it was opened on, or remove that text once it has been emptied.
  */
 export function useTextDraft({
+  actions,
   draft,
-  onAdd,
   onChange,
-  pageIndex,
-  settings,
   size,
-  zoom,
 }: TextDraftOptions) {
   const place = useCallback(
-    (next: TextDraft) => {
-      const anchor = clampTextAnchor(
-        next,
-        getDraftBox(next, settings.fontSize, zoom),
-        size
-      );
-      onChange({ ...next, ...anchor });
-    },
-    [onChange, settings.fontSize, size, zoom]
+    (next: TextDraft) =>
+      onChange({ ...next, ...clampTextAnchor(next, getTextBox(next), size) }),
+    [onChange, size]
   );
 
   const cancel = useCallback(() => onChange(null), [onChange]);
@@ -57,16 +44,29 @@ export function useTextDraft({
   );
 
   const commit = useCallback(
-    (text: string) => {
+    (value: string) => {
       if (!draft) {
         return;
       }
-      const annotation = buildText(text, draft, pageIndex, settings);
-      const anchor = clampTextAnchor(annotation, getTextBox(annotation), size);
-      onAdd({ ...annotation, ...anchor });
+      const text = value.trim();
       onChange(null);
+      if (!text) {
+        // Emptying a field is how text already on the page is taken off it.
+        if (draft.id) {
+          actions.remove(draft.id);
+        }
+        return;
+      }
+      const annotation = buildText(draft, text);
+      const anchor = clampTextAnchor(annotation, getTextBox(annotation), size);
+      const placed = { ...annotation, ...anchor };
+      if (draft.id) {
+        actions.replace(placed);
+        return;
+      }
+      actions.add(placed);
     },
-    [draft, onAdd, onChange, pageIndex, settings, size]
+    [actions, draft, onChange, size]
   );
 
   return { cancel, commit, move, request: place };

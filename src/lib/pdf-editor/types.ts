@@ -36,6 +36,14 @@ export interface TextAnnotation extends AnnotationBase {
   y: number;
 }
 
+/** What it takes to measure text, which a committed annotation and a draft both have. */
+export interface TextGeometry {
+  fontSize: number;
+  text: string;
+  x: number;
+  y: number;
+}
+
 export type Annotation = PenAnnotation | ShapeAnnotation | TextAnnotation;
 
 export interface PageSize {
@@ -52,10 +60,20 @@ export interface Box {
 }
 
 /** Where a text annotation is being typed, before it is committed. */
-export interface TextDraft {
+export interface TextDraft extends TextGeometry {
+  color: string;
+  /** Set while existing text is being edited, and empty while new text is written. */
+  id?: string;
   pageIndex: number;
-  x: number;
-  y: number;
+}
+
+/** Every way the page list can change the markup, kept together as they travel down. */
+export interface AnnotationActions {
+  add: (annotation: Annotation) => void;
+  erase: (pageIndex: number, point: Point) => void;
+  moveText: (id: string, dx: number, dy: number) => void;
+  remove: (id: string) => void;
+  replace: (annotation: Annotation) => void;
 }
 
 export interface ToolSettings {

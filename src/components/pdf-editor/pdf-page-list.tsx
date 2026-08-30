@@ -3,17 +3,15 @@ import { useMemo } from "react";
 import { PdfPage } from "@/components/pdf-editor/pdf-page";
 import type {
   Annotation,
-  Point,
+  AnnotationActions,
   TextDraft,
   ToolSettings,
 } from "@/lib/pdf-editor/types";
 
 interface PdfPageListProps {
+  actions: AnnotationActions;
   annotations: Annotation[];
   doc: PDFDocumentProxy;
-  onAdd: (annotation: Annotation) => void;
-  onErase: (pageIndex: number, point: Point) => void;
-  onMoveText: (id: string, dx: number, dy: number) => void;
   onTextDraftChange: (draft: TextDraft | null) => void;
   settings: ToolSettings;
   textDraft: TextDraft | null;
@@ -21,11 +19,9 @@ interface PdfPageListProps {
 }
 
 export function PdfPageList({
+  actions,
   annotations,
   doc,
-  onAdd,
-  onErase,
-  onMoveText,
   onTextDraftChange,
   settings,
   textDraft,
@@ -40,14 +36,12 @@ export function PdfPageList({
     <div className="flex flex-col items-center gap-6 p-6">
       {pageIndexes.map((pageIndex) => (
         <PdfPage
+          actions={actions}
           annotations={annotations.filter(
             (annotation) => annotation.pageIndex === pageIndex
           )}
           doc={doc}
           key={pageIndex}
-          onAdd={onAdd}
-          onErase={onErase}
-          onMoveText={onMoveText}
           onTextDraftChange={onTextDraftChange}
           pageIndex={pageIndex}
           settings={settings}

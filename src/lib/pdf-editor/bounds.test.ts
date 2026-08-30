@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { PAGE_INSET, TEXT_ASCENT_RATIO } from "@/config/pdf-editor";
-import { clampPoint, clampTextAnchor } from "./bounds";
+import { clampBox, clampPoint, clampTextAnchor } from "./bounds";
 import type { Box, PageSize, Point } from "./types";
 
 const PAGE: PageSize = { height: 792, width: 612 };
@@ -24,6 +24,25 @@ describe("clampPoint", () => {
   it("pulls a point past an edge back onto the page", () => {
     expect(clampPoint({ x: -40, y: 900 }, PAGE)).toEqual({ x: 0, y: 792 });
     expect(clampPoint({ x: 700, y: -10 }, PAGE)).toEqual({ x: 612, y: 0 });
+  });
+});
+
+describe("clampBox", () => {
+  it("leaves a box that already fits alone", () => {
+    const box: Box = { height: 40, width: 100, x: 50, y: 60 };
+
+    expect(clampBox(box, PAGE)).toEqual(box);
+  });
+
+  it("slides a box inside without resizing it", () => {
+    const moved = clampBox({ height: 40, width: 100, x: 580, y: -20 }, PAGE);
+
+    expect(moved).toEqual({
+      height: 40,
+      width: 100,
+      x: PAGE.width - PAGE_INSET - 100,
+      y: PAGE_INSET,
+    });
   });
 });
 

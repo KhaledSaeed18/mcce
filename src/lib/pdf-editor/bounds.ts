@@ -15,18 +15,25 @@ export function clampPoint(point: Point, size: PageSize): Point {
   };
 }
 
+/** The same rectangle, slid onto the page without being resized. */
+export function clampBox(box: Box, size: PageSize): Box {
+  return {
+    ...box,
+    x: clampSpan(box.x, box.width, size.width),
+    y: clampSpan(box.y, box.height, size.height),
+  };
+}
+
 /**
  * Moves an anchor by whatever it takes to pull its box fully onto the page.
  * The box is passed already positioned, so the caller decides how it hangs off
- * the anchor: a committed text sits above its baseline, a draft field around it.
+ * the anchor: text sits above its baseline, the field it is typed in around it.
  */
 export function clampTextAnchor(
   anchor: Point,
   box: Box,
   size: PageSize
 ): Point {
-  return {
-    x: anchor.x + clampSpan(box.x, box.width, size.width) - box.x,
-    y: anchor.y + clampSpan(box.y, box.height, size.height) - box.y,
-  };
+  const moved = clampBox(box, size);
+  return { x: anchor.x + moved.x - box.x, y: anchor.y + moved.y - box.y };
 }

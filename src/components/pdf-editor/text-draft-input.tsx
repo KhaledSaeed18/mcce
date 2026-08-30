@@ -6,38 +6,38 @@ import {
 } from "react";
 import { TextDraftHandle } from "@/components/pdf-editor/text-draft-handle";
 import { Input } from "@/components/ui/input";
+import { clampBox } from "@/lib/pdf-editor/bounds";
 import { getDraftBox, getDraftSize } from "@/lib/pdf-editor/text-metrics";
-import type { TextDraft } from "@/lib/pdf-editor/types";
+import type { PageSize, TextDraft } from "@/lib/pdf-editor/types";
 
 interface TextDraftInputProps {
   draft: TextDraft;
-  fontSize: number;
   onCancel: () => void;
-  onCommit: (text: string) => void;
+  onCommit: (value: string) => void;
   onMove: (dx: number, dy: number) => void;
+  size: PageSize;
   zoom: number;
 }
 
 export function TextDraftInput({
   draft,
-  fontSize,
   onCancel,
   onCommit,
   onMove,
+  size,
   zoom,
 }: TextDraftInputProps) {
-  const [value, setValue] = useState("");
-  const box = getDraftBox(draft, fontSize, zoom);
-  const { height, width } = getDraftSize(fontSize, zoom);
+  const [value, setValue] = useState(draft.text);
+  // The anchor stays where the text belongs; only the field is pulled inside.
+  const box = clampBox(getDraftBox(draft, zoom), size);
+  const draftSize = getDraftSize(draft.fontSize, zoom);
 
-  const commit = useCallback(() => {
-    const trimmed = value.trim();
-    if (trimmed) {
-      onCommit(trimmed);
-      return;
-    }
-    onCancel();
-  }, [onCancel, onCommit, value]);
+  const commit = useCallback(() => onCommit(value), [onCommit, value]);
+
+  /** Opening a field over existing text offers it up for replacing. */
+  const selectAll = useCallback((node: HTMLInputElement | null) => {
+    node?.select();
+  }, []);
 
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => setValue(event.target.value),
@@ -59,7 +59,12 @@ export function TextDraftInput({
   return (
     <div
       className="absolute z-10 flex items-stretch"
-      style={{ height, left: box.x * zoom, top: box.y * zoom, width }}
+      style={{
+        height: draftSize.height,
+        left: box.x * zoom,
+        top: box.y * zoom,
+        width: draftSize.width,
+      }}
     >
       <TextDraftHandle onMove={onMove} zoom={zoom} />
       <Input
@@ -70,7 +75,8 @@ export function TextDraftInput({
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         placeholder="Type here"
-        style={{ fontSize: fontSize * zoom }}
+        ref={selectAll}
+        style={{ fontSize: draft.fontSize * zoom }}
         value={value}
       />
     </div>

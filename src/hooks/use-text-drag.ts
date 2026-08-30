@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from "react";
-import { clampTextAnchor } from "@/lib/pdf-editor/bounds";
+import { TEXT_MOVE_TOLERANCE } from "@/config/pdf-editor";
 import { type AnnotationDrag, findTextAt } from "@/lib/pdf-editor/move";
-import { getTextBox } from "@/lib/pdf-editor/text-metrics";
+import { boundedTextDelta } from "@/lib/pdf-editor/text-move";
 import type {
   Annotation,
   PageSize,
@@ -16,23 +16,10 @@ interface TextDragOptions {
   size: PageSize;
 }
 
-/** How far the text can follow the pointer before its box would leave the page. */
-function toBoundedDelta(
-  target: TextAnnotation,
-  point: Point,
-  origin: Point,
-  size: PageSize
-): Pick<AnnotationDrag, "dx" | "dy"> {
-  const moved = {
-    x: target.x + point.x - origin.x,
-    y: target.y + point.y - origin.y,
-  };
-  const anchor = clampTextAnchor(
-    moved,
-    getTextBox({ ...target, ...moved }),
-    size
-  );
-  return { dx: anchor.x - target.x, dy: anchor.y - target.y };
+/** What the release found: which text was pressed, and whether the press moved it. */
+export interface TextDragResult {
+  moved: boolean;
+  target: TextAnnotation;
 }
 
 /** Repositioning text already on the page: press it, drag, and the move lands as one undo step. */
@@ -46,6 +33,8 @@ export function useTextDrag({
   const dragRef = useRef<AnnotationDrag | null>(null);
   const originRef = useRef<Point | null>(null);
   const targetRef = useRef<TextAnnotation | null>(null);
+  // Measured from the pointer, not from the text, which stops at the page edge.
+  const hasTravelledRef = useRef(false);
 
   const update = useCallback((next: AnnotationDrag | null) => {
     dragRef.current = next;
@@ -61,6 +50,7 @@ export function useTextDrag({
       }
       originRef.current = point;
       targetRef.current = target;
+      hasTravelledRef.current = false;
       update({ dx: 0, dy: 0, id: target.id });
       return true;
     },
@@ -75,28 +65,33 @@ export function useTextDrag({
       if (!(origin && target)) {
         return;
       }
-      update({
-        ...toBoundedDelta(target, point, origin, size),
-        id: target.id,
-      });
+      if (
+        Math.hypot(point.x - origin.x, point.y - origin.y) > TEXT_MOVE_TOLERANCE
+      ) {
+        hasTravelledRef.current = true;
+      }
+      const delta = boundedTextDelta(target, origin, point, size);
+      update({ dx: delta.x, dy: delta.y, id: target.id });
     },
     [size, update]
   );
 
-  /** True when a move was in progress, so the release must not open a new field. */
-  const end = useCallback(() => {
+  /** Non-null when a press was in progress, so the release must not open a new field. */
+  const end = useCallback((): TextDragResult | null => {
     const { current } = dragRef;
-    // biome-ignore lint/suspicious/noUnnecessaryConditions: the ref holds a drag only between start() and this release
-    if (!current) {
-      return false;
+    const { current: target } = targetRef;
+    // biome-ignore lint/suspicious/noUnnecessaryConditions: the refs hold a press only between start() and this release
+    if (!(current && target)) {
+      return null;
     }
+    const moved = hasTravelledRef.current;
     originRef.current = null;
     targetRef.current = null;
     update(null);
     if (current.dx !== 0 || current.dy !== 0) {
       onMove(current.id, current.dx, current.dy);
     }
-    return true;
+    return { moved, target };
   }, [onMove, update]);
 
   return { drag, end, move, start };
