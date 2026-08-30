@@ -31,6 +31,7 @@ export function useEditorMarkup({
     redo,
     remove,
     removePage,
+    reorderPage,
     replace,
     undo,
   } = useEditorDocument(fileId, pageCount);
@@ -80,6 +81,7 @@ export function useEditorMarkup({
     pages,
     redo,
     removePage,
+    reorderPage,
     selectedId,
     undo,
   };

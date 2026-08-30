@@ -27,6 +27,22 @@ export function withoutPage(pages: EditorPage[], id: string): EditorPage[] {
   return pages.filter((page) => page.id !== id);
 }
 
+/** Takes the page at one place in the list and puts it back in at another. */
+export function movePage(
+  pages: EditorPage[],
+  from: number,
+  to: number
+): EditorPage[] {
+  const page = pages[from];
+  // A page carried past either end of the document stops at that end.
+  const target = Math.min(Math.max(to, 0), pages.length - 1);
+  if (!page || from === target) {
+    return pages;
+  }
+  const rest = pages.filter((_, position) => position !== from);
+  return [...rest.slice(0, target), page, ...rest.slice(target)];
+}
+
 /** Pages the file no longer has, from markup saved against a file since replaced. */
 export function withKnownPages(
   pages: EditorPage[],

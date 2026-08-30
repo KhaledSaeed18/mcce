@@ -66,6 +66,13 @@ export interface TextDraft extends TextGeometry {
   pageId: string;
 }
 
+/** A page being carried to another place in the document. */
+export interface PageDrag {
+  from: number;
+  /** Which gap between thumbnails the page would drop into. */
+  insertAt: number;
+}
+
 /**
  * A page as the editor holds it, which is not necessarily how the file holds it:
  * which page of the file it shows, and how far it has been turned from upright.

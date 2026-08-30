@@ -1,8 +1,13 @@
 import { Trash2Icon } from "lucide-react";
 import type { PDFDocumentProxy } from "pdfjs-dist";
-import { useCallback, useRef } from "react";
+import {
+  type ComponentProps,
+  type PointerEvent,
+  useCallback,
+  useRef,
+} from "react";
 import { Button } from "@/components/ui/button";
-import { THUMBNAIL_WIDTH } from "@/config/pdf-editor";
+import { RAIL_POSITION_ATTRIBUTE, THUMBNAIL_WIDTH } from "@/config/pdf-editor";
 import { useInViewport } from "@/hooks/use-in-viewport";
 import { usePdfPageRender } from "@/hooks/use-pdf-page-render";
 import { useScrollIntoView } from "@/hooks/use-scroll-into-view";
@@ -13,7 +18,10 @@ interface PageThumbnailProps {
   /** False for the last page left, which a document cannot do without. */
   canRemove: boolean;
   doc: PDFDocumentProxy;
+  /** Pointer and keyboard handlers that carry this page to another place. */
+  dragHandlers: ComponentProps<"button">;
   isActive: boolean;
+  isDragging: boolean;
   onRemove: (id: string) => void;
   onSelect: (position: number) => void;
   page: EditorPage;
@@ -25,7 +33,9 @@ interface PageThumbnailProps {
 export function PageThumbnail({
   canRemove,
   doc,
+  dragHandlers,
   isActive,
+  isDragging,
   onRemove,
   onSelect,
   page,
@@ -53,15 +63,26 @@ export function PageThumbnail({
     [onRemove, page.id]
   );
 
+  /** Reaching for the bin is not the start of carrying the page somewhere. */
+  const handleRemovePointerDown = useCallback(
+    (event: PointerEvent<HTMLButtonElement>) => event.stopPropagation(),
+    []
+  );
+
   return (
     <div
-      className="group relative flex flex-col items-center gap-1"
+      {...{ [RAIL_POSITION_ATTRIBUTE]: position }}
+      className={cn(
+        "group relative flex shrink-0 flex-col items-center gap-1",
+        isDragging && "opacity-40"
+      )}
       ref={wrapperRef}
     >
       <button
+        {...dragHandlers}
         aria-current={isActive ? "page" : undefined}
         aria-label={`Go to page ${position + 1}`}
-        className="cursor-pointer"
+        className="cursor-grab touch-none active:cursor-grabbing"
         onClick={handleSelect}
         type="button"
       >
@@ -82,6 +103,7 @@ export function PageThumbnail({
             isActive && "opacity-100"
           )}
           onClick={handleRemove}
+          onPointerDown={handleRemovePointerDown}
           size="icon"
           variant="outline"
         >

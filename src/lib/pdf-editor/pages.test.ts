@@ -1,5 +1,15 @@
 import { describe, expect, it } from "vitest";
-import { buildPageId, buildPages, withKnownPages, withoutPage } from "./pages";
+import {
+  buildPageId,
+  buildPages,
+  movePage,
+  withKnownPages,
+  withoutPage,
+} from "./pages";
+
+function ids(pages: { id: string }[]): string[] {
+  return pages.map((page) => page.id);
+}
 
 describe("buildPageId", () => {
   it("derives an identity from a page's place in the file", () => {
@@ -64,5 +74,55 @@ describe("withKnownPages", () => {
     const stored = [{ id: "p9", rotation: 0, sourceIndex: 9 }];
 
     expect(withKnownPages(stored, 2)).toEqual(buildPages(2));
+  });
+});
+
+describe("movePage", () => {
+  it("carries a page down the document", () => {
+    expect(ids(movePage(buildPages(4), 0, 2))).toEqual([
+      "p1",
+      "p2",
+      "p0",
+      "p3",
+    ]);
+  });
+
+  it("carries a page back up the document", () => {
+    expect(ids(movePage(buildPages(4), 3, 1))).toEqual([
+      "p0",
+      "p3",
+      "p1",
+      "p2",
+    ]);
+  });
+
+  it("moves a page to the end", () => {
+    expect(ids(movePage(buildPages(3), 0, 2))).toEqual(["p1", "p2", "p0"]);
+  });
+
+  it("leaves the order alone when a page lands where it started", () => {
+    const pages = buildPages(3);
+
+    expect(movePage(pages, 1, 1)).toBe(pages);
+  });
+
+  it("stops at the top when carried past the first page", () => {
+    const pages = buildPages(3);
+
+    expect(movePage(pages, 0, -1)).toBe(pages);
+    expect(ids(movePage(pages, 2, -3))).toEqual(["p2", "p0", "p1"]);
+  });
+
+  it("stops at the end when carried past the last page", () => {
+    const pages = buildPages(3);
+
+    expect(movePage(pages, 2, 9)).toBe(pages);
+    expect(ids(movePage(pages, 0, 9))).toEqual(["p1", "p2", "p0"]);
+  });
+
+  it("leaves the order alone when there is no page to move", () => {
+    const pages = buildPages(2);
+
+    expect(movePage(pages, 5, 0)).toBe(pages);
   });
 });

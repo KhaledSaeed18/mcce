@@ -30,6 +30,12 @@ export const PLACEHOLDER_PAGE_SIZE = { height: 792, width: 612 };
 /** How wide a page is drawn in the thumbnail rail, in screen pixels. */
 export const THUMBNAIL_WIDTH = 116;
 
+/** Marks each thumbnail so a drag can work out which page it is over. */
+export const RAIL_POSITION_ATTRIBUTE = "data-rail-position";
+
+/** Below this a press on a thumbnail is a click that goes to the page, not a drag. */
+export const PAGE_DRAG_TOLERANCE = 4;
+
 /** Marks each page in the scroller so the one on screen can be found and scrolled to. */
 export const PAGE_INDEX_ATTRIBUTE = "data-page-index";
 

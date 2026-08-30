@@ -14,6 +14,7 @@ interface EditorDocumentAreaProps {
   layout: EditorPage[];
   navigation: PageNavigation;
   onRemovePage: (id: string) => void;
+  onReorderPage: (from: number, to: number) => void;
   scrollRef: RefObject<HTMLDivElement | null>;
   sizes: PageSize[];
 }
@@ -26,6 +27,7 @@ export function EditorDocumentArea({
   layout,
   navigation,
   onRemovePage,
+  onReorderPage,
   scrollRef,
   sizes,
 }: EditorDocumentAreaProps) {
@@ -36,6 +38,7 @@ export function EditorDocumentArea({
           activeIndex={navigation.activeIndex}
           doc={doc}
           layout={layout}
+          onMove={onReorderPage}
           onRemove={onRemovePage}
           onSelect={navigation.goToPage}
           sizes={sizes}

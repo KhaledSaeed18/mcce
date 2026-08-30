@@ -113,6 +113,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
             layout={markup.pages}
             navigation={navigation}
             onRemovePage={markup.removePage}
+            onReorderPage={markup.reorderPage}
             scrollRef={scrollRef}
             sizes={sizes}
           >
