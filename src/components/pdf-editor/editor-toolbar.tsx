@@ -13,7 +13,11 @@ import {
   STROKE_WIDTHS,
 } from "@/config/pdf-editor";
 import type { PdfExportStatus } from "@/hooks/use-pdf-export";
-import type { EditorTool, PageNavigation } from "@/lib/pdf-editor/types";
+import type {
+  EditorTool,
+  PageNavigation,
+  ZoomControl,
+} from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
 interface EditorToolbarProps {
@@ -27,16 +31,13 @@ interface EditorToolbarProps {
   onExport: () => void;
   onFontSizeChange: (size: number) => void;
   onRedo: () => void;
-  onResetZoom: () => void;
   onStrokeWidthChange: (width: number) => void;
   onToolChange: (tool: EditorTool) => void;
   onUndo: () => void;
-  onZoomIn: () => void;
-  onZoomOut: () => void;
   pages: PageNavigation;
   strokeWidth: number;
   tool: EditorTool;
-  zoom: number;
+  zoom: ZoomControl;
 }
 
 export function EditorToolbar({
@@ -50,12 +51,9 @@ export function EditorToolbar({
   onExport,
   onFontSizeChange,
   onRedo,
-  onResetZoom,
   onStrokeWidthChange,
   onToolChange,
   onUndo,
-  onZoomIn,
-  onZoomOut,
   pages,
   strokeWidth,
   tool,
@@ -106,12 +104,7 @@ export function EditorToolbar({
         orientation="vertical"
       />
       {pages.pageCount > 0 ? <PageControls {...pages} /> : null}
-      <ZoomControls
-        onReset={onResetZoom}
-        onZoomIn={onZoomIn}
-        onZoomOut={onZoomOut}
-        zoom={zoom}
-      />
+      <ZoomControls {...zoom} />
       <Button
         className={cn("ml-auto", EDITOR_CONTROL_HEIGHT_CLASS)}
         disabled={exportStatus === "working"}

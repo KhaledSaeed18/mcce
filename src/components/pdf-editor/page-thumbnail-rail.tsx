@@ -1,7 +1,6 @@
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import { useMemo } from "react";
 import { PageThumbnail } from "@/components/pdf-editor/page-thumbnail";
-import { usePdfPageSizes } from "@/hooks/use-pdf-page-sizes";
 import type { PageSize } from "@/lib/pdf-editor/types";
 
 interface PageEntry {
@@ -13,14 +12,15 @@ interface PageThumbnailRailProps {
   activeIndex: number;
   doc: PDFDocumentProxy;
   onSelect: (index: number) => void;
+  sizes: PageSize[];
 }
 
 export function PageThumbnailRail({
   activeIndex,
   doc,
   onSelect,
+  sizes,
 }: PageThumbnailRailProps) {
-  const sizes = usePdfPageSizes(doc);
   const pages = useMemo<PageEntry[]>(
     () => sizes.map((size, pageIndex) => ({ pageIndex, size })),
     [sizes]

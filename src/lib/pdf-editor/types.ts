@@ -65,6 +65,19 @@ export interface TextDraft extends TextGeometry {
   pageIndex: number;
 }
 
+/** Whether the zoom is a number the reader picked or one fitted to the window. */
+export type ZoomMode = "custom" | "fit-page" | "fit-width";
+
+/** How the pages are scaled, and the ways the reader can change that. */
+export interface ZoomControl {
+  fitPage: () => void;
+  fitWidth: () => void;
+  mode: ZoomMode;
+  value: number;
+  zoomIn: () => void;
+  zoomOut: () => void;
+}
+
 /** Where the reader is in the document, and how to move them somewhere else. */
 export interface PageNavigation {
   activeIndex: number;

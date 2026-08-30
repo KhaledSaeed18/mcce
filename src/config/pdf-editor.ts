@@ -12,6 +12,9 @@ export const PDF_STANDARD_FONTS_PATH = "/pdfjs/standard_fonts/";
 
 export const PDF_ANNOTATIONS_KEY_PREFIX = "mcce.pdf-annotations.v1";
 
+/** The page list's padding and borders, which a fitted page has to leave room for. */
+export const PAGE_FIT_PADDING = 56;
+
 export const MIN_ZOOM = 0.5;
 export const MAX_ZOOM = 4;
 export const ZOOM_STEP = 0.25;

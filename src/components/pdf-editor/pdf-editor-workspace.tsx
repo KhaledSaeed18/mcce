@@ -1,15 +1,16 @@
 import { useRef } from "react";
+import { EditorDocumentArea } from "@/components/pdf-editor/editor-document-area";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
 import { EditorStatus } from "@/components/pdf-editor/editor-status";
 import { EditorToolbar } from "@/components/pdf-editor/editor-toolbar";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
-import { PageThumbnailRail } from "@/components/pdf-editor/page-thumbnail-rail";
 import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
 import { DEFAULT_EXPORT_NAME, EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
 import { useEditorMarkup } from "@/hooks/use-editor-markup";
 import { useEditorPages } from "@/hooks/use-editor-pages";
 import { useEditorPanels } from "@/hooks/use-editor-panels";
 import { useEditorTools } from "@/hooks/use-editor-tools";
+import { useElementSize } from "@/hooks/use-element-size";
 import { useFullscreen } from "@/hooks/use-fullscreen";
 import { usePdfDocument } from "@/hooks/use-pdf-document";
 import { usePdfExport } from "@/hooks/use-pdf-export";
@@ -34,7 +35,11 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     useEditorPanels();
 
   const { bytes, doc, status } = usePdfDocument(node?.id);
-  const { isDocumentShown, pages } = useEditorPages(scrollRef, doc);
+  const { activeSize, isDocumentShown, pages, sizes } = useEditorPages(
+    scrollRef,
+    doc
+  );
+  const viewport = useElementSize(scrollRef);
   const {
     color,
     fontSize,
@@ -59,7 +64,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     selectedId,
     undo,
   } = useEditorMarkup({ fileId: node?.id, setColor, setFontSize });
-  const { resetZoom, zoom, zoomIn, zoomOut } = usePdfZoom();
+  const zoom = usePdfZoom({ pageSize: activeSize, viewport });
   const { exportPdf, status: exportStatus } = usePdfExport({
     annotations,
     bytes,
@@ -100,45 +105,36 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
             onExport={exportPdf}
             onFontSizeChange={changeFontSize}
             onRedo={redo}
-            onResetZoom={resetZoom}
             onStrokeWidthChange={setStrokeWidth}
             onToolChange={setTool}
             onUndo={undo}
-            onZoomIn={zoomIn}
-            onZoomOut={zoomOut}
             pages={pages}
             strokeWidth={strokeWidth}
             tool={tool}
             zoom={zoom}
           />
-          <div className="flex min-h-0 flex-1">
-            {isRailOpen && doc ? (
-              <PageThumbnailRail
-                activeIndex={pages.activeIndex}
+          <EditorDocumentArea
+            doc={doc}
+            isRailOpen={isRailOpen}
+            pages={pages}
+            scrollRef={scrollRef}
+            sizes={sizes}
+          >
+            {doc && isDocumentShown ? (
+              <PdfPageList
+                actions={actions}
+                annotations={annotations}
                 doc={doc}
-                onSelect={pages.goToPage}
+                onTextDraftChange={openDraft}
+                selectedId={selectedId}
+                settings={settings}
+                textDraft={textDraft}
+                zoom={zoom.value}
               />
-            ) : null}
-            <div
-              className="flex min-h-0 flex-1 flex-col overflow-auto bg-muted"
-              ref={scrollRef}
-            >
-              {doc && isDocumentShown ? (
-                <PdfPageList
-                  actions={actions}
-                  annotations={annotations}
-                  doc={doc}
-                  onTextDraftChange={openDraft}
-                  selectedId={selectedId}
-                  settings={settings}
-                  textDraft={textDraft}
-                  zoom={zoom}
-                />
-              ) : (
-                <EditorStatus status={status} />
-              )}
-            </div>
-          </div>
+            ) : (
+              <EditorStatus status={status} />
+            )}
+          </EditorDocumentArea>
         </div>
       </div>
     </main>
