@@ -2,7 +2,7 @@ import { type PointerEvent, useCallback, useRef, useState } from "react";
 import {
   buildShape,
   buildStroke,
-  isShapeTooSmall,
+  isEmptyAnnotation,
 } from "@/lib/pdf-editor/build-annotation";
 import { toPagePoint } from "@/lib/pdf-editor/pointer";
 import type {
@@ -83,7 +83,7 @@ export function useShapeDrawing({
     pointsRef.current = [];
     updateDraft(null);
     // biome-ignore lint/suspicious/noUnnecessaryConditions: the ref holds a draft only while a drag is in progress
-    if (current && !isShapeTooSmall(current)) {
+    if (current && !isEmptyAnnotation(current)) {
       onAdd(current);
     }
   }, [onAdd, updateDraft]);

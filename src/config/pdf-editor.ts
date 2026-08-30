@@ -88,6 +88,9 @@ export const EMPTY_TEXT_BOX_WIDTH = 140;
 /** A drag shorter than this is a click, not a shape. */
 export const MIN_SHAPE_SIZE = 4;
 
+/** A stroke needs two points to be a line; one is a press that never moved. */
+export const MIN_STROKE_POINTS = 2;
+
 /** Below this a press on text is a click that opens it for editing, not a move. */
 export const TEXT_MOVE_TOLERANCE = 3;
 

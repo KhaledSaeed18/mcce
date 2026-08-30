@@ -1,4 +1,4 @@
-import { MIN_SHAPE_SIZE } from "@/config/pdf-editor";
+import { MIN_SHAPE_SIZE, MIN_STROKE_POINTS } from "@/config/pdf-editor";
 import { normalizeRect } from "./geometry";
 import { createAnnotationId } from "./pointer";
 import type {
@@ -58,11 +58,19 @@ export function buildText(draft: TextDraft, text: string): TextAnnotation {
   };
 }
 
-/** A stray click should not leave an invisible zero-sized shape behind. */
-export function isShapeTooSmall(annotation: Annotation): boolean {
+/**
+ * A stray click should not leave markup behind that draws nothing: neither the
+ * canvas nor the export puts ink down for a zero-sized shape or a one point
+ * stroke, but both would still carry it around and save it to the file.
+ */
+export function isEmptyAnnotation(annotation: Annotation): boolean {
+  if (annotation.type === "pen") {
+    return annotation.points.length < MIN_STROKE_POINTS;
+  }
+  if (annotation.type === "text") {
+    return false;
+  }
   return (
-    annotation.type !== "pen" &&
-    annotation.type !== "text" &&
-    (annotation.width < MIN_SHAPE_SIZE || annotation.height < MIN_SHAPE_SIZE)
+    annotation.width < MIN_SHAPE_SIZE || annotation.height < MIN_SHAPE_SIZE
   );
 }
