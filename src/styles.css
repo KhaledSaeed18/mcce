@@ -4,6 +4,15 @@
 @import "@fontsource/archivo-black";
 @import "@fontsource-variable/space-grotesk";
 
+/* Markup text in the PDF editor. The path matches ANNOTATION_FONT_PATH, and the
+   file is copied out of node_modules by vite-plugin-static-copy. */
+@font-face {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/annotation.ttf") format("truetype");
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {

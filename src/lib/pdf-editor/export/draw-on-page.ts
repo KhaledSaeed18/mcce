@@ -54,8 +54,12 @@ function drawShape(page: PDFPage, annotation: ShapeAnnotation): void {
 function drawText(
   page: PDFPage,
   annotation: TextAnnotation,
-  font: PDFFont
+  font: PDFFont | null
 ): void {
+  // The caller embeds a font only when some annotation is text.
+  if (!font) {
+    return;
+  }
   const { lineHeight, lines } = layoutText(annotation);
   const color = hexToRgb(annotation.color);
   for (const [index, line] of lines.entries()) {
@@ -72,7 +76,7 @@ function drawText(
 export function drawAnnotationOnPage(
   page: PDFPage,
   annotation: Annotation,
-  font: PDFFont
+  font: PDFFont | null
 ): void {
   if (annotation.type === "pen") {
     drawPen(page, annotation);

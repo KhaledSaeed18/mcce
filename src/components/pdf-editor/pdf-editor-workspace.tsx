@@ -5,6 +5,7 @@ import { EditorToolbar } from "@/components/pdf-editor/editor-toolbar";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
 import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
 import { DEFAULT_EXPORT_NAME, EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
+import { useAnnotationFont } from "@/hooks/use-annotation-font";
 import { useEditorTools } from "@/hooks/use-editor-tools";
 import { useFullscreen } from "@/hooks/use-fullscreen";
 import { usePdfAnnotations } from "@/hooks/use-pdf-annotations";
@@ -31,6 +32,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
   const [textDraft, setTextDraft] = useState<TextDraft | null>(null);
 
   const { bytes, doc, status } = usePdfDocument(node?.id);
+  const isFontReady = useAnnotationFont();
   const {
     add,
     annotations,
@@ -115,7 +117,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
             zoom={zoom}
           />
           <div className="flex min-h-0 flex-1 flex-col overflow-auto bg-muted">
-            {doc ? (
+            {doc && isFontReady ? (
               <PdfPageList
                 actions={actions}
                 annotations={annotations}

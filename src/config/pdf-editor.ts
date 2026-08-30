@@ -37,8 +37,21 @@ export const DEFAULT_COLOR: string = ANNOTATION_COLORS[0];
 export const STROKE_WIDTHS = [1, 2, 4, 8] as const;
 export const DEFAULT_STROKE_WIDTH = 2;
 
-/** Matches the Helvetica the export embeds, so the canvas previews what is saved. */
-export const ANNOTATION_FONT_FAMILY = "Helvetica, Arial, sans-serif";
+/**
+ * Cairo covers Latin and Arabic in one file and keeps the Arabic dots inside
+ * the base glyphs. That last part matters: pdf-lib places glyphs but not the
+ * separate mark glyphs a font like Noto Sans Arabic decomposes them into, which
+ * would export Arabic with its dots scattered.
+ */
+export const ANNOTATION_FONT_NAME = "Cairo";
+export const ANNOTATION_FONT_DIR = "fonts";
+export const ANNOTATION_FONT_FILE = "annotation.ttf";
+
+/** Kept in step with the @font-face rule in styles.css, which cannot import this. */
+export const ANNOTATION_FONT_PATH = `/${ANNOTATION_FONT_DIR}/${ANNOTATION_FONT_FILE}`;
+
+/** The canvas measures and previews in the very font the export embeds. */
+export const ANNOTATION_FONT_FAMILY = `"${ANNOTATION_FONT_NAME}", Helvetica, Arial, sans-serif`;
 
 export const FONT_SIZES = [12, 16, 24, 32] as const;
 export const DEFAULT_FONT_SIZE = 16;
@@ -46,12 +59,13 @@ export const DEFAULT_FONT_SIZE = 16;
 /** Page-space radius around the pointer that counts as touching a stroke. */
 export const ERASER_TOLERANCE = 6;
 
-/** Helvetica sits roughly this far above and below its baseline, as a share of the font size. */
-export const TEXT_ASCENT_RATIO = 0.8;
-export const TEXT_DESCENT_RATIO = 0.2;
+/** How far the text reaches above and below its baseline, as a share of the font
+ * size. The descent leaves room for the ones Arabic drops well below it. */
+export const TEXT_ASCENT_RATIO = 0.85;
+export const TEXT_DESCENT_RATIO = 0.3;
 
 /** Line spacing as a share of the font size. */
-export const TEXT_LINE_HEIGHT_RATIO = 1.25;
+export const TEXT_LINE_HEIGHT_RATIO = 1.4;
 
 /** Used only where no canvas exists to measure with, which is server-side rendering. */
 export const TEXT_WIDTH_FALLBACK_RATIO = 0.5;
