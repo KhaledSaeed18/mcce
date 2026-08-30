@@ -1,4 +1,4 @@
-import { PanelLeftIcon } from "lucide-react";
+import { GalleryVerticalEndIcon, PanelLeftIcon } from "lucide-react";
 import { OpenInDriveButton } from "@/components/drive/open-in-drive-button";
 import { EditorBrand } from "@/components/pdf-editor/editor-brand";
 import { FullscreenButton } from "@/components/pdf-editor/fullscreen-button";
@@ -10,18 +10,22 @@ interface EditorFileBarProps {
   isBrowserOpen: boolean;
   isFullscreen: boolean;
   isFullscreenSupported: boolean;
+  isRailOpen: boolean;
   node: DriveNode | null;
   onToggleBrowser: () => void;
   onToggleFullscreen: () => void;
+  onToggleRail: () => void;
 }
 
 export function EditorFileBar({
   isBrowserOpen,
   isFullscreen,
   isFullscreenSupported,
+  isRailOpen,
   node,
   onToggleBrowser,
   onToggleFullscreen,
+  onToggleRail,
 }: EditorFileBarProps) {
   const title = node ? node.name : EDITOR_EMPTY_TITLE;
 
@@ -36,6 +40,15 @@ export function EditorFileBar({
           variant="outline"
         >
           <PanelLeftIcon />
+        </Button>
+        <Button
+          aria-label={isRailOpen ? "Hide pages" : "Show pages"}
+          aria-pressed={isRailOpen}
+          onClick={onToggleRail}
+          size="icon"
+          variant="outline"
+        >
+          <GalleryVerticalEndIcon />
         </Button>
         <h1 className="min-w-0 truncate font-head text-sm sm:text-base">
           {title}

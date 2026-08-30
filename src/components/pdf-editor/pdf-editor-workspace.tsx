@@ -1,18 +1,19 @@
-import { useCallback, useRef, useState } from "react";
+import { useRef } from "react";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
 import { EditorStatus } from "@/components/pdf-editor/editor-status";
 import { EditorToolbar } from "@/components/pdf-editor/editor-toolbar";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
+import { PageThumbnailRail } from "@/components/pdf-editor/page-thumbnail-rail";
 import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
 import { DEFAULT_EXPORT_NAME, EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
-import { useAnnotationFont } from "@/hooks/use-annotation-font";
 import { useEditorMarkup } from "@/hooks/use-editor-markup";
+import { useEditorPages } from "@/hooks/use-editor-pages";
+import { useEditorPanels } from "@/hooks/use-editor-panels";
 import { useEditorTools } from "@/hooks/use-editor-tools";
 import { useFullscreen } from "@/hooks/use-fullscreen";
 import { usePdfDocument } from "@/hooks/use-pdf-document";
 import { usePdfExport } from "@/hooks/use-pdf-export";
 import { usePdfZoom } from "@/hooks/use-pdf-zoom";
-import { useVisiblePage } from "@/hooks/use-visible-page";
 import type { DriveNode } from "@/lib/drive/types";
 import { cn } from "@/lib/utils";
 
@@ -29,10 +30,11 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     isSupported: isFullscreenSupported,
     toggle: toggleFullscreen,
   } = useFullscreen(rootRef);
-  const [isBrowserOpen, setIsBrowserOpen] = useState(true);
+  const { isBrowserOpen, isRailOpen, toggleBrowser, toggleRail } =
+    useEditorPanels();
 
   const { bytes, doc, status } = usePdfDocument(node?.id);
-  const isFontReady = useAnnotationFont();
+  const { isDocumentShown, pages } = useEditorPages(scrollRef, doc);
   const {
     color,
     fontSize,
@@ -58,22 +60,13 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     undo,
   } = useEditorMarkup({ fileId: node?.id, setColor, setFontSize });
   const { resetZoom, zoom, zoomIn, zoomOut } = usePdfZoom();
-  const isDocumentShown = Boolean(doc) && isFontReady;
-  const pageCount = doc && isDocumentShown ? doc.numPages : 0;
-  const { activeIndex, goToPage } = useVisiblePage(scrollRef, pageCount);
   const { exportPdf, status: exportStatus } = usePdfExport({
     annotations,
     bytes,
     fileName: node ? node.name : DEFAULT_EXPORT_NAME,
   });
 
-  const toggleBrowser = useCallback(
-    () => setIsBrowserOpen((open) => !open),
-    []
-  );
-
   const settings = { color, fontSize, strokeWidth, tool };
-  const pages = { activeIndex, goToPage, pageCount };
 
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
@@ -85,9 +78,11 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
         isBrowserOpen={isBrowserOpen}
         isFullscreen={isFullscreen}
         isFullscreenSupported={isFullscreenSupported}
+        isRailOpen={isRailOpen}
         node={node}
         onToggleBrowser={toggleBrowser}
         onToggleFullscreen={toggleFullscreen}
+        onToggleRail={toggleRail}
       />
       <div className="flex min-h-0 flex-1">
         {isBrowserOpen ? (
@@ -116,24 +111,33 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
             tool={tool}
             zoom={zoom}
           />
-          <div
-            className="flex min-h-0 flex-1 flex-col overflow-auto bg-muted"
-            ref={scrollRef}
-          >
-            {doc && isDocumentShown ? (
-              <PdfPageList
-                actions={actions}
-                annotations={annotations}
+          <div className="flex min-h-0 flex-1">
+            {isRailOpen && doc ? (
+              <PageThumbnailRail
+                activeIndex={pages.activeIndex}
                 doc={doc}
-                onTextDraftChange={openDraft}
-                selectedId={selectedId}
-                settings={settings}
-                textDraft={textDraft}
-                zoom={zoom}
+                onSelect={pages.goToPage}
               />
-            ) : (
-              <EditorStatus status={status} />
-            )}
+            ) : null}
+            <div
+              className="flex min-h-0 flex-1 flex-col overflow-auto bg-muted"
+              ref={scrollRef}
+            >
+              {doc && isDocumentShown ? (
+                <PdfPageList
+                  actions={actions}
+                  annotations={annotations}
+                  doc={doc}
+                  onTextDraftChange={openDraft}
+                  selectedId={selectedId}
+                  settings={settings}
+                  textDraft={textDraft}
+                  zoom={zoom}
+                />
+              ) : (
+                <EditorStatus status={status} />
+              )}
+            </div>
           </div>
         </div>
       </div>

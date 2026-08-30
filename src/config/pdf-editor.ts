@@ -21,6 +21,9 @@ export const DEFAULT_ZOOM = 1.25;
  * list has something to scroll and observe. */
 export const PLACEHOLDER_PAGE_SIZE = { height: 792, width: 612 };
 
+/** How wide a page is drawn in the thumbnail rail, in screen pixels. */
+export const THUMBNAIL_WIDTH = 116;
+
 /** Marks each page in the scroller so the one on screen can be found and scrolled to. */
 export const PAGE_INDEX_ATTRIBUTE = "data-page-index";
 
