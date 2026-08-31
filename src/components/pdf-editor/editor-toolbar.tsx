@@ -1,11 +1,10 @@
-import { DownloadIcon, LoaderIcon } from "lucide-react";
 import { ColorSwatches } from "@/components/pdf-editor/color-swatches";
+import { ExportButton } from "@/components/pdf-editor/export-button";
 import { HistoryControls } from "@/components/pdf-editor/history-controls";
 import { PageControls } from "@/components/pdf-editor/page-controls";
 import { SizeSelect } from "@/components/pdf-editor/size-select";
 import { ToolPicker } from "@/components/pdf-editor/tool-picker";
 import { ZoomControls } from "@/components/pdf-editor/zoom-controls";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
   EDITOR_CONTROL_HEIGHT_CLASS,
@@ -18,7 +17,6 @@ import type {
   PageNavigation,
   ZoomControl,
 } from "@/lib/pdf-editor/types";
-import { cn } from "@/lib/utils";
 
 interface EditorToolbarProps {
   canRedo: boolean;
@@ -105,18 +103,7 @@ export function EditorToolbar({
       />
       {navigation.pageCount > 0 ? <PageControls {...navigation} /> : null}
       <ZoomControls {...zoom} />
-      <Button
-        className={cn("ml-auto", EDITOR_CONTROL_HEIGHT_CLASS)}
-        disabled={exportStatus === "working"}
-        onClick={onExport}
-      >
-        {exportStatus === "working" ? (
-          <LoaderIcon className="animate-spin" data-icon="inline-start" />
-        ) : (
-          <DownloadIcon data-icon="inline-start" />
-        )}
-        Download copy
-      </Button>
+      <ExportButton onExport={onExport} status={exportStatus} />
     </div>
   );
 }
