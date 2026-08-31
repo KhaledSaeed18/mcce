@@ -84,6 +84,12 @@ export const ANNOTATION_FONT_FAMILY = `"${ANNOTATION_FONT_NAME}", Helvetica, Ari
 export const FONT_SIZES = [12, 16, 24, 32] as const;
 export const DEFAULT_FONT_SIZE = 16;
 
+/**
+ * How far back the reader can step. Each step holds the whole file's markup and
+ * pages, so an uncapped history would grow without limit over a long sitting.
+ */
+export const MAX_HISTORY_STEPS = 100;
+
 /** Page-space radius around the pointer that counts as touching a stroke. */
 export const ERASER_TOLERANCE = 6;
 

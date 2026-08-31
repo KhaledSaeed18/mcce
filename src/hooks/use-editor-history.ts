@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { MAX_HISTORY_STEPS } from "@/config/pdf-editor";
 import type { EditorSnapshot } from "@/lib/pdf-editor/types";
 
 interface HistoryState {
@@ -8,6 +9,14 @@ interface HistoryState {
 }
 
 const EMPTY_SNAPSHOT: EditorSnapshot = { annotations: [], pages: [] };
+
+/** The oldest steps fall off the back once there are more than are worth keeping. */
+function pushStep(
+  past: EditorSnapshot[],
+  present: EditorSnapshot
+): EditorSnapshot[] {
+  return [...past, present].slice(-MAX_HISTORY_STEPS);
+}
 
 const EMPTY: HistoryState = {
   future: [],
@@ -24,7 +33,7 @@ export function useEditorHistory() {
     (next: (current: EditorSnapshot) => EditorSnapshot) =>
       setHistory((state) => ({
         future: [],
-        past: [...state.past, state.present],
+        past: pushStep(state.past, state.present),
         present: next(state.present),
       })),
     []
@@ -62,7 +71,7 @@ export function useEditorHistory() {
         }
         return {
           future: rest,
-          past: [...state.past, state.present],
+          past: pushStep(state.past, state.present),
           present: next,
         };
       }),
