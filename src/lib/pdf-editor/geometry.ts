@@ -1,4 +1,5 @@
 import { ERASER_TOLERANCE } from "@/config/pdf-editor";
+import { distanceToStroke } from "./distance";
 import { getTextBox } from "./text-layout";
 import type { Annotation, Box, Point } from "./types";
 
@@ -10,13 +11,6 @@ export function normalizeRect(start: Point, end: Point) {
     x: Math.min(start.x, end.x),
     y: Math.min(start.y, end.y),
   };
-}
-
-function isNearPoints(points: Point[], target: Point): boolean {
-  return points.some(
-    (point) =>
-      Math.hypot(point.x - target.x, point.y - target.y) <= ERASER_TOLERANCE
-  );
 }
 
 function isInsideBox(box: Box, target: Point): boolean {
@@ -34,7 +28,7 @@ export function isAnnotationHit(
   target: Point
 ): boolean {
   if (annotation.type === "pen") {
-    return isNearPoints(annotation.points, target);
+    return distanceToStroke(annotation.points, target) <= ERASER_TOLERANCE;
   }
   if (annotation.type === "text") {
     return isInsideBox(getTextBox(annotation), target);
