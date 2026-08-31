@@ -11,6 +11,11 @@ interface PdfDocumentState {
   status: PdfLoadStatus;
 }
 
+/** The state remembers which file it holds, which is how a stale one is spotted. */
+interface LoadedDocument extends PdfDocumentState {
+  fileId: string | null;
+}
+
 interface OpenedDocument extends PdfDocumentState {
   task: PDFDocumentLoadingTask;
 }
@@ -19,6 +24,12 @@ const IDLE_STATE: PdfDocumentState = {
   bytes: null,
   doc: null,
   status: "idle",
+};
+
+const LOADING_STATE: PdfDocumentState = {
+  bytes: null,
+  doc: null,
+  status: "loading",
 };
 
 /** Loaded lazily: pdf.js and its worker are far too big to sit in the main bundle. */
@@ -48,31 +59,34 @@ async function openDocument(fileId: string): Promise<OpenedDocument> {
 
 /** Fetches the file through the server function that proxies Drive, then opens it. */
 export function usePdfDocument(fileId: string | undefined): PdfDocumentState {
-  const [state, setState] = useState<PdfDocumentState>(IDLE_STATE);
+  const [state, setState] = useState<LoadedDocument>({
+    ...IDLE_STATE,
+    fileId: null,
+  });
 
   useEffect(() => {
     if (!fileId) {
-      setState(IDLE_STATE);
+      setState({ ...IDLE_STATE, fileId: null });
       return;
     }
 
     let active = true;
     let task: PDFDocumentLoadingTask | null = null;
-    setState({ bytes: null, doc: null, status: "loading" });
+    setState({ ...LOADING_STATE, fileId });
 
     openDocument(fileId)
       .then((next) => {
         const { bytes, doc, status, task: opened } = next;
         task = opened;
         if (active) {
-          setState({ bytes, doc, status });
+          setState({ bytes, doc, fileId, status });
           return;
         }
         next.task.destroy();
       })
       .catch(() => {
         if (active) {
-          setState({ bytes: null, doc: null, status: "error" });
+          setState({ bytes: null, doc: null, fileId, status: "error" });
         }
       });
 
@@ -82,5 +96,11 @@ export function usePdfDocument(fileId: string | undefined): PdfDocumentState {
     };
   }, [fileId]);
 
+  // The effect that reads a new file runs after the render that asked for it, so
+  // until it has, the state still holds the file before it. Handing that one back
+  // would give the new file the page count and the bytes of the old one.
+  if (state.fileId !== (fileId ?? null)) {
+    return fileId ? LOADING_STATE : IDLE_STATE;
+  }
   return state;
 }
