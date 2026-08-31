@@ -3,6 +3,8 @@ import type { EditorPage } from "../types";
 import { resolveLayoutPages } from "./resolve-pages";
 
 export interface PlacedPage {
+  /** The turn the page carried on its own, before the editor's was added to it. */
+  baseRotation: number;
   entry: EditorPage;
   page: PDFPage;
 }
@@ -11,7 +13,7 @@ export interface PlacedPage {
  * Rebuilds the page tree to match the pages the editor holds: a page taken out
  * is gone from the copy, the rest come out in the order they were put in, and
  * each is turned as far as the editor has turned it. Reports where every page
- * ended up, for the markup to be drawn on.
+ * ended up, and how it was turned to begin with, for the markup to be drawn on.
  */
 export async function applyLayout(
   pdf: PDFDocument,
@@ -26,9 +28,10 @@ export async function applyLayout(
   for (const [position, { entry, page }] of wanted.entries()) {
     // Markup is drawn in the page's own space, so the turn rides on the page
     // rather than on every coordinate written into it.
-    page.setRotation(degrees(page.getRotation().angle + entry.rotation));
+    const baseRotation = page.getRotation().angle;
+    page.setRotation(degrees(baseRotation + entry.rotation));
     pdf.insertPage(position, page);
-    placed.push({ entry, page });
+    placed.push({ baseRotation, entry, page });
   }
 
   return placed;

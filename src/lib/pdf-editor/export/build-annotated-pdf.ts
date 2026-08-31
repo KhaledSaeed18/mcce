@@ -24,7 +24,7 @@ export async function buildAnnotatedPdf(
   for (const annotation of annotations) {
     const target = byPageId.get(annotation.pageId);
     if (target) {
-      drawAnnotationOnPage(target.page, annotation, font);
+      drawAnnotationOnPage(target.page, annotation, font, target.baseRotation);
     }
   }
 
