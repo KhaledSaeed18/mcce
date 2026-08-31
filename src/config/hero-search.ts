@@ -35,7 +35,7 @@ export const HERO_SEARCH_QUERIES: HeroSearchQuery[] = [
       },
     ],
     term: "midterm",
-    total: 49,
+    total: 63,
   },
   {
     results: [
@@ -65,7 +65,7 @@ export const HERO_SEARCH_QUERIES: HeroSearchQuery[] = [
       },
     ],
     term: "lecture",
-    total: 164,
+    total: 199,
   },
   {
     results: [
@@ -95,7 +95,7 @@ export const HERO_SEARCH_QUERIES: HeroSearchQuery[] = [
       },
     ],
     term: "lab",
-    total: 8,
+    total: 9,
   },
 ];
 
