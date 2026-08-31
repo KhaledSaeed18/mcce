@@ -1,5 +1,7 @@
 import type { PDFDocumentProxy } from "pdfjs-dist";
+import { useMemo } from "react";
 import { PdfPage } from "@/components/pdf-editor/pdf-page";
+import { groupAnnotationsByPage } from "@/lib/pdf-editor/group-by-page";
 import type {
   Annotation,
   AnnotationActions,
@@ -7,6 +9,9 @@ import type {
   TextDraft,
   ToolSettings,
 } from "@/lib/pdf-editor/types";
+
+/** Shared by every page with nothing on it, so they all hold the same empty list. */
+const NO_ANNOTATIONS: Annotation[] = [];
 
 interface PdfPageListProps {
   actions: AnnotationActions;
@@ -31,14 +36,17 @@ export function PdfPageList({
   textDraft,
   zoom,
 }: PdfPageListProps) {
+  const byPage = useMemo(
+    () => groupAnnotationsByPage(annotations),
+    [annotations]
+  );
+
   return (
     <div className="flex flex-col items-center gap-6 p-6">
       {pages.map((page, position) => (
         <PdfPage
           actions={actions}
-          annotations={annotations.filter(
-            (annotation) => annotation.pageId === page.id
-          )}
+          annotations={byPage.get(page.id) ?? NO_ANNOTATIONS}
           doc={doc}
           key={page.id}
           onTextDraftChange={onTextDraftChange}
