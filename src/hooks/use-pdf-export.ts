@@ -22,7 +22,10 @@ export function usePdfExport({
   const [status, setStatus] = useState<PdfExportStatus>("idle");
 
   const exportPdf = useCallback(async () => {
-    if (!bytes) {
+    // Building the copy is browser work, reached only by a press. Saying so lets
+    // the bundler prove it and leave pdf-lib out of the server build entirely,
+    // rather than shipping it to a runtime that can never reach it.
+    if (import.meta.env.SSR || !bytes) {
       return;
     }
     setStatus("working");
