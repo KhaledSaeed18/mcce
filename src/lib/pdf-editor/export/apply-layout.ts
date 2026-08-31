@@ -1,17 +1,24 @@
-import { degrees, type PDFDocument } from "pdf-lib";
+import { degrees, type PDFDocument, type PDFPage } from "pdf-lib";
 import type { EditorPage } from "../types";
 import { resolveLayoutPages } from "./resolve-pages";
+
+export interface PlacedPage {
+  entry: EditorPage;
+  page: PDFPage;
+}
 
 /**
  * Rebuilds the page tree to match the pages the editor holds: a page taken out
  * is gone from the copy, the rest come out in the order they were put in, and
- * each is turned as far as the editor has turned it.
+ * each is turned as far as the editor has turned it. Reports where every page
+ * ended up, for the markup to be drawn on.
  */
 export async function applyLayout(
   pdf: PDFDocument,
   layout: EditorPage[]
-): Promise<void> {
+): Promise<PlacedPage[]> {
   const wanted = await resolveLayoutPages(pdf, layout);
+  const placed: PlacedPage[] = [];
 
   for (let index = pdf.getPageCount() - 1; index >= 0; index -= 1) {
     pdf.removePage(index);
@@ -21,5 +28,8 @@ export async function applyLayout(
     // rather than on every coordinate written into it.
     page.setRotation(degrees(page.getRotation().angle + entry.rotation));
     pdf.insertPage(position, page);
+    placed.push({ entry, page });
   }
+
+  return placed;
 }

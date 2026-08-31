@@ -14,21 +14,17 @@ export async function buildAnnotatedPdf(
   layout: EditorPage[]
 ): Promise<Uint8Array> {
   const pdf = await PDFDocument.load(source);
-  await applyLayout(pdf, layout);
-  const pages = pdf.getPages();
-  const positionById = new Map(
-    layout.map((page, position) => [page.id, position])
-  );
+  const placed = await applyLayout(pdf, layout);
+  const byPageId = new Map(placed.map((item) => [item.entry.id, item]));
   // Markup with no text in it has no reason to carry a font at all.
   const font = annotations.some((annotation) => annotation.type === "text")
     ? await embedAnnotationFont(pdf)
     : null;
 
   for (const annotation of annotations) {
-    const position = positionById.get(annotation.pageId) ?? -1;
-    const page = pages[position];
-    if (page) {
-      drawAnnotationOnPage(page, annotation, font);
+    const target = byPageId.get(annotation.pageId);
+    if (target) {
+      drawAnnotationOnPage(target.page, annotation, font);
     }
   }
 
