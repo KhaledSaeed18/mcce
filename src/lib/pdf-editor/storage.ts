@@ -3,7 +3,8 @@ import {
   PDF_DOCUMENT_KEY_PREFIX,
 } from "@/config/pdf-editor";
 import { readJson, writeJson } from "@/lib/storage";
-import { buildPageId, buildPages, withKnownPages } from "./pages";
+import { buildPageId, buildPages } from "./pages";
+import { reconcileWithFile } from "./reconcile";
 import type { Annotation, EditorSnapshot } from "./types";
 
 /** Markup on disk, which may predate pages being pointed at by identity. */
@@ -47,10 +48,7 @@ export function readDocument(
   );
   // A stored file always has pages, so their absence means there is none.
   if (stored.pages.length > 0) {
-    return {
-      annotations: stored.annotations,
-      pages: withKnownPages(stored.pages, pageCount),
-    };
+    return reconcileWithFile(stored, pageCount);
   }
   return { annotations: readAnnotations(fileId), pages: buildPages(pageCount) };
 }
