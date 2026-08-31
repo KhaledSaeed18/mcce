@@ -17,11 +17,10 @@ export function usePdfZoom({
   const [mode, setMode] = useState<ZoomMode>("custom");
   const [customZoom, setCustomZoom] = useState(DEFAULT_ZOOM);
 
-  const isFitted = mode !== "custom" && Boolean(pageSize && viewport);
   const value =
-    isFitted && pageSize && viewport
-      ? getFitZoom(mode as Exclude<ZoomMode, "custom">, pageSize, viewport)
-      : customZoom;
+    mode === "custom" || !(pageSize && viewport)
+      ? customZoom
+      : getFitZoom(mode, pageSize, viewport);
 
   const setZoom = useCallback((next: number) => {
     setMode("custom");
