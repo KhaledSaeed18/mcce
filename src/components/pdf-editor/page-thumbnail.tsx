@@ -1,12 +1,7 @@
 import { CopyIcon, RotateCwIcon, Trash2Icon } from "lucide-react";
 import type { PDFDocumentProxy } from "pdfjs-dist";
-import {
-  type ComponentProps,
-  type PointerEvent,
-  useCallback,
-  useRef,
-} from "react";
-import { Button } from "@/components/ui/button";
+import { type ComponentProps, useCallback, useRef } from "react";
+import { PageThumbnailAction } from "@/components/pdf-editor/page-thumbnail-action";
 import { RAIL_POSITION_ATTRIBUTE, THUMBNAIL_WIDTH } from "@/config/pdf-editor";
 import { useInViewport } from "@/hooks/use-in-viewport";
 import { usePdfPageRender } from "@/hooks/use-pdf-page-render";
@@ -77,12 +72,6 @@ export function PageThumbnail({
 
   const handleCopy = useCallback(() => onCopy(page.id), [onCopy, page.id]);
 
-  /** Reaching for a button on the page is not the start of carrying it somewhere. */
-  const handleButtonPointerDown = useCallback(
-    (event: PointerEvent<HTMLButtonElement>) => event.stopPropagation(),
-    []
-  );
-
   return (
     <div
       {...{ [RAIL_POSITION_ATTRIBUTE]: position }}
@@ -109,47 +98,32 @@ export function PageThumbnail({
           style={{ height: rendered.height * zoom, width: THUMBNAIL_WIDTH }}
         />
       </button>
-      <Button
-        aria-label={`Turn page ${position + 1}`}
-        className={cn(
-          "absolute -top-2 -left-2 size-7 opacity-0 transition-opacity focus-visible:opacity-100 group-hover:opacity-100",
-          isActive && "opacity-100"
-        )}
+      <PageThumbnailAction
+        corner="top-left"
+        isActive={isActive}
+        label={`Turn page ${position + 1}`}
         onClick={handleRotate}
-        onPointerDown={handleButtonPointerDown}
-        size="icon"
-        variant="outline"
       >
         <RotateCwIcon />
-      </Button>
+      </PageThumbnailAction>
       {canRemove ? (
-        <Button
-          aria-label={`Remove page ${position + 1}`}
-          className={cn(
-            "absolute -top-2 -right-2 size-7 opacity-0 transition-opacity focus-visible:opacity-100 group-hover:opacity-100",
-            isActive && "opacity-100"
-          )}
+        <PageThumbnailAction
+          corner="top-right"
+          isActive={isActive}
+          label={`Remove page ${position + 1}`}
           onClick={handleRemove}
-          onPointerDown={handleButtonPointerDown}
-          size="icon"
-          variant="outline"
         >
           <Trash2Icon />
-        </Button>
+        </PageThumbnailAction>
       ) : null}
-      <Button
-        aria-label={`Duplicate page ${position + 1}`}
-        className={cn(
-          "absolute -bottom-1 -left-2 size-7 opacity-0 transition-opacity focus-visible:opacity-100 group-hover:opacity-100",
-          isActive && "opacity-100"
-        )}
+      <PageThumbnailAction
+        corner="bottom-left"
+        isActive={isActive}
+        label={`Duplicate page ${position + 1}`}
         onClick={handleCopy}
-        onPointerDown={handleButtonPointerDown}
-        size="icon"
-        variant="outline"
       >
         <CopyIcon />
-      </Button>
+      </PageThumbnailAction>
       <span
         className={cn(
           "font-head text-xs tabular-nums",

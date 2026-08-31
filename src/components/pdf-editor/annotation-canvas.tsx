@@ -1,8 +1,5 @@
-import { useEffect, useRef } from "react";
-import { MAX_RENDER_DPR } from "@/config/pdf-editor";
 import { useAnnotationDrawing } from "@/hooks/use-annotation-drawing";
-import { drawAnnotation, drawTextHighlight } from "@/lib/pdf-editor/draw";
-import { withDrag } from "@/lib/pdf-editor/move";
+import { useAnnotationPainter } from "@/hooks/use-annotation-painter";
 import {
   getRenderedSize,
   getRotationTransform,
@@ -71,7 +68,6 @@ export function AnnotationCanvas({
   size,
   zoom,
 }: AnnotationCanvasProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const rendered = getRenderedSize(size, rotation);
   const transform = getRotationTransform(size, rotation);
   const {
@@ -94,53 +90,17 @@ export function AnnotationCanvas({
     zoom,
   });
   const hoverId = hoveredTextId === selectedId ? null : hoveredTextId;
-  const highlightId = drag?.id ?? hoverId;
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas?.getContext("2d");
-    // biome-ignore lint/suspicious/noUnnecessaryConditions: a ref is empty until the canvas mounts, which the analyzer cannot see
-    if (!(canvas && ctx)) {
-      return;
-    }
-
-    const dpr = Math.min(window.devicePixelRatio || 1, MAX_RENDER_DPR);
-    canvas.width = rendered.width * zoom * dpr;
-    canvas.height = rendered.height * zoom * dpr;
-    ctx.setTransform(zoom * dpr, 0, 0, zoom * dpr, 0, 0);
-    ctx.clearRect(0, 0, rendered.width, rendered.height);
-    // Markup is held in the page's upright space, so the context is turned to
-    // match the page rather than every coordinate being rewritten.
-    ctx.translate(transform.tx, transform.ty);
-    ctx.rotate(transform.angle);
-
-    for (const stored of withDrag(annotations, drag)) {
-      if (stored.id === editingId) {
-        continue;
-      }
-      const annotation = preview?.id === stored.id ? preview : stored;
-      drawAnnotation(ctx, annotation);
-      if (annotation.type === "text" && annotation.id === highlightId) {
-        drawTextHighlight(ctx, annotation);
-      }
-    }
-    if (draft) {
-      drawAnnotation(ctx, draft);
-    }
-  }, [
+  const canvasRef = useAnnotationPainter({
     annotations,
     draft,
     drag,
     editingId,
-    highlightId,
+    highlightId: drag?.id ?? hoverId,
     preview,
-    rendered.height,
-    rendered.width,
-    transform.angle,
-    transform.tx,
-    transform.ty,
+    rendered,
+    transform,
     zoom,
-  ]);
+  });
 
   return (
     <canvas
