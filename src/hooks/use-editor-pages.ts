@@ -1,6 +1,5 @@
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import type { RefObject } from "react";
-import { useAnnotationFont } from "@/hooks/use-annotation-font";
 import { usePdfPageSizes } from "@/hooks/use-pdf-page-sizes";
 import { useVisiblePage } from "@/hooks/use-visible-page";
 import { getRenderedSize } from "@/lib/pdf-editor/rotation";
@@ -13,7 +12,7 @@ import type {
 interface EditorPages {
   /** The page being read, which a fitted zoom is measured against. */
   activeSize: PageSize | null;
-  /** False until both the file and the font it is measured with are ready. */
+  /** False until the file itself is ready to be shown. */
   isDocumentShown: boolean;
   navigation: PageNavigation;
   sizes: PageSize[];
@@ -25,8 +24,7 @@ export function useEditorPages(
   doc: PDFDocumentProxy | null,
   layout: EditorPage[]
 ): EditorPages {
-  const isFontReady = useAnnotationFont();
-  const isDocumentShown = Boolean(doc) && isFontReady;
+  const isDocumentShown = Boolean(doc);
   const pageCount = isDocumentShown ? layout.length : 0;
   const { activeIndex, goToPage } = useVisiblePage(scrollRef, pageCount);
   const sizes = usePdfPageSizes(doc);

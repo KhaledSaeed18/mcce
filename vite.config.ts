@@ -6,14 +6,7 @@ import viteReact from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
-import {
-  ANNOTATION_FONT_DIR,
-  ANNOTATION_FONT_FILE,
-  PDF_STANDARD_FONTS_PATH,
-} from "./src/config/pdf-editor.ts";
-
-const ANNOTATION_FONT_SOURCE =
-  "node_modules/@expo-google-fonts/cairo/400Regular/Cairo_400Regular.ttf";
+import { PDF_STANDARD_FONTS_PATH } from "./src/config/pdf-editor.ts";
 
 const config = defineConfig({
   build: { sourcemap: true },
@@ -35,13 +28,6 @@ const config = defineConfig({
           dest: PDF_STANDARD_FONTS_PATH.replace(/^\//, ""),
           rename: { stripBase: true },
           src: "node_modules/pdfjs-dist/standard_fonts/*",
-        },
-        // The annotation font is embedded into every export and measured on the
-        // canvas, so it is served from our own origin rather than a font CDN.
-        {
-          dest: ANNOTATION_FONT_DIR,
-          rename: { name: ANNOTATION_FONT_FILE, stripBase: true },
-          src: ANNOTATION_FONT_SOURCE,
         },
       ],
     }),
