@@ -13,6 +13,7 @@ interface EditorDocumentAreaProps {
   isRailOpen: boolean;
   layout: EditorPage[];
   navigation: PageNavigation;
+  onCopyPage: (id: string) => void;
   onRemovePage: (id: string) => void;
   onReorderPage: (from: number, to: number) => void;
   onRotatePage: (id: string) => void;
@@ -27,6 +28,7 @@ export function EditorDocumentArea({
   isRailOpen,
   layout,
   navigation,
+  onCopyPage,
   onRemovePage,
   onReorderPage,
   onRotatePage,
@@ -40,6 +42,7 @@ export function EditorDocumentArea({
           activeIndex={navigation.activeIndex}
           doc={doc}
           layout={layout}
+          onCopy={onCopyPage}
           onMove={onReorderPage}
           onRemove={onRemovePage}
           onRotate={onRotatePage}

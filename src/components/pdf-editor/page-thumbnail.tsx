@@ -1,4 +1,4 @@
-import { RotateCwIcon, Trash2Icon } from "lucide-react";
+import { CopyIcon, RotateCwIcon, Trash2Icon } from "lucide-react";
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import {
   type ComponentProps,
@@ -23,6 +23,7 @@ interface PageThumbnailProps {
   dragHandlers: ComponentProps<"button">;
   isActive: boolean;
   isDragging: boolean;
+  onCopy: (id: string) => void;
   onRemove: (id: string) => void;
   onRotate: (id: string) => void;
   onSelect: (position: number) => void;
@@ -38,6 +39,7 @@ export function PageThumbnail({
   dragHandlers,
   isActive,
   isDragging,
+  onCopy,
   onRemove,
   onRotate,
   onSelect,
@@ -73,8 +75,10 @@ export function PageThumbnail({
     [onRotate, page.id]
   );
 
+  const handleCopy = useCallback(() => onCopy(page.id), [onCopy, page.id]);
+
   /** Reaching for a button on the page is not the start of carrying it somewhere. */
-  const handleRemovePointerDown = useCallback(
+  const handleButtonPointerDown = useCallback(
     (event: PointerEvent<HTMLButtonElement>) => event.stopPropagation(),
     []
   );
@@ -112,7 +116,7 @@ export function PageThumbnail({
           isActive && "opacity-100"
         )}
         onClick={handleRotate}
-        onPointerDown={handleRemovePointerDown}
+        onPointerDown={handleButtonPointerDown}
         size="icon"
         variant="outline"
       >
@@ -126,13 +130,26 @@ export function PageThumbnail({
             isActive && "opacity-100"
           )}
           onClick={handleRemove}
-          onPointerDown={handleRemovePointerDown}
+          onPointerDown={handleButtonPointerDown}
           size="icon"
           variant="outline"
         >
           <Trash2Icon />
         </Button>
       ) : null}
+      <Button
+        aria-label={`Duplicate page ${position + 1}`}
+        className={cn(
+          "absolute -bottom-1 -left-2 size-7 opacity-0 transition-opacity focus-visible:opacity-100 group-hover:opacity-100",
+          isActive && "opacity-100"
+        )}
+        onClick={handleCopy}
+        onPointerDown={handleButtonPointerDown}
+        size="icon"
+        variant="outline"
+      >
+        <CopyIcon />
+      </Button>
       <span
         className={cn(
           "font-head text-xs tabular-nums",

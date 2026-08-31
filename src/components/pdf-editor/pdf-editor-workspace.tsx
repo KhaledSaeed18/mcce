@@ -112,6 +112,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
             isRailOpen={isRailOpen}
             layout={markup.pages}
             navigation={navigation}
+            onCopyPage={markup.copyPage}
             onRemovePage={markup.removePage}
             onReorderPage={markup.reorderPage}
             onRotatePage={markup.rotatePage}

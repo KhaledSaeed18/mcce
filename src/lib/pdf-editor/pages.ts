@@ -11,6 +11,11 @@ export function buildPageId(sourceIndex: number): string {
   return `p${sourceIndex}`;
 }
 
+/** A page put in on top of the ones the file came with needs an identity of its own. */
+export function createPageId(): string {
+  return crypto.randomUUID();
+}
+
 /** The document as it arrives: every page once, upright, in the file's own order. */
 export function buildPages(pageCount: number): EditorPage[] {
   return Array.from({ length: pageCount }, (_, sourceIndex) => ({

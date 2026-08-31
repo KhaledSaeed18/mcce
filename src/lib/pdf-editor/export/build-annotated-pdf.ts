@@ -14,7 +14,7 @@ export async function buildAnnotatedPdf(
   layout: EditorPage[]
 ): Promise<Uint8Array> {
   const pdf = await PDFDocument.load(source);
-  applyLayout(pdf, layout);
+  await applyLayout(pdf, layout);
   const pages = pdf.getPages();
   const positionById = new Map(
     layout.map((page, position) => [page.id, position])

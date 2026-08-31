@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { duplicatePage } from "@/lib/pdf-editor/duplicate-page";
 import { movePage, turnPage, withoutPage } from "@/lib/pdf-editor/pages";
 import type { EditorSnapshot } from "@/lib/pdf-editor/types";
 
@@ -42,5 +43,10 @@ export function usePageActions(commit: Commit) {
     [commit]
   );
 
-  return { removePage, reorderPage, rotatePage };
+  const copyPage = useCallback(
+    (id: string) => commit((current) => duplicatePage(current, id)),
+    [commit]
+  );
+
+  return { copyPage, removePage, reorderPage, rotatePage };
 }

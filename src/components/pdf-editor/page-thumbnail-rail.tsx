@@ -23,6 +23,7 @@ interface PageThumbnailRailProps {
   activeIndex: number;
   doc: PDFDocumentProxy;
   layout: EditorPage[];
+  onCopy: (id: string) => void;
   onMove: (from: number, to: number) => void;
   onRemove: (id: string) => void;
   onRotate: (id: string) => void;
@@ -35,6 +36,7 @@ export function PageThumbnailRail({
   doc,
   layout,
   onMove,
+  onCopy,
   onRemove,
   onRotate,
   onSelect,
@@ -66,6 +68,7 @@ export function PageThumbnailRail({
             dragHandlers={handlers}
             isActive={position === activeIndex}
             isDragging={drag?.from === position}
+            onCopy={onCopy}
             onRemove={onRemove}
             onRotate={onRotate}
             onSelect={onSelect}

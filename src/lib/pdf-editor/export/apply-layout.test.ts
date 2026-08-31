@@ -21,7 +21,7 @@ describe("applyLayout", () => {
   it("leaves a document the editor has not changed alone", async () => {
     const pdf = await makeDocument(3);
 
-    applyLayout(pdf, buildPages(3));
+    await applyLayout(pdf, buildPages(3));
 
     expect(widths(pdf)).toEqual([100, 101, 102]);
   });
@@ -30,7 +30,7 @@ describe("applyLayout", () => {
     const pdf = await makeDocument(3);
     const layout = buildPages(3).filter((page) => page.id !== "p1");
 
-    applyLayout(pdf, layout);
+    await applyLayout(pdf, layout);
 
     expect(widths(pdf)).toEqual([100, 102]);
   });
@@ -43,7 +43,7 @@ describe("applyLayout", () => {
       EditorPage,
     ];
 
-    applyLayout(pdf, [third, first, second]);
+    await applyLayout(pdf, [third, first, second]);
 
     expect(widths(pdf)).toEqual([102, 100, 101]);
   });
@@ -55,7 +55,7 @@ describe("applyLayout turning pages", () => {
     const layout = buildPages(2);
     layout[0].rotation = 90;
 
-    applyLayout(pdf, layout);
+    await applyLayout(pdf, layout);
 
     expect(pdf.getPage(0).getRotation().angle).toBe(90);
     expect(pdf.getPage(1).getRotation().angle).toBe(0);
@@ -67,8 +67,33 @@ describe("applyLayout turning pages", () => {
     const layout = buildPages(1);
     layout[0].rotation = 180;
 
-    applyLayout(pdf, layout);
+    await applyLayout(pdf, layout);
 
     expect(pdf.getPage(0).getRotation().angle).toBe(270);
+  });
+});
+
+describe("applyLayout duplicating pages", () => {
+  it("writes a page the editor holds twice out twice", async () => {
+    const pdf = await makeDocument(3);
+    const layout = buildPages(3);
+    const copy: EditorPage = { ...layout[1], id: "copy" };
+
+    await applyLayout(pdf, [layout[0], layout[1], copy, layout[2]]);
+
+    expect(widths(pdf)).toEqual([100, 101, 101, 102]);
+  });
+
+  it("gives each appearance a page of its own rather than one shared", async () => {
+    const pdf = await makeDocument(2);
+    const layout = buildPages(2);
+    const copy: EditorPage = { ...layout[0], id: "copy", rotation: 90 };
+
+    await applyLayout(pdf, [layout[0], copy]);
+    const [first, second] = pdf.getPages();
+
+    expect(first).not.toBe(second);
+    expect(first.getRotation().angle).toBe(0);
+    expect(second.getRotation().angle).toBe(90);
   });
 });

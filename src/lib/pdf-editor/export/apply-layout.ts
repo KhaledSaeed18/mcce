@@ -1,21 +1,19 @@
 import { degrees, type PDFDocument } from "pdf-lib";
 import type { EditorPage } from "../types";
+import { resolveLayoutPages } from "./resolve-pages";
 
 /**
  * Rebuilds the page tree to match the pages the editor holds: a page taken out
- * is gone from the copy, and the rest come out in the order they were put in.
- * Pages are removed and re-inserted rather than copied, so everything else the
- * file carries stays with them, and each one is turned as far as the editor has
- * turned it.
+ * is gone from the copy, the rest come out in the order they were put in, and
+ * each is turned as far as the editor has turned it.
  */
-export function applyLayout(pdf: PDFDocument, layout: EditorPage[]): void {
-  const original = pdf.getPages();
-  const wanted = layout.flatMap((entry) => {
-    const page = original[entry.sourceIndex];
-    return page ? [{ entry, page }] : [];
-  });
+export async function applyLayout(
+  pdf: PDFDocument,
+  layout: EditorPage[]
+): Promise<void> {
+  const wanted = await resolveLayoutPages(pdf, layout);
 
-  for (let index = original.length - 1; index >= 0; index -= 1) {
+  for (let index = pdf.getPageCount() - 1; index >= 0; index -= 1) {
     pdf.removePage(index);
   }
   for (const [position, { entry, page }] of wanted.entries()) {
