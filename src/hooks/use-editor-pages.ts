@@ -3,6 +3,7 @@ import type { RefObject } from "react";
 import { useAnnotationFont } from "@/hooks/use-annotation-font";
 import { usePdfPageSizes } from "@/hooks/use-pdf-page-sizes";
 import { useVisiblePage } from "@/hooks/use-visible-page";
+import { getRenderedSize } from "@/lib/pdf-editor/rotation";
 import type {
   EditorPage,
   PageNavigation,
@@ -30,9 +31,14 @@ export function useEditorPages(
   const { activeIndex, goToPage } = useVisiblePage(scrollRef, pageCount);
   const sizes = usePdfPageSizes(doc);
   const activePage = layout[activeIndex];
+  const activeSource = activePage ? sizes[activePage.sourceIndex] : undefined;
 
   return {
-    activeSize: activePage ? (sizes[activePage.sourceIndex] ?? null) : null,
+    // A turned page is fitted by the size it is shown at, not the one it was written at.
+    activeSize:
+      activePage && activeSource
+        ? getRenderedSize(activeSource, activePage.rotation)
+        : null,
     isDocumentShown,
     navigation: { activeIndex, goToPage, pageCount },
     sizes,
