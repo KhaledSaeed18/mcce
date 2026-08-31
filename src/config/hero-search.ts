@@ -1,103 +1,11 @@
-import type { HeroSearchQuery } from "@/components/marketing/types";
 import type { DriveNodeKind } from "@/lib/drive/types";
 
-/** Every row below is a real file in the indexed Drive, and every total is the
- * number of indexed files whose own name carries that term. The panel is
- * decorative, but it should not advertise material the program does not
- * actually have, so `hero-search.test.ts` holds both claims against the index
- * a Drive sync last wrote. */
-export const HERO_SEARCH_QUERIES: HeroSearchQuery[] = [
-  {
-    results: [
-      {
-        courseCode: "EENG537",
-        kind: "pdf",
-        materialType: "exam",
-        name: "(2020-2021)Midterm.pdf",
-      },
-      {
-        courseCode: "CENG566",
-        kind: "pdf",
-        materialType: "exam",
-        name: "CENG566-(2021)Midterm.pdf",
-      },
-      {
-        courseCode: "CENG507",
-        kind: "pdf",
-        materialType: "exam",
-        name: "(2020-2021)Midterm.pdf",
-      },
-      {
-        courseCode: "ENGG515",
-        kind: "pdf",
-        materialType: "exam",
-        name: "[Solution](2020-2021)V1-Midterm+Final.pdf",
-      },
-    ],
-    term: "midterm",
-    total: 63,
-  },
-  {
-    results: [
-      {
-        courseCode: "CENG675",
-        kind: "pdf",
-        materialType: "lecture",
-        name: "Lecture3.pdf",
-      },
-      {
-        courseCode: "CENG566L",
-        kind: "video",
-        materialType: "lecture",
-        name: "Lecture1.mp4",
-      },
-      {
-        courseCode: "CENG566L",
-        kind: "slides",
-        materialType: "lab",
-        name: "Lecture6-RadialBasisFunctionNetworks.pptx",
-      },
-      {
-        courseCode: "CENG675",
-        kind: "video",
-        materialType: "lecture",
-        name: "[V1]Lecture1-P1.mp4",
-      },
-    ],
-    term: "lecture",
-    total: 199,
-  },
-  {
-    results: [
-      {
-        courseCode: "CENG566L",
-        kind: "pdf",
-        materialType: "lab",
-        name: "LAB1.pdf",
-      },
-      {
-        courseCode: "CENG566L",
-        kind: "pdf",
-        materialType: "lab",
-        name: "LAB2.pdf",
-      },
-      {
-        courseCode: "EENG537",
-        kind: "pdf",
-        materialType: "lecture",
-        name: "introduction-to-matlab.pdf",
-      },
-      {
-        courseCode: "CENG566L",
-        kind: "pdf",
-        materialType: "lab",
-        name: "LAB6.pdf",
-      },
-    ],
-    term: "lab",
-    total: 9,
-  },
-];
+/** The searches the panel cycles through. What each one finds is read from the
+ * index at the time, so these are the only part anyone chooses. */
+export const HERO_SEARCH_TERMS = ["midterm", "lecture", "lab"];
+
+/** How many rows a search shows before the count stands in for the rest. */
+export const HERO_SEARCH_ROW_COUNT = 4;
 
 /** Borrowed from the chart ramp so the rows stay legible on both themes. */
 export const HERO_SEARCH_KIND_COLOR: Partial<Record<DriveNodeKind, string>> = {
