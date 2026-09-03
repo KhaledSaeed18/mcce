@@ -88,25 +88,27 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
           <FileBrowserPanel activeNode={node} nodes={nodes} />
         ) : null}
         <div className="flex min-w-0 flex-1 flex-col">
-          <EditorToolbar
-            canRedo={markup.canRedo}
-            canUndo={markup.canUndo}
-            color={color}
-            exportStatus={exportStatus}
-            fontSize={fontSize}
-            navigation={navigation}
-            onClear={markup.clear}
-            onColorChange={markup.changeColor}
-            onExport={exportPdf}
-            onFontSizeChange={markup.changeFontSize}
-            onRedo={markup.redo}
-            onStrokeWidthChange={setStrokeWidth}
-            onToolChange={setTool}
-            onUndo={markup.undo}
-            strokeWidth={strokeWidth}
-            tool={tool}
-            zoom={zoom}
-          />
+          {doc ? (
+            <EditorToolbar
+              canRedo={markup.canRedo}
+              canUndo={markup.canUndo}
+              color={color}
+              exportStatus={exportStatus}
+              fontSize={fontSize}
+              navigation={navigation}
+              onClear={markup.clear}
+              onColorChange={markup.changeColor}
+              onExport={exportPdf}
+              onFontSizeChange={markup.changeFontSize}
+              onRedo={markup.redo}
+              onStrokeWidthChange={setStrokeWidth}
+              onToolChange={setTool}
+              onUndo={markup.undo}
+              strokeWidth={strokeWidth}
+              tool={tool}
+              zoom={zoom}
+            />
+          ) : null}
           <EditorDocumentArea
             doc={doc}
             isRailOpen={isRailOpen}
