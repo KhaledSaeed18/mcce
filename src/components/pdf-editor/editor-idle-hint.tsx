@@ -1,6 +1,6 @@
 export function EditorIdleHint() {
   return (
-    <div className="pointer-events-none absolute top-12 left-6 flex items-start gap-3 text-primary">
+    <div className="pointer-events-none absolute top-2 left-4 flex items-start gap-1 text-primary">
       <svg
         aria-hidden="true"
         fill="none"
@@ -10,14 +10,14 @@ export function EditorIdleHint() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M72 56 C60 58, 20 54, 8 26"
+          d="M72 56 C60 45, 20 54, 8 50"
           stroke="currentColor"
           strokeDasharray="4 3"
           strokeLinecap="round"
           strokeWidth="1.5"
         />
         <path
-          d="M8 26 L4 36 M8 26 L18 30"
+          d="M18 41 L8 50 L18 62"
           stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
