@@ -56,7 +56,8 @@ export function FileBrowserEntry({
       className={cn(
         ROW_CLASSES,
         "hover:border-border hover:bg-accent",
-        isActive && "border-border bg-primary text-primary-foreground"
+        isActive &&
+          "border-border bg-primary text-primary-foreground dark:text-white"
       )}
       search={{ file: entry.id }}
       to="/editor"

@@ -46,14 +46,18 @@ export function EditorStatus({ status }: EditorStatusProps) {
   const Icon = ICONS[status];
 
   return (
-    <Empty className="m-auto">
-      <EmptyHeader>
-        <EmptyMedia variant="icon">
-          <Icon className={status === "loading" ? "animate-spin" : undefined} />
-        </EmptyMedia>
-        <EmptyTitle>{CONTENT[status].title}</EmptyTitle>
-        <EmptyDescription>{CONTENT[status].description}</EmptyDescription>
-      </EmptyHeader>
-    </Empty>
+    <div className="flex flex-1 items-center justify-center">
+      <Empty className="w-auto flex-none border-0 bg-transparent px-8 py-6">
+        <EmptyHeader>
+          <EmptyMedia variant="icon">
+            <Icon
+              className={status === "loading" ? "animate-spin" : undefined}
+            />
+          </EmptyMedia>
+          <EmptyTitle>{CONTENT[status].title}</EmptyTitle>
+          <EmptyDescription>{CONTENT[status].description}</EmptyDescription>
+        </EmptyHeader>
+      </Empty>
+    </div>
   );
 }
