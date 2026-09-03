@@ -19,9 +19,14 @@ export function SyncDiagramLink({ progress }: SyncDiagramLinkProps) {
     [...SYNC_LINK_ARROW_RANGE],
     [0, 1]
   );
+  const groupOpacity = useTransform(
+    progress,
+    [0, SYNC_LINK_RANGE[0], SYNC_LINK_RANGE[0]],
+    [0, 0, 1]
+  );
 
   return (
-    <g>
+    <motion.g style={{ opacity: groupOpacity }}>
       <motion.path
         d={SYNC_LINK_PATH}
         fill="none"
@@ -36,6 +41,6 @@ export function SyncDiagramLink({ progress }: SyncDiagramLinkProps) {
         style={{ opacity: arrowOpacity }}
         transform={SYNC_LINK_ARROW_TRANSFORM}
       />
-    </g>
+    </motion.g>
   );
 }
