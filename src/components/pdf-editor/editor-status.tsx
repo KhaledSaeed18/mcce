@@ -49,7 +49,7 @@ export function EditorStatus({ status }: EditorStatusProps) {
     <div className="flex flex-1 items-center justify-center">
       <Empty className="w-auto flex-none border-0 bg-transparent px-8 py-6">
         <EmptyHeader>
-          <EmptyMedia variant="icon">
+          <EmptyMedia className="bg-primary" variant="icon">
             <Icon
               className={status === "loading" ? "animate-spin" : undefined}
             />
