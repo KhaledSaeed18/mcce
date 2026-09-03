@@ -1,4 +1,5 @@
 import { FileTextIcon, LoaderIcon, TriangleAlertIcon } from "lucide-react";
+import { EditorIdleHint } from "@/components/pdf-editor/editor-idle-hint";
 import {
   Empty,
   EmptyDescription,
@@ -46,7 +47,8 @@ export function EditorStatus({ status }: EditorStatusProps) {
   const Icon = ICONS[status];
 
   return (
-    <div className="flex flex-1 items-center justify-center">
+    <div className="relative flex flex-1 items-center justify-center">
+      {status === "idle" ? <EditorIdleHint /> : null}
       <Empty className="w-auto flex-none border-0 bg-transparent px-8 py-6">
         <EmptyHeader>
           <EmptyMedia className="bg-primary" variant="icon">
