@@ -1,6 +1,6 @@
 export function EditorIdleHint() {
   return (
-    <div className="pointer-events-none absolute top-2 left-4 flex items-start gap-1 text-primary">
+    <div className="pointer-events-none absolute top-6 left-4 flex items-start gap-1 text-primary">
       <svg
         aria-hidden="true"
         fill="none"

@@ -41,15 +41,17 @@ export function EditorFileBar({
         >
           <PanelLeftIcon />
         </Button>
-        <Button
-          aria-label={isRailOpen ? "Hide pages" : "Show pages"}
-          aria-pressed={isRailOpen}
-          onClick={onToggleRail}
-          size="icon"
-          variant="outline"
-        >
-          <GalleryVerticalEndIcon />
-        </Button>
+        {node ? (
+          <Button
+            aria-label={isRailOpen ? "Hide pages" : "Show pages"}
+            aria-pressed={isRailOpen}
+            onClick={onToggleRail}
+            size="icon"
+            variant="outline"
+          >
+            <GalleryVerticalEndIcon />
+          </Button>
+        ) : null}
         <h1 className="min-w-0 truncate font-head text-sm sm:text-base">
           {title}
         </h1>
