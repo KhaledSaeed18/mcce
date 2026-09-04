@@ -50,6 +50,7 @@ export function PageThumbnailAction({
       onClick={onClick}
       onPointerDown={handlePointerDown}
       size="icon"
+      title={label}
       variant="outline"
     >
       {children}
