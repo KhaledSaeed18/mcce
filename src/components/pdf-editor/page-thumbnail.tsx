@@ -104,7 +104,7 @@ export function PageThumbnail({
         label={`Turn page ${position + 1}`}
         onClick={handleRotate}
       >
-        <RotateCwIcon />
+        <RotateCwIcon className="size-3.5" />
       </PageThumbnailAction>
       {canRemove ? (
         <PageThumbnailAction
@@ -112,8 +112,9 @@ export function PageThumbnail({
           isActive={isActive}
           label={`Remove page ${position + 1}`}
           onClick={handleRemove}
+          variant="destructive"
         >
-          <Trash2Icon />
+          <Trash2Icon className="size-3.5" />
         </PageThumbnailAction>
       ) : null}
       <PageThumbnailAction
@@ -122,7 +123,7 @@ export function PageThumbnail({
         label={`Duplicate page ${position + 1}`}
         onClick={handleCopy}
       >
-        <CopyIcon />
+        <CopyIcon className="size-3.5" />
       </PageThumbnailAction>
       <span
         className={cn(
