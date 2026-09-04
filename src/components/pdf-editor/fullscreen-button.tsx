@@ -1,7 +1,7 @@
 import { ExpandIcon, ShrinkIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
-  EDITOR_CONTROL_HEIGHT_CLASS,
+  EDITOR_HEADER_ICON_BUTTON_CLASS,
   FULLSCREEN_HOTKEY_KEY,
 } from "@/config/pdf-editor";
 import { cn } from "@/lib/utils";
@@ -12,11 +12,13 @@ const LABEL = {
 };
 
 interface FullscreenButtonProps {
+  className?: string;
   isFullscreen: boolean;
   onToggle: () => void;
 }
 
 export function FullscreenButton({
+  className,
   isFullscreen,
   onToggle,
 }: FullscreenButtonProps) {
@@ -26,7 +28,7 @@ export function FullscreenButton({
     <Button
       aria-label={label}
       aria-pressed={isFullscreen}
-      className={cn("bg-card", EDITOR_CONTROL_HEIGHT_CLASS)}
+      className={cn(EDITOR_HEADER_ICON_BUTTON_CLASS, className)}
       onClick={onToggle}
       size="icon"
       title={`${label} (${FULLSCREEN_HOTKEY_KEY.toUpperCase()})`}

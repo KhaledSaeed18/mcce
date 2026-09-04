@@ -122,6 +122,10 @@ export const EDITOR_CONTROL_HEIGHT_CLASS = "h-9";
 /** The select primitive sets its height from a data attribute, which a plain h-9 cannot outweigh. */
 export const EDITOR_SELECT_HEIGHT_CLASS = "data-[size=default]:h-9";
 
+/** All header icon controls share the same height, shadow, and hover states as the brand and drive buttons. */
+export const EDITOR_HEADER_ICON_BUTTON_CLASS =
+  "size-8 p-0 bg-card shadow-sm hover:bg-primary hover:text-primary-foreground hover:shadow-md";
+
 /** Matches the shortcut video players use, so it needs no explaining. */
 export const FULLSCREEN_HOTKEY_KEY = "f";
 
