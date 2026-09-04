@@ -40,6 +40,14 @@ University. For admissions, curriculum, and official program details, see the
 
 **[mcce.khaledsaeed.tech](https://mcce.khaledsaeed.tech)**
 
+## Shared Drive folders
+
+Direct links to the three shared Google Drive folders:
+
+- [LIU | MCCE 1 (First Year)](https://drive.google.com/drive/folders/15A8bxA33GichTPcZkyXxaZnP_dRyryTq): materials, exercises, and previous exams for both Fall and Spring semesters.
+- [LIU | MCCE 2.1 (Second Year, Fall Semester)](https://drive.google.com/drive/folders/1O5i5a7CgmPEwQ7G6MFyM75zIfmtDi5pt): materials, exercises, and previous exams for the fall semester.
+- [LIU | MCCE 2.2 (Second Year, Spring Semester)](https://drive.google.com/drive/folders/1Ed1qu98go160SHcte4FstkPVhxX9pRK1): materials, exercises, and previous exams for the spring semester.
+
 ## Features
 
 - **Browse by source and course**: program materials organized by Drive source, semester, and
