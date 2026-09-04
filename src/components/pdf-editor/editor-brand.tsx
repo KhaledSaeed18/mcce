@@ -8,7 +8,12 @@ const BRAND_CLASSES =
 
 export function EditorBrand() {
   return (
-    <Link aria-label={`${SITE_NAME} home`} className={BRAND_CLASSES} to="/">
+    <Link
+      aria-label={`${SITE_NAME} home`}
+      className={BRAND_CLASSES}
+      title={`${SITE_NAME} home`}
+      to="/"
+    >
       <LogoMark className="size-5" />
       <span className="font-head text-sm leading-none">{SITE_NAME}</span>
       <span className="h-4 w-px bg-border" />

@@ -42,6 +42,7 @@ export function EditorFileBar({
           className={EDITOR_HEADER_ICON_BUTTON_CLASS}
           onClick={onToggleBrowser}
           size="icon"
+          title={isBrowserOpen ? "Hide files" : "Show files"}
           variant="outline"
         >
           <PanelLeftIcon />
@@ -53,6 +54,7 @@ export function EditorFileBar({
             className={EDITOR_HEADER_ICON_BUTTON_CLASS}
             onClick={onToggleRail}
             size="icon"
+            title={isRailOpen ? "Hide pages" : "Show pages"}
             variant="outline"
           >
             <GalleryVerticalEndIcon />
