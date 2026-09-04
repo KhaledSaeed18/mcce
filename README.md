@@ -16,6 +16,12 @@
   <a href="./CONTRIBUTING.md"><img src="https://shieldcn.dev/badge/PRs-welcome-16a34a.svg?logo=lu:GitPullRequest" alt="PRs welcome" /></a>
 </p>
 
+<p align="center">
+  <a href="https://drive.google.com/drive/folders/15A8bxA33GichTPcZkyXxaZnP_dRyryTq"><img src="https://shieldcn.dev/badge/First_Year-ff9f1c.svg?logo=googledrive" alt="First Year Drive" /></a>
+  <a href="https://drive.google.com/drive/folders/1O5i5a7CgmPEwQ7G6MFyM75zIfmtDi5pt"><img src="https://shieldcn.dev/badge/Second_Year_(Fall)-ff9f1c.svg?logo=googledrive" alt="Second Year Fall Drive" /></a>
+  <a href="https://drive.google.com/drive/folders/1Ed1qu98go160SHcte4FstkPVhxX9pRK1"><img src="https://shieldcn.dev/badge/Second_Year_(Spring)-ff9f1c.svg?logo=googledrive" alt="Second Year Spring Drive" /></a>
+</p>
+
 ---
 
 ## What this is
