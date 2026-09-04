@@ -61,6 +61,12 @@ export const PROGRAM_FAQ: FaqItem[] = [
   },
   {
     answer:
+      "To maintain a clear separation of concerns across academic stages. The program is divided into three distinct phases: first year, second year fall, and second year spring. Separating them into dedicated folders prevents clutter and keeps each semester organized, making files easier to locate and index than a single combined folder.",
+    category: "site",
+    question: "Why are there three different Drive folders instead of one?",
+  },
+  {
+    answer:
       "Yes. Send exams, notes, slides, or recordings through the contact page, in whatever shape they're in. Sorting them into the right semester and course happens from there.",
     category: "site",
     question: "Can I add materials I have?",
