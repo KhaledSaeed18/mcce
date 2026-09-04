@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as CceRouteImport } from './routes/cce'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as EditorRouteImport } from './routes/editor'
 import { Route as ExamsRouteImport } from './routes/exams'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GpaCalculatorRouteImport } from './routes/gpa-calculator'
@@ -51,6 +52,11 @@ const CceRoute = CceRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EditorRoute = EditorRouteImport.update({
+  id: '/editor',
+  path: '/editor',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExamsRoute = ExamsRouteImport.update({
@@ -125,6 +131,7 @@ export interface FileRoutesByFullPath {
   '/admissions': typeof AdmissionsRoute
   '/cce': typeof CceRoute
   '/contact': typeof ContactRoute
+  '/editor': typeof EditorRoute
   '/exams': typeof ExamsRoute
   '/faq': typeof FaqRoute
   '/gpa-calculator': typeof GpaCalculatorRoute
@@ -145,6 +152,7 @@ export interface FileRoutesByTo {
   '/admissions': typeof AdmissionsRoute
   '/cce': typeof CceRoute
   '/contact': typeof ContactRoute
+  '/editor': typeof EditorRoute
   '/exams': typeof ExamsRoute
   '/faq': typeof FaqRoute
   '/gpa-calculator': typeof GpaCalculatorRoute
@@ -166,6 +174,7 @@ export interface FileRoutesById {
   '/admissions': typeof AdmissionsRoute
   '/cce': typeof CceRoute
   '/contact': typeof ContactRoute
+  '/editor': typeof EditorRoute
   '/exams': typeof ExamsRoute
   '/faq': typeof FaqRoute
   '/gpa-calculator': typeof GpaCalculatorRoute
@@ -188,6 +197,7 @@ export interface FileRouteTypes {
     | '/admissions'
     | '/cce'
     | '/contact'
+    | '/editor'
     | '/exams'
     | '/faq'
     | '/gpa-calculator'
@@ -208,6 +218,7 @@ export interface FileRouteTypes {
     | '/admissions'
     | '/cce'
     | '/contact'
+    | '/editor'
     | '/exams'
     | '/faq'
     | '/gpa-calculator'
@@ -228,6 +239,7 @@ export interface FileRouteTypes {
     | '/admissions'
     | '/cce'
     | '/contact'
+    | '/editor'
     | '/exams'
     | '/faq'
     | '/gpa-calculator'
@@ -249,6 +261,7 @@ export interface RootRouteChildren {
   AdmissionsRoute: typeof AdmissionsRoute
   CceRoute: typeof CceRoute
   ContactRoute: typeof ContactRoute
+  EditorRoute: typeof EditorRoute
   ExamsRoute: typeof ExamsRoute
   FaqRoute: typeof FaqRoute
   GpaCalculatorRoute: typeof GpaCalculatorRoute
@@ -299,6 +312,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/editor': {
+      id: '/editor'
+      path: '/editor'
+      fullPath: '/editor'
+      preLoaderRoute: typeof EditorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/exams': {
@@ -401,6 +421,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdmissionsRoute: AdmissionsRoute,
   CceRoute: CceRoute,
   ContactRoute: ContactRoute,
+  EditorRoute: EditorRoute,
   ExamsRoute: ExamsRoute,
   FaqRoute: FaqRoute,
   GpaCalculatorRoute: GpaCalculatorRoute,

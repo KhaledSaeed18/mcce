@@ -1,7 +1,12 @@
 import { HeroSearchDemo } from "@/components/marketing/hero-search-demo";
+import type { HeroSearchQuery } from "@/components/marketing/types";
 import { Badge } from "@/components/ui/badge";
 
-export function HeroPanel() {
+interface HeroPanelProps {
+  queries: HeroSearchQuery[];
+}
+
+export function HeroPanel({ queries }: HeroPanelProps) {
   return (
     <div
       aria-hidden="true"
@@ -20,7 +25,7 @@ export function HeroPanel() {
         </Badge>
       </div>
 
-      <HeroSearchDemo />
+      <HeroSearchDemo queries={queries} />
     </div>
   );
 }

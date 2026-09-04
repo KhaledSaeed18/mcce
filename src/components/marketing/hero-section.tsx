@@ -3,15 +3,17 @@ import { HeroActions } from "@/components/marketing/hero-actions";
 import { HeroPanel } from "@/components/marketing/hero-panel";
 import { HeroQuickLinks } from "@/components/marketing/hero-quick-links";
 import { HeroStats } from "@/components/marketing/hero-stats";
+import type { HeroSearchQuery } from "@/components/marketing/types";
 import { Badge } from "@/components/ui/badge";
 import { PROGRAM_UNIVERSITY_SHORT } from "@/config/site";
 import type { DriveIndexStats } from "@/lib/drive/types";
 
 interface HeroSectionProps {
+  queries: HeroSearchQuery[];
   stats: DriveIndexStats;
 }
 
-export function HeroSection({ stats }: HeroSectionProps) {
+export function HeroSection({ queries, stats }: HeroSectionProps) {
   return (
     <section className="grid grid-cols-1 items-center gap-10 py-8 sm:py-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,420px)] lg:gap-12">
       <motion.div
@@ -48,7 +50,7 @@ export function HeroSection({ stats }: HeroSectionProps) {
         initial={{ opacity: 0, scale: 0.96 }}
         transition={{ delay: 0.1, duration: 0.4 }}
       >
-        <HeroPanel />
+        <HeroPanel queries={queries} />
       </motion.div>
     </section>
   );

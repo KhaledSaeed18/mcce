@@ -17,7 +17,11 @@ function materialTypesOf(query: HeroSearchQuery): string[] {
   return [...new Set(query.results.map((result) => result.materialType))];
 }
 
-export function HeroSearchDemo() {
+interface HeroSearchDemoProps {
+  queries: HeroSearchQuery[];
+}
+
+export function HeroSearchDemo({ queries }: HeroSearchDemoProps) {
   const {
     activeIndex,
     onHoverRow,
@@ -26,7 +30,7 @@ export function HeroSearchDemo() {
     phase,
     query,
     typed,
-  } = useHeroSearchDemo();
+  } = useHeroSearchDemo(queries);
 
   const hasResults = phase === "results" || phase === "clearing";
   const activeType = query.results[activeIndex]?.materialType;

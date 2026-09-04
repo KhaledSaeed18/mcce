@@ -5,7 +5,6 @@ import {
   HERO_CLEAR_MS,
   HERO_FOCUS_MS,
   HERO_HOLD_MS,
-  HERO_SEARCH_QUERIES,
   HERO_SETTLE_MS,
   HERO_TYPE_MS,
 } from "@/config/hero-search";
@@ -27,7 +26,7 @@ export interface HeroSearchDemo {
 
 /** Cycles the hero panel through a few real searches: type the term, settle,
  * reveal the rows, walk down them, then clear and move to the next term. */
-export function useHeroSearchDemo(): HeroSearchDemo {
+export function useHeroSearchDemo(queries: HeroSearchQuery[]): HeroSearchDemo {
   const shouldReduceMotion = useReducedMotion();
   const [queryIndex, setQueryIndex] = useState(0);
   const [charCount, setCharCount] = useState(0);
@@ -35,16 +34,16 @@ export function useHeroSearchDemo(): HeroSearchDemo {
   const [focusIndex, setFocusIndex] = useState(NO_ROW);
   const pointer = useHeroSearchPointer();
 
-  const query = HERO_SEARCH_QUERIES[queryIndex];
+  const query = queries[queryIndex];
 
   useEffect(() => {
     if (!shouldReduceMotion) {
       return;
     }
-    setCharCount(HERO_SEARCH_QUERIES[0].term.length);
+    setCharCount(queries[0].term.length);
     setPhase("results");
     setFocusIndex(0);
-  }, [shouldReduceMotion]);
+  }, [queries, shouldReduceMotion]);
 
   useEffect(() => {
     if (shouldReduceMotion || pointer.isHeld) {
@@ -78,11 +77,19 @@ export function useHeroSearchDemo(): HeroSearchDemo {
     return charCount > 0
       ? next(HERO_CLEAR_MS, () => setCharCount((count) => count - 1))
       : next(HERO_CLEAR_MS, () => {
-          setQueryIndex((index) => (index + 1) % HERO_SEARCH_QUERIES.length);
+          setQueryIndex((index) => (index + 1) % queries.length);
           setFocusIndex(NO_ROW);
           setPhase("typing");
         });
-  }, [phase, charCount, focusIndex, pointer.isHeld, shouldReduceMotion, query]);
+  }, [
+    phase,
+    charCount,
+    focusIndex,
+    pointer.isHeld,
+    queries.length,
+    shouldReduceMotion,
+    query,
+  ]);
 
   return {
     activeIndex:

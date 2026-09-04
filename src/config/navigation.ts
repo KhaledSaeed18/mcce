@@ -230,3 +230,6 @@ export const NAV_GROUPS: NavGroup[] = [
 
 /** Past this many entries a group reads better as two columns than one long list. */
 export const MEGA_MENU_TWO_COLUMN_THRESHOLD = 4;
+
+/** Routes rendered without the header, footer, and page decoration. */
+export const CHROMELESS_ROUTE_PREFIXES = ["/editor"];

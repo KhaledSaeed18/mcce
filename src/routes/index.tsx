@@ -16,6 +16,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { SITE_URL } from "@/config/site";
 import { DRIVE_SOURCES } from "@/config/sources";
 import { buildCourseSummaries } from "@/lib/drive/courses";
+import { buildHeroSearchQueries } from "@/lib/drive/hero-search";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import { buildRecentBatches } from "@/lib/drive/recent";
 import { buildIndexStats } from "@/lib/drive/stats";
@@ -32,6 +33,10 @@ export const Route = createFileRoute("/")({
 
 function HomePage() {
   const driveIndex = Route.useLoaderData();
+  const heroQueries = useMemo(
+    () => buildHeroSearchQueries(driveIndex.nodes),
+    [driveIndex.nodes]
+  );
   const stats = useMemo(
     () => buildIndexStats(driveIndex, DRIVE_SOURCES.length),
     [driveIndex]
@@ -47,7 +52,7 @@ function HomePage() {
 
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 sm:p-6">
-      <HeroSection stats={stats} />
+      <HeroSection queries={heroQueries} stats={stats} />
 
       {latestBatch ? (
         <RecentStrip addedAt={latestBatch.addedAt} count={latestBatch.total} />

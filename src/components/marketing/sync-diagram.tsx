@@ -29,7 +29,7 @@ export function SyncDiagram() {
     <div className="px-5 pt-5 sm:px-6 sm:pt-6">
       <motion.svg
         aria-hidden="true"
-        className="mx-auto block h-auto w-full max-w-[640px]"
+        className="mx-auto block h-auto w-full max-w-160"
         role="presentation"
         style={{ opacity }}
         viewBox={`0 0 ${SYNC_DIAGRAM_WIDTH} ${SYNC_DIAGRAM_HEIGHT}`}

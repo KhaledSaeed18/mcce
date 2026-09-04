@@ -1,8 +1,8 @@
 import { motion, useReducedMotion } from "motion/react";
-import { HERO_SEARCH_QUERIES } from "@/config/hero-search";
+import { HERO_SEARCH_ROW_COUNT } from "@/config/hero-search";
 
 const PULSE_SECONDS = 0.9;
-const ROW_COUNT = HERO_SEARCH_QUERIES[0].results.length;
+const ROW_COUNT = HERO_SEARCH_ROW_COUNT;
 const ROWS = Array.from({ length: ROW_COUNT }, (_row, index) => index);
 const BAR_WIDTHS = ["70%", "52%", "64%", "44%"];
 
