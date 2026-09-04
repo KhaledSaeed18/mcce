@@ -133,3 +133,8 @@ export interface ToolSettings {
   strokeWidth: number;
   tool: EditorTool;
 }
+
+export interface EditorPanels {
+  isBrowserOpen: boolean;
+  isRailOpen: boolean;
+}

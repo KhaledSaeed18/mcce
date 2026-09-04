@@ -1,4 +1,4 @@
-import type { EditorTool } from "@/lib/pdf-editor/types";
+import type { EditorPanels, EditorTool } from "@/lib/pdf-editor/types";
 
 /** The Drive endpoint that serves raw file bytes, read server-side only. */
 export const DRIVE_DOWNLOAD_ENDPOINT =
@@ -14,6 +14,13 @@ export const PDF_STANDARD_FONTS_PATH = "/pdfjs/standard_fonts/";
 export const PDF_ANNOTATIONS_KEY_PREFIX = "mcce.pdf-annotations.v1";
 
 export const PDF_DOCUMENT_KEY_PREFIX = "mcce.pdf-document.v1";
+
+export const EDITOR_PANELS_STORAGE_KEY = "mcce.editor-panels.v1";
+
+export const DEFAULT_EDITOR_PANELS: EditorPanels = {
+  isBrowserOpen: true,
+  isRailOpen: false,
+};
 
 /** The page list's padding and borders, which a fitted page has to leave room for. */
 export const PAGE_FIT_PADDING = 56;
