@@ -1,10 +1,10 @@
 {
   "meta": {
     "baselineAt": "2026-08-17T06:41:16.505Z",
-    "generatedAt": "2026-09-04T16:23:27.892Z",
+    "generatedAt": "2026-09-04T16:57:00.080Z",
     "sources": [
       {
-        "description": "LIU - MCCE | First Year | materials, videos, exercises, and previous exams.",
+        "description": "LIU - MCCE | First Year, Both Semesters | materials, videos, exercises, and previous exams.",
         "fileCount": 617,
         "folderCount": 199,
         "id": "year1",
@@ -19,10 +19,10 @@
       },
       {
         "description": "LIU - MCCE | Second Year, Spring Semester | materials, videos, exercises, and previous exams.",
-        "fileCount": 0,
-        "folderCount": 0,
+        "fileCount": 11,
+        "folderCount": 7,
         "id": "year2-spring",
-        "totalBytes": 0
+        "totalBytes": 22895217
       }
     ]
   },
@@ -42124,6 +42124,679 @@
       "termLabel": "2020-2021",
       "webViewLink": "https://drive.google.com/file/d/1uFNRN7itYhYKlhEZ2DeZWLBr7FHxxKGv/view?usp=drivesdk",
       "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": null,
+      "courseName": null,
+      "depth": 0,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1PslUrJTrurQNCa0pDQ4CwGbRFaemjXZ7WICNhIuZB8M",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-09-04T16:04:41.385Z",
+      "name": "README (start here)",
+      "parentId": "1Ed1qu98go160SHcte4FstkPVhxX9pRK1",
+      "pathIds": [
+        "1PslUrJTrurQNCa0pDQ4CwGbRFaemjXZ7WICNhIuZB8M"
+      ],
+      "pathNames": [
+        "README (start here)"
+      ],
+      "semester": null,
+      "sizeBytes": 4965,
+      "sourceId": "year2-spring",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1PslUrJTrurQNCa0pDQ4CwGbRFaemjXZ7WICNhIuZB8M/edit?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": null,
+      "courseName": null,
+      "depth": 0,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+      "isShortcut": false,
+      "kind": "folder",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-09-04T15:59:08.185Z",
+      "name": "Second Year | Spring Semester",
+      "parentId": "1Ed1qu98go160SHcte4FstkPVhxX9pRK1",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": null,
+      "sourceId": "year2-spring",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG685",
+      "courseName": "Information Security",
+      "depth": 1,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+      "isShortcut": false,
+      "kind": "folder",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-09-04T16:31:06.286Z",
+      "name": "CENG685 - Information Security",
+      "parentId": "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG685 - Information Security"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": null,
+      "sourceId": "year2-spring",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG678",
+      "courseName": "Image Processing and Computer Vision",
+      "depth": 1,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1kjFRbLFfbrkXUURcAtXOBS8sbeqwhkol",
+      "isShortcut": false,
+      "kind": "folder",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-09-04T16:30:57.354Z",
+      "name": "CENG678 - Image Processing and Computer Vision",
+      "parentId": "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1kjFRbLFfbrkXUURcAtXOBS8sbeqwhkol"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG678 - Image Processing and Computer Vision"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": null,
+      "sourceId": "year2-spring",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1kjFRbLFfbrkXUURcAtXOBS8sbeqwhkol",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG679",
+      "courseName": "Satellite and Space Communications",
+      "depth": 1,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1xsJs5zkz9lS-5Trf1qaAPiOMbN-WcNIk",
+      "isShortcut": false,
+      "kind": "folder",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-09-04T16:30:46.211Z",
+      "name": "CENG679 - Satellite and Space Communications",
+      "parentId": "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1xsJs5zkz9lS-5Trf1qaAPiOMbN-WcNIk"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG679 - Satellite and Space Communications"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": null,
+      "sourceId": "year2-spring",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1xsJs5zkz9lS-5Trf1qaAPiOMbN-WcNIk",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG685",
+      "courseName": "Information Security",
+      "depth": 2,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx",
+      "isShortcut": false,
+      "kind": "folder",
+      "materialType": "exam",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-09-04T16:46:01.433Z",
+      "name": "Exams",
+      "parentId": "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+        "1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG685 - Information Security",
+        "Exams"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": null,
+      "sourceId": "year2-spring",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [
+        "Exams"
+      ],
+      "courseCode": "CENG685",
+      "courseName": "Information Security",
+      "depth": 3,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1e_KfbEzl5kL_VJevcAje5Tnd18jw_Ml5",
+      "isShortcut": false,
+      "kind": "folder",
+      "materialType": "exam",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-09-04T16:47:11.017Z",
+      "name": "Midterm",
+      "parentId": "1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+        "1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx",
+        "1e_KfbEzl5kL_VJevcAje5Tnd18jw_Ml5"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG685 - Information Security",
+        "Exams",
+        "Midterm"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": null,
+      "sourceId": "year2-spring",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1e_KfbEzl5kL_VJevcAje5Tnd18jw_Ml5",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm"
+      ],
+      "courseCode": "CENG685",
+      "courseName": "Information Security",
+      "depth": 4,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+      "isShortcut": false,
+      "kind": "folder",
+      "materialType": "exam",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-09-04T16:47:25.448Z",
+      "name": "Moodle",
+      "parentId": "1e_KfbEzl5kL_VJevcAje5Tnd18jw_Ml5",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+        "1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx",
+        "1e_KfbEzl5kL_VJevcAje5Tnd18jw_Ml5",
+        "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG685 - Information Security",
+        "Exams",
+        "Midterm",
+        "Moodle"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": null,
+      "sourceId": "year2-spring",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Moodle"
+      ],
+      "courseCode": "CENG685",
+      "courseName": "Information Security",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1y_Mk1rI41b9KZA4sibQFZH4g41ReQzVN",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:55:45.016Z",
+      "name": "CENG685-(2020)Midterm.pdf",
+      "parentId": "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+        "1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx",
+        "1e_KfbEzl5kL_VJevcAje5Tnd18jw_Ml5",
+        "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+        "1y_Mk1rI41b9KZA4sibQFZH4g41ReQzVN"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG685 - Information Security",
+        "Exams",
+        "Midterm",
+        "Moodle",
+        "CENG685-(2020)Midterm.pdf"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": 8255080,
+      "sourceId": "year2-spring",
+      "termLabel": "Spring 2019-2020",
+      "webViewLink": "https://drive.google.com/file/d/1y_Mk1rI41b9KZA4sibQFZH4g41ReQzVN/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Moodle"
+      ],
+      "courseCode": "CENG685",
+      "courseName": "Information Security",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1Ee9FAxYJM8VIKB0-ypauc_fwNniaClKd",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:55:35.303Z",
+      "name": "V7-CENG685-(2021)Midterm.pdf",
+      "parentId": "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+        "1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx",
+        "1e_KfbEzl5kL_VJevcAje5Tnd18jw_Ml5",
+        "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+        "1Ee9FAxYJM8VIKB0-ypauc_fwNniaClKd"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG685 - Information Security",
+        "Exams",
+        "Midterm",
+        "Moodle",
+        "V7-CENG685-(2021)Midterm.pdf"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": 1363298,
+      "sourceId": "year2-spring",
+      "termLabel": "Spring 2020-2021",
+      "webViewLink": "https://drive.google.com/file/d/1Ee9FAxYJM8VIKB0-ypauc_fwNniaClKd/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Moodle"
+      ],
+      "courseCode": "CENG685",
+      "courseName": "Information Security",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1Kh6Vd8wPiLEkp58YMw35f07u5hEE1SoI",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:55:14.174Z",
+      "name": "V6-CENG685-(2021)Midterm.pdf",
+      "parentId": "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+        "1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx",
+        "1e_KfbEzl5kL_VJevcAje5Tnd18jw_Ml5",
+        "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+        "1Kh6Vd8wPiLEkp58YMw35f07u5hEE1SoI"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG685 - Information Security",
+        "Exams",
+        "Midterm",
+        "Moodle",
+        "V6-CENG685-(2021)Midterm.pdf"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": 2669053,
+      "sourceId": "year2-spring",
+      "termLabel": "Spring 2020-2021",
+      "webViewLink": "https://drive.google.com/file/d/1Kh6Vd8wPiLEkp58YMw35f07u5hEE1SoI/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Moodle"
+      ],
+      "courseCode": "CENG685",
+      "courseName": "Information Security",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1QKh8txWmHKYfNppJgh_jvHBa0id3k57w",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:55:08.008Z",
+      "name": "V5-CENG685-(2021)Midterm.pdf",
+      "parentId": "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+        "1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx",
+        "1e_KfbEzl5kL_VJevcAje5Tnd18jw_Ml5",
+        "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+        "1QKh8txWmHKYfNppJgh_jvHBa0id3k57w"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG685 - Information Security",
+        "Exams",
+        "Midterm",
+        "Moodle",
+        "V5-CENG685-(2021)Midterm.pdf"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": 1238364,
+      "sourceId": "year2-spring",
+      "termLabel": "Spring 2020-2021",
+      "webViewLink": "https://drive.google.com/file/d/1QKh8txWmHKYfNppJgh_jvHBa0id3k57w/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Moodle"
+      ],
+      "courseCode": "CENG685",
+      "courseName": "Information Security",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1nEqGQFeXU0LEIpwFhDF4VPG0AH1FeAe2",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:55:00.561Z",
+      "name": "V4-CENG685-(2021)Midterm.pdf",
+      "parentId": "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+        "1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx",
+        "1e_KfbEzl5kL_VJevcAje5Tnd18jw_Ml5",
+        "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+        "1nEqGQFeXU0LEIpwFhDF4VPG0AH1FeAe2"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG685 - Information Security",
+        "Exams",
+        "Midterm",
+        "Moodle",
+        "V4-CENG685-(2021)Midterm.pdf"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": 1320142,
+      "sourceId": "year2-spring",
+      "termLabel": "Spring 2020-2021",
+      "webViewLink": "https://drive.google.com/file/d/1nEqGQFeXU0LEIpwFhDF4VPG0AH1FeAe2/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Moodle"
+      ],
+      "courseCode": "CENG685",
+      "courseName": "Information Security",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1s1BIIn4p3B8qzqqe3MgrGgG84Hx-D8rM",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:54:55.150Z",
+      "name": "V3-CENG685-(2021)Midterm.pdf",
+      "parentId": "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+        "1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx",
+        "1e_KfbEzl5kL_VJevcAje5Tnd18jw_Ml5",
+        "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+        "1s1BIIn4p3B8qzqqe3MgrGgG84Hx-D8rM"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG685 - Information Security",
+        "Exams",
+        "Midterm",
+        "Moodle",
+        "V3-CENG685-(2021)Midterm.pdf"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": 1223741,
+      "sourceId": "year2-spring",
+      "termLabel": "Spring 2020-2021",
+      "webViewLink": "https://drive.google.com/file/d/1s1BIIn4p3B8qzqqe3MgrGgG84Hx-D8rM/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Moodle"
+      ],
+      "courseCode": "CENG685",
+      "courseName": "Information Security",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1NALBQBCBOWBYUKVlzHQJgXnNoHVQjSTJ",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:54:45.789Z",
+      "name": "V2-CENG685-(2021)Midterm.pdf",
+      "parentId": "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+        "1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx",
+        "1e_KfbEzl5kL_VJevcAje5Tnd18jw_Ml5",
+        "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+        "1NALBQBCBOWBYUKVlzHQJgXnNoHVQjSTJ"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG685 - Information Security",
+        "Exams",
+        "Midterm",
+        "Moodle",
+        "V2-CENG685-(2021)Midterm.pdf"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": 1692393,
+      "sourceId": "year2-spring",
+      "termLabel": "Spring 2020-2021",
+      "webViewLink": "https://drive.google.com/file/d/1NALBQBCBOWBYUKVlzHQJgXnNoHVQjSTJ/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Moodle"
+      ],
+      "courseCode": "CENG685",
+      "courseName": "Information Security",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1KjexOsAG5ihHc1_3VH3LVUOIYpb1jsm4",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:54:31.371Z",
+      "name": "V1-CENG685-(2021)Midterm.pdf",
+      "parentId": "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+        "1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx",
+        "1e_KfbEzl5kL_VJevcAje5Tnd18jw_Ml5",
+        "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+        "1KjexOsAG5ihHc1_3VH3LVUOIYpb1jsm4"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG685 - Information Security",
+        "Exams",
+        "Midterm",
+        "Moodle",
+        "V1-CENG685-(2021)Midterm.pdf"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": 1669685,
+      "sourceId": "year2-spring",
+      "termLabel": "Spring 2020-2021",
+      "webViewLink": "https://drive.google.com/file/d/1KjexOsAG5ihHc1_3VH3LVUOIYpb1jsm4/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Moodle"
+      ],
+      "courseCode": "CENG685",
+      "courseName": "Information Security",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1Nsm97Ojx4oywU0I084brW3WPvHcu-la3",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:50:45.975Z",
+      "name": "CENG685-(Spring2024)Midterm.pdf",
+      "parentId": "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+        "1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx",
+        "1e_KfbEzl5kL_VJevcAje5Tnd18jw_Ml5",
+        "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+        "1Nsm97Ojx4oywU0I084brW3WPvHcu-la3"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG685 - Information Security",
+        "Exams",
+        "Midterm",
+        "Moodle",
+        "CENG685-(Spring2024)Midterm.pdf"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": 656872,
+      "sourceId": "year2-spring",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1Nsm97Ojx4oywU0I084brW3WPvHcu-la3/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Moodle"
+      ],
+      "courseCode": "CENG685",
+      "courseName": "Information Security",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1gbAws-w_P1fc4qCnbWJDjF3qURQR8Cc0",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:50:30.790Z",
+      "name": "[SOLVED]CENG685-(Spring2024)Midterm.pdf",
+      "parentId": "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+        "1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx",
+        "1e_KfbEzl5kL_VJevcAje5Tnd18jw_Ml5",
+        "1WWAw9Yz_T-4jBs81sMkrh-zer9vUJKnM",
+        "1gbAws-w_P1fc4qCnbWJDjF3qURQR8Cc0"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG685 - Information Security",
+        "Exams",
+        "Midterm",
+        "Moodle",
+        "[SOLVED]CENG685-(Spring2024)Midterm.pdf"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": 2801624,
+      "sourceId": "year2-spring",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1gbAws-w_P1fc4qCnbWJDjF3qURQR8Cc0/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:57:00.080Z"
     }
   ]
 }
