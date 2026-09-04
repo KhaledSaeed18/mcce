@@ -10,6 +10,8 @@ import {
 import { useThemeHotkey } from "@/hooks/use-theme-hotkey";
 import { clickSoftSound } from "@/lib/click-soft";
 
+import { cn } from "@/lib/utils";
+
 const DARK_QUERY = "(prefers-color-scheme: dark)";
 
 function useIsMounted() {
@@ -35,7 +37,11 @@ function useSystemPrefersDark() {
   );
 }
 
-export function ThemeSwitcher() {
+interface ThemeSwitcherProps {
+  className?: string;
+}
+
+export function ThemeSwitcher({ className }: ThemeSwitcherProps = {}) {
   const { theme, setTheme } = useTheme();
   const isMounted = useIsMounted();
   const systemPrefersDark = useSystemPrefersDark();
@@ -58,7 +64,7 @@ export function ThemeSwitcher() {
   return (
     <Button
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      className="size-8 p-0"
+      className={cn("size-8 p-0", className)}
       onClick={handleToggle}
       size="sm"
       title={`${isDark ? "Switch to light theme" : "Switch to dark theme"} (D)`}

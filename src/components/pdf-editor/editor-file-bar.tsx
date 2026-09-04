@@ -2,6 +2,7 @@ import { GalleryVerticalEndIcon, PanelLeftIcon } from "lucide-react";
 import { OpenInDriveButton } from "@/components/drive/open-in-drive-button";
 import { EditorBrand } from "@/components/pdf-editor/editor-brand";
 import { FullscreenButton } from "@/components/pdf-editor/fullscreen-button";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Button } from "@/components/ui/button";
 import {
   EDITOR_EMPTY_TITLE,
@@ -66,6 +67,7 @@ export function EditorFileBar({
 
       <div className="flex items-center justify-end gap-2">
         {node ? <OpenInDriveButton href={node.webViewLink} /> : null}
+        <ThemeSwitcher className={EDITOR_HEADER_ICON_BUTTON_CLASS} />
         {isFullscreenSupported ? (
           <FullscreenButton
             isFullscreen={isFullscreen}
