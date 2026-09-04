@@ -8,6 +8,7 @@ export interface DriveDirectLink {
   href: string;
   id: string;
   label: string;
+  year: number;
 }
 
 export const DRIVE_DIRECT_LINKS: DriveDirectLink[] = DRIVE_SOURCES.map(
@@ -17,6 +18,7 @@ export const DRIVE_DIRECT_LINKS: DriveDirectLink[] = DRIVE_SOURCES.map(
     href: buildDriveFolderUrl(source.rootFolderId),
     id: source.id,
     label: source.label,
+    year: source.year,
   })
 );
 
@@ -29,8 +31,8 @@ export const DRIVE_DIRECT_NOTE = "The same folders this site reads from.";
 
 export const DRIVE_DIRECT_ACTION = "Open in Drive";
 
-export function findDriveDirectLinkForYear(
+export function findDriveDirectLinksForYear(
   yearNumber: number
-): DriveDirectLink | undefined {
-  return DRIVE_DIRECT_LINKS.find((link) => link.id === `year${yearNumber}`);
+): DriveDirectLink[] {
+  return DRIVE_DIRECT_LINKS.filter((link) => link.year === yearNumber);
 }

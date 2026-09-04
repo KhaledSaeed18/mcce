@@ -19,7 +19,7 @@ export function DriveDirectSection() {
       </motion.div>
 
       <motion.div
-        className="grid grid-cols-1 gap-4 sm:grid-cols-2"
+        className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
         {...reveal.group}
       >
         {DRIVE_DIRECT_LINKS.map((link) => (

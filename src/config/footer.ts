@@ -60,16 +60,11 @@ export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
       { label: "Past exams", to: "/exams" },
       { label: "Recently added", to: "/recent" },
       { label: "Saved", to: "/saved" },
-      {
-        folderId: DRIVE_SOURCES[0].rootFolderId,
-        label: "First Year",
-        to: "/browse/$folderId",
-      },
-      {
-        folderId: DRIVE_SOURCES[1].rootFolderId,
-        label: "Second Year",
-        to: "/browse/$folderId",
-      },
+      ...DRIVE_SOURCES.map((source) => ({
+        folderId: source.rootFolderId,
+        label: source.label,
+        to: "/browse/$folderId" as const,
+      })),
     ],
     title: "Browse",
   },

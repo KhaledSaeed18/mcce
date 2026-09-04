@@ -76,7 +76,7 @@ export function SyncSection({ stats }: SyncSectionProps) {
           </span>
           <span aria-hidden="true">·</span>
           <span className="tabular-nums">
-            {stats.fileCount} files across {stats.sourceCount} years
+            {stats.fileCount} files across {stats.sourceCount} drive folders
           </span>
         </div>
       </motion.div>

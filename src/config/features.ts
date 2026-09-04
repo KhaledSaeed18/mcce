@@ -99,7 +99,7 @@ export interface SyncStep {
 
 export const SYNC_STEPS: SyncStep[] = [
   {
-    body: "Both years live in shared Google Drive folders, one per year.",
+    body: "Program materials live in shared Google Drive folders for each year and semester.",
     title: "The program's Drive",
   },
   {

@@ -80,6 +80,7 @@ export interface DriveSource {
   id: string;
   label: string;
   rootFolderId: string;
+  year: number;
 }
 
 export interface CourseSummary {

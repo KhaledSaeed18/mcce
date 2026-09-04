@@ -55,7 +55,7 @@ export const PROGRAM_FAQ: FaqItem[] = [
   },
   {
     answer:
-      "Yes. Both year folders open straight in Drive: LIU | MCCE 1 for the first year and LIU | MCCE 2 for the second. The links sit on the homepage, in the footer, on the courses page beside each year, and on the sitemap. Every folder page also carries a link to the same folder in Drive.",
+      "Yes. All three folders open straight in Drive: LIU | MCCE 1 for the first year, LIU | MCCE 2.1 for the second year fall semester, and LIU | MCCE 2.2 for the second year spring semester. The links sit on the homepage, in the footer, on the courses page beside each year, and on the sitemap. Every folder page also carries a link to the same folder in Drive.",
     category: "site",
     question: "Can I open the Drive folders directly?",
   },

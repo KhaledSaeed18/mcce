@@ -9,7 +9,7 @@ export function HeroStats({ stats }: HeroStatsProps) {
   const items = [
     `${stats.fileCount} files`,
     `${stats.folderCount} folders`,
-    `${stats.sourceCount} years indexed`,
+    `${stats.sourceCount} drive folders indexed`,
     `synced ${formatDateTime(stats.generatedAt)}`,
   ];
 
