@@ -64,12 +64,16 @@ export function EditorToolbar({
       role="toolbar"
     >
       <ToolPicker onSelect={onToolChange} value={tool} />
-      <Separator
-        className={EDITOR_CONTROL_HEIGHT_CLASS}
-        orientation="vertical"
-      />
-      <ColorSwatches onSelect={onColorChange} value={color} />
-      {tool === "text" ? (
+      {tool !== "eraser" && (
+        <Separator
+          className={EDITOR_CONTROL_HEIGHT_CLASS}
+          orientation="vertical"
+        />
+      )}
+      {tool !== "eraser" && (
+        <ColorSwatches onSelect={onColorChange} value={color} />
+      )}
+      {tool === "text" && (
         <SizeSelect
           label="Text size"
           onValueChange={onFontSizeChange}
@@ -77,7 +81,8 @@ export function EditorToolbar({
           suffix="px"
           value={fontSize}
         />
-      ) : (
+      )}
+      {tool !== "eraser" && tool !== "text" && (
         <SizeSelect
           label="Stroke width"
           onValueChange={onStrokeWidthChange}
