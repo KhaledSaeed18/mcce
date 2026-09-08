@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import { EditorDocumentArea } from "@/components/pdf-editor/editor-document-area";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
 import { EditorStatus } from "@/components/pdf-editor/editor-status";
@@ -6,6 +6,7 @@ import { EditorToolbar } from "@/components/pdf-editor/editor-toolbar";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
 import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
 import { DEFAULT_EXPORT_NAME, EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
+import { useEditorHotkeys } from "@/hooks/use-editor-hotkeys";
 import { useEditorMarkup } from "@/hooks/use-editor-markup";
 import { useEditorPages } from "@/hooks/use-editor-pages";
 import { useEditorPanels } from "@/hooks/use-editor-panels";
@@ -63,6 +64,32 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     bytes,
     fileName: node ? node.name : DEFAULT_EXPORT_NAME,
     layout: markup.pages,
+  });
+
+  const goToNextPage = useCallback(() => {
+    if (navigation.activeIndex < navigation.pageCount - 1) {
+      navigation.goToPage(navigation.activeIndex + 1);
+    }
+  }, [navigation]);
+
+  const goToPrevPage = useCallback(() => {
+    if (navigation.activeIndex > 0) {
+      navigation.goToPage(navigation.activeIndex - 1);
+    }
+  }, [navigation]);
+
+  useEditorHotkeys({
+    onDeselect: markup.deselect,
+    onExport: exportPdf,
+    onFitWidth: zoom.fitWidth,
+    onNextPage: goToNextPage,
+    onPrevPage: goToPrevPage,
+    onRedo: markup.redo,
+    onRemove: markup.removeSelected,
+    onToolChange: setTool,
+    onUndo: markup.undo,
+    onZoomIn: zoom.zoomIn,
+    onZoomOut: zoom.zoomOut,
   });
 
   const settings = { color, fontSize, strokeWidth, tool };

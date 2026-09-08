@@ -163,3 +163,11 @@ export const TOOL_LABELS: Record<EditorTool, string> = {
   rect: "Square",
   text: "Text",
 };
+
+export const TOOL_HOTKEYS: Record<EditorTool, string> = {
+  ellipse: "c",
+  eraser: "e",
+  pen: "p",
+  rect: "r",
+  text: "t",
+};

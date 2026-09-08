@@ -1,7 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import { useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { TOOL_LABELS } from "@/config/pdf-editor";
+import { TOOL_HOTKEYS, TOOL_LABELS } from "@/config/pdf-editor";
 import type { EditorTool } from "@/lib/pdf-editor/types";
 
 interface ToolButtonProps {
@@ -25,7 +25,7 @@ export function ToolButton({
       aria-pressed={isActive}
       onClick={handleClick}
       size="icon"
-      title={TOOL_LABELS[tool]}
+      title={`${TOOL_LABELS[tool]} (${TOOL_HOTKEYS[tool]})`}
       variant={isActive ? "default" : "outline"}
     >
       <Icon />
