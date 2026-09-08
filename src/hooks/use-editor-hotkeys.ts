@@ -101,7 +101,7 @@ function handleToolSwitch(
   if (event.metaKey || event.ctrlKey || event.altKey) {
     return false;
   }
-  const tool = KEY_TO_TOOL.get(event.key);
+  const tool = KEY_TO_TOOL.get(event.key.toLowerCase());
   if (tool) {
     event.preventDefault();
     onToolChange(tool);

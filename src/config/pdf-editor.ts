@@ -165,9 +165,9 @@ export const TOOL_LABELS: Record<EditorTool, string> = {
 };
 
 export const TOOL_HOTKEYS: Record<EditorTool, string> = {
-  ellipse: "C",
-  eraser: "E",
-  pen: "P",
-  rect: "R",
-  text: "T",
+  ellipse: "c",
+  eraser: "e",
+  pen: "p",
+  rect: "r",
+  text: "t",
 };
