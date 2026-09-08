@@ -20,6 +20,26 @@ export function downloadBlob(blob: Blob, fileName: string) {
   });
 }
 
+/** Opens the native save dialog when available, otherwise falls back to auto-download. */
+export async function saveBlob(blob: Blob, fileName: string): Promise<void> {
+  if (typeof window !== "undefined" && window.showSaveFilePicker) {
+    const handle = await window.showSaveFilePicker({
+      suggestedName: fileName,
+      types: [
+        {
+          accept: { "application/pdf": [".pdf"] },
+          description: "PDF document",
+        },
+      ],
+    });
+    const writable = await handle.createWritable();
+    await writable.write(blob);
+    await writable.close();
+    return;
+  }
+  downloadBlob(blob, fileName);
+}
+
 export function openBlob(blob: Blob) {
   withObjectUrl(blob, (url) => window.open(url, "_blank", "noopener"));
 }

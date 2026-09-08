@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { downloadBlob } from "@/lib/gpa/export/download";
+import { saveBlob } from "@/lib/gpa/export/download";
 import { buildAnnotatedFileName } from "@/lib/pdf-editor/file-name";
 import type { Annotation, EditorPage } from "@/lib/pdf-editor/types";
 
@@ -22,9 +22,6 @@ export function usePdfExport({
   const [status, setStatus] = useState<PdfExportStatus>("idle");
 
   const exportPdf = useCallback(async () => {
-    // Building the copy is browser work, reached only by a press. Saying so lets
-    // the bundler prove it and leave pdf-lib out of the server build entirely,
-    // rather than shipping it to a runtime that can never reach it.
     if (import.meta.env.SSR || !bytes) {
       return;
     }
@@ -35,9 +32,13 @@ export function usePdfExport({
       );
       const result = await buildAnnotatedPdf(bytes, annotations, layout);
       const blob = new Blob([result as BlobPart], { type: "application/pdf" });
-      downloadBlob(blob, buildAnnotatedFileName(fileName));
+      await saveBlob(blob, buildAnnotatedFileName(fileName));
       setStatus("idle");
-    } catch {
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        setStatus("idle");
+        return;
+      }
       setStatus("error");
     }
   }, [annotations, bytes, fileName, layout]);
