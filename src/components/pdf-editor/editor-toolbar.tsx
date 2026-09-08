@@ -68,8 +68,10 @@ export function EditorToolbar({
         className={EDITOR_CONTROL_HEIGHT_CLASS}
         orientation="vertical"
       />
-      <ColorSwatches onSelect={onColorChange} value={color} />
-      {tool === "text" ? (
+      {tool !== "eraser" && (
+        <ColorSwatches onSelect={onColorChange} value={color} />
+      )}
+      {tool === "text" && (
         <SizeSelect
           label="Text size"
           onValueChange={onFontSizeChange}
@@ -77,7 +79,8 @@ export function EditorToolbar({
           suffix="px"
           value={fontSize}
         />
-      ) : (
+      )}
+      {tool !== "eraser" && tool !== "text" && (
         <SizeSelect
           label="Stroke width"
           onValueChange={onStrokeWidthChange}
