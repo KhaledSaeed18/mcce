@@ -6,6 +6,7 @@ import { EditorToolbar } from "@/components/pdf-editor/editor-toolbar";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
 import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
 import { DEFAULT_EXPORT_NAME, EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
+import { useEditorHotkeys } from "@/hooks/use-editor-hotkeys";
 import { useEditorMarkup } from "@/hooks/use-editor-markup";
 import { useEditorPages } from "@/hooks/use-editor-pages";
 import { useEditorPanels } from "@/hooks/use-editor-panels";
@@ -58,6 +59,17 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     markup.pages
   );
   const zoom = usePdfZoom({ pageSize: activeSize, viewport });
+
+  useEditorHotkeys({
+    onDeselect: markup.deselect,
+    onFitWidth: zoom.fitWidth,
+    onRedo: markup.redo,
+    onRemove: markup.removeSelected,
+    onToolChange: setTool,
+    onUndo: markup.undo,
+    onZoomIn: zoom.zoomIn,
+    onZoomOut: zoom.zoomOut,
+  });
   const { exportPdf, status: exportStatus } = usePdfExport({
     annotations: markup.annotations,
     bytes,

@@ -42,6 +42,7 @@ export function useEditorText({
   );
 
   const select = useCallback((id: string | null) => setSelectedId(id), []);
+  const deselect = useCallback(() => setSelectedId(null), []);
 
   const restyle = useCallback(
     (style: Partial<TextStyle>) => {
@@ -82,6 +83,7 @@ export function useEditorText({
   return {
     changeColor,
     changeFontSize,
+    deselect,
     draft,
     openDraft,
     removeSelected,

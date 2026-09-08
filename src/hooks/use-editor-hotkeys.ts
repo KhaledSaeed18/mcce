@@ -3,82 +3,155 @@ import {
   DELETE_HOTKEY_KEYS,
   DESELECT_HOTKEY_KEY,
   REDO_HOTKEY_KEY,
+  TOOL_HOTKEYS,
   UNDO_HOTKEY_KEY,
 } from "@/config/pdf-editor";
 import { isEditableTarget } from "@/lib/is-editable-target";
+import type { EditorTool } from "@/lib/pdf-editor/types";
 
 interface EditorHotkeyOptions {
   onDeselect: () => void;
+  onFitWidth: () => void;
   onRedo: () => void;
   onRemove: () => void;
+  onToolChange: (tool: EditorTool) => void;
   onUndo: () => void;
+  onZoomIn: () => void;
+  onZoomOut: () => void;
 }
 
-type HistoryAction = "redo" | "undo";
-type SelectionAction = "deselect" | "remove";
+const KEY_TO_TOOL = new Map<string, EditorTool>(
+  Object.entries(TOOL_HOTKEYS).map(([tool, key]) => [key, tool as EditorTool])
+);
 
-/** Which way through the history the event asks to go, if either. */
-function readHistoryAction(event: KeyboardEvent): HistoryAction | null {
+function handleHistory(
+  event: KeyboardEvent,
+  onRedo: () => void,
+  onUndo: () => void
+): boolean {
   if (!(event.metaKey || event.ctrlKey)) {
-    return null;
+    return false;
   }
   const key = event.key.toLowerCase();
   if (key === REDO_HOTKEY_KEY) {
-    return "redo";
+    event.preventDefault();
+    onRedo();
+    return true;
   }
-  if (key !== UNDO_HOTKEY_KEY) {
-    return null;
+  if (key === UNDO_HOTKEY_KEY) {
+    event.preventDefault();
+    (event.shiftKey ? onRedo : onUndo)();
+    return true;
   }
-  return event.shiftKey ? "redo" : "undo";
+  return false;
 }
 
-/** What a bare key asks of the selection, if anything. */
-function readSelectionAction(event: KeyboardEvent): SelectionAction | null {
+function handleZoom(
+  event: KeyboardEvent,
+  onFitWidth: () => void,
+  onZoomIn: () => void,
+  onZoomOut: () => void
+): boolean {
+  if (!(event.metaKey || event.ctrlKey) || event.altKey) {
+    return false;
+  }
+  const { key } = event;
+  if (key === "+" || key === "=") {
+    event.preventDefault();
+    onZoomIn();
+    return true;
+  }
+  if (key === "-") {
+    event.preventDefault();
+    onZoomOut();
+    return true;
+  }
+  if (key === "0") {
+    event.preventDefault();
+    onFitWidth();
+    return true;
+  }
+  return false;
+}
+
+function handleSelection(
+  event: KeyboardEvent,
+  onDeselect: () => void,
+  onRemove: () => void
+): boolean {
   if (event.metaKey || event.ctrlKey || event.altKey) {
-    return null;
+    return false;
   }
   if (DELETE_HOTKEY_KEYS.includes(event.key)) {
-    return "remove";
+    event.preventDefault();
+    onRemove();
+    return true;
   }
-  return event.key === DESELECT_HOTKEY_KEY ? "deselect" : null;
+  if (event.key === DESELECT_HOTKEY_KEY) {
+    onDeselect();
+    return true;
+  }
+  return false;
+}
+
+function handleToolSwitch(
+  event: KeyboardEvent,
+  onToolChange: (tool: EditorTool) => void
+): boolean {
+  if (event.metaKey || event.ctrlKey || event.altKey) {
+    return false;
+  }
+  const tool = KEY_TO_TOOL.get(event.key);
+  if (tool) {
+    event.preventDefault();
+    onToolChange(tool);
+    return true;
+  }
+  return false;
 }
 
 /**
  * Cmd/Ctrl+Z steps back and Cmd/Ctrl+Shift+Z or Cmd/Ctrl+Y steps forward;
  * Delete takes the selected text off the page and Escape lets go of it.
+ * P/E/T/R/C switch tools; Cmd/Ctrl+=/-/0 control zoom.
  */
 export function useEditorHotkeys({
   onDeselect,
+  onFitWidth,
   onRedo,
   onRemove,
+  onToolChange,
   onUndo,
+  onZoomIn,
+  onZoomOut,
 }: EditorHotkeyOptions) {
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
-      // A field being typed into owns its own keys, undo stack included.
       if (isEditableTarget(event.target)) {
         return;
       }
-
-      const history = readHistoryAction(event);
-      if (history) {
-        event.preventDefault();
-        (history === "redo" ? onRedo : onUndo)();
+      if (handleHistory(event, onRedo, onUndo)) {
         return;
       }
-
-      const selection = readSelectionAction(event);
-      if (selection === "remove") {
-        event.preventDefault();
-        onRemove();
+      if (handleZoom(event, onFitWidth, onZoomIn, onZoomOut)) {
         return;
       }
-      if (selection === "deselect") {
-        onDeselect();
+      if (handleSelection(event, onDeselect, onRemove)) {
+        return;
       }
+      handleToolSwitch(event, onToolChange);
     }
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [onDeselect, onRedo, onRemove, onUndo]);
+  }, [
+    onDeselect,
+    onFitWidth,
+    onRedo,
+    onRemove,
+    onToolChange,
+    onUndo,
+    onZoomIn,
+    onZoomOut,
+  ]);
 }

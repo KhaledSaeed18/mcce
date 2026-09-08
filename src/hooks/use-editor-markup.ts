@@ -1,6 +1,4 @@
-import { useCallback } from "react";
 import { useEditorDocument } from "@/hooks/use-editor-document";
-import { useEditorHotkeys } from "@/hooks/use-editor-hotkeys";
 import { useEditorText } from "@/hooks/use-editor-text";
 import type { AnnotationActions } from "@/lib/pdf-editor/types";
 
@@ -40,6 +38,7 @@ export function useEditorMarkup({
   const {
     changeColor,
     changeFontSize,
+    deselect,
     draft,
     openDraft,
     removeSelected,
@@ -51,14 +50,6 @@ export function useEditorMarkup({
     onReplace: replace,
     setColor,
     setFontSize,
-  });
-
-  const deselect = useCallback(() => select(null), [select]);
-  useEditorHotkeys({
-    onDeselect: deselect,
-    onRedo: redo,
-    onRemove: removeSelected,
-    onUndo: undo,
   });
 
   const actions: AnnotationActions = {
@@ -79,11 +70,13 @@ export function useEditorMarkup({
     changeFontSize,
     clear,
     copyPage,
+    deselect,
     draft,
     openDraft,
     pages,
     redo,
     removePage,
+    removeSelected,
     reorderPage,
     rotatePage,
     selectedId,
