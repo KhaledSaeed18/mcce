@@ -60,13 +60,13 @@ function HomePage() {
 
       <SectionDivider />
 
-      <SourcesSection sourceSummaries={driveIndex.meta.sources} />
-
-      <CoursesSection courses={courses} />
+      <DriveDirectSection />
 
       <SectionDividerDots />
 
-      <DriveDirectSection />
+      <SourcesSection sourceSummaries={driveIndex.meta.sources} />
+
+      <CoursesSection courses={courses} />
 
       <SectionDividerDots />
 
