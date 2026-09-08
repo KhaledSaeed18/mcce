@@ -11,7 +11,10 @@ import type { EditorTool } from "@/lib/pdf-editor/types";
 
 interface EditorHotkeyOptions {
   onDeselect: () => void;
+  onExport: () => void;
   onFitWidth: () => void;
+  onNextPage: () => void;
+  onPrevPage: () => void;
   onRedo: () => void;
   onRemove: () => void;
   onToolChange: (tool: EditorTool) => void;
@@ -94,6 +97,39 @@ function handleSelection(
   return false;
 }
 
+function handleExport(event: KeyboardEvent, onExport: () => void): boolean {
+  if (!(event.metaKey || event.ctrlKey) || event.altKey) {
+    return false;
+  }
+  if (event.key.toLowerCase() === "s") {
+    event.preventDefault();
+    onExport();
+    return true;
+  }
+  return false;
+}
+
+function handleNavigation(
+  event: KeyboardEvent,
+  onNextPage: () => void,
+  onPrevPage: () => void
+): boolean {
+  if (event.metaKey || event.ctrlKey || event.altKey) {
+    return false;
+  }
+  if (event.key === "ArrowLeft") {
+    event.preventDefault();
+    onPrevPage();
+    return true;
+  }
+  if (event.key === "ArrowRight") {
+    event.preventDefault();
+    onNextPage();
+    return true;
+  }
+  return false;
+}
+
 function handleToolSwitch(
   event: KeyboardEvent,
   onToolChange: (tool: EditorTool) => void
@@ -113,11 +149,15 @@ function handleToolSwitch(
 /**
  * Cmd/Ctrl+Z steps back and Cmd/Ctrl+Shift+Z or Cmd/Ctrl+Y steps forward;
  * Delete takes the selected text off the page and Escape lets go of it.
- * P/E/T/R/C switch tools; Cmd/Ctrl+=/-/0 control zoom.
+ * P/E/T/R/C switch tools; Cmd/Ctrl+=/-/0 control zoom;
+ * Cmd/Ctrl+S exports; ArrowLeft/ArrowRight navigate pages.
  */
 export function useEditorHotkeys({
   onDeselect,
+  onExport,
   onFitWidth,
+  onNextPage,
+  onPrevPage,
   onRedo,
   onRemove,
   onToolChange,
@@ -133,10 +173,16 @@ export function useEditorHotkeys({
       if (handleHistory(event, onRedo, onUndo)) {
         return;
       }
+      if (handleExport(event, onExport)) {
+        return;
+      }
       if (handleZoom(event, onFitWidth, onZoomIn, onZoomOut)) {
         return;
       }
       if (handleSelection(event, onDeselect, onRemove)) {
+        return;
+      }
+      if (handleNavigation(event, onNextPage, onPrevPage)) {
         return;
       }
       handleToolSwitch(event, onToolChange);
@@ -146,7 +192,10 @@ export function useEditorHotkeys({
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [
     onDeselect,
+    onExport,
     onFitWidth,
+    onNextPage,
+    onPrevPage,
     onRedo,
     onRemove,
     onToolChange,

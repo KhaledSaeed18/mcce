@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import { EditorDocumentArea } from "@/components/pdf-editor/editor-document-area";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
 import { EditorStatus } from "@/components/pdf-editor/editor-status";
@@ -59,22 +59,37 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     markup.pages
   );
   const zoom = usePdfZoom({ pageSize: activeSize, viewport });
+  const { exportPdf, status: exportStatus } = usePdfExport({
+    annotations: markup.annotations,
+    bytes,
+    fileName: node ? node.name : DEFAULT_EXPORT_NAME,
+    layout: markup.pages,
+  });
+
+  const goToNextPage = useCallback(() => {
+    if (navigation.activeIndex < navigation.pageCount - 1) {
+      navigation.goToPage(navigation.activeIndex + 1);
+    }
+  }, [navigation]);
+
+  const goToPrevPage = useCallback(() => {
+    if (navigation.activeIndex > 0) {
+      navigation.goToPage(navigation.activeIndex - 1);
+    }
+  }, [navigation]);
 
   useEditorHotkeys({
     onDeselect: markup.deselect,
+    onExport: exportPdf,
     onFitWidth: zoom.fitWidth,
+    onNextPage: goToNextPage,
+    onPrevPage: goToPrevPage,
     onRedo: markup.redo,
     onRemove: markup.removeSelected,
     onToolChange: setTool,
     onUndo: markup.undo,
     onZoomIn: zoom.zoomIn,
     onZoomOut: zoom.zoomOut,
-  });
-  const { exportPdf, status: exportStatus } = usePdfExport({
-    annotations: markup.annotations,
-    bytes,
-    fileName: node ? node.name : DEFAULT_EXPORT_NAME,
-    layout: markup.pages,
   });
 
   const settings = { color, fontSize, strokeWidth, tool };
