@@ -1,8 +1,7 @@
-import { type PointerEvent, useCallback } from "react";
 import { useTextDrag } from "@/hooks/use-text-drag";
 import { useTextHover } from "@/hooks/use-text-hover";
 import { useTextOpen } from "@/hooks/use-text-open";
-import { toPagePoint } from "@/lib/pdf-editor/pointer";
+import { useTextPointerHandlers } from "@/hooks/use-text-pointer-handlers";
 import type {
   Annotation,
   PageSize,
@@ -58,37 +57,17 @@ export function useTextTool({
     zoom,
   });
 
-  const handleDown = useCallback(
-    (event: PointerEvent<HTMLCanvasElement>) => {
-      if (start(toPagePoint(event, zoom, size, rotation))) {
-        event.currentTarget.setPointerCapture(event.pointerId);
-      }
-    },
-    [rotation, size, start, zoom]
-  );
-
-  const handleMove = useCallback(
-    (event: PointerEvent<HTMLCanvasElement>) => {
-      const point = toPagePoint(event, zoom, size, rotation);
-      move(point);
-      hover.update(point);
-    },
-    [hover, move, rotation, size, zoom]
-  );
-
-  const handleUp = useCallback(
-    (event: PointerEvent<HTMLCanvasElement>) => {
-      const pressed = end();
-      if (pressed) {
-        if (!pressed.moved) {
-          onSelect(pressed.target.id);
-        }
-        return;
-      }
-      open.openAt(event);
-    },
-    [end, onSelect, open]
-  );
+  const { handleDown, handleMove, handleUp } = useTextPointerHandlers({
+    end,
+    hover,
+    move,
+    onSelect,
+    open,
+    rotation,
+    size,
+    start,
+    zoom,
+  });
 
   return {
     drag,
