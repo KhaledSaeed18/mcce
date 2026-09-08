@@ -159,6 +159,7 @@ export const DEFAULT_EXPORT_NAME = "document.pdf";
 export const TOOL_LABELS: Record<EditorTool, string> = {
   ellipse: "Circle",
   eraser: "Eraser",
+  hand: "Hand",
   pen: "Pen",
   rect: "Square",
   text: "Text",
@@ -167,6 +168,7 @@ export const TOOL_LABELS: Record<EditorTool, string> = {
 export const TOOL_HOTKEYS: Record<EditorTool, string> = {
   ellipse: "c",
   eraser: "e",
+  hand: "h",
   pen: "p",
   rect: "r",
   text: "t",
