@@ -120,6 +120,7 @@ export type TextBoxEdge = "left" | "right";
 /** Every way the page list can change the markup, kept together as they travel down. */
 export interface AnnotationActions {
   add: (annotation: Annotation) => void;
+  batchErase: (pageId: string, points: Point[]) => void;
   erase: (pageId: string, point: Point) => void;
   moveText: (id: string, dx: number, dy: number) => void;
   remove: (id: string) => void;

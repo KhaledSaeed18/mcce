@@ -31,11 +31,20 @@ export function useEditorHistory() {
 
   const commit = useCallback(
     (next: (current: EditorSnapshot) => EditorSnapshot) =>
-      setHistory((state) => ({
-        future: [],
-        past: pushStep(state.past, state.present),
-        present: next(state.present),
-      })),
+      setHistory((state) => {
+        const present = next(state.present);
+        if (
+          present.annotations === state.present.annotations &&
+          present.pages === state.present.pages
+        ) {
+          return state;
+        }
+        return {
+          future: [],
+          past: pushStep(state.past, state.present),
+          present,
+        };
+      }),
     []
   );
 

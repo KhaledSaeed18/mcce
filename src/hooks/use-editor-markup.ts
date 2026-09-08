@@ -20,6 +20,7 @@ export function useEditorMarkup({
   const {
     add,
     annotations,
+    batchEraseAt,
     canRedo,
     canUndo,
     clear,
@@ -54,6 +55,7 @@ export function useEditorMarkup({
 
   const actions: AnnotationActions = {
     add,
+    batchErase: batchEraseAt,
     erase: eraseAt,
     moveText: move,
     remove,

@@ -67,7 +67,7 @@ export function useAnnotationDrawing({
     zoom,
   });
   const eraser = useEraser({
-    onErase: actions.erase,
+    onBatchErase: actions.batchErase,
     pageId,
     rotation,
     size,
