@@ -2,6 +2,7 @@ import {
   ADMISSIONS_PAGE_PATH,
   type AdmissionsTrack,
 } from "@/config/admissions";
+import { FOOTER_GITHUB_URL } from "@/config/footer";
 import {
   PROGRAM_DEPARTMENT,
   PROGRAM_DURATION_ISO,
@@ -28,13 +29,21 @@ export function buildWebSiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    alternateName: [
+      "MCCE Index",
+      "LIU MCCE",
+      "MCCE: Program Materials",
+      "mcce.khaledsaeed.tech",
+    ],
     description: SITE_DESCRIPTION,
+    inLanguage: "en-US",
     name: SITE_NAME,
     potentialAction: {
       "@type": "SearchAction",
       "query-input": "required name=search_term_string",
       target: `${SITE_URL}/search?q={search_term_string}`,
     },
+    sameAs: [FOOTER_GITHUB_URL],
     url: SITE_URL,
   };
 }

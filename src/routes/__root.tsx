@@ -57,6 +57,14 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         content: SITE_DESCRIPTION,
       },
       {
+        name: "application-name",
+        content: SITE_NAME,
+      },
+      {
+        name: "apple-mobile-web-app-title",
+        content: SITE_NAME,
+      },
+      {
         name: "theme-color",
         content: "#fff7e8",
         media: "(prefers-color-scheme: light)",
