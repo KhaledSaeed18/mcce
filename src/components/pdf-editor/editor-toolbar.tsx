@@ -64,10 +64,12 @@ export function EditorToolbar({
       role="toolbar"
     >
       <ToolPicker onSelect={onToolChange} value={tool} />
-      <Separator
-        className={EDITOR_CONTROL_HEIGHT_CLASS}
-        orientation="vertical"
-      />
+      {tool !== "eraser" && (
+        <Separator
+          className={EDITOR_CONTROL_HEIGHT_CLASS}
+          orientation="vertical"
+        />
+      )}
       {tool !== "eraser" && (
         <ColorSwatches onSelect={onColorChange} value={color} />
       )}
