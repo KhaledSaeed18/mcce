@@ -24,24 +24,26 @@ export function useAnnotationActions(commit: Commit) {
 
   const eraseAt = useCallback(
     (pageId: string, point: Point) =>
-      withAnnotations((current) =>
-        current.filter(
+      withAnnotations((current) => {
+        const next = current.filter(
           (annotation) =>
             annotation.pageId !== pageId || !isAnnotationHit(annotation, point)
-        )
-      ),
+        );
+        return next.length === current.length ? current : next;
+      }),
     [withAnnotations]
   );
 
   const batchEraseAt = useCallback(
     (pageId: string, points: Point[]) =>
-      withAnnotations((current) =>
-        current.filter(
+      withAnnotations((current) => {
+        const next = current.filter(
           (annotation) =>
             annotation.pageId !== pageId ||
             !points.some((point) => isAnnotationHit(annotation, point))
-        )
-      ),
+        );
+        return next.length === current.length ? current : next;
+      }),
     [withAnnotations]
   );
 
