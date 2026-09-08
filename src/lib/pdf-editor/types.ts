@@ -1,4 +1,10 @@
-export type EditorTool = "pen" | "eraser" | "rect" | "ellipse" | "text";
+export type EditorTool =
+  | "pen"
+  | "eraser"
+  | "rect"
+  | "ellipse"
+  | "text"
+  | "hand";
 
 /** Page space: PDF points, top-left origin, independent of the zoom it was drawn at. */
 export interface Point {

@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils";
 const CURSOR_BY_TOOL: Record<ToolSettings["tool"], string> = {
   ellipse: "cursor-crosshair",
   eraser: "cursor-cell",
+  hand: "cursor-grab",
   pen: "cursor-crosshair",
   rect: "cursor-crosshair",
   text: "cursor-text",
@@ -28,6 +29,9 @@ function resolveCursor(
   isOverText: boolean,
   isMoving: boolean
 ): string {
+  if (tool === "hand") {
+    return isMoving ? "cursor-grabbing" : CURSOR_BY_TOOL.hand;
+  }
   if (tool !== "text") {
     return CURSOR_BY_TOOL[tool];
   }
