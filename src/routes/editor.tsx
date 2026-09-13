@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { EditorViewportNotice } from "@/components/pdf-editor/editor-viewport-notice";
 import { PdfEditorWorkspace } from "@/components/pdf-editor/pdf-editor-workspace";
 import { SITE_URL } from "@/config/site";
+import { useEditorViewport } from "@/hooks/use-editor-viewport";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import type { FilePreviewSearch } from "@/lib/drive/types";
 import { readOptionalString } from "@/lib/search-params";
@@ -33,6 +35,12 @@ function EditorPage() {
     driveIndex.nodes.find(
       (candidate) => candidate.id === file && candidate.kind === "pdf"
     ) ?? null;
+
+  const isWide = useEditorViewport();
+
+  if (!isWide) {
+    return <EditorViewportNotice node={node} />;
+  }
 
   return <PdfEditorWorkspace node={node} nodes={driveIndex.nodes} />;
 }

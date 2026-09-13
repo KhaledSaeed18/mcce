@@ -1,5 +1,8 @@
 import type { EditorPanels, EditorTool } from "@/lib/pdf-editor/types";
 
+export const EDITOR_MIN_WIDTH_PX = 1225;
+export const EDITOR_VIEWPORT_QUERY = `(min-width: ${EDITOR_MIN_WIDTH_PX}px)`;
+
 /** The Drive endpoint that serves raw file bytes, read server-side only. */
 export const DRIVE_DOWNLOAD_ENDPOINT =
   "https://drive.usercontent.google.com/download";
