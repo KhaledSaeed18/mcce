@@ -15,7 +15,7 @@ export function RequirementChipLabel({
   return (
     <>
       <span className="shrink-0 font-head font-medium">{code}</span>
-      {name ? <span className="text-muted-foreground">, {name}</span> : null}
+      {name ? <span className="text-muted-foreground"> {name}</span> : null}
     </>
   );
 }
