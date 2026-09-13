@@ -27,6 +27,7 @@ export function useFilePreview(nodes: DriveNode[]) {
       // Replace, so one browsing session does not stack a history entry per preview.
       navigate({
         replace: true,
+        resetScroll: false,
         search: (prev: Record<string, unknown>) => ({
           ...prev,
           file: undefined,

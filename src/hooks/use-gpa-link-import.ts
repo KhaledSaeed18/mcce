@@ -9,7 +9,11 @@ import type { GpaShareSearch } from "@/lib/gpa/share/search";
 const COURSES = flattenCourses(CURRICULUM);
 
 interface UseGpaLinkImportArgs {
-  navigate: (opts: { replace: boolean; search: GpaShareSearch }) => void;
+  navigate: (opts: {
+    replace: boolean;
+    resetScroll?: boolean;
+    search: GpaShareSearch;
+  }) => void;
   onApply: (averages: AverageMap) => void;
   value: string | undefined;
 }
@@ -30,7 +34,12 @@ export function useGpaLinkImport({
   );
 
   const dismiss = useCallback(
-    () => navigate({ replace: true, search: { [GPA_SHARE_PARAM]: undefined } }),
+    () =>
+      navigate({
+        replace: true,
+        resetScroll: false,
+        search: { [GPA_SHARE_PARAM]: undefined },
+      }),
     [navigate]
   );
 

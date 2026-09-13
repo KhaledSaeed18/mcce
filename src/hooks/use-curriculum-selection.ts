@@ -6,6 +6,7 @@ interface CurriculumSelectionSearch {
 
 interface UseCurriculumSelectionArgs {
   navigate: (opts: {
+    resetScroll?: boolean;
     search: (prev: CurriculumSelectionSearch) => CurriculumSelectionSearch;
   }) => void;
 }
@@ -16,14 +17,20 @@ export function useCurriculumSelection({
 }: UseCurriculumSelectionArgs) {
   const selectCourse = useCallback(
     (code: string) =>
-      navigate({ search: (prev) => ({ ...prev, course: code }) }),
+      navigate({
+        resetScroll: false,
+        search: (prev) => ({ ...prev, course: code }),
+      }),
     [navigate]
   );
 
   const handleOpenChange = useCallback(
     (open: boolean) => {
       if (!open) {
-        navigate({ search: (prev) => ({ ...prev, course: undefined }) });
+        navigate({
+          resetScroll: false,
+          search: (prev) => ({ ...prev, course: undefined }),
+        });
       }
     },
     [navigate]

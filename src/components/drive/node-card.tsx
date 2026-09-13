@@ -33,7 +33,12 @@ export function NodeCard({ node, childCount, showPath }: NodeCardProps) {
   // The preview lives in the URL, so the card is a link: shareable, and the
   // back button closes it.
   return (
-    <Link className={FOCUS_RING_CLASSES} search={toFilePreview} to=".">
+    <Link
+      className={FOCUS_RING_CLASSES}
+      resetScroll={false}
+      search={toFilePreview}
+      to="."
+    >
       <NodeCardBody node={node} showPath={showPath} />
     </Link>
   );
