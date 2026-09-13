@@ -1,14 +1,24 @@
-import { CheckIcon, MailIcon } from "lucide-react";
+import { CheckIcon, CopyIcon, MailIcon } from "lucide-react";
 import { motion } from "motion/react";
+import { useCallback } from "react";
 import { Badge } from "@/components/ui/badge";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   CONTACT_MATERIAL_ITEMS,
+  CONTACT_MATERIALS_EMAIL,
   CONTACT_MATERIALS_MAILTO_HREF,
 } from "@/config/contact";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { cn } from "@/lib/utils";
 
 export function ContactContribute() {
+  const { copy, isCopied } = useCopyToClipboard();
+
+  const handleCopyEmail = useCallback(
+    () => copy(CONTACT_MATERIALS_EMAIL),
+    [copy]
+  );
+
   return (
     <motion.section
       animate={{ opacity: 1, y: 0 }}
@@ -47,13 +57,29 @@ export function ContactContribute() {
         ))}
       </ul>
 
-      <a
-        className={cn(buttonVariants({ size: "lg" }), "w-fit")}
-        href={CONTACT_MATERIALS_MAILTO_HREF}
-      >
-        <MailIcon data-icon="inline-start" />
-        Email your materials
-      </a>
+      <div className="flex flex-wrap items-center gap-3">
+        <a
+          className={cn(buttonVariants({ size: "lg" }), "w-fit")}
+          href={CONTACT_MATERIALS_MAILTO_HREF}
+        >
+          <MailIcon data-icon="inline-start" />
+          Email your materials
+        </a>
+
+        <Button
+          className="w-fit"
+          onClick={handleCopyEmail}
+          size="lg"
+          type="button"
+        >
+          {isCopied ? (
+            <CheckIcon data-icon="inline-start" />
+          ) : (
+            <CopyIcon data-icon="inline-start" />
+          )}
+          {isCopied ? "Copied" : "Copy email"}
+        </Button>
+      </div>
     </motion.section>
   );
 }

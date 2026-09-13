@@ -33,6 +33,7 @@ const CONTACT_PERSONAL_EMAIL = "contact@khaledsaeed.tech";
  * https://docs.web3forms.com/getting-started/customizations/spam-protection/hcaptcha */
 export const CONTACT_HCAPTCHA_SITE_KEY = "50b2fe65-b00b-4b9e-ad62-3ba471098be2";
 
+export const CONTACT_MATERIALS_EMAIL = FOOTER_CONTACT_EMAIL;
 export const CONTACT_MATERIALS_MAILTO_HREF = `mailto:${FOOTER_CONTACT_EMAIL}?subject=${encodeURIComponent(CONTACT_MATERIALS_SUBJECT)}`;
 
 export const CONTACT_CHANNELS: ContactLink[] = [
