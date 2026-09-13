@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ExternalLinkIcon, MonitorIcon } from "lucide-react";
 import { LogoMark } from "@/components/logo-mark";
 import { Button } from "@/components/ui/button";
-import { EDITOR_HEIGHT_CLASS, EDITOR_MIN_WIDTH_PX } from "@/config/pdf-editor";
+import { EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
 import type { DriveNode } from "@/lib/drive/types";
 import { cn } from "@/lib/utils";
 
@@ -18,18 +18,25 @@ export function EditorViewportNotice({ node }: EditorViewportNoticeProps) {
         EDITOR_HEIGHT_CLASS
       )}
     >
-      <LogoMark className="size-28" />
+      <LogoMark className="size-24 sm:size-28" />
 
-      <div className="flex max-w-sm flex-col gap-2">
-        <MonitorIcon
-          aria-hidden="true"
-          className="mx-auto size-8 text-muted-foreground"
-        />
-        <h1 className="font-head text-2xl">Large display required</h1>
-        <p className="text-muted-foreground text-sm">
-          The PDF editor needs at least {EDITOR_MIN_WIDTH_PX}px of horizontal
-          space to display the markup toolbar and document workspace.
-        </p>
+      <div className="flex max-w-sm flex-col items-center gap-3">
+        <div className="flex size-11 items-center justify-center rounded border-2 border-black bg-primary shadow-sm">
+          <MonitorIcon
+            aria-hidden="true"
+            className="size-5 text-primary-foreground"
+          />
+        </div>
+        <div className="flex flex-col gap-1.5">
+          <h1 className="font-head text-2xl sm:text-3xl">
+            Large display required
+          </h1>
+          <p className="text-muted-foreground text-sm/relaxed">
+            The PDF editor is designed for desktop screens to give you room for
+            the document tools and side-by-side workspace. Open this file on a
+            wider screen, or view it directly in Google Drive.
+          </p>
+        </div>
       </div>
 
       <div className="flex flex-wrap items-center justify-center gap-3">
