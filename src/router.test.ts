@@ -25,4 +25,24 @@ describe("router scroll restoration", () => {
     const key = router.options.getScrollRestorationKey?.(mockLocation);
     expect(key).toBe("/exams");
   });
+
+  it("preserves hash in scroll restoration key when hash is present", () => {
+    const router = getRouter();
+
+    const mockLocationWithHash: ParsedLocation = {
+      external: false,
+      hash: "ENGG550",
+      href: "/exams#ENGG550",
+      pathname: "/exams",
+      publicHref: "/exams#ENGG550",
+      search: {},
+      searchStr: "",
+      state: {
+        __TSR_index: 0,
+      },
+    };
+
+    const key = router.options.getScrollRestorationKey?.(mockLocationWithHash);
+    expect(key).toBe("/exams#ENGG550");
+  });
 });
