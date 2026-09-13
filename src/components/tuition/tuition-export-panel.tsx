@@ -1,4 +1,6 @@
+import { PdfPreviewDialog } from "@/components/pdf-preview-dialog";
 import { TuitionExportActions } from "@/components/tuition/tuition-export-actions";
+import { TUITION_PDF_FILE_NAME } from "@/config/tuition-export";
 import { useTuitionExport } from "@/hooks/use-tuition-export";
 import type { TuitionScenario } from "@/lib/tuition/types";
 
@@ -7,8 +9,17 @@ interface TuitionExportPanelProps {
 }
 
 export function TuitionExportPanel({ scenario }: TuitionExportPanelProps) {
-  const { canShare, error, exportCsv, exportJson, exportPdf, pending } =
-    useTuitionExport(scenario);
+  const {
+    canShare,
+    error,
+    exportCsv,
+    exportJson,
+    exportPdf,
+    handlePreviewOpenChange,
+    isPreviewOpen,
+    pending,
+    previewBlob,
+  } = useTuitionExport(scenario);
 
   return (
     <div className="flex flex-col gap-3 rounded border-2 bg-card p-4">
@@ -32,6 +43,14 @@ export function TuitionExportPanel({ scenario }: TuitionExportPanelProps) {
           {error}
         </p>
       ) : null}
+
+      <PdfPreviewDialog
+        blob={previewBlob}
+        fileName={TUITION_PDF_FILE_NAME}
+        onOpenChange={handlePreviewOpenChange}
+        open={isPreviewOpen}
+        title="Tuition Scenario"
+      />
     </div>
   );
 }

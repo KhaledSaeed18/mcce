@@ -6,12 +6,10 @@ import {
   GPA_SHARE_TEXT,
   GPA_SHARE_TITLE,
 } from "@/config/gpa-export";
+import { useExportTask } from "@/hooks/use-export-task";
+import { usePdfPreview } from "@/hooks/use-pdf-preview";
 import { buildGradesCsv } from "@/lib/gpa/export/csv";
-import {
-  canShareFile,
-  downloadBlob,
-  openBlob,
-} from "@/lib/gpa/export/download";
+import { canShareFile, downloadBlob } from "@/lib/gpa/export/download";
 import { buildExportPayload } from "@/lib/gpa/export/payload";
 import { buildGpaPdf } from "@/lib/gpa/export/pdf";
 import type {
@@ -24,28 +22,15 @@ const PDF_TYPE = "application/pdf";
 
 export function useGpaExport(input: PayloadInput, sections: GpaExportSections) {
   const [canShare, setCanShare] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [pending, setPending] = useState<GpaExportAction | null>(null);
+  const { error, pending, run } = useExportTask<GpaExportAction>();
+  const {
+    blob: previewBlob,
+    handleOpenChange: handlePreviewOpenChange,
+    isOpen: isPreviewOpen,
+    openPreview,
+  } = usePdfPreview();
 
   useEffect(() => setCanShare(canShareFile(GPA_PDF_FILE_NAME, PDF_TYPE)), []);
-
-  const run = useCallback(
-    async (action: GpaExportAction, task: () => Promise<void> | void) => {
-      setError(null);
-      setPending(action);
-      try {
-        await task();
-      } catch (cause) {
-        // Dismissing the share sheet rejects with AbortError. Not a failure.
-        if (!(cause instanceof DOMException && cause.name === "AbortError")) {
-          setError("That export did not finish. Try again.");
-        }
-      } finally {
-        setPending(null);
-      }
-    },
-    []
-  );
 
   const exportPdf = useCallback(
     (action: GpaExportAction) =>
@@ -54,7 +39,7 @@ export function useGpaExport(input: PayloadInput, sections: GpaExportSections) {
         const blob = doc.output("blob");
 
         if (action === "preview") {
-          openBlob(blob);
+          openPreview(blob);
           return;
         }
         if (action === "download") {
@@ -67,7 +52,7 @@ export function useGpaExport(input: PayloadInput, sections: GpaExportSections) {
           title: GPA_SHARE_TITLE,
         });
       }),
-    [input, run, sections]
+    [input, openPreview, run, sections]
   );
 
   const exportCsv = useCallback(
@@ -96,5 +81,15 @@ export function useGpaExport(input: PayloadInput, sections: GpaExportSections) {
     [input, run]
   );
 
-  return { canShare, error, exportCsv, exportJson, exportPdf, pending };
+  return {
+    canShare,
+    error,
+    exportCsv,
+    exportJson,
+    exportPdf,
+    handlePreviewOpenChange,
+    isPreviewOpen,
+    pending,
+    previewBlob,
+  };
 }

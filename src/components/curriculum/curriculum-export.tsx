@@ -1,8 +1,10 @@
 import { DownloadIcon, EyeIcon, Loader2Icon, Share2Icon } from "lucide-react";
 import { motion } from "motion/react";
+import { PdfPreviewDialog } from "@/components/pdf-preview-dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useCurriculumPdfExport } from "@/hooks/use-curriculum-pdf-export";
+import { CURRICULUM_PDF_FILE_NAME } from "@/lib/curriculum/pdf";
 import type { CurriculumYear } from "@/lib/curriculum/types";
 
 interface CurriculumExportProps {
@@ -14,8 +16,11 @@ export function CurriculumExport({ years }: CurriculumExportProps) {
     canShare,
     handleDownload,
     handlePreview,
+    handlePreviewOpenChange,
     handleShare,
+    isPreviewOpen,
     pendingAction,
+    previewBlob,
   } = useCurriculumPdfExport(years);
   const isBusy = Boolean(pendingAction);
 
@@ -77,6 +82,14 @@ export function CurriculumExport({ years }: CurriculumExportProps) {
           </div>
         </CardContent>
       </Card>
+
+      <PdfPreviewDialog
+        blob={previewBlob}
+        fileName={CURRICULUM_PDF_FILE_NAME}
+        onOpenChange={handlePreviewOpenChange}
+        open={isPreviewOpen}
+        title="Plan of Study"
+      />
     </motion.div>
   );
 }
