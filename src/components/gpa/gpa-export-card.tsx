@@ -2,8 +2,12 @@ import { useMemo } from "react";
 import { GpaCopyLinkButton } from "@/components/gpa/gpa-copy-link-button";
 import { GpaExportActions } from "@/components/gpa/gpa-export-actions";
 import { GpaExportSectionToggle } from "@/components/gpa/gpa-export-section-toggle";
+import { PdfPreviewDialog } from "@/components/pdf-preview-dialog";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { GPA_EXPORT_SECTION_OPTIONS } from "@/config/gpa-export";
+import {
+  GPA_EXPORT_SECTION_OPTIONS,
+  GPA_PDF_FILE_NAME,
+} from "@/config/gpa-export";
 import { useGpaExport } from "@/hooks/use-gpa-export";
 import { useGpaExportSections } from "@/hooks/use-gpa-export-sections";
 import type { GpaTrendPoint } from "@/lib/gpa/chart";
@@ -43,8 +47,17 @@ export function GpaExportCard({
     [contributions, cumulative, projection, semesters, target, targetGpa, trend]
   );
   const { sections, toggleSection } = useGpaExportSections();
-  const { canShare, error, exportCsv, exportJson, exportPdf, pending } =
-    useGpaExport(input, sections);
+  const {
+    canShare,
+    error,
+    exportCsv,
+    exportJson,
+    exportPdf,
+    handlePreviewOpenChange,
+    isPreviewOpen,
+    pending,
+    previewBlob,
+  } = useGpaExport(input, sections);
   const hasSection = Object.values(sections).some(Boolean);
 
   return (
@@ -92,6 +105,14 @@ export function GpaExportCard({
           </p>
         ) : null}
       </CardContent>
+
+      <PdfPreviewDialog
+        blob={previewBlob}
+        fileName={GPA_PDF_FILE_NAME}
+        onOpenChange={handlePreviewOpenChange}
+        open={isPreviewOpen}
+        title="GPA Report"
+      />
     </Card>
   );
 }

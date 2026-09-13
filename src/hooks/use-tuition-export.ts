@@ -6,48 +6,30 @@ import {
   TUITION_SHARE_TEXT,
   TUITION_SHARE_TITLE,
 } from "@/config/tuition-export";
-import {
-  canShareFile,
-  downloadBlob,
-  openBlob,
-} from "@/lib/gpa/export/download";
+import { useExportTask } from "@/hooks/use-export-task";
+import { usePdfPreview } from "@/hooks/use-pdf-preview";
+import { canShareFile, downloadBlob } from "@/lib/gpa/export/download";
 import { buildTuitionCsv } from "@/lib/tuition/export/csv";
 import { buildTuitionExportPayload } from "@/lib/tuition/export/payload";
 import { buildTuitionPdf } from "@/lib/tuition/export/pdf";
 import type { TuitionScenario } from "@/lib/tuition/types";
 
 type TuitionExportAction = "download" | "preview" | "share";
-
 const PDF_TYPE = "application/pdf";
 
 export function useTuitionExport(scenario: TuitionScenario) {
   const [canShare, setCanShare] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [pending, setPending] = useState<TuitionExportAction | null>(null);
+  const { error, pending, run } = useExportTask<TuitionExportAction>();
+  const {
+    blob: previewBlob,
+    handleOpenChange: handlePreviewOpenChange,
+    isOpen: isPreviewOpen,
+    openPreview,
+  } = usePdfPreview();
 
   useEffect(() => {
     setCanShare(canShareFile(TUITION_PDF_FILE_NAME, PDF_TYPE));
   }, []);
-
-  const run = useCallback(
-    async (
-      action: TuitionExportAction,
-      task: () => Promise<void> | void
-    ): Promise<void> => {
-      setError(null);
-      setPending(action);
-      try {
-        await task();
-      } catch (cause) {
-        if (!(cause instanceof DOMException && cause.name === "AbortError")) {
-          setError("That export did not finish. Try again.");
-        }
-      } finally {
-        setPending(null);
-      }
-    },
-    []
-  );
 
   const exportPdf = useCallback(
     (action: TuitionExportAction) =>
@@ -56,7 +38,7 @@ export function useTuitionExport(scenario: TuitionScenario) {
         const blob = doc.output("blob");
 
         if (action === "preview") {
-          openBlob(blob);
+          openPreview(blob);
           return;
         }
         if (action === "download") {
@@ -70,18 +52,15 @@ export function useTuitionExport(scenario: TuitionScenario) {
           title: TUITION_SHARE_TITLE,
         });
       }),
-    [scenario, run]
+    [openPreview, scenario, run]
   );
 
   const exportCsv = useCallback(
     () =>
       run("download", () => {
         const csv = buildTuitionCsv(buildTuitionExportPayload(scenario));
-
-        downloadBlob(
-          new Blob([csv], { type: "text/csv;charset=utf-8" }),
-          TUITION_CSV_FILE_NAME
-        );
+        const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+        downloadBlob(blob, TUITION_CSV_FILE_NAME);
       }),
     [scenario, run]
   );
@@ -94,7 +73,6 @@ export function useTuitionExport(scenario: TuitionScenario) {
           null,
           2
         );
-
         downloadBlob(
           new Blob([json], { type: "application/json" }),
           TUITION_JSON_FILE_NAME
@@ -103,5 +81,15 @@ export function useTuitionExport(scenario: TuitionScenario) {
     [scenario, run]
   );
 
-  return { canShare, error, exportCsv, exportJson, exportPdf, pending };
+  return {
+    canShare,
+    error,
+    exportCsv,
+    exportJson,
+    exportPdf,
+    handlePreviewOpenChange,
+    isPreviewOpen,
+    pending,
+    previewBlob,
+  };
 }

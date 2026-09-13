@@ -40,10 +40,6 @@ export async function saveBlob(blob: Blob, fileName: string): Promise<void> {
   downloadBlob(blob, fileName);
 }
 
-export function openBlob(blob: Blob) {
-  withObjectUrl(blob, (url) => window.open(url, "_blank", "noopener"));
-}
-
 export function canShareFile(fileName: string, type: string): boolean {
   if (typeof navigator === "undefined" || !navigator.canShare) {
     return false;

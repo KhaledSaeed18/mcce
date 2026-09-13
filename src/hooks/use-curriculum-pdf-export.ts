@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { usePdfPreview } from "@/hooks/use-pdf-preview";
 import {
   buildCurriculumPdf,
   CURRICULUM_PDF_FILE_NAME,
@@ -10,7 +11,6 @@ export type CurriculumPdfAction = "download" | "preview" | "share";
 const SHARE_TITLE = "MCCE Plan of Study";
 const SHARE_TEXT =
   "MCCE program courses by year and semester, with prerequisites and corequisites.";
-const PREVIEW_URL_TTL_MS = 60_000;
 
 function canShareFiles(): boolean {
   if (typeof navigator === "undefined" || !navigator.canShare) {
@@ -26,6 +26,12 @@ export function useCurriculumPdfExport(years: CurriculumYear[]) {
   const [canShare, setCanShare] = useState(false);
   const [pendingAction, setPendingAction] =
     useState<CurriculumPdfAction | null>(null);
+  const {
+    blob: previewBlob,
+    handleOpenChange: handlePreviewOpenChange,
+    isOpen: isPreviewOpen,
+    openPreview,
+  } = usePdfPreview();
 
   useEffect(() => {
     setCanShare(canShareFiles());
@@ -45,13 +51,11 @@ export function useCurriculumPdfExport(years: CurriculumYear[]) {
     setPendingAction("preview");
     try {
       const doc = await buildCurriculumPdf(years);
-      const url = URL.createObjectURL(doc.output("blob"));
-      window.open(url, "_blank", "noopener");
-      setTimeout(() => URL.revokeObjectURL(url), PREVIEW_URL_TTL_MS);
+      openPreview(doc.output("blob"));
     } finally {
       setPendingAction(null);
     }
-  }, [years]);
+  }, [openPreview, years]);
 
   const handleShare = useCallback(async () => {
     setPendingAction("share");
@@ -76,7 +80,10 @@ export function useCurriculumPdfExport(years: CurriculumYear[]) {
     canShare,
     handleDownload,
     handlePreview,
+    handlePreviewOpenChange,
     handleShare,
+    isPreviewOpen,
     pendingAction,
+    previewBlob,
   };
 }
