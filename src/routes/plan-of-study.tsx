@@ -58,7 +58,10 @@ function PlanOfStudyPage() {
 
   const handleTabChange = useCallback(
     (nextTab: string) =>
-      navigate({ search: (prev) => ({ ...prev, tab: nextTab }) }),
+      navigate({
+        resetScroll: false,
+        search: (prev) => ({ ...prev, tab: nextTab }),
+      }),
     [navigate]
   );
 

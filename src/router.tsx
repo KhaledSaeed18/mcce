@@ -14,6 +14,7 @@ export function getRouter() {
     defaultPendingComponent: RoutePending,
     defaultPreload: "intent",
     defaultPreloadStaleTime: 0,
+    getScrollRestorationKey: (location) => location.pathname,
     routeTree,
 
     scrollRestoration: true,
