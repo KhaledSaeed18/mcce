@@ -11,6 +11,10 @@ interface EditorViewportNoticeProps {
 }
 
 export function EditorViewportNotice({ node }: EditorViewportNoticeProps) {
+  const description = node
+    ? "The PDF editor is designed for desktop screens to give you room for the document tools and side-by-side workspace. Open this file on a wider screen, or view it directly in Google Drive."
+    : "The PDF editor is designed for desktop screens to give you room for the document tools and side-by-side workspace. Open the editor on a wider screen to start.";
+
   return (
     <main
       className={cn(
@@ -31,11 +35,7 @@ export function EditorViewportNotice({ node }: EditorViewportNoticeProps) {
           <h1 className="font-head text-2xl sm:text-3xl">
             Large display required
           </h1>
-          <p className="text-muted-foreground text-sm/relaxed">
-            The PDF editor is designed for desktop screens to give you room for
-            the document tools and side-by-side workspace. Open this file on a
-            wider screen, or view it directly in Google Drive.
-          </p>
+          <p className="text-muted-foreground text-sm/relaxed">{description}</p>
         </div>
       </div>
 
