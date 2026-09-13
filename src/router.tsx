@@ -12,6 +12,8 @@ export function getRouter() {
     context: { queryClient },
     defaultErrorComponent: RouteError,
     defaultPendingComponent: RoutePending,
+    defaultPendingMinMs: 300,
+    defaultPendingMs: 0,
     defaultPreload: "intent",
     defaultPreloadStaleTime: 0,
     getScrollRestorationKey: (location) =>

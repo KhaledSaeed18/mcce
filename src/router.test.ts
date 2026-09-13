@@ -46,3 +46,15 @@ describe("router scroll restoration", () => {
     expect(key).toBe("/exams#ENGG550");
   });
 });
+
+describe("router pending configuration", () => {
+  it("shows pending component immediately with no suppression window", () => {
+    const router = getRouter();
+    expect(router.options.defaultPendingMs).toBe(0);
+  });
+
+  it("keeps pending component visible long enough to avoid a flash", () => {
+    const router = getRouter();
+    expect(router.options.defaultPendingMinMs).toBe(300);
+  });
+});

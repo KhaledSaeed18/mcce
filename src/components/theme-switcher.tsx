@@ -12,29 +12,33 @@ import { clickSoftSound } from "@/lib/click-soft";
 
 import { cn } from "@/lib/utils";
 
-const DARK_QUERY = "(prefers-color-scheme: dark)";
-
-function useIsMounted() {
-  return useSyncExternalStore(
-    () => () => {
-      // no-op: nothing to subscribe to, React switches this hook's snapshot
-      // from server to client automatically once hydration completes.
-    },
-    () => true,
-    () => false
-  );
+// Reads the dark class that THEME_INIT_SCRIPT already set on <html> before
+// first paint. Using the class directly keeps the icon in sync without an
+// additional round-trip through localStorage.
+function subscribeToDarkClass(onChange: () => void) {
+  const observer = new MutationObserver(onChange);
+  observer.observe(document.documentElement, {
+    attributeFilter: ["class"],
+    attributes: true,
+  });
+  return () => observer.disconnect();
 }
 
-function useSystemPrefersDark() {
-  return useSyncExternalStore(
-    (onChange) => {
-      const media = window.matchMedia(DARK_QUERY);
-      media.addEventListener("change", onChange);
-      return () => media.removeEventListener("change", onChange);
-    },
-    () => window.matchMedia(DARK_QUERY).matches,
+function getIsDark() {
+  return document.documentElement.classList.contains("dark");
+}
+
+function useIsDark() {
+  const systemPrefersDark = useSyncExternalStore(
+    subscribeToDarkClass,
+    getIsDark,
+    // Server snapshot: always false. THEME_INIT_SCRIPT sets the class before
+    // first paint, so the real value is available immediately on the client.
+    // suppressHydrationWarning on <html> prevents React from warning about
+    // the mismatch in the icon between SSR and the first client render.
     () => false
   );
+  return systemPrefersDark;
 }
 
 interface ThemeSwitcherProps {
@@ -43,11 +47,8 @@ interface ThemeSwitcherProps {
 
 export function ThemeSwitcher({ className }: ThemeSwitcherProps = {}) {
   const { theme, setTheme } = useTheme();
-  const isMounted = useIsMounted();
-  const systemPrefersDark = useSystemPrefersDark();
+  const isDark = useIsDark();
   const [playClick] = useSound(clickSoftSound, { volume: 0.4 });
-
-  const isDark = theme === "system" ? systemPrefersDark : theme === "dark";
 
   const handleToggle = useCallback(() => {
     playClick();
@@ -55,11 +56,6 @@ export function ThemeSwitcher({ className }: ThemeSwitcherProps = {}) {
   }, [theme, setTheme, playClick]);
 
   useThemeHotkey();
-
-  // biome-ignore lint/suspicious/noUnnecessaryConditions: useIsMounted's getSnapshot/getServerSnapshot pair intentionally differ -- the documented useSyncExternalStore pattern for a hydration-safe "mounted" flag -- which Biome's static analysis can't see across the client/server split.
-  if (!isMounted) {
-    return <div className="size-8" />;
-  }
 
   return (
     <Button
