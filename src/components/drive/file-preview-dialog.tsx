@@ -20,6 +20,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+import { useEditorViewport } from "@/hooks/use-editor-viewport";
 import { usePreviewLoadState } from "@/hooks/use-preview-load-state";
 import type { DriveNode } from "@/lib/drive/types";
 
@@ -58,6 +59,7 @@ export function FilePreviewDialog({
 }: FilePreviewDialogProps) {
   const { copy, hasFailed, isCopied } = useCopyToClipboard();
   const { isSaved, toggle } = useSavedNodes();
+  const isEditorWide = useEditorViewport();
   const handleToggleSaved = useCallback(
     () => toggle(node.id),
     [node.id, toggle]
@@ -117,7 +119,7 @@ export function FilePreviewDialog({
             )}
             {isSaved(node.id) ? "Saved" : "Save"}
           </Button>
-          {node.kind === "pdf" ? (
+          {node.kind === "pdf" && isEditorWide ? (
             <Button
               nativeButton={false}
               render={
