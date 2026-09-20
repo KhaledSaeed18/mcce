@@ -121,18 +121,4 @@ export const WIRELESS_REPOS: Repository[] = [
     reuseClass: "permissive",
     verifiedOn: CATALOG_VERIFIED_ON,
   },
-  {
-    description: "NYUSIM channel model.",
-    domain: "wireless",
-    id: "nyuwireless-nyusim",
-    languages: ["MATLAB"],
-    license: "custom",
-    maintenance: "steady",
-    name: "nyusim",
-    note: "Owner and licence to confirm.",
-    owner: "nyuwireless",
-    resourceId: "nyusim",
-    reuseClass: "check",
-    verifiedOn: CATALOG_VERIFIED_ON,
-  },
 ];

@@ -102,18 +102,6 @@ export const COLLABORATION_REPOS: Repository[] = [
     verifiedOn: CATALOG_VERIFIED_ON,
   },
   {
-    description: "Community Git forge.",
-    domain: "collaboration",
-    id: "forgejo-forgejo",
-    languages: ["Go"],
-    license: "GPL-3.0",
-    maintenance: "active",
-    name: "forgejo",
-    owner: "forgejo",
-    reuseClass: "copyleft",
-    verifiedOn: CATALOG_VERIFIED_ON,
-  },
-  {
     description: "Nextcloud, Mattermost, and Git lab workflow.",
     domain: "collaboration",
     id: "datadiversitylab-labops",

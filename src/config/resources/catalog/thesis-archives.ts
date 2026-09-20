@@ -41,7 +41,7 @@ export const THESIS_ARCHIVES: Resource[] = [
     platform: ["web"],
     tags: ["theses"],
     thesisStages: ["prior-theses"],
-    url: "https://www.ebsco.com/open-dissertations",
+    url: "https://opendissertations.org",
     verifiedOn: CATALOG_VERIFIED_ON,
   },
   {
@@ -81,19 +81,6 @@ export const THESIS_ARCHIVES: Resource[] = [
     tags: ["open access", "repositories"],
     thesisStages: ["prior-theses"],
     url: "https://network.bepress.com",
-    verifiedOn: CATALOG_VERIFIED_ON,
-  },
-  {
-    access: "free",
-    category: "thesis-archives",
-    description: "The open slice of the ProQuest index.",
-    id: "proquest-open",
-    isOpenSource: false,
-    name: "ProQuest open access",
-    platform: ["web"],
-    tags: ["theses"],
-    thesisStages: ["prior-theses"],
-    url: "https://about.proquest.com/en/content-solutions/open-access",
     verifiedOn: CATALOG_VERIFIED_ON,
   },
   {

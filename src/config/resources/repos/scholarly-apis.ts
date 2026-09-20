@@ -81,17 +81,4 @@ export const SCHOLARLY_API_REPOS: Repository[] = [
     reuseClass: "permissive",
     verifiedOn: CATALOG_VERIFIED_ON,
   },
-  {
-    description: "Bulk PDF acquisition utilities.",
-    domain: "scholarly-apis",
-    id: "allenai-paper-scraper",
-    languages: ["Python"],
-    license: "custom",
-    maintenance: "unverified",
-    name: "paper-scraper",
-    note: "Repository to confirm.",
-    owner: "allenai",
-    reuseClass: "check",
-    verifiedOn: CATALOG_VERIFIED_ON,
-  },
 ];

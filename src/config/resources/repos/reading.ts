@@ -54,16 +54,4 @@ export const READING_REPOS: Repository[] = [
     reuseClass: "permissive",
     verifiedOn: CATALOG_VERIFIED_ON,
   },
-  {
-    description: "Documents to Markdown for pipelines.",
-    domain: "reading",
-    id: "lancedb-e2m",
-    languages: ["Python"],
-    license: "Apache-2.0",
-    maintenance: "active",
-    name: "e2m",
-    owner: "lancedb",
-    reuseClass: "permissive",
-    verifiedOn: CATALOG_VERIFIED_ON,
-  },
 ];
