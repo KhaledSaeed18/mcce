@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
+    "build:resources": "tsx scripts/build-resources/index.ts",
     "cf-typegen": "wrangler types",
     "check": "ultracite check",
     "deploy": "vite build && wrangler deploy",
