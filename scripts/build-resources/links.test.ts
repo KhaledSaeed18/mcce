@@ -8,4 +8,9 @@ describe("statusFromResponse", () => {
     expect(statusFromResponse(404, false)).toBe("broken");
     expect(statusFromResponse(503, true)).toBe("broken");
   });
+
+  it("leaves bot blocks and rate limits unchecked", () => {
+    expect(statusFromResponse(403, false)).toBe("unchecked");
+    expect(statusFromResponse(429, false)).toBe("unchecked");
+  });
 });

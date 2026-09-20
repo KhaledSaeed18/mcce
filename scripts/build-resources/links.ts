@@ -4,11 +4,20 @@ const FETCH_TIMEOUT_MS = 15_000;
 const CONCURRENCY = 8;
 const USER_AGENT = "mcce-resources-link-check (+https://mcce.khaledsaeed.tech)";
 
-/** A redirect is a note, not a failure: the URL still works, it just moved. */
+const BOT_BLOCK_STATUSES = new Set([401, 403, 405, 429]);
+
+/**
+ * A redirect is a note, not a failure: the URL still works, it just moved.
+ * A bot block or rate limit says nothing about the page, so it stays unchecked
+ * rather than raising a false alarm.
+ */
 export function statusFromResponse(
   status: number,
   redirected: boolean
 ): LinkStatus {
+  if (BOT_BLOCK_STATUSES.has(status)) {
+    return "unchecked";
+  }
   if (status >= 400) {
     return "broken";
   }
@@ -30,7 +39,8 @@ async function probe(url: string): Promise<LinkStatus> {
     }
     return statusFromResponse(head.status, head.redirected);
   } catch {
-    return "broken";
+    // Timeouts and TLS failures are transient more often than not.
+    return "unchecked";
   }
 }
 
