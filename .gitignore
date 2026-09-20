@@ -19,4 +19,7 @@ todos.json
 # code editor
 .vscode/
 
-docs/
+docs/*
+!docs/resource-hub/
+docs/resource-hub/*
+!docs/resource-hub/plan/
