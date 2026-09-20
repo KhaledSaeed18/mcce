@@ -34,12 +34,12 @@ async function probe(url: string): Promise<LinkStatus> {
   };
   try {
     const head = await fetch(url, { ...options, method: "HEAD" });
-    // Some hosts refuse HEAD; a GET settles it before calling the link broken.
-    if (head.status === 405 || head.status === 403) {
-      const get = await fetch(url, { ...options, method: "GET" });
-      return statusFromResponse(get.status, get.redirected);
+    if (head.ok) {
+      return statusFromResponse(head.status, head.redirected);
     }
-    return statusFromResponse(head.status, head.redirected);
+    // Some hosts refuse or misreport HEAD; a GET settles it before calling the link broken.
+    const get = await fetch(url, { ...options, method: "GET" });
+    return statusFromResponse(get.status, get.redirected);
   } catch {
     // Timeouts and TLS failures are transient more often than not.
     return "unchecked";
