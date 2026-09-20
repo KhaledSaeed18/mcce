@@ -50,13 +50,18 @@ describe("validateCatalog", () => {
     expect(out).toContain("duplicate tool url: https://code.visualstudio.com");
   });
 
-  it("rejects trailing slashes and query strings", () => {
+  it("rejects trailing slashes and fragments", () => {
     const out = validateCatalog(
-      [makeTool({ url: "https://example.com/?x=1" })],
+      [makeTool({ url: "https://example.com/#top" })],
       [],
       context
     );
-    expect(out.some((line) => line.includes("no query"))).toBe(true);
+    expect(out.some((line) => line.includes("no fragment"))).toBe(true);
+    expect(
+      validateCatalog([makeTool({ url: "https://example.com/" })], [], context)
+    ).toContain(
+      "tool vs-code: url must not end with a slash: https://example.com/"
+    );
   });
 
   it("requires liu verification for university access", () => {

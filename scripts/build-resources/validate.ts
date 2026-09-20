@@ -9,11 +9,11 @@ export interface ValidationContext {
 }
 
 const DESCRIPTION_MAX_LENGTH = 140;
-const URL_PATTERN = /^https?:\/\/[^\s?#]+$/;
+const URL_PATTERN = /^https?:\/\/[^\s#]+$/;
 
 function checkUrl(url: string, label: string, out: string[]) {
   if (!URL_PATTERN.test(url)) {
-    out.push(`${label}: url must be http(s) with no query or fragment: ${url}`);
+    out.push(`${label}: url must be http(s) with no fragment: ${url}`);
   }
   if (url.endsWith("/")) {
     out.push(`${label}: url must not end with a slash: ${url}`);
