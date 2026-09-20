@@ -1,7 +1,6 @@
 import { AI_PRIVACY_NOTE } from "@/config/resources/copy";
+import { CATALOG_VERIFIED_ON } from "@/config/resources/verified-on";
 import type { Resource } from "@/lib/resources/types";
-
-const VERIFIED_ON = "2026-09-20";
 
 export const AI_ASSISTANTS: Resource[] = [
   {
@@ -19,7 +18,7 @@ export const AI_ASSISTANTS: Resource[] = [
     tags: ["assistant", "llm"],
     thesisStages: ["screen"],
     url: "https://claude.ai",
-    verifiedOn: VERIFIED_ON,
+    verifiedOn: CATALOG_VERIFIED_ON,
   },
   {
     access: "freemium",
@@ -37,7 +36,7 @@ export const AI_ASSISTANTS: Resource[] = [
     tags: ["assistant", "llm"],
     thesisStages: ["screen"],
     url: "https://chatgpt.com",
-    verifiedOn: VERIFIED_ON,
+    verifiedOn: CATALOG_VERIFIED_ON,
   },
   {
     access: "freemium",
@@ -54,7 +53,7 @@ export const AI_ASSISTANTS: Resource[] = [
     tags: ["assistant", "llm"],
     thesisStages: ["screen"],
     url: "https://gemini.google.com",
-    verifiedOn: VERIFIED_ON,
+    verifiedOn: CATALOG_VERIFIED_ON,
   },
   {
     access: "free",
@@ -70,7 +69,7 @@ export const AI_ASSISTANTS: Resource[] = [
     tags: ["assistant", "llm", "summary"],
     thesisStages: ["screen"],
     url: "https://notebooklm.google.com",
-    verifiedOn: VERIFIED_ON,
+    verifiedOn: CATALOG_VERIFIED_ON,
   },
   {
     access: "freemium",
@@ -86,7 +85,7 @@ export const AI_ASSISTANTS: Resource[] = [
     tags: ["assistant", "search"],
     thesisStages: ["search"],
     url: "https://www.perplexity.ai",
-    verifiedOn: VERIFIED_ON,
+    verifiedOn: CATALOG_VERIFIED_ON,
   },
   {
     access: "free",
@@ -101,6 +100,6 @@ export const AI_ASSISTANTS: Resource[] = [
     requiresAccount: true,
     tags: ["assistant", "llm"],
     url: "https://copilot.microsoft.com",
-    verifiedOn: VERIFIED_ON,
+    verifiedOn: CATALOG_VERIFIED_ON,
   },
 ];
