@@ -2,7 +2,9 @@ import type { LinkStatus } from "../../src/lib/resources/types";
 
 const FETCH_TIMEOUT_MS = 15_000;
 const CONCURRENCY = 8;
-const USER_AGENT = "mcce-resources-link-check (+https://mcce.khaledsaeed.tech)";
+// Several hosts answer a plain bot agent with 403 but serve a browser string.
+const USER_AGENT =
+  "Mozilla/5.0 (compatible; mcce-resources-link-check; +https://mcce.khaledsaeed.tech)";
 
 const BOT_BLOCK_STATUSES = new Set([401, 403, 405, 429]);
 
