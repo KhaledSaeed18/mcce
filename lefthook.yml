@@ -9,5 +9,8 @@ pre-commit:
         - "**/*.json"
         - "**/*.jsonc"
         - "**/*.css"
-      exclude: "src/data/drive-index.json"
+      exclude:
+        - "src/data/drive-index.json"
+        - "src/data/resources-index.json"
+        - "public/resources/icons/**"
       stage_fixed: true

@@ -8,6 +8,8 @@
   "files": {
     "includes": [
       "!src/data/drive-index.json",
+      "!src/data/resources-index.json",
+      "!public/resources/icons",
       "!.claude/skills",
       "!.agents/skills"
     ]
