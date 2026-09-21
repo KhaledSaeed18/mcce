@@ -1,8 +1,12 @@
 import { QueryClient } from "@tanstack/react-query";
-import { createRouter as createTanStackRouter } from "@tanstack/react-router";
+import {
+  createRouter as createTanStackRouter,
+  stringifySearchWith,
+} from "@tanstack/react-router";
 import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query";
 import { RouteError } from "@/components/route-error";
 import { RoutePending } from "@/components/route-pending";
+import { stringifySearchValue } from "@/lib/search-serializer";
 import { routeTree } from "./routeTree.gen";
 
 export function getRouter() {
@@ -21,6 +25,7 @@ export function getRouter() {
     routeTree,
 
     scrollRestoration: true,
+    stringifySearch: stringifySearchWith(stringifySearchValue),
   });
 
   setupRouterSsrQueryIntegration({ queryClient, router });
