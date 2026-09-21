@@ -94,6 +94,7 @@ export const CONTACT_FORM_TOPICS: ContactFormTopic[] = [
   { label: "Materials to share", value: "materials" },
   { label: "Something broken", value: "bug" },
   { label: "An idea or feature", value: "feature" },
+  { label: "A tool to add", value: "resource" },
   { label: "General question", value: "general" },
   { label: "Something else", value: "other" },
 ];
