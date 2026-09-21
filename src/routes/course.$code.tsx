@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo } from "react";
 import { CourseHeader } from "@/components/course/course-header";
 import { CourseMaterials } from "@/components/course/course-materials";
 import { CourseNotFound } from "@/components/course/course-not-found";
@@ -11,11 +10,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { CURRICULUM } from "@/config/curriculum";
 import { SITE_URL } from "@/config/site";
 import { buildCourseContextLookup } from "@/lib/curriculum/lookup";
-import {
-  buildCourseMaterials,
-  findCourseFolderId,
-} from "@/lib/drive/course-materials";
-import { driveIndexQueryOptions } from "@/lib/drive/queries";
+import { courseDetailQueryOptions } from "@/lib/drive/queries";
 import type { FilePreviewSearch } from "@/lib/drive/types";
 import { readOptionalString } from "@/lib/search-params";
 import { buildCourseHead } from "@/lib/seo/course-head";
@@ -27,10 +22,14 @@ export const Route = createFileRoute("/course/$code")({
   component: CoursePage,
   // `loader` must precede `head`: otherwise the loader data type is not yet
   // known when `head` is checked, and useLoaderData degrades to undefined.
-  loader: ({ context }) =>
-    context.queryClient.ensureQueryData(driveIndexQueryOptions),
-  head: ({ params }) =>
-    buildCourseHead(courseLookup.get(params.code), params.code),
+  loader: ({ context, params }) =>
+    context.queryClient.ensureQueryData(courseDetailQueryOptions(params.code)),
+  head: ({ match, params }) =>
+    buildCourseHead(
+      courseLookup.get(params.code),
+      params.code,
+      Boolean(match.search.file)
+    ),
   validateSearch: (search: Record<string, unknown>): FilePreviewSearch => ({
     file: readOptionalString(search.file),
   }),
@@ -38,21 +37,14 @@ export const Route = createFileRoute("/course/$code")({
 
 function CoursePage() {
   const { code } = Route.useParams();
-  const driveIndex = Route.useLoaderData();
+  const { folderId, materials } = Route.useLoaderData();
   const context = courseLookup.get(code);
-
-  const materials = useMemo(
-    () => buildCourseMaterials(driveIndex.nodes, code),
-    [driveIndex.nodes, code]
-  );
-  const folderId = useMemo(
-    () => findCourseFolderId(driveIndex.nodes, code),
-    [driveIndex.nodes, code]
-  );
 
   if (!context) {
     return <CourseNotFound code={code} />;
   }
+
+  const previewNodes = materials.flatMap((group) => group.items);
 
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-6 p-4 sm:p-6">
@@ -66,7 +58,7 @@ function CoursePage() {
 
       <CourseMaterials courseCode={code} groups={materials} />
 
-      <FilePreviewHost nodes={driveIndex.nodes} />
+      <FilePreviewHost nodes={previewNodes} />
       <JsonLd data={buildCourseSchema(context)} />
       <JsonLd
         data={buildBreadcrumbSchema([
