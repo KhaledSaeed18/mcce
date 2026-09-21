@@ -2,14 +2,20 @@ import { TuitionReferenceCard } from "@/components/tuition/tuition-reference-car
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   TUITION_ACADEMIC_YEAR_LABEL,
+  TUITION_DEFAULT_USD_TO_LBP_RATE,
   TUITION_NSSF_LBP_YEARLY,
   TUITION_PRICE_CHANGE_NOTE,
   TUITION_PROGRAM_LABEL,
   TUITION_REGISTRATION_USD_PER_SEMESTER,
   TUITION_WARNING_NOTE,
 } from "@/config/tuition";
-import { formatLbp, formatUsd } from "@/lib/tuition/calc";
+import { convertLbpToUsd, formatLbp, formatUsd } from "@/lib/tuition/calc";
 import { TUITION_REFERENCE_FACTS } from "@/lib/tuition/reference";
+
+const NSSF_YEARLY_USD_ESTIMATE = convertLbpToUsd(
+  TUITION_NSSF_LBP_YEARLY,
+  TUITION_DEFAULT_USD_TO_LBP_RATE
+);
 
 export function TuitionReferenceTable() {
   return (
@@ -55,7 +61,9 @@ export function TuitionReferenceTable() {
             {formatUsd(TUITION_REGISTRATION_USD_PER_SEMESTER)} per semester.
           </p>
           <p>
-            NSSF: {formatLbp(TUITION_NSSF_LBP_YEARLY)} yearly, if applicable.
+            NSSF: {formatLbp(TUITION_NSSF_LBP_YEARLY)} yearly, if applicable
+            (about {formatUsd(NSSF_YEARLY_USD_ESTIMATE)} at the{" "}
+            {TUITION_ACADEMIC_YEAR_LABEL} reference rate).
           </p>
           <p className="text-muted-foreground">{TUITION_PRICE_CHANGE_NOTE}</p>
           <p className="text-muted-foreground">{TUITION_WARNING_NOTE}</p>

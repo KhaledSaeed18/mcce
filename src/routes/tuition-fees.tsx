@@ -19,7 +19,7 @@ export const Route = createFileRoute("/tuition-fees")({
     links: [{ href: TUITION_URL, rel: "canonical" }],
     meta: buildPageMeta({
       description:
-        "MCCE tuition references and a calculator for per semester credits, yearly charges, and annual totals.",
+        "MCCE tuition at LIU: cost per credit in USD and LBP, the yearly NSSF charge of 8,400,000 LBP with its USD equivalent, and a calculator for per semester credits, yearly charges, and annual totals.",
       title: "Tuition and Fees · MCCE",
       url: TUITION_URL,
     }),

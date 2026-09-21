@@ -1,9 +1,9 @@
 export const SITE_URL = "https://mcce.khaledsaeed.tech";
 export const SITE_NAME = "MCCE";
 export const SITE_TITLE =
-  "MCCE | LIU M.S. in Computer and Communication Engineering";
+  "LIU MCCE · M.S. in Computer and Communication Engineering";
 export const SITE_DESCRIPTION =
-  "Browse and search course materials for the LIU M.S. in Computer and Communication Engineering program, organized by semester.";
+  "Browse and search course materials for the LIU MCCE, the M.S. in Computer and Communication Engineering program, organized by semester.";
 export const SITE_OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 export const PROGRAM_NAME = "M.S. in Computer and Communication Engineering";

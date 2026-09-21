@@ -16,8 +16,8 @@ export const Route = createFileRoute("/admissions")({
     links: [{ href: ADMISSIONS_URL, rel: "canonical" }],
     meta: buildPageMeta({
       description:
-        "A clear admissions guide for LIU MCCE graduate applicants, including required documents, fees, LIU and non-LIU flows, and official contact points.",
-      title: "Admissions Guide · MCCE",
+        "LIU admissions guide for MCCE graduate applicants: required documents, fees, LIU and non-LIU flows, and official contact points.",
+      title: "LIU Admissions Guide · MCCE",
       url: ADMISSIONS_URL,
     }),
   }),

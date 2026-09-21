@@ -22,8 +22,8 @@ export const Route = createFileRoute("/gpa-calculator")({
     links: [{ href: GPA_CALCULATOR_URL, rel: "canonical" }],
     meta: buildPageMeta({
       description:
-        "Calculate semester and cumulative GPA for the LIU MCCE program on the official 4.0 scale, project your final GPA, and find the course average needed to hit a target.",
-      title: "GPA Calculator · MCCE",
+        "LIU GPA calculator for the MCCE program: semester and cumulative GPA on the official 4.0 scale, a final GPA projection, and the course average needed to hit a target.",
+      title: "LIU GPA Calculator · MCCE",
       url: GPA_CALCULATOR_URL,
     }),
   }),
