@@ -39,7 +39,7 @@ export function ResourcesToolsPage({
     index.tools,
     values
   );
-  const isRanked = values.q.trim().length > 0;
+  const isRanked = Boolean(values.q?.trim());
   const showJump = !(isRanked || values.category) && sections.length > 1;
 
   return (

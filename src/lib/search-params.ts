@@ -17,6 +17,13 @@ export function readOptionalList<T extends string>(
   return items.length > 0 ? [...new Set(items)] : undefined;
 }
 
+/** An indexable page must not redirect to "?q=", so an empty query is omitted. */
+export function readOptionalQuery(value: unknown): string | undefined {
+  return typeof value === "string" && value.trim().length > 0
+    ? value
+    : undefined;
+}
+
 /** Keeps a value only when it is one of the allowed ids. */
 export function readOptionalOneOf<T extends string>(
   value: unknown,

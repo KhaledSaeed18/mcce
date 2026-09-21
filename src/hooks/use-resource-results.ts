@@ -12,7 +12,8 @@ export function useResourceResults(
   tools: ResourceEntry[],
   values: ResourceFilterValues
 ) {
-  const { badge, category, q } = values;
+  const { badge, category } = values;
+  const q = values.q ?? "";
 
   const badgeCounts = useMemo(() => countByBadge(tools), [tools]);
 

@@ -195,12 +195,12 @@ export interface ResourcesIndex {
 export interface ResourceFilterValues {
   badge?: BadgeFilter[];
   category?: ResourceCategoryId;
-  q: string;
+  q?: string;
 }
 
 export interface RepoFilterValues {
   domain?: RepoDomainId;
   license?: ReuseClass;
   maintenance?: MaintenanceState;
-  q: string;
+  q?: string;
 }

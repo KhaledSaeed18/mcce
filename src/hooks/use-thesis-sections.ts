@@ -6,7 +6,7 @@ import type { BadgeFilter, ResourceEntry } from "@/lib/resources/types";
 
 interface ThesisFilterValues {
   badge?: BadgeFilter[];
-  q: string;
+  q?: string;
 }
 
 /** Only tools tagged with a stage belong here; the rest of the catalog stays on the tools page. */
@@ -14,7 +14,8 @@ export function useThesisSections(
   tools: ResourceEntry[],
   values: ThesisFilterValues
 ) {
-  const { badge, q } = values;
+  const { badge } = values;
+  const q = values.q ?? "";
 
   const staged = useMemo(
     () =>

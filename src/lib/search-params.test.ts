@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   readOptionalList,
   readOptionalOneOf,
+  readOptionalQuery,
   readOptionalString,
 } from "./search-params";
 
@@ -33,5 +34,13 @@ describe("readOptionalOneOf", () => {
   it("accepts allowed ids only", () => {
     expect(readOptionalOneOf("ml", ["ml", "dev"])).toBe("ml");
     expect(readOptionalOneOf("nope", ["ml", "dev"])).toBeUndefined();
+  });
+});
+
+describe("readOptionalQuery", () => {
+  it("drops empty and blank queries", () => {
+    expect(readOptionalQuery("latex")).toBe("latex");
+    expect(readOptionalQuery("  ")).toBeUndefined();
+    expect(readOptionalQuery("")).toBeUndefined();
   });
 });

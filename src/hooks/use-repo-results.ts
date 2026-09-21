@@ -5,7 +5,8 @@ import { searchItems } from "@/lib/resources/search";
 import type { RepoEntry, RepoFilterValues } from "@/lib/resources/types";
 
 export function useRepoResults(repos: RepoEntry[], values: RepoFilterValues) {
-  const { domain, license, maintenance, q } = values;
+  const { domain, license, maintenance } = values;
+  const q = values.q ?? "";
 
   const hasCriteria =
     q.trim().length > 0 || Boolean(domain || license || maintenance);

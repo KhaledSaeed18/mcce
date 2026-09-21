@@ -41,7 +41,7 @@ export function ResourceFilters({
 }: ResourceFiltersProps) {
   const handleQueryChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) =>
-      onChange({ q: event.target.value }),
+      onChange({ q: event.target.value || undefined }),
     [onChange]
   );
 
@@ -73,7 +73,7 @@ export function ResourceFilters({
             id={QUERY_INPUT_ID}
             onChange={handleQueryChange}
             placeholder="Search tools..."
-            value={values.q}
+            value={values.q ?? ""}
           />
         </div>
         {showCategory ? (
