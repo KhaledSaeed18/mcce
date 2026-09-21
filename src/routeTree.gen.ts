@@ -30,6 +30,7 @@ import { Route as CourseIndexRouteImport } from './routes/course.index'
 import { Route as CourseCodeRouteImport } from './routes/course.$code'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as ResourcesCategoryRouteImport } from './routes/resources.$category'
+import { Route as ResourcesThesisRouteImport } from './routes/resources.thesis'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -136,6 +137,11 @@ const ResourcesCategoryRoute = ResourcesCategoryRouteImport.update({
   path: '/resources/$category',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesThesisRoute = ResourcesThesisRouteImport.update({
+  id: '/resources/thesis',
+  path: '/resources/thesis',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -157,6 +163,7 @@ export interface FileRoutesByFullPath {
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
   '/resources/$category': typeof ResourcesCategoryRoute
+  '/resources/thesis': typeof ResourcesThesisRoute
   '/course/': typeof CourseIndexRoute
   '/resources/': typeof ResourcesIndexRoute
 }
@@ -180,6 +187,7 @@ export interface FileRoutesByTo {
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
   '/resources/$category': typeof ResourcesCategoryRoute
+  '/resources/thesis': typeof ResourcesThesisRoute
   '/course': typeof CourseIndexRoute
   '/resources': typeof ResourcesIndexRoute
 }
@@ -204,6 +212,7 @@ export interface FileRoutesById {
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
   '/resources/$category': typeof ResourcesCategoryRoute
+  '/resources/thesis': typeof ResourcesThesisRoute
   '/course/': typeof CourseIndexRoute
   '/resources/': typeof ResourcesIndexRoute
 }
@@ -229,6 +238,7 @@ export interface FileRouteTypes {
     | '/browse/$folderId'
     | '/course/$code'
     | '/resources/$category'
+    | '/resources/thesis'
     | '/course/'
     | '/resources/'
   fileRoutesByTo: FileRoutesByTo
@@ -252,6 +262,7 @@ export interface FileRouteTypes {
     | '/browse/$folderId'
     | '/course/$code'
     | '/resources/$category'
+    | '/resources/thesis'
     | '/course'
     | '/resources'
   id:
@@ -275,6 +286,7 @@ export interface FileRouteTypes {
     | '/browse/$folderId'
     | '/course/$code'
     | '/resources/$category'
+    | '/resources/thesis'
     | '/course/'
     | '/resources/'
   fileRoutesById: FileRoutesById
@@ -299,6 +311,7 @@ export interface RootRouteChildren {
   BrowseFolderIdRoute: typeof BrowseFolderIdRoute
   CourseCodeRoute: typeof CourseCodeRoute
   ResourcesCategoryRoute: typeof ResourcesCategoryRoute
+  ResourcesThesisRoute: typeof ResourcesThesisRoute
   CourseIndexRoute: typeof CourseIndexRoute
   ResourcesIndexRoute: typeof ResourcesIndexRoute
 }
@@ -452,6 +465,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesCategoryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources/thesis': {
+      id: '/resources/thesis'
+      path: '/resources/thesis'
+      fullPath: '/resources/thesis'
+      preLoaderRoute: typeof ResourcesThesisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -475,6 +495,7 @@ const rootRouteChildren: RootRouteChildren = {
   BrowseFolderIdRoute: BrowseFolderIdRoute,
   CourseCodeRoute: CourseCodeRoute,
   ResourcesCategoryRoute: ResourcesCategoryRoute,
+  ResourcesThesisRoute: ResourcesThesisRoute,
   CourseIndexRoute: CourseIndexRoute,
   ResourcesIndexRoute: ResourcesIndexRoute,
 }
