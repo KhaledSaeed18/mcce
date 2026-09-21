@@ -73,7 +73,7 @@
       "prior-theses": 7,
       "integrity": 10
     },
-    "generatedAt": "2026-09-20T16:09:05.577Z",
+    "generatedAt": "2026-09-21T09:00:36.689Z",
     "repoCount": 283,
     "toolCount": 403
   },
@@ -2428,7 +2428,6 @@
       "verifiedOn": "2026-09-20",
       "haystack": "tensorflow/tensorflow tensorflow python c++ ml apache-2.0 deep learning framework.",
       "icon": {
-        "dark": "/resources/icons/tensorflow-dark.svg",
         "kind": "brand",
         "light": "/resources/icons/tensorflow.svg"
       },
@@ -2451,7 +2450,6 @@
       "verifiedOn": "2026-09-20",
       "haystack": "keras-team/keras keras python ml apache-2.0 high-level api over jax, pytorch, and tensorflow.",
       "icon": {
-        "dark": "/resources/icons/tensorflow-dark.svg",
         "kind": "brand",
         "light": "/resources/icons/tensorflow.svg"
       },
@@ -3748,7 +3746,6 @@
       "verifiedOn": "2026-09-20",
       "haystack": "nvlabs/sionna sionna python wireless apache-2.0 gpu link-level simulator.",
       "icon": {
-        "dark": "/resources/icons/sionna-dark.svg",
         "kind": "brand",
         "light": "/resources/icons/sionna.svg"
       },
@@ -6427,7 +6424,6 @@
       "verifiedOn": "2026-09-20",
       "haystack": "chatgpt openai assistant llm ai-assistants general assistant with the largest plugin ecosystem.",
       "icon": {
-        "dark": "/resources/icons/chatgpt-dark.svg",
         "kind": "brand",
         "light": "/resources/icons/chatgpt.svg"
       },
@@ -6454,7 +6450,6 @@
       "verifiedOn": "2026-09-20",
       "haystack": "cisco packet tracer simulator topology networking campus-standard topology simulator. needs a free netacad account.",
       "icon": {
-        "dark": "/resources/icons/cisco-packet-tracer-dark.svg",
         "kind": "brand",
         "light": "/resources/icons/cisco-packet-tracer.svg"
       },
@@ -6885,7 +6880,6 @@
       "verifiedOn": "2026-09-20",
       "haystack": "github git hosting dev version control, code review, and hosting for course and thesis code.",
       "icon": {
-        "dark": "/resources/icons/github-dark.svg",
         "kind": "brand",
         "light": "/resources/icons/github.svg"
       },
@@ -6912,7 +6906,6 @@
       "verifiedOn": "2026-09-20",
       "haystack": "github student developer pack bundle student access copilot, jetbrains, cloud credits, and more while enrolled.",
       "icon": {
-        "dark": "/resources/icons/github-student-pack-dark.svg",
         "kind": "brand",
         "light": "/resources/icons/github-student-pack.svg"
       },
@@ -7536,7 +7529,6 @@
       "verifiedOn": "2026-09-20",
       "haystack": "mermaid live editor mermaid diagramming flowchart gantt diagramming flowcharts, sequence diagrams, and gantt charts from text.",
       "icon": {
-        "dark": "/resources/icons/mermaid-live-dark.svg",
         "kind": "brand",
         "light": "/resources/icons/mermaid-live.svg"
       },
@@ -8263,7 +8255,6 @@
       "verifiedOn": "2026-09-20",
       "haystack": "r and rstudio rstudio posit statistics plot data-analysis statistics and publication plots outside the python path.",
       "icon": {
-        "dark": "/resources/icons/r-rstudio-dark.svg",
         "kind": "brand",
         "light": "/resources/icons/r-rstudio.svg"
       },
@@ -8574,7 +8565,6 @@
       "verifiedOn": "2026-09-20",
       "haystack": "sionna sionna rt 5g simulation python wireless gpu link-level simulator for 5g and 6g phy, with ray tracing.",
       "icon": {
-        "dark": "/resources/icons/sionna-dark.svg",
         "kind": "brand",
         "light": "/resources/icons/sionna.svg"
       },
@@ -9439,7 +9429,6 @@
       "verifiedOn": "2026-09-20",
       "haystack": "aws educate cloud credits access guided cloud labs and credits.",
       "icon": {
-        "dark": "/resources/icons/aws-educate-dark.svg",
         "kind": "brand",
         "light": "/resources/icons/aws-educate.svg"
       },
@@ -9720,7 +9709,6 @@
       "verifiedOn": "2026-09-20",
       "haystack": "cisco networking academy netacad courses networking networking courses and the packet tracer account.",
       "icon": {
-        "dark": "/resources/icons/cisco-netacad-dark.svg",
         "kind": "brand",
         "light": "/resources/icons/cisco-netacad.svg"
       },
@@ -10875,7 +10863,6 @@
       "verifiedOn": "2026-09-20",
       "haystack": "github codespaces cloud editor dev browser vs code with cloud compute. more hours with the student pack.",
       "icon": {
-        "dark": "/resources/icons/github-codespaces-dark.svg",
         "kind": "brand",
         "light": "/resources/icons/github-codespaces.svg"
       },
@@ -10899,7 +10886,6 @@
       "verifiedOn": "2026-09-20",
       "haystack": "github desktop git dev beginner-friendly git client.",
       "icon": {
-        "dark": "/resources/icons/github-desktop-dark.svg",
         "kind": "brand",
         "light": "/resources/icons/github-desktop.svg"
       },
@@ -10928,7 +10914,6 @@
       "verifiedOn": "2026-09-20",
       "haystack": "github projects kanban issues productivity kanban tied to repository issues.",
       "icon": {
-        "dark": "/resources/icons/github-projects-dark.svg",
         "kind": "brand",
         "light": "/resources/icons/github-projects.svg"
       },
@@ -15673,7 +15658,6 @@
       "verifiedOn": "2026-09-20",
       "haystack": "tensorboard tracking visualiser ml training curves and embedding projection.",
       "icon": {
-        "dark": "/resources/icons/tensorboard-dark.svg",
         "kind": "brand",
         "light": "/resources/icons/tensorboard.svg"
       },
@@ -15701,7 +15685,6 @@
       "verifiedOn": "2026-09-20",
       "haystack": "tensorflow and keras keras deep learning python ml alternative stack required by some published baselines.",
       "icon": {
-        "dark": "/resources/icons/tensorflow-dark.svg",
         "kind": "brand",
         "light": "/resources/icons/tensorflow.svg"
       },
