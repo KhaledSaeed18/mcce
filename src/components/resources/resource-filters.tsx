@@ -5,7 +5,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { BADGE_FILTERS } from "@/config/resources/badges";
 import { RESOURCE_CATEGORIES } from "@/config/resources/categories";
-import { RESOURCES_EMPTY_ACTION } from "@/config/resources/copy";
+import {
+  BADGE_LEGEND_ID,
+  BADGE_LEGEND_LINK,
+  RESOURCES_EMPTY_ACTION,
+} from "@/config/resources/copy";
 import type {
   BadgeFilter,
   ResourceCategoryId,
@@ -27,6 +31,8 @@ interface ResourceFiltersProps {
   resultCount: number;
   /** Omitted on the category and thesis pages, where the category is fixed. */
   showCategory?: boolean;
+  /** Only the tools page carries the legend section this points at. */
+  showLegendLink?: boolean;
   values: ResourceFilterValues;
 }
 
@@ -37,6 +43,7 @@ export function ResourceFilters({
   onClear,
   resultCount,
   showCategory = true,
+  showLegendLink = false,
   values,
 }: ResourceFiltersProps) {
   const handleQueryChange = useCallback(
@@ -104,6 +111,14 @@ export function ResourceFilters({
         className="flex items-center gap-3 text-muted-foreground text-sm"
       >
         <span>{resultCount} tools</span>
+        {showLegendLink ? (
+          <a
+            className="underline underline-offset-4 hover:text-primary"
+            href={`#${BADGE_LEGEND_ID}`}
+          >
+            {BADGE_LEGEND_LINK}
+          </a>
+        ) : null}
         {hasCriteria ? (
           <button
             className="underline underline-offset-4 hover:text-primary focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"

@@ -13,12 +13,16 @@ export const OPEN_SOURCE_LABEL = "Open Source";
 
 /** One line each, for the filter legend and the badge tooltip. */
 export const BADGE_FILTER_EXPLANATIONS: Record<BadgeFilter, string> = {
-  free: "Core use costs nothing, no trial clock, no card.",
-  freemium: "A real free tier covers coursework; paid tiers add capacity.",
-  "open-source": "Source is public under an open licence.",
-  paid: "Payment expected for the relevant use.",
-  student: "Free or expanded after student verification.",
-  trial: "Free only for a limited time, then paid.",
+  free: "The core of the tool costs nothing: no trial clock, no card, no limit that matters for coursework.",
+  freemium:
+    "A real free tier covers coursework. Paid tiers add capacity or extras you can live without.",
+  "open-source":
+    "The source code is public under an open licence. You can read it, run it yourself, and cite it. Shown next to the cost badge, since open source software can still be hosted for a fee.",
+  paid: "Payment is expected for the use that matters here. Listed only when a free alternative sits nearby or a library may provide it.",
+  student:
+    "Free or expanded after student verification, usually an academic email or a student program.",
+  trial:
+    "Free only for a limited time, then paid. A trial is never called free.",
 };
 
 /** Filter order, most-used first. */

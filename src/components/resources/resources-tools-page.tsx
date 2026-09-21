@@ -1,4 +1,5 @@
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
+import { ResourceBadgeLegend } from "@/components/resources/resource-badge-legend";
 import { ResourceCategoryJump } from "@/components/resources/resource-category-jump";
 import { ResourceCategorySection } from "@/components/resources/resource-category-section";
 import { ResourceEmptyState } from "@/components/resources/resource-empty-state";
@@ -56,6 +57,7 @@ export function ResourcesToolsPage({
           onChange={onChange}
           onClear={onClear}
           resultCount={results.length}
+          showLegendLink
           values={values}
         />
       </ResourcesHero>
@@ -76,6 +78,7 @@ export function ResourcesToolsPage({
           ))}
 
       <SectionDividerDots />
+      <ResourceBadgeLegend />
       <ResourceSuggestBlock />
 
       <JsonLd

@@ -36,3 +36,7 @@ export const SECURITY_USE_NOTE =
   "Use only on systems you own or are authorised to test.";
 
 export const OPENS_IN_NEW_TAB = "opens in a new tab";
+
+export const BADGE_LEGEND_ID = "badges";
+export const BADGE_LEGEND_TITLE = "What the badges mean";
+export const BADGE_LEGEND_LINK = "What do the badges mean?";
