@@ -1,4 +1,4 @@
-import { type MotionValue, motion, useTransform } from "motion/react";
+import { type MotionValue, m, useTransform } from "motion/react";
 import {
   EXAMS_FAN_ANGLES,
   EXAMS_FAN_WINDOW,
@@ -19,7 +19,7 @@ export function ExamPaperSheet({ index, progress }: ExamPaperSheetProps) {
   const rotate = useTransform(entry, [0, 1], [0, EXAMS_FAN_ANGLES[index]]);
 
   return (
-    <motion.rect
+    <m.rect
       fill="var(--card)"
       height={EXAMS_SHEET.height}
       rx={EXAMS_SHEET.rx}

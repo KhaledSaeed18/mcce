@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { COURSE_KIND_BADGE_LABEL } from "@/config/courses";
@@ -143,7 +143,7 @@ export function CurriculumRoadmap({
   );
 
   return (
-    <motion.div
+    <m.div
       animate={{ opacity: 1, y: 0 }}
       className="flex flex-col gap-4"
       initial={{ opacity: 0, y: 12 }}
@@ -271,7 +271,7 @@ export function CurriculumRoadmap({
           <RoadmapLegend hasMissing={missingCodes.size > 0} />
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 

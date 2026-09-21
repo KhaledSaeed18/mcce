@@ -1,4 +1,4 @@
-import { motion, useTransform } from "motion/react";
+import { m, useTransform } from "motion/react";
 import { ExamPaperSheet } from "@/components/exams/exam-paper-sheet";
 import {
   EXAMS_FAN_ANGLES,
@@ -23,7 +23,7 @@ export function ExamPapersMark() {
   const tag = useTransform(progress, [...EXAMS_TAG_RANGE], [0, 1]);
 
   return (
-    <motion.svg
+    <m.svg
       aria-hidden="true"
       style={{ opacity }}
       viewBox={`0 0 ${EXAMS_MARK_WIDTH} ${EXAMS_MARK_HEIGHT}`}
@@ -58,7 +58,7 @@ export function ExamPapersMark() {
         />
       ))}
 
-      <motion.rect
+      <m.rect
         fill="var(--primary)"
         height={EXAMS_TAG.height}
         rx={EXAMS_TAG.rx}
@@ -69,6 +69,6 @@ export function ExamPapersMark() {
         x={EXAMS_TAG.x}
         y={EXAMS_TAG.y}
       />
-    </motion.svg>
+    </m.svg>
   );
 }

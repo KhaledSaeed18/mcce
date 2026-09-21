@@ -1,11 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRightIcon } from "lucide-react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function FaqCta() {
   return (
-    <motion.div
+    <m.div
       animate={{ opacity: 1, y: 0 }}
       initial={{ opacity: 0, y: 12 }}
       transition={{ delay: 0.1, duration: 0.4 }}
@@ -22,6 +22,6 @@ export function FaqCta() {
           </Link>
         </CardContent>
       </Card>
-    </motion.div>
+    </m.div>
   );
 }

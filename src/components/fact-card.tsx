@@ -1,8 +1,8 @@
-import { type MotionProps, motion } from "motion/react";
+import { type MotionProps, m } from "motion/react";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
-const MotionCard = motion.create(Card);
+const MotionCard = m.create(Card);
 
 interface FactCardProps extends MotionProps {
   label: string;

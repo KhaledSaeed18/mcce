@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import { HERO_SEARCH_ROW_COUNT } from "@/config/hero-search";
 
 const PULSE_SECONDS = 0.9;
@@ -12,7 +12,7 @@ export function HeroSearchSkeleton() {
   return (
     <ul className="flex flex-col gap-2">
       {ROWS.map((row) => (
-        <motion.li
+        <m.li
           animate={
             shouldReduceMotion ? undefined : { opacity: [0.35, 0.7, 0.35] }
           }
@@ -32,7 +32,7 @@ export function HeroSearchSkeleton() {
             />
             <span className="h-1.5 w-[30%] rounded-full bg-muted-foreground/20" />
           </span>
-        </motion.li>
+        </m.li>
       ))}
     </ul>
   );

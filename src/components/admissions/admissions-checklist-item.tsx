@@ -1,4 +1,4 @@
-import { type MotionValue, motion, useTransform } from "motion/react";
+import { type MotionValue, m, useTransform } from "motion/react";
 import {
   ADMISSIONS_BOX_RANGE,
   ADMISSIONS_BOX_RX,
@@ -39,8 +39,8 @@ export function AdmissionsChecklistItem({
   const boxY = ADMISSIONS_FIRST_ITEM_Y + index * ADMISSIONS_ITEM_SPACING;
 
   return (
-    <motion.g>
-      <motion.rect
+    <m.g>
+      <m.rect
         fill="var(--primary)"
         height={ADMISSIONS_BOX_SIZE}
         rx={ADMISSIONS_BOX_RX}
@@ -51,7 +51,7 @@ export function AdmissionsChecklistItem({
         x={ADMISSIONS_BOX_X}
         y={boxY}
       />
-      <motion.rect
+      <m.rect
         fill="var(--muted-foreground)"
         height={ADMISSIONS_TEXT_HEIGHT}
         ry={ADMISSIONS_TEXT_HEIGHT / 2}
@@ -60,7 +60,7 @@ export function AdmissionsChecklistItem({
         x={ADMISSIONS_TEXT_X}
         y={boxY + (ADMISSIONS_BOX_SIZE - ADMISSIONS_TEXT_HEIGHT) / 2}
       />
-      <motion.path
+      <m.path
         d={`M ${ADMISSIONS_BOX_X + 2} ${boxY + 4.5} L ${ADMISSIONS_BOX_X + 4} ${
           boxY + 7
         } L ${ADMISSIONS_BOX_X + 7.2} ${boxY + 2}`}
@@ -71,6 +71,6 @@ export function AdmissionsChecklistItem({
         strokeWidth={ADMISSIONS_MARK_STROKE}
         style={{ opacity: checkOpacity, pathLength: checkDraw }}
       />
-    </motion.g>
+    </m.g>
   );
 }

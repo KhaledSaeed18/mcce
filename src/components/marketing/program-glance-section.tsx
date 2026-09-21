@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRightIcon } from "lucide-react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { FactCard } from "@/components/fact-card";
 import { CURRICULUM } from "@/config/curriculum";
 import { useReveal } from "@/hooks/use-reveal";
@@ -13,7 +13,7 @@ export function ProgramGlanceSection() {
 
   return (
     <section className="flex flex-col gap-6">
-      <motion.div
+      <m.div
         className="flex flex-wrap items-end justify-between gap-3"
         {...reveal.single}
       >
@@ -32,12 +32,9 @@ export function ProgramGlanceSection() {
           View full plan of study
           <ArrowRightIcon className="size-3.5" />
         </Link>
-      </motion.div>
+      </m.div>
 
-      <motion.dl
-        className="grid grid-cols-2 gap-3 sm:grid-cols-4"
-        {...reveal.group}
-      >
+      <m.dl className="grid grid-cols-2 gap-3 sm:grid-cols-4" {...reveal.group}>
         {PROGRAM_FACTS.map((fact) => (
           <FactCard
             key={fact.label}
@@ -46,7 +43,7 @@ export function ProgramGlanceSection() {
             {...reveal.item}
           />
         ))}
-      </motion.dl>
+      </m.dl>
     </section>
   );
 }

@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { FactCard } from "@/components/fact-card";
 import {
   PROGRAM_DEPARTMENT,
@@ -24,7 +24,7 @@ const FACTS: Array<{ label: string; value: string }> = [
 
 export function AboutInfo() {
   return (
-    <motion.div
+    <m.div
       animate={{ opacity: 1, y: 0 }}
       className="flex flex-col gap-4"
       initial={{ opacity: 0, y: 12 }}
@@ -66,6 +66,6 @@ export function AboutInfo() {
         </a>{" "}
         for admissions and curriculum details.
       </p>
-    </motion.div>
+    </m.div>
   );
 }

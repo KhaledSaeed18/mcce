@@ -1,4 +1,4 @@
-import { motion, useTransform } from "motion/react";
+import { m, useTransform } from "motion/react";
 import { GpaScoreBar } from "@/components/gpa/gpa-score-bar";
 import {
   GPA_BAR_X,
@@ -33,7 +33,7 @@ export function GpaScoreMark() {
   const marker = useTransform(progress, [...GPA_MARKER_RANGE], [0, 1]);
 
   return (
-    <motion.svg
+    <m.svg
       aria-hidden="true"
       style={{ opacity }}
       viewBox={`0 0 ${GPA_MARK_WIDTH} ${GPA_MARK_HEIGHT}`}
@@ -47,7 +47,7 @@ export function GpaScoreMark() {
         <GpaScoreBar index={index} key={x} progress={progress} />
       ))}
 
-      <motion.line
+      <m.line
         stroke="var(--gpa-cumulative)"
         strokeLinecap="round"
         strokeWidth={GPA_LINE_WIDTH}
@@ -58,7 +58,7 @@ export function GpaScoreMark() {
         y2={GPA_CUMULATIVE_Y}
       />
 
-      <motion.rect
+      <m.rect
         fill="var(--gpa-cumulative)"
         height={GPA_MARKER_SIZE}
         rx={GPA_MARKER_RX}
@@ -69,6 +69,6 @@ export function GpaScoreMark() {
         x={GPA_LINE_TO - GPA_MARKER_SIZE / 2}
         y={GPA_CUMULATIVE_Y - GPA_MARKER_SIZE / 2}
       />
-    </motion.svg>
+    </m.svg>
   );
 }

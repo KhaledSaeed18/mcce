@@ -1,4 +1,4 @@
-import { type MotionValue, motion } from "motion/react";
+import { type MotionValue, m } from "motion/react";
 import {
   RECENT_ROW_HEIGHT,
   RECENT_ROW_WIDTHS,
@@ -17,7 +17,7 @@ export function RecentDialRow({ index, progress }: RecentDialRowProps) {
   const entry = useStaggeredEntry(progress, index, RECENT_ROW_WINDOW);
 
   return (
-    <motion.rect
+    <m.rect
       fill="var(--muted-foreground)"
       height={RECENT_ROW_HEIGHT}
       rx={RECENT_ROW_HEIGHT / 2}

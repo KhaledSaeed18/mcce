@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { MegaMenuCard } from "@/components/nav/mega-menu-card";
 import { NAV_CARD_GROUP_VARIANTS, NAV_CARD_VARIANTS } from "@/config/motion";
 import {
@@ -33,7 +33,7 @@ export function MegaMenuPanel({ group }: MegaMenuPanelProps) {
         </span>
       </div>
 
-      <motion.ul
+      <m.ul
         animate="visible"
         className={cn(
           "grid flex-1 gap-1",
@@ -43,11 +43,11 @@ export function MegaMenuPanel({ group }: MegaMenuPanelProps) {
         variants={NAV_CARD_GROUP_VARIANTS}
       >
         {group.entries.map((entry) => (
-          <motion.li key={entry.label} variants={NAV_CARD_VARIANTS}>
+          <m.li key={entry.label} variants={NAV_CARD_VARIANTS}>
             <MegaMenuCard color={group.color} entry={entry} />
-          </motion.li>
+          </m.li>
         ))}
-      </motion.ul>
+      </m.ul>
     </div>
   );
 }

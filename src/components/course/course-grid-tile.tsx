@@ -1,4 +1,4 @@
-import { type MotionValue, motion } from "motion/react";
+import { type MotionValue, m } from "motion/react";
 import {
   COURSE_MARK_STROKE,
   COURSE_TILE_HEIGHT,
@@ -20,7 +20,7 @@ export function CourseGridTile({ col, progress, row }: CourseGridTileProps) {
   const entry = useStaggeredEntry(progress, col + row, COURSE_TILE_WINDOW);
 
   return (
-    <motion.rect
+    <m.rect
       fill="var(--card)"
       height={COURSE_TILE_HEIGHT}
       rx={COURSE_TILE_RX}

@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { FactCard } from "@/components/fact-card";
 import { getProgramFacts } from "@/lib/curriculum/credits";
 import type { CurriculumYear } from "@/lib/curriculum/types";
@@ -11,7 +11,7 @@ export function CurriculumOverview({ years }: CurriculumOverviewProps) {
   const facts = getProgramFacts(years);
 
   return (
-    <motion.dl
+    <m.dl
       animate={{ opacity: 1, y: 0 }}
       className="grid grid-cols-2 gap-3 sm:grid-cols-4"
       initial={{ opacity: 0, y: 12 }}
@@ -20,6 +20,6 @@ export function CurriculumOverview({ years }: CurriculumOverviewProps) {
       {facts.map((fact) => (
         <FactCard key={fact.label} label={fact.label} value={fact.value} />
       ))}
-    </motion.dl>
+    </m.dl>
   );
 }

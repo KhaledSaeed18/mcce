@@ -1,4 +1,4 @@
-import { type MotionValue, motion, useTransform } from "motion/react";
+import { type MotionValue, m, useTransform } from "motion/react";
 import {
   SAVED_CARD_HEIGHT,
   SAVED_CARD_RISE,
@@ -25,7 +25,7 @@ export function SavedCard({ index, progress }: SavedCardProps) {
   const cardY = SAVED_CARD_Y[index];
 
   return (
-    <motion.g style={{ opacity: entry, y: rise }}>
+    <m.g style={{ opacity: entry, y: rise }}>
       <rect
         fill="var(--card)"
         height={SAVED_CARD_HEIGHT}
@@ -44,6 +44,6 @@ export function SavedCard({ index, progress }: SavedCardProps) {
         x={SAVED_CARD_X + SAVED_LABEL_INSET}
         y={cardY + (SAVED_CARD_HEIGHT - SAVED_LABEL_HEIGHT) / 2}
       />
-    </motion.g>
+    </m.g>
   );
 }

@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import {
   SYNC_DIAGRAM_HEIGHT,
   SYNC_DIAGRAM_WIDTH,
@@ -27,7 +27,7 @@ export function SyncDiagram() {
 
   return (
     <div className="px-5 pt-5 sm:px-6 sm:pt-6">
-      <motion.svg
+      <m.svg
         aria-hidden="true"
         className="mx-auto block h-auto w-full max-w-160"
         role="presentation"
@@ -56,7 +56,7 @@ export function SyncDiagram() {
 
         <SyncDiagramLink progress={progress} />
         <SyncDiagramScan progress={progress} />
-      </motion.svg>
+      </m.svg>
     </div>
   );
 }

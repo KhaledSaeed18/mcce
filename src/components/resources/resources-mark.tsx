@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { ResourcesMarkCard } from "@/components/resources/resources-mark-card";
 import {
   RESOURCES_CARD_Y,
@@ -14,7 +14,7 @@ export function ResourcesMark() {
   const { progress, opacity } = useLoopingProgress(RESOURCES_MARK_LOOP);
 
   return (
-    <motion.svg
+    <m.svg
       aria-hidden="true"
       style={{ opacity }}
       viewBox={`0 0 ${RESOURCES_MARK_WIDTH} ${RESOURCES_MARK_HEIGHT}`}
@@ -23,6 +23,6 @@ export function ResourcesMark() {
       {CARDS.map((card) => (
         <ResourcesMarkCard index={card} key={card} progress={progress} />
       ))}
-    </motion.svg>
+    </m.svg>
   );
 }

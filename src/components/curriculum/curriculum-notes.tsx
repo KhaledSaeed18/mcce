@@ -1,10 +1,10 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { Card, CardContent } from "@/components/ui/card";
 import { PROGRAM_OFFICIAL_POS_URL } from "@/config/site";
 
 export function CurriculumNotes() {
   return (
-    <motion.div
+    <m.div
       animate={{ opacity: 1, y: 0 }}
       initial={{ opacity: 0, y: 12 }}
       transition={{ delay: 0.1, duration: 0.4 }}
@@ -45,6 +45,6 @@ export function CurriculumNotes() {
           </p>
         </CardContent>
       </Card>
-    </motion.div>
+    </m.div>
   );
 }

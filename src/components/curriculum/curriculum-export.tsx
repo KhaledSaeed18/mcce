@@ -1,5 +1,5 @@
 import { DownloadIcon, EyeIcon, Loader2Icon, Share2Icon } from "lucide-react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { PdfPreviewDialog } from "@/components/pdf-preview-dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -25,7 +25,7 @@ export function CurriculumExport({ years }: CurriculumExportProps) {
   const isBusy = Boolean(pendingAction);
 
   return (
-    <motion.div
+    <m.div
       animate={{ opacity: 1, y: 0 }}
       initial={{ opacity: 0, y: 12 }}
       transition={{ delay: 0.1, duration: 0.4 }}
@@ -90,6 +90,6 @@ export function CurriculumExport({ years }: CurriculumExportProps) {
         open={isPreviewOpen}
         title="Plan of Study"
       />
-    </motion.div>
+    </m.div>
   );
 }

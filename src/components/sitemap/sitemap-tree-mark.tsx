@@ -1,4 +1,4 @@
-import { motion, useTransform } from "motion/react";
+import { m, useTransform } from "motion/react";
 import { SitemapNode } from "@/components/sitemap/sitemap-node";
 import {
   SITEMAP_DROP_TO_Y,
@@ -30,7 +30,7 @@ export function SitemapTreeMark() {
   );
 
   return (
-    <motion.svg
+    <m.svg
       aria-hidden="true"
       style={{ opacity }}
       viewBox={`0 0 ${SITEMAP_MARK_WIDTH} ${SITEMAP_MARK_HEIGHT}`}
@@ -49,7 +49,7 @@ export function SitemapTreeMark() {
       />
 
       {/* One path, so the dash draws trunk, rail, then each drop in turn. */}
-      <motion.path
+      <m.path
         d={`M ${SITEMAP_ROOT.x + SITEMAP_ROOT.size / 2} ${SITEMAP_TRUNK_FROM_Y} V ${SITEMAP_RAIL_Y} M ${SITEMAP_RAIL_FROM_X} ${SITEMAP_RAIL_Y} H ${SITEMAP_RAIL_TO_X} ${SITEMAP_NODE_X.map(
           (x) =>
             ` M ${x + SITEMAP_ROOT.size / 2} ${SITEMAP_RAIL_Y} V ${SITEMAP_DROP_TO_Y}`
@@ -64,6 +64,6 @@ export function SitemapTreeMark() {
       {NODES.map((node) => (
         <SitemapNode index={node} key={node} progress={progress} />
       ))}
-    </motion.svg>
+    </m.svg>
   );
 }

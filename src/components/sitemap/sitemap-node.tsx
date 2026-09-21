@@ -1,4 +1,4 @@
-import { type MotionValue, motion } from "motion/react";
+import { type MotionValue, m } from "motion/react";
 import {
   SITEMAP_MARK_STROKE,
   SITEMAP_NODE_RX,
@@ -18,7 +18,7 @@ export function SitemapNode({ index, progress }: SitemapNodeProps) {
   const entry = useStaggeredEntry(progress, index, SITEMAP_NODE_WINDOW);
 
   return (
-    <motion.rect
+    <m.rect
       fill="var(--card)"
       height={SITEMAP_NODE_SIZE}
       rx={SITEMAP_NODE_RX}

@@ -1,4 +1,4 @@
-import { type MotionValue, motion } from "motion/react";
+import { type MotionValue, m } from "motion/react";
 import {
   CCE_MARK_STROKE,
   CCE_NODE_COLORS,
@@ -19,9 +19,9 @@ export function CceYearRow({ index, progress }: CceYearRowProps) {
   const entry = useStaggeredEntry(progress, index, CCE_YEAR_WINDOW);
 
   return (
-    <motion.g>
+    <m.g>
       {CCE_NODE_X.map((x, column) => (
-        <motion.rect
+        <m.rect
           fill={CCE_NODE_COLORS[column]}
           height={CCE_NODE_SIZE}
           key={x}
@@ -34,6 +34,6 @@ export function CceYearRow({ index, progress }: CceYearRowProps) {
           y={CCE_YEAR_Y[index]}
         />
       ))}
-    </motion.g>
+    </m.g>
   );
 }

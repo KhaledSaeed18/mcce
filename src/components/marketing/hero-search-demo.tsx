@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { HeroSearchBar } from "@/components/marketing/hero-search-bar";
 import { HeroSearchResultRow } from "@/components/marketing/hero-search-result";
 import { HeroSearchSkeleton } from "@/components/marketing/hero-search-skeleton";
@@ -60,7 +60,7 @@ export function HeroSearchDemo({ queries }: HeroSearchDemoProps) {
 
         <div className="flex-1">
           {hasResults ? (
-            <motion.ul
+            <m.ul
               animate={phase === "clearing" ? "hidden" : "visible"}
               className="flex flex-col gap-2"
               initial="hidden"
@@ -77,7 +77,7 @@ export function HeroSearchDemo({ queries }: HeroSearchDemoProps) {
                   result={result}
                 />
               ))}
-            </motion.ul>
+            </m.ul>
           ) : (
             <HeroSearchSkeleton />
           )}

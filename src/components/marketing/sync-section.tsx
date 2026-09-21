@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import { SYNC_STEPS } from "@/config/features";
 import { DOT_GRID_BACKGROUND } from "@/config/patterns";
 import { useReveal } from "@/hooks/use-reveal";
@@ -18,7 +18,7 @@ export function SyncSection({ stats }: SyncSectionProps) {
 
   return (
     <section className="flex flex-col gap-6">
-      <motion.div className="flex flex-col gap-1" {...reveal.single}>
+      <m.div className="flex flex-col gap-1" {...reveal.single}>
         <h2 className="font-head text-2xl sm:text-3xl">
           Where the files come from
         </h2>
@@ -26,9 +26,9 @@ export function SyncSection({ stats }: SyncSectionProps) {
           Nothing is re-hosted here. The site is an index over the program's own
           Drive.
         </p>
-      </motion.div>
+      </m.div>
 
-      <motion.div
+      <m.div
         className="relative overflow-hidden rounded border-2 bg-card shadow-md"
         {...reveal.single}
       >
@@ -42,12 +42,12 @@ export function SyncSection({ stats }: SyncSectionProps) {
           <SyncDiagram />
         </div>
 
-        <motion.ol
+        <m.ol
           className="relative grid gap-6 p-5 sm:grid-cols-3 sm:p-6"
           {...reveal.group}
         >
           {SYNC_STEPS.map((step, index) => (
-            <motion.li
+            <m.li
               className="flex flex-col gap-2"
               key={step.title}
               {...reveal.item}
@@ -57,12 +57,12 @@ export function SyncSection({ stats }: SyncSectionProps) {
               </span>
               <h3 className="font-head text-base">{step.title}</h3>
               <p className="text-muted-foreground text-sm">{step.body}</p>
-            </motion.li>
+            </m.li>
           ))}
-        </motion.ol>
+        </m.ol>
 
         <div className="relative flex flex-wrap items-center gap-x-2 gap-y-1 border-t-2 bg-muted/50 px-5 py-3 text-muted-foreground text-xs sm:px-6">
-          <motion.span
+          <m.span
             animate={shouldReduceMotion ? undefined : { opacity: [1, 0.3, 1] }}
             aria-hidden="true"
             className="size-2 shrink-0 rounded-full bg-primary"
@@ -79,7 +79,7 @@ export function SyncSection({ stats }: SyncSectionProps) {
             {stats.fileCount} files across {stats.sourceCount} drive folders
           </span>
         </div>
-      </motion.div>
+      </m.div>
     </section>
   );
 }

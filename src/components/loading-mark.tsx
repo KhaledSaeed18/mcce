@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import { ACCENT_COLORS } from "@/config/colors";
 import { cn } from "@/lib/utils";
 
@@ -36,7 +36,7 @@ export function LoadingMark({ className }: LoadingMarkProps) {
       </g>
 
       {SATELLITES.map((node, index) => (
-        <motion.rect
+        <m.rect
           animate={
             shouldReduceMotion
               ? undefined
@@ -66,7 +66,7 @@ export function LoadingMark({ className }: LoadingMarkProps) {
         />
       ))}
 
-      <motion.rect
+      <m.rect
         animate={shouldReduceMotion ? undefined : { scale: [1, 1.06, 1] }}
         fill="#ff9f1c"
         height={100}

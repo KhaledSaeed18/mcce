@@ -1,4 +1,4 @@
-import { motion, useTransform } from "motion/react";
+import { m, useTransform } from "motion/react";
 import { CceYearRow } from "@/components/cce/cce-year-row";
 import {
   CCE_BRIDGE_FADE,
@@ -39,7 +39,7 @@ export function CceTracksMark() {
   const join = useTransform(progress, [...CCE_JOIN_RANGE], [0, 1]);
 
   return (
-    <motion.svg
+    <m.svg
       aria-hidden="true"
       style={{ opacity }}
       viewBox={`0 0 ${CCE_MARK_WIDTH} ${CCE_MARK_HEIGHT}`}
@@ -50,7 +50,7 @@ export function CceTracksMark() {
 
       {/* Both tracks draw down together, one per program. */}
       {CCE_TRACK_X.map((x) => (
-        <motion.line
+        <m.line
           key={x}
           stroke="var(--border)"
           strokeLinecap="round"
@@ -68,7 +68,7 @@ export function CceTracksMark() {
       ))}
 
       {/* The two programs meet in one shared node on the ground. */}
-      <motion.line
+      <m.line
         stroke="var(--border)"
         strokeLinecap="round"
         strokeWidth={CCE_MARK_STROKE}
@@ -78,7 +78,7 @@ export function CceTracksMark() {
         y1={CCE_TRACK_TO_Y}
         y2={CCE_TRACK_TO_Y}
       />
-      <motion.rect
+      <m.rect
         fill="var(--primary)"
         height={CCE_JOIN.size}
         rx={CCE_JOIN_RX}
@@ -89,6 +89,6 @@ export function CceTracksMark() {
         x={CCE_JOIN.x}
         y={CCE_JOIN.y}
       />
-    </motion.svg>
+    </m.svg>
   );
 }

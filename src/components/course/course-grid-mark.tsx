@@ -1,4 +1,4 @@
-import { motion, useTransform } from "motion/react";
+import { m, useTransform } from "motion/react";
 import { CourseGridTile } from "@/components/course/course-grid-tile";
 import {
   COURSE_BOARD,
@@ -25,7 +25,7 @@ export function CourseGridMark() {
   const highlight = useTransform(progress, [...COURSE_HIGHLIGHT_RANGE], [0, 1]);
 
   return (
-    <motion.svg
+    <m.svg
       aria-hidden="true"
       style={{ opacity }}
       viewBox={`0 0 ${COURSE_MARK_WIDTH} ${COURSE_MARK_HEIGHT}`}
@@ -50,7 +50,7 @@ export function CourseGridMark() {
 
       {/* Sits over the tile already in that slot, so the pick reads as one of
        * the courses rather than a fourteenth one. */}
-      <motion.rect
+      <m.rect
         fill="var(--primary)"
         height={COURSE_TILE_HEIGHT}
         rx={COURSE_TILE_RX}
@@ -61,6 +61,6 @@ export function CourseGridMark() {
         x={COURSE_TILE_X[COURSE_HIGHLIGHT.col]}
         y={COURSE_TILE_Y[COURSE_HIGHLIGHT.row]}
       />
-    </motion.svg>
+    </m.svg>
   );
 }

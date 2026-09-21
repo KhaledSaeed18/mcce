@@ -1,4 +1,4 @@
-import { motion, useTransform } from "motion/react";
+import { m, useTransform } from "motion/react";
 import {
   LEGAL_BODY,
   LEGAL_BODY_STROKE,
@@ -30,7 +30,7 @@ export function LegalPadlockMark() {
   const { x, y } = LEGAL_KEYHOLE_CENTER;
 
   return (
-    <motion.svg
+    <m.svg
       aria-hidden="true"
       style={{ opacity }}
       viewBox={`0 0 ${LEGAL_MARK_WIDTH} ${LEGAL_MARK_HEIGHT}`}
@@ -49,7 +49,7 @@ export function LegalPadlockMark() {
       />
 
       {/* Open at rest, then drops shut over the body. */}
-      <motion.path
+      <m.path
         d={`M ${LEGAL_SHACKLE_LEFT_X} ${LEGAL_BODY.y} L ${LEGAL_SHACKLE_LEFT_X} ${LEGAL_SHACKLE_TOP_Y} A 10 10 0 0 1 ${LEGAL_SHACKLE_RIGHT_X} ${LEGAL_SHACKLE_TOP_Y} L ${LEGAL_SHACKLE_RIGHT_X} ${LEGAL_BODY.y}`}
         fill="none"
         stroke="var(--border)"
@@ -58,7 +58,7 @@ export function LegalPadlockMark() {
         style={{ y: drop }}
       />
 
-      <motion.g style={{ opacity: keyhole, scale: keyhole }}>
+      <m.g style={{ opacity: keyhole, scale: keyhole }}>
         <circle cx={x} cy={y} fill="var(--primary)" r={LEGAL_KEYHOLE_RADIUS} />
         <line
           stroke="var(--primary)"
@@ -69,7 +69,7 @@ export function LegalPadlockMark() {
           y1={y + 2}
           y2={LEGAL_KEYHOLE_STEM_TO_Y}
         />
-      </motion.g>
-    </motion.svg>
+      </m.g>
+    </m.svg>
   );
 }

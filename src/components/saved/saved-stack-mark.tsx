@@ -1,4 +1,4 @@
-import { motion, useTransform } from "motion/react";
+import { m, useTransform } from "motion/react";
 import { SavedCard } from "@/components/saved/saved-card";
 import {
   SAVED_CARD_Y,
@@ -26,7 +26,7 @@ export function SavedStackMark() {
   const ribbon = useTransform(progress, [...SAVED_RIBBON_RANGE], [0, 1]);
 
   return (
-    <motion.svg
+    <m.svg
       aria-hidden="true"
       style={{ opacity }}
       viewBox={`0 0 ${SAVED_MARK_WIDTH} ${SAVED_MARK_HEIGHT}`}
@@ -39,7 +39,7 @@ export function SavedStackMark() {
         <SavedCard index={card} key={card} progress={progress} />
       ))}
 
-      <motion.path
+      <m.path
         d={RIBBON_PATH}
         fill="var(--primary)"
         stroke="var(--border)"
@@ -48,6 +48,6 @@ export function SavedStackMark() {
         // Drops down over the front card rather than growing from its middle.
         style={{ originY: 0, scaleY: ribbon }}
       />
-    </motion.svg>
+    </m.svg>
   );
 }

@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRightIcon } from "lucide-react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useReveal } from "@/hooks/use-reveal";
@@ -9,7 +9,7 @@ export function HomeCtaSection() {
   const reveal = useReveal();
 
   return (
-    <motion.section {...reveal.single}>
+    <m.section {...reveal.single}>
       <Card className="border-2 bg-secondary text-secondary-foreground shadow-md">
         <CardContent className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-1">
@@ -30,6 +30,6 @@ export function HomeCtaSection() {
           </Button>
         </CardContent>
       </Card>
-    </motion.section>
+    </m.section>
   );
 }

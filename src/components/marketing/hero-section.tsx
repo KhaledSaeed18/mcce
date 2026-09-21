@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { HeroActions } from "@/components/marketing/hero-actions";
 import { HeroPanel } from "@/components/marketing/hero-panel";
 import { HeroQuickLinks } from "@/components/marketing/hero-quick-links";
@@ -16,7 +16,7 @@ interface HeroSectionProps {
 export function HeroSection({ queries, stats }: HeroSectionProps) {
   return (
     <section className="grid grid-cols-1 items-center gap-10 py-8 sm:py-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,420px)] lg:gap-12">
-      <motion.div
+      <m.div
         animate={{ opacity: 1, y: 0 }}
         className="flex flex-col gap-6"
         initial={{ opacity: 0, y: 12 }}
@@ -43,15 +43,15 @@ export function HeroSection({ queries, stats }: HeroSectionProps) {
         <HeroActions />
         <HeroQuickLinks />
         <HeroStats stats={stats} />
-      </motion.div>
+      </m.div>
 
-      <motion.div
+      <m.div
         animate={{ opacity: 1, scale: 1 }}
         initial={{ opacity: 0, scale: 0.96 }}
         transition={{ delay: 0.1, duration: 0.4 }}
       >
         <HeroPanel queries={queries} />
-      </motion.div>
+      </m.div>
     </section>
   );
 }

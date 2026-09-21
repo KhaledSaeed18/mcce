@@ -4,6 +4,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { domAnimation, LazyMotion } from "motion/react";
 import { AppErrorBoundary } from "@/components/app-error-boundary";
 import { AppHeader } from "@/components/app-header";
 import { DevToolsPanel } from "@/components/dev-tools-panel";
@@ -131,6 +132,18 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         rel: "stylesheet",
         href: appCss,
       },
+      // Warms up the connection ahead of the deferred GA script fetch,
+      // without competing for bandwidth itself.
+      ...(import.meta.env.PROD && GA_MEASUREMENT_ID
+        ? [
+            { rel: "preconnect", href: "https://www.googletagmanager.com" },
+            {
+              rel: "preconnect",
+              href: "https://www.google-analytics.com",
+              crossOrigin: "anonymous" as const,
+            },
+          ]
+        : []),
       {
         rel: "icon",
         href: "/favicon.svg",
@@ -220,15 +233,19 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <JsonLd data={buildWebSiteSchema()} />
       </head>
       <body>
-        <ThemeProvider>
-          <SavedNodesProvider>
-            <RecentNodesProvider>
-              <AppErrorBoundary>
-                <AppShell>{children}</AppShell>
-              </AppErrorBoundary>
-            </RecentNodesProvider>
-          </SavedNodesProvider>
-        </ThemeProvider>
+        {/* Every `m.*` component in the tree reads its animation and gesture
+            support from here, instead of each bundling its own copy. */}
+        <LazyMotion features={domAnimation} strict>
+          <ThemeProvider>
+            <SavedNodesProvider>
+              <RecentNodesProvider>
+                <AppErrorBoundary>
+                  <AppShell>{children}</AppShell>
+                </AppErrorBoundary>
+              </RecentNodesProvider>
+            </SavedNodesProvider>
+          </ThemeProvider>
+        </LazyMotion>
         <DevToolsPanel />
         <Scripts />
       </body>

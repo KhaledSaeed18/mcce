@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import { MARQUEE_ITEMS } from "@/config/marquee";
 
 const TRACK_DURATION_SECONDS = 28;
@@ -28,7 +28,7 @@ export function SectionDivider() {
     >
       <div className="w-[110vw] translate-x-[-5vw] -rotate-2 border-y-2 bg-secondary text-secondary-foreground">
         <div className="overflow-hidden py-3">
-          <motion.div
+          <m.div
             animate={shouldReduceMotion ? undefined : { x: "-50%" }}
             className="flex w-max items-center gap-8"
             transition={{
@@ -41,7 +41,7 @@ export function SectionDivider() {
               // biome-ignore lint/suspicious/noArrayIndexKey: TRACK_ITEMS is a static, never-reordered duplication of MARQUEE_ITEMS
               <MarqueeCell key={`${text}-${index}`} text={text} />
             ))}
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </div>

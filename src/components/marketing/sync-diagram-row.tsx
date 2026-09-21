@@ -1,4 +1,4 @@
-import { type MotionValue, motion } from "motion/react";
+import { type MotionValue, m } from "motion/react";
 import {
   SYNC_DIAGRAM_STROKE,
   SYNC_ROW_HEIGHT,
@@ -24,8 +24,8 @@ export function SyncDiagramRow({ index, progress }: SyncDiagramRowProps) {
   const { x, y, opacity, highlight } = useSyncRow(progress, index);
 
   return (
-    <motion.g style={{ opacity, x, y }}>
-      <motion.rect
+    <m.g style={{ opacity, x, y }}>
+      <m.rect
         fill="var(--border)"
         height={SYNC_ROW_HEIGHT}
         style={{ opacity: highlight }}
@@ -38,7 +38,7 @@ export function SyncDiagramRow({ index, progress }: SyncDiagramRowProps) {
         height={SYNC_ROW_HEIGHT}
         width={SYNC_ROW_WIDTH}
       />
-      <motion.rect
+      <m.rect
         fill="var(--primary)"
         height={SYNC_ROW_HEIGHT}
         style={{ opacity: highlight }}
@@ -60,7 +60,7 @@ export function SyncDiagramRow({ index, progress }: SyncDiagramRowProps) {
       />
       {/* Sits over the amber marker so it stays visible once the whole row
        * turns amber in the final stage. */}
-      <motion.rect
+      <m.rect
         fill="var(--card)"
         height={SYNC_ROW_MARKER}
         style={{ opacity: highlight }}
@@ -84,6 +84,6 @@ export function SyncDiagramRow({ index, progress }: SyncDiagramRowProps) {
         x={BAR_X}
         y={BAR_Y}
       />
-    </motion.g>
+    </m.g>
   );
 }

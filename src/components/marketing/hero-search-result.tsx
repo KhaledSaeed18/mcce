@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useCallback } from "react";
 import { KindIcon } from "@/components/drive/kind-icon";
 import type { HeroSearchResult } from "@/components/marketing/types";
@@ -39,7 +39,7 @@ export function HeroSearchResultRow({
   );
 
   return (
-    <motion.li
+    <m.li
       animate={{
         opacity: isDimmed ? HERO_DIMMED_ROW_OPACITY : 1,
         x: isActive ? LIFT_PX : 0,
@@ -71,12 +71,12 @@ export function HeroSearchResultRow({
         </span>
       </span>
 
-      <motion.span
+      <m.span
         animate={{ opacity: isActive ? 1 : 0, scaleY: isActive ? 1 : 0.2 }}
         aria-hidden="true"
         className="h-6 w-1 shrink-0 rounded-full bg-primary"
         transition={{ duration: HERO_ROW_DURATION_SECONDS }}
       />
-    </motion.li>
+    </m.li>
   );
 }

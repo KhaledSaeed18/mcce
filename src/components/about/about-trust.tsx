@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { FOOTER_BUG_REPORT_URL } from "@/config/footer";
 
 export function AboutTrust() {
   return (
-    <motion.div
+    <m.div
       animate={{ opacity: 1, y: 0 }}
       className="flex flex-col gap-4"
       initial={{ opacity: 0, y: 12 }}
@@ -41,6 +41,6 @@ export function AboutTrust() {
         </a>
         .
       </p>
-    </motion.div>
+    </m.div>
   );
 }

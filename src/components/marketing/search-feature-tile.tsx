@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { SearchIcon } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import { FeatureTile } from "@/components/marketing/feature-tile";
 import { Badge } from "@/components/ui/badge";
 import { SEARCH_PREVIEW_CHIPS, SEARCH_PREVIEW_QUERY } from "@/config/features";
@@ -24,7 +24,7 @@ export function SearchFeatureTile() {
           <div className="flex items-center gap-2 rounded border-2 bg-background px-3 py-2 shadow-sm">
             <SearchIcon className="size-4 shrink-0 text-muted-foreground" />
             <span className="truncate text-sm">{SEARCH_PREVIEW_QUERY}</span>
-            <motion.span
+            <m.span
               animate={shouldReduceMotion ? undefined : { opacity: [1, 0, 1] }}
               aria-hidden="true"
               className="h-4 w-0.5 shrink-0 bg-foreground"

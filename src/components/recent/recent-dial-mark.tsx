@@ -1,4 +1,4 @@
-import { motion, useTransform } from "motion/react";
+import { m, useTransform } from "motion/react";
 import { RecentDialRow } from "@/components/recent/recent-dial-row";
 import {
   RECENT_BADGE_RANGE,
@@ -34,7 +34,7 @@ export function RecentDialMark() {
   const badge = useTransform(progress, [...RECENT_BADGE_RANGE], [0, 1]);
 
   return (
-    <motion.svg
+    <m.svg
       aria-hidden="true"
       style={{ opacity }}
       viewBox={`0 0 ${RECENT_MARK_WIDTH} ${RECENT_MARK_HEIGHT}`}
@@ -52,7 +52,7 @@ export function RecentDialMark() {
         <RecentDialRow index={row} key={row} progress={progress} />
       ))}
 
-      <motion.path
+      <m.path
         d={SWEEP_PATH}
         fill="none"
         stroke="var(--primary)"
@@ -61,7 +61,7 @@ export function RecentDialMark() {
         style={{ opacity: sweepOpacity, pathLength: sweep }}
       />
 
-      <motion.rect
+      <m.rect
         fill="var(--chart-2)"
         height={RECENT_BADGE_SIZE}
         rx={RECENT_BADGE_RX}
@@ -72,6 +72,6 @@ export function RecentDialMark() {
         x={RECENT_DIAL.cx - RECENT_BADGE_SIZE / 2}
         y={NOON_Y - RECENT_BADGE_SIZE / 2}
       />
-    </motion.svg>
+    </m.svg>
   );
 }

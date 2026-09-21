@@ -1,4 +1,4 @@
-import { motion, useTransform } from "motion/react";
+import { m, useTransform } from "motion/react";
 import { AdmissionsChecklistItem } from "@/components/admissions/admissions-checklist-item";
 import {
   ADMISSIONS_DRAW_FADE,
@@ -36,7 +36,7 @@ export function AdmissionsChecklistMark() {
   const { x, y } = ADMISSIONS_STAMP_CENTER;
 
   return (
-    <motion.svg
+    <m.svg
       aria-hidden="true"
       style={{ opacity }}
       viewBox={`0 0 ${ADMISSIONS_MARK_WIDTH} ${ADMISSIONS_MARK_HEIGHT}`}
@@ -59,8 +59,8 @@ export function AdmissionsChecklistMark() {
       ))}
 
       {/* Centered under the last row, in the space the list leaves free. */}
-      <motion.g style={{ opacity: stamp, scale: stamp }}>
-        <motion.circle
+      <m.g style={{ opacity: stamp, scale: stamp }}>
+        <m.circle
           cx={x}
           cy={y}
           fill="none"
@@ -68,7 +68,7 @@ export function AdmissionsChecklistMark() {
           stroke="var(--chart-2)"
           strokeWidth={ADMISSIONS_MARK_STROKE}
         />
-        <motion.path
+        <m.path
           d={`M ${x - 4.5} ${y} L ${x - 1.5} ${y + 3} L ${x + 4.5} ${y - 3}`}
           fill="none"
           stroke="var(--chart-2)"
@@ -77,7 +77,7 @@ export function AdmissionsChecklistMark() {
           strokeWidth={ADMISSIONS_MARK_STROKE}
           style={{ opacity: stampCheckOpacity, pathLength: stampCheckDraw }}
         />
-      </motion.g>
-    </motion.svg>
+      </m.g>
+    </m.svg>
   );
 }

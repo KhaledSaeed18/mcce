@@ -1,4 +1,4 @@
-import { type MotionValue, motion, useTransform } from "motion/react";
+import { type MotionValue, m, useTransform } from "motion/react";
 import {
   SYNC_LINK_ARROW,
   SYNC_LINK_ARROW_RANGE,
@@ -26,8 +26,8 @@ export function SyncDiagramLink({ progress }: SyncDiagramLinkProps) {
   );
 
   return (
-    <motion.g style={{ opacity: groupOpacity }}>
-      <motion.path
+    <m.g style={{ opacity: groupOpacity }}>
+      <m.path
         d={SYNC_LINK_PATH}
         fill="none"
         stroke="var(--primary)"
@@ -35,12 +35,12 @@ export function SyncDiagramLink({ progress }: SyncDiagramLinkProps) {
         strokeWidth={SYNC_LINK_WIDTH}
         style={{ pathLength }}
       />
-      <motion.polygon
+      <m.polygon
         fill="var(--primary)"
         points={SYNC_LINK_ARROW}
         style={{ opacity: arrowOpacity }}
         transform={SYNC_LINK_ARROW_TRANSFORM}
       />
-    </motion.g>
+    </m.g>
   );
 }

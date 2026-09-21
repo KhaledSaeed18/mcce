@@ -1,4 +1,4 @@
-import { type MotionValue, motion, useTransform } from "motion/react";
+import { type MotionValue, m, useTransform } from "motion/react";
 import {
   CONTACT_BUBBLE_ENTRY_SCALE,
   CONTACT_BUBBLE_RISE,
@@ -20,7 +20,7 @@ export function ContactBubble({ index, progress }: ContactBubbleProps) {
   const y = useTransform(progress, range, [CONTACT_BUBBLE_RISE, 0]);
 
   return (
-    <motion.g
+    <m.g
       style={{
         opacity,
         // Motion forces transform-box: fill-box on SVG and overwrites
@@ -63,6 +63,6 @@ export function ContactBubble({ index, progress }: ContactBubbleProps) {
         x={bubble.x}
         y={bubble.y}
       />
-    </motion.g>
+    </m.g>
   );
 }

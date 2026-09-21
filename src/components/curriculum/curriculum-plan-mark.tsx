@@ -1,4 +1,4 @@
-import { motion, useTransform } from "motion/react";
+import { m, useTransform } from "motion/react";
 import { CurriculumPlanRow } from "@/components/curriculum/curriculum-plan-row";
 import {
   PLAN_BOARD,
@@ -60,7 +60,7 @@ export function CurriculumPlanMark() {
         {...PLAN_CLIP}
       />
 
-      <motion.g style={{ opacity }}>
+      <m.g style={{ opacity }}>
         {PLAN_ROWS.map((row, index) => (
           <CurriculumPlanRow
             index={index}
@@ -69,7 +69,7 @@ export function CurriculumPlanMark() {
           />
         ))}
 
-        <motion.path
+        <m.path
           d={PLAN_LINK_PATH}
           fill="none"
           stroke="var(--primary-foreground)"
@@ -77,7 +77,7 @@ export function CurriculumPlanMark() {
           strokeWidth={PLAN_LINK_WIDTH}
           style={{ opacity: linkOpacity, pathLength: linkLength }}
         />
-      </motion.g>
+      </m.g>
     </svg>
   );
 }

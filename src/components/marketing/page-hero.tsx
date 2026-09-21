@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import type { ReactNode } from "react";
 import { Badge } from "@/components/ui/badge";
 
@@ -26,7 +26,7 @@ export function PageHero({
     <div className="relative">
       {decoration}
 
-      <motion.div
+      <m.div
         animate={{ opacity: 1, y: 0 }}
         className="flex flex-col gap-4"
         initial={{ opacity: 0, y: 12 }}
@@ -48,7 +48,7 @@ export function PageHero({
         </p>
 
         {children}
-      </motion.div>
+      </m.div>
     </div>
   );
 }

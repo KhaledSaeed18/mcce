@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { AdmissionsFeatureTile } from "@/components/marketing/admissions-feature-tile";
 import { FeatureTile } from "@/components/marketing/feature-tile";
 import { GpaFeatureTile } from "@/components/marketing/gpa-feature-tile";
@@ -14,22 +14,22 @@ export function FeatureGridSection() {
 
   return (
     <section className="flex flex-col gap-6">
-      <motion.div className="flex flex-col gap-1" {...reveal.single}>
+      <m.div className="flex flex-col gap-1" {...reveal.single}>
         <h2 className="font-head text-2xl sm:text-3xl">More than the files</h2>
         <p className="text-muted-foreground text-sm">
           The rest of the site, one click away.
         </p>
-      </motion.div>
+      </m.div>
 
-      <motion.div
+      <m.div
         className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6"
         {...reveal.group}
       >
-        <motion.div className="lg:col-span-4" {...reveal.item}>
+        <m.div className="lg:col-span-4" {...reveal.item}>
           <SearchFeatureTile />
-        </motion.div>
+        </m.div>
 
-        <motion.div className="lg:col-span-2" {...reveal.item}>
+        <m.div className="lg:col-span-2" {...reveal.item}>
           <FeatureTile
             color={OFFLINE_FEATURE.color}
             description={OFFLINE_FEATURE.description}
@@ -44,24 +44,24 @@ export function FeatureGridSection() {
               ))}
             </ul>
           </FeatureTile>
-        </motion.div>
+        </m.div>
 
-        <motion.div className="lg:col-span-3" {...reveal.item}>
+        <m.div className="lg:col-span-3" {...reveal.item}>
           <GpaFeatureTile />
-        </motion.div>
+        </m.div>
 
-        <motion.div className="lg:col-span-3" {...reveal.item}>
+        <m.div className="lg:col-span-3" {...reveal.item}>
           <PlanFeatureTile />
-        </motion.div>
+        </m.div>
 
-        <motion.div className="lg:col-span-2" {...reveal.item}>
+        <m.div className="lg:col-span-2" {...reveal.item}>
           <AdmissionsFeatureTile />
-        </motion.div>
+        </m.div>
 
-        <motion.div className="lg:col-span-4" {...reveal.item}>
+        <m.div className="lg:col-span-4" {...reveal.item}>
           <TuitionFeatureTile />
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </section>
   );
 }

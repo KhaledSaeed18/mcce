@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { TuitionCoin } from "@/components/tuition/tuition-coin";
 import {
   TUITION_COIN_COUNT,
@@ -15,7 +15,7 @@ export function TuitionStackMark() {
   const { progress, opacity } = useLoopingProgress(TUITION_MARK_LOOP);
 
   return (
-    <motion.svg
+    <m.svg
       aria-hidden="true"
       style={{ opacity }}
       viewBox={`0 0 ${TUITION_MARK_WIDTH} ${TUITION_MARK_HEIGHT}`}
@@ -28,6 +28,6 @@ export function TuitionStackMark() {
       {COINS.map((coin) => (
         <TuitionCoin index={coin} key={coin} progress={progress} />
       ))}
-    </motion.svg>
+    </m.svg>
   );
 }

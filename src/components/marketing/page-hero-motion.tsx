@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import type { ReactNode } from "react";
 import { HERO_DECORATION_POSITION } from "@/config/page-hero";
 import { useHeroDrift } from "@/hooks/use-hero-drift";
@@ -22,8 +22,8 @@ export function PageHeroMotion({ children, width }: PageHeroMotionProps) {
   }
 
   return (
-    <motion.div {...drift} className={`${HERO_DECORATION_POSITION} ${width}`}>
+    <m.div {...drift} className={`${HERO_DECORATION_POSITION} ${width}`}>
       {children}
-    </motion.div>
+    </m.div>
   );
 }

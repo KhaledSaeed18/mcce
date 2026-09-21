@@ -1,4 +1,4 @@
-import { type MotionValue, motion } from "motion/react";
+import { type MotionValue, m } from "motion/react";
 import {
   GPA_BAR_HEIGHTS,
   GPA_BAR_RX,
@@ -20,7 +20,7 @@ export function GpaScoreBar({ index, progress }: GpaScoreBarProps) {
   const entry = useStaggeredEntry(progress, index, GPA_BAR_WINDOW);
 
   return (
-    <motion.rect
+    <m.rect
       fill="var(--gpa-semester)"
       height={height}
       rx={GPA_BAR_RX}

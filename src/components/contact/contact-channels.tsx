@@ -1,10 +1,10 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { ContactLinkCard } from "@/components/contact/contact-link-card";
 import { CONTACT_CHANNELS } from "@/config/contact";
 
 export function ContactChannels() {
   return (
-    <motion.section
+    <m.section
       animate={{ opacity: 1, y: 0 }}
       className="flex flex-col gap-4"
       initial={{ opacity: 0, y: 12 }}
@@ -17,6 +17,6 @@ export function ContactChannels() {
           <ContactLinkCard key={link.value} link={link} />
         ))}
       </div>
-    </motion.section>
+    </m.section>
   );
 }

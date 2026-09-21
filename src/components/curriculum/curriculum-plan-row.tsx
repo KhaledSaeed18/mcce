@@ -1,4 +1,4 @@
-import { type MotionValue, motion } from "motion/react";
+import { type MotionValue, m } from "motion/react";
 import {
   PLAN_BAR_HEIGHT,
   PLAN_BAR_X,
@@ -20,8 +20,8 @@ export function CurriculumPlanRow({ index, progress }: CurriculumPlanRowProps) {
   const markerY = row.centerY - PLAN_MARKER_SIZE / 2;
 
   return (
-    <motion.g style={{ opacity: entry }}>
-      <motion.rect
+    <m.g style={{ opacity: entry }}>
+      <m.rect
         fill="var(--primary-foreground)"
         height={PLAN_MARKER_SIZE}
         rx={1}
@@ -30,7 +30,7 @@ export function CurriculumPlanRow({ index, progress }: CurriculumPlanRowProps) {
         x={PLAN_MARKER_X}
         y={markerY}
       />
-      <motion.rect
+      <m.rect
         fill="var(--primary-foreground)"
         height={PLAN_BAR_HEIGHT}
         rx={1.75}
@@ -39,6 +39,6 @@ export function CurriculumPlanRow({ index, progress }: CurriculumPlanRowProps) {
         x={PLAN_BAR_X}
         y={row.centerY - PLAN_BAR_HEIGHT / 2}
       />
-    </motion.g>
+    </m.g>
   );
 }

@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { ContactBubble } from "@/components/contact/contact-bubble";
 import { ContactTypingDot } from "@/components/contact/contact-typing-dot";
 import {
@@ -16,7 +16,7 @@ export function ContactConversationMark() {
   const { progress, opacity } = useLoopingProgress(CONTACT_MARK_LOOP);
 
   return (
-    <motion.svg
+    <m.svg
       aria-hidden="true"
       style={{ opacity }}
       viewBox={`0 0 ${CONTACT_MARK_WIDTH} ${CONTACT_MARK_HEIGHT}`}
@@ -31,6 +31,6 @@ export function ContactConversationMark() {
       ))}
 
       <ContactBubble index={REPLY} progress={progress} />
-    </motion.svg>
+    </m.svg>
   );
 }

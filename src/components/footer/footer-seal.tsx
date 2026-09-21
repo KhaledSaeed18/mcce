@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 
 interface FooterSealProps {
   className?: string;
@@ -52,7 +52,7 @@ export function FooterSeal({ className }: FooterSealProps) {
 
       <g stroke={PIN_PULSE_COLOR} strokeLinecap="square" strokeWidth={5}>
         {PIN_SEQUENCE.map((pin, index) => (
-          <motion.line
+          <m.line
             animate={shouldReduceMotion ? undefined : { opacity: [0, 1, 0] }}
             key={pin.id}
             opacity={0}

@@ -1,5 +1,5 @@
 import { CheckIcon, CopyIcon, MailIcon } from "lucide-react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useCallback } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -20,7 +20,7 @@ export function ContactContribute() {
   );
 
   return (
-    <motion.section
+    <m.section
       animate={{ opacity: 1, y: 0 }}
       className="relative flex flex-col gap-5 rounded border-2 bg-card p-5 shadow-md sm:p-8"
       initial={{ opacity: 0, y: 12 }}
@@ -80,6 +80,6 @@ export function ContactContribute() {
           {isCopied ? "Copied" : "Copy email"}
         </Button>
       </div>
-    </motion.section>
+    </m.section>
   );
 }

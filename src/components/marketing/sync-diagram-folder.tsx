@@ -1,4 +1,4 @@
-import { type MotionValue, motion, useTransform } from "motion/react";
+import { type MotionValue, m, useTransform } from "motion/react";
 import {
   SYNC_DIAGRAM_STROKE,
   SYNC_FAN_RANGE,
@@ -44,7 +44,7 @@ export function SyncDiagramFolder({ index, progress }: SyncDiagramFolderProps) {
       />
       {/* Hinges on its own bottom edge so the folder reads as tipping open
        * rather than sliding down the page. */}
-      <motion.rect
+      <m.rect
         fill="var(--primary)"
         height={SYNC_FOLDER_HEIGHT - FLAP_TOP}
         stroke="var(--border)"

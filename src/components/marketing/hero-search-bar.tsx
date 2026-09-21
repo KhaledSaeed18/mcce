@@ -1,5 +1,5 @@
 import { SearchIcon } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import type { HeroSearchPhase } from "@/hooks/use-hero-search-demo";
 
 const CARET_BLINK_SECONDS = 1.1;
@@ -24,7 +24,7 @@ export function HeroSearchBar({ phase, typed }: HeroSearchBarProps) {
         <span className="truncate">{typed}</span>
         {/* Holds still while characters land, so the caret never reads as a
          * glitch mid-word, and blinks only once the query is sitting there. */}
-        <motion.span
+        <m.span
           animate={isSteady ? { opacity: 1 } : { opacity: [1, 1, 0, 0, 1] }}
           aria-hidden="true"
           className="ml-px inline-block h-3.5 w-px shrink-0 bg-primary sm:h-4"

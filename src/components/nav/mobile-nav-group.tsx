@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import { useCallback } from "react";
 import { MobileNavRow } from "@/components/nav/mobile-nav-row";
 import {
@@ -89,7 +89,7 @@ export function MobileNavGroup({
       {shouldRenderPanel ? (
         <AnimatePresence initial={false}>
           {isExpanded ? (
-            <motion.div
+            <m.div
               animate={{ height: "auto", opacity: 1 }}
               className="overflow-hidden"
               exit={{ height: 0, opacity: 0 }}
@@ -100,26 +100,23 @@ export function MobileNavGroup({
                 shouldReduceMotion ? { duration: 0 } : NAV_GROUP_TRANSITION
               }
             >
-              <motion.ul
+              <m.ul
                 animate="visible"
                 className="flex flex-col gap-0.5 pb-4"
                 initial={shouldReduceMotion ? "visible" : "hidden"}
                 variants={NAV_SHEET_GROUP_VARIANTS}
               >
                 {group.entries.map((entry) => (
-                  <motion.li
-                    key={entry.label}
-                    variants={NAV_SHEET_ROW_VARIANTS}
-                  >
+                  <m.li key={entry.label} variants={NAV_SHEET_ROW_VARIANTS}>
                     <MobileNavRow
                       color={group.color}
                       entry={entry}
                       onNavigate={onNavigate}
                     />
-                  </motion.li>
+                  </m.li>
                 ))}
-              </motion.ul>
-            </motion.div>
+              </m.ul>
+            </m.div>
           ) : null}
         </AnimatePresence>
       ) : null}

@@ -1,4 +1,4 @@
-import { type MotionValue, motion, useReducedMotion } from "motion/react";
+import { type MotionValue, m, useReducedMotion } from "motion/react";
 import {
   CONTACT_DOT_CENTER_Y,
   CONTACT_DOT_PULSE_DELAY,
@@ -22,7 +22,7 @@ export function ContactTypingDot({ index, progress }: ContactTypingDotProps) {
   const entry = useStaggeredEntry(progress, index, CONTACT_DOT_WINDOW);
 
   return (
-    <motion.circle
+    <m.circle
       animate={
         shouldReduceMotion
           ? undefined

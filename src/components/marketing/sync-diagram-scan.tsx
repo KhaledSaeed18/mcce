@@ -1,4 +1,4 @@
-import { type MotionValue, motion, useTransform } from "motion/react";
+import { type MotionValue, m, useTransform } from "motion/react";
 import {
   SYNC_DIAGRAM_HEIGHT,
   SYNC_SCAN_CAP,
@@ -34,7 +34,7 @@ export function SyncDiagramScan({ progress }: SyncDiagramScanProps) {
   );
 
   return (
-    <motion.g style={{ opacity, x }}>
+    <m.g style={{ opacity, x }}>
       <rect
         fill="var(--primary)"
         height={SYNC_DIAGRAM_HEIGHT}
@@ -57,6 +57,6 @@ export function SyncDiagramScan({ progress }: SyncDiagramScanProps) {
         x={-CAP_OFFSET}
         y={SYNC_DIAGRAM_HEIGHT - SYNC_SCAN_CAP}
       />
-    </motion.g>
+    </m.g>
   );
 }

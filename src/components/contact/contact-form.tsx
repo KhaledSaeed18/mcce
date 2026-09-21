@@ -1,5 +1,5 @@
 import { SendIcon } from "lucide-react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { ContactCaptchaField } from "@/components/contact/contact-captcha-field";
 import { ContactDetailsFields } from "@/components/contact/contact-details-fields";
 import { Badge } from "@/components/ui/badge";
@@ -30,7 +30,7 @@ export function ContactForm() {
       : "";
 
   return (
-    <motion.section
+    <m.section
       animate={{ opacity: 1, y: 0 }}
       className="relative flex flex-col gap-5 rounded border-2 bg-card p-5 shadow-md sm:p-8"
       initial={{ opacity: 0, y: 12 }}
@@ -112,6 +112,6 @@ export function ContactForm() {
           </span>
         </div>
       </form>
-    </motion.section>
+    </m.section>
   );
 }

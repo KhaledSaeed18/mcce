@@ -1,4 +1,4 @@
-import { motion, useTransform } from "motion/react";
+import { m, useTransform } from "motion/react";
 import { AboutBrandSpoke } from "@/components/about/about-brand-spoke";
 import {
   ABOUT_CENTER,
@@ -15,7 +15,7 @@ export function AboutBrandMark() {
   const hub = useTransform(progress, [...ABOUT_HUB_RANGE], [0, 1]);
 
   return (
-    <motion.svg
+    <m.svg
       aria-hidden="true"
       style={{ opacity }}
       viewBox={`0 0 ${ABOUT_MARK_SIZE} ${ABOUT_MARK_SIZE}`}
@@ -27,7 +27,7 @@ export function AboutBrandMark() {
         <AboutBrandSpoke index={index} key={spoke.color} progress={progress} />
       ))}
 
-      <motion.rect
+      <m.rect
         fill="var(--chart-1)"
         height={ABOUT_HUB.size}
         rx={ABOUT_HUB.rx}
@@ -38,6 +38,6 @@ export function AboutBrandMark() {
         x={ABOUT_CENTER - ABOUT_HUB.size / 2}
         y={ABOUT_CENTER - ABOUT_HUB.size / 2}
       />
-    </motion.svg>
+    </m.svg>
   );
 }

@@ -4,7 +4,7 @@ import {
   type LucideIcon,
   MessagesSquareIcon,
 } from "lucide-react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { COURSE_CARD_COLORS } from "@/config/courses";
 
@@ -41,7 +41,7 @@ const PURPOSE_STAGES: PurposeStage[] = [
 
 export function AboutPurpose() {
   return (
-    <motion.div
+    <m.div
       animate={{ opacity: 1, y: 0 }}
       className="flex flex-col gap-4"
       initial={{ opacity: 0, y: 12 }}
@@ -79,6 +79,6 @@ export function AboutPurpose() {
         up in a search. This site indexes them: one place to browse, search, and
         link to material by semester and course.
       </p>
-    </motion.div>
+    </m.div>
   );
 }

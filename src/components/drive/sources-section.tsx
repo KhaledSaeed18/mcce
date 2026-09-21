@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { EmptySourceCard } from "@/components/drive/empty-source-card";
 import { SourceCard } from "@/components/drive/source-card";
 import { DRIVE_SOURCES } from "@/config/sources";
@@ -14,14 +14,14 @@ export function SourcesSection({ sourceSummaries }: SourcesSectionProps) {
 
   return (
     <section className="flex scroll-mt-20 flex-col gap-6" id="materials">
-      <motion.div className="flex flex-col gap-1" {...reveal.single}>
+      <m.div className="flex flex-col gap-1" {...reveal.single}>
         <h2 className="font-head text-2xl sm:text-3xl">Program materials</h2>
         <p className="text-muted-foreground text-sm">
           Start from a year and walk down through semesters and courses.
         </p>
-      </motion.div>
+      </m.div>
 
-      <motion.div
+      <m.div
         className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
         {...reveal.group}
       >
@@ -29,7 +29,7 @@ export function SourcesSection({ sourceSummaries }: SourcesSectionProps) {
           const summary = sourceSummaries.find((s) => s.id === source.id);
 
           return (
-            <motion.div key={source.id} {...reveal.item}>
+            <m.div key={source.id} {...reveal.item}>
               {summary?.fileCount ? (
                 <SourceCard
                   description={summary.description}
@@ -41,10 +41,10 @@ export function SourcesSection({ sourceSummaries }: SourcesSectionProps) {
               ) : (
                 <EmptySourceCard source={source} />
               )}
-            </motion.div>
+            </m.div>
           );
         })}
-      </motion.div>
+      </m.div>
     </section>
   );
 }

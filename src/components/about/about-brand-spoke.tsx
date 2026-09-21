@@ -1,4 +1,4 @@
-import { type MotionValue, motion, useTransform } from "motion/react";
+import { type MotionValue, m, useTransform } from "motion/react";
 import {
   ABOUT_CENTER,
   ABOUT_NODE,
@@ -31,7 +31,7 @@ export function AboutBrandSpoke({ index, progress }: AboutBrandSpokeProps) {
 
   return (
     <g>
-      <motion.line
+      <m.line
         stroke="var(--border)"
         strokeLinecap="square"
         strokeWidth={ABOUT_SPOKE_WIDTH}
@@ -41,7 +41,7 @@ export function AboutBrandSpoke({ index, progress }: AboutBrandSpokeProps) {
         y1={ABOUT_CENTER}
         y2={spoke.y}
       />
-      <motion.rect
+      <m.rect
         fill={`var(--${spoke.color})`}
         height={ABOUT_NODE.size}
         rx={ABOUT_NODE.rx}

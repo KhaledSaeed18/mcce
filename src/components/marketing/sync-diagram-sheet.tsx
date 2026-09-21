@@ -1,4 +1,4 @@
-import { type MotionValue, motion } from "motion/react";
+import { type MotionValue, m } from "motion/react";
 import {
   SYNC_DIAGRAM_STROKE,
   SYNC_SHEET_HEIGHT,
@@ -21,8 +21,8 @@ export function SyncDiagramSheet({ index, progress }: SyncDiagramSheetProps) {
   const { x, y, rotate, scale, opacity } = useSyncSheet(progress, index);
 
   return (
-    <motion.g style={{ opacity, x, y }}>
-      <motion.g
+    <m.g style={{ opacity, x, y }}>
+      <m.g
         // Motion pins SVG transforms to the element's own fill box, so the
         // sheet already turns about its centre without an explicit origin.
         style={{ rotate, scale }}
@@ -44,7 +44,7 @@ export function SyncDiagramSheet({ index, progress }: SyncDiagramSheetProps) {
             y={RULE_TOP + rule * RULE_GAP}
           />
         ))}
-      </motion.g>
-    </motion.g>
+      </m.g>
+    </m.g>
   );
 }

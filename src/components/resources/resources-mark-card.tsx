@@ -1,4 +1,4 @@
-import { type MotionValue, motion, useTransform } from "motion/react";
+import { type MotionValue, m, useTransform } from "motion/react";
 import {
   RESOURCES_CARD,
   RESOURCES_CARD_SLIDE,
@@ -26,7 +26,7 @@ export function ResourcesMarkCard({ index, progress }: ResourcesMarkCardProps) {
   const cardY = RESOURCES_CARD_Y[index];
 
   return (
-    <motion.g style={{ opacity: entry, y }}>
+    <m.g style={{ opacity: entry, y }}>
       <rect
         fill="var(--card)"
         height={RESOURCES_CARD.height}
@@ -55,7 +55,7 @@ export function ResourcesMarkCard({ index, progress }: ResourcesMarkCardProps) {
         x={RESOURCES_LINE.x}
         y={cardY + RESOURCES_TILE.inset + 2}
       />
-      <motion.rect
+      <m.rect
         fill={`var(--${RESOURCES_PILL_COLORS[index]})`}
         height={RESOURCES_PILL.height}
         rx={RESOURCES_PILL.rx}
@@ -66,6 +66,6 @@ export function ResourcesMarkCard({ index, progress }: ResourcesMarkCardProps) {
         x={RESOURCES_PILL.x}
         y={cardY + (RESOURCES_CARD.height - RESOURCES_PILL.height) / 2}
       />
-    </motion.g>
+    </m.g>
   );
 }
