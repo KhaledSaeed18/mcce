@@ -25,12 +25,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mcce.khaledsaeed.tech/search</loc>
-    <lastmod>2026-08-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://mcce.khaledsaeed.tech/plan-of-study</loc>
     <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
@@ -38,25 +32,25 @@
   </url>
   <url>
     <loc>https://mcce.khaledsaeed.tech/cce</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mcce.khaledsaeed.tech/admissions</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mcce.khaledsaeed.tech/tuition-fees</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mcce.khaledsaeed.tech/gpa-calculator</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -80,7 +74,7 @@
   </url>
   <url>
     <loc>https://mcce.khaledsaeed.tech/about</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

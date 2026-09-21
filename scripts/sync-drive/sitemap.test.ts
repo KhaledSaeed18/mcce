@@ -119,7 +119,7 @@ describe("buildSitemapXml", () => {
     );
 
     expect(lastmodFor(xml, "/legal")).toBe("2026-08-18");
-    expect(lastmodFor(xml, "/cce")).toBe("2026-08-24");
+    expect(lastmodFor(xml, "/cce")).toBe("2026-09-21");
   });
 
   it("dates a course page from its own material", () => {
@@ -135,7 +135,6 @@ describe("buildSitemapXml", () => {
   // because the generator rebuilds the whole file from STATIC_PAGES.
   it.each([
     "/",
-    "/search",
     "/course",
     "/exams",
     "/recent",
@@ -160,6 +159,17 @@ describe("buildSitemapXml", () => {
     );
 
     expect(lastmodFor(xml, path)).toMatch(ISO_DATE);
+  });
+
+  it("excludes /search, which the route marks noindex", () => {
+    const xml = buildSitemapXml(
+      makeIndex(nodes, "2026-08-24T06:43:16.162Z"),
+      RESOURCES_DATE
+    );
+
+    expect(xml).not.toContain(
+      "<loc>https://mcce.khaledsaeed.tech/search</loc>"
+    );
   });
 });
 

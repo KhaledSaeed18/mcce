@@ -15,15 +15,18 @@ function buildDescription(context: CurriculumCourseContext): string {
 /** Head tags for a course page, which has to cover codes the curriculum does not list. */
 export function buildCourseHead(
   context: CurriculumCourseContext | undefined,
-  code: string
+  code: string,
+  isPreview = false
 ) {
   const url = `${SITE_URL}/course/${code}`;
+  const previewRobots = isPreview ? "noindex, follow" : undefined;
 
   return {
     links: [{ href: url, rel: "canonical" }],
     meta: context
       ? buildPageMeta({
           description: buildDescription(context),
+          robots: previewRobots,
           title: `${context.course.code}, ${context.course.name} · MCCE`,
           url,
         })
