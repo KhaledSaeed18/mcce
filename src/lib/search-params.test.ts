@@ -24,6 +24,10 @@ describe("readOptionalList", () => {
     ]);
   });
 
+  it("accepts an already parsed array", () => {
+    expect(readOptionalList(["free", "nope"], allowed)).toEqual(["free"]);
+  });
+
   it("returns undefined when nothing survives", () => {
     expect(readOptionalList("paid", allowed)).toBeUndefined();
     expect(readOptionalList(undefined, allowed)).toBeUndefined();

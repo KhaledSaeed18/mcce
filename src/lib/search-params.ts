@@ -2,18 +2,25 @@ export function readOptionalString(value: unknown): string | undefined {
   return typeof value === "string" && value.length > 0 ? value : undefined;
 }
 
-/** A comma list from the URL, with anything outside the allowed set dropped. */
+function toStringList(value: unknown): string[] {
+  if (Array.isArray(value)) {
+    return value.filter((item): item is string => typeof item === "string");
+  }
+  return typeof value === "string" ? value.split(",") : [];
+}
+
+/**
+ * A comma list from the URL, with anything outside the allowed set dropped.
+ * The router re-validates its own output, so an already parsed array is
+ * accepted as well as the raw string.
+ */
 export function readOptionalList<T extends string>(
   value: unknown,
   allowed: readonly T[]
 ): T[] | undefined {
-  if (typeof value !== "string" || value.length === 0) {
-    return;
-  }
+  const raw = toStringList(value);
   const allowedSet = new Set<string>(allowed);
-  const items = value
-    .split(",")
-    .filter((item): item is T => allowedSet.has(item));
+  const items = raw.filter((item): item is T => allowedSet.has(item));
   return items.length > 0 ? [...new Set(items)] : undefined;
 }
 
