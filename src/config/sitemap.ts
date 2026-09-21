@@ -5,8 +5,14 @@ import {
   FolderTreeIcon,
   type LucideIcon,
   ScaleIcon,
+  ToolCaseIcon,
 } from "lucide-react";
 import type { COURSE_CARD_COLORS } from "@/config/courses";
+import {
+  RESOURCES_OPEN_SOURCE_PATH,
+  RESOURCES_PAGE_PATH,
+  RESOURCES_THESIS_PATH,
+} from "@/config/resources/copy";
 import { DRIVE_SOURCES } from "@/config/sources";
 
 export interface SitemapEntry {
@@ -24,6 +30,9 @@ export interface SitemapEntry {
     | "/plan-of-study"
     | "/gpa-calculator"
     | "/cce"
+    | "/resources"
+    | "/resources/thesis"
+    | "/resources/open-source"
     | "/about"
     | "/faq"
     | "/contact"
@@ -123,6 +132,32 @@ export const SITEMAP_GROUPS: SitemapGroup[] = [
     icon: BookOpenIcon,
     label: "Program tools",
     value: "program",
+  },
+  {
+    color: "chart-4",
+    entries: [
+      {
+        description:
+          "Every tool worth opening, grouped by task, with its cost up front.",
+        label: "Tools",
+        to: RESOURCES_PAGE_PATH,
+      },
+      {
+        description:
+          "The thesis stage by stage, from framing the topic to the defense.",
+        label: "Thesis toolkit",
+        to: RESOURCES_THESIS_PATH,
+      },
+      {
+        description:
+          "Public GitHub repositories with the licence class and maintenance state of each.",
+        label: "Open source index",
+        to: RESOURCES_OPEN_SOURCE_PATH,
+      },
+    ],
+    icon: ToolCaseIcon,
+    label: "Resources",
+    value: "resources",
   },
   {
     color: "chart-5",
