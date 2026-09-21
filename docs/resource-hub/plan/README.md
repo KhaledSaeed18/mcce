@@ -5,8 +5,11 @@ Unified plan for the MCCE Resource Hub, merged from the 40 research drafts in
 source for scope, structure, data, UX, and rollout. The drafts stay as raw
 input and are not edited.
 
-Planning only. Nothing in `src/`, `scripts/`, `public/`, or config changes until
-the open items in `11-open-items.md` are signed off.
+Implementation started on 2026-09-20 on branch `feat/resource-hub`, taking the
+recommendation in `11-open-items.md` for every item that had not been
+answered. Items 18 to 21 (LIU facts, MATLAB, Turnitin, the 2026 tools) still
+need a human; the affected rows ship with the University Access badge and a
+"Confirm with the LIU library" line until then.
 
 ## Decisions already taken
 
@@ -21,7 +24,7 @@ Confirmed in the planning conversation on 2026-09-20:
 | Filters | URL search params, same pattern as `/search` |
 | Navigation | New top-level nav group |
 | Icons | Hybrid: brand SVG from svgl.app, category icon, monogram fallback |
-| Data home | Recommendation requested, see `03-data-schema-and-build.md` |
+| Data home | Typed source in `src/config/resources/` plus a generated index, as recommended in `03-data-schema-and-build.md` |
 
 ## Files in this plan
 
