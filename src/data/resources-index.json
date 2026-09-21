@@ -1,16 +1,18 @@
 {
   "meta": {
     "countsByBadge": {
-      "freemium": 69,
-      "free": 312,
-      "open-source": 234,
-      "student": 13,
-      "paid": 8
+      "freemium": 77,
+      "free": 314,
+      "open-source": 236,
+      "paid": 10,
+      "trial": 2,
+      "student": 13
     },
     "countsByCategory": {
       "ai-assistants": 6,
       "file-utilities": 13,
-      "diagramming": 13,
+      "diagramming": 11,
+      "presentations": 18,
       "productivity": 16,
       "dev": 14,
       "learning": 9,
@@ -28,14 +30,14 @@
       "embedded": 25,
       "literature": 32,
       "references": 9,
-      "writing": 27,
+      "writing": 25,
       "review": 11,
       "thesis-archives": 7,
       "integrity-archiving": 11,
       "access": 9
     },
     "countsByDomain": {
-      "writing": 17,
+      "writing": 19,
       "templates": 6,
       "references": 9,
       "review": 11,
@@ -60,8 +62,8 @@
     },
     "countsByStage": {
       "screen": 20,
+      "defend": 20,
       "search": 14,
-      "defend": 14,
       "analyse": 15,
       "experiment": 28,
       "frame": 9,
@@ -72,11 +74,55 @@
       "prior-theses": 7,
       "integrity": 10
     },
-    "generatedAt": "2026-09-21T09:16:38.698Z",
-    "repoCount": 283,
-    "toolCount": 402
+    "generatedAt": "2026-09-21T09:28:05.667Z",
+    "repoCount": 285,
+    "toolCount": 416
   },
   "repos": [
+    {
+      "description": "Markdown slides for developers.",
+      "domain": "writing",
+      "id": "slidevjs-slidev",
+      "languages": [
+        "TypeScript"
+      ],
+      "license": "MIT",
+      "maintenance": "active",
+      "name": "slidev",
+      "owner": "slidevjs",
+      "resourceId": "slidev",
+      "reuseClass": "permissive",
+      "verifiedOn": "2026-09-20",
+      "haystack": "slidevjs/slidev slidev typescript writing mit markdown slides for developers.",
+      "icon": {
+        "kind": "monogram",
+        "text": "SL"
+      },
+      "linkStatus": "ok",
+      "url": "https://github.com/slidevjs/slidev"
+    },
+    {
+      "description": "HTML presentation framework.",
+      "domain": "writing",
+      "id": "hakimel-reveal-js",
+      "languages": [
+        "JavaScript"
+      ],
+      "license": "MIT",
+      "maintenance": "active",
+      "name": "reveal.js",
+      "owner": "hakimel",
+      "resourceId": "reveal-js",
+      "reuseClass": "permissive",
+      "verifiedOn": "2026-09-20",
+      "haystack": "hakimel/reveal.js reveal.js javascript writing mit html presentation framework.",
+      "icon": {
+        "kind": "monogram",
+        "text": "HA"
+      },
+      "linkStatus": "ok",
+      "url": "https://github.com/hakimel/reveal.js"
+    },
     {
       "description": "Universal document converter with citations.",
       "domain": "writing",
@@ -2474,7 +2520,7 @@
         "kind": "monogram",
         "text": "LI"
       },
-      "linkStatus": "ok",
+      "linkStatus": "unchecked",
       "url": "https://github.com/Lightning-AI/pytorch-lightning"
     },
     {
@@ -6857,6 +6903,37 @@
     },
     {
       "access": "freemium",
+      "category": "presentations",
+      "description": "Generates a full deck from a prompt or a pasted document, editable card by card.",
+      "featured": true,
+      "id": "gamma",
+      "isOpenSource": false,
+      "name": "Gamma",
+      "note": "Free plan gives 400 one-time credits and a watermark; PowerPoint export flattens layouts.",
+      "platform": [
+        "web"
+      ],
+      "privacyNote": "Do not upload unpublished thesis material without your advisor's approval.",
+      "requiresAccount": true,
+      "tags": [
+        "slides",
+        "deck",
+        "ai",
+        "generator"
+      ],
+      "thesisStages": [
+        "defend"
+      ],
+      "url": "https://gamma.app",
+      "verifiedOn": "2026-09-20",
+      "haystack": "gamma slides deck ai generator presentations generates a full deck from a prompt or a pasted document, editable card by card.",
+      "icon": {
+        "kind": "category"
+      },
+      "linkStatus": "unchecked"
+    },
+    {
+      "access": "freemium",
       "brandIcon": "GitHub",
       "category": "dev",
       "description": "Version control, code review, and hosting for course and thesis code.",
@@ -7227,7 +7304,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "ok"
+      "linkStatus": "unchecked"
     },
     {
       "access": "free",
@@ -7561,7 +7638,7 @@
     {
       "access": "free",
       "category": "ai-assistants",
-      "description": "Answers only from the PDFs and slides you upload.",
+      "description": "Answers only from the sources you upload, and turns them into a slide deck you can export as PowerPoint.",
       "featured": true,
       "id": "notebooklm",
       "isOpenSource": false,
@@ -7574,14 +7651,16 @@
       "tags": [
         "assistant",
         "llm",
-        "summary"
+        "summary",
+        "slides"
       ],
       "thesisStages": [
-        "screen"
+        "screen",
+        "defend"
       ],
       "url": "https://notebooklm.google.com",
       "verifiedOn": "2026-09-20",
-      "haystack": "notebooklm assistant llm summary ai-assistants answers only from the pdfs and slides you upload.",
+      "haystack": "notebooklm assistant llm summary slides ai-assistants answers only from the sources you upload, and turns them into a slide deck you can export as powerpoint.",
       "icon": {
         "kind": "category"
       },
@@ -9459,7 +9538,7 @@
     },
     {
       "access": "free",
-      "category": "writing",
+      "category": "presentations",
       "description": "LaTeX slides that match the manuscript.",
       "id": "beamer",
       "isOpenSource": true,
@@ -9476,7 +9555,33 @@
       ],
       "url": "https://ctan.org/pkg/beamer",
       "verifiedOn": "2026-09-20",
-      "haystack": "beamer slides latex writing latex slides that match the manuscript.",
+      "haystack": "beamer slides latex presentations latex slides that match the manuscript.",
+      "icon": {
+        "kind": "category"
+      },
+      "linkStatus": "ok"
+    },
+    {
+      "access": "trial",
+      "category": "presentations",
+      "description": "Smart templates that keep layouts tidy as you add content.",
+      "id": "beautiful-ai",
+      "isOpenSource": false,
+      "name": "Beautiful.ai",
+      "note": "No free plan; a short trial, then from about $15 a month billed yearly.",
+      "platform": [
+        "web"
+      ],
+      "privacyNote": "Do not upload unpublished thesis material without your advisor's approval.",
+      "requiresAccount": true,
+      "tags": [
+        "slides",
+        "deck",
+        "ai"
+      ],
+      "url": "https://www.beautiful.ai",
+      "verifiedOn": "2026-09-20",
+      "haystack": "beautiful.ai slides deck ai presentations smart templates that keep layouts tidy as you add content.",
       "icon": {
         "kind": "category"
       },
@@ -9537,8 +9642,8 @@
     {
       "access": "freemium",
       "brandIcon": "Canva",
-      "category": "diagramming",
-      "description": "Slides, posters, and simple figures.",
+      "category": "presentations",
+      "description": "Slides, posters, and simple figures. Magic Design drafts a deck from a prompt.",
       "id": "canva",
       "isOpenSource": false,
       "name": "Canva",
@@ -9556,7 +9661,7 @@
       ],
       "url": "https://www.canva.com",
       "verifiedOn": "2026-09-20",
-      "haystack": "canva slides deck design diagramming slides, posters, and simple figures.",
+      "haystack": "canva slides deck design presentations slides, posters, and simple figures. magic design drafts a deck from a prompt.",
       "icon": {
         "kind": "brand",
         "light": "/resources/icons/canva.svg"
@@ -9876,6 +9981,39 @@
       },
       "linkStatus": "ok",
       "repoId": "srl-labs-containerlab"
+    },
+    {
+      "access": "paid",
+      "brandIcon": "Microsoft PowerPoint",
+      "category": "presentations",
+      "description": "Drafts a deck from a prompt or a Word file inside PowerPoint itself.",
+      "id": "copilot-in-powerpoint",
+      "isOpenSource": false,
+      "name": "Copilot in PowerPoint",
+      "note": "Included with Microsoft 365 Personal and Family plans; check what the university Microsoft 365 plan includes.",
+      "platform": [
+        "desktop",
+        "web"
+      ],
+      "privacyNote": "Do not upload unpublished thesis material without your advisor's approval.",
+      "requiresAccount": true,
+      "tags": [
+        "slides",
+        "deck",
+        "ai",
+        "powerpoint"
+      ],
+      "thesisStages": [
+        "defend"
+      ],
+      "url": "https://www.microsoft.com/en-us/microsoft-365/copilot",
+      "verifiedOn": "2026-09-20",
+      "haystack": "copilot in powerpoint slides deck ai powerpoint presentations drafts a deck from a prompt or a word file inside powerpoint itself.",
+      "icon": {
+        "kind": "brand",
+        "light": "/resources/icons/copilot-in-powerpoint.svg"
+      },
+      "linkStatus": "unchecked"
     },
     {
       "access": "freemium",
@@ -10722,6 +10860,61 @@
       "repoId": "ganttproject-ganttproject"
     },
     {
+      "access": "paid",
+      "brandIcon": "Gemini",
+      "category": "presentations",
+      "description": "Generates slides and images in the Slides side panel.",
+      "id": "gemini-in-google-slides",
+      "isOpenSource": false,
+      "name": "Gemini in Google Slides",
+      "note": "Needs a Google AI plan or an eligible Workspace plan; the free Gemini app does not include it.",
+      "platform": [
+        "web"
+      ],
+      "privacyNote": "Do not upload unpublished thesis material without your advisor's approval.",
+      "requiresAccount": true,
+      "tags": [
+        "slides",
+        "deck",
+        "ai"
+      ],
+      "url": "https://workspace.google.com/products/slides",
+      "verifiedOn": "2026-09-20",
+      "haystack": "gemini in google slides slides deck ai presentations generates slides and images in the slides side panel.",
+      "icon": {
+        "kind": "brand",
+        "light": "/resources/icons/gemini-in-google-slides.svg"
+      },
+      "linkStatus": "redirect"
+    },
+    {
+      "access": "freemium",
+      "category": "presentations",
+      "description": "Agent that researches a topic and returns a finished deck.",
+      "id": "genspark-slides",
+      "isOpenSource": false,
+      "name": "Genspark AI Slides",
+      "note": "Daily free credits; a full deck can use most of them.",
+      "platform": [
+        "web"
+      ],
+      "privacyNote": "Do not upload unpublished thesis material without your advisor's approval.",
+      "requiresAccount": true,
+      "tags": [
+        "slides",
+        "deck",
+        "ai",
+        "agent"
+      ],
+      "url": "https://www.genspark.ai",
+      "verifiedOn": "2026-09-20",
+      "haystack": "genspark ai slides slides deck ai agent presentations agent that researches a topic and returns a finished deck.",
+      "icon": {
+        "kind": "category"
+      },
+      "linkStatus": "ok"
+    },
+    {
       "access": "free",
       "category": "math",
       "description": "Geometry, calculus, and linear algebra visualisation.",
@@ -11071,7 +11264,7 @@
     {
       "access": "free",
       "brandIcon": "Google Slides",
-      "category": "diagramming",
+      "category": "presentations",
       "description": "Collaborative presentations.",
       "id": "google-slides",
       "isOpenSource": false,
@@ -11090,7 +11283,7 @@
       ],
       "url": "https://slides.google.com",
       "verifiedOn": "2026-09-20",
-      "haystack": "google slides slides deck presentation diagramming collaborative presentations.",
+      "haystack": "google slides slides deck presentation presentations collaborative presentations.",
       "icon": {
         "kind": "brand",
         "light": "/resources/icons/google-slides.svg"
@@ -12478,7 +12671,7 @@
     },
     {
       "access": "free",
-      "category": "writing",
+      "category": "presentations",
       "description": "Markdown to slide deck, kept in version control.",
       "id": "marp",
       "isOpenSource": true,
@@ -12495,7 +12688,7 @@
       ],
       "url": "https://marp.app",
       "verifiedOn": "2026-09-20",
-      "haystack": "marp slides markdown writing markdown to slide deck, kept in version control.",
+      "haystack": "marp slides markdown presentations markdown to slide deck, kept in version control.",
       "icon": {
         "kind": "category"
       },
@@ -12913,6 +13106,36 @@
       "verification": "pending",
       "verifiedOn": "2026-09-20",
       "haystack": "multisim circuit simulator embedded circuit simulation; student edition to be confirmed.",
+      "icon": {
+        "kind": "category"
+      },
+      "linkStatus": "ok"
+    },
+    {
+      "access": "freemium",
+      "category": "presentations",
+      "description": "Turns a paragraph into a diagram or infographic for a slide.",
+      "id": "napkin",
+      "isOpenSource": false,
+      "name": "Napkin",
+      "note": "Free plan has weekly AI credits with PNG and PDF export.",
+      "platform": [
+        "web"
+      ],
+      "privacyNote": "Do not upload unpublished thesis material without your advisor's approval.",
+      "requiresAccount": true,
+      "tags": [
+        "visuals",
+        "diagram",
+        "ai",
+        "slides"
+      ],
+      "thesisStages": [
+        "defend"
+      ],
+      "url": "https://www.napkin.ai",
+      "verifiedOn": "2026-09-20",
+      "haystack": "napkin visuals diagram ai slides presentations turns a paragraph into a diagram or infographic for a slide.",
       "icon": {
         "kind": "category"
       },
@@ -13711,7 +13934,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "redirect",
+      "linkStatus": "ok",
       "repoId": "google-or-tools"
     },
     {
@@ -13934,7 +14157,7 @@
         "kind": "brand",
         "light": "/resources/icons/perplexity.svg"
       },
-      "linkStatus": "unchecked"
+      "linkStatus": "ok"
     },
     {
       "access": "free",
@@ -14042,6 +14265,38 @@
       "repoId": "raphaelvallat-pingouin"
     },
     {
+      "access": "freemium",
+      "brandIcon": "Pitch",
+      "category": "presentations",
+      "description": "Collaborative deck editor with AI drafting and PowerPoint export.",
+      "id": "pitch",
+      "isOpenSource": false,
+      "name": "Pitch",
+      "note": "Free plan includes unlimited presentations and 100 one-time AI credits.",
+      "platform": [
+        "web",
+        "desktop"
+      ],
+      "privacyNote": "Do not upload unpublished thesis material without your advisor's approval.",
+      "requiresAccount": true,
+      "tags": [
+        "slides",
+        "deck",
+        "collaboration"
+      ],
+      "thesisStages": [
+        "defend"
+      ],
+      "url": "https://pitch.com",
+      "verifiedOn": "2026-09-20",
+      "haystack": "pitch slides deck collaboration presentations collaborative deck editor with ai drafting and powerpoint export.",
+      "icon": {
+        "kind": "brand",
+        "light": "/resources/icons/pitch.svg"
+      },
+      "linkStatus": "ok"
+    },
+    {
       "access": "free",
       "category": "diagramming",
       "description": "UML, component, and Gantt diagrams from text.",
@@ -14089,6 +14344,34 @@
       "repoId": "plotly-plotly-py"
     },
     {
+      "access": "trial",
+      "category": "presentations",
+      "description": "AI slide generation inside Google Slides and PowerPoint, so nothing needs exporting.",
+      "id": "plus-ai",
+      "isOpenSource": false,
+      "name": "Plus AI",
+      "note": "No free plan; a short trial, then from about $20 a month.",
+      "platform": [
+        "web",
+        "desktop"
+      ],
+      "privacyNote": "Do not upload unpublished thesis material without your advisor's approval.",
+      "requiresAccount": true,
+      "tags": [
+        "slides",
+        "ai",
+        "google slides",
+        "powerpoint"
+      ],
+      "url": "https://plusai.com",
+      "verifiedOn": "2026-09-20",
+      "haystack": "plus ai slides ai google slides powerpoint presentations ai slide generation inside google slides and powerpoint, so nothing needs exporting.",
+      "icon": {
+        "kind": "category"
+      },
+      "linkStatus": "ok"
+    },
+    {
       "access": "free",
       "category": "productivity",
       "description": "Pomodoro timer in the browser.",
@@ -14128,6 +14411,58 @@
       "url": "https://portswigger.net/web-security",
       "verifiedOn": "2026-09-20",
       "haystack": "portswigger web security academy web security labs security web security training labs.",
+      "icon": {
+        "kind": "category"
+      },
+      "linkStatus": "ok"
+    },
+    {
+      "access": "freemium",
+      "category": "presentations",
+      "description": "Prompt to deck with brand-consistent templates and PowerPoint export.",
+      "id": "presentations-ai",
+      "isOpenSource": false,
+      "name": "Presentations.AI",
+      "note": "Starter plan gives 100 credits and up to 20 slides per deck.",
+      "platform": [
+        "web"
+      ],
+      "privacyNote": "Do not upload unpublished thesis material without your advisor's approval.",
+      "requiresAccount": true,
+      "tags": [
+        "slides",
+        "deck",
+        "ai",
+        "generator"
+      ],
+      "url": "https://www.presentations.ai",
+      "verifiedOn": "2026-09-20",
+      "haystack": "presentations.ai slides deck ai generator presentations prompt to deck with brand-consistent templates and powerpoint export.",
+      "icon": {
+        "kind": "category"
+      },
+      "linkStatus": "ok"
+    },
+    {
+      "access": "freemium",
+      "category": "presentations",
+      "description": "Zooming, non-linear presentations with an AI first draft.",
+      "id": "prezi",
+      "isOpenSource": false,
+      "name": "Prezi",
+      "platform": [
+        "web"
+      ],
+      "privacyNote": "Do not upload unpublished thesis material without your advisor's approval.",
+      "requiresAccount": true,
+      "tags": [
+        "slides",
+        "deck",
+        "ai"
+      ],
+      "url": "https://prezi.com",
+      "verifiedOn": "2026-09-20",
+      "haystack": "prezi slides deck ai presentations zooming, non-linear presentations with an ai first draft.",
       "icon": {
         "kind": "category"
       },
@@ -14583,6 +14918,29 @@
     },
     {
       "access": "free",
+      "category": "presentations",
+      "description": "HTML presentation framework with fine control over transitions and layout.",
+      "id": "reveal-js",
+      "isOpenSource": true,
+      "name": "reveal.js",
+      "platform": [
+        "library"
+      ],
+      "tags": [
+        "slides",
+        "html"
+      ],
+      "url": "https://revealjs.com",
+      "verifiedOn": "2026-09-20",
+      "haystack": "reveal.js slides html presentations html presentation framework with fine control over transitions and layout.",
+      "icon": {
+        "kind": "category"
+      },
+      "linkStatus": "ok",
+      "repoId": "hakimel-reveal-js"
+    },
+    {
+      "access": "free",
       "category": "satellite",
       "description": "Probabilistic link margins with ITU-R rain and gas models.",
       "id": "rftools-sat-link-budget",
@@ -14999,7 +15357,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "unchecked",
+      "linkStatus": "ok",
       "repoId": "f4exb-sdrangel"
     },
     {
@@ -15239,6 +15597,82 @@
         "light": "/resources/icons/simulink.svg"
       },
       "linkStatus": "unchecked"
+    },
+    {
+      "access": "freemium",
+      "category": "presentations",
+      "description": "Google Slides add-on that turns pasted text into slides.",
+      "id": "slidesai",
+      "isOpenSource": false,
+      "name": "SlidesAI",
+      "note": "Free plan allows 12 presentations a year with a short input limit.",
+      "platform": [
+        "web"
+      ],
+      "privacyNote": "Do not upload unpublished thesis material without your advisor's approval.",
+      "requiresAccount": true,
+      "tags": [
+        "slides",
+        "ai",
+        "google slides"
+      ],
+      "url": "https://www.slidesai.io",
+      "verifiedOn": "2026-09-20",
+      "haystack": "slidesai slides ai google slides presentations google slides add-on that turns pasted text into slides.",
+      "icon": {
+        "kind": "category"
+      },
+      "linkStatus": "ok"
+    },
+    {
+      "access": "freemium",
+      "category": "presentations",
+      "description": "Free Google Slides and PowerPoint templates, plus an AI deck maker.",
+      "id": "slidesgo",
+      "isOpenSource": false,
+      "name": "Slidesgo",
+      "platform": [
+        "web"
+      ],
+      "tags": [
+        "templates",
+        "slides",
+        "ai"
+      ],
+      "url": "https://slidesgo.com",
+      "verifiedOn": "2026-09-20",
+      "haystack": "slidesgo templates slides ai presentations free google slides and powerpoint templates, plus an ai deck maker.",
+      "icon": {
+        "kind": "category"
+      },
+      "linkStatus": "ok"
+    },
+    {
+      "access": "free",
+      "category": "presentations",
+      "description": "Markdown slides for developers with live code, Vue components, and PDF or PPTX export.",
+      "id": "slidev",
+      "isOpenSource": true,
+      "name": "Slidev",
+      "platform": [
+        "cli"
+      ],
+      "tags": [
+        "slides",
+        "markdown",
+        "code"
+      ],
+      "thesisStages": [
+        "defend"
+      ],
+      "url": "https://sli.dev",
+      "verifiedOn": "2026-09-20",
+      "haystack": "slidev slides markdown code presentations markdown slides for developers with live code, vue components, and pdf or pptx export.",
+      "icon": {
+        "kind": "category"
+      },
+      "linkStatus": "ok",
+      "repoId": "slidevjs-slidev"
     },
     {
       "access": "freemium",
@@ -15631,7 +16065,7 @@
         "kind": "brand",
         "light": "/resources/icons/tensorboard.svg"
       },
-      "linkStatus": "redirect"
+      "linkStatus": "ok"
     },
     {
       "access": "free",
@@ -15658,7 +16092,7 @@
         "kind": "brand",
         "light": "/resources/icons/tensorflow.svg"
       },
-      "linkStatus": "ok",
+      "linkStatus": "redirect",
       "repoId": "tensorflow-tensorflow"
     },
     {
@@ -16107,7 +16541,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "unchecked",
+      "linkStatus": "redirect",
       "repoId": "videolan-vlc"
     },
     {
