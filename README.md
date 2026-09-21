@@ -80,6 +80,10 @@ Direct links to the three shared Google Drive folders:
 - **Tuition and fees**: the official per credit and per year rates in both USD and LBP, plus a
   planner that turns the credits you intend to take each semester into semester and year totals,
   with registration and NSSF charges, and an option to convert the LBP side at a rate you set.
+- **Tools directory**: about 400 external tools for the program, grouped by task, each with a
+  cost badge (Free, Freemium, Trial, Paid, Student) and an Open Source flag,
+  filterable by badge and searchable, with a thesis toolkit ordered by stage and an index of
+  public GitHub repositories with their licence class.
 - **Exports**: download, preview, or share the plan of study, a GPA report, or a tuition plan as
   a PDF. The GPA report and the tuition plan also export as CSV or JSON.
 - **Weekly auto-sync**: a scheduled job re-crawls the source Drive and updates the index, so

@@ -18,9 +18,16 @@ import {
   ScaleIcon,
   SearchIcon,
   ShieldQuestionIcon,
+  ToolCaseIcon,
+  WrenchIcon,
 } from "lucide-react";
 import type { COURSE_CARD_COLORS } from "@/config/courses";
 import { DRIVE_DIRECT_LINKS } from "@/config/drive-links";
+import {
+  RESOURCES_OPEN_SOURCE_PATH,
+  RESOURCES_PAGE_PATH,
+  RESOURCES_THESIS_PATH,
+} from "@/config/resources/copy";
 import { PROGRAM_OFFICIAL_POS_URL, PROGRAM_OFFICIAL_URL } from "@/config/site";
 import { DRIVE_SOURCES } from "@/config/sources";
 
@@ -42,6 +49,9 @@ export type NavRoute =
   | "/plan-of-study"
   | "/gpa-calculator"
   | "/cce"
+  | "/resources"
+  | "/resources/thesis"
+  | "/resources/open-source"
   | "/about"
   | "/faq"
   | "/contact"
@@ -167,6 +177,27 @@ const PROGRAM_ENTRIES: NavEntry[] = [
   },
 ];
 
+const RESOURCE_ENTRIES: NavEntry[] = [
+  {
+    description: "Tools by task, each with its cost up front.",
+    icon: WrenchIcon,
+    label: "Tools",
+    to: RESOURCES_PAGE_PATH,
+  },
+  {
+    description: "CENG695A and CENG695B in order, one tool at a time.",
+    icon: GraduationCapIcon,
+    label: "Thesis toolkit",
+    to: RESOURCES_THESIS_PATH,
+  },
+  {
+    description: "Public repositories with the licence read for you.",
+    icon: ToolCaseIcon,
+    label: "Open source index",
+    to: RESOURCES_OPEN_SOURCE_PATH,
+  },
+];
+
 const SITE_ENTRIES: NavEntry[] = [
   {
     description:
@@ -217,6 +248,15 @@ export const NAV_GROUPS: NavGroup[] = [
     label: "Program",
     tagline: "The plan you follow and the math that goes with it.",
     value: "program",
+  },
+  {
+    color: "chart-4",
+    entries: RESOURCE_ENTRIES,
+    icon: ToolCaseIcon,
+    label: "Resources",
+    tagline:
+      "Tools, thesis workflow, and open source, with what each one costs.",
+    value: "resources",
   },
   {
     color: "chart-5",

@@ -8,6 +8,7 @@ import { buildCourseDateMap, getIndexDate } from "./sitemap-dates";
 const BASELINE = "2026-08-01T00:00:00.000Z";
 const URL_ENTRY = /<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g;
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+const RESOURCES_DATE = "2026-09-20";
 
 function makeIndex(nodes: DriveNode[], generatedAt: string): DriveIndex {
   return {
@@ -89,30 +90,43 @@ describe("buildSitemapXml", () => {
   ];
 
   it("ignores the run timestamp, so an unchanged index rewrites the same file", () => {
-    const first = buildSitemapXml(makeIndex(nodes, "2026-08-17T06:41:16.505Z"));
+    const first = buildSitemapXml(
+      makeIndex(nodes, "2026-08-17T06:41:16.505Z"),
+      RESOURCES_DATE
+    );
     const second = buildSitemapXml(
-      makeIndex(nodes, "2026-08-24T06:43:16.162Z")
+      makeIndex(nodes, "2026-08-24T06:43:16.162Z"),
+      RESOURCES_DATE
     );
 
     expect(second).toBe(first);
   });
 
   it("dates the Drive-driven pages from the newest indexed file", () => {
-    const xml = buildSitemapXml(makeIndex(nodes, "2026-08-24T06:43:16.162Z"));
+    const xml = buildSitemapXml(
+      makeIndex(nodes, "2026-08-24T06:43:16.162Z"),
+      RESOURCES_DATE
+    );
 
     expect(lastmodFor(xml, "/")).toBe("2026-08-18");
     expect(lastmodFor(xml, "/recent")).toBe("2026-08-18");
   });
 
   it("dates a hand-written page from its own entry, not the index", () => {
-    const xml = buildSitemapXml(makeIndex(nodes, "2026-08-24T06:43:16.162Z"));
+    const xml = buildSitemapXml(
+      makeIndex(nodes, "2026-08-24T06:43:16.162Z"),
+      RESOURCES_DATE
+    );
 
     expect(lastmodFor(xml, "/legal")).toBe("2026-08-18");
     expect(lastmodFor(xml, "/cce")).toBe("2026-08-24");
   });
 
   it("dates a course page from its own material", () => {
-    const xml = buildSitemapXml(makeIndex(nodes, "2026-08-24T06:43:16.162Z"));
+    const xml = buildSitemapXml(
+      makeIndex(nodes, "2026-08-24T06:43:16.162Z"),
+      RESOURCES_DATE
+    );
 
     expect(lastmodFor(xml, "/course/CENG557")).toBe("2026-08-18");
   });
@@ -135,9 +149,28 @@ describe("buildSitemapXml", () => {
     "/contact",
     "/sitemap",
     "/legal",
+    "/resources",
+    "/resources/thesis",
+    "/resources/open-source",
+    "/resources/dsp",
   ])("lists %s", (path) => {
-    const xml = buildSitemapXml(makeIndex(nodes, "2026-08-24T06:43:16.162Z"));
+    const xml = buildSitemapXml(
+      makeIndex(nodes, "2026-08-24T06:43:16.162Z"),
+      RESOURCES_DATE
+    );
 
     expect(lastmodFor(xml, path)).toMatch(ISO_DATE);
+  });
+});
+
+describe("resource hub pages", () => {
+  it("date from the catalog build, not the Drive index", () => {
+    const xml = buildSitemapXml(
+      makeIndex([], "2026-08-24T06:43:16.162Z"),
+      RESOURCES_DATE
+    );
+
+    expect(lastmodFor(xml, "/resources")).toBe(RESOURCES_DATE);
+    expect(lastmodFor(xml, "/resources/security")).toBe(RESOURCES_DATE);
   });
 });

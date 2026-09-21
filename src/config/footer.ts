@@ -1,3 +1,8 @@
+import {
+  RESOURCES_OPEN_SOURCE_PATH,
+  RESOURCES_PAGE_PATH,
+  RESOURCES_THESIS_PATH,
+} from "@/config/resources/copy";
 import { PROGRAM_OFFICIAL_URL } from "@/config/site";
 import { DRIVE_SOURCES } from "@/config/sources";
 
@@ -12,6 +17,9 @@ export type FooterNavLink =
         | "/plan-of-study"
         | "/gpa-calculator"
         | "/cce"
+        | "/resources"
+        | "/resources/thesis"
+        | "/resources/open-source"
         | "/course"
         | "/exams"
         | "/recent"
@@ -76,6 +84,9 @@ export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
       { label: "About MCCE", to: "/about" },
       { label: "CCE undergraduate programs", to: "/cce" },
       { label: "Admissions guide", to: "/admissions" },
+      { label: "Tools", to: RESOURCES_PAGE_PATH },
+      { label: "Thesis toolkit", to: RESOURCES_THESIS_PATH },
+      { label: "Open source index", to: RESOURCES_OPEN_SOURCE_PATH },
       { label: "FAQ", to: "/faq" },
       { href: PROGRAM_OFFICIAL_URL, label: "Official program page" },
     ],

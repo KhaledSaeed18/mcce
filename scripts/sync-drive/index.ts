@@ -2,6 +2,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { DRIVE_SOURCES } from "../../src/config/sources";
 import type { DriveIndex, DriveNode } from "../../src/lib/drive/types";
+import type { ResourcesIndex } from "../../src/lib/resources/types";
 import { getAccessToken } from "./auth";
 import { type CrawledNode, crawlSource } from "./crawl";
 import { stampFirstSeen } from "./diff";
@@ -9,8 +10,10 @@ import { getFileMetadata } from "./drive-client";
 import { buildFeedXml } from "./feed";
 import { buildChangedUrls, submitToIndexNow } from "./indexnow";
 import { buildSitemapXml } from "./sitemap";
+import { getResourcesDate } from "./sitemap-dates";
 
 const OUTPUT_PATH = resolve(process.cwd(), "src/data/drive-index.json");
+const RESOURCES_PATH = resolve(process.cwd(), "src/data/resources-index.json");
 const SITEMAP_PATH = resolve(process.cwd(), "public/sitemap.xml");
 const FEED_PATH = resolve(process.cwd(), "public/feed.xml");
 
@@ -84,7 +87,13 @@ async function main() {
   console.log(`Wrote ${nodes.length} nodes to ${OUTPUT_PATH}`);
   console.log(`  -> ${addedCount} not seen by the previous sync`);
 
-  writeFileSync(SITEMAP_PATH, buildSitemapXml(index));
+  const resourcesIndex = JSON.parse(
+    readFileSync(RESOURCES_PATH, "utf8")
+  ) as ResourcesIndex;
+  writeFileSync(
+    SITEMAP_PATH,
+    buildSitemapXml(index, getResourcesDate(resourcesIndex))
+  );
   console.log(`Wrote sitemap to ${SITEMAP_PATH}`);
 
   writeFileSync(FEED_PATH, buildFeedXml(index));

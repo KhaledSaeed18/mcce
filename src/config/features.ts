@@ -4,10 +4,11 @@ import {
   type LucideIcon,
   MailIcon,
   WifiOffIcon,
+  WrenchIcon,
 } from "lucide-react";
 import type { COURSE_CARD_COLORS } from "@/config/courses";
 
-export type FeatureRoute = "/about" | "/faq" | "/contact";
+export type FeatureRoute = "/about" | "/faq" | "/contact" | "/resources";
 
 export interface FeatureCardItem {
   color: (typeof COURSE_CARD_COLORS)[number];
@@ -21,6 +22,15 @@ export interface FeatureCardItem {
 /** Small link tiles in the bottom row of the home feature grid. The search,
  * GPA, and plan-of-study features get their own hand-built tiles instead. */
 export const FEATURE_CARDS: FeatureCardItem[] = [
+  {
+    color: "chart-1",
+    description:
+      "AI help, PDF tools, simulators, and thesis software, each with its cost up front.",
+    icon: WrenchIcon,
+    label: "Browse the tools",
+    title: "Tools worth opening",
+    to: "/resources",
+  },
   {
     color: "chart-3",
     description:

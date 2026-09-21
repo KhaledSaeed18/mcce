@@ -44,8 +44,15 @@ export function NavEntryAnchor({
     );
   }
 
+  // A prefix match would light the Tools entry on every hub page; only the
+  // page itself is active, and its filters do not change that.
   return (
-    <Link className={className} onClick={onNavigate} to={entry.to}>
+    <Link
+      activeOptions={{ exact: true, includeSearch: false }}
+      className={className}
+      onClick={onNavigate}
+      to={entry.to}
+    >
       {children}
     </Link>
   );

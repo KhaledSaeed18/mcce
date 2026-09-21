@@ -28,6 +28,10 @@ import { Route as TuitionFeesRouteImport } from './routes/tuition-fees'
 import { Route as BrowseFolderIdRouteImport } from './routes/browse.$folderId'
 import { Route as CourseIndexRouteImport } from './routes/course.index'
 import { Route as CourseCodeRouteImport } from './routes/course.$code'
+import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
+import { Route as ResourcesCategoryRouteImport } from './routes/resources.$category'
+import { Route as ResourcesOpenSourceRouteImport } from './routes/resources.open-source'
+import { Route as ResourcesThesisRouteImport } from './routes/resources.thesis'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -124,6 +128,26 @@ const CourseCodeRoute = CourseCodeRouteImport.update({
   path: '/course/$code',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
+  id: '/resources/',
+  path: '/resources/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesCategoryRoute = ResourcesCategoryRouteImport.update({
+  id: '/resources/$category',
+  path: '/resources/$category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesOpenSourceRoute = ResourcesOpenSourceRouteImport.update({
+  id: '/resources/open-source',
+  path: '/resources/open-source',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesThesisRoute = ResourcesThesisRouteImport.update({
+  id: '/resources/thesis',
+  path: '/resources/thesis',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -144,7 +168,11 @@ export interface FileRoutesByFullPath {
   '/tuition-fees': typeof TuitionFeesRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
+  '/resources/$category': typeof ResourcesCategoryRoute
+  '/resources/open-source': typeof ResourcesOpenSourceRoute
+  '/resources/thesis': typeof ResourcesThesisRoute
   '/course/': typeof CourseIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -165,7 +193,11 @@ export interface FileRoutesByTo {
   '/tuition-fees': typeof TuitionFeesRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
+  '/resources/$category': typeof ResourcesCategoryRoute
+  '/resources/open-source': typeof ResourcesOpenSourceRoute
+  '/resources/thesis': typeof ResourcesThesisRoute
   '/course': typeof CourseIndexRoute
+  '/resources': typeof ResourcesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -187,7 +219,11 @@ export interface FileRoutesById {
   '/tuition-fees': typeof TuitionFeesRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
+  '/resources/$category': typeof ResourcesCategoryRoute
+  '/resources/open-source': typeof ResourcesOpenSourceRoute
+  '/resources/thesis': typeof ResourcesThesisRoute
   '/course/': typeof CourseIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -210,7 +246,11 @@ export interface FileRouteTypes {
     | '/tuition-fees'
     | '/browse/$folderId'
     | '/course/$code'
+    | '/resources/$category'
+    | '/resources/open-source'
+    | '/resources/thesis'
     | '/course/'
+    | '/resources/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -231,7 +271,11 @@ export interface FileRouteTypes {
     | '/tuition-fees'
     | '/browse/$folderId'
     | '/course/$code'
+    | '/resources/$category'
+    | '/resources/open-source'
+    | '/resources/thesis'
     | '/course'
+    | '/resources'
   id:
     | '__root__'
     | '/'
@@ -252,7 +296,11 @@ export interface FileRouteTypes {
     | '/tuition-fees'
     | '/browse/$folderId'
     | '/course/$code'
+    | '/resources/$category'
+    | '/resources/open-source'
+    | '/resources/thesis'
     | '/course/'
+    | '/resources/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -274,7 +322,11 @@ export interface RootRouteChildren {
   TuitionFeesRoute: typeof TuitionFeesRoute
   BrowseFolderIdRoute: typeof BrowseFolderIdRoute
   CourseCodeRoute: typeof CourseCodeRoute
+  ResourcesCategoryRoute: typeof ResourcesCategoryRoute
+  ResourcesOpenSourceRoute: typeof ResourcesOpenSourceRoute
+  ResourcesThesisRoute: typeof ResourcesThesisRoute
   CourseIndexRoute: typeof CourseIndexRoute
+  ResourcesIndexRoute: typeof ResourcesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -412,6 +464,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CourseCodeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources/': {
+      id: '/resources/'
+      path: '/resources'
+      fullPath: '/resources/'
+      preLoaderRoute: typeof ResourcesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/$category': {
+      id: '/resources/$category'
+      path: '/resources/$category'
+      fullPath: '/resources/$category'
+      preLoaderRoute: typeof ResourcesCategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/open-source': {
+      id: '/resources/open-source'
+      path: '/resources/open-source'
+      fullPath: '/resources/open-source'
+      preLoaderRoute: typeof ResourcesOpenSourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/thesis': {
+      id: '/resources/thesis'
+      path: '/resources/thesis'
+      fullPath: '/resources/thesis'
+      preLoaderRoute: typeof ResourcesThesisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -434,7 +514,11 @@ const rootRouteChildren: RootRouteChildren = {
   TuitionFeesRoute: TuitionFeesRoute,
   BrowseFolderIdRoute: BrowseFolderIdRoute,
   CourseCodeRoute: CourseCodeRoute,
+  ResourcesCategoryRoute: ResourcesCategoryRoute,
+  ResourcesOpenSourceRoute: ResourcesOpenSourceRoute,
+  ResourcesThesisRoute: ResourcesThesisRoute,
   CourseIndexRoute: CourseIndexRoute,
+  ResourcesIndexRoute: ResourcesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

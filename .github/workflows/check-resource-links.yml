@@ -1,0 +1,41 @@
+name: Check resource links
+
+on:
+  schedule:
+    - cron: "0 7 * * 1"
+  workflow_dispatch: {}
+
+concurrency:
+  group: check-resource-links
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check:
+    name: Probe every catalog URL
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup project
+        uses: ./.github/actions/setup-project
+
+      - name: Rebuild the index with a fresh link check
+        run: pnpm run build:resources -- --skip-icons
+
+      - name: Open a pull request when any status changed
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/resource-link-check
+          commit-message: "chore(data): refresh resource link statuses"
+          title: "chore(data): refresh resource link statuses"
+          body: |
+            Weekly link check for the resource catalog. Review any URL whose
+            status moved to broken or redirect before merging; nothing is
+            removed automatically.
+          add-paths: src/data/resources-index.json
+          delete-branch: true
