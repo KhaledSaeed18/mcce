@@ -20,26 +20,15 @@ export function ResourceIcon({
   if (icon.kind === "category") {
     return <FallbackIcon aria-hidden="true" className="size-5" />;
   }
+  // The tile stays white in both themes, so the light brand file is always the right one.
   return (
-    <>
-      <img
-        alt=""
-        className={icon.dark ? "size-6 dark:hidden" : "size-6"}
-        height={ICON_SIZE}
-        loading="lazy"
-        src={icon.light}
-        width={ICON_SIZE}
-      />
-      {icon.dark ? (
-        <img
-          alt=""
-          className="hidden size-6 dark:block"
-          height={ICON_SIZE}
-          loading="lazy"
-          src={icon.dark}
-          width={ICON_SIZE}
-        />
-      ) : null}
-    </>
+    <img
+      alt=""
+      className="size-6"
+      height={ICON_SIZE}
+      loading="lazy"
+      src={icon.light}
+      width={ICON_SIZE}
+    />
   );
 }

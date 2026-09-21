@@ -19,7 +19,7 @@ export function ResourceBadge({ badge }: ResourceBadgeProps) {
 
   return (
     <Badge
-      className="text-black"
+      className={color ? "text-black" : undefined}
       style={color ? { backgroundColor: `var(--${color})` } : undefined}
       title={BADGE_FILTER_EXPLANATIONS[badge]}
       variant={color ? "default" : "outline"}

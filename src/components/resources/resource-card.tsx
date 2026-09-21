@@ -41,7 +41,7 @@ export function ResourceCard({ tool }: ResourceCardProps) {
     >
       <div className="flex items-start justify-between gap-3">
         <div
-          className="flex size-10 shrink-0 items-center justify-center rounded border-2 border-black bg-white"
+          className="flex size-10 shrink-0 items-center justify-center rounded border-2 border-black bg-white text-black"
           style={{
             boxShadow: `4px 4px 0 0 var(--${category?.color ?? "chart-1"})`,
           }}
