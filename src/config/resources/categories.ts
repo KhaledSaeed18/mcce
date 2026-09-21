@@ -32,11 +32,6 @@ import type {
   ResourceGroupId,
 } from "@/lib/resources/types";
 
-export interface ResourceGroup {
-  id: ResourceGroupId;
-  label: string;
-}
-
 export interface ResourceCategory {
   color: (typeof COURSE_CARD_COLORS)[number];
   group: ResourceGroupId;
@@ -46,14 +41,6 @@ export interface ResourceCategory {
   /** One line under the section heading. */
   tagline: string;
 }
-
-/** Layout order only; the filter works on category. */
-export const RESOURCE_GROUPS: ResourceGroup[] = [
-  { id: "everyday", label: "Everyday" },
-  { id: "coursework", label: "Coursework" },
-  { id: "research", label: "Research and thesis" },
-  { id: "access", label: "Access" },
-];
 
 export const RESOURCE_CATEGORIES: ResourceCategory[] = [
   {

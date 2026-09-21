@@ -98,9 +98,6 @@ export const THESIS_STAGES: ThesisStage[] = [
   },
 ];
 
-export const THESIS_STAGE_BY_ID: ReadonlyMap<ThesisStageId, ThesisStage> =
-  new Map(THESIS_STAGES.map((stage) => [stage.id, stage]));
-
 export const THESIS_TERM_LABELS: Record<ThesisTerm, string> = {
   A: "CENG695A",
   B: "CENG695B",

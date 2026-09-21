@@ -12,11 +12,6 @@ export interface RepoDomain {
   tagline: string;
 }
 
-export const REPO_DOMAIN_GROUP_LABELS: Record<RepoDomainGroupId, string> = {
-  backbone: "Thesis backbone",
-  track: "By track",
-};
-
 export const REPO_DOMAINS: RepoDomain[] = [
   {
     group: "backbone",
