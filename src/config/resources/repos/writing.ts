@@ -3,6 +3,32 @@ import type { Repository } from "@/lib/resources/types";
 
 export const WRITING_REPOS: Repository[] = [
   {
+    description: "Markdown slides for developers.",
+    domain: "writing",
+    id: "slidevjs-slidev",
+    languages: ["TypeScript"],
+    license: "MIT",
+    maintenance: "active",
+    name: "slidev",
+    owner: "slidevjs",
+    resourceId: "slidev",
+    reuseClass: "permissive",
+    verifiedOn: CATALOG_VERIFIED_ON,
+  },
+  {
+    description: "HTML presentation framework.",
+    domain: "writing",
+    id: "hakimel-reveal-js",
+    languages: ["JavaScript"],
+    license: "MIT",
+    maintenance: "active",
+    name: "reveal.js",
+    owner: "hakimel",
+    resourceId: "reveal-js",
+    reuseClass: "permissive",
+    verifiedOn: CATALOG_VERIFIED_ON,
+  },
+  {
     description: "Universal document converter with citations.",
     domain: "writing",
     id: "jgm-pandoc",

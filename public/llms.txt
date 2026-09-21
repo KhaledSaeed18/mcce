@@ -89,7 +89,7 @@ See [tuition and fees](https://mcce.khaledsaeed.tech/tuition-fees) for a per sem
 
 ## Resources
 
-The tools directory lists about 400 external tools in 25 categories (AI assistants, PDF utilities, diagramming, math, signal processing, wireless, satellite, networking, machine learning, vision, security, embedded, literature search, references, writing, systematic review, and student programs). Every entry shows a cost badge: Free, Freemium, Trial, Paid, or Student, plus an Open Source flag. The directory is independent and not sponsored.
+The tools directory lists about 400 external tools in 26 categories (AI assistants, PDF utilities, diagramming, presentations, math, signal processing, wireless, satellite, networking, machine learning, vision, security, embedded, literature search, references, writing, systematic review, and student programs). Every entry shows a cost badge: Free, Freemium, Trial, Paid, or Student, plus an Open Source flag. The directory is independent and not sponsored.
 
 ## CCE undergraduate programs
 

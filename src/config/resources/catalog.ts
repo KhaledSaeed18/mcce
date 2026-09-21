@@ -14,6 +14,7 @@ import { MATH } from "@/config/resources/catalog/math";
 import { ML } from "@/config/resources/catalog/ml";
 import { MULTIMEDIA } from "@/config/resources/catalog/multimedia";
 import { NETWORKING } from "@/config/resources/catalog/networking";
+import { PRESENTATIONS } from "@/config/resources/catalog/presentations";
 import { PRODUCTIVITY } from "@/config/resources/catalog/productivity";
 import { REFERENCES } from "@/config/resources/catalog/references";
 import { REVIEW } from "@/config/resources/catalog/review";
@@ -52,6 +53,7 @@ export const RESOURCE_CATALOG: Resource[] = [
   ...AI_ASSISTANTS,
   ...FILE_UTILITIES,
   ...DIAGRAMMING,
+  ...PRESENTATIONS,
   ...PRODUCTIVITY,
   ...DEV,
   ...LEARNING,

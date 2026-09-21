@@ -58,7 +58,8 @@ export const AI_ASSISTANTS: Resource[] = [
   {
     access: "free",
     category: "ai-assistants",
-    description: "Answers only from the PDFs and slides you upload.",
+    description:
+      "Answers only from the sources you upload, and turns them into a slide deck you can export as PowerPoint.",
     featured: true,
     id: "notebooklm",
     isOpenSource: false,
@@ -66,8 +67,8 @@ export const AI_ASSISTANTS: Resource[] = [
     platform: ["web"],
     privacyNote: AI_PRIVACY_NOTE,
     requiresAccount: true,
-    tags: ["assistant", "llm", "summary"],
-    thesisStages: ["screen"],
+    tags: ["assistant", "llm", "summary", "slides"],
+    thesisStages: ["screen", "defend"],
     url: "https://notebooklm.google.com",
     verifiedOn: CATALOG_VERIFIED_ON,
   },

@@ -4,6 +4,7 @@ export type ResourceCategoryId =
   | "ai-assistants"
   | "file-utilities"
   | "diagramming"
+  | "presentations"
   | "productivity"
   | "dev"
   | "learning"
