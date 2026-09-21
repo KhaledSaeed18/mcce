@@ -7,7 +7,6 @@ export const ACCESS_BADGE_LABELS: Record<AccessBadge, string> = {
   paid: "Paid",
   student: "Student",
   trial: "Trial",
-  university: "University Access",
 };
 
 export const OPEN_SOURCE_LABEL = "Open Source";
@@ -20,7 +19,6 @@ export const BADGE_FILTER_EXPLANATIONS: Record<BadgeFilter, string> = {
   paid: "Payment expected for the relevant use.",
   student: "Free or expanded after student verification.",
   trial: "Free only for a limited time, then paid.",
-  university: "Depends on an LIU subscription or campus licence.",
 };
 
 /** Filter order, most-used first. */
@@ -29,7 +27,6 @@ export const BADGE_FILTERS: BadgeFilter[] = [
   "open-source",
   "freemium",
   "student",
-  "university",
   "trial",
   "paid",
 ];
@@ -37,16 +34,13 @@ export const BADGE_FILTERS: BadgeFilter[] = [
 /** Colour is never the only carrier: the badge text is always shown. */
 export const ACCESS_BADGE_COLORS: Record<
   AccessBadge,
-  (typeof COURSE_CARD_COLORS)[number] | null
+  (typeof COURSE_CARD_COLORS)[number]
 > = {
   free: "chart-2",
   freemium: "chart-1",
   paid: "chart-5",
   student: "chart-3",
   trial: "chart-4",
-  university: null,
 };
-
-export const LIU_VERIFICATION_NOTE = "Confirm access with the LIU library.";
 export const ACCOUNT_REQUIRED_NOTE = "Account required.";
 export const EXPERIMENTAL_NOTE = "New in 2026, still settling.";

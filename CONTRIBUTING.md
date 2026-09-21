@@ -188,8 +188,8 @@ The resource hub (`/resources`) is a hand-curated catalog. To add a tool:
    the official `url` (https, no trailing slash), `access`, `isOpenSource`, `platform`, and
    `verifiedOn` (the date you checked the badge and the URL).
 2. Choose the cost badge by what a student can actually use without paying: `free`, `freemium`,
-   `trial`, `paid`, `student`, or `university`. Anything that depends on an LIU subscription is
-   `university` with `verification: "liu"`; never guess an institutional badge.
+   `trial`, `paid`, or `student`. A subscription database is `freemium` when search and
+   abstracts are free and `paid` otherwise; say in `note` that a university library may provide it.
 3. Add `brandIcon` only when svgl.app lists the product; copy the title exactly. Otherwise the
    category icon is used.
 4. Add `thesisStages` when the tool belongs on the thesis page, and `privacyNote` for any cloud

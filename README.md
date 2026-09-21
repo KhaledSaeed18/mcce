@@ -81,7 +81,7 @@ Direct links to the three shared Google Drive folders:
   planner that turns the credits you intend to take each semester into semester and year totals,
   with registration and NSSF charges, and an option to convert the LBP side at a rate you set.
 - **Tools directory**: about 400 external tools for the program, grouped by task, each with a
-  cost badge (Free, Freemium, Trial, Paid, Student, University Access) and an Open Source flag,
+  cost badge (Free, Freemium, Trial, Paid, Student) and an Open Source flag,
   filterable by badge and searchable, with a thesis toolkit ordered by stage and an index of
   public GitHub repositories with their licence class.
 - **Exports**: download, preview, or share the plan of study, a GPA report, or a tuition plan as

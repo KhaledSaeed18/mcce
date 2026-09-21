@@ -57,9 +57,6 @@ function validateTool(
       out.push(`${label}: unknown thesis stage ${stage}`);
     }
   }
-  if (tool.access === "university" && tool.verification !== "liu") {
-    out.push(`${label}: university access must carry verification "liu"`);
-  }
   checkCourses(tool.courses, label, context, out);
 }
 

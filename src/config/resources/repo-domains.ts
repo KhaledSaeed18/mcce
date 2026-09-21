@@ -23,7 +23,7 @@ export const REPO_DOMAINS: RepoDomain[] = [
     group: "backbone",
     id: "templates",
     label: "Thesis templates",
-    tagline: "Scaffolds to adapt once the LIU format is known.",
+    tagline: "Scaffolds to adapt to the department format.",
   },
   {
     group: "backbone",

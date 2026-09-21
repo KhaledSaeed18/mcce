@@ -4,7 +4,6 @@ import { ResourceIcon } from "@/components/resources/resource-icon";
 import {
   ACCOUNT_REQUIRED_NOTE,
   EXPERIMENTAL_NOTE,
-  LIU_VERIFICATION_NOTE,
 } from "@/config/resources/badges";
 import { RESOURCE_CATEGORY_BY_ID } from "@/config/resources/categories";
 import { OPENS_IN_NEW_TAB } from "@/config/resources/copy";
@@ -69,9 +68,6 @@ export function ResourceCard({ tool }: ResourceCardProps) {
           <ResourceBadge badge={tool.access} />
           {tool.isOpenSource ? <ResourceBadge badge="open-source" /> : null}
         </div>
-        {tool.verification === "liu" ? (
-          <p className="font-medium text-xs">{LIU_VERIFICATION_NOTE}</p>
-        ) : null}
         {notes.length > 0 ? (
           <p className="text-muted-foreground text-xs">{notes.join(" ")}</p>
         ) : null}

@@ -37,7 +37,7 @@ export const THESIS_STAGES: ThesisStage[] = [
     defaultPick: "unpaywall",
     id: "retrieve",
     label: "Get the PDF legally",
-    note: "Work the list top down before asking anyone for a copy. Paywalled sources go through the LIU library, never a mirror.",
+    note: "Work the list top down before asking anyone for a copy. Paywalled sources go through the university library, never a mirror.",
     term: "A",
   },
   {

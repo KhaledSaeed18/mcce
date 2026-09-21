@@ -28,19 +28,12 @@ export type ResourceCategoryId =
   | "access";
 
 /** What a student pays. Open source is a separate flag, not a cost. */
-export type AccessBadge =
-  | "free"
-  | "freemium"
-  | "trial"
-  | "paid"
-  | "student"
-  | "university";
+export type AccessBadge = "free" | "freemium" | "trial" | "paid" | "student";
 
 /** The seven values the badge filter accepts; "open-source" filters on the flag. */
 export type BadgeFilter = AccessBadge | "open-source";
 
-/** "liu" means access depends on an LIU subscription nobody has confirmed yet. */
-export type VerificationState = "verified" | "liu" | "pending";
+export type VerificationState = "verified" | "pending";
 
 export type ResourceStatus = "recommended" | "experimental";
 

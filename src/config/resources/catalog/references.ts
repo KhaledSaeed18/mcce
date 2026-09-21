@@ -62,16 +62,16 @@ export const REFERENCES: Resource[] = [
     verifiedOn: CATALOG_VERIFIED_ON,
   },
   {
-    access: "university",
+    access: "paid",
     category: "references",
-    description: "Institutional reference manager; only if LIU provides it.",
+    description:
+      "Reference manager often bundled with a university library subscription.",
     id: "endnote",
     isOpenSource: false,
     name: "EndNote",
     platform: ["desktop", "web"],
     tags: ["reference"],
     url: "https://endnote.com",
-    verification: "liu",
     verifiedOn: CATALOG_VERIFIED_ON,
   },
   {

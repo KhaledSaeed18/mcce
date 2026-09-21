@@ -360,7 +360,7 @@ export const WRITING: Resource[] = [
     id: "opendraft",
     isOpenSource: true,
     name: "OpenDraft",
-    note: "Check LIU authorship rules before using AI-drafted text in a submission.",
+    note: "Check the department authorship rules before using AI-drafted text in a submission.",
     platform: ["cli"],
     privacyNote: AI_PRIVACY_NOTE,
     status: "experimental",

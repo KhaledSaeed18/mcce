@@ -4,9 +4,10 @@ import type { Resource } from "@/lib/resources/types";
 
 export const INTEGRITY_ARCHIVING: Resource[] = [
   {
-    access: "university",
+    access: "paid",
     category: "integrity-archiving",
-    description: "The official similarity check, if the department uses it.",
+    description:
+      "Similarity check used by universities; access comes through the institution.",
     id: "turnitin",
     isOpenSource: false,
     name: "Turnitin",
@@ -14,7 +15,6 @@ export const INTEGRITY_ARCHIVING: Resource[] = [
     tags: ["similarity"],
     thesisStages: ["integrity"],
     url: "https://www.turnitin.com",
-    verification: "liu",
     verifiedOn: CATALOG_VERIFIED_ON,
   },
   {

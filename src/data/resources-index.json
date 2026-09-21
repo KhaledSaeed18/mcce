@@ -1,12 +1,11 @@
 {
   "meta": {
     "countsByBadge": {
-      "freemium": 65,
+      "freemium": 69,
       "free": 312,
       "open-source": 234,
-      "student": 11,
-      "university": 11,
-      "paid": 4
+      "student": 13,
+      "paid": 8
     },
     "countsByCategory": {
       "ai-assistants": 6,
@@ -33,7 +32,7 @@
       "review": 11,
       "thesis-archives": 7,
       "integrity-archiving": 11,
-      "access": 10
+      "access": 9
     },
     "countsByDomain": {
       "writing": 17,
@@ -61,7 +60,7 @@
     },
     "countsByStage": {
       "screen": 20,
-      "search": 15,
+      "search": 14,
       "defend": 14,
       "analyse": 15,
       "experiment": 28,
@@ -73,9 +72,9 @@
       "prior-theses": 7,
       "integrity": 10
     },
-    "generatedAt": "2026-09-21T09:00:36.689Z",
+    "generatedAt": "2026-09-21T09:16:38.698Z",
     "repoCount": 283,
-    "toolCount": 403
+    "toolCount": 402
   },
   "repos": [
     {
@@ -7132,13 +7131,14 @@
       "repoId": "huggingface-transformers"
     },
     {
-      "access": "university",
+      "access": "freemium",
       "category": "literature",
       "description": "The core archive for comms, DSP, and embedded literature.",
       "featured": true,
       "id": "ieee-xplore",
       "isOpenSource": false,
       "name": "IEEE Xplore",
+      "note": "Abstracts and search are free; full text needs a subscription, often through a university library.",
       "platform": [
         "web"
       ],
@@ -7150,7 +7150,6 @@
         "search"
       ],
       "url": "https://ieeexplore.ieee.org",
-      "verification": "liu",
       "verifiedOn": "2026-09-20",
       "haystack": "ieee xplore database papers literature the core archive for comms, dsp, and embedded literature.",
       "icon": {
@@ -7446,33 +7445,6 @@
       },
       "linkStatus": "ok",
       "repoId": "jgaeddert-liquid-dsp"
-    },
-    {
-      "access": "university",
-      "category": "access",
-      "description": "IEEE, ACM, Scopus, and peers through the library. Portal URL to be confirmed.",
-      "featured": true,
-      "id": "liu-library-databases",
-      "isOpenSource": false,
-      "name": "LIU Library databases",
-      "platform": [
-        "web"
-      ],
-      "tags": [
-        "library",
-        "database"
-      ],
-      "thesisStages": [
-        "search"
-      ],
-      "url": "https://liu.edu.lb",
-      "verification": "liu",
-      "verifiedOn": "2026-09-20",
-      "haystack": "liu library databases library database access ieee, acm, scopus, and peers through the library. portal url to be confirmed.",
-      "icon": {
-        "kind": "category"
-      },
-      "linkStatus": "redirect"
     },
     {
       "access": "free",
@@ -9058,12 +9030,13 @@
       "linkStatus": "ok"
     },
     {
-      "access": "university",
+      "access": "freemium",
       "category": "literature",
       "description": "Computing, security, and systems literature.",
       "id": "acm-dl",
       "isOpenSource": false,
       "name": "ACM Digital Library",
+      "note": "Abstracts and search are free; full text needs a subscription, often through a university library.",
       "platform": [
         "web"
       ],
@@ -9075,7 +9048,6 @@
         "search"
       ],
       "url": "https://dl.acm.org",
-      "verification": "liu",
       "verifiedOn": "2026-09-20",
       "haystack": "acm digital library database papers literature computing, security, and systems literature.",
       "icon": {
@@ -10481,9 +10453,9 @@
       "repoId": "elki-project-elki"
     },
     {
-      "access": "university",
+      "access": "paid",
       "category": "references",
-      "description": "Institutional reference manager; only if LIU provides it.",
+      "description": "Reference manager often bundled with a university library subscription.",
       "id": "endnote",
       "isOpenSource": false,
       "name": "EndNote",
@@ -10495,9 +10467,8 @@
         "reference"
       ],
       "url": "https://endnote.com",
-      "verification": "liu",
       "verifiedOn": "2026-09-20",
-      "haystack": "endnote reference references institutional reference manager; only if liu provides it.",
+      "haystack": "endnote reference references reference manager often bundled with a university library subscription.",
       "icon": {
         "kind": "category"
       },
@@ -12532,17 +12503,17 @@
       "repoId": "marp-team-marp"
     },
     {
-      "access": "university",
+      "access": "student",
       "aliases": [
         "MathWorks"
       ],
       "brandIcon": "matlab",
       "category": "math",
-      "description": "Standard for DSP and communications teaching. Confirm the LIU license before buying.",
+      "description": "Standard for DSP and communications teaching.",
       "id": "matlab",
       "isOpenSource": false,
       "name": "MATLAB",
-      "note": "A paid student license exists if LIU has no campus license.",
+      "note": "Student license from MathWorks; free where a campus license exists.",
       "platform": [
         "desktop"
       ],
@@ -12554,9 +12525,8 @@
         "experiment"
       ],
       "url": "https://www.mathworks.com/academia/students.html",
-      "verification": "liu",
       "verifiedOn": "2026-09-20",
-      "haystack": "matlab mathworks numerical simulation math standard for dsp and communications teaching. confirm the liu license before buying.",
+      "haystack": "matlab mathworks numerical simulation math standard for dsp and communications teaching.",
       "icon": {
         "kind": "brand",
         "light": "/resources/icons/matlab.svg"
@@ -13574,7 +13544,7 @@
       "id": "opendraft",
       "isOpenSource": true,
       "name": "OpenDraft",
-      "note": "Check LIU authorship rules before using AI-drafted text in a submission.",
+      "note": "Check the department authorship rules before using AI-drafted text in a submission.",
       "platform": [
         "cli"
       ],
@@ -14823,12 +14793,13 @@
       "repoId": "shiyangzheng-scholarly"
     },
     {
-      "access": "university",
+      "access": "freemium",
       "category": "literature",
       "description": "Elsevier journals, strong in signals and control.",
       "id": "sciencedirect",
       "isOpenSource": false,
       "name": "ScienceDirect",
+      "note": "Abstracts and open access papers are free; the rest needs a subscription.",
       "platform": [
         "web"
       ],
@@ -14840,7 +14811,6 @@
         "search"
       ],
       "url": "https://www.sciencedirect.com",
-      "verification": "liu",
       "verifiedOn": "2026-09-20",
       "haystack": "sciencedirect database papers literature elsevier journals, strong in signals and control.",
       "icon": {
@@ -14933,12 +14903,13 @@
       "linkStatus": "ok"
     },
     {
-      "access": "university",
+      "access": "paid",
       "category": "literature",
       "description": "Citation database for bibliometrics.",
       "id": "scopus",
       "isOpenSource": false,
       "name": "Scopus",
+      "note": "Subscription database, usually reached through a university library.",
       "platform": [
         "web"
       ],
@@ -14950,7 +14921,6 @@
         "search"
       ],
       "url": "https://www.scopus.com",
-      "verification": "liu",
       "verifiedOn": "2026-09-20",
       "haystack": "scopus database citations literature citation database for bibliometrics.",
       "icon": {
@@ -15247,13 +15217,14 @@
       "repoId": "unipisa-simu5g"
     },
     {
-      "access": "university",
+      "access": "student",
       "brandIcon": "matlab",
       "category": "math",
       "description": "Block-based system and signal modelling. Same license question as MATLAB.",
       "id": "simulink",
       "isOpenSource": false,
       "name": "Simulink",
+      "note": "Sold with the MATLAB student license.",
       "platform": [
         "desktop"
       ],
@@ -15261,7 +15232,6 @@
         "simulation"
       ],
       "url": "https://www.mathworks.com/products/simulink.html",
-      "verification": "liu",
       "verifiedOn": "2026-09-20",
       "haystack": "simulink simulation math block-based system and signal modelling. same license question as matlab.",
       "icon": {
@@ -15386,12 +15356,13 @@
       "linkStatus": "ok"
     },
     {
-      "access": "university",
+      "access": "freemium",
       "category": "literature",
       "description": "Springer journals and book chapters.",
       "id": "springerlink",
       "isOpenSource": false,
       "name": "SpringerLink",
+      "note": "Abstracts and open access papers are free; the rest needs a subscription.",
       "platform": [
         "web"
       ],
@@ -15403,7 +15374,6 @@
         "search"
       ],
       "url": "https://link.springer.com",
-      "verification": "liu",
       "verifiedOn": "2026-09-20",
       "haystack": "springerlink database papers literature springer journals and book chapters.",
       "icon": {
@@ -15995,9 +15965,9 @@
       "repoId": "aquasecurity-trivy"
     },
     {
-      "access": "university",
+      "access": "paid",
       "category": "integrity-archiving",
-      "description": "The official similarity check, if the department uses it.",
+      "description": "Similarity check used by universities; access comes through the institution.",
       "id": "turnitin",
       "isOpenSource": false,
       "name": "Turnitin",
@@ -16011,9 +15981,8 @@
         "integrity"
       ],
       "url": "https://www.turnitin.com",
-      "verification": "liu",
       "verifiedOn": "2026-09-20",
-      "haystack": "turnitin similarity integrity-archiving the official similarity check, if the department uses it.",
+      "haystack": "turnitin similarity integrity-archiving similarity check used by universities; access comes through the institution.",
       "icon": {
         "kind": "category"
       },
@@ -16142,12 +16111,13 @@
       "repoId": "videolan-vlc"
     },
     {
-      "access": "university",
+      "access": "paid",
       "category": "literature",
       "description": "Citation tracking across publishers.",
       "id": "web-of-science",
       "isOpenSource": false,
       "name": "Web of Science",
+      "note": "Subscription database, usually reached through a university library.",
       "platform": [
         "web"
       ],
@@ -16159,7 +16129,6 @@
         "search"
       ],
       "url": "https://www.webofscience.com",
-      "verification": "liu",
       "verifiedOn": "2026-09-20",
       "haystack": "web of science database citations literature citation tracking across publishers.",
       "icon": {

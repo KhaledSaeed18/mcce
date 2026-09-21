@@ -64,17 +64,6 @@ describe("validateCatalog", () => {
     );
   });
 
-  it("requires liu verification for university access", () => {
-    const out = validateCatalog(
-      [makeTool({ access: "university" })],
-      [],
-      context
-    );
-    expect(out).toContain(
-      'tool vs-code: university access must carry verification "liu"'
-    );
-  });
-
   it("checks stage, course, domain, and resource references", () => {
     const out = validateCatalog(
       [makeTool({ courses: ["EENG999"], thesisStages: ["defend"] })],

@@ -127,20 +127,4 @@ export const ACCESS: Resource[] = [
     url: "https://www.ieee.org/membership/student.html",
     verifiedOn: CATALOG_VERIFIED_ON,
   },
-  {
-    access: "university",
-    category: "access",
-    description:
-      "IEEE, ACM, Scopus, and peers through the library. Portal URL to be confirmed.",
-    featured: true,
-    id: "liu-library-databases",
-    isOpenSource: false,
-    name: "LIU Library databases",
-    platform: ["web"],
-    tags: ["library", "database"],
-    thesisStages: ["search"],
-    url: "https://liu.edu.lb",
-    verification: "liu",
-    verifiedOn: CATALOG_VERIFIED_ON,
-  },
 ];
