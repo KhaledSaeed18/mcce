@@ -4,23 +4,18 @@ export const RESOURCE_ICON_DIR = "/resources/icons";
 
 const MONOGRAM_LENGTH = 2;
 
-export interface BrandIconFiles {
-  hasDark: boolean;
-}
-
-/** Brand file first, the category icon otherwise; tools never need a monogram. */
+/**
+ * Brand file first, the category icon otherwise; tools never need a monogram.
+ * The card tile is white in both themes, so only the light file is kept.
+ */
 export function resolveToolIcon(
   id: string,
-  brand: BrandIconFiles | undefined
+  hasBrandFile: boolean
 ): IconDescriptor {
-  if (!brand) {
+  if (!hasBrandFile) {
     return { kind: "category" };
   }
-  return {
-    dark: brand.hasDark ? `${RESOURCE_ICON_DIR}/${id}-dark.svg` : undefined,
-    kind: "brand",
-    light: `${RESOURCE_ICON_DIR}/${id}.svg`,
-  };
+  return { kind: "brand", light: `${RESOURCE_ICON_DIR}/${id}.svg` };
 }
 
 /** A repository borrows its tool's brand icon when it has one, else shows the owner's initials. */

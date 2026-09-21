@@ -1,4 +1,3 @@
-import type { BrandIconFiles } from "../../src/lib/resources/icon";
 import { resolveRepoIcon, resolveToolIcon } from "../../src/lib/resources/icon";
 import type {
   LinkStatus,
@@ -12,7 +11,8 @@ import { buildRepoHaystack, buildToolHaystack } from "./haystack";
 
 export interface BuildInputs {
   generatedAt: string;
-  icons: ReadonlyMap<string, BrandIconFiles>;
+  /** Ids that have a committed brand file. */
+  icons: ReadonlySet<string>;
   linkStatuses: ReadonlyMap<string, LinkStatus>;
   repos: Repository[];
   tools: Resource[];
@@ -64,7 +64,7 @@ export function buildResourcesIndex(inputs: BuildInputs): ResourcesIndex {
       haystack: buildToolHaystack(tool),
       icon: resolveToolIcon(
         tool.id,
-        tool.brandIcon ? icons.get(tool.id) : undefined
+        Boolean(tool.brandIcon) && icons.has(tool.id)
       ),
       linkStatus: linkStatuses.get(tool.url) ?? "unchecked",
       repoId: tool.repoId ?? repoByResource.get(tool.id),

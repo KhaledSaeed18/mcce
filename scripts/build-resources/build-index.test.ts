@@ -48,7 +48,7 @@ const repos: Repository[] = [
 describe("buildResourcesIndex", () => {
   const index = buildResourcesIndex({
     generatedAt: "2026-09-20T00:00:00.000Z",
-    icons: new Map([["notion", { hasDark: false }]]),
+    icons: new Set(["notion"]),
     linkStatuses: new Map([["https://www.zotero.org", "ok"]]),
     repos,
     tools,
@@ -57,7 +57,6 @@ describe("buildResourcesIndex", () => {
   it("sorts featured tools first and resolves icons", () => {
     expect(index.tools.map((tool) => tool.id)).toEqual(["notion", "zotero"]);
     expect(index.tools[0].icon).toEqual({
-      dark: undefined,
       kind: "brand",
       light: "/resources/icons/notion.svg",
     });

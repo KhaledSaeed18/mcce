@@ -3,20 +3,11 @@ import { resolveRepoIcon, resolveToolIcon, toMonogram } from "./icon";
 
 describe("resolveToolIcon", () => {
   it("falls back to the category icon without a brand file", () => {
-    expect(resolveToolIcon("zotero", undefined)).toEqual({ kind: "category" });
+    expect(resolveToolIcon("zotero", false)).toEqual({ kind: "category" });
   });
 
-  it("points at the light and dark files when both exist", () => {
-    expect(resolveToolIcon("github", { hasDark: true })).toEqual({
-      dark: "/resources/icons/github-dark.svg",
-      kind: "brand",
-      light: "/resources/icons/github.svg",
-    });
-  });
-
-  it("omits dark when svgl ships one file", () => {
-    expect(resolveToolIcon("notion", { hasDark: false })).toEqual({
-      dark: undefined,
+  it("points at the light file when one was fetched", () => {
+    expect(resolveToolIcon("notion", true)).toEqual({
       kind: "brand",
       light: "/resources/icons/notion.svg",
     });

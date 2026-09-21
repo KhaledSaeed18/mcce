@@ -156,7 +156,7 @@ export interface Repository {
 }
 
 export type IconDescriptor =
-  | { kind: "brand"; light: string; dark?: string }
+  | { kind: "brand"; light: string }
   | { kind: "category" }
   | { kind: "monogram"; text: string };
 

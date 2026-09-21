@@ -1,6 +1,5 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import type { BrandIconFiles } from "../../src/lib/resources/icon";
 import { isSvgDocument, sanitiseSvg } from "./svg";
 
 const SVGL_API_URL = "https://api.svgl.app";
@@ -22,7 +21,8 @@ export interface BrandIconRequest {
 }
 
 export interface BrandIconResult {
-  files: Map<string, BrandIconFiles>;
+  /** Ids whose light file was written. */
+  fetched: Set<string>;
   missing: string[];
 }
 
@@ -57,9 +57,10 @@ async function writeIcon(url: string, path: string): Promise<void> {
 }
 
 /**
- * Downloads one file per requested brand (two when svgl has a dark variant)
- * into the icon directory. Missing titles are reported, never fatal, so a
- * renamed svgl entry degrades to the category icon instead of failing CI.
+ * Downloads the light file per requested brand into the icon directory. The
+ * card tile is white in both themes, so the dark variant is never needed.
+ * Missing titles are reported, never fatal, so a renamed svgl entry degrades
+ * to the category icon instead of failing CI.
  */
 export async function fetchBrandIcons(
   requests: BrandIconRequest[],
@@ -68,7 +69,7 @@ export async function fetchBrandIcons(
   mkdirSync(iconDir, { recursive: true });
   const catalog = JSON.parse(await fetchText(SVGL_API_URL)) as SvglEntry[];
   const byTitle = indexSvglByTitle(catalog);
-  const files = new Map<string, BrandIconFiles>();
+  const fetched = new Set<string>();
   const missing: string[] = [];
 
   const writes = requests.map(async (request) => {
@@ -79,14 +80,10 @@ export async function fetchBrandIcons(
     }
     const light =
       typeof entry.route === "string" ? entry.route : entry.route.light;
-    const dark = typeof entry.route === "string" ? undefined : entry.route.dark;
     await writeIcon(light, join(iconDir, `${request.id}.svg`));
-    if (dark) {
-      await writeIcon(dark, join(iconDir, `${request.id}-dark.svg`));
-    }
-    files.set(request.id, { hasDark: Boolean(dark) });
+    fetched.add(request.id);
   });
   await Promise.all(writes);
 
-  return { files, missing };
+  return { fetched, missing };
 }

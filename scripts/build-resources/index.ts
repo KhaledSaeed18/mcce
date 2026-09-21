@@ -4,7 +4,6 @@ import {
   REPO_CATALOG,
   RESOURCE_CATALOG,
 } from "../../src/config/resources/catalog";
-import type { BrandIconFiles } from "../../src/lib/resources/icon";
 import type { LinkStatus, ResourcesIndex } from "../../src/lib/resources/types";
 import { buildResourcesIndex, repoUrl } from "./build-index";
 import { buildValidationContext } from "./context";
@@ -35,31 +34,28 @@ function fail(lines: string[]): never {
   process.exit(1);
 }
 
-async function resolveIcons(): Promise<Map<string, BrandIconFiles>> {
+async function resolveIcons(): Promise<Set<string>> {
   const requests = RESOURCE_CATALOG.filter((tool) => tool.brandIcon).map(
     (tool) => ({
       id: tool.id,
-      // brandIcon is set by the filter above; the map keeps the type narrow.
+      // brandIcon is set by the filter above; the fallback keeps the type narrow.
       title: tool.brandIcon ?? "",
     })
   );
   if (skipIcons) {
     // Without a fetch the committed icon files are the source of truth.
-    return new Map(
+    return new Set(
       requests
         .filter((request) => existsSync(join(ICON_DIR, `${request.id}.svg`)))
-        .map((request) => [
-          request.id,
-          { hasDark: existsSync(join(ICON_DIR, `${request.id}-dark.svg`)) },
-        ])
+        .map((request) => request.id)
     );
   }
   console.log(`Fetching ${requests.length} brand icons from svgl...`);
-  const { files, missing } = await fetchBrandIcons(requests, ICON_DIR);
+  const { fetched, missing } = await fetchBrandIcons(requests, ICON_DIR);
   for (const line of missing) {
     console.warn(`  missing icon: ${line}`);
   }
-  return files;
+  return fetched;
 }
 
 async function resolveLinks(
