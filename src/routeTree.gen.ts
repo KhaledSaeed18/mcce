@@ -29,6 +29,7 @@ import { Route as BrowseFolderIdRouteImport } from './routes/browse.$folderId'
 import { Route as CourseIndexRouteImport } from './routes/course.index'
 import { Route as CourseCodeRouteImport } from './routes/course.$code'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
+import { Route as ResourcesCategoryRouteImport } from './routes/resources.$category'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -130,6 +131,11 @@ const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
   path: '/resources/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesCategoryRoute = ResourcesCategoryRouteImport.update({
+  id: '/resources/$category',
+  path: '/resources/$category',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -150,6 +156,7 @@ export interface FileRoutesByFullPath {
   '/tuition-fees': typeof TuitionFeesRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
+  '/resources/$category': typeof ResourcesCategoryRoute
   '/course/': typeof CourseIndexRoute
   '/resources/': typeof ResourcesIndexRoute
 }
@@ -172,6 +179,7 @@ export interface FileRoutesByTo {
   '/tuition-fees': typeof TuitionFeesRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
+  '/resources/$category': typeof ResourcesCategoryRoute
   '/course': typeof CourseIndexRoute
   '/resources': typeof ResourcesIndexRoute
 }
@@ -195,6 +203,7 @@ export interface FileRoutesById {
   '/tuition-fees': typeof TuitionFeesRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
+  '/resources/$category': typeof ResourcesCategoryRoute
   '/course/': typeof CourseIndexRoute
   '/resources/': typeof ResourcesIndexRoute
 }
@@ -219,6 +228,7 @@ export interface FileRouteTypes {
     | '/tuition-fees'
     | '/browse/$folderId'
     | '/course/$code'
+    | '/resources/$category'
     | '/course/'
     | '/resources/'
   fileRoutesByTo: FileRoutesByTo
@@ -241,6 +251,7 @@ export interface FileRouteTypes {
     | '/tuition-fees'
     | '/browse/$folderId'
     | '/course/$code'
+    | '/resources/$category'
     | '/course'
     | '/resources'
   id:
@@ -263,6 +274,7 @@ export interface FileRouteTypes {
     | '/tuition-fees'
     | '/browse/$folderId'
     | '/course/$code'
+    | '/resources/$category'
     | '/course/'
     | '/resources/'
   fileRoutesById: FileRoutesById
@@ -286,6 +298,7 @@ export interface RootRouteChildren {
   TuitionFeesRoute: typeof TuitionFeesRoute
   BrowseFolderIdRoute: typeof BrowseFolderIdRoute
   CourseCodeRoute: typeof CourseCodeRoute
+  ResourcesCategoryRoute: typeof ResourcesCategoryRoute
   CourseIndexRoute: typeof CourseIndexRoute
   ResourcesIndexRoute: typeof ResourcesIndexRoute
 }
@@ -432,6 +445,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources/$category': {
+      id: '/resources/$category'
+      path: '/resources/$category'
+      fullPath: '/resources/$category'
+      preLoaderRoute: typeof ResourcesCategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -454,6 +474,7 @@ const rootRouteChildren: RootRouteChildren = {
   TuitionFeesRoute: TuitionFeesRoute,
   BrowseFolderIdRoute: BrowseFolderIdRoute,
   CourseCodeRoute: CourseCodeRoute,
+  ResourcesCategoryRoute: ResourcesCategoryRoute,
   CourseIndexRoute: CourseIndexRoute,
   ResourcesIndexRoute: ResourcesIndexRoute,
 }
