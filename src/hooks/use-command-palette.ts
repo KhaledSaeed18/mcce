@@ -14,7 +14,10 @@ export function useCommandPalette() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
-  const { data: driveIndex } = useQuery(driveIndexQueryOptions);
+  const { data: driveIndex } = useQuery({
+    ...driveIndexQueryOptions,
+    enabled: open,
+  });
   const [playClick] = useSound(clickSoftSound, { volume: 0.4 });
   const { ids: recentIds } = useRecentNodes();
 

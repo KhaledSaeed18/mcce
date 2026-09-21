@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo } from "react";
 import { CoursesSection } from "@/components/drive/courses-section";
 import { SourcesSection } from "@/components/drive/sources-section";
 import { DriveDirectSection } from "@/components/marketing/drive-direct-section";
@@ -14,12 +13,7 @@ import { SectionDividerDots } from "@/components/marketing/section-divider-dots"
 import { SyncSection } from "@/components/marketing/sync-section";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SITE_URL } from "@/config/site";
-import { DRIVE_SOURCES } from "@/config/sources";
-import { buildCourseSummaries } from "@/lib/drive/courses";
-import { buildHeroSearchQueries } from "@/lib/drive/hero-search";
-import { driveIndexQueryOptions } from "@/lib/drive/queries";
-import { buildRecentBatches } from "@/lib/drive/recent";
-import { buildIndexStats } from "@/lib/drive/stats";
+import { homeSummaryQueryOptions } from "@/lib/drive/queries";
 import { buildProgramSchema } from "@/lib/seo/schema";
 
 export const Route = createFileRoute("/")({
@@ -28,27 +22,12 @@ export const Route = createFileRoute("/")({
     links: [{ href: SITE_URL, rel: "canonical" }],
   }),
   loader: ({ context }) =>
-    context.queryClient.ensureQueryData(driveIndexQueryOptions),
+    context.queryClient.ensureQueryData(homeSummaryQueryOptions),
 });
 
 function HomePage() {
-  const driveIndex = Route.useLoaderData();
-  const heroQueries = useMemo(
-    () => buildHeroSearchQueries(driveIndex.nodes),
-    [driveIndex.nodes]
-  );
-  const stats = useMemo(
-    () => buildIndexStats(driveIndex, DRIVE_SOURCES.length),
-    [driveIndex]
-  );
-  const courses = useMemo(
-    () => buildCourseSummaries(driveIndex.nodes),
-    [driveIndex.nodes]
-  );
-  const [latestBatch] = useMemo(
-    () => buildRecentBatches(driveIndex),
-    [driveIndex]
-  );
+  const { courses, heroQueries, latestBatch, sourceSummaries, stats } =
+    Route.useLoaderData();
 
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 sm:p-6">
@@ -64,7 +43,7 @@ function HomePage() {
 
       <SectionDividerDots />
 
-      <SourcesSection sourceSummaries={driveIndex.meta.sources} />
+      <SourcesSection sourceSummaries={sourceSummaries} />
 
       <CoursesSection courses={courses} />
 

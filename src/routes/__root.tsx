@@ -1,13 +1,12 @@
-import { TanStackDevtools } from "@tanstack/react-devtools";
 import type { QueryClient } from "@tanstack/react-query";
 import {
   createRootRouteWithContext,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { AppErrorBoundary } from "@/components/app-error-boundary";
 import { AppHeader } from "@/components/app-header";
+import { DevToolsPanel } from "@/components/dev-tools-panel";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { MarginPattern } from "@/components/margin-pattern";
 import { NotFound } from "@/components/not-found";
@@ -174,15 +173,14 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         href: "/feed.xml",
       },
     ],
+    // The GA library itself is fetched after window load, so it never
+    // competes with critical assets for bandwidth on a slow connection.
+    // gtag() calls made before then just queue into dataLayer.
     scripts:
       import.meta.env.PROD && GA_MEASUREMENT_ID
         ? [
             {
-              src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`,
-              async: true,
-            },
-            {
-              children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","${GA_MEASUREMENT_ID}");`,
+              children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","${GA_MEASUREMENT_ID}");window.addEventListener("load",function(){var s=document.createElement("script");s.src="https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}";s.async=true;document.head.appendChild(s);});`,
             },
           ]
         : [],
@@ -231,17 +229,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             </RecentNodesProvider>
           </SavedNodesProvider>
         </ThemeProvider>
-        <TanStackDevtools
-          config={{
-            position: "bottom-right",
-          }}
-          plugins={[
-            {
-              name: "Tanstack Router",
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-          ]}
-        />
+        <DevToolsPanel />
         <Scripts />
       </body>
     </html>
