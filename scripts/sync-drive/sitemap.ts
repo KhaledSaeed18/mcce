@@ -1,4 +1,10 @@
 import { CURRICULUM } from "../../src/config/curriculum";
+import { RESOURCE_CATEGORIES } from "../../src/config/resources/categories";
+import {
+  RESOURCES_OPEN_SOURCE_PATH,
+  RESOURCES_PAGE_PATH,
+  RESOURCES_THESIS_PATH,
+} from "../../src/config/resources/copy";
 import { SITE_URL } from "../../src/config/site";
 import { flattenCourses } from "../../src/lib/curriculum/lookup";
 import type { DriveIndex } from "../../src/lib/drive/types";
@@ -9,6 +15,9 @@ import { buildCourseDateMap, getIndexDate } from "./sitemap-dates";
  * follow the newest indexed file instead of a date written here.
  */
 const TRACKS_INDEX = "tracks-index";
+
+/** Same idea for the resource hub: its pages change when the catalog is rebuilt. */
+const TRACKS_RESOURCES = "tracks-resources";
 
 /**
  * What a course page says when the course has no indexed material yet: its
@@ -25,7 +34,7 @@ interface StaticPage {
    * content change, and stamping one here only teaches crawlers to distrust
    * every date in this file.
    */
-  lastmod: string | typeof TRACKS_INDEX;
+  lastmod: string | typeof TRACKS_INDEX | typeof TRACKS_RESOURCES;
   path: string;
   priority: string;
 }
@@ -88,6 +97,24 @@ const STATIC_PAGES: StaticPage[] = [
   },
   {
     changefreq: "monthly",
+    lastmod: TRACKS_RESOURCES,
+    path: RESOURCES_PAGE_PATH,
+    priority: "0.8",
+  },
+  {
+    changefreq: "monthly",
+    lastmod: TRACKS_RESOURCES,
+    path: RESOURCES_THESIS_PATH,
+    priority: "0.7",
+  },
+  {
+    changefreq: "monthly",
+    lastmod: TRACKS_RESOURCES,
+    path: RESOURCES_OPEN_SOURCE_PATH,
+    priority: "0.7",
+  },
+  {
+    changefreq: "monthly",
     lastmod: "2026-08-21",
     path: "/about",
     priority: "0.6",
@@ -143,16 +170,38 @@ function buildUrlEntry(
  * anything changed, which is the pattern search engines read as noise and stop
  * trusting.
  */
-export function buildSitemapXml(index: DriveIndex): string {
+export function buildSitemapXml(
+  index: DriveIndex,
+  resourcesDate: string
+): string {
   const indexDate = getIndexDate(index);
   const courseDates = buildCourseDateMap(index.nodes);
+
+  function resolveLastmod(lastmod: StaticPage["lastmod"]): string {
+    if (lastmod === TRACKS_INDEX) {
+      return indexDate;
+    }
+    if (lastmod === TRACKS_RESOURCES) {
+      return resourcesDate;
+    }
+    return lastmod;
+  }
 
   const staticEntries = STATIC_PAGES.map((page) =>
     buildUrlEntry(
       `${SITE_URL}${page.path}`,
-      page.lastmod === TRACKS_INDEX ? indexDate : page.lastmod,
+      resolveLastmod(page.lastmod),
       page.changefreq,
       page.priority
+    )
+  );
+
+  const categoryEntries = RESOURCE_CATEGORIES.map((category) =>
+    buildUrlEntry(
+      `${SITE_URL}${RESOURCES_PAGE_PATH}/${category.id}`,
+      resourcesDate,
+      "monthly",
+      "0.6"
     )
   );
 
@@ -185,6 +234,7 @@ export function buildSitemapXml(index: DriveIndex): string {
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ...staticEntries,
+    ...categoryEntries,
     ...courseEntries,
     ...folderEntries,
     "</urlset>",

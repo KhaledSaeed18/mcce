@@ -1,4 +1,5 @@
 import type { DriveIndex, DriveNode } from "../../src/lib/drive/types";
+import type { ResourcesIndex } from "../../src/lib/resources/types";
 
 /** Drive stamps every node in the same RFC 3339 UTC shape, so plain string
  * comparison orders them correctly without parsing a Date. */
@@ -44,4 +45,9 @@ export function buildCourseDateMap(nodes: DriveNode[]): Map<string, string> {
   return new Map(
     [...byCode].map(([code, timestamp]) => [code, toIsoDate(timestamp)])
   );
+}
+
+/** The day the resource catalog was last rebuilt, which is when its pages changed. */
+export function getResourcesDate(index: Pick<ResourcesIndex, "meta">): string {
+  return toIsoDate(index.meta.generatedAt);
 }
