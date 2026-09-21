@@ -30,6 +30,7 @@ import { Route as CourseIndexRouteImport } from './routes/course.index'
 import { Route as CourseCodeRouteImport } from './routes/course.$code'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as ResourcesCategoryRouteImport } from './routes/resources.$category'
+import { Route as ResourcesOpenSourceRouteImport } from './routes/resources.open-source'
 import { Route as ResourcesThesisRouteImport } from './routes/resources.thesis'
 
 const IndexRoute = IndexRouteImport.update({
@@ -137,6 +138,11 @@ const ResourcesCategoryRoute = ResourcesCategoryRouteImport.update({
   path: '/resources/$category',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesOpenSourceRoute = ResourcesOpenSourceRouteImport.update({
+  id: '/resources/open-source',
+  path: '/resources/open-source',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResourcesThesisRoute = ResourcesThesisRouteImport.update({
   id: '/resources/thesis',
   path: '/resources/thesis',
@@ -163,6 +169,7 @@ export interface FileRoutesByFullPath {
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
   '/resources/$category': typeof ResourcesCategoryRoute
+  '/resources/open-source': typeof ResourcesOpenSourceRoute
   '/resources/thesis': typeof ResourcesThesisRoute
   '/course/': typeof CourseIndexRoute
   '/resources/': typeof ResourcesIndexRoute
@@ -187,6 +194,7 @@ export interface FileRoutesByTo {
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
   '/resources/$category': typeof ResourcesCategoryRoute
+  '/resources/open-source': typeof ResourcesOpenSourceRoute
   '/resources/thesis': typeof ResourcesThesisRoute
   '/course': typeof CourseIndexRoute
   '/resources': typeof ResourcesIndexRoute
@@ -212,6 +220,7 @@ export interface FileRoutesById {
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
   '/resources/$category': typeof ResourcesCategoryRoute
+  '/resources/open-source': typeof ResourcesOpenSourceRoute
   '/resources/thesis': typeof ResourcesThesisRoute
   '/course/': typeof CourseIndexRoute
   '/resources/': typeof ResourcesIndexRoute
@@ -238,6 +247,7 @@ export interface FileRouteTypes {
     | '/browse/$folderId'
     | '/course/$code'
     | '/resources/$category'
+    | '/resources/open-source'
     | '/resources/thesis'
     | '/course/'
     | '/resources/'
@@ -262,6 +272,7 @@ export interface FileRouteTypes {
     | '/browse/$folderId'
     | '/course/$code'
     | '/resources/$category'
+    | '/resources/open-source'
     | '/resources/thesis'
     | '/course'
     | '/resources'
@@ -286,6 +297,7 @@ export interface FileRouteTypes {
     | '/browse/$folderId'
     | '/course/$code'
     | '/resources/$category'
+    | '/resources/open-source'
     | '/resources/thesis'
     | '/course/'
     | '/resources/'
@@ -311,6 +323,7 @@ export interface RootRouteChildren {
   BrowseFolderIdRoute: typeof BrowseFolderIdRoute
   CourseCodeRoute: typeof CourseCodeRoute
   ResourcesCategoryRoute: typeof ResourcesCategoryRoute
+  ResourcesOpenSourceRoute: typeof ResourcesOpenSourceRoute
   ResourcesThesisRoute: typeof ResourcesThesisRoute
   CourseIndexRoute: typeof CourseIndexRoute
   ResourcesIndexRoute: typeof ResourcesIndexRoute
@@ -465,6 +478,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesCategoryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources/open-source': {
+      id: '/resources/open-source'
+      path: '/resources/open-source'
+      fullPath: '/resources/open-source'
+      preLoaderRoute: typeof ResourcesOpenSourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/resources/thesis': {
       id: '/resources/thesis'
       path: '/resources/thesis'
@@ -495,6 +515,7 @@ const rootRouteChildren: RootRouteChildren = {
   BrowseFolderIdRoute: BrowseFolderIdRoute,
   CourseCodeRoute: CourseCodeRoute,
   ResourcesCategoryRoute: ResourcesCategoryRoute,
+  ResourcesOpenSourceRoute: ResourcesOpenSourceRoute,
   ResourcesThesisRoute: ResourcesThesisRoute,
   CourseIndexRoute: CourseIndexRoute,
   ResourcesIndexRoute: ResourcesIndexRoute,
