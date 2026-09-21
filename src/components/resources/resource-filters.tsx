@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { useCallback } from "react";
 import { SearchFilterSelect } from "@/components/drive/search-filter-select";
 import { ResourceBadgeToggle } from "@/components/resources/resource-badge-toggle";
@@ -22,9 +21,9 @@ const CATEGORY_OPTIONS = RESOURCE_CATEGORIES.map((category) => ({
 
 interface ResourceFiltersProps {
   badgeCounts: Record<BadgeFilter, number>;
-  clearTo: "/resources" | "/resources/$category" | "/resources/thesis";
   hasCriteria: boolean;
   onChange: (patch: Partial<ResourceFilterValues>) => void;
+  onClear: () => void;
   resultCount: number;
   /** Omitted on the category and thesis pages, where the category is fixed. */
   showCategory?: boolean;
@@ -33,9 +32,9 @@ interface ResourceFiltersProps {
 
 export function ResourceFilters({
   badgeCounts,
-  clearTo,
   hasCriteria,
   onChange,
+  onClear,
   resultCount,
   showCategory = true,
   values,
@@ -106,12 +105,13 @@ export function ResourceFilters({
       >
         <span>{resultCount} tools</span>
         {hasCriteria ? (
-          <Link
-            className="underline underline-offset-4 hover:text-primary"
-            to={clearTo}
+          <button
+            className="underline underline-offset-4 hover:text-primary focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+            onClick={onClear}
+            type="button"
           >
             {RESOURCES_EMPTY_ACTION}
-          </Link>
+          </button>
         ) : null}
       </p>
     </div>
