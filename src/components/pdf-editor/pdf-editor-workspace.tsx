@@ -16,6 +16,7 @@ import { useFullscreen } from "@/hooks/use-fullscreen";
 import { usePdfDocument } from "@/hooks/use-pdf-document";
 import { usePdfExport } from "@/hooks/use-pdf-export";
 import { usePdfZoom } from "@/hooks/use-pdf-zoom";
+import { useRecordRecentFile } from "@/hooks/use-record-recent-file";
 import type { DriveNode } from "@/lib/drive/types";
 import { cn } from "@/lib/utils";
 
@@ -36,6 +37,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     useEditorPanels();
 
   const { bytes, doc, status } = usePdfDocument(node?.id);
+  useRecordRecentFile(node?.id);
   const viewport = useElementSize(scrollRef);
   const {
     color,
