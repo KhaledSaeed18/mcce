@@ -3,6 +3,7 @@ import { useInView } from "motion/react";
 import { useRef } from "react";
 import { LegalBlockCard } from "@/components/legal/legal-block-card";
 import type { LegalBlock } from "@/config/legal";
+import { useIsServerRendered } from "@/hooks/use-is-server-rendered";
 import { cn } from "@/lib/utils";
 
 interface LegalSectionProps {
@@ -19,13 +20,18 @@ export function LegalSection({
   label,
 }: LegalSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { margin: "-40px", once: true });
+  const hasEnteredView = useInView(containerRef, {
+    margin: "-40px",
+    once: true,
+  });
+  const isServerRendered = useIsServerRendered();
+  const isRevealed = isServerRendered || hasEnteredView;
 
   return (
     <section
       className={cn(
         "flex flex-col gap-3 transition-all duration-500",
-        isInView ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+        isRevealed ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
       )}
       ref={containerRef}
     >

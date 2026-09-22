@@ -1,6 +1,7 @@
 import { m } from "motion/react";
 import { FactCard } from "@/components/fact-card";
 import { CCE_PROGRAMS, CENG_PROGRAM } from "@/config/cce/programs";
+import { useEntrance } from "@/hooks/use-entrance";
 import { getCceCourseCount } from "@/lib/cce/credits";
 
 const FACTS = [
@@ -11,13 +12,10 @@ const FACTS = [
 ];
 
 export function CceFacts() {
+  const entrance = useEntrance(0.1);
+
   return (
-    <m.dl
-      animate={{ opacity: 1, y: 0 }}
-      className="grid grid-cols-2 gap-3 sm:grid-cols-4"
-      initial={{ opacity: 0, y: 12 }}
-      transition={{ delay: 0.1, duration: 0.4 }}
-    >
+    <m.dl className="grid grid-cols-2 gap-3 sm:grid-cols-4" {...entrance}>
       {FACTS.map((fact) => (
         <FactCard key={fact.label} label={fact.label} value={fact.value} />
       ))}

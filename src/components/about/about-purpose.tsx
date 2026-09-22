@@ -7,6 +7,7 @@ import {
 import { m } from "motion/react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { COURSE_CARD_COLORS } from "@/config/courses";
+import { useEntrance } from "@/hooks/use-entrance";
 
 interface PurposeStage {
   color: (typeof COURSE_CARD_COLORS)[number];
@@ -40,13 +41,10 @@ const PURPOSE_STAGES: PurposeStage[] = [
 ];
 
 export function AboutPurpose() {
+  const entrance = useEntrance(0.2);
+
   return (
-    <m.div
-      animate={{ opacity: 1, y: 0 }}
-      className="flex flex-col gap-4"
-      initial={{ opacity: 0, y: 12 }}
-      transition={{ delay: 0.2, duration: 0.4 }}
-    >
+    <m.div className="flex flex-col gap-4" {...entrance}>
       <h2 className="font-head text-xl sm:text-2xl">Why this site exists</h2>
 
       <p className="text-sm sm:text-base">

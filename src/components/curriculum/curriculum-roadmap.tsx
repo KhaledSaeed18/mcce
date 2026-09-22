@@ -3,6 +3,7 @@ import { useCallback, useMemo, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { COURSE_KIND_BADGE_LABEL } from "@/config/courses";
 import { DOT_GRID_BACKGROUND } from "@/config/patterns";
+import { useEntrance } from "@/hooks/use-entrance";
 import {
   buildRoadmapGraph,
   type RoadmapEdgeKind,
@@ -98,6 +99,7 @@ export function CurriculumRoadmap({
   onSelectCourse,
   years,
 }: CurriculumRoadmapProps) {
+  const entrance = useEntrance(0.1);
   const [focusedCode, setFocusedCode] = useState<string | null>(null);
 
   const graph: RoadmapGraph = useMemo(() => buildRoadmapGraph(years), [years]);
@@ -143,12 +145,7 @@ export function CurriculumRoadmap({
   );
 
   return (
-    <m.div
-      animate={{ opacity: 1, y: 0 }}
-      className="flex flex-col gap-4"
-      initial={{ opacity: 0, y: 12 }}
-      transition={{ delay: 0.1, duration: 0.4 }}
-    >
+    <m.div className="flex flex-col gap-4" {...entrance}>
       <div className="flex flex-col gap-2">
         <Badge className="w-fit gap-1.5" variant="outline">
           <span className="size-1.5 rounded-full bg-primary" />

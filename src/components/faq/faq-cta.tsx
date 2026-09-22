@@ -2,14 +2,13 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRightIcon } from "lucide-react";
 import { m } from "motion/react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useEntrance } from "@/hooks/use-entrance";
 
 export function FaqCta() {
+  const entrance = useEntrance(0.1);
+
   return (
-    <m.div
-      animate={{ opacity: 1, y: 0 }}
-      initial={{ opacity: 0, y: 12 }}
-      transition={{ delay: 0.1, duration: 0.4 }}
-    >
+    <m.div {...entrance}>
       <Card>
         <CardContent className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm">Question not covered here?</p>

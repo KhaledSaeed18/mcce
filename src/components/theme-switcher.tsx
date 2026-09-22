@@ -1,6 +1,7 @@
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useCallback, useSyncExternalStore } from "react";
 import { Button } from "@/components/ui/button";
+import { useIsHydrated } from "@/hooks/use-is-hydrated";
 import { useSound } from "@/hooks/use-sound";
 import {
   getToggledTheme,
@@ -13,17 +14,6 @@ import { clickSoftSound } from "@/lib/click-soft";
 import { cn } from "@/lib/utils";
 
 const DARK_QUERY = "(prefers-color-scheme: dark)";
-
-function useIsMounted() {
-  return useSyncExternalStore(
-    () => () => {
-      // no-op: nothing to subscribe to, React switches this hook's snapshot
-      // from server to client automatically once hydration completes.
-    },
-    () => true,
-    () => false
-  );
-}
 
 function useSystemPrefersDark() {
   return useSyncExternalStore(
@@ -43,7 +33,7 @@ interface ThemeSwitcherProps {
 
 export function ThemeSwitcher({ className }: ThemeSwitcherProps = {}) {
   const { theme, setTheme } = useTheme();
-  const isMounted = useIsMounted();
+  const isHydrated = useIsHydrated();
   const systemPrefersDark = useSystemPrefersDark();
   const [playClick] = useSound(clickSoftSound, { volume: 0.4 });
 
@@ -56,21 +46,25 @@ export function ThemeSwitcher({ className }: ThemeSwitcherProps = {}) {
 
   useThemeHotkey();
 
-  // biome-ignore lint/suspicious/noUnnecessaryConditions: useIsMounted's getSnapshot/getServerSnapshot pair intentionally differ -- the documented useSyncExternalStore pattern for a hydration-safe "mounted" flag -- which Biome's static analysis can't see across the client/server split.
-  if (!isMounted) {
-    return <div className="size-8" />;
+  // The theme is only known once the stored choice has been read on the
+  // client, so the label stays neutral until then. The icon does not have to
+  // wait: the head script sets the `dark` class before first paint.
+  let label = "Toggle theme";
+  if (isHydrated) {
+    label = isDark ? "Switch to light theme" : "Switch to dark theme";
   }
 
   return (
     <Button
-      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      aria-label={label}
       className={cn("size-8 p-0", className)}
       onClick={handleToggle}
       size="sm"
-      title={`${isDark ? "Switch to light theme" : "Switch to dark theme"} (D)`}
+      title={`${label} (D)`}
       variant="outline"
     >
-      {isDark ? <MoonIcon /> : <SunIcon />}
+      <SunIcon className="dark:hidden" />
+      <MoonIcon className="hidden dark:block" />
     </Button>
   );
 }

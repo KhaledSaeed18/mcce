@@ -1,15 +1,13 @@
 import { m } from "motion/react";
 import { ContactLinkCard } from "@/components/contact/contact-link-card";
 import { CONTACT_SUPPORT_LINKS } from "@/config/contact";
+import { useEntrance } from "@/hooks/use-entrance";
 
 export function ContactSupport() {
+  const entrance = useEntrance(0.15);
+
   return (
-    <m.section
-      animate={{ opacity: 1, y: 0 }}
-      className="flex flex-col gap-4"
-      initial={{ opacity: 0, y: 12 }}
-      transition={{ delay: 0.15, duration: 0.4 }}
-    >
+    <m.section className="flex flex-col gap-4" {...entrance}>
       <h2 className="font-head text-lg sm:text-xl">Something to flag?</h2>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">

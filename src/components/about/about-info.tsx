@@ -8,6 +8,7 @@ import {
   PROGRAM_UNIVERSITY,
   PROGRAM_UNIVERSITY_SHORT,
 } from "@/config/site";
+import { useEntrance } from "@/hooks/use-entrance";
 
 const FACTS: Array<{ label: string; value: string }> = [
   { label: "Program", value: `${PROGRAM_NAME} (MCCE)` },
@@ -23,13 +24,10 @@ const FACTS: Array<{ label: string; value: string }> = [
 ];
 
 export function AboutInfo() {
+  const entrance = useEntrance(0.1);
+
   return (
-    <m.div
-      animate={{ opacity: 1, y: 0 }}
-      className="flex flex-col gap-4"
-      initial={{ opacity: 0, y: 12 }}
-      transition={{ delay: 0.1, duration: 0.4 }}
-    >
+    <m.div className="flex flex-col gap-4" {...entrance}>
       <h2 className="font-head text-xl sm:text-2xl">The program</h2>
 
       <p className="text-sm sm:text-base">

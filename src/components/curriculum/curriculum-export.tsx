@@ -4,6 +4,7 @@ import { PdfPreviewDialog } from "@/components/pdf-preview-dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useCurriculumPdfExport } from "@/hooks/use-curriculum-pdf-export";
+import { useEntrance } from "@/hooks/use-entrance";
 import { CURRICULUM_PDF_FILE_NAME } from "@/lib/curriculum/pdf";
 import type { CurriculumYear } from "@/lib/curriculum/types";
 
@@ -12,6 +13,7 @@ interface CurriculumExportProps {
 }
 
 export function CurriculumExport({ years }: CurriculumExportProps) {
+  const entrance = useEntrance(0.1);
   const {
     canShare,
     handleDownload,
@@ -25,11 +27,7 @@ export function CurriculumExport({ years }: CurriculumExportProps) {
   const isBusy = Boolean(pendingAction);
 
   return (
-    <m.div
-      animate={{ opacity: 1, y: 0 }}
-      initial={{ opacity: 0, y: 12 }}
-      transition={{ delay: 0.1, duration: 0.4 }}
-    >
+    <m.div {...entrance}>
       <Card>
         <CardContent className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-0.5">

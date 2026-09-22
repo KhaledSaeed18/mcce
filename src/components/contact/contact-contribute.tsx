@@ -9,9 +9,11 @@ import {
   CONTACT_MATERIALS_MAILTO_HREF,
 } from "@/config/contact";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+import { useEntrance } from "@/hooks/use-entrance";
 import { cn } from "@/lib/utils";
 
 export function ContactContribute() {
+  const entrance = useEntrance(0.2);
   const { copy, isCopied } = useCopyToClipboard();
 
   const handleCopyEmail = useCallback(
@@ -21,10 +23,8 @@ export function ContactContribute() {
 
   return (
     <m.section
-      animate={{ opacity: 1, y: 0 }}
       className="relative flex flex-col gap-5 rounded border-2 bg-card p-5 shadow-md sm:p-8"
-      initial={{ opacity: 0, y: 12 }}
-      transition={{ delay: 0.2, duration: 0.4 }}
+      {...entrance}
     >
       <Badge className="absolute -top-3 left-5 -rotate-3" variant="secondary">
         COMMUNITY SOURCED
