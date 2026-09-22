@@ -30,7 +30,7 @@ export interface LegalSection {
   value: string;
 }
 
-export const LEGAL_LAST_UPDATED = "18 August 2026";
+export const LEGAL_LAST_UPDATED = "22 September 2026";
 
 const TAKEDOWN_SUBJECT = "MCCE material removal request";
 
@@ -43,6 +43,8 @@ const PRIVACY_BLOCKS: LegalBlock[] = [
       "Saved files and recently viewed files",
       "Grades and course rows typed into the GPA calculator",
       "Which sections your GPA exports include",
+      "The credits, exchange rate, and financial aid set in the tuition planner",
+      "Markup and page changes made in the PDF editor, kept per file, and which editor panels are open",
       "Your light or dark theme choice",
     ],
     title: "What the site stores",
@@ -58,7 +60,7 @@ const PRIVACY_BLOCKS: LegalBlock[] = [
     title: "Cookies",
   },
   {
-    body: "Google Analytics runs on this site to answer one question: which parts of the index people actually use. It records the pages you open, roughly where you are from your IP address, your device and browser, and where you arrived from. It does not know your name, your email, or which LIU student you are, because the site never asks and never sends it. What you type into the GPA calculator and which files you save stay on your device and are never part of this.",
+    body: "Google Analytics runs on this site to answer one question: which parts of the index people actually use. It records the pages you open, roughly where you are from your IP address, your device and browser, and where you arrived from. It does not know your name, your email, or which LIU student you are, because the site never asks and never sends it. What you type into the GPA and tuition calculators, what you draw in the PDF editor, and which files you save stay on your device and are never part of this.",
     items: [
       "What it is used for: seeing which courses and pages get opened, so effort goes where it helps",
       "Where the data goes: Google, as the processor, under their own privacy policy and retention settings",
@@ -85,11 +87,11 @@ const PRIVACY_BLOCKS: LegalBlock[] = [
     title: "The contact form",
   },
   {
-    body: "Clearing site data for this domain in your browser settings removes all of it: local storage, the offline cache, and the cookies set while you were here. Saved files, recent files, and GPA entries only ever existed on your device, so clearing them is the end of them. Analytics data already sent to Google is held there under that property's retention setting and expires on its own.",
+    body: "Clearing site data for this domain in your browser settings removes all of it: local storage, the offline cache, and the cookies set while you were here. Saved files, recent files, GPA and tuition entries, and PDF markup only ever existed on your device, so clearing them is the end of them. Analytics data already sent to Google is held there under that property's retention setting and expires on its own.",
     title: "Removing what is stored",
   },
   {
-    body: "The site is served from Cloudflare, which keeps standard request logs such as IP address and user agent for delivery and abuse protection. Course files themselves open on Google Drive, under your own Google account and Google's terms, so what Drive records about opening a file sits with Google.",
+    body: "The site is served from Cloudflare, which keeps standard request logs such as IP address and user agent for delivery and abuse protection. Course files themselves open on Google Drive, under your own Google account and Google's terms, so what Drive records about opening a file sits with Google. The PDF editor is the one exception: it asks the site's server to fetch the PDF from Drive, since Drive refuses that request from a browser. Only files already in the index can be fetched this way, nothing is stored on the server, and the response may be cached for up to an hour.",
     title: "Hosting and file links",
   },
   {
@@ -119,7 +121,7 @@ const TERMS_BLOCKS: LegalBlock[] = [
     title: "Not an official page",
   },
   {
-    body: "The site is an index of links, not a file host. Course material stays in the shared Drive folders where it was already posted, and opening a file takes you to Google Drive, where access is controlled by whoever shared it. Copyright in the material stays with its authors and instructors. It is indexed here so students in the program can find it for their own study.",
+    body: "The site is an index of links, not a file host. Course material stays in the shared Drive folders where it was already posted, and opening a file takes you to Google Drive, where access is controlled by whoever shared it. The PDF editor never changes the file in Drive: a marked-up copy is saved to your own device. Copyright in the material stays with its authors and instructors. It is indexed here so students in the program can find it for their own study.",
     title: "About the material",
   },
   {
@@ -134,7 +136,7 @@ const TERMS_BLOCKS: LegalBlock[] = [
     title: "Removing material from the index",
   },
   {
-    body: "The index re-syncs from Drive once a week, so it can be incomplete or out of date. The plan of study, the prerequisite roadmap, and the GPA calculator are unofficial aids built from published program documents, and they can be wrong or fall behind a curriculum change. Check anything that affects a registration, a grade, or a graduation date against the registrar and the official documents.",
+    body: "The index re-syncs from Drive once a week, so it can be incomplete or out of date. The plan of study, the prerequisite roadmap, the GPA calculator, the tuition planner, and the admissions guide are unofficial aids built from published program documents, and they can be wrong or fall behind a curriculum change. Check anything that affects a registration, a grade, or a graduation date against the registrar and the official documents.",
     title: "Accuracy is not guaranteed",
   },
   {
