@@ -17,8 +17,9 @@ export function AboutTrust() {
       <p className="text-sm sm:text-base">
         The index resyncs from the shared Drive automatically about once a week.
         A file added today may take a few days to show up here. Nothing is
-        re-hosted: every link opens the file in Google Drive, where access
-        follows however it was already shared there.
+        re-hosted: files open in Google Drive, where access follows however they
+        were already shared, and the PDF editor reads its copy straight from
+        Drive without keeping one.
       </p>
 
       <p className="text-sm sm:text-base">

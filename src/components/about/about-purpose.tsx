@@ -79,6 +79,17 @@ export function AboutPurpose() {
         up in a search. This site indexes them: one place to browse, search, and
         link to material by semester and course.
       </p>
+
+      <p className="text-sm sm:text-base">
+        It started as that index and grew around it. Past exams are pulled out
+        of the course folders into one archive, every course has its own page,
+        and the parts of the program that lived in PDFs and screenshots now sit
+        next to the files: the plan of study and its prerequisite roadmap, a GPA
+        calculator on the program's scale, the admissions flow, and a tuition
+        planner. A PDF editor opens any file from the index to mark it up, and a
+        tools directory lists what is worth installing for the coursework and
+        the thesis.
+      </p>
     </m.div>
   );
 }
