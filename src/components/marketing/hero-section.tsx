@@ -5,7 +5,10 @@ import { HeroQuickLinks } from "@/components/marketing/hero-quick-links";
 import { HeroStats } from "@/components/marketing/hero-stats";
 import type { HeroSearchQuery } from "@/components/marketing/types";
 import { Badge } from "@/components/ui/badge";
+import { ENTRANCE_TRANSITION } from "@/config/motion";
 import { PROGRAM_UNIVERSITY_SHORT } from "@/config/site";
+import { useEntrance } from "@/hooks/use-entrance";
+import { useIsServerRendered } from "@/hooks/use-is-server-rendered";
 import type { DriveIndexStats } from "@/lib/drive/types";
 
 interface HeroSectionProps {
@@ -14,14 +17,12 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ queries, stats }: HeroSectionProps) {
+  const entrance = useEntrance();
+  const isServerRendered = useIsServerRendered();
+
   return (
     <section className="grid grid-cols-1 items-center gap-10 py-8 sm:py-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,420px)] lg:gap-12">
-      <m.div
-        animate={{ opacity: 1, y: 0 }}
-        className="flex flex-col gap-6"
-        initial={{ opacity: 0, y: 12 }}
-        transition={{ duration: 0.4 }}
-      >
+      <m.div className="flex flex-col gap-6" {...entrance}>
         <div className="flex flex-wrap items-center gap-2">
           <Badge className="w-fit gap-1.5" variant="outline">
             <span className="size-1.5 rounded-full bg-primary" />
@@ -48,8 +49,8 @@ export function HeroSection({ queries, stats }: HeroSectionProps) {
 
       <m.div
         animate={{ opacity: 1, scale: 1 }}
-        initial={{ opacity: 0, scale: 0.96 }}
-        transition={{ delay: 0.1, duration: 0.4 }}
+        initial={isServerRendered ? false : { opacity: 0, scale: 0.96 }}
+        transition={{ ...ENTRANCE_TRANSITION, delay: 0.1 }}
       >
         <HeroPanel queries={queries} />
       </m.div>

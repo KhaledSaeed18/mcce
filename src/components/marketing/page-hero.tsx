@@ -1,6 +1,7 @@
 import { m } from "motion/react";
 import type { ReactNode } from "react";
 import { Badge } from "@/components/ui/badge";
+import { useEntrance } from "@/hooks/use-entrance";
 
 interface PageHeroProps {
   badge: string;
@@ -22,16 +23,13 @@ export function PageHero({
   highlight,
   title,
 }: PageHeroProps) {
+  const entrance = useEntrance();
+
   return (
     <div className="relative">
       {decoration}
 
-      <m.div
-        animate={{ opacity: 1, y: 0 }}
-        className="flex flex-col gap-4"
-        initial={{ opacity: 0, y: 12 }}
-        transition={{ duration: 0.4 }}
-      >
+      <m.div className="flex flex-col gap-4" {...entrance}>
         <Badge className="w-fit gap-1.5" variant="outline">
           <span className="size-1.5 rounded-full bg-primary" />
           {badge}

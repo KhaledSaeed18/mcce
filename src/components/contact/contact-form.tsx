@@ -8,9 +8,11 @@ import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Textarea } from "@/components/ui/textarea";
 import { CONTACT_FORM_STATUS_MESSAGE } from "@/config/contact";
 import { useContactForm } from "@/hooks/use-contact-form";
+import { useEntrance } from "@/hooks/use-entrance";
 import { cn } from "@/lib/utils";
 
 export function ContactForm() {
+  const entrance = useEntrance(0.05);
   const {
     captchaRef,
     errors,
@@ -31,10 +33,8 @@ export function ContactForm() {
 
   return (
     <m.section
-      animate={{ opacity: 1, y: 0 }}
       className="relative flex flex-col gap-5 rounded border-2 bg-card p-5 shadow-md sm:p-8"
-      initial={{ opacity: 0, y: 12 }}
-      transition={{ delay: 0.05, duration: 0.4 }}
+      {...entrance}
     >
       <Badge className="absolute -top-3 left-5 -rotate-3" variant="secondary">
         WRITE IT HERE

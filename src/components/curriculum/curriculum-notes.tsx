@@ -1,14 +1,13 @@
 import { m } from "motion/react";
 import { Card, CardContent } from "@/components/ui/card";
 import { PROGRAM_OFFICIAL_POS_URL } from "@/config/site";
+import { useEntrance } from "@/hooks/use-entrance";
 
 export function CurriculumNotes() {
+  const entrance = useEntrance(0.1);
+
   return (
-    <m.div
-      animate={{ opacity: 1, y: 0 }}
-      initial={{ opacity: 0, y: 12 }}
-      transition={{ delay: 0.1, duration: 0.4 }}
-    >
+    <m.div {...entrance}>
       <Card>
         <CardContent className="flex flex-col gap-3">
           <h2 className="font-head text-lg sm:text-xl">

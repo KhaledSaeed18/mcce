@@ -1,15 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { m } from "motion/react";
 import { FOOTER_BUG_REPORT_URL } from "@/config/footer";
+import { useEntrance } from "@/hooks/use-entrance";
 
 export function AboutTrust() {
+  const entrance = useEntrance(0.3);
+
   return (
-    <m.div
-      animate={{ opacity: 1, y: 0 }}
-      className="flex flex-col gap-4"
-      initial={{ opacity: 0, y: 12 }}
-      transition={{ delay: 0.3, duration: 0.4 }}
-    >
+    <m.div className="flex flex-col gap-4" {...entrance}>
       <h2 className="font-head text-xl sm:text-2xl">
         Staying current, reporting problems
       </h2>

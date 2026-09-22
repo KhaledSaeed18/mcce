@@ -4,6 +4,15 @@ import type { Transition, Variants } from "motion/react";
 export const HAND_DRAWN_STROKE_SECONDS = 0.9;
 export const HAND_DRAWN_STROKE_STAGGER = 0.5;
 
+/** A page's opening content fades up once, on mount, rather than on scroll. */
+export const ENTRANCE_DURATION_SECONDS = 0.4;
+export const ENTRANCE_OFFSET_PX = 12;
+export const ENTRANCE_HIDDEN = { opacity: 0, y: ENTRANCE_OFFSET_PX } as const;
+export const ENTRANCE_VISIBLE = { opacity: 1, y: 0 } as const;
+export const ENTRANCE_TRANSITION: Transition = {
+  duration: ENTRANCE_DURATION_SECONDS,
+};
+
 export const REVEAL_DURATION_SECONDS = 0.45;
 export const REVEAL_OFFSET_PX = 16;
 export const REVEAL_STAGGER_SECONDS = 0.05;

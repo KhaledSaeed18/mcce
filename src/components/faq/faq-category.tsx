@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import type { FaqItem } from "@/config/faq";
+import { useIsServerRendered } from "@/hooks/use-is-server-rendered";
 import { cn } from "@/lib/utils";
 
 const ITEM_STAGGER_MS = 60;
@@ -26,13 +27,18 @@ export function FaqCategory({
   label,
 }: FaqCategoryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { margin: "-40px", once: true });
+  const hasEnteredView = useInView(containerRef, {
+    margin: "-40px",
+    once: true,
+  });
+  const isServerRendered = useIsServerRendered();
+  const isRevealed = isServerRendered || hasEnteredView;
 
   return (
     <div
       className={cn(
         "flex flex-col gap-3 transition-all duration-500",
-        isInView ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+        isRevealed ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
       )}
       ref={containerRef}
     >
@@ -50,13 +56,13 @@ export function FaqCategory({
         {items.map((item, index) => (
           <AccordionItem
             className={
-              isInView
+              isRevealed
                 ? "fade-in slide-in-from-bottom-2 animate-in fill-mode-backwards"
                 : "opacity-0"
             }
             key={item.question}
             style={
-              isInView
+              isRevealed
                 ? { animationDelay: `${index * ITEM_STAGGER_MS}ms` }
                 : undefined
             }

@@ -4,6 +4,7 @@ import {
   REVEAL_VARIANTS,
   REVEAL_VIEWPORT,
 } from "@/config/motion";
+import { useIsServerRendered } from "@/hooks/use-is-server-rendered";
 
 export interface RevealProps {
   /** A container whose children reveal one after another. */
@@ -18,8 +19,9 @@ const STATIC_REVEAL: RevealProps = { group: {}, item: {}, single: {} };
 
 export function useReveal(): RevealProps {
   const shouldReduceMotion = useReducedMotion();
+  const isServerRendered = useIsServerRendered();
 
-  if (shouldReduceMotion) {
+  if (shouldReduceMotion || isServerRendered) {
     return STATIC_REVEAL;
   }
 
