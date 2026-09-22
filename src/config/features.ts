@@ -138,7 +138,3 @@ export const EDITOR_PREVIEW_NOTE = "on the final";
 /** Widths of the placeholder text lines on the mock page, top to bottom. */
 export const EDITOR_PREVIEW_LINES_ABOVE = ["96%", "88%", "92%"] as const;
 export const EDITOR_PREVIEW_LINES_BELOW = ["90%", "72%"] as const;
-
-/** How long each hand-drawn stroke takes to draw in, and the gap between them. */
-export const EDITOR_PREVIEW_STROKE_SECONDS = 0.9;
-export const EDITOR_PREVIEW_STROKE_STAGGER = 0.5;

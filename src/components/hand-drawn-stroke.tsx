@@ -1,26 +1,29 @@
 import { m, useReducedMotion } from "motion/react";
+import type { CSSProperties } from "react";
 import {
-  EDITOR_PREVIEW_STROKE_SECONDS,
-  EDITOR_PREVIEW_STROKE_STAGGER,
-} from "@/config/features";
+  HAND_DRAWN_STROKE_SECONDS,
+  HAND_DRAWN_STROKE_STAGGER,
+} from "@/config/motion";
 import { cn } from "@/lib/utils";
 
-interface EditorPreviewStrokeProps {
+interface HandDrawnStrokeProps {
   className: string;
   color: string;
   order: number;
   path: string;
+  style?: CSSProperties;
   viewBox: string;
 }
 
-/** A hand-drawn mark that draws itself in once the tile scrolls into view. */
-export function EditorPreviewStroke({
+/** A hand-drawn mark that draws itself in once it scrolls into view, the way a pen would. */
+export function HandDrawnStroke({
   className,
   color,
   order,
   path,
+  style,
   viewBox,
-}: EditorPreviewStrokeProps) {
+}: HandDrawnStrokeProps) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -29,6 +32,7 @@ export function EditorPreviewStroke({
       className={cn("pointer-events-none absolute overflow-visible", className)}
       fill="none"
       preserveAspectRatio="none"
+      style={style}
       viewBox={viewBox}
     >
       <m.path
@@ -38,8 +42,8 @@ export function EditorPreviewStroke({
         strokeLinecap="round"
         strokeWidth="2"
         transition={{
-          delay: order * EDITOR_PREVIEW_STROKE_STAGGER,
-          duration: EDITOR_PREVIEW_STROKE_SECONDS,
+          delay: order * HAND_DRAWN_STROKE_STAGGER,
+          duration: HAND_DRAWN_STROKE_SECONDS,
           ease: "easeInOut",
         }}
         viewport={{ once: true }}

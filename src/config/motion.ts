@@ -1,5 +1,9 @@
 import type { Transition, Variants } from "motion/react";
 
+/** How long a hand-drawn stroke takes to draw in, and the gap before the next one. */
+export const HAND_DRAWN_STROKE_SECONDS = 0.9;
+export const HAND_DRAWN_STROKE_STAGGER = 0.5;
+
 export const REVEAL_DURATION_SECONDS = 0.45;
 export const REVEAL_OFFSET_PX = 16;
 export const REVEAL_STAGGER_SECONDS = 0.05;

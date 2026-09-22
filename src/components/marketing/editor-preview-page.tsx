@@ -1,4 +1,4 @@
-import { EditorPreviewStroke } from "@/components/marketing/editor-preview-stroke";
+import { HandDrawnStroke } from "@/components/hand-drawn-stroke";
 import {
   EDITOR_PREVIEW_FORMULA,
   EDITOR_PREVIEW_LINES_ABOVE,
@@ -32,7 +32,7 @@ export function EditorPreviewPage() {
       <div className="flex items-center gap-6 py-2 pl-6">
         <span className="relative font-mono text-[11px] sm:text-xs">
           {EDITOR_PREVIEW_FORMULA}
-          <EditorPreviewStroke
+          <HandDrawnStroke
             className="-top-2.5 -left-3 h-[calc(100%+1.25rem)] w-[calc(100%+1.5rem)]"
             color={RED}
             order={0}
@@ -42,7 +42,7 @@ export function EditorPreviewPage() {
         </span>
 
         <span className="relative hidden items-center gap-2 pl-10 sm:flex">
-          <EditorPreviewStroke
+          <HandDrawnStroke
             className="top-0 left-0 h-5 w-9 -scale-x-100"
             color={RED}
             order={1}
@@ -59,7 +59,7 @@ export function EditorPreviewPage() {
         <span className="relative" key={width} style={{ width }}>
           <span className="block h-1.5 rounded-full bg-black/15" />
           {index === 0 ? (
-            <EditorPreviewStroke
+            <HandDrawnStroke
               className="-bottom-2 left-0 h-2 w-full"
               color={BLUE}
               order={2}
