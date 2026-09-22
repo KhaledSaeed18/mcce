@@ -1,16 +1,15 @@
-import { useCallback, useRef } from "react";
+import { useRef } from "react";
 import { EditorDocumentArea } from "@/components/pdf-editor/editor-document-area";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
-import { EditorIdleState } from "@/components/pdf-editor/editor-idle-state";
-import { EditorStatus } from "@/components/pdf-editor/editor-status";
+import { EditorPlaceholder } from "@/components/pdf-editor/editor-placeholder";
 import { EditorToolbar } from "@/components/pdf-editor/editor-toolbar";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
 import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
 import { DEFAULT_EXPORT_NAME, EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
-import { useEditorHotkeys } from "@/hooks/use-editor-hotkeys";
 import { useEditorMarkup } from "@/hooks/use-editor-markup";
 import { useEditorPages } from "@/hooks/use-editor-pages";
 import { useEditorPanels } from "@/hooks/use-editor-panels";
+import { useEditorShortcuts } from "@/hooks/use-editor-shortcuts";
 import { useEditorTools } from "@/hooks/use-editor-tools";
 import { useElementSize } from "@/hooks/use-element-size";
 import { useFullscreen } from "@/hooks/use-fullscreen";
@@ -40,21 +39,12 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
   const { bytes, doc, status } = usePdfDocument(node?.id);
   useRecordRecentFile(node?.id);
   const viewport = useElementSize(scrollRef);
-  const {
-    color,
-    fontSize,
-    setColor,
-    setFontSize,
-    setStrokeWidth,
-    setTool,
-    strokeWidth,
-    tool,
-  } = useEditorTools();
+  const tools = useEditorTools();
   const markup = useEditorMarkup({
     fileId: node?.id,
     pageCount: doc?.numPages ?? 0,
-    setColor,
-    setFontSize,
+    setColor: tools.setColor,
+    setFontSize: tools.setFontSize,
   });
   const { activeSize, isDocumentShown, navigation, sizes } = useEditorPages(
     scrollRef,
@@ -69,43 +59,13 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     layout: markup.pages,
   });
 
-  const goToNextPage = useCallback(() => {
-    if (navigation.activeIndex < navigation.pageCount - 1) {
-      navigation.goToPage(navigation.activeIndex + 1);
-    }
-  }, [navigation]);
-
-  const goToPrevPage = useCallback(() => {
-    if (navigation.activeIndex > 0) {
-      navigation.goToPage(navigation.activeIndex - 1);
-    }
-  }, [navigation]);
-
-  useEditorHotkeys({
-    onDeselect: markup.deselect,
+  useEditorShortcuts({
+    markup,
+    navigation,
     onExport: exportPdf,
-    onFitWidth: zoom.fitWidth,
-    onNextPage: goToNextPage,
-    onPrevPage: goToPrevPage,
-    onRedo: markup.redo,
-    onRemove: markup.removeSelected,
-    onToolChange: setTool,
-    onUndo: markup.undo,
-    onZoomIn: zoom.zoomIn,
-    onZoomOut: zoom.zoomOut,
+    onToolChange: tools.setTool,
+    zoom,
   });
-
-  const settings = { color, fontSize, strokeWidth, tool };
-  const placeholder =
-    status === "idle" ? (
-      <EditorIdleState
-        isBrowserOpen={isBrowserOpen}
-        nodes={nodes}
-        onShowFiles={toggleBrowser}
-      />
-    ) : (
-      <EditorStatus status={status} />
-    );
 
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
@@ -132,20 +92,20 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
             <EditorToolbar
               canRedo={markup.canRedo}
               canUndo={markup.canUndo}
-              color={color}
+              color={tools.color}
               exportStatus={exportStatus}
-              fontSize={fontSize}
+              fontSize={tools.fontSize}
               navigation={navigation}
               onClear={markup.clear}
               onColorChange={markup.changeColor}
               onExport={exportPdf}
               onFontSizeChange={markup.changeFontSize}
               onRedo={markup.redo}
-              onStrokeWidthChange={setStrokeWidth}
-              onToolChange={setTool}
+              onStrokeWidthChange={tools.setStrokeWidth}
+              onToolChange={tools.setTool}
               onUndo={markup.undo}
-              strokeWidth={strokeWidth}
-              tool={tool}
+              strokeWidth={tools.strokeWidth}
+              tool={tools.tool}
               zoom={zoom}
             />
           ) : null}
@@ -169,12 +129,17 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
                 onTextDraftChange={markup.openDraft}
                 pages={markup.pages}
                 selectedId={markup.selectedId}
-                settings={settings}
+                settings={tools}
                 textDraft={markup.draft}
                 zoom={zoom.value}
               />
             ) : (
-              placeholder
+              <EditorPlaceholder
+                isBrowserOpen={isBrowserOpen}
+                nodes={nodes}
+                onShowFiles={toggleBrowser}
+                status={status}
+              />
             )}
           </EditorDocumentArea>
         </div>
