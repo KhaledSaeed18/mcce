@@ -5,11 +5,11 @@ import { EditorShortcutList } from "@/components/pdf-editor/editor-shortcut-list
 import { Button } from "@/components/ui/button";
 import { EDITOR_IDLE_SHOW_FILES } from "@/config/pdf-editor";
 import { useEditorRecentFiles } from "@/hooks/use-editor-recent-files";
-import type { DriveNode } from "@/lib/drive/types";
+import type { EditorTreeNode } from "@/lib/pdf-editor/types";
 
 interface EditorIdleStateProps {
   isBrowserOpen: boolean;
-  nodes: DriveNode[];
+  nodes: EditorTreeNode[];
   onShowFiles: () => void;
 }
 

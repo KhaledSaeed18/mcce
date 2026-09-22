@@ -2,10 +2,12 @@ import { useMemo } from "react";
 import { useRecentNodes } from "@/components/providers/recent-nodes-provider";
 import { EDITOR_RECENT_LIMIT } from "@/config/pdf-editor";
 import { resolveNodeIds } from "@/lib/drive/by-id";
-import type { DriveNode } from "@/lib/drive/types";
+import type { EditorTreeNode } from "@/lib/pdf-editor/types";
 
 /** Recently opened files the editor can take, newest first. */
-export function useEditorRecentFiles(nodes: DriveNode[]): DriveNode[] {
+export function useEditorRecentFiles(
+  nodes: EditorTreeNode[]
+): EditorTreeNode[] {
   const { ids } = useRecentNodes();
 
   return useMemo(

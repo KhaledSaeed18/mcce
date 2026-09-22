@@ -2,11 +2,11 @@ import { FileBrowserCrumbs } from "@/components/pdf-editor/file-browser-crumbs";
 import { FileBrowserEntry } from "@/components/pdf-editor/file-browser-entry";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useEditorFileBrowser } from "@/hooks/use-editor-file-browser";
-import type { DriveNode } from "@/lib/drive/types";
+import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
 
 interface FileBrowserPanelProps {
-  activeNode: DriveNode | null;
-  nodes: DriveNode[];
+  activeNode: EditorFile | null;
+  nodes: EditorTreeNode[];
 }
 
 export function FileBrowserPanel({ activeNode, nodes }: FileBrowserPanelProps) {

@@ -1,11 +1,11 @@
 import { EditorIdleState } from "@/components/pdf-editor/editor-idle-state";
 import { EditorStatus } from "@/components/pdf-editor/editor-status";
 import type { PdfLoadStatus } from "@/hooks/use-pdf-document";
-import type { DriveNode } from "@/lib/drive/types";
+import type { EditorTreeNode } from "@/lib/pdf-editor/types";
 
 interface EditorPlaceholderProps {
   isBrowserOpen: boolean;
-  nodes: DriveNode[];
+  nodes: EditorTreeNode[];
   onShowFiles: () => void;
   status: PdfLoadStatus;
 }

@@ -8,14 +8,14 @@ import {
   EDITOR_EMPTY_TITLE,
   EDITOR_HEADER_ICON_BUTTON_CLASS,
 } from "@/config/pdf-editor";
-import type { DriveNode } from "@/lib/drive/types";
+import type { EditorFile } from "@/lib/pdf-editor/types";
 
 interface EditorFileBarProps {
   isBrowserOpen: boolean;
   isFullscreen: boolean;
   isFullscreenSupported: boolean;
   isRailOpen: boolean;
-  node: DriveNode | null;
+  node: EditorFile | null;
   onToggleBrowser: () => void;
   onToggleFullscreen: () => void;
   onToggleRail: () => void;

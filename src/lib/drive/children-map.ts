@@ -1,7 +1,9 @@
 import { compareNaturally } from "./natural-sort";
 import type { DriveNode } from "./types";
 
-function compareNodes(a: DriveNode, b: DriveNode): number {
+type TreeNode = Pick<DriveNode, "kind" | "name" | "parentId">;
+
+function compareNodes(a: TreeNode, b: TreeNode): number {
   if (a.kind === "folder" && b.kind !== "folder") {
     return -1;
   }
@@ -12,8 +14,10 @@ function compareNodes(a: DriveNode, b: DriveNode): number {
 }
 
 /** Groups nodes by parentId, folders before files, natural order within each group. */
-export function buildChildrenMap(nodes: DriveNode[]): Map<string, DriveNode[]> {
-  const map = new Map<string, DriveNode[]>();
+export function buildChildrenMap<T extends TreeNode>(
+  nodes: T[]
+): Map<string, T[]> {
+  const map = new Map<string, T[]>();
 
   for (const node of nodes) {
     if (!node.parentId) {

@@ -1,16 +1,16 @@
 import { useCallback, useMemo, useState } from "react";
 import { buildChildrenMap } from "@/lib/drive/children-map";
-import type { DriveNode } from "@/lib/drive/types";
 import {
   buildCrumbs,
   buildRootEntries,
   toBrowserEntries,
 } from "@/lib/pdf-editor/browser-entries";
+import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
 
 /** Folder navigation inside the editor, kept out of the URL so it cannot fight the open file. */
 export function useEditorFileBrowser(
-  nodes: DriveNode[],
-  activeNode: DriveNode | null
+  nodes: EditorTreeNode[],
+  activeNode: EditorFile | null
 ) {
   const [folderId, setFolderId] = useState<string | null>(
     activeNode?.parentId ?? null

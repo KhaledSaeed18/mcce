@@ -1,5 +1,6 @@
 import { DRIVE_SOURCES } from "@/config/sources";
-import type { DriveNode, DriveNodeKind } from "@/lib/drive/types";
+import type { DriveNodeKind } from "@/lib/drive/types";
+import type { EditorTreeNode } from "./types";
 
 export interface BrowserEntry {
   id: string;
@@ -25,7 +26,7 @@ export function buildRootEntries(): BrowserEntry[] {
   }));
 }
 
-export function toBrowserEntries(nodes: DriveNode[]): BrowserEntry[] {
+export function toBrowserEntries(nodes: EditorTreeNode[]): BrowserEntry[] {
   return nodes.map((node) => ({
     id: node.id,
     isFile: node.kind !== "folder",
@@ -34,36 +35,32 @@ export function toBrowserEntries(nodes: DriveNode[]): BrowserEntry[] {
   }));
 }
 
-function findSourceCrumb(sourceId: string): BrowserCrumb | null {
-  const source = DRIVE_SOURCES.find((candidate) => candidate.id === sourceId);
-  return source ? { id: source.rootFolderId, name: source.label } : null;
-}
-
+/** Walks up from the folder through its parents to the source root, which is not itself a node. */
 export function buildCrumbs(
-  nodes: DriveNode[],
+  nodes: EditorTreeNode[],
   folderId: string | null
 ): BrowserCrumb[] {
   if (!folderId) {
     return [ROOT_CRUMB];
   }
 
-  const current = nodes.find((node) => node.id === folderId);
-  if (!current) {
-    const rootSource = DRIVE_SOURCES.find(
-      (source) => source.rootFolderId === folderId
-    );
-    return rootSource
-      ? [ROOT_CRUMB, { id: folderId, name: rootSource.label }]
-      : [ROOT_CRUMB];
+  const byId = new Map(nodes.map((node) => [node.id, node]));
+  const trail: BrowserCrumb[] = [];
+  let currentId: string | null = folderId;
+  let current = byId.get(currentId);
+
+  while (current) {
+    trail.unshift({ id: current.id, name: current.name });
+    currentId = current.parentId;
+    current = currentId ? byId.get(currentId) : undefined;
   }
 
-  const sourceCrumb = findSourceCrumb(current.sourceId);
-  return [
-    ROOT_CRUMB,
-    ...(sourceCrumb ? [sourceCrumb] : []),
-    ...current.pathIds.map((id, index) => ({
-      id,
-      name: current.pathNames[index],
-    })),
-  ];
+  const source = DRIVE_SOURCES.find(
+    (candidate) => candidate.rootFolderId === currentId
+  );
+  const sourceCrumbs = source
+    ? [{ id: source.rootFolderId, name: source.label }]
+    : [];
+
+  return [ROOT_CRUMB, ...sourceCrumbs, ...trail];
 }

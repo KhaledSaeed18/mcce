@@ -17,12 +17,12 @@ import { usePdfDocument } from "@/hooks/use-pdf-document";
 import { usePdfExport } from "@/hooks/use-pdf-export";
 import { usePdfZoom } from "@/hooks/use-pdf-zoom";
 import { useRecordRecentFile } from "@/hooks/use-record-recent-file";
-import type { DriveNode } from "@/lib/drive/types";
+import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
 interface PdfEditorWorkspaceProps {
-  node: DriveNode | null;
-  nodes: DriveNode[];
+  node: EditorFile | null;
+  nodes: EditorTreeNode[];
 }
 
 export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {

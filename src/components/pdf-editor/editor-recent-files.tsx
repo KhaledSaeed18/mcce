@@ -1,10 +1,10 @@
 import { EditorIdleSection } from "@/components/pdf-editor/editor-idle-section";
 import { EditorRecentFile } from "@/components/pdf-editor/editor-recent-file";
 import { EDITOR_RECENT_TITLE } from "@/config/pdf-editor";
-import type { DriveNode } from "@/lib/drive/types";
+import type { EditorTreeNode } from "@/lib/pdf-editor/types";
 
 interface EditorRecentFilesProps {
-  nodes: DriveNode[];
+  nodes: EditorTreeNode[];
 }
 
 export function EditorRecentFiles({ nodes }: EditorRecentFilesProps) {

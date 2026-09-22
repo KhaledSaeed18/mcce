@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { KindIcon } from "@/components/drive/kind-icon";
 import { EDITOR_PATH } from "@/config/pdf-editor";
-import type { DriveNode } from "@/lib/drive/types";
+import type { EditorTreeNode } from "@/lib/pdf-editor/types";
 
 interface EditorRecentFileProps {
-  node: DriveNode;
+  node: EditorTreeNode;
 }
 
 export function EditorRecentFile({ node }: EditorRecentFileProps) {

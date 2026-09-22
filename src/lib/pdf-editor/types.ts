@@ -1,3 +1,17 @@
+import type { DriveNode } from "@/lib/drive/types";
+
+/** What the editor's file sidebar needs of a node: enough to list, sort, and walk up the tree. */
+export type EditorTreeNode = Pick<
+  DriveNode,
+  "id" | "kind" | "name" | "parentId"
+>;
+
+/** The open file, trimmed to what the file bar, export, and Drive link read. */
+export type EditorFile = Pick<
+  DriveNode,
+  "id" | "name" | "parentId" | "webViewLink"
+>;
+
 export type EditorTool =
   | "pen"
   | "eraser"
