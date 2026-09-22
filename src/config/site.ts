@@ -5,6 +5,8 @@ export const SITE_TITLE =
 export const SITE_DESCRIPTION =
   "LIU MCCE course files, past exams, and plan of study in one searchable index, plus a GPA calculator, tuition planner, admissions guide, and PDF editor.";
 export const SITE_OG_IMAGE = `${SITE_URL}/og-image.png`;
+export const SITE_OG_IMAGE_ALT =
+  "MCCE: The whole program, indexed. Past exams, plan of study, GPA and tuition, and a PDF editor.";
 
 export const PROGRAM_NAME = "M.S. in Computer and Communication Engineering";
 export const PROGRAM_DEPARTMENT =

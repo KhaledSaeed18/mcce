@@ -22,6 +22,7 @@ import {
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_OG_IMAGE,
+  SITE_OG_IMAGE_ALT,
   SITE_TITLE,
   SITE_URL,
 } from "@/config/site";
@@ -108,6 +109,10 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         content: "630",
       },
       {
+        property: "og:image:alt",
+        content: SITE_OG_IMAGE_ALT,
+      },
+      {
         property: "og:locale",
         content: "en_US",
       },
@@ -126,6 +131,10 @@ export const Route = createRootRouteWithContext<RouterContext>()({
       {
         name: "twitter:image",
         content: SITE_OG_IMAGE,
+      },
+      {
+        name: "twitter:image:alt",
+        content: SITE_OG_IMAGE_ALT,
       },
     ],
     links: [
