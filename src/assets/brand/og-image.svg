@@ -5,7 +5,7 @@
   width="1200"
   xmlns="http://www.w3.org/2000/svg"
 >
-  <title>MCCE: Program materials, organized.</title>
+  <title>MCCE: The whole program, indexed.</title>
   <rect fill="#fff7e8" height="630" width="1200" x="0" y="0" />
 
   <rect
@@ -125,7 +125,7 @@
     font-family="Archivo Black"
     font-size="92"
     x="420"
-    y="250"
+    y="212"
   >
     MCCE
   </text>
@@ -136,24 +136,111 @@
     font-size="22"
     letter-spacing="2"
     x="422"
-    y="292"
+    y="252"
   >
     COMPUTER &amp; COMMUNICATION ENGINEERING
   </text>
 
-  <rect fill="#1a1815" height="4" width="590" x="420" y="325" />
+  <rect fill="#1a1815" height="4" width="590" x="420" y="280" />
 
   <text
     fill="#1a1815"
     font-family="Space Grotesk Sharp Bold"
     font-size="42"
     x="420"
-    y="392"
+    y="342"
   >
-    Program materials, organized.
+    The whole program, indexed.
   </text>
 
-  <g transform="translate(420, 428)">
+  <g transform="translate(420, 368)">
+    <rect fill="#1a1815" height="40" rx="8" width="135" x="4" y="4" />
+    <rect
+      fill="#ff9f1c"
+      height="40"
+      rx="8"
+      stroke="#1a1815"
+      stroke-width="3"
+      width="135"
+      x="0"
+      y="0"
+    />
+    <text
+      fill="#1a1815"
+      font-family="Space Grotesk Sharp Medium"
+      font-size="20"
+      text-anchor="middle"
+      x="67"
+      y="27"
+    >
+      Past exams
+    </text>
+    <rect fill="#1a1815" height="40" rx="8" width="153" x="148" y="4" />
+    <rect
+      fill="#ffdc58"
+      height="40"
+      rx="8"
+      stroke="#1a1815"
+      stroke-width="3"
+      width="153"
+      x="144"
+      y="0"
+    />
+    <text
+      fill="#1a1815"
+      font-family="Space Grotesk Sharp Medium"
+      font-size="20"
+      text-anchor="middle"
+      x="220"
+      y="27"
+    >
+      Plan of study
+    </text>
+    <rect fill="#1a1815" height="40" rx="8" width="150" x="310" y="4" />
+    <rect
+      fill="#01ffcc"
+      height="40"
+      rx="8"
+      stroke="#1a1815"
+      stroke-width="3"
+      width="150"
+      x="306"
+      y="0"
+    />
+    <text
+      fill="#1a1815"
+      font-family="Space Grotesk Sharp Medium"
+      font-size="20"
+      text-anchor="middle"
+      x="381"
+      y="27"
+    >
+      GPA &amp; tuition
+    </text>
+    <rect fill="#1a1815" height="40" rx="8" width="124" x="469" y="4" />
+    <rect
+      fill="#c4a1ff"
+      height="40"
+      rx="8"
+      stroke="#1a1815"
+      stroke-width="3"
+      width="124"
+      x="465"
+      y="0"
+    />
+    <text
+      fill="#1a1815"
+      font-family="Space Grotesk Sharp Medium"
+      font-size="20"
+      text-anchor="middle"
+      x="527"
+      y="27"
+    >
+      PDF editor
+    </text>
+  </g>
+
+  <g transform="translate(420, 444)">
     <rect
       fill="#ff9f1c"
       height="14"

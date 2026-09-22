@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/og-image.png" alt="MCCE: Program materials, organized." width="100%" />
+  <img src="public/og-image.png" alt="MCCE: The whole program, indexed. Past exams, plan of study, GPA and tuition, and a PDF editor." width="100%" />
 </p>
 
 <h1 align="center">MCCE</h1>
