@@ -9,7 +9,10 @@
 </p>
 
 <p align="center">
-  <a href="https://mcce.khaledsaeed.tech"><img src="https://shieldcn.dev/badge/site-mcce.khaledsaeed.tech-1a1815.svg?logo=lu:Globe" alt="Site" /></a>
+  <a href="https://mcce.khaledsaeed.tech"><img src="https://shieldcn.dev/badge/site-mcce.khaledsaeed.tech-ffb454.svg?logo=lu:Globe&variant=branded&animate=shimmer" alt="Site" /></a>
+</p>
+
+<p align="center">
   <a href="https://github.com/KhaledSaeed18/mcce/actions"><img src="https://shieldcn.dev/github/ci/KhaledSaeed18/mcce.svg" alt="CI" /></a>
   <a href="https://github.com/KhaledSaeed18/mcce/blob/main/LICENSE"><img src="https://shieldcn.dev/github/license/KhaledSaeed18/mcce.svg" alt="License" /></a>
   <a href="https://github.com/KhaledSaeed18/mcce/commits/main"><img src="https://shieldcn.dev/github/last-commit/KhaledSaeed18/mcce.svg" alt="Last commit" /></a>
