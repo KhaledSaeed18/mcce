@@ -1,5 +1,6 @@
 import { m } from "motion/react";
 import { AdmissionsFeatureTile } from "@/components/marketing/admissions-feature-tile";
+import { EditorFeatureTile } from "@/components/marketing/editor-feature-tile";
 import { FeatureTile } from "@/components/marketing/feature-tile";
 import { GpaFeatureTile } from "@/components/marketing/gpa-feature-tile";
 import { PlanFeatureTile } from "@/components/marketing/plan-feature-tile";
@@ -60,6 +61,10 @@ export function FeatureGridSection() {
 
         <m.div className="lg:col-span-4" {...reveal.item}>
           <TuitionFeatureTile />
+        </m.div>
+
+        <m.div className="sm:col-span-2 lg:col-span-6" {...reveal.item}>
+          <EditorFeatureTile />
         </m.div>
       </m.div>
     </section>
