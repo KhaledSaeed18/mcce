@@ -1,8 +1,23 @@
 # MCCE
 
-> MCCE is the M.S. in Computer and Communication Engineering, a two-year graduate program in the Department of Computer and Communications Engineering at Lebanese International University (LIU). This site is an independent, student-built materials browser for the program: it indexes course files from the program's shared drive so they can be searched and browsed by semester, course, and file type.
+> MCCE is the M.S. in Computer and Communication Engineering, a two-year graduate program in the Department of Computer and Communications Engineering at Lebanese International University (LIU). This site is an independent, student-built index and study toolkit for the program: it indexes course files from the program's shared Google Drive so they can be searched and browsed by semester, course, and file type, and adds a past exam archive, course pages, planning tools, and an in-browser PDF editor around them.
 
 This site is not an official LIU page. For admissions, curriculum, and official program details, see the official program page linked below.
+
+## What the site offers
+
+- Course files: slides, notes, problem sets, recordings, and exams from both years, indexed from three shared Drive folders and re-synced weekly.
+- Search: every indexed file by name, filtered by semester, course, material type, or file type.
+- Past exam archive: midterms, finals, quizzes, and assessments pulled out of the course folders, grouped by course and by the term they were sat.
+- Course pages: description, objectives, topics, credits, prerequisites, same-semester courses, and every indexed file for each course.
+- Plan of study and prerequisite roadmap: the full curriculum by year and semester, exportable as a PDF.
+- GPA calculator: semester and cumulative GPA on the LIU 4.0 scale, a final GPA projection, the average needed for a target, and share links. Exports as PDF, CSV, or JSON.
+- Tuition planner: per semester credit loads turned into semester and year totals in USD and LBP, with registration, NSSF, financial aid, and an exchange rate you set. Exports as PDF, CSV, or JSON.
+- Admissions guide: required documents, fees, and separate steps for LIU and non-LIU bachelor graduates.
+- PDF editor: open any indexed PDF in the browser to draw, add text, boxes, and circles, then rotate, reorder, copy, or remove pages and save a copy. Markup stays on the device and the file in Drive is never changed. Needs a desktop-width screen.
+- Tools directory: about 400 external tools in 26 categories, a thesis toolkit in stage order, and an index of about 280 open source repositories.
+- Recently added: what each sync picked up, with an RSS feed at https://mcce.khaledsaeed.tech/feed.xml.
+- Works offline once visited, installs as an app, and needs no account.
 
 ## Program facts
 
@@ -42,6 +57,8 @@ Each course has its own page at `https://mcce.khaledsaeed.tech/course/{code}`, f
 - How current is the material? The index re-syncs from the shared Drive automatically about once a week.
 - Do I need an account? Not for the site itself. Files open in Google Drive using your own Google account.
 - Can I add materials I have? Yes, through the contact page.
+- Can I annotate a PDF from the index? Yes, in the PDF editor. Markup stays in the browser and the file in Drive never changes.
+- Does the site cover the CENG and TENG bachelor programs? Only with one reference page. Their files are not indexed.
 
 See [the full FAQ](https://mcce.khaledsaeed.tech/faq) for more.
 
@@ -54,7 +71,9 @@ See [the full FAQ](https://mcce.khaledsaeed.tech/faq) for more.
 - [Plan of study](https://mcce.khaledsaeed.tech/plan-of-study): The full two-year curriculum, semester by semester.
 - [GPA calculator](https://mcce.khaledsaeed.tech/gpa-calculator): Calculate a GPA against the program's grading scale.
 - [Admissions guide](https://mcce.khaledsaeed.tech/admissions): Graduate admissions requirements, LIU and non-LIU tracks, and official contacts.
-- [Tuition and fees](https://mcce.khaledsaeed.tech/tuition-fees): Reference tuition numbers and a year fee planner for the program.
+- [Tuition and fees](https://mcce.khaledsaeed.tech/tuition-fees): Reference tuition numbers and a year fee planner for the program, with financial aid.
+- [Recently added](https://mcce.khaledsaeed.tech/recent): Files the most recent syncs picked up, grouped by course.
+- [PDF editor](https://mcce.khaledsaeed.tech/editor): Mark up any indexed PDF in the browser and save a copy.
 - [About](https://mcce.khaledsaeed.tech/about): What this site is and how the index is built.
 - [FAQ](https://mcce.khaledsaeed.tech/faq): Answers about the program and the site.
 - [Contact](https://mcce.khaledsaeed.tech/contact): Report missing material or send files to add.
@@ -82,7 +101,8 @@ Reference figures for the 2025/2026 academic year, subject to change without not
 - $135 per credit, or 7,500,000 LBP per credit.
 - Average load of 26 credits per year over two years.
 - $3,510 per year in tuition, or 195,000,000 LBP per year.
-- Registration fee: $150 per year. NSSF: 8,400,000 LBP per year, if applicable.
+- Registration fee: $150 per semester. NSSF: 8,400,000 LBP per year, if applicable.
+- The planner applies financial aid the way LIU bills it: aid comes off the LBP charges first, and only reaches the cash USD tuition once the LBP side is used up.
 - Official source: https://liu.edu.lb/cms26/public/page.php?slug=tuition
 
 See [tuition and fees](https://mcce.khaledsaeed.tech/tuition-fees) for a per semester planner.
