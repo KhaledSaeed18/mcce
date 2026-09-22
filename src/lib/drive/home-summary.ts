@@ -1,15 +1,15 @@
 import { createServerFn } from "@tanstack/react-start";
-import type { HeroSearchQuery } from "@/components/marketing/types";
+import type { HeroStation } from "@/components/marketing/types";
 import { DRIVE_SOURCES } from "@/config/sources";
 import { buildCourseSummaries } from "./courses";
-import { buildHeroSearchQueries } from "./hero-search";
+import { buildHeroStations } from "./hero-radio";
 import { buildRecentBatches } from "./recent";
 import { buildIndexStats } from "./stats";
 import type { CourseSummary, DriveIndex, DriveIndexStats } from "./types";
 
 export interface HomeSummary {
   courses: CourseSummary[];
-  heroQueries: HeroSearchQuery[];
+  heroStations: HeroStation[];
   latestBatch: { addedAt: string; total: number } | null;
   sourceSummaries: DriveIndex["meta"]["sources"];
   stats: DriveIndexStats;
@@ -28,7 +28,7 @@ export const getHomeSummary = createServerFn({ method: "GET" }).handler(
 
     return {
       courses: buildCourseSummaries(index.nodes),
-      heroQueries: buildHeroSearchQueries(index.nodes),
+      heroStations: buildHeroStations(index.nodes),
       latestBatch: latestBatch
         ? { addedAt: latestBatch.addedAt, total: latestBatch.total }
         : null,

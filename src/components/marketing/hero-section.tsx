@@ -1,9 +1,9 @@
 import { m } from "motion/react";
 import { HeroActions } from "@/components/marketing/hero-actions";
-import { HeroPanel } from "@/components/marketing/hero-panel";
 import { HeroQuickLinks } from "@/components/marketing/hero-quick-links";
+import { HeroRadioPanel } from "@/components/marketing/hero-radio-panel";
 import { HeroStats } from "@/components/marketing/hero-stats";
-import type { HeroSearchQuery } from "@/components/marketing/types";
+import type { HeroStation } from "@/components/marketing/types";
 import { Badge } from "@/components/ui/badge";
 import { ENTRANCE_TRANSITION } from "@/config/motion";
 import { PROGRAM_UNIVERSITY_SHORT } from "@/config/site";
@@ -12,11 +12,11 @@ import { useIsServerRendered } from "@/hooks/use-is-server-rendered";
 import type { DriveIndexStats } from "@/lib/drive/types";
 
 interface HeroSectionProps {
-  queries: HeroSearchQuery[];
+  stations: HeroStation[];
   stats: DriveIndexStats;
 }
 
-export function HeroSection({ queries, stats }: HeroSectionProps) {
+export function HeroSection({ stations, stats }: HeroSectionProps) {
   const entrance = useEntrance();
   const isServerRendered = useIsServerRendered();
 
@@ -52,7 +52,7 @@ export function HeroSection({ queries, stats }: HeroSectionProps) {
         initial={isServerRendered ? false : { opacity: 0, scale: 0.96 }}
         transition={{ ...ENTRANCE_TRANSITION, delay: 0.1 }}
       >
-        <HeroPanel queries={queries} />
+        <HeroRadioPanel stations={stations} />
       </m.div>
     </section>
   );
