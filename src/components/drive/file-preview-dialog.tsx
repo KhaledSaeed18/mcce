@@ -1,21 +1,11 @@
-import { Link } from "@tanstack/react-router";
-import {
-  BookmarkCheckIcon,
-  BookmarkIcon,
-  CheckIcon,
-  CopyIcon,
-  ExternalLinkIcon,
-  PencilRulerIcon,
-} from "lucide-react";
 import { useCallback } from "react";
+import { FilePreviewActions } from "@/components/drive/file-preview-actions";
 import { PreviewFallback } from "@/components/drive/preview-fallback";
 import { PreviewLoadingState } from "@/components/drive/preview-loading-state";
 import { useSavedNodes } from "@/components/providers/saved-nodes-provider";
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -106,49 +96,15 @@ export function FilePreviewDialog({
           </p>
         ) : null}
 
-        <DialogFooter>
-          <Button
-            aria-pressed={isSaved(node.id)}
-            onClick={handleToggleSaved}
-            variant="outline"
-          >
-            {isSaved(node.id) ? (
-              <BookmarkCheckIcon data-icon="inline-start" />
-            ) : (
-              <BookmarkIcon data-icon="inline-start" />
-            )}
-            {isSaved(node.id) ? "Saved" : "Save"}
-          </Button>
-          {node.kind === "pdf" && isEditorWide ? (
-            <Button
-              nativeButton={false}
-              render={
-                <Link search={{ file: node.id }} target="_blank" to="/editor" />
-              }
-              variant="outline"
-            >
-              <PencilRulerIcon data-icon="inline-start" />
-              Open in editor
-            </Button>
-          ) : null}
-          <Button onClick={handleCopyLink} variant="outline">
-            {isCopied ? (
-              <CheckIcon data-icon="inline-start" />
-            ) : (
-              <CopyIcon data-icon="inline-start" />
-            )}
-            {isCopied ? "Copied" : "Copy link"}
-          </Button>
-          <Button
-            nativeButton={false}
-            render={
-              <a href={node.webViewLink} rel="noopener" target="_blank" />
-            }
-          >
-            <ExternalLinkIcon data-icon="inline-start" />
-            Open in Google Drive
-          </Button>
-        </DialogFooter>
+        <FilePreviewActions
+          canAnnotate={node.kind === "pdf" && isEditorWide}
+          fileId={node.id}
+          isCopied={isCopied}
+          isSaved={isSaved(node.id)}
+          onCopyLink={handleCopyLink}
+          onToggleSaved={handleToggleSaved}
+          webViewLink={node.webViewLink}
+        />
       </DialogContent>
     </Dialog>
   );
