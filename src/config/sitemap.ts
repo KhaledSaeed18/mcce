@@ -8,6 +8,7 @@ import {
   ToolCaseIcon,
 } from "lucide-react";
 import type { COURSE_CARD_COLORS } from "@/config/courses";
+import { EDITOR_PATH } from "@/config/pdf-editor";
 import {
   RESOURCES_OPEN_SOURCE_PATH,
   RESOURCES_PAGE_PATH,
@@ -30,6 +31,7 @@ export interface SitemapEntry {
     | "/plan-of-study"
     | "/gpa-calculator"
     | "/cce"
+    | "/editor"
     | "/resources"
     | "/resources/thesis"
     | "/resources/open-source"
@@ -136,6 +138,12 @@ export const SITEMAP_GROUPS: SitemapGroup[] = [
   {
     color: "chart-4",
     entries: [
+      {
+        description:
+          "Open any PDF from the index, draw, type, and reorder pages, then save a copy.",
+        label: "PDF editor",
+        to: EDITOR_PATH,
+      },
       {
         description:
           "Every tool worth opening, grouped by task, with its cost up front.",
