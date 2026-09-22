@@ -1,3 +1,4 @@
+import { EDITOR_PATH } from "@/config/pdf-editor";
 import {
   RESOURCES_OPEN_SOURCE_PATH,
   RESOURCES_PAGE_PATH,
@@ -17,6 +18,7 @@ export type FooterNavLink =
         | "/plan-of-study"
         | "/gpa-calculator"
         | "/cce"
+        | "/editor"
         | "/resources"
         | "/resources/thesis"
         | "/resources/open-source"
@@ -84,6 +86,7 @@ export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
       { label: "About MCCE", to: "/about" },
       { label: "CCE undergraduate programs", to: "/cce" },
       { label: "Admissions guide", to: "/admissions" },
+      { label: "PDF editor", to: EDITOR_PATH },
       { label: "Tools", to: RESOURCES_PAGE_PATH },
       { label: "Thesis toolkit", to: RESOURCES_THESIS_PATH },
       { label: "Open source index", to: RESOURCES_OPEN_SOURCE_PATH },
