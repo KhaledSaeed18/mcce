@@ -17,7 +17,7 @@ export const Route = createFileRoute("/faq")({
     links: [{ href: FAQ_URL, rel: "canonical" }],
     meta: buildPageMeta({
       description:
-        "Answers about the MCCE program and how this materials index works.",
+        "Answers about the LIU MCCE program and this site: syncing, opening files, the PDF editor, planning tools, offline use, and sending materials.",
       title: "FAQ · MCCE",
       url: FAQ_URL,
     }),

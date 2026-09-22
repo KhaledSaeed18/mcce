@@ -1,5 +1,6 @@
 import { CompassIcon, GraduationCapIcon, type LucideIcon } from "lucide-react";
 import type { COURSE_CARD_COLORS } from "@/config/courses";
+import { EDITOR_MIN_WIDTH_PX } from "@/config/pdf-editor";
 
 export type FaqCategory = "program" | "site";
 
@@ -37,9 +38,26 @@ export const PROGRAM_FAQ: FaqItem[] = [
   },
   {
     answer:
-      "An independent materials browser for MCCE students. It indexes course files from the program's shared Drive so they can be searched and browsed by semester, course, and file type. It is not an official LIU page and is not affiliated with the university.",
+      "An independent, student-built site for MCCE students. At its core it indexes course files from the program's shared Drive so they can be searched and browsed by semester, course, and file type, and it adds a past exam archive, course pages, and planning tools around them. It is not an official LIU page and is not affiliated with the university.",
     category: "site",
     question: "What is this site, and is it official?",
+  },
+  {
+    answer:
+      "The plan of study with a prerequisite roadmap, a GPA calculator on the program's 4.0 scale, a tuition planner with financial aid, an admissions guide for LIU and non-LIU graduates, a PDF editor, and a directory of about 400 tools for the coursework and the thesis. The plan, GPA report, and tuition plan export as PDF.",
+    category: "site",
+    question: "What is on the site besides the files?",
+  },
+  {
+    answer: `Yes. Open a PDF from its preview, or open the editor from Resources and pick a file in the sidebar. You can draw, add text, boxes, and circles, then rotate, reorder, copy, or remove pages and save a copy. Your markup stays in this browser and the file in Drive never changes. The editor needs a screen at least ${EDITOR_MIN_WIDTH_PX} pixels wide.`,
+    category: "site",
+    question: "Can I annotate a PDF from the index?",
+  },
+  {
+    answer:
+      "Not their files. The index covers the MCCE graduate program only. There is one reference page for the department's two bachelor programs, Computer Engineering (CENG) and Communications Engineering (TENG), with their plans of study, electives, and how the two tracks differ.",
+    category: "site",
+    question: "Does the site cover the CENG and TENG bachelor programs?",
   },
   {
     answer:
