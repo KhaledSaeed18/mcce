@@ -42,7 +42,7 @@ export interface FooterNavColumn {
 }
 
 export const FOOTER_TAGLINE =
-  "Independent index of MCCE program materials: lectures, exams, slides, and recordings from both years.";
+  "Independent index of MCCE program materials from both years, with a PDF editor and the tools to plan the degree around them.";
 
 export const FOOTER_DISCLAIMER =
   "Independent index of program materials. Not affiliated with or an official page of LIU.";
