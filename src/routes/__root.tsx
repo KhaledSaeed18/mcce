@@ -17,6 +17,7 @@ import { SavedNodesProvider } from "@/components/providers/saved-nodes-provider"
 import { RouteError } from "@/components/route-error";
 import { JsonLd } from "@/components/seo/json-ld";
 import { GA_MEASUREMENT_ID } from "@/config/analytics";
+import { GPA_SHARE_PARAM } from "@/config/gpa";
 import {
   SITE_DESCRIPTION,
   SITE_NAME,
@@ -189,11 +190,14 @@ export const Route = createRootRouteWithContext<RouterContext>()({
     // The GA library itself is fetched after window load, so it never
     // competes with critical assets for bandwidth on a slow connection.
     // gtag() calls made before then just queue into dataLayer.
+    // The first page view is sent by hand because a GPA share link carries
+    // the student's averages in the query string, and the default page view
+    // would report the full URL.
     scripts:
       import.meta.env.PROD && GA_MEASUREMENT_ID
         ? [
             {
-              children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","${GA_MEASUREMENT_ID}");window.addEventListener("load",function(){var s=document.createElement("script");s.src="https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}";s.async=true;document.head.appendChild(s);});`,
+              children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}function stripShare(h){if(!h)return h;var u=new URL(h);u.searchParams.delete(${JSON.stringify(GPA_SHARE_PARAM)});return u.href;}gtag("js",new Date());gtag("config","${GA_MEASUREMENT_ID}",{send_page_view:false});gtag("event","page_view",{page_location:stripShare(location.href),page_referrer:stripShare(document.referrer)});window.addEventListener("load",function(){var s=document.createElement("script");s.src="https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}";s.async=true;document.head.appendChild(s);});`,
             },
           ]
         : [],
