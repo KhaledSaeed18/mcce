@@ -5,7 +5,7 @@
 <h1 align="center">MCCE</h1>
 
 <p align="center">
-  A materials browser for the LIU M.S. in Computer and Communication Engineering program.
+  An independent index and study toolkit for the LIU M.S. in Computer and Communication Engineering program.
 </p>
 
 <p align="center">
@@ -41,7 +41,8 @@ schedule, so the index tracks what's actually shared without anyone maintaining 
 Alongside the index, it carries the parts of the program that are otherwise scattered across
 PDFs and screenshots: the plan of study, the prerequisite roadmap, a GPA calculator on the
 program's grading scale, the admissions flow, and the tuition numbers with a planner to work
-a year's fees out from them.
+a year's fees out from them. A PDF editor opens any indexed PDF in the browser to mark it up,
+and a tools directory covers what is worth installing for the coursework and the thesis.
 
 This is an independent, student-built site. It is not an official page of Lebanese International
 University. For admissions, curriculum, and official program details, see the
@@ -62,8 +63,14 @@ Direct links to the three shared Google Drive folders:
 - **Browse by source and course**: program materials organized by Drive source, semester, and
   course, with folder and file counts at a glance.
 - **Search**: find material by name, filtered by semester, course, material type, or file type.
-- **Command palette**: jump straight to a file from anywhere on the site.
-- **File previews**: preview documents, slides, and sheets without leaving the browser.
+- **Command palette**: press `Cmd+K` or `Ctrl+K` to jump straight to a file from anywhere on the
+  site, with recently opened files listed before you type.
+- **File previews**: preview documents, slides, sheets, and text files without leaving the site.
+- **PDF editor**: open any indexed PDF in the browser and draw, type, and add boxes and circles,
+  in five colours with undo and redo. Rotate, reorder, copy, or remove pages from a thumbnail
+  rail, then save a marked-up copy. Markup is kept per file in the browser, and the file in Drive
+  never changes. Opens from any PDF preview or from the menu, works full screen, has keyboard
+  shortcuts for every tool, and needs a desktop-width screen.
 - **Past exams**: every indexed midterm, final, and assessment in one view, grouped by course and
   by the term it was sat, with papers that record no year kept at the end of each course.
 - **Saved files**: keep a shortlist of files while browsing. It stays in the browser.
@@ -75,18 +82,23 @@ Direct links to the three shared Google Drive folders:
 - **Curriculum roadmap**: a traceable prerequisite graph across the full program, with credit
   totals per year and semester.
 - **GPA calculator**: semester and cumulative GPA on the program's 4.0 scale, with a trend chart,
-  an end-of-program projection, and the course average needed to reach a target. Entries stay in
-  the browser, nothing is sent anywhere.
+  an end-of-program projection, and the course average needed to reach a target. A share link
+  carries a set of averages to someone else. Entries stay in the browser, nothing is sent
+  anywhere.
 - **Admissions guide**: the graduate admissions flow in one place, with the documents and fees
   required, separate step-by-step tracks for LIU and non-LIU bachelor graduates, the GPA bar for
   each, the application window, and the offices to contact.
 - **Tuition and fees**: the official per credit and per year rates in both USD and LBP, plus a
   planner that turns the credits you intend to take each semester into semester and year totals,
-  with registration and NSSF charges, and an option to convert the LBP side at a rate you set.
-- **Tools directory**: about 400 external tools for the program, grouped by task, each with a
-  cost badge (Free, Freemium, Trial, Paid, Student) and an Open Source flag,
-  filterable by badge and searchable, with a thesis toolkit ordered by stage and an index of
-  public GitHub repositories with their licence class.
+  with registration and NSSF charges, a financial aid percent applied the way LIU bills it, and
+  an option to convert the LBP side at a rate you set.
+- **CCE undergraduate programs**: a reference page for the department's two bachelor programs,
+  Computer Engineering (CENG) and Communications Engineering (TENG), with both plans of study,
+  the electives, and the one course where the two tracks differ.
+- **Tools directory**: about 400 external tools for the program in 26 categories, each with a
+  cost badge (Free, Freemium, Trial, Paid, Student) and an Open Source flag, filterable by badge
+  and searchable, with a thesis toolkit ordered by stage and an index of about 280 public GitHub
+  repositories with their licence class and maintenance state.
 - **Exports**: download, preview, or share the plan of study, a GPA report, or a tuition plan as
   a PDF. The GPA report and the tuition plan also export as CSV or JSON.
 - **Weekly auto-sync**: a scheduled job re-crawls the source Drive and updates the index, so
@@ -102,7 +114,7 @@ Direct links to the three shared Google Drive folders:
 - **Works offline**: the index is cached on first visit, so browsing and search keep working with
   no connection, no sign-in, and no tracking.
 - **Installable**: works as a standalone app on desktop and mobile through the site manifest.
-- **Light and dark themes**: follows the system setting, or set it manually.
+- **Light and dark themes**: follows the system setting, or toggle it with the `D` key.
 
 ## Contributing
 
