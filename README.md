@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="public/og-image.png" alt="MCCE: The whole program, indexed. Past exams, plan of study, GPA and tuition, and a PDF editor." width="100%" />
-</p>
-
 <h1 align="center">MCCE</h1>
 
 <p align="center">
@@ -23,6 +19,10 @@
   <a href="https://drive.google.com/drive/folders/15A8bxA33GichTPcZkyXxaZnP_dRyryTq"><img src="https://shieldcn.dev/badge/First_Year-ff9f1c.svg?logo=googledrive" alt="First Year Drive" /></a>
   <a href="https://drive.google.com/drive/folders/1O5i5a7CgmPEwQ7G6MFyM75zIfmtDi5pt"><img src="https://shieldcn.dev/badge/Second_Year_(Fall)-ff9f1c.svg?logo=googledrive" alt="Second Year Fall Drive" /></a>
   <a href="https://drive.google.com/drive/folders/1Ed1qu98go160SHcte4FstkPVhxX9pRK1"><img src="https://shieldcn.dev/badge/Second_Year_(Spring)-ff9f1c.svg?logo=googledrive" alt="Second Year Spring Drive" /></a>
+</p>
+
+<p align="center">
+  <img src=".github/assets/mcce-demo.webp" alt="A tour of MCCE: the home page, search, a course page, the plan of study, the GPA calculator, tuition and fees, and more." width="100%" />
 </p>
 
 ---
