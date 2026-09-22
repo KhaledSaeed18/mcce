@@ -4,8 +4,9 @@ import {
   RESOURCES_PAGE_PATH,
   RESOURCES_THESIS_PATH,
 } from "@/config/resources/copy";
-import { SITE_URL } from "@/config/site";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 
 export const RESOURCES_URL = `${SITE_URL}${RESOURCES_PAGE_PATH}`;
 export const RESOURCES_THESIS_URL = `${SITE_URL}${RESOURCES_THESIS_PATH}`;
@@ -20,7 +21,7 @@ export function buildResourcesHead() {
     links: [{ href: RESOURCES_URL, rel: "canonical" }],
     meta: buildPageMeta({
       description: RESOURCES_DESCRIPTION,
-      title: "Tools · MCCE",
+      title: formatPageTitle("Tools", SITE_NAME),
       url: RESOURCES_URL,
     }),
   };
@@ -40,14 +41,14 @@ export function buildCategoryHead(
     meta: category
       ? buildPageMeta({
           description: `${category.tagline} Tools for MCCE students with the cost of each one up front.`,
-          title: `${category.label} · Tools · MCCE`,
+          title: formatPageTitle(category.label, "Tools", SITE_NAME),
           url,
         })
       : buildPageMeta({
           description:
             "This category does not exist in the MCCE tools directory.",
           robots: "noindex, follow",
-          title: "Category not found · MCCE",
+          title: formatPageTitle("Category not found", SITE_NAME),
           url,
         }),
   };
@@ -59,7 +60,7 @@ export function buildThesisHead() {
     meta: buildPageMeta({
       description:
         "Tools for CENG695A and CENG695B in thesis order: framing, search, screening, citing, experiments, writing, and defense.",
-      title: "Thesis toolkit · MCCE",
+      title: formatPageTitle("Thesis toolkit", SITE_NAME),
       url: RESOURCES_THESIS_URL,
     }),
   };
@@ -71,7 +72,7 @@ export function buildOpenSourceHead() {
     meta: buildPageMeta({
       description:
         "Public GitHub repositories for MCCE coursework and thesis work, with the licence class and maintenance state of each one.",
-      title: "Open source index · MCCE",
+      title: formatPageTitle("Open source index", SITE_NAME),
       url: RESOURCES_OPEN_SOURCE_URL,
     }),
   };

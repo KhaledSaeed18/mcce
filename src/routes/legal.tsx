@@ -4,8 +4,9 @@ import { LegalQuestions } from "@/components/legal/legal-questions";
 import { LegalSection } from "@/components/legal/legal-section";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
 import { LEGAL_SECTIONS } from "@/config/legal";
-import { SITE_URL } from "@/config/site";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 
 const LEGAL_URL = `${SITE_URL}/legal`;
 
@@ -16,7 +17,7 @@ export const Route = createFileRoute("/legal")({
     meta: buildPageMeta({
       description:
         "What MCCE stores in your browser, what the contact form sends elsewhere, and the terms and disclaimer for an independent index of program materials.",
-      title: "Privacy and terms · MCCE",
+      title: formatPageTitle("Privacy and terms", SITE_NAME),
       url: LEGAL_URL,
     }),
   }),

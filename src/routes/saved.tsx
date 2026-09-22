@@ -12,12 +12,13 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
-import { SITE_URL } from "@/config/site";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import { resolveNodeIds } from "@/lib/drive/by-id";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import type { FilePreviewSearch } from "@/lib/drive/types";
 import { readOptionalString } from "@/lib/search-params";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 
 const SAVED_URL = `${SITE_URL}/saved`;
 
@@ -28,7 +29,7 @@ export const Route = createFileRoute("/saved")({
     meta: buildPageMeta({
       description: "Files you saved while browsing the MCCE index.",
       robots: "noindex, follow",
-      title: "Saved · MCCE",
+      title: formatPageTitle("Saved", SITE_NAME),
       url: SAVED_URL,
     }),
   }),

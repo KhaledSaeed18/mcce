@@ -3,7 +3,7 @@ import { useCallback } from "react";
 import { FilePreviewHost } from "@/components/drive/file-preview-host";
 import { SearchFilters } from "@/components/drive/search-filters";
 import { SearchResults } from "@/components/drive/search-results";
-import { SITE_URL } from "@/config/site";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import { useDriveSearch } from "@/hooks/use-drive-search";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import type {
@@ -14,6 +14,7 @@ import type {
 } from "@/lib/drive/types";
 import { readOptionalString } from "@/lib/search-params";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 
 const SEARCH_URL = `${SITE_URL}/search`;
 
@@ -25,7 +26,7 @@ export const Route = createFileRoute("/search")({
       description:
         "Search MCCE program materials by name, semester, course, material, or file type.",
       robots: "noindex, follow",
-      title: "Search · MCCE",
+      title: formatPageTitle("Search", SITE_NAME),
       url: SEARCH_URL,
     }),
   }),

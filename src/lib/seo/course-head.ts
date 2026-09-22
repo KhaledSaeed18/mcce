@@ -1,6 +1,7 @@
-import { SITE_URL } from "@/config/site";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import type { CurriculumCourseContext } from "@/lib/curriculum/types";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 
 function buildDescription(context: CurriculumCourseContext): string {
   const { course, semester, year } = context;
@@ -27,13 +28,16 @@ export function buildCourseHead(
       ? buildPageMeta({
           description: buildDescription(context),
           robots: previewRobots,
-          title: `${context.course.code}, ${context.course.name} · MCCE`,
+          title: formatPageTitle(
+            `${context.course.code}, ${context.course.name}`,
+            SITE_NAME
+          ),
           url,
         })
       : buildPageMeta({
           description: "This course is not part of the MCCE plan of study.",
           robots: "noindex, follow",
-          title: "Course not found · MCCE",
+          title: formatPageTitle("Course not found", SITE_NAME),
           url,
         }),
   };

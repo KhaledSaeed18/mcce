@@ -10,6 +10,7 @@ import { flattenCourses } from "@/lib/curriculum/lookup";
 import { buildCourseSummaryMap } from "@/lib/drive/courses";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 import { buildCurriculumSchema } from "@/lib/seo/schema";
 
 const COURSES_URL = `${SITE_URL}/course`;
@@ -23,7 +24,10 @@ export const Route = createFileRoute("/course/")({
     links: [{ href: COURSES_URL, rel: "canonical" }],
     meta: buildPageMeta({
       description: `Every course in the LIU M.S. in Computer and Communication Engineering (MCCE) program: ${COURSE_COUNT} courses across ${getProgramCredits(CURRICULUM)} credits, with descriptions, prerequisites, and indexed material.`,
-      title: "MCCE Courses · Computer and Communication Engineering at LIU",
+      title: formatPageTitle(
+        "MCCE Courses",
+        "Computer and Communication Engineering at LIU"
+      ),
       url: COURSES_URL,
     }),
   }),

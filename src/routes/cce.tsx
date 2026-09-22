@@ -23,6 +23,7 @@ import { CCE_PROGRAMS } from "@/config/cce/programs";
 import { SITE_NAME, SITE_URL } from "@/config/site";
 import { buildCceProgramSchema } from "@/lib/seo/cce-schema";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 import { buildBreadcrumbSchema, buildFaqSchema } from "@/lib/seo/schema";
 
 const CCE_URL = `${SITE_URL}${CCE_PAGE_PATH}`;
@@ -33,7 +34,7 @@ export const Route = createFileRoute("/cce")({
     links: [{ href: CCE_URL, rel: "canonical" }],
     meta: buildPageMeta({
       description: CCE_META_DESCRIPTION,
-      title: `${CCE_META_TITLE} · ${SITE_NAME}`,
+      title: formatPageTitle(CCE_META_TITLE, SITE_NAME),
       url: CCE_URL,
     }),
   }),

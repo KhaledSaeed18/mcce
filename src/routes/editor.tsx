@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { EditorViewportNotice } from "@/components/pdf-editor/editor-viewport-notice";
 import { PdfEditorWorkspace } from "@/components/pdf-editor/pdf-editor-workspace";
-import { SITE_URL } from "@/config/site";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import { useEditorViewport } from "@/hooks/use-editor-viewport";
 import type { FilePreviewSearch } from "@/lib/drive/types";
 import {
@@ -10,6 +10,7 @@ import {
 } from "@/lib/pdf-editor/queries";
 import { readOptionalString } from "@/lib/search-params";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 
 const EDITOR_URL = `${SITE_URL}/editor`;
 
@@ -20,7 +21,7 @@ export const Route = createFileRoute("/editor")({
     meta: buildPageMeta({
       description: "Open a PDF from the index and mark it up in the browser.",
       robots: "noindex, follow",
-      title: "PDF editor · MCCE",
+      title: formatPageTitle("PDF editor", SITE_NAME),
       url: EDITOR_URL,
     }),
   }),

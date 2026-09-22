@@ -12,7 +12,7 @@ import {
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
 import { JsonLd } from "@/components/seo/json-ld";
 import { CURRICULUM } from "@/config/curriculum";
-import { SITE_URL } from "@/config/site";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import { useCurriculumSelection } from "@/hooks/use-curriculum-selection";
 import { getProgramCredits } from "@/lib/curriculum/credits";
 import { buildCourseContextLookup } from "@/lib/curriculum/lookup";
@@ -20,6 +20,7 @@ import { buildCourseSummaryMap } from "@/lib/drive/courses";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import { readOptionalString } from "@/lib/search-params";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 import { buildCurriculumSchema } from "@/lib/seo/schema";
 
 const PLAN_OF_STUDY_URL = `${SITE_URL}/plan-of-study`;
@@ -36,7 +37,7 @@ export const Route = createFileRoute("/plan-of-study")({
     links: [{ href: PLAN_OF_STUDY_URL, rel: "canonical" }],
     meta: buildPageMeta({
       description: `The MCCE curriculum by year and semester: ${getProgramCredits(CURRICULUM)} credits so far, with descriptions, objectives, prerequisites, corequisites, and links to indexed materials.`,
-      title: "Plan of Study · MCCE",
+      title: formatPageTitle("Plan of Study", SITE_NAME),
       url: PLAN_OF_STUDY_URL,
     }),
   }),

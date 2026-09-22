@@ -1,7 +1,10 @@
 export const SITE_URL = "https://mcce.khaledsaeed.tech";
 export const SITE_NAME = "MCCE";
-export const SITE_TITLE =
-  "LIU MCCE · M.S. in Computer and Communication Engineering";
+export const PAGE_TITLE_SEPARATOR = " | ";
+export const SITE_TITLE = [
+  "LIU MCCE",
+  "M.S. in Computer and Communication Engineering",
+].join(PAGE_TITLE_SEPARATOR);
 export const SITE_DESCRIPTION =
   "LIU MCCE course files, past exams, and plan of study in one searchable index, plus a GPA calculator, tuition planner, admissions guide, and PDF editor.";
 /** Social cards cut off near 125 characters, so they get their own shorter line. */

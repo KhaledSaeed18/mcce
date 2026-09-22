@@ -7,12 +7,13 @@ import { GpaSharedLinkDialog } from "@/components/gpa/gpa-shared-link-dialog";
 import { GpaStandingSummary } from "@/components/gpa/gpa-standing-summary";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
 import { GPA_CALCULATOR_PATH, GPA_SHARE_PARAM } from "@/config/gpa";
-import { SITE_URL } from "@/config/site";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import { useGpaAverages } from "@/hooks/use-gpa-averages";
 import { useGpaLinkImport } from "@/hooks/use-gpa-link-import";
 import { useGpaResults } from "@/hooks/use-gpa-results";
 import { toShareSearch } from "@/lib/gpa/share/search";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 
 const GPA_CALCULATOR_URL = `${SITE_URL}${GPA_CALCULATOR_PATH}`;
 
@@ -23,7 +24,7 @@ export const Route = createFileRoute("/gpa-calculator")({
     meta: buildPageMeta({
       description:
         "LIU GPA calculator for the MCCE program: semester and cumulative GPA on the official 4.0 scale, a final GPA projection, and the course average needed to hit a target.",
-      title: "LIU GPA Calculator · MCCE",
+      title: formatPageTitle("LIU GPA Calculator", SITE_NAME),
       url: GPA_CALCULATOR_URL,
     }),
   }),

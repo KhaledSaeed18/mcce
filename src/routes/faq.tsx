@@ -5,8 +5,9 @@ import { FaqHero } from "@/components/faq/faq-hero";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PROGRAM_FAQ, PROGRAM_FAQ_GROUPS } from "@/config/faq";
-import { SITE_URL } from "@/config/site";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 import { buildFaqSchema } from "@/lib/seo/schema";
 
 const FAQ_URL = `${SITE_URL}/faq`;
@@ -18,7 +19,7 @@ export const Route = createFileRoute("/faq")({
     meta: buildPageMeta({
       description:
         "Answers about the LIU MCCE program and this site: syncing, opening files, the PDF editor, planning tools, offline use, and sending materials.",
-      title: "FAQ · MCCE",
+      title: formatPageTitle("FAQ", SITE_NAME),
       url: FAQ_URL,
     }),
   }),

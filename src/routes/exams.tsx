@@ -7,6 +7,7 @@ import { examGroupsQueryOptions } from "@/lib/drive/queries";
 import type { FilePreviewSearch } from "@/lib/drive/types";
 import { readOptionalString } from "@/lib/search-params";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 
 const EXAMS_URL = `${SITE_URL}/exams`;
 const EXAMS_DESCRIPTION =
@@ -18,7 +19,10 @@ export const Route = createFileRoute("/exams")({
     links: [{ href: EXAMS_URL, rel: "canonical" }],
     meta: buildPageMeta({
       description: EXAMS_DESCRIPTION,
-      title: "MCCE Exam Archive · Past Exams, Midterms and Finals",
+      title: formatPageTitle(
+        "MCCE Exam Archive",
+        "Past Exams, Midterms and Finals"
+      ),
       url: EXAMS_URL,
     }),
   }),

@@ -1,10 +1,11 @@
-import { SITE_URL } from "@/config/site";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import {
   buildFolderDescription,
   resolveFolderMeta,
 } from "@/lib/drive/resolve-folder";
 import type { DriveIndex } from "@/lib/drive/types";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 
 const MISSING_FOLDER_DESCRIPTION =
   "This folder isn't in the current index. It may have moved, or the index may be stale.";
@@ -29,7 +30,7 @@ export function buildFolderHead(
       ? buildPageMeta({
           description: buildFolderDescription(meta),
           robots: isIndexableFolder(meta) ? undefined : "noindex, follow",
-          title: `${meta.title} · MCCE`,
+          title: formatPageTitle(meta.title, SITE_NAME),
           url,
         })
       : buildPageMeta({

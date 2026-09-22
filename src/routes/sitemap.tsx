@@ -5,9 +5,10 @@ import { SitemapCourseGroup } from "@/components/sitemap/sitemap-course-group";
 import { SitemapDriveGroup } from "@/components/sitemap/sitemap-drive-group";
 import { SitemapGroup } from "@/components/sitemap/sitemap-group";
 import { SitemapHero } from "@/components/sitemap/sitemap-hero";
-import { SITE_URL } from "@/config/site";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import { SITEMAP_GROUPS } from "@/config/sitemap";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 
 const SITEMAP_URL = `${SITE_URL}/sitemap`;
 
@@ -18,7 +19,7 @@ export const Route = createFileRoute("/sitemap")({
     meta: buildPageMeta({
       description:
         "Every page on MCCE in one list: the index, course pages, program tools, Drive folders, and the site's own pages.",
-      title: "Sitemap · MCCE",
+      title: formatPageTitle("Sitemap", SITE_NAME),
       url: SITEMAP_URL,
     }),
   }),

@@ -5,8 +5,9 @@ import { ContactForm } from "@/components/contact/contact-form";
 import { ContactHero } from "@/components/contact/contact-hero";
 import { ContactSupport } from "@/components/contact/contact-support";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
-import { SITE_URL } from "@/config/site";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 
 const CONTACT_URL = `${SITE_URL}/contact`;
 
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/contact")({
     meta: buildPageMeta({
       description:
         "Reach the MCCE index maintainer by email or GitHub, report a bug, request a feature, or share materials for the program archive.",
-      title: "Contact · MCCE",
+      title: formatPageTitle("Contact", SITE_NAME),
       url: CONTACT_URL,
     }),
   }),

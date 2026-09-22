@@ -6,6 +6,7 @@ import { AboutTrust } from "@/components/about/about-trust";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
 import { SITE_URL } from "@/config/site";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 
 const ABOUT_URL = `${SITE_URL}/about`;
 
@@ -16,7 +17,10 @@ export const Route = createFileRoute("/about")({
     meta: buildPageMeta({
       description:
         "What the LIU M.S. in Computer and Communication Engineering (MCCE) graduate program is, and what this independent index offers: course files, past exams, study planning tools, and a PDF editor.",
-      title: "About MCCE · LIU Computer and Communication Engineering",
+      title: formatPageTitle(
+        "About MCCE",
+        "LIU Computer and Communication Engineering"
+      ),
       url: ABOUT_URL,
     }),
   }),

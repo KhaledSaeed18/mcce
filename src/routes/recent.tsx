@@ -11,13 +11,14 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
-import { SITE_URL } from "@/config/site";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import { formatDate } from "@/lib/drive/format";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import { buildRecentBatches } from "@/lib/drive/recent";
 import type { FilePreviewSearch } from "@/lib/drive/types";
 import { readOptionalString } from "@/lib/search-params";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 
 const RECENT_URL = `${SITE_URL}/recent`;
 
@@ -28,7 +29,7 @@ export const Route = createFileRoute("/recent")({
     meta: buildPageMeta({
       description:
         "Files added to the MCCE index since the last syncs, grouped by the week they arrived.",
-      title: "Recently added · MCCE",
+      title: formatPageTitle("Recently added", SITE_NAME),
       url: RECENT_URL,
     }),
   }),

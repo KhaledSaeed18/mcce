@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { ADMISSIONS_PAGE_PATH, ADMISSIONS_TRACKS } from "@/config/admissions";
 import { SITE_NAME, SITE_URL } from "@/config/site";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { formatPageTitle } from "@/lib/seo/page-title";
 import { buildAdmissionsSchema, buildBreadcrumbSchema } from "@/lib/seo/schema";
 
 const ADMISSIONS_URL = `${SITE_URL}${ADMISSIONS_PAGE_PATH}`;
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/admissions")({
     meta: buildPageMeta({
       description:
         "LIU admissions guide for MCCE graduate applicants: required documents, fees, LIU and non-LIU flows, and official contact points.",
-      title: "LIU Admissions Guide · MCCE",
+      title: formatPageTitle("LIU Admissions Guide", SITE_NAME),
       url: ADMISSIONS_URL,
     }),
   }),
