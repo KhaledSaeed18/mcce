@@ -4,6 +4,7 @@ import {
   ClockIcon,
   CompassIcon,
   DollarSignIcon,
+  FilePenLineIcon,
   FileTextIcon,
   FolderIcon,
   GraduationCapIcon,
@@ -23,6 +24,7 @@ import {
 } from "lucide-react";
 import type { COURSE_CARD_COLORS } from "@/config/courses";
 import { DRIVE_DIRECT_LINKS } from "@/config/drive-links";
+import { EDITOR_PATH } from "@/config/pdf-editor";
 import {
   RESOURCES_OPEN_SOURCE_PATH,
   RESOURCES_PAGE_PATH,
@@ -49,6 +51,7 @@ export type NavRoute =
   | "/plan-of-study"
   | "/gpa-calculator"
   | "/cce"
+  | "/editor"
   | "/resources"
   | "/resources/thesis"
   | "/resources/open-source"
@@ -179,6 +182,12 @@ const PROGRAM_ENTRIES: NavEntry[] = [
 
 const RESOURCE_ENTRIES: NavEntry[] = [
   {
+    description: "Mark up any PDF from the index and save a copy.",
+    icon: FilePenLineIcon,
+    label: "PDF editor",
+    to: EDITOR_PATH,
+  },
+  {
     description: "Tools by task, each with its cost up front.",
     icon: WrenchIcon,
     label: "Tools",
@@ -255,7 +264,7 @@ export const NAV_GROUPS: NavGroup[] = [
     icon: ToolCaseIcon,
     label: "Resources",
     tagline:
-      "Tools, thesis workflow, and open source, with what each one costs.",
+      "A PDF editor built in, plus outside tools with what each one costs.",
     value: "resources",
   },
   {
