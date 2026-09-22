@@ -4,6 +4,11 @@ export const SITE_TITLE =
   "LIU MCCE · M.S. in Computer and Communication Engineering";
 export const SITE_DESCRIPTION =
   "LIU MCCE course files, past exams, and plan of study in one searchable index, plus a GPA calculator, tuition planner, admissions guide, and PDF editor.";
+/** Social cards cut off near 125 characters, so they get their own shorter line. */
+export const SITE_SOCIAL_DESCRIPTION =
+  "Course files, past exams, and the plan of study for LIU MCCE, plus GPA and tuition calculators and a PDF editor.";
+export const SITE_AUTHOR = "Khaled Saeed";
+export const SITE_AUTHOR_URL = "https://github.com/KhaledSaeed18";
 export const SITE_OG_IMAGE = `${SITE_URL}/og-image.png`;
 export const SITE_OG_IMAGE_ALT =
   "MCCE: The whole program, indexed. Past exams, plan of study, GPA and tuition, and a PDF editor.";

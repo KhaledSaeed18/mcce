@@ -19,10 +19,12 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { GA_MEASUREMENT_ID } from "@/config/analytics";
 import { GPA_SHARE_PARAM } from "@/config/gpa";
 import {
+  SITE_AUTHOR,
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_OG_IMAGE,
   SITE_OG_IMAGE_ALT,
+  SITE_SOCIAL_DESCRIPTION,
   SITE_TITLE,
   SITE_URL,
 } from "@/config/site";
@@ -57,6 +59,10 @@ export const Route = createRootRouteWithContext<RouterContext>()({
       {
         name: "description",
         content: SITE_DESCRIPTION,
+      },
+      {
+        name: "author",
+        content: SITE_AUTHOR,
       },
       {
         name: "application-name",
@@ -94,7 +100,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
       },
       {
         property: "og:description",
-        content: SITE_DESCRIPTION,
+        content: SITE_SOCIAL_DESCRIPTION,
       },
       {
         property: "og:image",
@@ -126,7 +132,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
       },
       {
         name: "twitter:description",
-        content: SITE_DESCRIPTION,
+        content: SITE_SOCIAL_DESCRIPTION,
       },
       {
         name: "twitter:image",
