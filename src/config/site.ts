@@ -3,7 +3,7 @@ export const SITE_NAME = "MCCE";
 export const SITE_TITLE =
   "LIU MCCE · M.S. in Computer and Communication Engineering";
 export const SITE_DESCRIPTION =
-  "Browse and search course materials for the LIU MCCE, the M.S. in Computer and Communication Engineering program, organized by semester.";
+  "LIU MCCE course files, past exams, and plan of study in one searchable index, plus a GPA calculator, tuition planner, admissions guide, and PDF editor.";
 export const SITE_OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 export const PROGRAM_NAME = "M.S. in Computer and Communication Engineering";

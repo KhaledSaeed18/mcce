@@ -1,7 +1,7 @@
 {
   "name": "MCCE: Program Materials",
   "short_name": "MCCE",
-  "description": "MCCE is the M.S. in Computer and Communication Engineering at Lebanese International University (LIU). Browse and search program materials by semester and course.",
+  "description": "An independent index for the M.S. in Computer and Communication Engineering (MCCE) at Lebanese International University (LIU): course files and past exams by semester and course, the plan of study, GPA and tuition calculators, and a PDF editor.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
