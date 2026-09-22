@@ -1,6 +1,7 @@
 import {
   CalculatorIcon,
   DollarSignIcon,
+  FilePenLineIcon,
   FileTextIcon,
   GraduationCapIcon,
   LibraryIcon,
@@ -8,6 +9,7 @@ import {
   SearchIcon,
 } from "lucide-react";
 import type { HeroQuickLink } from "@/components/marketing/types";
+import { EDITOR_PATH } from "@/config/pdf-editor";
 
 /** The pages a first-time reader would otherwise only find in the nav menu. */
 export const HERO_QUICK_LINKS: HeroQuickLink[] = [
@@ -18,4 +20,5 @@ export const HERO_QUICK_LINKS: HeroQuickLink[] = [
   { icon: CalculatorIcon, label: "GPA calculator", to: "/gpa-calculator" },
   { icon: DollarSignIcon, label: "Tuition and fees", to: "/tuition-fees" },
   { icon: GraduationCapIcon, label: "Admissions", to: "/admissions" },
+  { icon: FilePenLineIcon, label: "PDF editor", to: EDITOR_PATH },
 ];

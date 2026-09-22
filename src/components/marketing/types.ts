@@ -9,7 +9,8 @@ export type HeroQuickLinkRoute =
   | "/admissions"
   | "/tuition-fees"
   | "/recent"
-  | "/search";
+  | "/search"
+  | "/editor";
 
 export interface HeroQuickLink {
   icon: LucideIcon;

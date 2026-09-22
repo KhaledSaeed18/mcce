@@ -36,8 +36,9 @@ export function HeroSection({ queries, stats }: HeroSectionProps) {
         <p className="max-w-xl text-base text-muted-foreground sm:text-lg">
           Slides, past exams, problem sets, and recordings from both years of
           MCCE, pulled straight from the program's Drive and kept in sync. On
-          top of the files: search across every name, the plan of study with its
-          prerequisites, and a GPA calculator on the program's scale.
+          top of the files: search across every name, a PDF editor to mark them
+          up, the plan of study, GPA and tuition calculators, and a directory of
+          tools for the coursework and the thesis.
         </p>
 
         <HeroActions />
