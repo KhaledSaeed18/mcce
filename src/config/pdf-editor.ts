@@ -178,3 +178,30 @@ export const TOOL_HOTKEYS: Record<EditorTool, string> = {
   rect: "r",
   text: "t",
 };
+
+export const EDITOR_IDLE_TITLE = "No file open";
+export const EDITOR_IDLE_NOTE = "pick a PDF from the sidebar";
+export const EDITOR_IDLE_NOTE_HIDDEN = "the sidebar is tucked away";
+export const EDITOR_IDLE_SHOW_FILES = "Show files";
+export const EDITOR_RECENT_TITLE = "Recently opened";
+export const EDITOR_SHORTCUTS_TITLE = "Once a file is open";
+
+/** Enough to resume the last few files without the list outgrowing the blank page above it. */
+export const EDITOR_RECENT_LIMIT = 4;
+
+/** The order the shortcuts are listed on the blank page, most used first. */
+export const EDITOR_SHORTCUT_TOOLS: readonly EditorTool[] = [
+  "pen",
+  "text",
+  "rect",
+  "ellipse",
+  "eraser",
+  "hand",
+];
+
+/** Degrees each sheet behind the blank page settles at, with a small overshoot on the way. */
+export const EDITOR_PAPER_FAN = {
+  back: -5,
+  middle: 3,
+  transition: { damping: 12, stiffness: 140, type: "spring" },
+} as const;

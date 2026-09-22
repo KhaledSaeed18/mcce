@@ -1,5 +1,4 @@
-import { FileTextIcon, LoaderIcon, TriangleAlertIcon } from "lucide-react";
-import { EditorIdleHint } from "@/components/pdf-editor/editor-idle-hint";
+import { LoaderIcon, TriangleAlertIcon } from "lucide-react";
 import {
   Empty,
   EmptyDescription,
@@ -9,19 +8,13 @@ import {
 } from "@/components/ui/empty";
 import type { PdfLoadStatus } from "@/hooks/use-pdf-document";
 
-const CONTENT: Record<
-  Exclude<PdfLoadStatus, "ready">,
-  { description: string; title: string }
-> = {
+type ShownStatus = Exclude<PdfLoadStatus, "idle" | "ready">;
+
+const CONTENT: Record<ShownStatus, { description: string; title: string }> = {
   error: {
     description:
       "Google Drive did not return the file. Open it in Drive instead, or try again.",
     title: "Could not load this PDF",
-  },
-  idle: {
-    description:
-      "Pick a PDF from the folders on the left to start marking it up.",
-    title: "No file open",
   },
   loading: {
     description: "Fetching the file from Google Drive.",
@@ -31,12 +24,11 @@ const CONTENT: Record<
 
 const ICONS = {
   error: TriangleAlertIcon,
-  idle: FileTextIcon,
   loading: LoaderIcon,
 };
 
 interface EditorStatusProps {
-  status: PdfLoadStatus;
+  status: Exclude<PdfLoadStatus, "idle">;
 }
 
 export function EditorStatus({ status }: EditorStatusProps) {
@@ -47,8 +39,7 @@ export function EditorStatus({ status }: EditorStatusProps) {
   const Icon = ICONS[status];
 
   return (
-    <div className="relative flex flex-1 items-center justify-center">
-      {status === "idle" ? <EditorIdleHint /> : null}
+    <div className="flex flex-1 items-center justify-center">
       <Empty className="w-auto flex-none border-0 bg-transparent px-8 py-6">
         <EmptyHeader>
           <EmptyMedia className="bg-primary" variant="icon">

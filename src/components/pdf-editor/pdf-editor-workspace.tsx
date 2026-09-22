@@ -1,6 +1,7 @@
 import { useCallback, useRef } from "react";
 import { EditorDocumentArea } from "@/components/pdf-editor/editor-document-area";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
+import { EditorIdleState } from "@/components/pdf-editor/editor-idle-state";
 import { EditorStatus } from "@/components/pdf-editor/editor-status";
 import { EditorToolbar } from "@/components/pdf-editor/editor-toolbar";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
@@ -95,6 +96,16 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
   });
 
   const settings = { color, fontSize, strokeWidth, tool };
+  const placeholder =
+    status === "idle" ? (
+      <EditorIdleState
+        isBrowserOpen={isBrowserOpen}
+        nodes={nodes}
+        onShowFiles={toggleBrowser}
+      />
+    ) : (
+      <EditorStatus status={status} />
+    );
 
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
@@ -163,7 +174,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
                 zoom={zoom.value}
               />
             ) : (
-              <EditorStatus status={status} />
+              placeholder
             )}
           </EditorDocumentArea>
         </div>
