@@ -26,12 +26,12 @@ export const Route = createFileRoute("/")({
 });
 
 function HomePage() {
-  const { courses, heroQueries, latestBatch, sourceSummaries, stats } =
+  const { courses, heroStations, latestBatch, sourceSummaries, stats } =
     Route.useLoaderData();
 
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 sm:p-6">
-      <HeroSection queries={heroQueries} stats={stats} />
+      <HeroSection stations={heroStations} stats={stats} />
 
       {latestBatch ? (
         <RecentStrip addedAt={latestBatch.addedAt} count={latestBatch.total} />

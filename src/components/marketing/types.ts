@@ -1,5 +1,4 @@
 import type { LucideIcon } from "lucide-react";
-import type { DriveNodeKind } from "@/lib/drive/types";
 
 export type HeroQuickLinkRoute =
   | "/course"
@@ -18,16 +17,20 @@ export interface HeroQuickLink {
   to: HeroQuickLinkRoute;
 }
 
-export interface HeroSearchResult {
-  courseCode: string;
-  kind: DriveNodeKind;
-  materialType: string;
-  name: string;
+export interface HeroStationMaterial {
+  count: number;
+  type: string;
 }
 
-export interface HeroSearchQuery {
-  results: HeroSearchResult[];
-  term: string;
-  /** How many files in the index actually match the term, not just the rows shown. */
-  total: number;
+/** A course on the hero radio dial. Its frequency is read from the course code. */
+export interface HeroStation {
+  code: string;
+  fileCount: number;
+  frequency: number;
+  /** The course number as the dial prints it, "537" or "566L". */
+  label: string;
+  /** The largest material types first, with the long tail folded into "other". */
+  materials: HeroStationMaterial[];
+  name: string;
+  semester: string;
 }
