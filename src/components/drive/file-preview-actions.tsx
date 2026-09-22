@@ -5,7 +5,7 @@ import {
   CheckIcon,
   CopyIcon,
   ExternalLinkIcon,
-  PencilRulerIcon,
+  HighlighterIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
@@ -29,43 +29,55 @@ export function FilePreviewActions({
   onToggleSaved,
   webViewLink,
 }: FilePreviewActionsProps) {
+  const saveLabel = isSaved ? "Remove from saved" : "Save";
+  const copyLabel = isCopied ? "Link copied" : "Copy link";
+
   return (
-    <DialogFooter>
-      <Button aria-pressed={isSaved} onClick={onToggleSaved} variant="outline">
-        {isSaved ? (
-          <BookmarkCheckIcon data-icon="inline-start" />
-        ) : (
-          <BookmarkIcon data-icon="inline-start" />
-        )}
-        {isSaved ? "Saved" : "Save"}
-      </Button>
-      {canAnnotate ? (
+    <DialogFooter className="sm:items-center">
+      <div className="flex gap-2 sm:mr-auto">
         <Button
-          nativeButton={false}
-          render={
-            <Link search={{ file: fileId }} target="_blank" to="/editor" />
-          }
+          aria-label={saveLabel}
+          aria-pressed={isSaved}
+          onClick={onToggleSaved}
+          size="icon"
+          title={saveLabel}
           variant="outline"
         >
-          <PencilRulerIcon data-icon="inline-start" />
-          Open in editor
+          {isSaved ? <BookmarkCheckIcon /> : <BookmarkIcon />}
         </Button>
-      ) : null}
-      <Button onClick={onCopyLink} variant="outline">
-        {isCopied ? (
-          <CheckIcon data-icon="inline-start" />
-        ) : (
-          <CopyIcon data-icon="inline-start" />
-        )}
-        {isCopied ? "Copied" : "Copy link"}
-      </Button>
+        <Button
+          aria-label={copyLabel}
+          onClick={onCopyLink}
+          size="icon"
+          title={copyLabel}
+          variant="outline"
+        >
+          {isCopied ? <CheckIcon /> : <CopyIcon />}
+        </Button>
+      </div>
       <Button
         nativeButton={false}
         render={<a href={webViewLink} rel="noopener" target="_blank" />}
+        variant={canAnnotate ? "outline" : "default"}
       >
         <ExternalLinkIcon data-icon="inline-start" />
         Open in Google Drive
       </Button>
+      {canAnnotate ? (
+        <Button
+          className="group/annotate"
+          nativeButton={false}
+          render={
+            <Link search={{ file: fileId }} target="_blank" to="/editor" />
+          }
+        >
+          <HighlighterIcon
+            className="transition-transform duration-200 group-hover/annotate:-rotate-12 motion-reduce:transition-none"
+            data-icon="inline-start"
+          />
+          Annotate PDF
+        </Button>
+      ) : null}
     </DialogFooter>
   );
 }
