@@ -71,6 +71,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
             <EditorToolbar
               canClear={markup.annotations.length > 0}
               canRedo={markup.canRedo}
+              canRestore={!markup.isOriginal}
               canUndo={markup.canUndo}
               color={tools.color}
               exportStatus={exportStatus}
@@ -81,6 +82,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
               onExport={exportPdf}
               onFontSizeChange={markup.changeFontSize}
               onRedo={markup.redo}
+              onRestore={markup.restore}
               onStrokeWidthChange={tools.setStrokeWidth}
               onToolChange={tools.setTool}
               onUndo={markup.undo}

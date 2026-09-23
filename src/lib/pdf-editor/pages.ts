@@ -25,6 +25,19 @@ export function buildPages(pageCount: number): EditorPage[] {
   }));
 }
 
+/** Whether the pages are still the file's own: all there, upright, and in order. */
+export function isOriginalLayout(
+  pages: EditorPage[],
+  pageCount: number
+): boolean {
+  return (
+    pages.length === pageCount &&
+    pages.every(
+      (page, index) => page.sourceIndex === index && page.rotation === 0
+    )
+  );
+}
+
 /** A document has to keep a page, so the last one left is not removable. */
 export function withoutPage(pages: EditorPage[], id: string): EditorPage[] {
   if (pages.length < 2) {

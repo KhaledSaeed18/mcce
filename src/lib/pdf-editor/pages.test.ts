@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   buildPageId,
   buildPages,
+  isOriginalLayout,
   movePage,
   withKnownPages,
   withoutPage,
@@ -15,6 +16,28 @@ describe("buildPageId", () => {
   it("derives an identity from a page's place in the file", () => {
     expect(buildPageId(0)).toBe("p0");
     expect(buildPageId(12)).toBe("p12");
+  });
+});
+
+describe("isOriginalLayout", () => {
+  it("accepts the file's own pages", () => {
+    expect(isOriginalLayout(buildPages(3), 3)).toBe(true);
+  });
+
+  it("rejects a page removed, turned, or moved", () => {
+    const [first, second, third] = buildPages(3);
+    expect(isOriginalLayout([first, second], 3)).toBe(false);
+    expect(
+      isOriginalLayout([first, { ...second, rotation: 90 }, third], 3)
+    ).toBe(false);
+    expect(isOriginalLayout([second, first, third], 3)).toBe(false);
+  });
+
+  it("rejects a copied page, which adds one the file does not have", () => {
+    const pages = buildPages(2);
+    expect(isOriginalLayout([...pages, { ...pages[1], id: "copy" }], 2)).toBe(
+      false
+    );
   });
 });
 

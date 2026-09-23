@@ -21,6 +21,7 @@ import type {
 interface EditorToolbarProps {
   canClear: boolean;
   canRedo: boolean;
+  canRestore: boolean;
   canUndo: boolean;
   color: string;
   exportStatus: PdfExportStatus;
@@ -31,6 +32,7 @@ interface EditorToolbarProps {
   onExport: () => void;
   onFontSizeChange: (size: number) => void;
   onRedo: () => void;
+  onRestore: () => void;
   onStrokeWidthChange: (width: number) => void;
   onToolChange: (tool: EditorTool) => void;
   onUndo: () => void;
@@ -42,6 +44,7 @@ interface EditorToolbarProps {
 export function EditorToolbar({
   canClear,
   canRedo,
+  canRestore,
   canUndo,
   color,
   exportStatus,
@@ -51,6 +54,7 @@ export function EditorToolbar({
   onExport,
   onFontSizeChange,
   onRedo,
+  onRestore,
   onStrokeWidthChange,
   onToolChange,
   navigation,
@@ -100,9 +104,11 @@ export function EditorToolbar({
       <HistoryControls
         canClear={canClear}
         canRedo={canRedo}
+        canRestore={canRestore}
         canUndo={canUndo}
         onClear={onClear}
         onRedo={onRedo}
+        onRestore={onRestore}
         onUndo={onUndo}
       />
       <Separator
