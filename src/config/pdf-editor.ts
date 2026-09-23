@@ -54,6 +54,12 @@ export const PLACEHOLDER_PAGE_SIZE = { height: 792, width: 612 };
 /** How wide a page is drawn in the thumbnail rail, in screen pixels. */
 export const THUMBNAIL_WIDTH = 116;
 
+/** Shared by the rail and its loading stand-in, so switching files does not move the pages. */
+export const RAIL_WIDTH_CLASS = "w-40";
+
+/** Enough stand-in thumbnails to fill the rail on most screens while a file loads. */
+export const RAIL_PLACEHOLDER_COUNT = 5;
+
 /** Pages turn in quarter turns, clockwise, and come back round after four. */
 export const PAGE_QUARTER_TURN = 90;
 export const PAGE_HALF_TURN = 180;

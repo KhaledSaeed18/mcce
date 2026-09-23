@@ -2,8 +2,10 @@ import type { PDFDocumentProxy } from "pdfjs-dist";
 import { Fragment, useMemo, useRef } from "react";
 import { PageDropLine } from "@/components/pdf-editor/page-drop-line";
 import { PageThumbnail } from "@/components/pdf-editor/page-thumbnail";
+import { RAIL_WIDTH_CLASS } from "@/config/pdf-editor";
 import { usePageDrag } from "@/hooks/use-page-drag";
 import type { EditorPage, PageDrag, PageSize } from "@/lib/pdf-editor/types";
+import { cn } from "@/lib/utils";
 
 /** A gap either side of the page being carried would put it back where it was. */
 function isDropShown(drag: PageDrag | null, gap: number): boolean {
@@ -56,7 +58,10 @@ export function PageThumbnailRail({
   return (
     <nav
       aria-label="Pages"
-      className="flex w-40 shrink-0 flex-col gap-4 overflow-y-auto border-r-2 bg-card p-4"
+      className={cn(
+        "flex shrink-0 flex-col gap-4 overflow-y-auto border-r-2 bg-card p-4",
+        RAIL_WIDTH_CLASS
+      )}
       ref={railRef}
     >
       {pages.map(({ page, position, size }) => (

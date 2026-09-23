@@ -89,6 +89,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
           ) : null}
           <EditorDocumentArea
             doc={doc}
+            isLoading={status === "loading"}
             isPanelAnimated={isAnimated}
             isRailOpen={isRailOpen}
             layout={markup.pages}
