@@ -1,6 +1,8 @@
-import { LoaderIcon, TriangleAlertIcon } from "lucide-react";
+import { LoaderIcon, RotateCwIcon, TriangleAlertIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   Empty,
+  EmptyContent,
   EmptyDescription,
   EmptyHeader,
   EmptyMedia,
@@ -13,7 +15,7 @@ type ShownStatus = Exclude<PdfLoadStatus, "idle" | "ready">;
 const CONTENT: Record<ShownStatus, { description: string; title: string }> = {
   error: {
     description:
-      "Google Drive did not return the file. Open it in Drive instead, or try again.",
+      "Google Drive did not return the file. Try again, or open it in Drive.",
     title: "Could not load this PDF",
   },
   loading: {
@@ -28,10 +30,11 @@ const ICONS = {
 };
 
 interface EditorStatusProps {
+  onRetry: () => void;
   status: Exclude<PdfLoadStatus, "idle">;
 }
 
-export function EditorStatus({ status }: EditorStatusProps) {
+export function EditorStatus({ onRetry, status }: EditorStatusProps) {
   if (status === "ready") {
     return null;
   }
@@ -50,6 +53,14 @@ export function EditorStatus({ status }: EditorStatusProps) {
           <EmptyTitle>{CONTENT[status].title}</EmptyTitle>
           <EmptyDescription>{CONTENT[status].description}</EmptyDescription>
         </EmptyHeader>
+        {status === "error" ? (
+          <EmptyContent>
+            <Button onClick={onRetry}>
+              <RotateCwIcon data-icon="inline-start" />
+              Try again
+            </Button>
+          </EmptyContent>
+        ) : null}
       </Empty>
     </div>
   );

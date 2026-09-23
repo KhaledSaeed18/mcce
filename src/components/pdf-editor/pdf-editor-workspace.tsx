@@ -36,6 +36,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     isDocumentShown,
     markup,
     navigation,
+    retry,
     settings,
     sizes,
     status,
@@ -114,6 +115,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
               <EditorPlaceholder
                 isBrowserOpen={isBrowserOpen}
                 nodes={nodes}
+                onRetry={retry}
                 onShowFiles={toggleBrowser}
                 status={status}
               />

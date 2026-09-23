@@ -6,6 +6,7 @@ import type { EditorTreeNode } from "@/lib/pdf-editor/types";
 interface EditorPlaceholderProps {
   isBrowserOpen: boolean;
   nodes: EditorTreeNode[];
+  onRetry: () => void;
   onShowFiles: () => void;
   status: PdfLoadStatus;
 }
@@ -14,6 +15,7 @@ interface EditorPlaceholderProps {
 export function EditorPlaceholder({
   isBrowserOpen,
   nodes,
+  onRetry,
   onShowFiles,
   status,
 }: EditorPlaceholderProps) {
@@ -27,5 +29,5 @@ export function EditorPlaceholder({
     );
   }
 
-  return <EditorStatus status={status} />;
+  return <EditorStatus onRetry={onRetry} status={status} />;
 }

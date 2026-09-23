@@ -1,5 +1,5 @@
 import type { PDFDocumentLoadingTask, PDFDocumentProxy } from "pdfjs-dist";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { openDocument } from "@/lib/pdf-editor/open-document";
 
 export type PdfLoadStatus = "idle" | "loading" | "ready" | "error";
@@ -8,6 +8,10 @@ interface PdfDocumentState {
   bytes: ArrayBuffer | null;
   doc: PDFDocumentProxy | null;
   status: PdfLoadStatus;
+}
+
+interface PdfDocument extends PdfDocumentState {
+  retry: () => void;
 }
 
 /** The state remembers which file it holds, which is how a stale one is spotted. */
@@ -23,12 +27,15 @@ const LOADING_STATE: PdfDocumentState = {
 };
 
 /** Fetches the file through the server function that proxies Drive, then opens it. */
-export function usePdfDocument(fileId: string | undefined): PdfDocumentState {
+export function usePdfDocument(fileId: string | undefined): PdfDocument {
   const [state, setState] = useState<LoadedDocument>({
     ...IDLE_STATE,
     fileId: null,
   });
+  const [attempt, setAttempt] = useState(0);
+  const retry = useCallback(() => setAttempt((count) => count + 1), []);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: attempt only triggers a fresh load
   useEffect(() => {
     if (!fileId) {
       setState({ ...IDLE_STATE, fileId: null });
@@ -58,13 +65,13 @@ export function usePdfDocument(fileId: string | undefined): PdfDocumentState {
       active = false;
       task?.destroy();
     };
-  }, [fileId]);
+  }, [attempt, fileId]);
 
   // The effect that reads a new file runs after the render that asked for it, so
   // until it has, the state still holds the file before it. Handing that one back
   // would give the new file the page count and the bytes of the old one.
   if (state.fileId !== (fileId ?? null)) {
-    return fileId ? LOADING_STATE : IDLE_STATE;
+    return { ...(fileId ? LOADING_STATE : IDLE_STATE), retry };
   }
-  return state;
+  return { ...state, retry };
 }
