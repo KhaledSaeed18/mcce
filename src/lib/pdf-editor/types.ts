@@ -168,6 +168,18 @@ export interface ToolSettings {
   tool: EditorTool;
 }
 
+/** One line of the help panel's shortcut list. */
+export interface ShortcutEntry {
+  /** Keys pressed together, joined by "+", with "Mod" for Cmd or Ctrl. */
+  keys: string;
+  label: string;
+}
+
+export interface ShortcutGroup {
+  items: readonly ShortcutEntry[];
+  title: string;
+}
+
 /** Whether the open file's markup made it into this browser's storage. */
 export type SaveStatus = "saved" | "failed";
 

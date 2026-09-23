@@ -5,7 +5,13 @@ function isMac(): boolean {
   return MAC_PLATFORM.test(navigator.userAgent);
 }
 
+/** The keys of a shortcut hint, with "Mod" named for this platform. */
+export function formatKeys(hint: string): string[] {
+  const modifier = isMac() ? "Cmd" : "Ctrl";
+  return hint.split("+").map((key) => (key === "Mod" ? modifier : key));
+}
+
 /** A control's tooltip, naming the key that does the same thing. */
 export function withShortcut(label: string, hint: string): string {
-  return `${label} (${hint.replace("Mod", isMac() ? "Cmd" : "Ctrl")})`;
+  return `${label} (${formatKeys(hint).join("+")})`;
 }

@@ -167,6 +167,9 @@ export const EDITOR_HEADER_ICON_BUTTON_CLASS =
 /** Matches the shortcut video players use, so it needs no explaining. */
 export const FULLSCREEN_HOTKEY_KEY = "f";
 
+/** Opens the help panel, the key most editors use for their shortcut list. */
+export const HELP_HOTKEY_KEY = "?";
+
 /** Held to pan with the hand, as in most drawing and design tools. */
 export const PAN_HOTKEY_KEY = " ";
 
@@ -179,11 +182,17 @@ export const DESELECT_HOTKEY_KEY = "Escape";
 
 /** Shown in each control's tooltip. "Mod" becomes Cmd on a Mac and Ctrl elsewhere. */
 export const SHORTCUT_HINTS = {
+  deleteText: "Delete",
+  deselect: "Esc",
   export: "Mod+S",
   fitWidth: "Mod+0",
+  fullscreen: "F",
+  help: "?",
   nextPage: "Right arrow",
+  pan: "Space",
   previousPage: "Left arrow",
   redo: "Mod+Shift+Z",
+  scrollZoom: "Mod+Scroll",
   undo: "Mod+Z",
   zoomIn: "Mod+=",
   zoomOut: "Mod+-",

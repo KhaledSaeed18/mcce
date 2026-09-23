@@ -1,12 +1,14 @@
 import { useRef } from "react";
 import { EditorDocumentArea } from "@/components/pdf-editor/editor-document-area";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
+import { EditorHelpDialog } from "@/components/pdf-editor/editor-help-dialog";
 import { EditorPlaceholder } from "@/components/pdf-editor/editor-placeholder";
 import { EditorSidePanel } from "@/components/pdf-editor/editor-side-panel";
 import { EditorToolbar } from "@/components/pdf-editor/editor-toolbar";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
 import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
 import { EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
+import { useEditorHelp } from "@/hooks/use-editor-help";
 import { useEditorPanels } from "@/hooks/use-editor-panels";
 import { useEditorSession } from "@/hooks/use-editor-session";
 import { useFullscreen } from "@/hooks/use-fullscreen";
@@ -28,6 +30,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
   } = useFullscreen(rootRef);
   const { isAnimated, isBrowserOpen, isRailOpen, toggleBrowser, toggleRail } =
     useEditorPanels();
+  const help = useEditorHelp();
 
   const {
     doc,
@@ -57,6 +60,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
         isFullscreenSupported={isFullscreenSupported}
         isRailOpen={isRailOpen}
         node={node}
+        onOpenHelp={help.open}
         onToggleBrowser={toggleBrowser}
         onToggleFullscreen={toggleFullscreen}
         onToggleRail={toggleRail}
@@ -129,6 +133,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
           </EditorDocumentArea>
         </div>
       </div>
+      <EditorHelpDialog onOpenChange={help.setIsOpen} open={help.isOpen} />
     </main>
   );
 }
