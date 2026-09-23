@@ -37,8 +37,13 @@ export function usePdfZoom({
     [setZoom, value]
   );
 
+  const restore = useCallback((nextMode: ZoomMode, next: number) => {
+    setMode(nextMode);
+    setCustomZoom(clampZoom(next));
+  }, []);
+
   const fitWidth = useCallback(() => setMode("fit-width"), []);
   const fitPage = useCallback(() => setMode("fit-page"), []);
 
-  return { fitPage, fitWidth, mode, value, zoomIn, zoomOut };
+  return { fitPage, fitWidth, mode, restore, value, zoomIn, zoomOut };
 }

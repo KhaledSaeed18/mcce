@@ -1,5 +1,6 @@
 import { useAnnotationDrawing } from "@/hooks/use-annotation-drawing";
 import { useAnnotationPainter } from "@/hooks/use-annotation-painter";
+import type { AnnotationDrag } from "@/lib/pdf-editor/move";
 import {
   getRenderedSize,
   getRotationTransform,
@@ -8,18 +9,20 @@ import type {
   Annotation,
   AnnotationActions,
   PageSize,
-  TextAnnotation,
   TextDraft,
   ToolSettings,
 } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
 const CURSOR_BY_TOOL: Record<ToolSettings["tool"], string> = {
+  arrow: "cursor-crosshair",
   ellipse: "cursor-crosshair",
   eraser: "cursor-cell",
   hand: "cursor-grab",
+  highlight: "cursor-crosshair",
   pen: "cursor-crosshair",
   rect: "cursor-crosshair",
+  select: "cursor-text",
   text: "cursor-text",
 };
 
@@ -46,10 +49,12 @@ interface AnnotationCanvasProps {
   annotations: Annotation[];
   /** The text currently open in a field, which that field draws instead. */
   editingId: string | null;
+  /** Markup being carried by the select tool, drawn where the pointer has it. */
+  markupDrag: AnnotationDrag | null;
   onDraft: (draft: TextDraft) => void;
   pageId: string;
-  /** A box mid-resize, drawn at the width the pointer is holding it at. */
-  preview: TextAnnotation | null;
+  /** Markup mid-resize, drawn at the size the pointer is holding it at. */
+  preview: Annotation | null;
   /** Quarter turns the page has been given, which the markup is drawn through. */
   rotation: number;
   /** Framed by its own overlay, so it needs no hover ring of its own. */
@@ -63,6 +68,7 @@ export function AnnotationCanvas({
   actions,
   annotations,
   editingId,
+  markupDrag,
   onDraft,
   pageId,
   preview,
@@ -97,7 +103,7 @@ export function AnnotationCanvas({
   const canvasRef = useAnnotationPainter({
     annotations,
     draft,
-    drag,
+    drag: drag ?? markupDrag,
     editingId,
     highlightId: drag?.id ?? hoverId,
     preview,
@@ -110,7 +116,10 @@ export function AnnotationCanvas({
     <canvas
       className={cn(
         "absolute inset-0 touch-none",
-        resolveCursor(settings.tool, hoveredTextId !== null, drag !== null)
+        // The text layer underneath takes the pointer while text is being picked.
+        settings.tool === "select"
+          ? "pointer-events-none"
+          : resolveCursor(settings.tool, hoveredTextId !== null, drag !== null)
       )}
       onDoubleClick={handleDoubleClick}
       onPointerCancel={handlePointerUp}

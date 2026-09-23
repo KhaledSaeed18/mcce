@@ -69,3 +69,10 @@ export const NAV_SHEET_GROUP_VARIANTS: Variants = {
   hidden: {},
   visible: { transition: { delayChildren: 0.06, staggerChildren: 0.05 } },
 };
+
+/** Editor side panels open and close on a short tween: long enough to read
+ * as a move, short enough that a fitted page does not visibly re-fit. */
+export const EDITOR_PANEL_TRANSITION: Transition = {
+  duration: 0.2,
+  ease: "easeOut",
+};

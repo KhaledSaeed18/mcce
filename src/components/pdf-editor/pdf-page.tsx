@@ -1,23 +1,25 @@
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import { useRef } from "react";
 import { AnnotationCanvas } from "@/components/pdf-editor/annotation-canvas";
-import { PageOverlayLayer } from "@/components/pdf-editor/page-overlay-layer";
-import { TextDraftField } from "@/components/pdf-editor/text-draft-field";
-import { TextSelectionBox } from "@/components/pdf-editor/text-selection-box";
+import { PdfPageOverlays } from "@/components/pdf-editor/pdf-page-overlays";
+import { PdfSearchHighlights } from "@/components/pdf-editor/pdf-search-highlights";
+import { PdfTextLayer } from "@/components/pdf-editor/pdf-text-layer";
 import {
   PAGE_INDEX_ATTRIBUTE,
   PLACEHOLDER_PAGE_SIZE,
 } from "@/config/pdf-editor";
-import { useInViewport } from "@/hooks/use-in-viewport";
-import { usePdfPageRender } from "@/hooks/use-pdf-page-render";
-import { useTextBoxResize } from "@/hooks/use-text-box-resize";
-import { useTextDraft } from "@/hooks/use-text-draft";
-import { findText } from "@/lib/pdf-editor/move";
+import { useMarkupDrag } from "@/hooks/use-markup-drag";
+import { useMarkupResize } from "@/hooks/use-markup-resize";
+import { usePageTextEditing } from "@/hooks/use-page-text-editing";
+import { usePdfPageLayers } from "@/hooks/use-pdf-page-layers";
+import { useSearchHighlights } from "@/hooks/use-search-highlights";
 import { getRenderedSize } from "@/lib/pdf-editor/rotation";
+import { findShownSelection } from "@/lib/pdf-editor/selected-markup";
 import type {
   Annotation,
   AnnotationActions,
   EditorPage,
+  SearchHit,
   TextDraft,
   ToolSettings,
 } from "@/lib/pdf-editor/types";
@@ -30,6 +32,8 @@ interface PdfPageProps {
   page: EditorPage;
   /** Where the page sits in the document now, which is what the scroller counts. */
   position: number;
+  /** The search matches on this page, drawn over its text. */
+  searchHits: SearchHit[];
   selectedId: string | null;
   settings: ToolSettings;
   textDraft: TextDraft | null;
@@ -43,32 +47,44 @@ export function PdfPage({
   onTextDraftChange,
   page,
   position,
+  searchHits,
   selectedId,
   settings,
   textDraft,
   zoom,
 }: PdfPageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isVisible = useInViewport(containerRef);
-  const { canvasRef, size } = usePdfPageRender(
+  const { canvasRef, size, textDivs, textLayerRef } = usePdfPageLayers(
+    containerRef,
     doc,
-    page.sourceIndex,
-    zoom,
-    isVisible,
-    page.rotation
+    page,
+    zoom
   );
+  const highlights = useSearchHighlights(containerRef, textDivs, searchHits);
   const pageSize = size ?? PLACEHOLDER_PAGE_SIZE;
   const rendered = getRenderedSize(pageSize, page.rotation);
-  const selected = findText(annotations, selectedId);
   const pageMarker = { [PAGE_INDEX_ATTRIBUTE]: position };
-  const { cancel, commit, edit, move, request, resize } = useTextDraft({
+  const editing = usePageTextEditing({
     actions,
+    annotations,
     draft: textDraft,
-    onChange: onTextDraftChange,
+    onDraftChange: onTextDraftChange,
+    selectedId,
     size: pageSize,
   });
-  const selection = useTextBoxResize({
-    annotation: selected,
+  const markupDrag = useMarkupDrag({
+    annotations,
+    isEnabled: settings.tool === "select",
+    onMove: actions.moveText,
+    onSelect: actions.select,
+    pageId: page.id,
+    rotation: page.rotation,
+    size: pageSize,
+    zoom,
+  });
+  const shown = findShownSelection(annotations, selectedId, markupDrag.drag);
+  const resize = useMarkupResize({
+    annotation: shown,
     onReplace: actions.replace,
     size: pageSize,
   });
@@ -77,19 +93,29 @@ export function PdfPage({
     /* Nothing may spill past the sheet: the markup layers stop where the page does. */
     <div
       {...pageMarker}
-      className="relative scroll-mt-6 overflow-hidden border-2 bg-card shadow-md"
+      {...markupDrag.handlers}
+      className="relative scroll-mt-6 overflow-hidden border-2 bg-card shadow-md data-[over-markup=true]:cursor-move data-[over-markup=true]:[&_.textLayer_span]:cursor-move"
       ref={containerRef}
       style={{ height: rendered.height * zoom, width: rendered.width * zoom }}
     >
       <canvas className="block" ref={canvasRef} />
+      <PdfTextLayer
+        isSelectable={settings.tool === "select"}
+        layerRef={textLayerRef}
+      />
+      <PdfSearchHighlights
+        boxes={highlights.boxes}
+        currentRef={highlights.currentRef}
+      />
       {size ? (
         <AnnotationCanvas
           actions={actions}
           annotations={annotations}
           editingId={textDraft?.id ?? null}
-          onDraft={request}
+          markupDrag={markupDrag.drag}
+          onDraft={editing.field.request}
           pageId={page.id}
-          preview={selection.preview}
+          preview={editing.selection.preview ?? resize.preview}
           rotation={page.rotation}
           selectedId={selectedId}
           settings={settings}
@@ -97,29 +123,15 @@ export function PdfPage({
           zoom={zoom}
         />
       ) : null}
-      <PageOverlayLayer rotation={page.rotation} size={pageSize} zoom={zoom}>
-        {selected && !textDraft ? (
-          <TextSelectionBox
-            annotation={selection.preview ?? selected}
-            onResize={selection.resize}
-            onResizeEnd={selection.end}
-            rotation={page.rotation}
-            zoom={zoom}
-          />
-        ) : null}
-        {textDraft ? (
-          <TextDraftField
-            draft={textDraft}
-            onCancel={cancel}
-            onCommit={commit}
-            onEdit={edit}
-            onMove={move}
-            onResize={resize}
-            rotation={page.rotation}
-            zoom={zoom}
-          />
-        ) : null}
-      </PageOverlayLayer>
+      <PdfPageOverlays
+        editing={editing}
+        resize={resize}
+        rotation={page.rotation}
+        shown={shown}
+        size={pageSize}
+        textDraft={textDraft}
+        zoom={zoom}
+      />
     </div>
   );
 }

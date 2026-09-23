@@ -6,17 +6,21 @@ import type {
   Annotation,
   AnnotationActions,
   EditorPage,
+  SearchHit,
   TextDraft,
   ToolSettings,
 } from "@/lib/pdf-editor/types";
 
 /** Shared by every page with nothing on it, so they all hold the same empty list. */
 const NO_ANNOTATIONS: Annotation[] = [];
+const NO_HITS: SearchHit[] = [];
 
 interface PdfPageListProps {
   actions: AnnotationActions;
   annotations: Annotation[];
   doc: PDFDocumentProxy;
+  /** Search matches keyed by the position of the page they are on. */
+  hitsByPosition: Map<number, SearchHit[]>;
   onTextDraftChange: (draft: TextDraft | null) => void;
   pages: EditorPage[];
   selectedId: string | null;
@@ -29,6 +33,7 @@ export function PdfPageList({
   actions,
   annotations,
   doc,
+  hitsByPosition,
   onTextDraftChange,
   pages,
   selectedId,
@@ -52,6 +57,7 @@ export function PdfPageList({
           onTextDraftChange={onTextDraftChange}
           page={page}
           position={position}
+          searchHits={hitsByPosition.get(position) ?? NO_HITS}
           selectedId={selectedId}
           settings={settings}
           textDraft={textDraft?.pageId === page.id ? textDraft : null}

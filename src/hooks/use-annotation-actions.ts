@@ -22,6 +22,14 @@ export function useAnnotationActions(commit: Commit) {
     [withAnnotations]
   );
 
+  const addMany = useCallback(
+    (annotations: Annotation[]) =>
+      withAnnotations((current) =>
+        annotations.length ? [...current, ...annotations] : current
+      ),
+    [withAnnotations]
+  );
+
   const eraseAt = useCallback(
     (pageId: string, point: Point) =>
       withAnnotations((current) => {
@@ -80,5 +88,14 @@ export function useAnnotationActions(commit: Commit) {
 
   const clear = useCallback(() => withAnnotations(() => []), [withAnnotations]);
 
-  return { add, batchEraseAt, clear, eraseAt, move, remove, replace };
+  return {
+    add,
+    addMany,
+    batchEraseAt,
+    clear,
+    eraseAt,
+    move,
+    remove,
+    replace,
+  };
 }

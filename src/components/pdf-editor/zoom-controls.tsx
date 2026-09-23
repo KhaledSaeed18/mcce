@@ -5,6 +5,8 @@ import {
   ZoomOutIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SHORTCUT_HINTS } from "@/config/pdf-editor";
+import { withShortcut } from "@/lib/pdf-editor/shortcut-label";
 import type { ZoomControl } from "@/lib/pdf-editor/types";
 
 const PERCENT = 100;
@@ -23,6 +25,7 @@ export function ZoomControls({
         aria-label="Zoom out"
         onClick={zoomOut}
         size="icon"
+        title={withShortcut("Zoom out", SHORTCUT_HINTS.zoomOut)}
         variant="outline"
       >
         <ZoomOutIcon />
@@ -34,6 +37,7 @@ export function ZoomControls({
         aria-label="Zoom in"
         onClick={zoomIn}
         size="icon"
+        title={withShortcut("Zoom in", SHORTCUT_HINTS.zoomIn)}
         variant="outline"
       >
         <ZoomInIcon />
@@ -43,6 +47,7 @@ export function ZoomControls({
         aria-pressed={mode === "fit-width"}
         onClick={fitWidth}
         size="icon"
+        title={withShortcut("Fit the width", SHORTCUT_HINTS.fitWidth)}
         variant="outline"
       >
         <MoveHorizontalIcon />
@@ -52,6 +57,7 @@ export function ZoomControls({
         aria-pressed={mode === "fit-page"}
         onClick={fitPage}
         size="icon"
+        title="Fit the page"
         variant="outline"
       >
         <ScanIcon />

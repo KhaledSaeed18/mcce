@@ -20,6 +20,21 @@ export function findTextAt(
   return null;
 }
 
+/** The markup under a point, of any kind, topmost first. */
+export function findAnnotationAt(
+  annotations: Annotation[],
+  pageId: string,
+  point: Point
+): Annotation | null {
+  for (let index = annotations.length - 1; index >= 0; index -= 1) {
+    const annotation = annotations[index];
+    if (annotation.pageId === pageId && isAnnotationHit(annotation, point)) {
+      return annotation;
+    }
+  }
+  return null;
+}
+
 /** The selected text, when it is one of these and it is on this page. */
 export function findText(
   annotations: Annotation[],
@@ -37,13 +52,30 @@ export function shiftAnnotation(
   dx: number,
   dy: number
 ): Annotation {
-  if (annotation.type === "pen") {
+  if (annotation.type === "pen" || annotation.type === "highlight") {
     return {
       ...annotation,
       points: annotation.points.map((point) => ({
         x: point.x + dx,
         y: point.y + dy,
       })),
+    };
+  }
+  if (annotation.type === "mark") {
+    return {
+      ...annotation,
+      boxes: annotation.boxes.map((box) => ({
+        ...box,
+        x: box.x + dx,
+        y: box.y + dy,
+      })),
+    };
+  }
+  if (annotation.type === "arrow") {
+    return {
+      ...annotation,
+      from: { x: annotation.from.x + dx, y: annotation.from.y + dy },
+      to: { x: annotation.to.x + dx, y: annotation.to.y + dy },
     };
   }
   return { ...annotation, x: annotation.x + dx, y: annotation.y + dy };

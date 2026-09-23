@@ -1,14 +1,22 @@
-import { GalleryVerticalEndIcon, PanelLeftIcon } from "lucide-react";
+import {
+  CircleHelpIcon,
+  GalleryVerticalEndIcon,
+  PanelLeftIcon,
+} from "lucide-react";
 import { OpenInDriveButton } from "@/components/drive/open-in-drive-button";
 import { EditorBrand } from "@/components/pdf-editor/editor-brand";
+import { EditorSaveStatus } from "@/components/pdf-editor/editor-save-status";
 import { FullscreenButton } from "@/components/pdf-editor/fullscreen-button";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Button } from "@/components/ui/button";
 import {
   EDITOR_EMPTY_TITLE,
   EDITOR_HEADER_ICON_BUTTON_CLASS,
+  SHORTCUT_HINTS,
 } from "@/config/pdf-editor";
-import type { EditorFile } from "@/lib/pdf-editor/types";
+import { EDITOR_HELP_LABEL } from "@/config/pdf-editor-help";
+import { withShortcut } from "@/lib/pdf-editor/shortcut-label";
+import type { EditorFile, SaveStatus } from "@/lib/pdf-editor/types";
 
 interface EditorFileBarProps {
   isBrowserOpen: boolean;
@@ -16,9 +24,12 @@ interface EditorFileBarProps {
   isFullscreenSupported: boolean;
   isRailOpen: boolean;
   node: EditorFile | null;
+  onOpenHelp: () => void;
   onToggleBrowser: () => void;
   onToggleFullscreen: () => void;
   onToggleRail: () => void;
+  /** Absent until a file is open and its markup has somewhere to go. */
+  saveStatus: SaveStatus | null;
 }
 
 export function EditorFileBar({
@@ -27,9 +38,11 @@ export function EditorFileBar({
   isFullscreenSupported,
   isRailOpen,
   node,
+  onOpenHelp,
   onToggleBrowser,
   onToggleFullscreen,
   onToggleRail,
+  saveStatus,
 }: EditorFileBarProps) {
   const title = node ? node.name : EDITOR_EMPTY_TITLE;
 
@@ -68,7 +81,20 @@ export function EditorFileBar({
       <EditorBrand />
 
       <div className="flex items-center justify-end gap-2">
-        {node ? <OpenInDriveButton href={node.webViewLink} /> : null}
+        {saveStatus ? <EditorSaveStatus status={saveStatus} /> : null}
+        {node?.source === "drive" ? (
+          <OpenInDriveButton href={node.webViewLink} />
+        ) : null}
+        <Button
+          aria-label={EDITOR_HELP_LABEL}
+          className={EDITOR_HEADER_ICON_BUTTON_CLASS}
+          onClick={onOpenHelp}
+          size="icon"
+          title={withShortcut(EDITOR_HELP_LABEL, SHORTCUT_HINTS.help)}
+          variant="outline"
+        >
+          <CircleHelpIcon />
+        </Button>
         <ThemeSwitcher className={EDITOR_HEADER_ICON_BUTTON_CLASS} />
         {isFullscreenSupported ? (
           <FullscreenButton

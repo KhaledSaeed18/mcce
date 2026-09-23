@@ -13,7 +13,7 @@ export function useEditorFileBrowser(
   activeNode: EditorFile | null
 ) {
   const [folderId, setFolderId] = useState<string | null>(
-    activeNode?.parentId ?? null
+    activeNode?.source === "drive" ? activeNode.parentId : null
   );
   const childrenMap = useMemo(() => buildChildrenMap(nodes), [nodes]);
 

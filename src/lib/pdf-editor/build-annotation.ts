@@ -3,10 +3,12 @@ import { normalizeRect } from "./geometry";
 import { createAnnotationId } from "./pointer";
 import type {
   Annotation,
+  Box,
   EditorTool,
   Point,
   TextAnnotation,
   TextDraft,
+  TextMarkStyle,
   ToolSettings,
 } from "./types";
 
@@ -28,6 +30,23 @@ export function buildShape(
   };
 }
 
+export function buildArrow(
+  from: Point,
+  to: Point,
+  pageId: string,
+  settings: ToolSettings
+): Annotation {
+  return {
+    color: settings.color,
+    from,
+    id: createAnnotationId(),
+    pageId,
+    strokeWidth: settings.strokeWidth,
+    to,
+    type: "arrow",
+  };
+}
+
 export function buildStroke(
   points: Point[],
   pageId: string,
@@ -40,6 +59,37 @@ export function buildStroke(
     points,
     type: "pen",
     width: settings.strokeWidth,
+  };
+}
+
+export function buildHighlight(
+  points: Point[],
+  pageId: string,
+  settings: ToolSettings
+): Annotation {
+  return {
+    color: settings.color,
+    id: createAnnotationId(),
+    pageId,
+    points,
+    type: "highlight",
+    width: settings.strokeWidth,
+  };
+}
+
+export function buildTextMark(
+  style: TextMarkStyle,
+  boxes: Box[],
+  pageId: string,
+  color: string
+): Annotation {
+  return {
+    boxes,
+    color,
+    id: createAnnotationId(),
+    pageId,
+    style,
+    type: "mark",
   };
 }
 
@@ -64,11 +114,18 @@ export function buildText(draft: TextDraft, text: string): TextAnnotation {
  * stroke, but both would still carry it around and save it to the file.
  */
 export function isEmptyAnnotation(annotation: Annotation): boolean {
-  if (annotation.type === "pen") {
+  if (annotation.type === "pen" || annotation.type === "highlight") {
     return annotation.points.length < MIN_STROKE_POINTS;
   }
   if (annotation.type === "text") {
     return false;
+  }
+  if (annotation.type === "mark") {
+    return annotation.boxes.length === 0;
+  }
+  if (annotation.type === "arrow") {
+    const { from, to } = annotation;
+    return Math.hypot(to.x - from.x, to.y - from.y) < MIN_SHAPE_SIZE;
   }
   return (
     annotation.width < MIN_SHAPE_SIZE || annotation.height < MIN_SHAPE_SIZE

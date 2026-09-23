@@ -4,11 +4,7 @@ import { drawAnnotation } from "@/lib/pdf-editor/draw/annotation";
 import { drawTextHighlight } from "@/lib/pdf-editor/draw/text";
 import { type AnnotationDrag, withDrag } from "@/lib/pdf-editor/move";
 import type { RotationTransform } from "@/lib/pdf-editor/rotation";
-import type {
-  Annotation,
-  PageSize,
-  TextAnnotation,
-} from "@/lib/pdf-editor/types";
+import type { Annotation, PageSize } from "@/lib/pdf-editor/types";
 
 interface AnnotationPainterOptions {
   annotations: Annotation[];
@@ -18,7 +14,7 @@ interface AnnotationPainterOptions {
   /** The text open in a field, which that field draws instead of the canvas. */
   editingId: string | null;
   highlightId: string | null;
-  preview: TextAnnotation | null;
+  preview: Annotation | null;
   /** The page as it is shown, which a turned page measures differently. */
   rendered: PageSize;
   transform: RotationTransform;

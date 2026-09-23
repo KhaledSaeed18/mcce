@@ -1,9 +1,19 @@
-import type { EditorPanels, EditorTool } from "@/lib/pdf-editor/types";
+import type {
+  EditorPanels,
+  EditorTool,
+  LocalPdfProblem,
+  TextMarkStyle,
+} from "@/lib/pdf-editor/types";
 
 export const EDITOR_PATH = "/editor";
 
 export const EDITOR_MIN_WIDTH_PX = 1225;
 export const EDITOR_VIEWPORT_QUERY = `(min-width: ${EDITOR_MIN_WIDTH_PX}px)`;
+
+/** The server cannot measure the screen, so until hydration the narrow-screen
+ * notice hides itself by CSS on wide ones. Tailwind reads class names from the
+ * source, which is why this repeats EDITOR_MIN_WIDTH_PX instead of using it. */
+export const EDITOR_NARROW_ONLY_CLASS = "min-[1225px]:hidden";
 
 /** The Drive endpoint that serves raw file bytes, read server-side only. */
 export const DRIVE_DOWNLOAD_ENDPOINT =
@@ -22,6 +32,63 @@ export const PDF_DOCUMENT_KEY_PREFIX = "mcce.pdf-document.v1";
 
 export const EDITOR_PANELS_STORAGE_KEY = "mcce.editor-panels.v1";
 
+/** PDFs opened from the reader's computer are kept in IndexedDB, which holds
+ * far more than localStorage. Details and bytes are separate stores so listing
+ * the files never reads every file into memory. */
+export const LOCAL_PDF_DB_NAME = "mcce-editor";
+export const LOCAL_PDF_DB_VERSION = 1;
+export const LOCAL_PDF_META_STORE = "local-pdf-meta";
+export const LOCAL_PDF_BYTES_STORE = "local-pdf-bytes";
+
+/** Keeps one large file from taking the browser's whole storage allowance. */
+export const LOCAL_PDF_MAX_BYTES = 100 * 1024 * 1024;
+
+/** Marks an id as a file from this device, which no Drive id starts with. */
+export const LOCAL_PDF_ID_PREFIX = "local-";
+
+/** Hex characters of the content hash kept in the id: plenty to tell files apart. */
+export const LOCAL_PDF_ID_LENGTH = 24;
+
+/** PDF readers accept a file whose header sits anywhere in its first kilobyte. */
+export const PDF_HEADER = "%PDF-";
+export const PDF_HEADER_SEARCH_BYTES = 1024;
+
+export const LOCAL_PDF_ACCEPT = ".pdf,application/pdf";
+
+export const LOCAL_PDF_OPEN_LABEL = "Open from computer";
+
+export const LOCAL_PDF_DROP_LABEL = "Drop a PDF to open it";
+
+/** Long enough to read a sentence, short enough not to linger over the page. */
+export const LOCAL_PDF_DROP_ERROR_MS = 4000;
+
+export const FILE_PANEL_INDEX_TAB = "Index";
+export const FILE_PANEL_DEVICE_TAB = "This device";
+
+export const LOCAL_PDF_LIST_EMPTY =
+  "PDFs you open from your computer are kept here, so they open again without choosing them.";
+
+export const LOCAL_PDF_REMOVE_TITLE = "Remove from this device";
+export const LOCAL_PDF_REMOVE_DESCRIPTION =
+  "The PDF and all the markup made on it leave this browser. The file on your computer is not touched. This cannot be undone.";
+
+/** The title for a file from this device whose details the browser has lost. */
+export const LOCAL_PDF_MISSING_NAME = "PDF from this device";
+
+export const LOCAL_PDF_PROBLEM_COPY: Record<LocalPdfProblem, string> = {
+  empty: "That file is empty.",
+  "not-pdf": "Only PDF files open here.",
+  "too-large":
+    "That PDF is over 100 MB, which is more than this browser can keep.",
+};
+
+/** Shown when the browser refuses to keep the file, for example in a private window. */
+export const LOCAL_PDF_SAVE_FAILED =
+  "This browser would not keep the file. Private windows often block it.";
+
+/** One key per file: the page and zoom it was left at. */
+export const PDF_VIEW_KEY_PREFIX = "mcce.pdf-view.v1";
+
 export const DEFAULT_EDITOR_PANELS: EditorPanels = {
   isBrowserOpen: true,
   isRailOpen: false,
@@ -35,12 +102,32 @@ export const MAX_ZOOM = 4;
 export const ZOOM_STEP = 0.25;
 export const DEFAULT_ZOOM = 1.25;
 
+/** Wheel travel that makes one zoom step: about one mouse notch, or a short
+ * trackpad pinch, which arrives as many small ctrl+wheel deltas. */
+export const WHEEL_ZOOM_STEP_DELTA = 60;
+
+/** How far a Safari pinch has to scale before it counts as one zoom step. */
+export const GESTURE_ZOOM_STEP_SCALE = 1.15;
+
 /** Letter size in points, held before a page reports its own dimensions so the
  * list has something to scroll and observe. */
 export const PLACEHOLDER_PAGE_SIZE = { height: 792, width: 612 };
 
 /** How wide a page is drawn in the thumbnail rail, in screen pixels. */
 export const THUMBNAIL_WIDTH = 116;
+
+/** One row of the file panel, shared by index files and files from this device. */
+export const FILE_ROW_CLASS =
+  "flex w-full items-center gap-2 rounded border-2 border-transparent px-2 py-1.5 text-left text-sm";
+export const FILE_ROW_LINK_CLASS = "hover:border-border hover:bg-accent";
+export const FILE_ROW_ACTIVE_CLASS =
+  "border-border bg-primary text-primary-foreground dark:text-white";
+
+/** Shared by the rail and its loading stand-in, so switching files does not move the pages. */
+export const RAIL_WIDTH_CLASS = "w-40";
+
+/** Enough stand-in thumbnails to fill the rail on most screens while a file loads. */
+export const RAIL_PLACEHOLDER_COUNT = 5;
 
 /** Pages turn in quarter turns, clockwise, and come back round after four. */
 export const PAGE_QUARTER_TURN = 90;
@@ -76,6 +163,44 @@ export const DEFAULT_COLOR: string = ANNOTATION_COLORS[0];
 
 export const STROKE_WIDTHS = [1, 2, 4, 8] as const;
 export const DEFAULT_STROKE_WIDTH = 2;
+
+/** The highlighter keeps its own colors and widths: marker shades read through
+ * over text, and a highlight is far wider than a pen line. */
+export const HIGHLIGHT_COLORS = [
+  "#ffd60a",
+  "#80ed99",
+  "#ff8fab",
+  "#8ecae6",
+  "#ffb703",
+] as const;
+export const DEFAULT_HIGHLIGHT_COLOR: string = HIGHLIGHT_COLORS[0];
+
+export const HIGHLIGHT_WIDTHS = [8, 12, 16, 24] as const;
+export const DEFAULT_HIGHLIGHT_WIDTH = 12;
+
+/** Light enough that black text under a highlight stays easy to read. */
+export const HIGHLIGHT_OPACITY = 0.4;
+
+/** An underline or strike line's thickness, as a share of the line of text it
+ * marks, so it matches the size of the type. */
+export const TEXT_MARK_LINE_RATIO = 0.08;
+export const TEXT_MARK_MIN_LINE = 1;
+
+/** Where each line sits, as a share of the text line's height from its top. */
+export const TEXT_MARK_UNDERLINE_AT = 0.95;
+export const TEXT_MARK_STRIKE_AT = 0.55;
+
+export const TEXT_MARK_LABELS: Record<TextMarkStyle, string> = {
+  highlight: "Highlight",
+  strike: "Strike through",
+  underline: "Underline",
+};
+
+/** Gap between the selected text and the menu that acts on it. */
+export const SELECTION_MENU_OFFSET = 8;
+
+/** Selected pieces whose heights overlap by at least this share sit on one line. */
+export const TEXT_LINE_OVERLAP = 0.5;
 
 /** Matches the Helvetica the export embeds, so the canvas previews what is saved. */
 export const ANNOTATION_FONT_FAMILY = "Helvetica, Arial, sans-serif";
@@ -120,13 +245,22 @@ export const EMPTY_TEXT_BOX_WIDTH = 140;
 /** A drag shorter than this is a click, not a shape. */
 export const MIN_SHAPE_SIZE = 4;
 
+/** An arrow's head grows with its line so a thick arrow keeps its shape,
+ * but never shrinks below what reads as a head on a thin one. */
+export const ARROW_HEAD_LENGTH_RATIO = 4;
+export const ARROW_HEAD_MIN_LENGTH = 10;
+
+/** How far each side of the head opens from the line, in radians. */
+export const ARROW_HEAD_ANGLE = Math.PI / 7;
+
 /** A stroke needs two points to be a line; one is a press that never moved. */
 export const MIN_STROKE_POINTS = 2;
 
 /** Below this a press on text is a click that opens it for editing, not a move. */
 export const TEXT_MOVE_TOLERANCE = 3;
 
-export const DEFAULT_TOOL: EditorTool = "pen";
+/** A file opens ready to read: selecting text and picking up markup, not drawing. */
+export const DEFAULT_TOOL: EditorTool = "select";
 
 /** Every toolbar control is pinned to the icon buttons' height so the row reads as one strip. */
 export const EDITOR_CONTROL_HEIGHT_CLASS = "h-9";
@@ -141,12 +275,72 @@ export const EDITOR_HEADER_ICON_BUTTON_CLASS =
 /** Matches the shortcut video players use, so it needs no explaining. */
 export const FULLSCREEN_HOTKEY_KEY = "f";
 
+/** Opens the help panel, the key most editors use for their shortcut list. */
+export const HELP_HOTKEY_KEY = "?";
+
+/** Held to pan with the hand, as in most drawing and design tools. */
+export const PAN_HOTKEY_KEY = " ";
+
+export const SEARCH_HOTKEY_KEY = "f";
+
+export const COPY_HOTKEY_KEY = "c";
+export const PASTE_HOTKEY_KEY = "v";
+
+/** How far each paste lands from the last, in page points, so copies pasted
+ * one after another step down the page instead of stacking unseen. */
+export const PASTE_OFFSET = 12;
+
+/** Pages read between updates while a file's text loads for search, so the
+ * count grows in steps rather than re-rendering after every page. */
+export const SEARCH_TEXT_BATCH_PAGES = 8;
+
+export const SEARCH_LABEL = "Search this file";
+export const SEARCH_PLACEHOLDER = "Search";
+export const SEARCH_NO_MATCHES = "No matches";
+export const SEARCH_READING = "Reading";
+
 export const UNDO_HOTKEY_KEY = "z";
 export const REDO_HOTKEY_KEY = "y";
 
 /** Both keys remove on a Mac keyboard, where only one of them is printed. */
 export const DELETE_HOTKEY_KEYS: readonly string[] = ["Delete", "Backspace"];
 export const DESELECT_HOTKEY_KEY = "Escape";
+
+/** Shown in each control's tooltip. "Mod" becomes Cmd on a Mac and Ctrl elsewhere. */
+export const SHORTCUT_HINTS = {
+  copyMarkup: "Mod+C",
+  deleteText: "Delete",
+  deselect: "Esc",
+  export: "Mod+S",
+  fitWidth: "Mod+0",
+  fullscreen: "F",
+  help: "?",
+  nextPage: "Right arrow",
+  pan: "Space",
+  pasteMarkup: "Mod+V",
+  previousPage: "Left arrow",
+  redo: "Mod+Shift+Z",
+  scrollZoom: "Mod+Scroll",
+  search: "Mod+F",
+  searchNext: "Enter",
+  searchPrevious: "Shift+Enter",
+  undo: "Mod+Z",
+  zoomIn: "Mod+=",
+  zoomOut: "Mod+-",
+} as const;
+
+export const SAVE_STATUS_COPY = {
+  failed: {
+    detail:
+      "This browser would not store your changes, most likely because its storage is full. Download a copy to keep them.",
+    label: "Not saved",
+  },
+  saved: {
+    detail:
+      "Your markup and page changes are kept in this browser. Clearing its site data removes them.",
+    label: "Saved on this device",
+  },
+} as const;
 
 export const EDITOR_BRAND_LABEL = "Editor";
 
@@ -162,20 +356,28 @@ export const EDITOR_EXPORT_SUFFIX = "-annotated.pdf";
 export const DEFAULT_EXPORT_NAME = "document.pdf";
 
 export const TOOL_LABELS: Record<EditorTool, string> = {
+  arrow: "Arrow",
   ellipse: "Circle",
   eraser: "Eraser",
   hand: "Hand",
+  highlight: "Highlighter",
   pen: "Pen",
   rect: "Square",
+  select: "Select",
   text: "Text",
 };
 
 export const TOOL_HOTKEYS: Record<EditorTool, string> = {
+  arrow: "a",
   ellipse: "c",
   eraser: "e",
   hand: "h",
+  /** The key Acrobat uses for highlighting. */
+  highlight: "u",
   pen: "p",
   rect: "r",
+  /** The select key in most drawing and design tools. */
+  select: "v",
   text: "t",
 };
 
@@ -192,10 +394,13 @@ export const EDITOR_RECENT_LIMIT = 4;
 /** The order the shortcuts are listed on the blank page, most used first. */
 export const EDITOR_SHORTCUT_TOOLS: readonly EditorTool[] = [
   "pen",
+  "highlight",
   "text",
   "rect",
   "ellipse",
+  "arrow",
   "eraser",
+  "select",
   "hand",
 ];
 

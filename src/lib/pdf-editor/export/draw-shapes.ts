@@ -1,5 +1,20 @@
-import type { PDFPage } from "pdf-lib";
-import type { PenAnnotation, ShapeAnnotation } from "../types";
+import {
+  LineCapStyle,
+  LineJoinStyle,
+  type PDFPage,
+  setLineJoin,
+} from "pdf-lib";
+import { HIGHLIGHT_OPACITY } from "@/config/pdf-editor";
+import { getArrowHead } from "../arrow-head";
+import { getMarkLine } from "../text-mark-lines";
+import type {
+  ArrowAnnotation,
+  HighlightAnnotation,
+  PenAnnotation,
+  Point,
+  ShapeAnnotation,
+  TextMarkAnnotation,
+} from "../types";
 import { flipY } from "./content-space";
 import { hexToRgb } from "./hex-to-rgb";
 
@@ -18,6 +33,87 @@ export function drawPen(
       lineCap: 1,
       start: { x: from.x, y: flipY(height, from.y) },
       thickness: annotation.width,
+    });
+  }
+}
+
+/** Written as one path rather than a line per segment: separate see-through
+ * segments would darken at every joint where they overlap. */
+export function drawHighlight(
+  page: PDFPage,
+  annotation: HighlightAnnotation,
+  height: number
+): void {
+  const [first, ...rest] = annotation.points;
+  if (!first) {
+    return;
+  }
+  const path = [
+    `M ${first.x} ${first.y}`,
+    ...rest.map((point) => `L ${point.x} ${point.y}`),
+  ].join(" ");
+  // The drawing call sets the cap itself but leaves the join to the state around it.
+  page.pushOperators(setLineJoin(LineJoinStyle.Round));
+  page.drawSvgPath(path, {
+    borderColor: hexToRgb(annotation.color),
+    borderLineCap: LineCapStyle.Round,
+    borderOpacity: HIGHLIGHT_OPACITY,
+    borderWidth: annotation.width,
+    x: 0,
+    // An SVG path runs downward from its origin, the same way markup is stored,
+    // so anchoring it at the top of the page does the flip the other calls do.
+    y: height,
+  });
+}
+
+export function drawTextMark(
+  page: PDFPage,
+  annotation: TextMarkAnnotation,
+  height: number
+): void {
+  const color = hexToRgb(annotation.color);
+  const { style } = annotation;
+  for (const box of annotation.boxes) {
+    if (style === "highlight") {
+      page.drawRectangle({
+        color,
+        height: box.height,
+        opacity: HIGHLIGHT_OPACITY,
+        width: box.width,
+        x: box.x,
+        y: flipY(height, box.y + box.height),
+      });
+      continue;
+    }
+    const line = getMarkLine(box, style);
+    page.drawLine({
+      color,
+      end: { x: line.end.x, y: flipY(height, line.end.y) },
+      start: { x: line.start.x, y: flipY(height, line.start.y) },
+      thickness: line.thickness,
+    });
+  }
+}
+
+export function drawArrow(
+  page: PDFPage,
+  annotation: ArrowAnnotation,
+  height: number
+): void {
+  const color = hexToRgb(annotation.color);
+  const toContent = (point: Point) => ({
+    x: point.x,
+    y: flipY(height, point.y),
+  });
+  const tip = toContent(annotation.to);
+  const [left, right] = getArrowHead(annotation);
+  for (const start of [annotation.from, left, right]) {
+    page.drawLine({
+      color,
+      end: tip,
+      lineCap: 1,
+      start: toContent(start),
+      thickness: annotation.strokeWidth,
     });
   }
 }

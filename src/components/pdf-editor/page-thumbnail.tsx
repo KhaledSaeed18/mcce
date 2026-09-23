@@ -1,6 +1,11 @@
 import { CopyIcon, RotateCwIcon, Trash2Icon } from "lucide-react";
 import type { PDFDocumentProxy } from "pdfjs-dist";
-import { type ComponentProps, useCallback, useRef } from "react";
+import {
+  type ComponentProps,
+  type RefObject,
+  useCallback,
+  useRef,
+} from "react";
 import { PageThumbnailAction } from "@/components/pdf-editor/page-thumbnail-action";
 import { RAIL_POSITION_ATTRIBUTE, THUMBNAIL_WIDTH } from "@/config/pdf-editor";
 import { useInViewport } from "@/hooks/use-in-viewport";
@@ -25,6 +30,8 @@ interface PageThumbnailProps {
   page: EditorPage;
   /** Where the page sits now, which is what it is labelled and jumped to by. */
   position: number;
+  /** The rail's scroller, which decides when this page is near enough to draw. */
+  railRef: RefObject<HTMLElement | null>;
   size: PageSize;
 }
 
@@ -40,10 +47,11 @@ export function PageThumbnail({
   onSelect,
   page,
   position,
+  railRef,
   size,
 }: PageThumbnailProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const isVisible = useInViewport(wrapperRef);
+  const isVisible = useInViewport(wrapperRef, railRef);
   const rendered = getRenderedSize(size, page.rotation);
   const zoom = THUMBNAIL_WIDTH / rendered.width;
   const { canvasRef } = usePdfPageRender(

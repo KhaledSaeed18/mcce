@@ -1,22 +1,15 @@
 import { useRef } from "react";
-import { EditorDocumentArea } from "@/components/pdf-editor/editor-document-area";
+import { EditorDocumentColumn } from "@/components/pdf-editor/editor-document-column";
+import { EditorDropZone } from "@/components/pdf-editor/editor-drop-zone";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
-import { EditorPlaceholder } from "@/components/pdf-editor/editor-placeholder";
-import { EditorToolbar } from "@/components/pdf-editor/editor-toolbar";
+import { EditorHelpDialog } from "@/components/pdf-editor/editor-help-dialog";
+import { EditorSidePanel } from "@/components/pdf-editor/editor-side-panel";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
-import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
-import { DEFAULT_EXPORT_NAME, EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
-import { useEditorMarkup } from "@/hooks/use-editor-markup";
-import { useEditorPages } from "@/hooks/use-editor-pages";
+import { EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
+import { useEditorHelp } from "@/hooks/use-editor-help";
 import { useEditorPanels } from "@/hooks/use-editor-panels";
-import { useEditorShortcuts } from "@/hooks/use-editor-shortcuts";
-import { useEditorTools } from "@/hooks/use-editor-tools";
-import { useElementSize } from "@/hooks/use-element-size";
+import { useEditorSession } from "@/hooks/use-editor-session";
 import { useFullscreen } from "@/hooks/use-fullscreen";
-import { usePdfDocument } from "@/hooks/use-pdf-document";
-import { usePdfExport } from "@/hooks/use-pdf-export";
-import { usePdfZoom } from "@/hooks/use-pdf-zoom";
-import { useRecordRecentFile } from "@/hooks/use-record-recent-file";
 import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
@@ -33,39 +26,11 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     isSupported: isFullscreenSupported,
     toggle: toggleFullscreen,
   } = useFullscreen(rootRef);
-  const { isBrowserOpen, isRailOpen, toggleBrowser, toggleRail } =
+  const { isAnimated, isBrowserOpen, isRailOpen, toggleBrowser, toggleRail } =
     useEditorPanels();
+  const help = useEditorHelp();
 
-  const { bytes, doc, status } = usePdfDocument(node?.id);
-  useRecordRecentFile(node?.id);
-  const viewport = useElementSize(scrollRef);
-  const tools = useEditorTools();
-  const markup = useEditorMarkup({
-    fileId: node?.id,
-    pageCount: doc?.numPages ?? 0,
-    setColor: tools.setColor,
-    setFontSize: tools.setFontSize,
-  });
-  const { activeSize, isDocumentShown, navigation, sizes } = useEditorPages(
-    scrollRef,
-    doc,
-    markup.pages
-  );
-  const zoom = usePdfZoom({ pageSize: activeSize, viewport });
-  const { exportPdf, status: exportStatus } = usePdfExport({
-    annotations: markup.annotations,
-    bytes,
-    fileName: node ? node.name : DEFAULT_EXPORT_NAME,
-    layout: markup.pages,
-  });
-
-  useEditorShortcuts({
-    markup,
-    navigation,
-    onExport: exportPdf,
-    onToolChange: tools.setTool,
-    zoom,
-  });
+  const session = useEditorSession(node, scrollRef);
 
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
@@ -73,77 +38,36 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
       className={cn("flex flex-col bg-background", EDITOR_HEIGHT_CLASS)}
       ref={rootRef}
     >
-      <EditorFileBar
-        isBrowserOpen={isBrowserOpen}
-        isFullscreen={isFullscreen}
-        isFullscreenSupported={isFullscreenSupported}
-        isRailOpen={isRailOpen}
-        node={node}
-        onToggleBrowser={toggleBrowser}
-        onToggleFullscreen={toggleFullscreen}
-        onToggleRail={toggleRail}
-      />
-      <div className="flex min-h-0 flex-1">
-        {isBrowserOpen ? (
-          <FileBrowserPanel activeNode={node} nodes={nodes} />
-        ) : null}
-        <div className="flex min-w-0 flex-1 flex-col">
-          {doc ? (
-            <EditorToolbar
-              canRedo={markup.canRedo}
-              canUndo={markup.canUndo}
-              color={tools.color}
-              exportStatus={exportStatus}
-              fontSize={tools.fontSize}
-              navigation={navigation}
-              onClear={markup.clear}
-              onColorChange={markup.changeColor}
-              onExport={exportPdf}
-              onFontSizeChange={markup.changeFontSize}
-              onRedo={markup.redo}
-              onStrokeWidthChange={tools.setStrokeWidth}
-              onToolChange={tools.setTool}
-              onUndo={markup.undo}
-              strokeWidth={tools.strokeWidth}
-              tool={tools.tool}
-              zoom={zoom}
-            />
-          ) : null}
-          <EditorDocumentArea
-            doc={doc}
+      <EditorDropZone>
+        <EditorFileBar
+          isBrowserOpen={isBrowserOpen}
+          isFullscreen={isFullscreen}
+          isFullscreenSupported={isFullscreenSupported}
+          isRailOpen={isRailOpen}
+          node={node}
+          onOpenHelp={help.open}
+          onToggleBrowser={toggleBrowser}
+          onToggleFullscreen={toggleFullscreen}
+          onToggleRail={toggleRail}
+          saveStatus={session.saveStatus}
+        />
+        <div className="flex min-h-0 flex-1">
+          <EditorSidePanel isAnimated={isAnimated} isOpen={isBrowserOpen}>
+            <FileBrowserPanel activeNode={node} nodes={nodes} />
+          </EditorSidePanel>
+          <EditorDocumentColumn
+            isBrowserOpen={isBrowserOpen}
+            isPanelAnimated={isAnimated}
             isRailOpen={isRailOpen}
-            layout={markup.pages}
-            navigation={navigation}
-            onCopyPage={markup.copyPage}
-            onRemovePage={markup.removePage}
-            onReorderPage={markup.reorderPage}
-            onRotatePage={markup.rotatePage}
+            node={node}
+            nodes={nodes}
+            onShowFiles={toggleBrowser}
             scrollRef={scrollRef}
-            sizes={sizes}
-          >
-            {doc && isDocumentShown ? (
-              <PdfPageList
-                actions={markup.actions}
-                annotations={markup.annotations}
-                doc={doc}
-                onTextDraftChange={markup.openDraft}
-                pages={markup.pages}
-                selectedId={markup.selectedId}
-                settings={tools}
-                textDraft={markup.draft}
-                zoom={zoom.value}
-              />
-            ) : (
-              <EditorPlaceholder
-                isBrowserOpen={isBrowserOpen}
-                nodes={nodes}
-                onShowFiles={toggleBrowser}
-                status={status}
-              />
-            )}
-          </EditorDocumentArea>
+            session={session}
+          />
         </div>
-      </div>
+      </EditorDropZone>
+      <EditorHelpDialog onOpenChange={help.setIsOpen} open={help.isOpen} />
     </main>
   );
 }

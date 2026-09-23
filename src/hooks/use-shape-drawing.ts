@@ -1,5 +1,7 @@
 import { type PointerEvent, useCallback, useRef, useState } from "react";
 import {
+  buildArrow,
+  buildHighlight,
   buildShape,
   buildStroke,
   isEmptyAnnotation,
@@ -12,6 +14,37 @@ import type {
   ToolSettings,
 } from "@/lib/pdf-editor/types";
 
+/** What a drag from `start` to `end` draws with the tool in hand. */
+function buildDraft(
+  start: Point,
+  end: Point,
+  pageId: string,
+  settings: ToolSettings
+): Annotation | null {
+  if (settings.tool === "arrow") {
+    return buildArrow(start, end, pageId, settings);
+  }
+  if (settings.tool === "rect" || settings.tool === "ellipse") {
+    return buildShape(settings.tool, start, end, pageId, settings);
+  }
+  return null;
+}
+
+/** A freehand line through every point the pointer has passed, in the tool's own ink. */
+function buildFreehand(
+  points: Point[],
+  pageId: string,
+  settings: ToolSettings
+): Annotation {
+  return settings.tool === "highlight"
+    ? buildHighlight(points, pageId, settings)
+    : buildStroke(points, pageId, settings);
+}
+
+function isFreehand(tool: ToolSettings["tool"]): boolean {
+  return tool === "pen" || tool === "highlight";
+}
+
 interface ShapeDrawingOptions {
   onAdd: (annotation: Annotation) => void;
   pageId: string;
@@ -21,7 +54,7 @@ interface ShapeDrawingOptions {
   zoom: number;
 }
 
-/** The pen and the two shapes: a draft follows the pointer and is committed on release. */
+/** The pen, the highlighter, the two shapes, and the arrow: a draft follows the pointer and is committed on release. */
 export function useShapeDrawing({
   onAdd,
   pageId,
@@ -48,9 +81,9 @@ export function useShapeDrawing({
       startRef.current = point;
       pointsRef.current = [point];
       updateDraft(
-        settings.tool === "pen"
-          ? buildStroke([point], pageId, settings)
-          : buildShape("rect", point, point, pageId, settings)
+        isFreehand(settings.tool)
+          ? buildFreehand([point], pageId, settings)
+          : buildDraft(point, point, pageId, settings)
       );
     },
     [pageId, rotation, settings, size, updateDraft, zoom]
@@ -65,14 +98,12 @@ export function useShapeDrawing({
       }
       const point = toPagePoint(event, zoom, size, rotation);
 
-      if (settings.tool === "pen") {
+      if (isFreehand(settings.tool)) {
         pointsRef.current = [...pointsRef.current, point];
-        updateDraft(buildStroke(pointsRef.current, pageId, settings));
+        updateDraft(buildFreehand(pointsRef.current, pageId, settings));
         return;
       }
-      if (settings.tool === "rect" || settings.tool === "ellipse") {
-        updateDraft(buildShape(settings.tool, origin, point, pageId, settings));
-      }
+      updateDraft(buildDraft(origin, point, pageId, settings));
     },
     [pageId, rotation, settings, size, updateDraft, zoom]
   );

@@ -28,7 +28,41 @@ function makeShape(width: number, height: number): Annotation {
   };
 }
 
+function makeArrow(to: Point): Annotation {
+  return {
+    color: "#000000",
+    from: { x: 0, y: 0 },
+    id: "arrow",
+    pageId: "p0",
+    strokeWidth: 2,
+    to,
+    type: "arrow",
+  };
+}
+
 describe("isEmptyAnnotation", () => {
+  it("drops a highlight from a press that never moved", () => {
+    const highlight: Annotation = {
+      color: "#ffd60a",
+      id: "highlight",
+      pageId: "p0",
+      points: [{ x: 10, y: 10 }],
+      type: "highlight",
+      width: 12,
+    };
+    expect(isEmptyAnnotation(highlight)).toBe(true);
+  });
+
+  it("drops an arrow too short to have a direction", () => {
+    expect(isEmptyAnnotation(makeArrow({ x: 1, y: 1 }))).toBe(true);
+  });
+
+  it("keeps an arrow long enough to point somewhere", () => {
+    expect(isEmptyAnnotation(makeArrow({ x: 0, y: MIN_SHAPE_SIZE }))).toBe(
+      false
+    );
+  });
+
   it("drops a stroke from a press that never moved", () => {
     expect(isEmptyAnnotation(makeStroke([{ x: 10, y: 10 }]))).toBe(true);
   });

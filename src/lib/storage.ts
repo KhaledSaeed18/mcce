@@ -8,11 +8,23 @@ export function readJson<T>(key: string, fallback: T): T {
   }
 }
 
-/** A full quota or a blocked store costs a local convenience, which is not worth throwing over. */
-export function writeJson(key: string, value: unknown): void {
+/** A blocked store has nothing to remove, which is not worth throwing over. */
+export function removeStored(key: string): void {
   try {
-    localStorage.setItem(key, JSON.stringify(value));
+    localStorage.removeItem(key);
   } catch {
     // Deliberately silent: see above.
+  }
+}
+
+/** A full quota or a blocked store costs a local convenience, which is not
+ * worth throwing over. The result says whether it was kept, for callers that
+ * tell the user. */
+export function writeJson(key: string, value: unknown): boolean {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    return true;
+  } catch {
+    return false;
   }
 }

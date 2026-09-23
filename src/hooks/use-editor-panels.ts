@@ -16,6 +16,10 @@ function readStoredPanels(): EditorPanels {
 /** The two panels flanking the pages: the file list and the thumbnail rail. */
 export function useEditorPanels() {
   const [panels, setPanels] = useState<EditorPanels | null>(null);
+  // Restoring the stored layout is not the reader's doing, so motion comes on
+  // one render after it. Turning it on in the toggle itself would be too late:
+  // a closing panel keeps the transition it was last rendered with.
+  const [isAnimated, setIsAnimated] = useState(false);
 
   useEffect(() => setPanels(readStoredPanels()), []);
 
@@ -24,6 +28,7 @@ export function useEditorPanels() {
       return;
     }
     writeJson(EDITOR_PANELS_STORAGE_KEY, panels);
+    setIsAnimated(true);
   }, [panels]);
 
   const activePanels = panels ?? DEFAULT_EDITOR_PANELS;
@@ -43,6 +48,7 @@ export function useEditorPanels() {
   }, []);
 
   return {
+    isAnimated,
     isBrowserOpen: activePanels.isBrowserOpen,
     isRailOpen: activePanels.isRailOpen,
     toggleBrowser,

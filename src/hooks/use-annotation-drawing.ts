@@ -25,7 +25,16 @@ interface Tools {
   text: PointerHandlers;
 }
 
+const IGNORE_POINTER: PointerHandlers = {
+  handleDown: () => undefined,
+  handleMove: () => undefined,
+  handleUp: () => undefined,
+};
+
 function pickTool(tool: EditorTool, tools: Tools): PointerHandlers {
+  if (tool === "select") {
+    return IGNORE_POINTER;
+  }
   if (tool === "text") {
     return tools.text;
   }

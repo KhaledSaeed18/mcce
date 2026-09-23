@@ -1,5 +1,5 @@
 import { ERASER_TOLERANCE } from "@/config/pdf-editor";
-import { distanceToStroke } from "./distance";
+import { distanceToSegment, distanceToStroke } from "./distance";
 import { getTextBox } from "./text-layout";
 import type { Annotation, Box, Point } from "./types";
 
@@ -30,8 +30,24 @@ export function isAnnotationHit(
   if (annotation.type === "pen") {
     return distanceToStroke(annotation.points, target) <= ERASER_TOLERANCE;
   }
+  // A highlight is wide enough that its edge, not its centre line, is what the eraser touches.
+  if (annotation.type === "highlight") {
+    return (
+      distanceToStroke(annotation.points, target) <=
+      ERASER_TOLERANCE + annotation.width / 2
+    );
+  }
   if (annotation.type === "text") {
     return isInsideBox(getTextBox(annotation), target);
+  }
+  if (annotation.type === "mark") {
+    return annotation.boxes.some((box) => isInsideBox(box, target));
+  }
+  if (annotation.type === "arrow") {
+    return (
+      distanceToSegment(annotation.from, annotation.to, target) <=
+      ERASER_TOLERANCE
+    );
   }
   return isInsideBox(annotation, target);
 }

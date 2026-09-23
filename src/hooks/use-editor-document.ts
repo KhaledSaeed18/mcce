@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useAnnotationActions } from "@/hooks/use-annotation-actions";
 import { useEditorHistory } from "@/hooks/use-editor-history";
 import { usePageActions } from "@/hooks/use-page-actions";
+import { buildPages, isOriginalLayout } from "@/lib/pdf-editor/pages";
 import { readDocument, writeDocument } from "@/lib/pdf-editor/storage";
 
 /** One file's markup and pages, kept per file so reopening it restores both. */
@@ -12,6 +13,7 @@ export function useEditorDocument(
   const { canRedo, canUndo, commit, redo, reset, snapshot, undo } =
     useEditorHistory();
   const hydratedIdRef = useRef<string | null>(null);
+  const [isSaved, setIsSaved] = useState(true);
   const annotations = useAnnotationActions(commit);
   const pages = usePageActions(commit);
 
@@ -29,15 +31,26 @@ export function useEditorDocument(
     if (!fileId || hydratedIdRef.current !== fileId) {
       return;
     }
-    writeDocument(fileId, snapshot);
+    setIsSaved(writeDocument(fileId, snapshot));
   }, [fileId, snapshot]);
+
+  /** One undo step, so a restore pressed by mistake is taken back like any edit. */
+  const restore = useCallback(
+    () => commit(() => ({ annotations: [], pages: buildPages(pageCount) })),
+    [commit, pageCount]
+  );
 
   return {
     annotations: snapshot.annotations,
     canRedo,
     canUndo,
+    isOriginal:
+      snapshot.annotations.length === 0 &&
+      isOriginalLayout(snapshot.pages, pageCount),
+    isSaved,
     pages: snapshot.pages,
     redo,
+    restore,
     undo,
     ...annotations,
     ...pages,

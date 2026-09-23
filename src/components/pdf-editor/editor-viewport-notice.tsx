@@ -3,14 +3,18 @@ import { ExternalLinkIcon, MonitorIcon } from "lucide-react";
 import { LogoMark } from "@/components/logo-mark";
 import { Button } from "@/components/ui/button";
 import { EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
-import type { EditorFile } from "@/lib/pdf-editor/types";
+import type { DriveEditorFile } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
 interface EditorViewportNoticeProps {
-  node: EditorFile | null;
+  className?: string;
+  node: DriveEditorFile | null;
 }
 
-export function EditorViewportNotice({ node }: EditorViewportNoticeProps) {
+export function EditorViewportNotice({
+  className,
+  node,
+}: EditorViewportNoticeProps) {
   const description = node
     ? "The PDF editor is designed for desktop screens to give you room for the document tools and side-by-side workspace. Open this file on a wider screen, or view it directly in Google Drive."
     : "The PDF editor is designed for desktop screens to give you room for the document tools and side-by-side workspace. Open the editor on a wider screen to start.";
@@ -19,7 +23,8 @@ export function EditorViewportNotice({ node }: EditorViewportNoticeProps) {
     <main
       className={cn(
         "flex flex-col items-center justify-center gap-6 bg-background p-6 text-center",
-        EDITOR_HEIGHT_CLASS
+        EDITOR_HEIGHT_CLASS,
+        className
       )}
     >
       <LogoMark className="size-24 sm:size-28" />

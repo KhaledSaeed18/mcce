@@ -24,6 +24,15 @@ export function clampBox(box: Box, size: PageSize): Box {
   };
 }
 
+/** How far a box can follow a drag before it would leave the page. */
+export function clampDelta(box: Box, delta: Point, size: PageSize): Point {
+  const moved = clampBox(
+    { ...box, x: box.x + delta.x, y: box.y + delta.y },
+    size
+  );
+  return { x: moved.x - box.x, y: moved.y - box.y };
+}
+
 /**
  * Moves an anchor by whatever it takes to pull its box fully onto the page.
  * The box is passed already positioned, so the caller decides how it hangs off

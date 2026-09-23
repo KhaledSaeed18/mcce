@@ -10,7 +10,7 @@ import type { PageSize, Point } from "./types";
  * where nothing renders.
  */
 export function toPagePoint(
-  event: PointerEvent<HTMLCanvasElement>,
+  event: PointerEvent<Element>,
   zoom: number,
   size: PageSize,
   rotation = 0
