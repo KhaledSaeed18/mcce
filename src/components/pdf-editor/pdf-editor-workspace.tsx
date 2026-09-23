@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { EditorDocumentArea } from "@/components/pdf-editor/editor-document-area";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
 import { EditorPlaceholder } from "@/components/pdf-editor/editor-placeholder";
+import { EditorSidePanel } from "@/components/pdf-editor/editor-side-panel";
 import { EditorToolbar } from "@/components/pdf-editor/editor-toolbar";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
 import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
@@ -84,9 +85,9 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
         onToggleRail={toggleRail}
       />
       <div className="flex min-h-0 flex-1">
-        {isBrowserOpen ? (
+        <EditorSidePanel isOpen={isBrowserOpen}>
           <FileBrowserPanel activeNode={node} nodes={nodes} />
-        ) : null}
+        </EditorSidePanel>
         <div className="flex min-w-0 flex-1 flex-col">
           {doc ? (
             <EditorToolbar

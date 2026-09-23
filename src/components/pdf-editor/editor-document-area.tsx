@@ -1,6 +1,7 @@
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import type { ReactNode, RefObject } from "react";
 import { useEffect } from "react";
+import { EditorSidePanel } from "@/components/pdf-editor/editor-side-panel";
 import { PageThumbnailRail } from "@/components/pdf-editor/page-thumbnail-rail";
 import { setScrollContainer } from "@/hooks/use-hand-tool";
 import type {
@@ -44,19 +45,21 @@ export function EditorDocumentArea({
 
   return (
     <div className="flex min-h-0 flex-1">
-      {isRailOpen && doc ? (
-        <PageThumbnailRail
-          activeIndex={navigation.activeIndex}
-          doc={doc}
-          layout={layout}
-          onCopy={onCopyPage}
-          onMove={onReorderPage}
-          onRemove={onRemovePage}
-          onRotate={onRotatePage}
-          onSelect={navigation.goToPage}
-          sizes={sizes}
-        />
-      ) : null}
+      <EditorSidePanel isOpen={isRailOpen && doc !== null}>
+        {doc ? (
+          <PageThumbnailRail
+            activeIndex={navigation.activeIndex}
+            doc={doc}
+            layout={layout}
+            onCopy={onCopyPage}
+            onMove={onReorderPage}
+            onRemove={onRemovePage}
+            onRotate={onRotatePage}
+            onSelect={navigation.goToPage}
+            sizes={sizes}
+          />
+        ) : null}
+      </EditorSidePanel>
       <div
         className="flex min-h-0 flex-1 flex-col overflow-auto bg-muted"
         ref={scrollRef}
