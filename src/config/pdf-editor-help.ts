@@ -14,6 +14,7 @@ export const EDITOR_HELP_FACTS: readonly string[] = [
   "Changes save on their own in this browser, one file at a time. They do not sync to other devices, and clearing site data removes them.",
   "Download copy saves a new PDF with your markup and page changes. The file in Google Drive never changes.",
   "The page rail turns, copies, removes, and reorders pages. Drag a thumbnail to move it.",
+  "The select tool picks text to copy, highlight, underline, or strike through, and picks up markup to move it. Delete removes what is selected.",
   "Restore the original file drops every change at once. Undo brings them back.",
   `The editor needs a screen at least ${EDITOR_MIN_WIDTH_PX}px wide.`,
 ];

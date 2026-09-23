@@ -20,6 +20,21 @@ export function findTextAt(
   return null;
 }
 
+/** The markup under a point, of any kind, topmost first. */
+export function findAnnotationAt(
+  annotations: Annotation[],
+  pageId: string,
+  point: Point
+): Annotation | null {
+  for (let index = annotations.length - 1; index >= 0; index -= 1) {
+    const annotation = annotations[index];
+    if (annotation.pageId === pageId && isAnnotationHit(annotation, point)) {
+      return annotation;
+    }
+  }
+  return null;
+}
+
 /** The selected text, when it is one of these and it is on this page. */
 export function findText(
   annotations: Annotation[],

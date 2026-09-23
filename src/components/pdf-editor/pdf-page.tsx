@@ -8,10 +8,12 @@ import {
   PAGE_INDEX_ATTRIBUTE,
   PLACEHOLDER_PAGE_SIZE,
 } from "@/config/pdf-editor";
+import { useMarkupDrag } from "@/hooks/use-markup-drag";
 import { usePageTextEditing } from "@/hooks/use-page-text-editing";
 import { usePdfPageLayers } from "@/hooks/use-pdf-page-layers";
 import { useSearchHighlights } from "@/hooks/use-search-highlights";
 import { getRenderedSize } from "@/lib/pdf-editor/rotation";
+import { findShownSelection } from "@/lib/pdf-editor/selected-markup";
 import type {
   Annotation,
   AnnotationActions,
@@ -69,12 +71,24 @@ export function PdfPage({
     selectedId,
     size: pageSize,
   });
+  const markupDrag = useMarkupDrag({
+    annotations,
+    isEnabled: settings.tool === "select",
+    onMove: actions.moveText,
+    onSelect: actions.select,
+    pageId: page.id,
+    rotation: page.rotation,
+    size: pageSize,
+    zoom,
+  });
+  const shown = findShownSelection(annotations, selectedId, markupDrag.drag);
 
   return (
     /* Nothing may spill past the sheet: the markup layers stop where the page does. */
     <div
       {...pageMarker}
-      className="relative scroll-mt-6 overflow-hidden border-2 bg-card shadow-md"
+      {...markupDrag.handlers}
+      className="relative scroll-mt-6 overflow-hidden border-2 bg-card shadow-md data-[over-markup=true]:cursor-move data-[over-markup=true]:[&_.textLayer_span]:cursor-move"
       ref={containerRef}
       style={{ height: rendered.height * zoom, width: rendered.width * zoom }}
     >
@@ -92,6 +106,7 @@ export function PdfPage({
           actions={actions}
           annotations={annotations}
           editingId={textDraft?.id ?? null}
+          markupDrag={markupDrag.drag}
           onDraft={editing.field.request}
           pageId={page.id}
           preview={editing.selection.preview}
@@ -105,6 +120,7 @@ export function PdfPage({
       <PdfPageOverlays
         editing={editing}
         rotation={page.rotation}
+        shown={shown}
         size={pageSize}
         textDraft={textDraft}
         zoom={zoom}

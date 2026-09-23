@@ -353,7 +353,7 @@ export const TOOL_LABELS: Record<EditorTool, string> = {
   highlight: "Highlighter",
   pen: "Pen",
   rect: "Square",
-  select: "Select text",
+  select: "Select",
   text: "Text",
 };
 

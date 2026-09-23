@@ -1,5 +1,6 @@
 import { useAnnotationDrawing } from "@/hooks/use-annotation-drawing";
 import { useAnnotationPainter } from "@/hooks/use-annotation-painter";
+import type { AnnotationDrag } from "@/lib/pdf-editor/move";
 import {
   getRenderedSize,
   getRotationTransform,
@@ -49,6 +50,8 @@ interface AnnotationCanvasProps {
   annotations: Annotation[];
   /** The text currently open in a field, which that field draws instead. */
   editingId: string | null;
+  /** Markup being carried by the select tool, drawn where the pointer has it. */
+  markupDrag: AnnotationDrag | null;
   onDraft: (draft: TextDraft) => void;
   pageId: string;
   /** A box mid-resize, drawn at the width the pointer is holding it at. */
@@ -66,6 +69,7 @@ export function AnnotationCanvas({
   actions,
   annotations,
   editingId,
+  markupDrag,
   onDraft,
   pageId,
   preview,
@@ -100,7 +104,7 @@ export function AnnotationCanvas({
   const canvasRef = useAnnotationPainter({
     annotations,
     draft,
-    drag,
+    drag: drag ?? markupDrag,
     editingId,
     highlightId: drag?.id ?? hoverId,
     preview,
