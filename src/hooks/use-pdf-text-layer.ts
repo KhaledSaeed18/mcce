@@ -1,5 +1,5 @@
 import type { PDFDocumentProxy, TextLayer } from "pdfjs-dist";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /** Lays the page's own text over it, invisibly, at the zoom and turn the page
  * is shown at, so it can be selected and searched. Rebuilt on each change:
@@ -12,6 +12,9 @@ export function usePdfTextLayer(
   rotation: number
 ) {
   const layerRef = useRef<HTMLDivElement>(null);
+  // One per text item, in the order pdf.js reports the items, which is what
+  // search results point into. Empty until the layer has been laid out.
+  const [textDivs, setTextDivs] = useState<HTMLElement[]>([]);
 
   useEffect(() => {
     const container = layerRef.current;
@@ -41,6 +44,10 @@ export function usePdfTextLayer(
         return layer.render();
       })
       .then(() => {
+        if (isCancelled || !layer) {
+          return;
+        }
+        setTextDivs(layer.textDivs);
         const end = document.createElement("div");
         end.className = "endOfContent";
         container.append(end);
@@ -55,5 +62,5 @@ export function usePdfTextLayer(
     };
   }, [doc, isActive, pageIndex, rotation, zoom]);
 
-  return layerRef;
+  return { layerRef, textDivs };
 }

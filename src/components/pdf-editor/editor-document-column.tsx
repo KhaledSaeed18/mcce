@@ -1,8 +1,10 @@
 import type { RefObject } from "react";
 import { EditorDocumentArea } from "@/components/pdf-editor/editor-document-area";
 import { EditorPlaceholder } from "@/components/pdf-editor/editor-placeholder";
+import { EditorSearchBar } from "@/components/pdf-editor/editor-search-bar";
 import { EditorToolbar } from "@/components/pdf-editor/editor-toolbar";
 import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
+import { useDocumentSearch } from "@/hooks/use-document-search";
 import type { EditorSession } from "@/hooks/use-editor-session";
 import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
 
@@ -43,6 +45,11 @@ export function EditorDocumentColumn({
     tools,
     zoom,
   } = session;
+  const search = useDocumentSearch({
+    doc,
+    goToPage: navigation.goToPage,
+    pages: markup.pages,
+  });
 
   return (
     <div className="flex min-w-0 flex-1 flex-col">
@@ -60,6 +67,7 @@ export function EditorDocumentColumn({
           onColorChange={ink.changeColor}
           onExport={exportPdf}
           onFontSizeChange={markup.changeFontSize}
+          onOpenSearch={search.open}
           onRedo={markup.redo}
           onRestore={markup.restore}
           onStrokeWidthChange={ink.changeStrokeWidth}
@@ -70,43 +78,59 @@ export function EditorDocumentColumn({
           zoom={zoom}
         />
       ) : null}
-      <EditorDocumentArea
-        doc={doc}
-        isLoading={status === "loading"}
-        isPanelAnimated={isPanelAnimated}
-        isRailOpen={isRailOpen}
-        layout={markup.pages}
-        navigation={navigation}
-        onCopyPage={markup.copyPage}
-        onRemovePage={markup.removePage}
-        onReorderPage={markup.reorderPage}
-        onRotatePage={markup.rotatePage}
-        scrollRef={scrollRef}
-        sizes={sizes}
-      >
-        {doc && isDocumentShown ? (
-          <PdfPageList
-            actions={markup.actions}
-            annotations={markup.annotations}
-            doc={doc}
-            onTextDraftChange={markup.openDraft}
-            pages={markup.pages}
-            selectedId={markup.selectedId}
-            settings={settings}
-            textDraft={markup.draft}
-            zoom={zoom.value}
+      <div className="relative flex min-h-0 flex-1 flex-col">
+        {doc && search.isOpen ? (
+          <EditorSearchBar
+            current={search.current}
+            focusRequest={search.focusRequest}
+            isReading={search.isReading}
+            matchCount={search.matchCount}
+            onClose={search.close}
+            onNext={search.next}
+            onPrevious={search.previous}
+            onQueryChange={search.setQuery}
+            query={search.query}
           />
-        ) : (
-          <EditorPlaceholder
-            isBrowserOpen={isBrowserOpen}
-            nodes={nodes}
-            onRetry={retry}
-            onShowFiles={onShowFiles}
-            source={node ? node.source : "drive"}
-            status={status}
-          />
-        )}
-      </EditorDocumentArea>
+        ) : null}
+        <EditorDocumentArea
+          doc={doc}
+          isLoading={status === "loading"}
+          isPanelAnimated={isPanelAnimated}
+          isRailOpen={isRailOpen}
+          layout={markup.pages}
+          navigation={navigation}
+          onCopyPage={markup.copyPage}
+          onRemovePage={markup.removePage}
+          onReorderPage={markup.reorderPage}
+          onRotatePage={markup.rotatePage}
+          scrollRef={scrollRef}
+          sizes={sizes}
+        >
+          {doc && isDocumentShown ? (
+            <PdfPageList
+              actions={markup.actions}
+              annotations={markup.annotations}
+              doc={doc}
+              hitsByPosition={search.hitsByPosition}
+              onTextDraftChange={markup.openDraft}
+              pages={markup.pages}
+              selectedId={markup.selectedId}
+              settings={settings}
+              textDraft={markup.draft}
+              zoom={zoom.value}
+            />
+          ) : (
+            <EditorPlaceholder
+              isBrowserOpen={isBrowserOpen}
+              nodes={nodes}
+              onRetry={retry}
+              onShowFiles={onShowFiles}
+              source={node ? node.source : "drive"}
+              status={status}
+            />
+          )}
+        </EditorDocumentArea>
+      </div>
     </div>
   );
 }

@@ -258,6 +258,17 @@ export const HELP_HOTKEY_KEY = "?";
 /** Held to pan with the hand, as in most drawing and design tools. */
 export const PAN_HOTKEY_KEY = " ";
 
+export const SEARCH_HOTKEY_KEY = "f";
+
+/** Pages read between updates while a file's text loads for search, so the
+ * count grows in steps rather than re-rendering after every page. */
+export const SEARCH_TEXT_BATCH_PAGES = 8;
+
+export const SEARCH_LABEL = "Search this file";
+export const SEARCH_PLACEHOLDER = "Search";
+export const SEARCH_NO_MATCHES = "No matches";
+export const SEARCH_READING = "Reading";
+
 export const UNDO_HOTKEY_KEY = "z";
 export const REDO_HOTKEY_KEY = "y";
 
@@ -278,6 +289,9 @@ export const SHORTCUT_HINTS = {
   previousPage: "Left arrow",
   redo: "Mod+Shift+Z",
   scrollZoom: "Mod+Scroll",
+  search: "Mod+F",
+  searchNext: "Enter",
+  searchPrevious: "Shift+Enter",
   undo: "Mod+Z",
   zoomIn: "Mod+=",
   zoomOut: "Mod+-",

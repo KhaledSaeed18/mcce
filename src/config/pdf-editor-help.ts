@@ -46,6 +46,9 @@ export const EDITOR_HELP_SHORTCUT_GROUPS: readonly ShortcutGroup[] = [
     items: [
       { keys: SHORTCUT_HINTS.previousPage, label: "Previous page" },
       { keys: SHORTCUT_HINTS.nextPage, label: "Next page" },
+      { keys: SHORTCUT_HINTS.search, label: "Search this file" },
+      { keys: SHORTCUT_HINTS.searchNext, label: "Next match" },
+      { keys: SHORTCUT_HINTS.searchPrevious, label: "Previous match" },
       { keys: SHORTCUT_HINTS.help, label: "Open this panel" },
     ],
     title: "Move around",

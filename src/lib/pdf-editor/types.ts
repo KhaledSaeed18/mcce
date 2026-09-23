@@ -35,6 +35,42 @@ export type LocalPdfProblem = "empty" | "not-pdf" | "too-large";
 
 export type FilePanelTab = "device" | "index";
 
+/** What search needs of a page's text item, as pdf.js reports it. */
+export interface PageTextItem {
+  hasEOL?: boolean;
+  str: string;
+}
+
+/** One page's text run together for searching, lowercased, with where each
+ * of its items starts so a match can be traced back to the items it covers. */
+export interface PageText {
+  itemStarts: number[];
+  text: string;
+}
+
+/** A place in a page's text: which item, and how far into it. */
+export interface TextPoint {
+  item: number;
+  offset: number;
+}
+
+/** A run of text on a page. The end is exclusive, as in a string slice. */
+export interface TextSpan {
+  end: TextPoint;
+  start: TextPoint;
+}
+
+/** A match as one page draws it: where it is, and whether it is the one the reader is on. */
+export interface SearchHit {
+  isCurrent: boolean;
+  span: TextSpan;
+}
+
+export interface SearchMatch extends TextSpan {
+  /** Where the page sits in the document now, not where it sat in the file. */
+  position: number;
+}
+
 /** The editor's URL: a file from the index, or one from this device. */
 export interface EditorSearch {
   file?: string;

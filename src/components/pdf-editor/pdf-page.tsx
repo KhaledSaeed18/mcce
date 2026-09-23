@@ -2,6 +2,7 @@ import type { PDFDocumentProxy } from "pdfjs-dist";
 import { useRef } from "react";
 import { AnnotationCanvas } from "@/components/pdf-editor/annotation-canvas";
 import { PageOverlayLayer } from "@/components/pdf-editor/page-overlay-layer";
+import { PdfSearchHighlights } from "@/components/pdf-editor/pdf-search-highlights";
 import { PdfTextLayer } from "@/components/pdf-editor/pdf-text-layer";
 import { TextDraftField } from "@/components/pdf-editor/text-draft-field";
 import { TextSelectionBox } from "@/components/pdf-editor/text-selection-box";
@@ -12,6 +13,7 @@ import {
 import { useInViewport } from "@/hooks/use-in-viewport";
 import { usePdfPageRender } from "@/hooks/use-pdf-page-render";
 import { usePdfTextLayer } from "@/hooks/use-pdf-text-layer";
+import { useSearchHighlights } from "@/hooks/use-search-highlights";
 import { useTextBoxResize } from "@/hooks/use-text-box-resize";
 import { useTextDraft } from "@/hooks/use-text-draft";
 import { findText } from "@/lib/pdf-editor/move";
@@ -20,6 +22,7 @@ import type {
   Annotation,
   AnnotationActions,
   EditorPage,
+  SearchHit,
   TextDraft,
   ToolSettings,
 } from "@/lib/pdf-editor/types";
@@ -32,6 +35,8 @@ interface PdfPageProps {
   page: EditorPage;
   /** Where the page sits in the document now, which is what the scroller counts. */
   position: number;
+  /** The search matches on this page, drawn over its text. */
+  searchHits: SearchHit[];
   selectedId: string | null;
   settings: ToolSettings;
   textDraft: TextDraft | null;
@@ -45,6 +50,7 @@ export function PdfPage({
   onTextDraftChange,
   page,
   position,
+  searchHits,
   selectedId,
   settings,
   textDraft,
@@ -59,13 +65,14 @@ export function PdfPage({
     isVisible,
     page.rotation
   );
-  const textLayerRef = usePdfTextLayer(
+  const { layerRef: textLayerRef, textDivs } = usePdfTextLayer(
     doc,
     page.sourceIndex,
     zoom,
     isVisible,
     page.rotation
   );
+  const highlights = useSearchHighlights(containerRef, textDivs, searchHits);
   const pageSize = size ?? PLACEHOLDER_PAGE_SIZE;
   const rendered = getRenderedSize(pageSize, page.rotation);
   const selected = findText(annotations, selectedId);
@@ -94,6 +101,10 @@ export function PdfPage({
       <PdfTextLayer
         isSelectable={settings.tool === "select"}
         layerRef={textLayerRef}
+      />
+      <PdfSearchHighlights
+        boxes={highlights.boxes}
+        currentRef={highlights.currentRef}
       />
       {size ? (
         <AnnotationCanvas
