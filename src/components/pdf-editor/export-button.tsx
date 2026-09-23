@@ -1,7 +1,11 @@
 import { DownloadIcon, LoaderIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { EDITOR_CONTROL_HEIGHT_CLASS } from "@/config/pdf-editor";
+import {
+  EDITOR_CONTROL_HEIGHT_CLASS,
+  SHORTCUT_HINTS,
+} from "@/config/pdf-editor";
 import type { PdfExportStatus } from "@/hooks/use-pdf-export";
+import { withShortcut } from "@/lib/pdf-editor/shortcut-label";
 
 interface ExportButtonProps {
   onExport: () => void;
@@ -21,6 +25,10 @@ export function ExportButton({ onExport, status }: ExportButtonProps) {
         className={EDITOR_CONTROL_HEIGHT_CLASS}
         disabled={status === "working"}
         onClick={onExport}
+        title={withShortcut(
+          "Download a copy with your markup",
+          SHORTCUT_HINTS.export
+        )}
       >
         {status === "working" ? (
           <LoaderIcon className="animate-spin" data-icon="inline-start" />

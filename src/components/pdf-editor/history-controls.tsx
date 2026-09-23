@@ -1,5 +1,7 @@
 import { RedoIcon, Trash2Icon, UndoIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SHORTCUT_HINTS } from "@/config/pdf-editor";
+import { withShortcut } from "@/lib/pdf-editor/shortcut-label";
 
 interface HistoryControlsProps {
   canClear: boolean;
@@ -25,6 +27,7 @@ export function HistoryControls({
         disabled={!canUndo}
         onClick={onUndo}
         size="icon"
+        title={withShortcut("Undo", SHORTCUT_HINTS.undo)}
         variant="outline"
       >
         <UndoIcon />
@@ -34,6 +37,7 @@ export function HistoryControls({
         disabled={!canRedo}
         onClick={onRedo}
         size="icon"
+        title={withShortcut("Redo", SHORTCUT_HINTS.redo)}
         variant="outline"
       >
         <RedoIcon />
@@ -43,6 +47,7 @@ export function HistoryControls({
         disabled={!canClear}
         onClick={onClear}
         size="icon"
+        title="Clear all markup"
         variant="outline"
       >
         <Trash2Icon />

@@ -25,7 +25,7 @@ export function ToolButton({
       aria-pressed={isActive}
       onClick={handleClick}
       size="icon"
-      title={`${TOOL_LABELS[tool]} (${TOOL_HOTKEYS[tool]})`}
+      title={`${TOOL_LABELS[tool]} (${TOOL_HOTKEYS[tool].toUpperCase()})`}
       variant={isActive ? "default" : "outline"}
     >
       <Icon />

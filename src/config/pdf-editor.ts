@@ -163,6 +163,18 @@ export const REDO_HOTKEY_KEY = "y";
 export const DELETE_HOTKEY_KEYS: readonly string[] = ["Delete", "Backspace"];
 export const DESELECT_HOTKEY_KEY = "Escape";
 
+/** Shown in each control's tooltip. "Mod" becomes Cmd on a Mac and Ctrl elsewhere. */
+export const SHORTCUT_HINTS = {
+  export: "Mod+S",
+  fitWidth: "Mod+0",
+  nextPage: "Right arrow",
+  previousPage: "Left arrow",
+  redo: "Mod+Shift+Z",
+  undo: "Mod+Z",
+  zoomIn: "Mod+=",
+  zoomOut: "Mod+-",
+} as const;
+
 export const EDITOR_BRAND_LABEL = "Editor";
 
 /** Shown in the file bar before a file is picked. */
