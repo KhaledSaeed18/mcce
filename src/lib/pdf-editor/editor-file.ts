@@ -4,7 +4,7 @@ import type { EditorFile } from "./types";
 
 /** Resolves the file in the editor's URL, and only when it is an indexed PDF. */
 export const getEditorFile = createServerFn({ method: "GET" })
-  .inputValidator((data: { fileId: string }) => data)
+  .validator((data: { fileId: string }) => data)
   .handler(async ({ data }): Promise<EditorFile | null> => {
     const { nodes } = (await import("@/data/drive-index.json"))
       .default as DriveIndex;
