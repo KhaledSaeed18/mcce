@@ -60,6 +60,21 @@ export function buildStroke(
   };
 }
 
+export function buildHighlight(
+  points: Point[],
+  pageId: string,
+  settings: ToolSettings
+): Annotation {
+  return {
+    color: settings.color,
+    id: createAnnotationId(),
+    pageId,
+    points,
+    type: "highlight",
+    width: settings.strokeWidth,
+  };
+}
+
 /** Keeps the draft's id when there is one, so editing replaces rather than duplicates. */
 export function buildText(draft: TextDraft, text: string): TextAnnotation {
   return {
@@ -81,7 +96,7 @@ export function buildText(draft: TextDraft, text: string): TextAnnotation {
  * stroke, but both would still carry it around and save it to the file.
  */
 export function isEmptyAnnotation(annotation: Annotation): boolean {
-  if (annotation.type === "pen") {
+  if (annotation.type === "pen" || annotation.type === "highlight") {
     return annotation.points.length < MIN_STROKE_POINTS;
   }
   if (annotation.type === "text") {

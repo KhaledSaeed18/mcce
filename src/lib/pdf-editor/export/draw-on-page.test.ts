@@ -31,6 +31,23 @@ const ARROW: Annotation = {
   type: "arrow",
 };
 
+/** A stroke operator standing alone on its line, and a switch to a stored graphics state. */
+const STROKE_OPERATOR = /^S$/gm;
+const GRAPHICS_STATE_OPERATOR = /\/GS-\d+ gs/;
+
+const HIGHLIGHT: Annotation = {
+  color: "#ffd60a",
+  id: "h",
+  pageId: "p0",
+  points: [
+    { x: 10, y: 20 },
+    { x: 30, y: 40 },
+    { x: 50, y: 20 },
+  ],
+  type: "highlight",
+  width: 12,
+};
+
 async function exportWithPageTurnedBy(
   rotation: number,
   annotation: Annotation = STROKE
@@ -92,6 +109,18 @@ describe("drawAnnotationOnPage", () => {
 
     expect(drawing).toContain("10 100 m");
     expect(drawing.match(/60 100 l/g)).toHaveLength(3);
+  });
+
+  it("writes a highlight as one see-through path, flipped against the page height", async () => {
+    const drawing = await exportWithPageTurnedBy(0, HIGHLIGHT);
+
+    // Anchored at the top of the page and drawn downward, as markup is stored.
+    expect(drawing).toContain(`1 0 0 1 0 ${CONTENT_HEIGHT} cm`);
+    expect(drawing).toContain("1 0 0 -1 0 0 cm");
+    expect(drawing).toContain("10 20 m");
+    // One stroke for the whole path, so overlapping segments do not darken.
+    expect(drawing.match(STROKE_OPERATOR)).toHaveLength(1);
+    expect(drawing).toMatch(GRAPHICS_STATE_OPERATOR);
   });
 
   it("keeps the turn to itself rather than leaving it on for the page", async () => {

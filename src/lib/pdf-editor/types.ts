@@ -14,6 +14,7 @@ export type EditorFile = Pick<
 
 export type EditorTool =
   | "pen"
+  | "highlight"
   | "eraser"
   | "rect"
   | "ellipse"
@@ -37,6 +38,13 @@ interface AnnotationBase {
 export interface PenAnnotation extends AnnotationBase {
   points: Point[];
   type: "pen";
+  width: number;
+}
+
+/** A wide see-through stroke laid over what it marks, so the page shows through. */
+export interface HighlightAnnotation extends AnnotationBase {
+  points: Point[];
+  type: "highlight";
   width: number;
 }
 
@@ -74,6 +82,7 @@ export interface TextAnnotation extends AnnotationBase, TextGeometry {
 
 export type Annotation =
   | ArrowAnnotation
+  | HighlightAnnotation
   | PenAnnotation
   | ShapeAnnotation
   | TextAnnotation;

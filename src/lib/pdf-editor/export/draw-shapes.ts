@@ -1,7 +1,14 @@
-import type { PDFPage } from "pdf-lib";
+import {
+  LineCapStyle,
+  LineJoinStyle,
+  type PDFPage,
+  setLineJoin,
+} from "pdf-lib";
+import { HIGHLIGHT_OPACITY } from "@/config/pdf-editor";
 import { getArrowHead } from "../arrow-head";
 import type {
   ArrowAnnotation,
+  HighlightAnnotation,
   PenAnnotation,
   Point,
   ShapeAnnotation,
@@ -26,6 +33,35 @@ export function drawPen(
       thickness: annotation.width,
     });
   }
+}
+
+/** Written as one path rather than a line per segment: separate see-through
+ * segments would darken at every joint where they overlap. */
+export function drawHighlight(
+  page: PDFPage,
+  annotation: HighlightAnnotation,
+  height: number
+): void {
+  const [first, ...rest] = annotation.points;
+  if (!first) {
+    return;
+  }
+  const path = [
+    `M ${first.x} ${first.y}`,
+    ...rest.map((point) => `L ${point.x} ${point.y}`),
+  ].join(" ");
+  // The drawing call sets the cap itself but leaves the join to the state around it.
+  page.pushOperators(setLineJoin(LineJoinStyle.Round));
+  page.drawSvgPath(path, {
+    borderColor: hexToRgb(annotation.color),
+    borderLineCap: LineCapStyle.Round,
+    borderOpacity: HIGHLIGHT_OPACITY,
+    borderWidth: annotation.width,
+    x: 0,
+    // An SVG path runs downward from its origin, the same way markup is stored,
+    // so anchoring it at the top of the page does the flip the other calls do.
+    y: height,
+  });
 }
 
 export function drawArrow(

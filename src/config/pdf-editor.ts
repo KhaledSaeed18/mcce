@@ -95,6 +95,23 @@ export const DEFAULT_COLOR: string = ANNOTATION_COLORS[0];
 export const STROKE_WIDTHS = [1, 2, 4, 8] as const;
 export const DEFAULT_STROKE_WIDTH = 2;
 
+/** The highlighter keeps its own colors and widths: marker shades read through
+ * over text, and a highlight is far wider than a pen line. */
+export const HIGHLIGHT_COLORS = [
+  "#ffd60a",
+  "#80ed99",
+  "#ff8fab",
+  "#8ecae6",
+  "#ffb703",
+] as const;
+export const DEFAULT_HIGHLIGHT_COLOR: string = HIGHLIGHT_COLORS[0];
+
+export const HIGHLIGHT_WIDTHS = [8, 12, 16, 24] as const;
+export const DEFAULT_HIGHLIGHT_WIDTH = 12;
+
+/** Light enough that black text under a highlight stays easy to read. */
+export const HIGHLIGHT_OPACITY = 0.4;
+
 /** Matches the Helvetica the export embeds, so the canvas previews what is saved. */
 export const ANNOTATION_FONT_FAMILY = "Helvetica, Arial, sans-serif";
 
@@ -229,6 +246,7 @@ export const TOOL_LABELS: Record<EditorTool, string> = {
   ellipse: "Circle",
   eraser: "Eraser",
   hand: "Hand",
+  highlight: "Highlighter",
   pen: "Pen",
   rect: "Square",
   text: "Text",
@@ -239,6 +257,8 @@ export const TOOL_HOTKEYS: Record<EditorTool, string> = {
   ellipse: "c",
   eraser: "e",
   hand: "h",
+  /** The key Acrobat uses for highlighting. */
+  highlight: "u",
   pen: "p",
   rect: "r",
   text: "t",
@@ -257,6 +277,7 @@ export const EDITOR_RECENT_LIMIT = 4;
 /** The order the shortcuts are listed on the blank page, most used first. */
 export const EDITOR_SHORTCUT_TOOLS: readonly EditorTool[] = [
   "pen",
+  "highlight",
   "text",
   "rect",
   "ellipse",

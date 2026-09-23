@@ -3,6 +3,7 @@ import {
   CircleIcon,
   EraserIcon,
   HandIcon,
+  HighlighterIcon,
   MoveUpRightIcon,
   PenLineIcon,
   SquareIcon,
@@ -14,6 +15,7 @@ import type { EditorTool } from "@/lib/pdf-editor/types";
 const TOOLS: Array<{ icon: LucideIcon; tool: EditorTool }> = [
   { icon: HandIcon, tool: "hand" },
   { icon: PenLineIcon, tool: "pen" },
+  { icon: HighlighterIcon, tool: "highlight" },
   { icon: SquareIcon, tool: "rect" },
   { icon: CircleIcon, tool: "ellipse" },
   { icon: MoveUpRightIcon, tool: "arrow" },

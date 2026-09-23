@@ -41,6 +41,14 @@ function makeArrow(to: Point): Annotation {
 }
 
 describe("isEmptyAnnotation", () => {
+  it("drops a highlight from a press that never moved", () => {
+    const highlight: Annotation = {
+      ...makeStroke([{ x: 10, y: 10 }]),
+      type: "highlight",
+    };
+    expect(isEmptyAnnotation(highlight)).toBe(true);
+  });
+
   it("drops an arrow too short to have a direction", () => {
     expect(isEmptyAnnotation(makeArrow({ x: 1, y: 1 }))).toBe(true);
   });

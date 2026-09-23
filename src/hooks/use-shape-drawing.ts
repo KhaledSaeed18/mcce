@@ -1,6 +1,7 @@
 import { type PointerEvent, useCallback, useRef, useState } from "react";
 import {
   buildArrow,
+  buildHighlight,
   buildShape,
   buildStroke,
   isEmptyAnnotation,
@@ -29,6 +30,21 @@ function buildDraft(
   return null;
 }
 
+/** A freehand line through every point the pointer has passed, in the tool's own ink. */
+function buildFreehand(
+  points: Point[],
+  pageId: string,
+  settings: ToolSettings
+): Annotation {
+  return settings.tool === "highlight"
+    ? buildHighlight(points, pageId, settings)
+    : buildStroke(points, pageId, settings);
+}
+
+function isFreehand(tool: ToolSettings["tool"]): boolean {
+  return tool === "pen" || tool === "highlight";
+}
+
 interface ShapeDrawingOptions {
   onAdd: (annotation: Annotation) => void;
   pageId: string;
@@ -38,7 +54,7 @@ interface ShapeDrawingOptions {
   zoom: number;
 }
 
-/** The pen, the two shapes, and the arrow: a draft follows the pointer and is committed on release. */
+/** The pen, the highlighter, the two shapes, and the arrow: a draft follows the pointer and is committed on release. */
 export function useShapeDrawing({
   onAdd,
   pageId,
@@ -65,8 +81,8 @@ export function useShapeDrawing({
       startRef.current = point;
       pointsRef.current = [point];
       updateDraft(
-        settings.tool === "pen"
-          ? buildStroke([point], pageId, settings)
+        isFreehand(settings.tool)
+          ? buildFreehand([point], pageId, settings)
           : buildDraft(point, point, pageId, settings)
       );
     },
@@ -82,9 +98,9 @@ export function useShapeDrawing({
       }
       const point = toPagePoint(event, zoom, size, rotation);
 
-      if (settings.tool === "pen") {
+      if (isFreehand(settings.tool)) {
         pointsRef.current = [...pointsRef.current, point];
-        updateDraft(buildStroke(pointsRef.current, pageId, settings));
+        updateDraft(buildFreehand(pointsRef.current, pageId, settings));
         return;
       }
       updateDraft(buildDraft(origin, point, pageId, settings));

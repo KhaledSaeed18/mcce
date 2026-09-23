@@ -36,6 +36,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     doc,
     exportPdf,
     exportStatus,
+    ink,
     isDocumentShown,
     markup,
     navigation,
@@ -77,20 +78,20 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
               canRedo={markup.canRedo}
               canRestore={!markup.isOriginal}
               canUndo={markup.canUndo}
-              color={tools.color}
+              color={ink.color}
               exportStatus={exportStatus}
               fontSize={tools.fontSize}
               navigation={navigation}
               onClear={markup.clear}
-              onColorChange={markup.changeColor}
+              onColorChange={ink.changeColor}
               onExport={exportPdf}
               onFontSizeChange={markup.changeFontSize}
               onRedo={markup.redo}
               onRestore={markup.restore}
-              onStrokeWidthChange={tools.setStrokeWidth}
+              onStrokeWidthChange={ink.changeStrokeWidth}
               onToolChange={tools.setTool}
               onUndo={markup.undo}
-              strokeWidth={tools.strokeWidth}
+              strokeWidth={ink.strokeWidth}
               tool={tools.tool}
               zoom={zoom}
             />

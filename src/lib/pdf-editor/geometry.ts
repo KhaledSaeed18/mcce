@@ -30,6 +30,13 @@ export function isAnnotationHit(
   if (annotation.type === "pen") {
     return distanceToStroke(annotation.points, target) <= ERASER_TOLERANCE;
   }
+  // A highlight is wide enough that its edge, not its centre line, is what the eraser touches.
+  if (annotation.type === "highlight") {
+    return (
+      distanceToStroke(annotation.points, target) <=
+      ERASER_TOLERANCE + annotation.width / 2
+    );
+  }
   if (annotation.type === "text") {
     return isInsideBox(getTextBox(annotation), target);
   }

@@ -56,12 +56,24 @@ export function useEditorSession(
     zoom,
   });
 
+  // The highlighter keeps its own ink, so picking a marker shade leaves the
+  // pen's color alone, and the toolbar edits whichever the tool in hand uses.
+  const isHighlighter = tools.tool === "highlight";
+  const ink = {
+    changeColor: isHighlighter ? tools.setHighlightColor : markup.changeColor,
+    changeStrokeWidth: isHighlighter
+      ? tools.setHighlightWidth
+      : tools.setStrokeWidth,
+    color: isHighlighter ? tools.highlightColor : tools.color,
+    strokeWidth: isHighlighter ? tools.highlightWidth : tools.strokeWidth,
+  };
+
   // The pages draw with the borrowed hand while the toolbar keeps showing the
   // tool the reader picked, which is what they get back when Space comes up.
   const settings: ToolSettings = {
-    color: tools.color,
+    color: ink.color,
     fontSize: tools.fontSize,
-    strokeWidth: tools.strokeWidth,
+    strokeWidth: ink.strokeWidth,
     tool: isSpacePanning ? "hand" : tools.tool,
   };
 
@@ -74,6 +86,7 @@ export function useEditorSession(
     doc,
     exportPdf,
     exportStatus,
+    ink,
     isDocumentShown,
     markup,
     navigation,

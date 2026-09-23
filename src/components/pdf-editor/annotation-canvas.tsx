@@ -19,6 +19,7 @@ const CURSOR_BY_TOOL: Record<ToolSettings["tool"], string> = {
   ellipse: "cursor-crosshair",
   eraser: "cursor-cell",
   hand: "cursor-grab",
+  highlight: "cursor-crosshair",
   pen: "cursor-crosshair",
   rect: "cursor-crosshair",
   text: "cursor-text",

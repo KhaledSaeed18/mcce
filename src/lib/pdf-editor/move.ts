@@ -37,7 +37,7 @@ export function shiftAnnotation(
   dx: number,
   dy: number
 ): Annotation {
-  if (annotation.type === "pen") {
+  if (annotation.type === "pen" || annotation.type === "highlight") {
     return {
       ...annotation,
       points: annotation.points.map((point) => ({

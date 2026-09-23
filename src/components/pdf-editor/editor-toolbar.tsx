@@ -7,8 +7,11 @@ import { ToolPicker } from "@/components/pdf-editor/tool-picker";
 import { ZoomControls } from "@/components/pdf-editor/zoom-controls";
 import { Separator } from "@/components/ui/separator";
 import {
+  ANNOTATION_COLORS,
   EDITOR_CONTROL_HEIGHT_CLASS,
   FONT_SIZES,
+  HIGHLIGHT_COLORS,
+  HIGHLIGHT_WIDTHS,
   STROKE_WIDTHS,
 } from "@/config/pdf-editor";
 import type { PdfExportStatus } from "@/hooks/use-pdf-export";
@@ -77,7 +80,11 @@ export function EditorToolbar({
         />
       )}
       {tool !== "eraser" && tool !== "hand" && (
-        <ColorSwatches onSelect={onColorChange} value={color} />
+        <ColorSwatches
+          colors={tool === "highlight" ? HIGHLIGHT_COLORS : ANNOTATION_COLORS}
+          onSelect={onColorChange}
+          value={color}
+        />
       )}
       {tool === "text" && (
         <SizeSelect
@@ -92,7 +99,7 @@ export function EditorToolbar({
         <SizeSelect
           label="Stroke width"
           onValueChange={onStrokeWidthChange}
-          options={STROKE_WIDTHS}
+          options={tool === "highlight" ? HIGHLIGHT_WIDTHS : STROKE_WIDTHS}
           suffix="px"
           value={strokeWidth}
         />

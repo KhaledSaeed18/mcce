@@ -8,7 +8,7 @@ import {
 import { getRenderedSize } from "../rotation";
 import type { Annotation } from "../types";
 import { getContentMatrix } from "./content-space";
-import { drawArrow, drawPen, drawShape } from "./draw-shapes";
+import { drawArrow, drawHighlight, drawPen, drawShape } from "./draw-shapes";
 import { drawText } from "./draw-text";
 
 /**
@@ -33,6 +33,8 @@ export function drawAnnotationOnPage(
     drawPen(page, annotation, height);
   } else if (annotation.type === "text") {
     drawText(page, annotation, font, height);
+  } else if (annotation.type === "highlight") {
+    drawHighlight(page, annotation, height);
   } else if (annotation.type === "arrow") {
     drawArrow(page, annotation, height);
   } else {

@@ -1,5 +1,11 @@
+import { HIGHLIGHT_OPACITY } from "@/config/pdf-editor";
 import { getArrowHead } from "../arrow-head";
-import type { ArrowAnnotation, PenAnnotation, ShapeAnnotation } from "../types";
+import type {
+  ArrowAnnotation,
+  HighlightAnnotation,
+  PenAnnotation,
+  ShapeAnnotation,
+} from "../types";
 
 export function drawPen(
   ctx: CanvasRenderingContext2D,
@@ -19,6 +25,18 @@ export function drawPen(
     ctx.lineTo(point.x, point.y);
   }
   ctx.stroke();
+}
+
+/** One path, stroked once, so the see-through ink does not darken where the
+ * stroke crosses itself. */
+export function drawHighlight(
+  ctx: CanvasRenderingContext2D,
+  annotation: HighlightAnnotation
+): void {
+  ctx.save();
+  ctx.globalAlpha = HIGHLIGHT_OPACITY;
+  drawPen(ctx, { ...annotation, type: "pen" });
+  ctx.restore();
 }
 
 export function drawArrow(
