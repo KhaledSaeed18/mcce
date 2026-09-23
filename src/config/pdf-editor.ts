@@ -181,6 +181,19 @@ export const SHORTCUT_HINTS = {
   zoomOut: "Mod+-",
 } as const;
 
+export const SAVE_STATUS_COPY = {
+  failed: {
+    detail:
+      "This browser would not store your changes, most likely because its storage is full. Download a copy to keep them.",
+    label: "Not saved",
+  },
+  saved: {
+    detail:
+      "Your markup and page changes are kept in this browser. Clearing its site data removes them.",
+    label: "Saved on this device",
+  },
+} as const;
+
 export const EDITOR_BRAND_LABEL = "Editor";
 
 /** Shown in the file bar before a file is picked. */

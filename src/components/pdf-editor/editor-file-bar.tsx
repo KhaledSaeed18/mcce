@@ -1,6 +1,7 @@
 import { GalleryVerticalEndIcon, PanelLeftIcon } from "lucide-react";
 import { OpenInDriveButton } from "@/components/drive/open-in-drive-button";
 import { EditorBrand } from "@/components/pdf-editor/editor-brand";
+import { EditorSaveStatus } from "@/components/pdf-editor/editor-save-status";
 import { FullscreenButton } from "@/components/pdf-editor/fullscreen-button";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Button } from "@/components/ui/button";
@@ -8,7 +9,7 @@ import {
   EDITOR_EMPTY_TITLE,
   EDITOR_HEADER_ICON_BUTTON_CLASS,
 } from "@/config/pdf-editor";
-import type { EditorFile } from "@/lib/pdf-editor/types";
+import type { EditorFile, SaveStatus } from "@/lib/pdf-editor/types";
 
 interface EditorFileBarProps {
   isBrowserOpen: boolean;
@@ -19,6 +20,8 @@ interface EditorFileBarProps {
   onToggleBrowser: () => void;
   onToggleFullscreen: () => void;
   onToggleRail: () => void;
+  /** Absent until a file is open and its markup has somewhere to go. */
+  saveStatus: SaveStatus | null;
 }
 
 export function EditorFileBar({
@@ -30,6 +33,7 @@ export function EditorFileBar({
   onToggleBrowser,
   onToggleFullscreen,
   onToggleRail,
+  saveStatus,
 }: EditorFileBarProps) {
   const title = node ? node.name : EDITOR_EMPTY_TITLE;
 
@@ -68,6 +72,7 @@ export function EditorFileBar({
       <EditorBrand />
 
       <div className="flex items-center justify-end gap-2">
+        {saveStatus ? <EditorSaveStatus status={saveStatus} /> : null}
         {node ? <OpenInDriveButton href={node.webViewLink} /> : null}
         <ThemeSwitcher className={EDITOR_HEADER_ICON_BUTTON_CLASS} />
         {isFullscreenSupported ? (

@@ -53,6 +53,10 @@ export function readDocument(
   return { annotations: readAnnotations(fileId), pages: buildPages(pageCount) };
 }
 
-export function writeDocument(fileId: string, snapshot: EditorSnapshot): void {
-  writeJson(buildDocumentKey(fileId), snapshot);
+/** False when the browser would not keep it, which the reader is told about. */
+export function writeDocument(
+  fileId: string,
+  snapshot: EditorSnapshot
+): boolean {
+  return writeJson(buildDocumentKey(fileId), snapshot);
 }

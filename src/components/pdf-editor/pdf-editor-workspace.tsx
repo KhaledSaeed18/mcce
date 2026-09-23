@@ -37,6 +37,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     markup,
     navigation,
     retry,
+    saveStatus,
     settings,
     sizes,
     status,
@@ -59,6 +60,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
         onToggleBrowser={toggleBrowser}
         onToggleFullscreen={toggleFullscreen}
         onToggleRail={toggleRail}
+        saveStatus={saveStatus}
       />
       <div className="flex min-h-0 flex-1">
         <EditorSidePanel isAnimated={isAnimated} isOpen={isBrowserOpen}>

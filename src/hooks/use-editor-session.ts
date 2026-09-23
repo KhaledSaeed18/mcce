@@ -11,7 +11,11 @@ import { usePdfExport } from "@/hooks/use-pdf-export";
 import { usePdfZoom } from "@/hooks/use-pdf-zoom";
 import { useRecordRecentFile } from "@/hooks/use-record-recent-file";
 import { useSpacePan } from "@/hooks/use-space-pan";
-import type { EditorFile, ToolSettings } from "@/lib/pdf-editor/types";
+import type {
+  EditorFile,
+  SaveStatus,
+  ToolSettings,
+} from "@/lib/pdf-editor/types";
 
 /** Everything about the open file: its pages, its markup, the tools drawing
  * it, and the zoom and keys it answers to. */
@@ -61,6 +65,11 @@ export function useEditorSession(
     tool: isSpacePanning ? "hand" : tools.tool,
   };
 
+  let saveStatus: SaveStatus | null = null;
+  if (doc) {
+    saveStatus = markup.isSaved ? "saved" : "failed";
+  }
+
   return {
     doc,
     exportPdf,
@@ -69,6 +78,7 @@ export function useEditorSession(
     markup,
     navigation,
     retry,
+    saveStatus,
     settings,
     sizes,
     status,

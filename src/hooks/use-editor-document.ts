@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAnnotationActions } from "@/hooks/use-annotation-actions";
 import { useEditorHistory } from "@/hooks/use-editor-history";
 import { usePageActions } from "@/hooks/use-page-actions";
@@ -12,6 +12,7 @@ export function useEditorDocument(
   const { canRedo, canUndo, commit, redo, reset, snapshot, undo } =
     useEditorHistory();
   const hydratedIdRef = useRef<string | null>(null);
+  const [isSaved, setIsSaved] = useState(true);
   const annotations = useAnnotationActions(commit);
   const pages = usePageActions(commit);
 
@@ -29,13 +30,14 @@ export function useEditorDocument(
     if (!fileId || hydratedIdRef.current !== fileId) {
       return;
     }
-    writeDocument(fileId, snapshot);
+    setIsSaved(writeDocument(fileId, snapshot));
   }, [fileId, snapshot]);
 
   return {
     annotations: snapshot.annotations,
     canRedo,
     canUndo,
+    isSaved,
     pages: snapshot.pages,
     redo,
     undo,

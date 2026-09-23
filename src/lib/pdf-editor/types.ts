@@ -155,6 +155,9 @@ export interface ToolSettings {
   tool: EditorTool;
 }
 
+/** Whether the open file's markup made it into this browser's storage. */
+export type SaveStatus = "saved" | "failed";
+
 export interface EditorPanels {
   isBrowserOpen: boolean;
   isRailOpen: boolean;
