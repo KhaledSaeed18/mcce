@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { EditorViewportNotice } from "@/components/pdf-editor/editor-viewport-notice";
 import { PdfEditorWorkspace } from "@/components/pdf-editor/pdf-editor-workspace";
+import { EDITOR_NARROW_ONLY_CLASS } from "@/config/pdf-editor";
 import { SITE_NAME, SITE_URL } from "@/config/site";
 import { useEditorViewport } from "@/hooks/use-editor-viewport";
+import { useIsHydrated } from "@/hooks/use-is-hydrated";
 import type { FilePreviewSearch } from "@/lib/drive/types";
 import {
   editorFileQueryOptions,
@@ -45,7 +47,14 @@ export const Route = createFileRoute("/editor")({
 function EditorPage() {
   const { file, tree } = Route.useLoaderData();
 
+  const isHydrated = useIsHydrated();
   const isWide = useEditorViewport();
+
+  if (!isHydrated) {
+    return (
+      <EditorViewportNotice className={EDITOR_NARROW_ONLY_CLASS} node={file} />
+    );
+  }
 
   if (!isWide) {
     return <EditorViewportNotice node={file} />;

@@ -5,6 +5,11 @@ export const EDITOR_PATH = "/editor";
 export const EDITOR_MIN_WIDTH_PX = 1225;
 export const EDITOR_VIEWPORT_QUERY = `(min-width: ${EDITOR_MIN_WIDTH_PX}px)`;
 
+/** The server cannot measure the screen, so until hydration the narrow-screen
+ * notice hides itself by CSS on wide ones. Tailwind reads class names from the
+ * source, which is why this repeats EDITOR_MIN_WIDTH_PX instead of using it. */
+export const EDITOR_NARROW_ONLY_CLASS = "min-[1225px]:hidden";
+
 /** The Drive endpoint that serves raw file bytes, read server-side only. */
 export const DRIVE_DOWNLOAD_ENDPOINT =
   "https://drive.usercontent.google.com/download";
