@@ -43,8 +43,12 @@ function makeArrow(to: Point): Annotation {
 describe("isEmptyAnnotation", () => {
   it("drops a highlight from a press that never moved", () => {
     const highlight: Annotation = {
-      ...makeStroke([{ x: 10, y: 10 }]),
+      color: "#ffd60a",
+      id: "highlight",
+      pageId: "p0",
+      points: [{ x: 10, y: 10 }],
       type: "highlight",
+      width: 12,
     };
     expect(isEmptyAnnotation(highlight)).toBe(true);
   });
