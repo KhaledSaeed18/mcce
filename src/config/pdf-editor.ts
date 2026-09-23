@@ -56,6 +56,11 @@ export const LOCAL_PDF_ACCEPT = ".pdf,application/pdf";
 
 export const LOCAL_PDF_OPEN_LABEL = "Open from computer";
 
+export const LOCAL_PDF_DROP_LABEL = "Drop a PDF to open it";
+
+/** Long enough to read a sentence, short enough not to linger over the page. */
+export const LOCAL_PDF_DROP_ERROR_MS = 4000;
+
 /** The title for a file from this device whose details the browser has lost. */
 export const LOCAL_PDF_MISSING_NAME = "PDF from this device";
 

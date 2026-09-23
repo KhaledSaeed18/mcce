@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { EditorDocumentArea } from "@/components/pdf-editor/editor-document-area";
+import { EditorDropZone } from "@/components/pdf-editor/editor-drop-zone";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
 import { EditorHelpDialog } from "@/components/pdf-editor/editor-help-dialog";
 import { EditorPlaceholder } from "@/components/pdf-editor/editor-placeholder";
@@ -55,86 +56,88 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
       className={cn("flex flex-col bg-background", EDITOR_HEIGHT_CLASS)}
       ref={rootRef}
     >
-      <EditorFileBar
-        isBrowserOpen={isBrowserOpen}
-        isFullscreen={isFullscreen}
-        isFullscreenSupported={isFullscreenSupported}
-        isRailOpen={isRailOpen}
-        node={node}
-        onOpenHelp={help.open}
-        onToggleBrowser={toggleBrowser}
-        onToggleFullscreen={toggleFullscreen}
-        onToggleRail={toggleRail}
-        saveStatus={saveStatus}
-      />
-      <div className="flex min-h-0 flex-1">
-        <EditorSidePanel isAnimated={isAnimated} isOpen={isBrowserOpen}>
-          <FileBrowserPanel activeNode={node} nodes={nodes} />
-        </EditorSidePanel>
-        <div className="flex min-w-0 flex-1 flex-col">
-          {doc ? (
-            <EditorToolbar
-              canClear={markup.annotations.length > 0}
-              canRedo={markup.canRedo}
-              canRestore={!markup.isOriginal}
-              canUndo={markup.canUndo}
-              color={ink.color}
-              exportStatus={exportStatus}
-              fontSize={tools.fontSize}
+      <EditorDropZone>
+        <EditorFileBar
+          isBrowserOpen={isBrowserOpen}
+          isFullscreen={isFullscreen}
+          isFullscreenSupported={isFullscreenSupported}
+          isRailOpen={isRailOpen}
+          node={node}
+          onOpenHelp={help.open}
+          onToggleBrowser={toggleBrowser}
+          onToggleFullscreen={toggleFullscreen}
+          onToggleRail={toggleRail}
+          saveStatus={saveStatus}
+        />
+        <div className="flex min-h-0 flex-1">
+          <EditorSidePanel isAnimated={isAnimated} isOpen={isBrowserOpen}>
+            <FileBrowserPanel activeNode={node} nodes={nodes} />
+          </EditorSidePanel>
+          <div className="flex min-w-0 flex-1 flex-col">
+            {doc ? (
+              <EditorToolbar
+                canClear={markup.annotations.length > 0}
+                canRedo={markup.canRedo}
+                canRestore={!markup.isOriginal}
+                canUndo={markup.canUndo}
+                color={ink.color}
+                exportStatus={exportStatus}
+                fontSize={tools.fontSize}
+                navigation={navigation}
+                onClear={markup.clear}
+                onColorChange={ink.changeColor}
+                onExport={exportPdf}
+                onFontSizeChange={markup.changeFontSize}
+                onRedo={markup.redo}
+                onRestore={markup.restore}
+                onStrokeWidthChange={ink.changeStrokeWidth}
+                onToolChange={tools.setTool}
+                onUndo={markup.undo}
+                strokeWidth={ink.strokeWidth}
+                tool={tools.tool}
+                zoom={zoom}
+              />
+            ) : null}
+            <EditorDocumentArea
+              doc={doc}
+              isLoading={status === "loading"}
+              isPanelAnimated={isAnimated}
+              isRailOpen={isRailOpen}
+              layout={markup.pages}
               navigation={navigation}
-              onClear={markup.clear}
-              onColorChange={ink.changeColor}
-              onExport={exportPdf}
-              onFontSizeChange={markup.changeFontSize}
-              onRedo={markup.redo}
-              onRestore={markup.restore}
-              onStrokeWidthChange={ink.changeStrokeWidth}
-              onToolChange={tools.setTool}
-              onUndo={markup.undo}
-              strokeWidth={ink.strokeWidth}
-              tool={tools.tool}
-              zoom={zoom}
-            />
-          ) : null}
-          <EditorDocumentArea
-            doc={doc}
-            isLoading={status === "loading"}
-            isPanelAnimated={isAnimated}
-            isRailOpen={isRailOpen}
-            layout={markup.pages}
-            navigation={navigation}
-            onCopyPage={markup.copyPage}
-            onRemovePage={markup.removePage}
-            onReorderPage={markup.reorderPage}
-            onRotatePage={markup.rotatePage}
-            scrollRef={scrollRef}
-            sizes={sizes}
-          >
-            {doc && isDocumentShown ? (
-              <PdfPageList
-                actions={markup.actions}
-                annotations={markup.annotations}
-                doc={doc}
-                onTextDraftChange={markup.openDraft}
-                pages={markup.pages}
-                selectedId={markup.selectedId}
-                settings={settings}
-                textDraft={markup.draft}
-                zoom={zoom.value}
-              />
-            ) : (
-              <EditorPlaceholder
-                isBrowserOpen={isBrowserOpen}
-                nodes={nodes}
-                onRetry={retry}
-                onShowFiles={toggleBrowser}
-                source={node ? node.source : "drive"}
-                status={status}
-              />
-            )}
-          </EditorDocumentArea>
+              onCopyPage={markup.copyPage}
+              onRemovePage={markup.removePage}
+              onReorderPage={markup.reorderPage}
+              onRotatePage={markup.rotatePage}
+              scrollRef={scrollRef}
+              sizes={sizes}
+            >
+              {doc && isDocumentShown ? (
+                <PdfPageList
+                  actions={markup.actions}
+                  annotations={markup.annotations}
+                  doc={doc}
+                  onTextDraftChange={markup.openDraft}
+                  pages={markup.pages}
+                  selectedId={markup.selectedId}
+                  settings={settings}
+                  textDraft={markup.draft}
+                  zoom={zoom.value}
+                />
+              ) : (
+                <EditorPlaceholder
+                  isBrowserOpen={isBrowserOpen}
+                  nodes={nodes}
+                  onRetry={retry}
+                  onShowFiles={toggleBrowser}
+                  source={node ? node.source : "drive"}
+                  status={status}
+                />
+              )}
+            </EditorDocumentArea>
+          </div>
         </div>
-      </div>
+      </EditorDropZone>
       <EditorHelpDialog onOpenChange={help.setIsOpen} open={help.isOpen} />
     </main>
   );
