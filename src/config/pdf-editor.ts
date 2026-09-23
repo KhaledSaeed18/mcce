@@ -317,6 +317,7 @@ export const TOOL_LABELS: Record<EditorTool, string> = {
   highlight: "Highlighter",
   pen: "Pen",
   rect: "Square",
+  select: "Select text",
   text: "Text",
 };
 
@@ -329,6 +330,8 @@ export const TOOL_HOTKEYS: Record<EditorTool, string> = {
   highlight: "u",
   pen: "p",
   rect: "r",
+  /** The select key in most drawing and design tools. */
+  select: "v",
   text: "t",
 };
 
@@ -351,6 +354,7 @@ export const EDITOR_SHORTCUT_TOOLS: readonly EditorTool[] = [
   "ellipse",
   "arrow",
   "eraser",
+  "select",
   "hand",
 ];
 

@@ -7,6 +7,7 @@ import {
   MoveUpRightIcon,
   PenLineIcon,
   SquareIcon,
+  TextCursorIcon,
   TypeIcon,
 } from "lucide-react";
 import { ToolButton } from "@/components/pdf-editor/tool-button";
@@ -14,6 +15,7 @@ import type { EditorTool } from "@/lib/pdf-editor/types";
 
 const TOOLS: Array<{ icon: LucideIcon; tool: EditorTool }> = [
   { icon: HandIcon, tool: "hand" },
+  { icon: TextCursorIcon, tool: "select" },
   { icon: PenLineIcon, tool: "pen" },
   { icon: HighlighterIcon, tool: "highlight" },
   { icon: SquareIcon, tool: "rect" },

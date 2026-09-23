@@ -15,6 +15,7 @@ import {
   STROKE_WIDTHS,
 } from "@/config/pdf-editor";
 import type { PdfExportStatus } from "@/hooks/use-pdf-export";
+import { usesColor, usesStrokeWidth } from "@/lib/pdf-editor/tool-kind";
 import type {
   EditorTool,
   PageNavigation,
@@ -73,13 +74,13 @@ export function EditorToolbar({
       role="toolbar"
     >
       <ToolPicker onSelect={onToolChange} value={tool} />
-      {tool !== "eraser" && tool !== "hand" && (
+      {usesColor(tool) && (
         <Separator
           className={EDITOR_CONTROL_HEIGHT_CLASS}
           orientation="vertical"
         />
       )}
-      {tool !== "eraser" && tool !== "hand" && (
+      {usesColor(tool) && (
         <ColorSwatches
           colors={tool === "highlight" ? HIGHLIGHT_COLORS : ANNOTATION_COLORS}
           onSelect={onColorChange}
@@ -95,7 +96,7 @@ export function EditorToolbar({
           value={fontSize}
         />
       )}
-      {tool !== "eraser" && tool !== "text" && tool !== "hand" && (
+      {usesStrokeWidth(tool) && (
         <SizeSelect
           label="Stroke width"
           onValueChange={onStrokeWidthChange}

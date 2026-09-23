@@ -2,6 +2,7 @@ import type { PDFDocumentProxy } from "pdfjs-dist";
 import { useRef } from "react";
 import { AnnotationCanvas } from "@/components/pdf-editor/annotation-canvas";
 import { PageOverlayLayer } from "@/components/pdf-editor/page-overlay-layer";
+import { PdfTextLayer } from "@/components/pdf-editor/pdf-text-layer";
 import { TextDraftField } from "@/components/pdf-editor/text-draft-field";
 import { TextSelectionBox } from "@/components/pdf-editor/text-selection-box";
 import {
@@ -10,6 +11,7 @@ import {
 } from "@/config/pdf-editor";
 import { useInViewport } from "@/hooks/use-in-viewport";
 import { usePdfPageRender } from "@/hooks/use-pdf-page-render";
+import { usePdfTextLayer } from "@/hooks/use-pdf-text-layer";
 import { useTextBoxResize } from "@/hooks/use-text-box-resize";
 import { useTextDraft } from "@/hooks/use-text-draft";
 import { findText } from "@/lib/pdf-editor/move";
@@ -57,6 +59,13 @@ export function PdfPage({
     isVisible,
     page.rotation
   );
+  const textLayerRef = usePdfTextLayer(
+    doc,
+    page.sourceIndex,
+    zoom,
+    isVisible,
+    page.rotation
+  );
   const pageSize = size ?? PLACEHOLDER_PAGE_SIZE;
   const rendered = getRenderedSize(pageSize, page.rotation);
   const selected = findText(annotations, selectedId);
@@ -82,6 +91,10 @@ export function PdfPage({
       style={{ height: rendered.height * zoom, width: rendered.width * zoom }}
     >
       <canvas className="block" ref={canvasRef} />
+      <PdfTextLayer
+        isSelectable={settings.tool === "select"}
+        layerRef={textLayerRef}
+      />
       {size ? (
         <AnnotationCanvas
           actions={actions}

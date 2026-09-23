@@ -22,6 +22,7 @@ const CURSOR_BY_TOOL: Record<ToolSettings["tool"], string> = {
   highlight: "cursor-crosshair",
   pen: "cursor-crosshair",
   rect: "cursor-crosshair",
+  select: "cursor-text",
   text: "cursor-text",
 };
 
@@ -112,7 +113,10 @@ export function AnnotationCanvas({
     <canvas
       className={cn(
         "absolute inset-0 touch-none",
-        resolveCursor(settings.tool, hoveredTextId !== null, drag !== null)
+        // The text layer underneath takes the pointer while text is being picked.
+        settings.tool === "select"
+          ? "pointer-events-none"
+          : resolveCursor(settings.tool, hoveredTextId !== null, drag !== null)
       )}
       onDoubleClick={handleDoubleClick}
       onPointerCancel={handlePointerUp}

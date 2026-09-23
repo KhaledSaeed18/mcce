@@ -3,6 +3,7 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource/archivo-black";
 @import "@fontsource-variable/space-grotesk";
+@import "./styles/pdf-text-layer.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 

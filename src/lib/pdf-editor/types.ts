@@ -42,6 +42,7 @@ export interface EditorSearch {
 }
 
 export type EditorTool =
+  | "select"
   | "pen"
   | "highlight"
   | "eraser"
