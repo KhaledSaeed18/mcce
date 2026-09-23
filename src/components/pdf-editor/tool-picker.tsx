@@ -3,6 +3,7 @@ import {
   CircleIcon,
   EraserIcon,
   HandIcon,
+  MoveUpRightIcon,
   PenLineIcon,
   SquareIcon,
   TypeIcon,
@@ -15,6 +16,7 @@ const TOOLS: Array<{ icon: LucideIcon; tool: EditorTool }> = [
   { icon: PenLineIcon, tool: "pen" },
   { icon: SquareIcon, tool: "rect" },
   { icon: CircleIcon, tool: "ellipse" },
+  { icon: MoveUpRightIcon, tool: "arrow" },
   { icon: TypeIcon, tool: "text" },
   { icon: EraserIcon, tool: "eraser" },
 ];

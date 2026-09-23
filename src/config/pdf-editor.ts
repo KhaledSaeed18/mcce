@@ -138,6 +138,14 @@ export const EMPTY_TEXT_BOX_WIDTH = 140;
 /** A drag shorter than this is a click, not a shape. */
 export const MIN_SHAPE_SIZE = 4;
 
+/** An arrow's head grows with its line so a thick arrow keeps its shape,
+ * but never shrinks below what reads as a head on a thin one. */
+export const ARROW_HEAD_LENGTH_RATIO = 4;
+export const ARROW_HEAD_MIN_LENGTH = 10;
+
+/** How far each side of the head opens from the line, in radians. */
+export const ARROW_HEAD_ANGLE = Math.PI / 7;
+
 /** A stroke needs two points to be a line; one is a press that never moved. */
 export const MIN_STROKE_POINTS = 2;
 
@@ -208,6 +216,7 @@ export const EDITOR_EXPORT_SUFFIX = "-annotated.pdf";
 export const DEFAULT_EXPORT_NAME = "document.pdf";
 
 export const TOOL_LABELS: Record<EditorTool, string> = {
+  arrow: "Arrow",
   ellipse: "Circle",
   eraser: "Eraser",
   hand: "Hand",
@@ -217,6 +226,7 @@ export const TOOL_LABELS: Record<EditorTool, string> = {
 };
 
 export const TOOL_HOTKEYS: Record<EditorTool, string> = {
+  arrow: "a",
   ellipse: "c",
   eraser: "e",
   hand: "h",
@@ -241,6 +251,7 @@ export const EDITOR_SHORTCUT_TOOLS: readonly EditorTool[] = [
   "text",
   "rect",
   "ellipse",
+  "arrow",
   "eraser",
   "hand",
 ];

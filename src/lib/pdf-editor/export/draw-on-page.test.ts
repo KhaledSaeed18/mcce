@@ -21,7 +21,20 @@ const STROKE: Annotation = {
   width: 2,
 };
 
-async function exportWithPageTurnedBy(rotation: number): Promise<string> {
+const ARROW: Annotation = {
+  color: "#e63946",
+  from: { x: 10, y: 100 },
+  id: "a",
+  pageId: "p0",
+  strokeWidth: 2,
+  to: { x: 60, y: 100 },
+  type: "arrow",
+};
+
+async function exportWithPageTurnedBy(
+  rotation: number,
+  annotation: Annotation = STROKE
+): Promise<string> {
   const source = await PDFDocument.create();
   const page = source.addPage([CONTENT_WIDTH, CONTENT_HEIGHT]);
   page.setRotation(degrees(rotation));
@@ -29,7 +42,7 @@ async function exportWithPageTurnedBy(rotation: number): Promise<string> {
 
   const out = await buildAnnotatedPdf(
     bytes.buffer as ArrayBuffer,
-    [STROKE],
+    [annotation],
     buildPages(1)
   );
   return readDrawing(Buffer.from(out));
@@ -72,6 +85,13 @@ describe("drawAnnotationOnPage", () => {
     expect(drawing).toContain(`0 1 -1 0 ${CONTENT_WIDTH} 0 cm`);
     // Flipped against the height the page is read at, not the one it is stored at.
     expect(drawing).toContain("10 80 m");
+  });
+
+  it("writes an arrow as its line and both sides of its head, all meeting at the tip", async () => {
+    const drawing = await exportWithPageTurnedBy(0, ARROW);
+
+    expect(drawing).toContain("10 100 m");
+    expect(drawing.match(/60 100 l/g)).toHaveLength(3);
   });
 
   it("keeps the turn to itself rather than leaving it on for the page", async () => {

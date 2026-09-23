@@ -1,5 +1,11 @@
 import type { PDFPage } from "pdf-lib";
-import type { PenAnnotation, ShapeAnnotation } from "../types";
+import { getArrowHead } from "../arrow-head";
+import type {
+  ArrowAnnotation,
+  PenAnnotation,
+  Point,
+  ShapeAnnotation,
+} from "../types";
 import { flipY } from "./content-space";
 import { hexToRgb } from "./hex-to-rgb";
 
@@ -18,6 +24,29 @@ export function drawPen(
       lineCap: 1,
       start: { x: from.x, y: flipY(height, from.y) },
       thickness: annotation.width,
+    });
+  }
+}
+
+export function drawArrow(
+  page: PDFPage,
+  annotation: ArrowAnnotation,
+  height: number
+): void {
+  const color = hexToRgb(annotation.color);
+  const toContent = (point: Point) => ({
+    x: point.x,
+    y: flipY(height, point.y),
+  });
+  const tip = toContent(annotation.to);
+  const [left, right] = getArrowHead(annotation);
+  for (const start of [annotation.from, left, right]) {
+    page.drawLine({
+      color,
+      end: tip,
+      lineCap: 1,
+      start: toContent(start),
+      thickness: annotation.strokeWidth,
     });
   }
 }

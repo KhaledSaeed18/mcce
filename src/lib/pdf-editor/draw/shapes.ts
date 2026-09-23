@@ -1,4 +1,5 @@
-import type { PenAnnotation, ShapeAnnotation } from "../types";
+import { getArrowHead } from "../arrow-head";
+import type { ArrowAnnotation, PenAnnotation, ShapeAnnotation } from "../types";
 
 export function drawPen(
   ctx: CanvasRenderingContext2D,
@@ -17,6 +18,25 @@ export function drawPen(
   for (const point of rest) {
     ctx.lineTo(point.x, point.y);
   }
+  ctx.stroke();
+}
+
+export function drawArrow(
+  ctx: CanvasRenderingContext2D,
+  annotation: ArrowAnnotation
+): void {
+  const { from, to } = annotation;
+  const [left, right] = getArrowHead(annotation);
+  ctx.strokeStyle = annotation.color;
+  ctx.lineWidth = annotation.strokeWidth;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  ctx.beginPath();
+  ctx.moveTo(from.x, from.y);
+  ctx.lineTo(to.x, to.y);
+  ctx.moveTo(left.x, left.y);
+  ctx.lineTo(to.x, to.y);
+  ctx.lineTo(right.x, right.y);
   ctx.stroke();
 }
 

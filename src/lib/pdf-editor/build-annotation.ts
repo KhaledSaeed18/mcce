@@ -28,6 +28,23 @@ export function buildShape(
   };
 }
 
+export function buildArrow(
+  from: Point,
+  to: Point,
+  pageId: string,
+  settings: ToolSettings
+): Annotation {
+  return {
+    color: settings.color,
+    from,
+    id: createAnnotationId(),
+    pageId,
+    strokeWidth: settings.strokeWidth,
+    to,
+    type: "arrow",
+  };
+}
+
 export function buildStroke(
   points: Point[],
   pageId: string,
@@ -69,6 +86,10 @@ export function isEmptyAnnotation(annotation: Annotation): boolean {
   }
   if (annotation.type === "text") {
     return false;
+  }
+  if (annotation.type === "arrow") {
+    const { from, to } = annotation;
+    return Math.hypot(to.x - from.x, to.y - from.y) < MIN_SHAPE_SIZE;
   }
   return (
     annotation.width < MIN_SHAPE_SIZE || annotation.height < MIN_SHAPE_SIZE

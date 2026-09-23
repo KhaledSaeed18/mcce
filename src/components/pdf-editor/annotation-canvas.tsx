@@ -15,6 +15,7 @@ import type {
 import { cn } from "@/lib/utils";
 
 const CURSOR_BY_TOOL: Record<ToolSettings["tool"], string> = {
+  arrow: "cursor-crosshair",
   ellipse: "cursor-crosshair",
   eraser: "cursor-cell",
   hand: "cursor-grab",

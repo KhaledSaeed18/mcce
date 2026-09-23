@@ -17,6 +17,7 @@ export type EditorTool =
   | "eraser"
   | "rect"
   | "ellipse"
+  | "arrow"
   | "text"
   | "hand";
 
@@ -48,6 +49,14 @@ export interface ShapeAnnotation extends AnnotationBase {
   y: number;
 }
 
+/** A straight line with an open head at the end the drag finished on. */
+export interface ArrowAnnotation extends AnnotationBase {
+  from: Point;
+  strokeWidth: number;
+  to: Point;
+  type: "arrow";
+}
+
 /** What it takes to lay text out, which a committed annotation and a draft both have. */
 export interface TextGeometry {
   fontSize: number;
@@ -63,7 +72,11 @@ export interface TextAnnotation extends AnnotationBase, TextGeometry {
   type: "text";
 }
 
-export type Annotation = PenAnnotation | ShapeAnnotation | TextAnnotation;
+export type Annotation =
+  | ArrowAnnotation
+  | PenAnnotation
+  | ShapeAnnotation
+  | TextAnnotation;
 
 export interface PageSize {
   height: number;

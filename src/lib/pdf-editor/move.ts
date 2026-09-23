@@ -46,6 +46,13 @@ export function shiftAnnotation(
       })),
     };
   }
+  if (annotation.type === "arrow") {
+    return {
+      ...annotation,
+      from: { x: annotation.from.x + dx, y: annotation.from.y + dy },
+      to: { x: annotation.to.x + dx, y: annotation.to.y + dy },
+    };
+  }
   return { ...annotation, x: annotation.x + dx, y: annotation.y + dy };
 }
 

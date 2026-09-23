@@ -1,5 +1,5 @@
 import { ERASER_TOLERANCE } from "@/config/pdf-editor";
-import { distanceToStroke } from "./distance";
+import { distanceToSegment, distanceToStroke } from "./distance";
 import { getTextBox } from "./text-layout";
 import type { Annotation, Box, Point } from "./types";
 
@@ -32,6 +32,12 @@ export function isAnnotationHit(
   }
   if (annotation.type === "text") {
     return isInsideBox(getTextBox(annotation), target);
+  }
+  if (annotation.type === "arrow") {
+    return (
+      distanceToSegment(annotation.from, annotation.to, target) <=
+      ERASER_TOLERANCE
+    );
   }
   return isInsideBox(annotation, target);
 }
