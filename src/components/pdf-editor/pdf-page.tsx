@@ -9,6 +9,7 @@ import {
   PLACEHOLDER_PAGE_SIZE,
 } from "@/config/pdf-editor";
 import { useMarkupDrag } from "@/hooks/use-markup-drag";
+import { useMarkupResize } from "@/hooks/use-markup-resize";
 import { usePageTextEditing } from "@/hooks/use-page-text-editing";
 import { usePdfPageLayers } from "@/hooks/use-pdf-page-layers";
 import { useSearchHighlights } from "@/hooks/use-search-highlights";
@@ -82,6 +83,11 @@ export function PdfPage({
     zoom,
   });
   const shown = findShownSelection(annotations, selectedId, markupDrag.drag);
+  const resize = useMarkupResize({
+    annotation: shown,
+    onReplace: actions.replace,
+    size: pageSize,
+  });
 
   return (
     /* Nothing may spill past the sheet: the markup layers stop where the page does. */
@@ -109,7 +115,7 @@ export function PdfPage({
           markupDrag={markupDrag.drag}
           onDraft={editing.field.request}
           pageId={page.id}
-          preview={editing.selection.preview}
+          preview={editing.selection.preview ?? resize.preview}
           rotation={page.rotation}
           selectedId={selectedId}
           settings={settings}
@@ -119,6 +125,7 @@ export function PdfPage({
       ) : null}
       <PdfPageOverlays
         editing={editing}
+        resize={resize}
         rotation={page.rotation}
         shown={shown}
         size={pageSize}

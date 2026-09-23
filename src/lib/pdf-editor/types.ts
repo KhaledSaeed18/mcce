@@ -242,6 +242,13 @@ export interface PageNavigation {
   pageCount: number;
 }
 
+/** Which corner of a selected markup's frame a resize drag has hold of. */
+export type FrameCorner =
+  | "bottom-left"
+  | "bottom-right"
+  | "top-left"
+  | "top-right";
+
 /** Which side of a text box a resize drag has hold of. */
 export type TextBoxEdge = "left" | "right";
 

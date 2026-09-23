@@ -9,7 +9,6 @@ import type {
   Annotation,
   AnnotationActions,
   PageSize,
-  TextAnnotation,
   TextDraft,
   ToolSettings,
 } from "@/lib/pdf-editor/types";
@@ -54,8 +53,8 @@ interface AnnotationCanvasProps {
   markupDrag: AnnotationDrag | null;
   onDraft: (draft: TextDraft) => void;
   pageId: string;
-  /** A box mid-resize, drawn at the width the pointer is holding it at. */
-  preview: TextAnnotation | null;
+  /** Markup mid-resize, drawn at the size the pointer is holding it at. */
+  preview: Annotation | null;
   /** Quarter turns the page has been given, which the markup is drawn through. */
   rotation: number;
   /** Framed by its own overlay, so it needs no hover ring of its own. */
