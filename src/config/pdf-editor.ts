@@ -61,6 +61,16 @@ export const LOCAL_PDF_DROP_LABEL = "Drop a PDF to open it";
 /** Long enough to read a sentence, short enough not to linger over the page. */
 export const LOCAL_PDF_DROP_ERROR_MS = 4000;
 
+export const FILE_PANEL_INDEX_TAB = "Index";
+export const FILE_PANEL_DEVICE_TAB = "This device";
+
+export const LOCAL_PDF_LIST_EMPTY =
+  "PDFs you open from your computer are kept here, so they open again without choosing them.";
+
+export const LOCAL_PDF_REMOVE_TITLE = "Remove from this device";
+export const LOCAL_PDF_REMOVE_DESCRIPTION =
+  "The PDF and all the markup made on it leave this browser. The file on your computer is not touched. This cannot be undone.";
+
 /** The title for a file from this device whose details the browser has lost. */
 export const LOCAL_PDF_MISSING_NAME = "PDF from this device";
 

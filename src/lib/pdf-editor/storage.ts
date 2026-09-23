@@ -2,7 +2,7 @@ import {
   PDF_ANNOTATIONS_KEY_PREFIX,
   PDF_DOCUMENT_KEY_PREFIX,
 } from "@/config/pdf-editor";
-import { readJson, writeJson } from "@/lib/storage";
+import { readJson, removeStored, writeJson } from "@/lib/storage";
 import { buildPageId, buildPages } from "./pages";
 import { reconcileWithFile } from "./reconcile";
 import type { Annotation, EditorSnapshot } from "./types";
@@ -59,4 +59,10 @@ export function writeDocument(
   snapshot: EditorSnapshot
 ): boolean {
   return writeJson(buildDocumentKey(fileId), snapshot);
+}
+
+/** Drops everything kept about a file's markup, in either stored shape. */
+export function removeDocument(fileId: string): void {
+  removeStored(buildDocumentKey(fileId));
+  removeStored(buildKey(fileId));
 }

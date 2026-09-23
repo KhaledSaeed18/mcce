@@ -56,3 +56,23 @@ export function readLocalPdfBytes(id: string): Promise<ArrayBuffer | null> {
     return bytes ?? null;
   });
 }
+
+/** Newest first, which is the order the reader is most likely to want them in. */
+export function listLocalPdfs(): Promise<LocalPdfMeta[]> {
+  return withStore(async (db) => {
+    const store = db
+      .transaction(LOCAL_PDF_META_STORE)
+      .objectStore(LOCAL_PDF_META_STORE);
+    const all = await requestResult<LocalPdfMeta[]>(store.getAll());
+    return all.sort((a, b) => b.addedAt.localeCompare(a.addedAt));
+  });
+}
+
+export function removeLocalPdf(id: string): Promise<void> {
+  return withStore((db) => {
+    const transaction = db.transaction(STORES, "readwrite");
+    transaction.objectStore(LOCAL_PDF_META_STORE).delete(id);
+    transaction.objectStore(LOCAL_PDF_BYTES_STORE).delete(id);
+    return transactionDone(transaction);
+  });
+}

@@ -33,6 +33,8 @@ export interface LocalPdfMeta {
 /** Why a file from the reader's computer was turned away. */
 export type LocalPdfProblem = "empty" | "not-pdf" | "too-large";
 
+export type FilePanelTab = "device" | "index";
+
 /** The editor's URL: a file from the index, or one from this device. */
 export interface EditorSearch {
   file?: string;
