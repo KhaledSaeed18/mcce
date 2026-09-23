@@ -24,7 +24,7 @@ export function EditorHelpDialog({
 }: EditorHelpDialogProps) {
   return (
     <Dialog onOpenChange={onOpenChange} open={open}>
-      <DialogContent className="flex max-h-[85vh] flex-col overflow-y-auto sm:max-w-2xl">
+      <DialogContent className="flex max-h-[90vh] flex-col overflow-y-auto sm:max-w-3xl">
         <DialogHeader>
           <DialogTitle>{EDITOR_HELP_TITLE}</DialogTitle>
           <DialogDescription>{EDITOR_HELP_DESCRIPTION}</DialogDescription>
