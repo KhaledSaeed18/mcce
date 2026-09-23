@@ -6,21 +6,10 @@ import { EditorSidePanel } from "@/components/pdf-editor/editor-side-panel";
 import { EditorToolbar } from "@/components/pdf-editor/editor-toolbar";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
 import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
-import { DEFAULT_EXPORT_NAME, EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
-import { useEditorMarkup } from "@/hooks/use-editor-markup";
-import { useEditorPages } from "@/hooks/use-editor-pages";
+import { EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
 import { useEditorPanels } from "@/hooks/use-editor-panels";
-import { useEditorShortcuts } from "@/hooks/use-editor-shortcuts";
-import { useEditorTools } from "@/hooks/use-editor-tools";
-import { useElementSize } from "@/hooks/use-element-size";
+import { useEditorSession } from "@/hooks/use-editor-session";
 import { useFullscreen } from "@/hooks/use-fullscreen";
-import { usePdfDocument } from "@/hooks/use-pdf-document";
-import { usePdfExport } from "@/hooks/use-pdf-export";
-import { usePdfZoom } from "@/hooks/use-pdf-zoom";
-import { usePinchZoom } from "@/hooks/use-pinch-zoom";
-import { useRecordRecentFile } from "@/hooks/use-record-recent-file";
-import { useScrollReset } from "@/hooks/use-scroll-reset";
-import { useZoomAnchor } from "@/hooks/use-zoom-anchor";
 import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
@@ -40,39 +29,18 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
   const { isAnimated, isBrowserOpen, isRailOpen, toggleBrowser, toggleRail } =
     useEditorPanels();
 
-  const { bytes, doc, status } = usePdfDocument(node?.id);
-  useRecordRecentFile(node?.id);
-  useScrollReset(scrollRef, node?.id);
-  const viewport = useElementSize(scrollRef);
-  const tools = useEditorTools();
-  const markup = useEditorMarkup({
-    fileId: node?.id,
-    pageCount: doc?.numPages ?? 0,
-    setColor: tools.setColor,
-    setFontSize: tools.setFontSize,
-  });
-  const { activeSize, isDocumentShown, navigation, sizes } = useEditorPages(
-    scrollRef,
+  const {
     doc,
-    markup.pages
-  );
-  const zoom = usePdfZoom({ pageSize: activeSize, viewport });
-  useZoomAnchor(scrollRef, zoom.value);
-  usePinchZoom(scrollRef, { onZoomIn: zoom.zoomIn, onZoomOut: zoom.zoomOut });
-  const { exportPdf, status: exportStatus } = usePdfExport({
-    annotations: markup.annotations,
-    bytes,
-    fileName: node ? node.name : DEFAULT_EXPORT_NAME,
-    layout: markup.pages,
-  });
-
-  useEditorShortcuts({
+    exportPdf,
+    exportStatus,
+    isDocumentShown,
     markup,
     navigation,
-    onExport: exportPdf,
-    onToolChange: tools.setTool,
+    sizes,
+    status,
+    tools,
     zoom,
-  });
+  } = useEditorSession(node, scrollRef);
 
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
