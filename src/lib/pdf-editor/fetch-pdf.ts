@@ -10,7 +10,7 @@ import { buildPdfDownloadUrl } from "./download-url";
  * this cannot be used as an open proxy for arbitrary Drive files.
  */
 export const fetchPdfBytes = createServerFn({ method: "GET" })
-  .inputValidator((data: { fileId: string }) => data)
+  .validator((data: { fileId: string }) => data)
   .handler(async ({ data }) => {
     const { nodes } = (await import("@/data/drive-index.json"))
       .default as DriveIndex;
