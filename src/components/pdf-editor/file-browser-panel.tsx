@@ -1,8 +1,5 @@
-import { FileBrowserCrumbs } from "@/components/pdf-editor/file-browser-crumbs";
-import { FileBrowserEntry } from "@/components/pdf-editor/file-browser-entry";
+import { FileBrowserIndex } from "@/components/pdf-editor/file-browser-index";
 import { OpenLocalPdfButton } from "@/components/pdf-editor/open-local-pdf-button";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { useEditorFileBrowser } from "@/hooks/use-editor-file-browser";
 import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
 
 interface FileBrowserPanelProps {
@@ -11,31 +8,10 @@ interface FileBrowserPanelProps {
 }
 
 export function FileBrowserPanel({ activeNode, nodes }: FileBrowserPanelProps) {
-  const { crumbs, entries, openFolder } = useEditorFileBrowser(
-    nodes,
-    activeNode
-  );
-
   return (
     <aside className="flex w-72 shrink-0 flex-col border-r-2 bg-card">
       <OpenLocalPdfButton className="border-b-2 p-2" />
-      <FileBrowserCrumbs crumbs={crumbs} onSelect={openFolder} />
-      <ScrollArea className="min-h-0 flex-1">
-        <div className="flex flex-col gap-0.5 p-2">
-          {entries.length === 0 ? (
-            <p className="p-2 text-muted-foreground text-sm">Empty folder.</p>
-          ) : (
-            entries.map((entry) => (
-              <FileBrowserEntry
-                entry={entry}
-                isActive={entry.id === activeNode?.id}
-                key={entry.id}
-                onOpenFolder={openFolder}
-              />
-            ))
-          )}
-        </div>
-      </ScrollArea>
+      <FileBrowserIndex activeNode={activeNode} nodes={nodes} />
     </aside>
   );
 }

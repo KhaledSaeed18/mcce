@@ -105,6 +105,13 @@ export const PLACEHOLDER_PAGE_SIZE = { height: 792, width: 612 };
 /** How wide a page is drawn in the thumbnail rail, in screen pixels. */
 export const THUMBNAIL_WIDTH = 116;
 
+/** One row of the file panel, shared by index files and files from this device. */
+export const FILE_ROW_CLASS =
+  "flex w-full items-center gap-2 rounded border-2 border-transparent px-2 py-1.5 text-left text-sm";
+export const FILE_ROW_LINK_CLASS = "hover:border-border hover:bg-accent";
+export const FILE_ROW_ACTIVE_CLASS =
+  "border-border bg-primary text-primary-foreground dark:text-white";
+
 /** Shared by the rail and its loading stand-in, so switching files does not move the pages. */
 export const RAIL_WIDTH_CLASS = "w-40";
 

@@ -1,11 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { useCallback } from "react";
 import { KindIcon } from "@/components/drive/kind-icon";
+import {
+  FILE_ROW_ACTIVE_CLASS,
+  FILE_ROW_CLASS,
+  FILE_ROW_LINK_CLASS,
+} from "@/config/pdf-editor";
 import type { BrowserEntry } from "@/lib/pdf-editor/browser-entries";
 import { cn } from "@/lib/utils";
-
-const ROW_CLASSES =
-  "flex w-full items-center gap-2 rounded border-2 border-transparent px-2 py-1.5 text-left text-sm";
 
 interface FileBrowserEntryProps {
   entry: BrowserEntry;
@@ -26,10 +28,7 @@ export function FileBrowserEntry({
   if (!entry.isFile) {
     return (
       <button
-        className={cn(
-          ROW_CLASSES,
-          "cursor-pointer hover:border-border hover:bg-accent"
-        )}
+        className={cn(FILE_ROW_CLASS, FILE_ROW_LINK_CLASS, "cursor-pointer")}
         onClick={handleClick}
         type="button"
       >
@@ -42,7 +41,7 @@ export function FileBrowserEntry({
   if (entry.kind !== "pdf") {
     return (
       <span
-        className={cn(ROW_CLASSES, "text-muted-foreground")}
+        className={cn(FILE_ROW_CLASS, "text-muted-foreground")}
         title="Only PDFs open in the editor"
       >
         <KindIcon className="size-4 shrink-0" kind={entry.kind} />
@@ -54,10 +53,9 @@ export function FileBrowserEntry({
   return (
     <Link
       className={cn(
-        ROW_CLASSES,
-        "hover:border-border hover:bg-accent",
-        isActive &&
-          "border-border bg-primary text-primary-foreground dark:text-white"
+        FILE_ROW_CLASS,
+        FILE_ROW_LINK_CLASS,
+        isActive && FILE_ROW_ACTIVE_CLASS
       )}
       search={{ file: entry.id }}
       to="/editor"
