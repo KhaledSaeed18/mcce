@@ -27,6 +27,9 @@ export const PDF_DOCUMENT_KEY_PREFIX = "mcce.pdf-document.v1";
 
 export const EDITOR_PANELS_STORAGE_KEY = "mcce.editor-panels.v1";
 
+/** One key per file: the page and zoom it was left at. */
+export const PDF_VIEW_KEY_PREFIX = "mcce.pdf-view.v1";
+
 export const DEFAULT_EDITOR_PANELS: EditorPanels = {
   isBrowserOpen: true,
   isRailOpen: false,

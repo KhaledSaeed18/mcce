@@ -11,6 +11,7 @@ import { usePdfExport } from "@/hooks/use-pdf-export";
 import { usePdfZoom } from "@/hooks/use-pdf-zoom";
 import { useRecordRecentFile } from "@/hooks/use-record-recent-file";
 import { useSpacePan } from "@/hooks/use-space-pan";
+import { useViewResume } from "@/hooks/use-view-resume";
 import type {
   EditorFile,
   SaveStatus,
@@ -41,6 +42,7 @@ export function useEditorSession(
   );
   const zoom = usePdfZoom({ pageSize: activeSize, viewport });
   useDocumentScroller(scrollRef, node?.id, zoom);
+  useViewResume(node?.id, navigation, zoom);
   const { exportPdf, status: exportStatus } = usePdfExport({
     annotations: markup.annotations,
     bytes,

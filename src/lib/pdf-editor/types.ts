@@ -144,9 +144,18 @@ export interface ZoomControl {
   fitPage: () => void;
   fitWidth: () => void;
   mode: ZoomMode;
+  /** Puts back a zoom saved earlier, fitted or not. */
+  restore: (mode: ZoomMode, value: number) => void;
   value: number;
   zoomIn: () => void;
   zoomOut: () => void;
+}
+
+/** Where a file was left: the page being read and how it was zoomed. */
+export interface SavedView {
+  page: number;
+  zoom: number;
+  zoomMode: ZoomMode;
 }
 
 /** Where the reader is in the document, and how to move them somewhere else. */
