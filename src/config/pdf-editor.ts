@@ -259,7 +259,8 @@ export const MIN_STROKE_POINTS = 2;
 /** Below this a press on text is a click that opens it for editing, not a move. */
 export const TEXT_MOVE_TOLERANCE = 3;
 
-export const DEFAULT_TOOL: EditorTool = "pen";
+/** A file opens ready to read: selecting text and picking up markup, not drawing. */
+export const DEFAULT_TOOL: EditorTool = "select";
 
 /** Every toolbar control is pinned to the icon buttons' height so the row reads as one strip. */
 export const EDITOR_CONTROL_HEIGHT_CLASS = "h-9";
