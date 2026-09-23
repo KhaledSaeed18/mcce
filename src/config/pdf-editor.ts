@@ -1,4 +1,8 @@
-import type { EditorPanels, EditorTool } from "@/lib/pdf-editor/types";
+import type {
+  EditorPanels,
+  EditorTool,
+  LocalPdfProblem,
+} from "@/lib/pdf-editor/types";
 
 export const EDITOR_PATH = "/editor";
 
@@ -26,6 +30,45 @@ export const PDF_ANNOTATIONS_KEY_PREFIX = "mcce.pdf-annotations.v1";
 export const PDF_DOCUMENT_KEY_PREFIX = "mcce.pdf-document.v1";
 
 export const EDITOR_PANELS_STORAGE_KEY = "mcce.editor-panels.v1";
+
+/** PDFs opened from the reader's computer are kept in IndexedDB, which holds
+ * far more than localStorage. Details and bytes are separate stores so listing
+ * the files never reads every file into memory. */
+export const LOCAL_PDF_DB_NAME = "mcce-editor";
+export const LOCAL_PDF_DB_VERSION = 1;
+export const LOCAL_PDF_META_STORE = "local-pdf-meta";
+export const LOCAL_PDF_BYTES_STORE = "local-pdf-bytes";
+
+/** Keeps one large file from taking the browser's whole storage allowance. */
+export const LOCAL_PDF_MAX_BYTES = 100 * 1024 * 1024;
+
+/** Marks an id as a file from this device, which no Drive id starts with. */
+export const LOCAL_PDF_ID_PREFIX = "local-";
+
+/** Hex characters of the content hash kept in the id: plenty to tell files apart. */
+export const LOCAL_PDF_ID_LENGTH = 24;
+
+/** PDF readers accept a file whose header sits anywhere in its first kilobyte. */
+export const PDF_HEADER = "%PDF-";
+export const PDF_HEADER_SEARCH_BYTES = 1024;
+
+export const LOCAL_PDF_ACCEPT = ".pdf,application/pdf";
+
+export const LOCAL_PDF_OPEN_LABEL = "Open from computer";
+
+/** The title for a file from this device whose details the browser has lost. */
+export const LOCAL_PDF_MISSING_NAME = "PDF from this device";
+
+export const LOCAL_PDF_PROBLEM_COPY: Record<LocalPdfProblem, string> = {
+  empty: "That file is empty.",
+  "not-pdf": "Only PDF files open here.",
+  "too-large":
+    "That PDF is over 100 MB, which is more than this browser can keep.",
+};
+
+/** Shown when the browser refuses to keep the file, for example in a private window. */
+export const LOCAL_PDF_SAVE_FAILED =
+  "This browser would not keep the file. Private windows often block it.";
 
 /** One key per file: the page and zoom it was left at. */
 export const PDF_VIEW_KEY_PREFIX = "mcce.pdf-view.v1";

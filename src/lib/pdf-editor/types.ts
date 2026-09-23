@@ -12,8 +12,32 @@ export interface DriveEditorFile
   source: "drive";
 }
 
+/** A PDF the reader opened from their own computer, kept in this browser. */
+export interface LocalEditorFile {
+  id: string;
+  name: string;
+  source: "local";
+}
+
 /** The open file. Where it came from decides how its bytes are fetched. */
-export type EditorFile = DriveEditorFile;
+export type EditorFile = DriveEditorFile | LocalEditorFile;
+
+/** What is kept about a PDF from the reader's computer, apart from its bytes. */
+export interface LocalPdfMeta {
+  addedAt: string;
+  id: string;
+  name: string;
+  size: number;
+}
+
+/** Why a file from the reader's computer was turned away. */
+export type LocalPdfProblem = "empty" | "not-pdf" | "too-large";
+
+/** The editor's URL: a file from the index, or one from this device. */
+export interface EditorSearch {
+  file?: string;
+  local?: string;
+}
 
 export type EditorTool =
   | "pen"

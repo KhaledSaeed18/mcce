@@ -25,7 +25,8 @@ export function useEditorSession(
   scrollRef: RefObject<HTMLDivElement | null>
 ) {
   const { bytes, doc, retry, status } = usePdfDocument(node);
-  useRecordRecentFile(node?.id);
+  // Recent files are shared with the rest of the site, which only knows Drive files.
+  useRecordRecentFile(node?.source === "drive" ? node.id : undefined);
   const viewport = useElementSize(scrollRef);
   const tools = useEditorTools();
   const isSpacePanning = useSpacePan();

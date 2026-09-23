@@ -1,5 +1,6 @@
 import { FileBrowserCrumbs } from "@/components/pdf-editor/file-browser-crumbs";
 import { FileBrowserEntry } from "@/components/pdf-editor/file-browser-entry";
+import { OpenLocalPdfButton } from "@/components/pdf-editor/open-local-pdf-button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useEditorFileBrowser } from "@/hooks/use-editor-file-browser";
 import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
@@ -17,6 +18,7 @@ export function FileBrowserPanel({ activeNode, nodes }: FileBrowserPanelProps) {
 
   return (
     <aside className="flex w-72 shrink-0 flex-col border-r-2 bg-card">
+      <OpenLocalPdfButton className="border-b-2 p-2" />
       <FileBrowserCrumbs crumbs={crumbs} onSelect={openFolder} />
       <ScrollArea className="min-h-0 flex-1">
         <div className="flex flex-col gap-0.5 p-2">

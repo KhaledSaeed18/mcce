@@ -128,6 +128,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
                 nodes={nodes}
                 onRetry={retry}
                 onShowFiles={toggleBrowser}
+                source={node ? node.source : "drive"}
                 status={status}
               />
             )}

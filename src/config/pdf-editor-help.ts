@@ -6,10 +6,11 @@ export const EDITOR_HELP_LABEL = "Help and shortcuts";
 export const EDITOR_HELP_TITLE = "Using the editor";
 
 export const EDITOR_HELP_DESCRIPTION =
-  "Mark up PDFs from the MCCE index in your browser and download a copy.";
+  "Mark up PDFs from the MCCE index or your computer, then download a copy.";
 
 export const EDITOR_HELP_FACTS: readonly string[] = [
   "Only PDF files open here. Other files in the index stay in Google Drive.",
+  "PDFs you open from your computer are kept in this browser, so they open again later without choosing them.",
   "Changes save on their own in this browser, one file at a time. They do not sync to other devices, and clearing site data removes them.",
   "Download copy saves a new PDF with your markup and page changes. The file in Google Drive never changes.",
   "The page rail turns, copies, removes, and reorders pages. Drag a thumbnail to move it.",
