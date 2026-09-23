@@ -102,3 +102,5 @@ export function useEditorSession(
     zoom,
   };
 }
+
+export type EditorSession = ReturnType<typeof useEditorSession>;
