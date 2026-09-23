@@ -19,6 +19,7 @@ import type {
 } from "@/lib/pdf-editor/types";
 
 interface EditorToolbarProps {
+  canClear: boolean;
   canRedo: boolean;
   canUndo: boolean;
   color: string;
@@ -39,6 +40,7 @@ interface EditorToolbarProps {
 }
 
 export function EditorToolbar({
+  canClear,
   canRedo,
   canUndo,
   color,
@@ -96,6 +98,7 @@ export function EditorToolbar({
         orientation="vertical"
       />
       <HistoryControls
+        canClear={canClear}
         canRedo={canRedo}
         canUndo={canUndo}
         onClear={onClear}

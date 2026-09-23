@@ -2,6 +2,7 @@ import { RedoIcon, Trash2Icon, UndoIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface HistoryControlsProps {
+  canClear: boolean;
   canRedo: boolean;
   canUndo: boolean;
   onClear: () => void;
@@ -10,6 +11,7 @@ interface HistoryControlsProps {
 }
 
 export function HistoryControls({
+  canClear,
   canRedo,
   canUndo,
   onClear,
@@ -38,6 +40,7 @@ export function HistoryControls({
       </Button>
       <Button
         aria-label="Clear all markup"
+        disabled={!canClear}
         onClick={onClear}
         size="icon"
         variant="outline"

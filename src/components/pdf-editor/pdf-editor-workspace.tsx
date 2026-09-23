@@ -67,6 +67,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
         <div className="flex min-w-0 flex-1 flex-col">
           {doc ? (
             <EditorToolbar
+              canClear={markup.annotations.length > 0}
               canRedo={markup.canRedo}
               canUndo={markup.canUndo}
               color={tools.color}
