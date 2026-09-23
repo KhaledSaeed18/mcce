@@ -1,11 +1,9 @@
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import { useRef } from "react";
 import { AnnotationCanvas } from "@/components/pdf-editor/annotation-canvas";
-import { PageOverlayLayer } from "@/components/pdf-editor/page-overlay-layer";
+import { PdfPageOverlays } from "@/components/pdf-editor/pdf-page-overlays";
 import { PdfSearchHighlights } from "@/components/pdf-editor/pdf-search-highlights";
 import { PdfTextLayer } from "@/components/pdf-editor/pdf-text-layer";
-import { TextDraftField } from "@/components/pdf-editor/text-draft-field";
-import { TextSelectionBox } from "@/components/pdf-editor/text-selection-box";
 import {
   PAGE_INDEX_ATTRIBUTE,
   PLACEHOLDER_PAGE_SIZE,
@@ -63,7 +61,7 @@ export function PdfPage({
   const pageSize = size ?? PLACEHOLDER_PAGE_SIZE;
   const rendered = getRenderedSize(pageSize, page.rotation);
   const pageMarker = { [PAGE_INDEX_ATTRIBUTE]: position };
-  const { field, selected, selection } = usePageTextEditing({
+  const editing = usePageTextEditing({
     actions,
     annotations,
     draft: textDraft,
@@ -94,9 +92,9 @@ export function PdfPage({
           actions={actions}
           annotations={annotations}
           editingId={textDraft?.id ?? null}
-          onDraft={field.request}
+          onDraft={editing.field.request}
           pageId={page.id}
-          preview={selection.preview}
+          preview={editing.selection.preview}
           rotation={page.rotation}
           selectedId={selectedId}
           settings={settings}
@@ -104,29 +102,13 @@ export function PdfPage({
           zoom={zoom}
         />
       ) : null}
-      <PageOverlayLayer rotation={page.rotation} size={pageSize} zoom={zoom}>
-        {selected && !textDraft ? (
-          <TextSelectionBox
-            annotation={selection.preview ?? selected}
-            onResize={selection.resize}
-            onResizeEnd={selection.end}
-            rotation={page.rotation}
-            zoom={zoom}
-          />
-        ) : null}
-        {textDraft ? (
-          <TextDraftField
-            draft={textDraft}
-            onCancel={field.cancel}
-            onCommit={field.commit}
-            onEdit={field.edit}
-            onMove={field.move}
-            onResize={field.resize}
-            rotation={page.rotation}
-            zoom={zoom}
-          />
-        ) : null}
-      </PageOverlayLayer>
+      <PdfPageOverlays
+        editing={editing}
+        rotation={page.rotation}
+        size={pageSize}
+        textDraft={textDraft}
+        zoom={zoom}
+      />
     </div>
   );
 }

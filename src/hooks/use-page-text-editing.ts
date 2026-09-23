@@ -41,3 +41,5 @@ export function usePageTextEditing({
   });
   return { field, selected, selection };
 }
+
+export type PageTextEditing = ReturnType<typeof usePageTextEditing>;
