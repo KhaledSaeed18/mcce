@@ -82,7 +82,9 @@ export function EditorFileBar({
 
       <div className="flex items-center justify-end gap-2">
         {saveStatus ? <EditorSaveStatus status={saveStatus} /> : null}
-        {node ? <OpenInDriveButton href={node.webViewLink} /> : null}
+        {node?.source === "drive" ? (
+          <OpenInDriveButton href={node.webViewLink} />
+        ) : null}
         <Button
           aria-label={EDITOR_HELP_LABEL}
           className={EDITOR_HEADER_ICON_BUTTON_CLASS}

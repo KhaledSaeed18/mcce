@@ -6,11 +6,14 @@ export type EditorTreeNode = Pick<
   "id" | "kind" | "name" | "parentId"
 >;
 
-/** The open file, trimmed to what the file bar, export, and Drive link read. */
-export type EditorFile = Pick<
-  DriveNode,
-  "id" | "name" | "parentId" | "webViewLink"
->;
+/** A file from the index, trimmed to what the file bar, export, and Drive link read. */
+export interface DriveEditorFile
+  extends Pick<DriveNode, "id" | "name" | "parentId" | "webViewLink"> {
+  source: "drive";
+}
+
+/** The open file. Where it came from decides how its bytes are fetched. */
+export type EditorFile = DriveEditorFile;
 
 export type EditorTool =
   | "pen"

@@ -24,7 +24,7 @@ export function useEditorSession(
   node: EditorFile | null,
   scrollRef: RefObject<HTMLDivElement | null>
 ) {
-  const { bytes, doc, retry, status } = usePdfDocument(node?.id);
+  const { bytes, doc, retry, status } = usePdfDocument(node);
   useRecordRecentFile(node?.id);
   const viewport = useElementSize(scrollRef);
   const tools = useEditorTools();

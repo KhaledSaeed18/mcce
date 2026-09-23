@@ -3,12 +3,12 @@ import { ExternalLinkIcon, MonitorIcon } from "lucide-react";
 import { LogoMark } from "@/components/logo-mark";
 import { Button } from "@/components/ui/button";
 import { EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
-import type { EditorFile } from "@/lib/pdf-editor/types";
+import type { DriveEditorFile } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
 interface EditorViewportNoticeProps {
   className?: string;
-  node: EditorFile | null;
+  node: DriveEditorFile | null;
 }
 
 export function EditorViewportNotice({
