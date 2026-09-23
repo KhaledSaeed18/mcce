@@ -153,6 +153,9 @@ export const EDITOR_HEADER_ICON_BUTTON_CLASS =
 /** Matches the shortcut video players use, so it needs no explaining. */
 export const FULLSCREEN_HOTKEY_KEY = "f";
 
+/** Held to pan with the hand, as in most drawing and design tools. */
+export const PAN_HOTKEY_KEY = " ";
+
 export const UNDO_HOTKEY_KEY = "z";
 export const REDO_HOTKEY_KEY = "y";
 

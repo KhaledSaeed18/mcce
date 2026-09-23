@@ -36,6 +36,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     isDocumentShown,
     markup,
     navigation,
+    settings,
     sizes,
     status,
     tools,
@@ -105,7 +106,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
                 onTextDraftChange={markup.openDraft}
                 pages={markup.pages}
                 selectedId={markup.selectedId}
-                settings={tools}
+                settings={settings}
                 textDraft={markup.draft}
                 zoom={zoom.value}
               />

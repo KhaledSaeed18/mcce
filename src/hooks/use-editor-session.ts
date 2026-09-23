@@ -10,7 +10,8 @@ import { usePdfDocument } from "@/hooks/use-pdf-document";
 import { usePdfExport } from "@/hooks/use-pdf-export";
 import { usePdfZoom } from "@/hooks/use-pdf-zoom";
 import { useRecordRecentFile } from "@/hooks/use-record-recent-file";
-import type { EditorFile } from "@/lib/pdf-editor/types";
+import { useSpacePan } from "@/hooks/use-space-pan";
+import type { EditorFile, ToolSettings } from "@/lib/pdf-editor/types";
 
 /** Everything about the open file: its pages, its markup, the tools drawing
  * it, and the zoom and keys it answers to. */
@@ -22,6 +23,7 @@ export function useEditorSession(
   useRecordRecentFile(node?.id);
   const viewport = useElementSize(scrollRef);
   const tools = useEditorTools();
+  const isSpacePanning = useSpacePan();
   const markup = useEditorMarkup({
     fileId: node?.id,
     pageCount: doc?.numPages ?? 0,
@@ -50,6 +52,15 @@ export function useEditorSession(
     zoom,
   });
 
+  // The pages draw with the borrowed hand while the toolbar keeps showing the
+  // tool the reader picked, which is what they get back when Space comes up.
+  const settings: ToolSettings = {
+    color: tools.color,
+    fontSize: tools.fontSize,
+    strokeWidth: tools.strokeWidth,
+    tool: isSpacePanning ? "hand" : tools.tool,
+  };
+
   return {
     doc,
     exportPdf,
@@ -57,6 +68,7 @@ export function useEditorSession(
     isDocumentShown,
     markup,
     navigation,
+    settings,
     sizes,
     status,
     tools,
