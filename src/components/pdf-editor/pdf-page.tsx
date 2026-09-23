@@ -10,13 +10,9 @@ import {
   PAGE_INDEX_ATTRIBUTE,
   PLACEHOLDER_PAGE_SIZE,
 } from "@/config/pdf-editor";
-import { useInViewport } from "@/hooks/use-in-viewport";
-import { usePdfPageRender } from "@/hooks/use-pdf-page-render";
-import { usePdfTextLayer } from "@/hooks/use-pdf-text-layer";
+import { usePageTextEditing } from "@/hooks/use-page-text-editing";
+import { usePdfPageLayers } from "@/hooks/use-pdf-page-layers";
 import { useSearchHighlights } from "@/hooks/use-search-highlights";
-import { useTextBoxResize } from "@/hooks/use-text-box-resize";
-import { useTextDraft } from "@/hooks/use-text-draft";
-import { findText } from "@/lib/pdf-editor/move";
 import { getRenderedSize } from "@/lib/pdf-editor/rotation";
 import type {
   Annotation,
@@ -57,35 +53,22 @@ export function PdfPage({
   zoom,
 }: PdfPageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isVisible = useInViewport(containerRef);
-  const { canvasRef, size } = usePdfPageRender(
+  const { canvasRef, size, textDivs, textLayerRef } = usePdfPageLayers(
+    containerRef,
     doc,
-    page.sourceIndex,
-    zoom,
-    isVisible,
-    page.rotation
-  );
-  const { layerRef: textLayerRef, textDivs } = usePdfTextLayer(
-    doc,
-    page.sourceIndex,
-    zoom,
-    isVisible,
-    page.rotation
+    page,
+    zoom
   );
   const highlights = useSearchHighlights(containerRef, textDivs, searchHits);
   const pageSize = size ?? PLACEHOLDER_PAGE_SIZE;
   const rendered = getRenderedSize(pageSize, page.rotation);
-  const selected = findText(annotations, selectedId);
   const pageMarker = { [PAGE_INDEX_ATTRIBUTE]: position };
-  const { cancel, commit, edit, move, request, resize } = useTextDraft({
+  const { field, selected, selection } = usePageTextEditing({
     actions,
+    annotations,
     draft: textDraft,
-    onChange: onTextDraftChange,
-    size: pageSize,
-  });
-  const selection = useTextBoxResize({
-    annotation: selected,
-    onReplace: actions.replace,
+    onDraftChange: onTextDraftChange,
+    selectedId,
     size: pageSize,
   });
 
@@ -111,7 +94,7 @@ export function PdfPage({
           actions={actions}
           annotations={annotations}
           editingId={textDraft?.id ?? null}
-          onDraft={request}
+          onDraft={field.request}
           pageId={page.id}
           preview={selection.preview}
           rotation={page.rotation}
@@ -134,11 +117,11 @@ export function PdfPage({
         {textDraft ? (
           <TextDraftField
             draft={textDraft}
-            onCancel={cancel}
-            onCommit={commit}
-            onEdit={edit}
-            onMove={move}
-            onResize={resize}
+            onCancel={field.cancel}
+            onCommit={field.commit}
+            onEdit={field.edit}
+            onMove={field.move}
+            onResize={field.resize}
             rotation={page.rotation}
             zoom={zoom}
           />
