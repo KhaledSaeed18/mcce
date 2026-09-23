@@ -74,6 +74,7 @@ export function PageThumbnailRail({
             onSelect={onSelect}
             page={page}
             position={position}
+            railRef={railRef}
             size={size}
           />
         </Fragment>
