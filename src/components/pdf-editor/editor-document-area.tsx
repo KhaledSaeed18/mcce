@@ -13,6 +13,7 @@ import type {
 interface EditorDocumentAreaProps {
   children: ReactNode;
   doc: PDFDocumentProxy | null;
+  isPanelAnimated: boolean;
   isRailOpen: boolean;
   layout: EditorPage[];
   navigation: PageNavigation;
@@ -28,6 +29,7 @@ interface EditorDocumentAreaProps {
 export function EditorDocumentArea({
   children,
   doc,
+  isPanelAnimated,
   isRailOpen,
   layout,
   navigation,
@@ -45,7 +47,10 @@ export function EditorDocumentArea({
 
   return (
     <div className="flex min-h-0 flex-1">
-      <EditorSidePanel isOpen={isRailOpen && doc !== null}>
+      <EditorSidePanel
+        isAnimated={isPanelAnimated}
+        isOpen={isRailOpen && doc !== null}
+      >
         {doc ? (
           <PageThumbnailRail
             activeIndex={navigation.activeIndex}

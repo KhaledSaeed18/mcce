@@ -36,7 +36,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     isSupported: isFullscreenSupported,
     toggle: toggleFullscreen,
   } = useFullscreen(rootRef);
-  const { isBrowserOpen, isRailOpen, toggleBrowser, toggleRail } =
+  const { isAnimated, isBrowserOpen, isRailOpen, toggleBrowser, toggleRail } =
     useEditorPanels();
 
   const { bytes, doc, status } = usePdfDocument(node?.id);
@@ -89,7 +89,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
         onToggleRail={toggleRail}
       />
       <div className="flex min-h-0 flex-1">
-        <EditorSidePanel isOpen={isBrowserOpen}>
+        <EditorSidePanel isAnimated={isAnimated} isOpen={isBrowserOpen}>
           <FileBrowserPanel activeNode={node} nodes={nodes} />
         </EditorSidePanel>
         <div className="flex min-w-0 flex-1 flex-col">
@@ -116,6 +116,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
           ) : null}
           <EditorDocumentArea
             doc={doc}
+            isPanelAnimated={isAnimated}
             isRailOpen={isRailOpen}
             layout={markup.pages}
             navigation={navigation}
