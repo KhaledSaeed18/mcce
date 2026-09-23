@@ -40,6 +40,13 @@ export const MAX_ZOOM = 4;
 export const ZOOM_STEP = 0.25;
 export const DEFAULT_ZOOM = 1.25;
 
+/** Wheel travel that makes one zoom step: about one mouse notch, or a short
+ * trackpad pinch, which arrives as many small ctrl+wheel deltas. */
+export const WHEEL_ZOOM_STEP_DELTA = 60;
+
+/** How far a Safari pinch has to scale before it counts as one zoom step. */
+export const GESTURE_ZOOM_STEP_SCALE = 1.15;
+
 /** Letter size in points, held before a page reports its own dimensions so the
  * list has something to scroll and observe. */
 export const PLACEHOLDER_PAGE_SIZE = { height: 792, width: 612 };
