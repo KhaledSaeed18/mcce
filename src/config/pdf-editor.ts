@@ -282,6 +282,13 @@ export const PAN_HOTKEY_KEY = " ";
 
 export const SEARCH_HOTKEY_KEY = "f";
 
+export const COPY_HOTKEY_KEY = "c";
+export const PASTE_HOTKEY_KEY = "v";
+
+/** How far each paste lands from the last, in page points, so copies pasted
+ * one after another step down the page instead of stacking unseen. */
+export const PASTE_OFFSET = 12;
+
 /** Pages read between updates while a file's text loads for search, so the
  * count grows in steps rather than re-rendering after every page. */
 export const SEARCH_TEXT_BATCH_PAGES = 8;
@@ -300,6 +307,7 @@ export const DESELECT_HOTKEY_KEY = "Escape";
 
 /** Shown in each control's tooltip. "Mod" becomes Cmd on a Mac and Ctrl elsewhere. */
 export const SHORTCUT_HINTS = {
+  copyMarkup: "Mod+C",
   deleteText: "Delete",
   deselect: "Esc",
   export: "Mod+S",
@@ -308,6 +316,7 @@ export const SHORTCUT_HINTS = {
   help: "?",
   nextPage: "Right arrow",
   pan: "Space",
+  pasteMarkup: "Mod+V",
   previousPage: "Left arrow",
   redo: "Mod+Shift+Z",
   scrollZoom: "Mod+Scroll",

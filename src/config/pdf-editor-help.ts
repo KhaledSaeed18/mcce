@@ -26,8 +26,10 @@ export const EDITOR_HELP_SHORTCUT_GROUPS: readonly ShortcutGroup[] = [
     items: [
       { keys: SHORTCUT_HINTS.undo, label: "Undo" },
       { keys: SHORTCUT_HINTS.redo, label: "Redo" },
-      { keys: SHORTCUT_HINTS.deleteText, label: "Delete selected text" },
-      { keys: SHORTCUT_HINTS.deselect, label: "Let go of selected text" },
+      { keys: SHORTCUT_HINTS.deleteText, label: "Delete what is selected" },
+      { keys: SHORTCUT_HINTS.copyMarkup, label: "Copy selected markup" },
+      { keys: SHORTCUT_HINTS.pasteMarkup, label: "Paste markup" },
+      { keys: SHORTCUT_HINTS.deselect, label: "Let go of the selection" },
       { keys: SHORTCUT_HINTS.export, label: "Download copy" },
     ],
     title: "Edit",

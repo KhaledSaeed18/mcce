@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { useEditorHotkeys } from "@/hooks/use-editor-hotkeys";
 import type { useEditorMarkup } from "@/hooks/use-editor-markup";
+import { useMarkupClipboard } from "@/hooks/use-markup-clipboard";
 import type { usePdfZoom } from "@/hooks/use-pdf-zoom";
 import type { EditorTool, PageNavigation } from "@/lib/pdf-editor/types";
 
@@ -31,6 +32,15 @@ export function useEditorShortcuts({
       navigation.goToPage(navigation.activeIndex - 1);
     }
   }, [navigation]);
+
+  useMarkupClipboard({
+    activeIndex: navigation.activeIndex,
+    annotations: markup.annotations,
+    onAdd: markup.actions.add,
+    onSelect: markup.actions.select,
+    pages: markup.pages,
+    selectedId: markup.selectedId,
+  });
 
   useEditorHotkeys({
     onDeselect: markup.deselect,
