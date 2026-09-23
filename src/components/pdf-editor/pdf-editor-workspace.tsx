@@ -19,6 +19,7 @@ import { usePdfExport } from "@/hooks/use-pdf-export";
 import { usePdfZoom } from "@/hooks/use-pdf-zoom";
 import { useRecordRecentFile } from "@/hooks/use-record-recent-file";
 import { useScrollReset } from "@/hooks/use-scroll-reset";
+import { useZoomAnchor } from "@/hooks/use-zoom-anchor";
 import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
@@ -55,6 +56,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     markup.pages
   );
   const zoom = usePdfZoom({ pageSize: activeSize, viewport });
+  useZoomAnchor(scrollRef, zoom.value);
   const { exportPdf, status: exportStatus } = usePdfExport({
     annotations: markup.annotations,
     bytes,

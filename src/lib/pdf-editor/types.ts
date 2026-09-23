@@ -159,3 +159,13 @@ export interface EditorPanels {
   isBrowserOpen: boolean;
   isRailOpen: boolean;
 }
+
+/** The spot at the middle of the scroller, held as a place in a page rather
+ * than a pixel offset so it survives the pages changing size. */
+export interface ScrollAnchor {
+  /** How far across the scrolled content the middle sits, from 0 to 1. */
+  centerX: number;
+  /** How far down its page the middle sits, from 0 to 1. */
+  fraction: number;
+  index: number;
+}
