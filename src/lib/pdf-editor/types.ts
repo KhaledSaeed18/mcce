@@ -114,6 +114,16 @@ export interface HighlightAnnotation extends AnnotationBase {
   width: number;
 }
 
+/** How a text mark sits on the text it covers. */
+export type TextMarkStyle = "highlight" | "strike" | "underline";
+
+/** A mark laid over text picked with the select tool, one box per line. */
+export interface TextMarkAnnotation extends AnnotationBase {
+  boxes: Box[];
+  style: TextMarkStyle;
+  type: "mark";
+}
+
 export interface ShapeAnnotation extends AnnotationBase {
   height: number;
   strokeWidth: number;
@@ -151,7 +161,8 @@ export type Annotation =
   | HighlightAnnotation
   | PenAnnotation
   | ShapeAnnotation
-  | TextAnnotation;
+  | TextAnnotation
+  | TextMarkAnnotation;
 
 export interface PageSize {
   height: number;
@@ -237,6 +248,8 @@ export type TextBoxEdge = "left" | "right";
 /** Every way the page list can change the markup, kept together as they travel down. */
 export interface AnnotationActions {
   add: (annotation: Annotation) => void;
+  /** Several at once, as a single undo step. */
+  addMany: (annotations: Annotation[]) => void;
   batchErase: (pageId: string, points: Point[]) => void;
   erase: (pageId: string, point: Point) => void;
   moveText: (id: string, dx: number, dy: number) => void;

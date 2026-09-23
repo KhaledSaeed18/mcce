@@ -1,10 +1,12 @@
 import { HIGHLIGHT_OPACITY } from "@/config/pdf-editor";
 import { getArrowHead } from "../arrow-head";
+import { getMarkLine } from "../text-mark-lines";
 import type {
   ArrowAnnotation,
   HighlightAnnotation,
   PenAnnotation,
   ShapeAnnotation,
+  TextMarkAnnotation,
 } from "../types";
 
 export function drawPen(
@@ -36,6 +38,33 @@ export function drawHighlight(
   ctx.save();
   ctx.globalAlpha = HIGHLIGHT_OPACITY;
   drawPen(ctx, { ...annotation, type: "pen" });
+  ctx.restore();
+}
+
+export function drawTextMark(
+  ctx: CanvasRenderingContext2D,
+  annotation: TextMarkAnnotation
+): void {
+  const { style } = annotation;
+  ctx.save();
+  if (style === "highlight") {
+    ctx.globalAlpha = HIGHLIGHT_OPACITY;
+    ctx.fillStyle = annotation.color;
+    for (const box of annotation.boxes) {
+      ctx.fillRect(box.x, box.y, box.width, box.height);
+    }
+  } else {
+    ctx.strokeStyle = annotation.color;
+    ctx.lineCap = "butt";
+    for (const box of annotation.boxes) {
+      const line = getMarkLine(box, style);
+      ctx.lineWidth = line.thickness;
+      ctx.beginPath();
+      ctx.moveTo(line.start.x, line.start.y);
+      ctx.lineTo(line.end.x, line.end.y);
+      ctx.stroke();
+    }
+  }
   ctx.restore();
 }
 

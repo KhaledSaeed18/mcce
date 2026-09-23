@@ -40,6 +40,9 @@ export function isAnnotationHit(
   if (annotation.type === "text") {
     return isInsideBox(getTextBox(annotation), target);
   }
+  if (annotation.type === "mark") {
+    return annotation.boxes.some((box) => isInsideBox(box, target));
+  }
   if (annotation.type === "arrow") {
     return (
       distanceToSegment(annotation.from, annotation.to, target) <=

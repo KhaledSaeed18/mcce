@@ -46,6 +46,16 @@ export function shiftAnnotation(
       })),
     };
   }
+  if (annotation.type === "mark") {
+    return {
+      ...annotation,
+      boxes: annotation.boxes.map((box) => ({
+        ...box,
+        x: box.x + dx,
+        y: box.y + dy,
+      })),
+    };
+  }
   if (annotation.type === "arrow") {
     return {
       ...annotation,

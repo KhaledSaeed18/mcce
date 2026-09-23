@@ -4,6 +4,7 @@ import { EditorPlaceholder } from "@/components/pdf-editor/editor-placeholder";
 import { EditorSearchBar } from "@/components/pdf-editor/editor-search-bar";
 import { EditorToolbar } from "@/components/pdf-editor/editor-toolbar";
 import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
+import { TextSelectionMarker } from "@/components/pdf-editor/text-selection-marker";
 import { useDocumentSearch } from "@/hooks/use-document-search";
 import type { EditorSession } from "@/hooks/use-editor-session";
 import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
@@ -131,6 +132,16 @@ export function EditorDocumentColumn({
           )}
         </EditorDocumentArea>
       </div>
+      <TextSelectionMarker
+        highlightColor={tools.highlightColor}
+        isEnabled={tools.tool === "select"}
+        onAddMany={markup.actions.addMany}
+        pages={markup.pages}
+        penColor={tools.color}
+        scrollRef={scrollRef}
+        sizes={sizes}
+        zoom={zoom.value}
+      />
     </div>
   );
 }

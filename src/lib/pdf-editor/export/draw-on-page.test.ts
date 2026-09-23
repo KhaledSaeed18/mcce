@@ -48,6 +48,21 @@ const HIGHLIGHT: Annotation = {
   width: 12,
 };
 
+const UNDERLINE: Annotation = {
+  boxes: [{ height: 10, width: 40, x: 10, y: 50 }],
+  color: "#1a1815",
+  id: "u",
+  pageId: "p0",
+  style: "underline",
+  type: "mark",
+};
+
+const TEXT_HIGHLIGHT: Annotation = {
+  ...UNDERLINE,
+  id: "t",
+  style: "highlight",
+};
+
 async function exportWithPageTurnedBy(
   rotation: number,
   annotation: Annotation = STROKE
@@ -121,6 +136,21 @@ describe("drawAnnotationOnPage", () => {
     // One stroke for the whole path, so overlapping segments do not darken.
     expect(drawing.match(STROKE_OPERATOR)).toHaveLength(1);
     expect(drawing).toMatch(GRAPHICS_STATE_OPERATOR);
+  });
+
+  it("writes an underline as a line near the foot of the marked text", async () => {
+    const drawing = await exportWithPageTurnedBy(0, UNDERLINE);
+
+    // 95% down a line of text from y 50 to 60, flipped against the page height.
+    expect(drawing).toContain(`10 ${CONTENT_HEIGHT - 59.5} m`);
+    expect(drawing).toContain(`50 ${CONTENT_HEIGHT - 59.5} l`);
+  });
+
+  it("writes a text highlight as a see-through box over the marked text", async () => {
+    const drawing = await exportWithPageTurnedBy(0, TEXT_HIGHLIGHT);
+
+    expect(drawing).toMatch(GRAPHICS_STATE_OPERATOR);
+    expect(drawing).toContain("40 0 l");
   });
 
   it("keeps the turn to itself rather than leaving it on for the page", async () => {

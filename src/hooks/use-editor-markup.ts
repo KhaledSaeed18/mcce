@@ -19,6 +19,7 @@ export function useEditorMarkup({
 }: EditorMarkupOptions) {
   const {
     add,
+    addMany,
     annotations,
     batchEraseAt,
     canRedo,
@@ -58,6 +59,7 @@ export function useEditorMarkup({
 
   const actions: AnnotationActions = {
     add,
+    addMany,
     batchErase: batchEraseAt,
     erase: eraseAt,
     moveText: move,

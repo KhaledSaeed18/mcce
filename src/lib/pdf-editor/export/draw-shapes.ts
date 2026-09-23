@@ -6,12 +6,14 @@ import {
 } from "pdf-lib";
 import { HIGHLIGHT_OPACITY } from "@/config/pdf-editor";
 import { getArrowHead } from "../arrow-head";
+import { getMarkLine } from "../text-mark-lines";
 import type {
   ArrowAnnotation,
   HighlightAnnotation,
   PenAnnotation,
   Point,
   ShapeAnnotation,
+  TextMarkAnnotation,
 } from "../types";
 import { flipY } from "./content-space";
 import { hexToRgb } from "./hex-to-rgb";
@@ -62,6 +64,35 @@ export function drawHighlight(
     // so anchoring it at the top of the page does the flip the other calls do.
     y: height,
   });
+}
+
+export function drawTextMark(
+  page: PDFPage,
+  annotation: TextMarkAnnotation,
+  height: number
+): void {
+  const color = hexToRgb(annotation.color);
+  const { style } = annotation;
+  for (const box of annotation.boxes) {
+    if (style === "highlight") {
+      page.drawRectangle({
+        color,
+        height: box.height,
+        opacity: HIGHLIGHT_OPACITY,
+        width: box.width,
+        x: box.x,
+        y: flipY(height, box.y + box.height),
+      });
+      continue;
+    }
+    const line = getMarkLine(box, style);
+    page.drawLine({
+      color,
+      end: { x: line.end.x, y: flipY(height, line.end.y) },
+      start: { x: line.start.x, y: flipY(height, line.start.y) },
+      thickness: line.thickness,
+    });
+  }
 }
 
 export function drawArrow(

@@ -28,3 +28,27 @@ describe("isAnnotationHit", () => {
     expect(isAnnotationHit(HIGHLIGHT, { x: 50, y: pastEdge })).toBe(false);
   });
 });
+
+describe("isAnnotationHit on a text mark", () => {
+  const mark: Annotation = {
+    boxes: [
+      { height: 10, width: 100, x: 0, y: 0 },
+      { height: 10, width: 60, x: 0, y: 14 },
+    ],
+    color: "#ffd60a",
+    id: "m",
+    pageId: "p0",
+    style: "highlight",
+    type: "mark",
+  };
+
+  it("reaches any of its lines", () => {
+    expect(isAnnotationHit(mark, { x: 30, y: 18 })).toBe(true);
+  });
+
+  it("misses beyond the end of a shorter line", () => {
+    expect(
+      isAnnotationHit(mark, { x: 90, y: 18 + ERASER_TOLERANCE + 20 })
+    ).toBe(false);
+  });
+});

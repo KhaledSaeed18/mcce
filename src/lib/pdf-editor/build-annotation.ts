@@ -3,10 +3,12 @@ import { normalizeRect } from "./geometry";
 import { createAnnotationId } from "./pointer";
 import type {
   Annotation,
+  Box,
   EditorTool,
   Point,
   TextAnnotation,
   TextDraft,
+  TextMarkStyle,
   ToolSettings,
 } from "./types";
 
@@ -75,6 +77,22 @@ export function buildHighlight(
   };
 }
 
+export function buildTextMark(
+  style: TextMarkStyle,
+  boxes: Box[],
+  pageId: string,
+  color: string
+): Annotation {
+  return {
+    boxes,
+    color,
+    id: createAnnotationId(),
+    pageId,
+    style,
+    type: "mark",
+  };
+}
+
 /** Keeps the draft's id when there is one, so editing replaces rather than duplicates. */
 export function buildText(draft: TextDraft, text: string): TextAnnotation {
   return {
@@ -101,6 +119,9 @@ export function isEmptyAnnotation(annotation: Annotation): boolean {
   }
   if (annotation.type === "text") {
     return false;
+  }
+  if (annotation.type === "mark") {
+    return annotation.boxes.length === 0;
   }
   if (annotation.type === "arrow") {
     const { from, to } = annotation;

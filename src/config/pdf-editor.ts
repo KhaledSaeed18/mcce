@@ -2,6 +2,7 @@ import type {
   EditorPanels,
   EditorTool,
   LocalPdfProblem,
+  TextMarkStyle,
 } from "@/lib/pdf-editor/types";
 
 export const EDITOR_PATH = "/editor";
@@ -179,6 +180,27 @@ export const DEFAULT_HIGHLIGHT_WIDTH = 12;
 
 /** Light enough that black text under a highlight stays easy to read. */
 export const HIGHLIGHT_OPACITY = 0.4;
+
+/** An underline or strike line's thickness, as a share of the line of text it
+ * marks, so it matches the size of the type. */
+export const TEXT_MARK_LINE_RATIO = 0.08;
+export const TEXT_MARK_MIN_LINE = 1;
+
+/** Where each line sits, as a share of the text line's height from its top. */
+export const TEXT_MARK_UNDERLINE_AT = 0.95;
+export const TEXT_MARK_STRIKE_AT = 0.55;
+
+export const TEXT_MARK_LABELS: Record<TextMarkStyle, string> = {
+  highlight: "Highlight",
+  strike: "Strike through",
+  underline: "Underline",
+};
+
+/** Gap between the selected text and the menu that acts on it. */
+export const SELECTION_MENU_OFFSET = 8;
+
+/** Selected pieces whose heights overlap by at least this share sit on one line. */
+export const TEXT_LINE_OVERLAP = 0.5;
 
 /** Matches the Helvetica the export embeds, so the canvas previews what is saved. */
 export const ANNOTATION_FONT_FAMILY = "Helvetica, Arial, sans-serif";
