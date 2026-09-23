@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { PAN_HOTKEY_KEY } from "@/config/pdf-editor";
+import { isDialogTarget } from "@/lib/is-dialog-target";
 import { isEditableTarget } from "@/lib/is-editable-target";
 
 /** A control the keyboard is on keeps Space for pressing it. One the mouse
@@ -17,7 +18,11 @@ export function useSpacePan(): boolean {
       if (event.key !== PAN_HOTKEY_KEY) {
         return;
       }
-      if (isEditableTarget(event.target) || isKeyboardFocused(event.target)) {
+      if (
+        isEditableTarget(event.target) ||
+        isDialogTarget(event.target) ||
+        isKeyboardFocused(event.target)
+      ) {
         return;
       }
       // Held Space repeats, and every repeat would scroll the page a screen.

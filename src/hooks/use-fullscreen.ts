@@ -1,5 +1,6 @@
 import { type RefObject, useCallback, useEffect, useState } from "react";
 import { FULLSCREEN_HOTKEY_KEY } from "@/config/pdf-editor";
+import { isDialogTarget } from "@/lib/is-dialog-target";
 import { isEditableTarget } from "@/lib/is-editable-target";
 
 /** Puts one element on the whole screen, on the button or on a bare "f". */
@@ -34,7 +35,8 @@ export function useFullscreen(targetRef: RefObject<HTMLElement | null>) {
       if (
         event.key.toLowerCase() !== FULLSCREEN_HOTKEY_KEY ||
         hasModifier ||
-        isEditableTarget(event.target)
+        isEditableTarget(event.target) ||
+        isDialogTarget(event.target)
       ) {
         return;
       }
