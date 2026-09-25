@@ -15,7 +15,7 @@ export function StudentPerksPage() {
     <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 py-8 sm:p-6 sm:py-14">
       <ResourcesHero
         badge={STUDENT_HERO.badge}
-        description="Three verified offers MCCE students use most. Open one for what it gives, how verification works, and what it renews to."
+        description="Verified offers MCCE students use most. Open one for what it gives, how verification works, and what it renews to."
         highlight={STUDENT_HERO.highlight}
         title={STUDENT_HERO.title}
       />

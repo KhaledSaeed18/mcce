@@ -11,7 +11,7 @@ export function studentPerkUrl(id: string): string {
 }
 
 const HUB_DESCRIPTION =
-  "Three verified student offers for MCCE students: GitHub Pack, Google AI student plans, and Zed Student. What each one gives, how verification works, and what renews to paid.";
+  "Verified student offers for MCCE students. What each plan gives, how verification works, and what renews to paid.";
 
 export function buildStudentPerksHead() {
   return {

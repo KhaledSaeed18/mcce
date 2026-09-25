@@ -13,7 +13,7 @@ export function StudentPerkSiblings({ perk }: StudentPerkSiblingsProps) {
 
   return (
     <nav aria-label="Other student plans" className="flex flex-col gap-3">
-      <h2 className="font-head text-2xl">The other two</h2>
+      <h2 className="font-head text-2xl">Other plans</h2>
       <div className="flex flex-wrap gap-3">
         {others.map((item) => (
           <Link

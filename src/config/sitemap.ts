@@ -159,8 +159,7 @@ export const SITEMAP_GROUPS: SitemapGroup[] = [
         to: RESOURCES_THESIS_PATH,
       },
       {
-        description:
-          "Three free student plans with claim steps and renewal terms.",
+        description: "Free student plans with claim steps and renewal terms.",
         label: "Student plans",
         to: RESOURCES_STUDENT_PATH,
       },

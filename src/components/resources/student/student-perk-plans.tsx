@@ -11,7 +11,7 @@ export function StudentPerkPlans({ perk }: StudentPerkPlansProps) {
   return (
     <section aria-labelledby="plans" className="flex flex-col gap-4">
       <h2 className="font-head text-2xl" id="plans">
-        The three tiers
+        Plans
       </h2>
       <div className="grid gap-3 lg:grid-cols-3">
         {perk.plans.map((plan) => (

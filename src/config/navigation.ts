@@ -203,7 +203,7 @@ const RESOURCE_ENTRIES: NavEntry[] = [
     to: RESOURCES_THESIS_PATH,
   },
   {
-    description: "Three free student plans, each with its claim steps.",
+    description: "Free student plans, each with its claim steps.",
     icon: BadgeCheckIcon,
     label: "Student plans",
     to: RESOURCES_STUDENT_PATH,

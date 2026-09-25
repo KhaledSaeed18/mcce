@@ -24,7 +24,7 @@ export function StudentPerkNotFound({ perkId }: StudentPerkNotFoundProps) {
           </EmptyMedia>
           <EmptyTitle>No student offer called {perkId}</EmptyTitle>
           <EmptyDescription>
-            This hub holds three offers for now. Pick one below.
+            That offer is not in the hub. Pick one below.
           </EmptyDescription>
         </EmptyHeader>
         <EmptyContent>

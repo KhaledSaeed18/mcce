@@ -2,7 +2,7 @@ import type { StudentPerk, StudentPerkId } from "@/lib/student-perks/types";
 
 export const STUDENT_HERO = {
   badge: "STUDENT PLANS",
-  highlight: "start with these three.",
+  highlight: "all in one place.",
   title: "Student plans, free while enrolled,",
 } as const;
 

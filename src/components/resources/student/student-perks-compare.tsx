@@ -9,7 +9,7 @@ export function StudentPerksCompare({ perks }: StudentPerksCompareProps) {
   return (
     <section aria-labelledby="compare" className="flex flex-col gap-4">
       <h2 className="font-head text-2xl" id="compare">
-        Compare the three
+        Compare plans
       </h2>
       <div className="overflow-x-auto rounded-lg border-2 bg-card shadow-md">
         <table className="w-full min-w-160 text-left text-sm">
