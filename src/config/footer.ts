@@ -2,6 +2,7 @@ import { EDITOR_PATH } from "@/config/pdf-editor";
 import {
   RESOURCES_OPEN_SOURCE_PATH,
   RESOURCES_PAGE_PATH,
+  RESOURCES_STUDENT_PATH,
   RESOURCES_THESIS_PATH,
 } from "@/config/resources/copy";
 import { PROGRAM_OFFICIAL_URL } from "@/config/site";
@@ -22,6 +23,7 @@ export type FooterNavLink =
         | "/resources"
         | "/resources/thesis"
         | "/resources/open-source"
+        | "/resources/student"
         | "/course"
         | "/exams"
         | "/recent"
@@ -89,6 +91,7 @@ export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
       { label: "PDF editor", to: EDITOR_PATH },
       { label: "Tools", to: RESOURCES_PAGE_PATH },
       { label: "Thesis toolkit", to: RESOURCES_THESIS_PATH },
+      { label: "Student plans", to: RESOURCES_STUDENT_PATH },
       { label: "Open source index", to: RESOURCES_OPEN_SOURCE_PATH },
       { label: "FAQ", to: "/faq" },
       { href: PROGRAM_OFFICIAL_URL, label: "Official program page" },
