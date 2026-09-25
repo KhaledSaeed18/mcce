@@ -1,6 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowLeftIcon } from "lucide-react";
-import { RESOURCES_STUDENT_PATH } from "@/config/resources/copy";
 import { STUDENT_PERKS } from "@/config/resources/student-perks";
 import type { StudentPerk } from "@/lib/student-perks/types";
 
@@ -26,13 +24,6 @@ export function StudentPerkSiblings({ perk }: StudentPerkSiblingsProps) {
           </Link>
         ))}
       </div>
-      <Link
-        className="inline-flex w-fit items-center gap-1.5 text-sm underline underline-offset-4 hover:text-primary"
-        to={RESOURCES_STUDENT_PATH}
-      >
-        <ArrowLeftIcon aria-hidden="true" className="size-4" />
-        All student plans
-      </Link>
     </nav>
   );
 }

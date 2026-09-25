@@ -1,4 +1,5 @@
-import { ArrowUpRightIcon } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { ArrowLeftIcon, ArrowUpRightIcon } from "lucide-react";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
 import { ResourcesHero } from "@/components/resources/resources-hero";
 import { StudentPerkFacts } from "@/components/resources/student/student-perk-facts";
@@ -29,6 +30,13 @@ export function StudentPerkDetailPage({ perk }: StudentPerkDetailPageProps) {
 
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 py-8 sm:p-6 sm:py-14">
+      <Link
+        className="inline-flex w-fit items-center gap-1.5 rounded border-2 bg-card px-3 py-1.5 font-head text-sm shadow-sm transition hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+        to={RESOURCES_STUDENT_PATH}
+      >
+        <ArrowLeftIcon aria-hidden="true" className="size-4" />
+        All student plans
+      </Link>
       <ResourcesHero
         badge="STUDENT PLAN"
         description={`${perk.name}: ${perk.tagline} ${perk.description}`}
