@@ -31,7 +31,10 @@ import { Route as CourseCodeRouteImport } from './routes/course.$code'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as ResourcesCategoryRouteImport } from './routes/resources.$category'
 import { Route as ResourcesOpenSourceRouteImport } from './routes/resources.open-source'
+import { Route as ResourcesStudentRouteImport } from './routes/resources.student'
 import { Route as ResourcesThesisRouteImport } from './routes/resources.thesis'
+import { Route as ResourcesStudentIndexRouteImport } from './routes/resources.student.index'
+import { Route as ResourcesStudentPerkIdRouteImport } from './routes/resources.student.$perkId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -143,10 +146,25 @@ const ResourcesOpenSourceRoute = ResourcesOpenSourceRouteImport.update({
   path: '/resources/open-source',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesStudentRoute = ResourcesStudentRouteImport.update({
+  id: '/resources/student',
+  path: '/resources/student',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResourcesThesisRoute = ResourcesThesisRouteImport.update({
   id: '/resources/thesis',
   path: '/resources/thesis',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesStudentIndexRoute = ResourcesStudentIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ResourcesStudentRoute,
+} as any)
+const ResourcesStudentPerkIdRoute = ResourcesStudentPerkIdRouteImport.update({
+  id: '/$perkId',
+  path: '/$perkId',
+  getParentRoute: () => ResourcesStudentRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -170,9 +188,12 @@ export interface FileRoutesByFullPath {
   '/course/$code': typeof CourseCodeRoute
   '/resources/$category': typeof ResourcesCategoryRoute
   '/resources/open-source': typeof ResourcesOpenSourceRoute
+  '/resources/student': typeof ResourcesStudentRouteWithChildren
   '/resources/thesis': typeof ResourcesThesisRoute
   '/course/': typeof CourseIndexRoute
   '/resources/': typeof ResourcesIndexRoute
+  '/resources/student/$perkId': typeof ResourcesStudentPerkIdRoute
+  '/resources/student/': typeof ResourcesStudentIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -198,6 +219,8 @@ export interface FileRoutesByTo {
   '/resources/thesis': typeof ResourcesThesisRoute
   '/course': typeof CourseIndexRoute
   '/resources': typeof ResourcesIndexRoute
+  '/resources/student/$perkId': typeof ResourcesStudentPerkIdRoute
+  '/resources/student': typeof ResourcesStudentIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -221,9 +244,12 @@ export interface FileRoutesById {
   '/course/$code': typeof CourseCodeRoute
   '/resources/$category': typeof ResourcesCategoryRoute
   '/resources/open-source': typeof ResourcesOpenSourceRoute
+  '/resources/student': typeof ResourcesStudentRouteWithChildren
   '/resources/thesis': typeof ResourcesThesisRoute
   '/course/': typeof CourseIndexRoute
   '/resources/': typeof ResourcesIndexRoute
+  '/resources/student/$perkId': typeof ResourcesStudentPerkIdRoute
+  '/resources/student/': typeof ResourcesStudentIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -248,9 +274,12 @@ export interface FileRouteTypes {
     | '/course/$code'
     | '/resources/$category'
     | '/resources/open-source'
+    | '/resources/student'
     | '/resources/thesis'
     | '/course/'
     | '/resources/'
+    | '/resources/student/$perkId'
+    | '/resources/student/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -276,6 +305,8 @@ export interface FileRouteTypes {
     | '/resources/thesis'
     | '/course'
     | '/resources'
+    | '/resources/student/$perkId'
+    | '/resources/student'
   id:
     | '__root__'
     | '/'
@@ -298,9 +329,12 @@ export interface FileRouteTypes {
     | '/course/$code'
     | '/resources/$category'
     | '/resources/open-source'
+    | '/resources/student'
     | '/resources/thesis'
     | '/course/'
     | '/resources/'
+    | '/resources/student/$perkId'
+    | '/resources/student/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -324,6 +358,7 @@ export interface RootRouteChildren {
   CourseCodeRoute: typeof CourseCodeRoute
   ResourcesCategoryRoute: typeof ResourcesCategoryRoute
   ResourcesOpenSourceRoute: typeof ResourcesOpenSourceRoute
+  ResourcesStudentRoute: typeof ResourcesStudentRouteWithChildren
   ResourcesThesisRoute: typeof ResourcesThesisRoute
   CourseIndexRoute: typeof CourseIndexRoute
   ResourcesIndexRoute: typeof ResourcesIndexRoute
@@ -485,6 +520,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesOpenSourceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources/student': {
+      id: '/resources/student'
+      path: '/resources/student'
+      fullPath: '/resources/student'
+      preLoaderRoute: typeof ResourcesStudentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/resources/thesis': {
       id: '/resources/thesis'
       path: '/resources/thesis'
@@ -492,8 +534,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesThesisRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources/student/': {
+      id: '/resources/student/'
+      path: '/'
+      fullPath: '/resources/student/'
+      preLoaderRoute: typeof ResourcesStudentIndexRouteImport
+      parentRoute: typeof ResourcesStudentRoute
+    }
+    '/resources/student/$perkId': {
+      id: '/resources/student/$perkId'
+      path: '/$perkId'
+      fullPath: '/resources/student/$perkId'
+      preLoaderRoute: typeof ResourcesStudentPerkIdRouteImport
+      parentRoute: typeof ResourcesStudentRoute
+    }
   }
 }
+
+interface ResourcesStudentRouteChildren {
+  ResourcesStudentPerkIdRoute: typeof ResourcesStudentPerkIdRoute
+  ResourcesStudentIndexRoute: typeof ResourcesStudentIndexRoute
+}
+
+const ResourcesStudentRouteChildren: ResourcesStudentRouteChildren = {
+  ResourcesStudentPerkIdRoute: ResourcesStudentPerkIdRoute,
+  ResourcesStudentIndexRoute: ResourcesStudentIndexRoute,
+}
+
+const ResourcesStudentRouteWithChildren =
+  ResourcesStudentRoute._addFileChildren(ResourcesStudentRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -516,6 +585,7 @@ const rootRouteChildren: RootRouteChildren = {
   CourseCodeRoute: CourseCodeRoute,
   ResourcesCategoryRoute: ResourcesCategoryRoute,
   ResourcesOpenSourceRoute: ResourcesOpenSourceRoute,
+  ResourcesStudentRoute: ResourcesStudentRouteWithChildren,
   ResourcesThesisRoute: ResourcesThesisRoute,
   CourseIndexRoute: CourseIndexRoute,
   ResourcesIndexRoute: ResourcesIndexRoute,
