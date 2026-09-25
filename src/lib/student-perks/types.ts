@@ -41,6 +41,7 @@ export interface StudentPerk {
   allOffers?: StudentPerkAllOffers;
   applyLabel: string;
   applyUrl: string;
+  cardNote?: string;
   cardRequired: boolean;
   color: string;
   description: string;

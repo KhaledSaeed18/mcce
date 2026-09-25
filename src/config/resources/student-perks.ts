@@ -137,6 +137,8 @@ export const STUDENT_PERKS: StudentPerk[] = [
   {
     applyLabel: "Claim on Google One",
     applyUrl: "https://one.google.com/ai-student",
+    cardNote:
+      "Card required at signup. A temporary 1 USD hold may show during verification. Renewal is paid unless cancelled.",
     cardRequired: true,
     color: "chart-2",
     description:

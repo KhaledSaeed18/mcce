@@ -56,11 +56,8 @@ export function StudentPerkDetailPage({ perk }: StudentPerkDetailPageProps) {
             <ArrowUpRightIcon aria-hidden="true" className="size-4" />
           </a>
         </div>
-        {perk.cardRequired ? (
-          <p className="text-muted-foreground text-sm">
-            Card required at signup. A temporary 1 USD hold may show during
-            verification. Renewal is paid unless cancelled.
-          </p>
+        {perk.cardNote ? (
+          <p className="text-muted-foreground text-sm">{perk.cardNote}</p>
         ) : null}
       </ResourcesHero>
 
