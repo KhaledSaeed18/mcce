@@ -405,28 +405,3 @@ export const STUDENT_PERKS: StudentPerk[] = [
 
 export const STUDENT_PERK_BY_ID: ReadonlyMap<StudentPerkId, StudentPerk> =
   new Map(STUDENT_PERKS.map((perk) => [perk.id, perk]));
-
-export const STUDENT_COMPARE_ROWS = [
-  {
-    label: "Free span",
-    values: [
-      "While enrolled, recheck every 2 years",
-      "12 months free on Plus",
-      "12 months, then Free plan",
-      "Discounted, billed annually",
-    ],
-  },
-  {
-    label: "Card at signup",
-    values: ["No", "Yes, hold may show", "No", "Yes, paid plan"],
-  },
-  {
-    label: "Verification",
-    values: [
-      "University email plus dated proof",
-      "SheerID plus school email",
-      "GitHub plus university email",
-      "SheerID student or educator check",
-    ],
-  },
-] as const;

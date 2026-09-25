@@ -2,7 +2,6 @@ import { SectionDividerDots } from "@/components/marketing/section-divider-dots"
 import { ResourceSuggestBlock } from "@/components/resources/resource-suggest-block";
 import { ResourcesHero } from "@/components/resources/resources-hero";
 import { StudentPerkCard } from "@/components/resources/student/student-perk-card";
-import { StudentPerksCompare } from "@/components/resources/student/student-perks-compare";
 import { JsonLd } from "@/components/seo/json-ld";
 import { STUDENT_HERO, STUDENT_PERKS } from "@/config/resources/student-perks";
 import { SITE_NAME, SITE_URL } from "@/config/site";
@@ -24,7 +23,6 @@ export function StudentPerksPage() {
           <StudentPerkCard featured={index === 0} key={perk.id} perk={perk} />
         ))}
       </div>
-      <StudentPerksCompare perks={STUDENT_PERKS} />
       <SectionDividerDots />
       <ResourceSuggestBlock />
       <JsonLd
