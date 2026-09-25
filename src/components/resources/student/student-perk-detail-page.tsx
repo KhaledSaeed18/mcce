@@ -1,16 +1,16 @@
-import { Link } from "@tanstack/react-router";
-import { ArrowLeftIcon, ArrowUpRightIcon } from "lucide-react";
+import { ArrowUpRightIcon } from "lucide-react";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
 import { ResourcesHero } from "@/components/resources/resources-hero";
 import { StudentPerkFacts } from "@/components/resources/student/student-perk-facts";
 import { StudentPerkFaq } from "@/components/resources/student/student-perk-faq";
 import { StudentPerkHighlights } from "@/components/resources/student/student-perk-highlights";
+import { StudentPerkLinks } from "@/components/resources/student/student-perk-links";
 import { StudentPerkOffers } from "@/components/resources/student/student-perk-offers";
 import { StudentPerkPlans } from "@/components/resources/student/student-perk-plans";
+import { StudentPerkSiblings } from "@/components/resources/student/student-perk-siblings";
 import { StudentPerkSteps } from "@/components/resources/student/student-perk-steps";
 import { JsonLd } from "@/components/seo/json-ld";
 import { RESOURCES_STUDENT_PATH } from "@/config/resources/copy";
-import { STUDENT_PERKS } from "@/config/resources/student-perks";
 import { SITE_NAME, SITE_URL } from "@/config/site";
 import { buildBreadcrumbSchema } from "@/lib/seo/schema";
 import { studentPerkUrl } from "@/lib/seo/student-perks-head";
@@ -26,7 +26,6 @@ interface StudentPerkDetailPageProps {
 
 export function StudentPerkDetailPage({ perk }: StudentPerkDetailPageProps) {
   const url = studentPerkUrl(perk.id);
-  const others = STUDENT_PERKS.filter((item) => item.id !== perk.id);
 
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 py-8 sm:p-6 sm:py-14">
@@ -70,98 +69,13 @@ export function StudentPerkDetailPage({ perk }: StudentPerkDetailPageProps) {
       <StudentPerkPlans perk={perk} />
       <StudentPerkSteps perk={perk} />
 
-      <section aria-labelledby="links" className="flex flex-col gap-3">
-        <h2 className="font-head text-2xl" id="links">
-          Official links
-        </h2>
-        <ul className="flex flex-col gap-2 text-sm">
-          <li>
-            <a
-              className="underline underline-offset-4 hover:text-primary"
-              href={perk.applyUrl}
-              rel="noopener"
-              target="_blank"
-            >
-              {perk.applyLabel}
-            </a>
-          </li>
-          <li>
-            <a
-              className="underline underline-offset-4 hover:text-primary"
-              href={perk.docsUrl}
-              rel="noopener"
-              target="_blank"
-            >
-              Terms and eligibility
-            </a>
-          </li>
-          {perk.allOffers ? (
-            <li>
-              <a
-                className="underline underline-offset-4 hover:text-primary"
-                href={perk.allOffers.href}
-                rel="noopener"
-                target="_blank"
-              >
-                {perk.allOffers.label}
-              </a>
-              <span className="text-muted-foreground">
-                {" "}
-                ({perk.allOffers.note})
-              </span>
-            </li>
-          ) : null}
-          {perk.supportUrl ? (
-            <li>
-              <a
-                className="underline underline-offset-4 hover:text-primary"
-                href={perk.supportUrl}
-                rel="noopener"
-                target="_blank"
-              >
-                Support page
-              </a>
-            </li>
-          ) : null}
-          {perk.supportEmail ? (
-            <li>
-              <a
-                className="underline underline-offset-4 hover:text-primary"
-                href={`mailto:${perk.supportEmail}`}
-              >
-                {perk.supportEmail}
-              </a>
-            </li>
-          ) : null}
-        </ul>
-      </section>
+      <StudentPerkLinks perk={perk} />
 
       <StudentPerkFaq perk={perk} />
 
       <SectionDividerDots />
 
-      <nav aria-label="Other student plans" className="flex flex-col gap-3">
-        <h2 className="font-head text-2xl">The other two</h2>
-        <div className="flex flex-wrap gap-3">
-          {others.map((item) => (
-            <Link
-              className="inline-flex items-center gap-1.5 rounded border-2 bg-card px-3 py-2 font-head text-sm shadow-sm transition hover:-translate-y-0.5"
-              key={item.id}
-              params={{ perkId: item.id }}
-              to="/resources/student/$perkId"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
-        <Link
-          className="inline-flex w-fit items-center gap-1.5 text-sm underline underline-offset-4 hover:text-primary"
-          to={RESOURCES_STUDENT_PATH}
-        >
-          <ArrowLeftIcon aria-hidden="true" className="size-4" />
-          All student plans
-        </Link>
-      </nav>
+      <StudentPerkSiblings perk={perk} />
 
       <JsonLd data={buildStudentPerkSchema(perk, url)} />
       <JsonLd data={buildStudentPerkHowToSchema(perk, url)} />
