@@ -2,7 +2,8 @@ export type StudentPerkId =
   | "github-education"
   | "google-gemini"
   | "zed-student"
-  | "perplexity-education";
+  | "perplexity-education"
+  | "jetbrains-student";
 
 export interface StudentPerkStep {
   body: string;

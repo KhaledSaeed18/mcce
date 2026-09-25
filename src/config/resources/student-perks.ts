@@ -400,6 +400,98 @@ export const STUDENT_PERKS: StudentPerk[] = [
     tagline: "Pro research at half price.",
     verification: "SheerID student or educator check",
   },
+  {
+    applyLabel: "Apply for Student Pack",
+    applyUrl: "https://www.jetbrains.com/shop/eform/v2/students",
+    cardNote: "No card required.",
+    color: "chart-5",
+    description:
+      "All JetBrains IDEs plus Academy courses and an AI Pro trial, free for full-time students. Single IDEs need no check.",
+    docsUrl: "https://www.jetbrains.com/academy/student-pack",
+    duration: "While studying, renewed yearly",
+    faq: [
+      {
+        answer:
+          "Full-time students in a program of one year or more, at an accredited institution. No card required.",
+        question: "Who can claim the pack?",
+      },
+      {
+        answer:
+          "A university email for the fastest approval, an ISIC or ITIC card, or the GitHub Student Developer Pack.",
+        question: "What proves student status?",
+      },
+      {
+        answer:
+          "Yearly renewal inside the JetBrains Account for the length of full-time study, with a reminder email two weeks before.",
+        question: "How does renewal work?",
+      },
+      {
+        answer:
+          "Former holders get 40 percent off All Products Pack plus AI Pro for two years after graduation.",
+        question: "What happens after graduation?",
+      },
+    ],
+    highlights: [
+      {
+        body: "Single IDEs free with no check. The full pack opens all IDEs after verification.",
+        title: "Two ways in",
+      },
+      {
+        body: "Full IntelliJ IDEA and PyCharm plus GoLand, PhpStorm, and the rest, ten in total.",
+        title: "All IDEs",
+      },
+      {
+        body: "Unlimited code completion plus AI chat and agents such as Codex, Claude Agent, and Junie.",
+        title: "AI Pro trial",
+      },
+      {
+        body: "Hands-on coding courses that run inside the IDE.",
+        title: "Academy courses",
+      },
+    ],
+    id: "jetbrains-student",
+    name: "JetBrains Student Pack",
+    offerGroups: [
+      {
+        items: [
+          "IntelliJ IDEA for Java",
+          "PyCharm for Python",
+          "CLion for C and C++",
+          "WebStorm for JavaScript",
+          "RustRover for Rust",
+          "Rider for C# and .NET",
+          "RubyMine for Ruby",
+          "DataGrip for SQL",
+        ],
+        title: "Single IDEs",
+      },
+    ],
+    offersTitle: "Free IDEs, no check needed",
+    price: "Free",
+    renewal: "Renews yearly in your JetBrains Account",
+    shortValue: "Every IDE free while studying",
+    steps: [
+      {
+        body: "One free IDE needs no check. The full pack with all IDEs, Academy, and the AI trial needs verification.",
+        title: "Pick an approach",
+      },
+      {
+        body: "Apply from the student pack page through the JetBrains shop form.",
+        title: "Open the student form",
+      },
+      {
+        body: "A university email approves fastest. An ISIC or ITIC card or the GitHub Student Developer Pack also works.",
+        title: "Prove student status",
+      },
+      {
+        body: "Renew from the link in your JetBrains Account or the reminder email sent two weeks before expiry.",
+        title: "Renew each year",
+      },
+    ],
+    supportUrl: "https://www.jetbrains.com/support",
+    tagline: "Every IDE free while studying.",
+    verification: "University email, ISIC card, or GitHub Pack",
+  },
 ];
 
 export const STUDENT_PERK_BY_ID: ReadonlyMap<StudentPerkId, StudentPerk> =
