@@ -51,6 +51,7 @@ export interface StudentPerk {
   id: StudentPerkId;
   name: string;
   offerGroups?: StudentPerkOfferGroup[];
+  offersTitle?: string;
   plans?: StudentPerkPlan[];
   price: string;
   renewal: string;

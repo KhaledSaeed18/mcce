@@ -11,7 +11,7 @@ export function StudentPerkOffers({ perk }: StudentPerkOffersProps) {
   return (
     <section aria-labelledby="offers" className="flex flex-col gap-4">
       <h2 className="font-head text-2xl" id="offers">
-        Top picks from the pack
+        {perk.offersTitle ?? "Included"}
       </h2>
       <div className="grid gap-3 sm:grid-cols-2">
         {perk.offerGroups.map((group) => (

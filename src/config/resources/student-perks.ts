@@ -104,6 +104,7 @@ export const STUDENT_PERKS: StudentPerk[] = [
         title: "Learn",
       },
     ],
+    offersTitle: "Top picks from the pack",
     price: "Free",
     renewal: "Free while verified, recheck every 2 years",
     shortValue: "80 plus tools with one check",
