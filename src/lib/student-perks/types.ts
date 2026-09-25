@@ -42,7 +42,6 @@ export interface StudentPerk {
   applyLabel: string;
   applyUrl: string;
   cardNote?: string;
-  cardRequired: boolean;
   color: string;
   description: string;
   docsUrl: string;

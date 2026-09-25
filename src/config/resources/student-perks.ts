@@ -15,7 +15,6 @@ export const STUDENT_PERKS: StudentPerk[] = [
     },
     applyLabel: "Apply for the pack",
     applyUrl: "https://education.github.com/pack/join",
-    cardRequired: false,
     color: "chart-1",
     description:
       "One student check that opens GitHub Pro, Copilot Student, cloud credits, domains, and courses. Revalidate every two years.",
@@ -139,7 +138,6 @@ export const STUDENT_PERKS: StudentPerk[] = [
     applyUrl: "https://one.google.com/ai-student",
     cardNote:
       "Card required at signup. A temporary 1 USD hold may show during verification. Renewal is paid unless cancelled.",
-    cardRequired: true,
     color: "chart-2",
     description:
       "Google AI Plus free for 12 months for verified students, with paid Pro tiers at student rates. A card is required and a small hold may appear.",
@@ -253,7 +251,6 @@ export const STUDENT_PERKS: StudentPerk[] = [
   {
     applyLabel: "Apply for Zed Student",
     applyUrl: "https://dashboard.zed.dev/education/apply",
-    cardRequired: false,
     color: "chart-4",
     description:
       "Zed Pro free for one year for verified university students. No card, stays active for the year even after graduation.",
@@ -330,7 +327,6 @@ export const STUDENT_PERKS: StudentPerk[] = [
   {
     applyLabel: "Upgrade on Perplexity",
     applyUrl: "https://www.perplexity.ai",
-    cardRequired: true,
     color: "chart-3",
     description:
       "Everything in Perplexity Pro at 50 percent off for verified students and educators. Billed annually, for personal use.",
