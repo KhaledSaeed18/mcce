@@ -1,6 +1,7 @@
 export const RESOURCES_PAGE_PATH = "/resources";
 export const RESOURCES_THESIS_PATH = "/resources/thesis";
 export const RESOURCES_OPEN_SOURCE_PATH = "/resources/open-source";
+export const RESOURCES_STUDENT_PATH = "/resources/student";
 
 export const RESOURCES_HERO = {
   badge: "RESOURCES",

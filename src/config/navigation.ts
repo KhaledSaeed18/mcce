@@ -1,4 +1,5 @@
 import {
+  BadgeCheckIcon,
   BookmarkIcon,
   CalculatorIcon,
   ClockIcon,
@@ -28,6 +29,7 @@ import { EDITOR_PATH } from "@/config/pdf-editor";
 import {
   RESOURCES_OPEN_SOURCE_PATH,
   RESOURCES_PAGE_PATH,
+  RESOURCES_STUDENT_PATH,
   RESOURCES_THESIS_PATH,
 } from "@/config/resources/copy";
 import { PROGRAM_OFFICIAL_POS_URL, PROGRAM_OFFICIAL_URL } from "@/config/site";
@@ -55,6 +57,7 @@ export type NavRoute =
   | "/resources"
   | "/resources/thesis"
   | "/resources/open-source"
+  | "/resources/student"
   | "/about"
   | "/faq"
   | "/contact"
@@ -198,6 +201,12 @@ const RESOURCE_ENTRIES: NavEntry[] = [
     icon: GraduationCapIcon,
     label: "Thesis toolkit",
     to: RESOURCES_THESIS_PATH,
+  },
+  {
+    description: "Free student plans, each with its claim steps.",
+    icon: BadgeCheckIcon,
+    label: "Student plans",
+    to: RESOURCES_STUDENT_PATH,
   },
   {
     description: "Public repositories with the licence read for you.",
