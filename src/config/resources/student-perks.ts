@@ -325,6 +325,82 @@ export const STUDENT_PERKS: StudentPerk[] = [
     tagline: "Pro editor free for one year.",
     verification: "GitHub plus university email",
   },
+  {
+    applyLabel: "Upgrade on Perplexity",
+    applyUrl: "https://www.perplexity.ai",
+    cardRequired: true,
+    color: "chart-3",
+    description:
+      "Everything in Perplexity Pro at 50 percent off for verified students and educators. Billed annually, for personal use.",
+    docsUrl:
+      "https://www.perplexity.ai/help-center/en/articles/12590157-what-is-education-pro",
+    duration: "Discounted while verified",
+    faq: [
+      {
+        answer:
+          "Verified students and educators, checked through SheerID. The plan covers personal use only.",
+        question: "Who can claim Education Pro?",
+      },
+      {
+        answer:
+          "Yes. The SheerID email can differ from the Perplexity account email, so remember which account the plan was redeemed on, including Apple relay addresses.",
+        question: "Can the verification email differ from the account?",
+      },
+      {
+        answer:
+          "Settle past due payments, wait for SheerID approval, confirm the login email, then clear cache or reset the app.",
+        question: "What if Pro status does not show?",
+      },
+      {
+        answer:
+          "Billing runs yearly until cancelled. Cancel on desktop from settings, or in device settings for app subscriptions. Cancel before deleting the account.",
+        question: "How do renewal and cancellation work?",
+      },
+    ],
+    highlights: [
+      {
+        body: "Unlimited Pro searches plus deep research and Learn Mode for study sessions.",
+        title: "Deep research",
+      },
+      {
+        body: "Premium models with a model picker, plus expanded Computer access.",
+        title: "Top AI models",
+      },
+      {
+        body: "Polished documents and apps, file and image uploads, and 4,000 bonus credits.",
+        title: "Documents and apps",
+      },
+      {
+        body: "Higher usage limits and longer memory for long projects.",
+        title: "Limits and memory",
+      },
+    ],
+    id: "perplexity-education",
+    name: "Perplexity Education Pro",
+    price: "$9 per month, billed annually",
+    renewal: "Renews yearly until cancelled",
+    shortValue: "Pro research at half price",
+    steps: [
+      {
+        body: "Any email works, personal or student. Note which account gets the plan.",
+        title: "Create a Perplexity account",
+      },
+      {
+        body: "Click upgrade in the app and toggle to the Education plan.",
+        title: "Open the Education tab",
+      },
+      {
+        body: "Choose student or educator and complete the SheerID check.",
+        title: "Verify with SheerID",
+      },
+      {
+        body: "Pay 9 USD per month billed annually, at the price shown at checkout.",
+        title: "Pay the annual education price",
+      },
+    ],
+    tagline: "Pro research at half price.",
+    verification: "SheerID student or educator check",
+  },
 ];
 
 export const STUDENT_PERK_BY_ID: ReadonlyMap<StudentPerkId, StudentPerk> =
@@ -337,11 +413,12 @@ export const STUDENT_COMPARE_ROWS = [
       "While enrolled, recheck every 2 years",
       "12 months free on Plus",
       "12 months, then Free plan",
+      "Discounted, billed annually",
     ],
   },
   {
     label: "Card at signup",
-    values: ["No", "Yes, hold may show", "No"],
+    values: ["No", "Yes, hold may show", "No", "Yes, paid plan"],
   },
   {
     label: "Verification",
@@ -349,6 +426,7 @@ export const STUDENT_COMPARE_ROWS = [
       "University email plus dated proof",
       "SheerID plus school email",
       "GitHub plus university email",
+      "SheerID student or educator check",
     ],
   },
 ] as const;

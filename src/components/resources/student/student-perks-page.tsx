@@ -19,7 +19,7 @@ export function StudentPerksPage() {
         highlight={STUDENT_HERO.highlight}
         title={STUDENT_HERO.title}
       />
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2">
         {STUDENT_PERKS.map((perk, index) => (
           <StudentPerkCard featured={index === 0} key={perk.id} perk={perk} />
         ))}
