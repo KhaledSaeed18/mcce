@@ -43,7 +43,6 @@ export function useTextBoxResize({
   const end = useCallback(() => {
     const { current } = previewRef;
     update(null);
-    // biome-ignore lint/suspicious/noUnnecessaryConditions: the ref holds a box only while a handle is being dragged
     if (current) {
       onReplace(current);
     }

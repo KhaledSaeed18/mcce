@@ -33,15 +33,15 @@ export interface TermContext {
 }
 
 function parseSegment(segment: string): string | null {
-  const yearMatch = ACADEMIC_YEAR_PATTERN.exec(segment);
+  const yearMatch = segment.match(ACADEMIC_YEAR_PATTERN);
   if (!yearMatch) {
     return null;
   }
 
   const academicYear = `${yearMatch[1]}-${yearMatch[2]}`;
-  const termMatch = TRAILING_TERM_PATTERN.exec(
-    segment.slice(0, yearMatch.index)
-  );
+  const termMatch = segment
+    .slice(0, yearMatch.index)
+    .match(TRAILING_TERM_PATTERN);
   if (!termMatch) {
     return academicYear;
   }
@@ -53,7 +53,7 @@ function termOfSemester(semester: string | null): string | null {
   if (!semester) {
     return null;
   }
-  const match = SEMESTER_TERM_PATTERN.exec(semester);
+  const match = semester.match(SEMESTER_TERM_PATTERN);
   return match ? TERM_LABELS[match[0].toLowerCase()] : null;
 }
 
@@ -72,7 +72,7 @@ function inferFromBareYear(
   }
 
   const term = termOfSemester(context.semester);
-  const match = BARE_YEAR_PATTERN.exec(fileName);
+  const match = fileName.match(BARE_YEAR_PATTERN);
   if (!(term && match)) {
     return null;
   }

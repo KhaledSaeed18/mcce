@@ -15,8 +15,8 @@ export function compareTermLabels(a: string, b: string): number {
           Number(b === UNRECORDED_TERM_LABEL);
   }
 
-  const left = TERM_LABEL_PATTERN.exec(a);
-  const right = TERM_LABEL_PATTERN.exec(b);
+  const left = a.match(TERM_LABEL_PATTERN);
+  const right = b.match(TERM_LABEL_PATTERN);
   if (!(left && right)) {
     return a.localeCompare(b);
   }

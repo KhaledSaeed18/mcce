@@ -34,7 +34,7 @@ const EXTENSION_PATTERN = /\.([a-zA-Z0-9]+)$/;
 const COURSE_CODE_PATTERN = /^([A-Z]{2,5}\d{3}[A-Z]?)\s*-\s*(.+)$/;
 
 export function extensionOf(name: string): string | null {
-  const match = EXTENSION_PATTERN.exec(name);
+  const match = name.match(EXTENSION_PATTERN);
   return match ? match[1].toLowerCase() : null;
 }
 
@@ -57,7 +57,7 @@ export function parseCourseFolderName(name: string): {
   courseCode: string | null;
   courseName: string | null;
 } {
-  const match = COURSE_CODE_PATTERN.exec(name.trim());
+  const match = name.trim().match(COURSE_CODE_PATTERN);
   if (!match) {
     return { courseCode: null, courseName: null };
   }

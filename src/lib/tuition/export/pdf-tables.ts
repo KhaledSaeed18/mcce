@@ -59,6 +59,5 @@ export function drawTable(
   });
 
   // lastAutoTable is assigned imperatively by the plugin at runtime.
-  // biome-ignore lint/suspicious/noUnnecessaryConditions: see comment above
   return (doc.lastAutoTable?.finalY ?? cursorY) + 24;
 }
