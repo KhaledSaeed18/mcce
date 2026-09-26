@@ -6,7 +6,7 @@
       "open-source": 236,
       "paid": 10,
       "trial": 2,
-      "student": 13
+      "student": 12
     },
     "countsByCategory": {
       "ai-assistants": 6,
@@ -34,7 +34,7 @@
       "review": 11,
       "thesis-archives": 7,
       "integrity-archiving": 11,
-      "access": 9
+      "access": 8
     },
     "countsByDomain": {
       "writing": 19,
@@ -74,9 +74,9 @@
       "prior-theses": 7,
       "integrity": 10
     },
-    "generatedAt": "2026-09-21T09:28:05.667Z",
+    "generatedAt": "2026-09-26T10:33:51.930Z",
     "repoCount": 285,
-    "toolCount": 416
+    "toolCount": 415
   },
   "repos": [
     {
@@ -6958,32 +6958,6 @@
       "icon": {
         "kind": "brand",
         "light": "/resources/icons/github.svg"
-      },
-      "linkStatus": "ok"
-    },
-    {
-      "access": "student",
-      "brandIcon": "GitHub",
-      "category": "access",
-      "description": "Copilot, JetBrains, cloud credits, and more while enrolled.",
-      "featured": true,
-      "id": "github-student-pack",
-      "isOpenSource": false,
-      "name": "GitHub Student Developer Pack",
-      "platform": [
-        "web"
-      ],
-      "requiresAccount": true,
-      "tags": [
-        "bundle",
-        "student"
-      ],
-      "url": "https://education.github.com/pack",
-      "verifiedOn": "2026-09-20",
-      "haystack": "github student developer pack bundle student access copilot, jetbrains, cloud credits, and more while enrolled.",
-      "icon": {
-        "kind": "brand",
-        "light": "/resources/icons/github-student-pack.svg"
       },
       "linkStatus": "ok"
     },

@@ -4,21 +4,6 @@ import type { Resource } from "@/lib/resources/types";
 export const ACCESS: Resource[] = [
   {
     access: "student",
-    brandIcon: "GitHub",
-    category: "access",
-    description: "Copilot, JetBrains, cloud credits, and more while enrolled.",
-    featured: true,
-    id: "github-student-pack",
-    isOpenSource: false,
-    name: "GitHub Student Developer Pack",
-    platform: ["web"],
-    requiresAccount: true,
-    tags: ["bundle", "student"],
-    url: "https://education.github.com/pack",
-    verifiedOn: CATALOG_VERIFIED_ON,
-  },
-  {
-    access: "student",
     brandIcon: "Microsoft Azure",
     category: "access",
     description: "Annual credit without a card.",
