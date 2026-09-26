@@ -1,5 +1,4 @@
 version: 2
-insecure-external-code-execution: deny
 
 updates:
   - package-ecosystem: npm
@@ -64,9 +63,6 @@ updates:
       - dependencies
     cooldown:
       default-days: 3
-      semver-major-days: 7
-      semver-minor-days: 3
-      semver-patch-days: 2
     groups:
       actions-minor:
         applies-to: version-updates
