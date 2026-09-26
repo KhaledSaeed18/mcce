@@ -10,7 +10,6 @@ import {
   DatabaseIcon,
   FileStackIcon,
   FileTextIcon,
-  GraduationCapIcon,
   ImageIcon,
   KanbanIcon,
   LibraryIcon,
@@ -243,14 +242,6 @@ export const RESOURCE_CATEGORIES: ResourceCategory[] = [
     id: "integrity-archiving",
     label: "Integrity and archiving",
     tagline: "Similarity checks, DOIs for artifacts, identifiers.",
-  },
-  {
-    color: "chart-5",
-    group: "access",
-    icon: GraduationCapIcon,
-    id: "access",
-    label: "Student and university programs",
-    tagline: "Bundles and campus licenses to check before paying.",
   },
 ];
 

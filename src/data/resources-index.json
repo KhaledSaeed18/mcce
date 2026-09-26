@@ -1,12 +1,12 @@
 {
   "meta": {
     "countsByBadge": {
-      "freemium": 77,
+      "freemium": 76,
       "free": 314,
       "open-source": 236,
-      "paid": 10,
+      "paid": 9,
       "trial": 2,
-      "student": 12
+      "student": 6
     },
     "countsByCategory": {
       "ai-assistants": 6,
@@ -33,8 +33,7 @@
       "writing": 25,
       "review": 11,
       "thesis-archives": 7,
-      "integrity-archiving": 11,
-      "access": 8
+      "integrity-archiving": 11
     },
     "countsByDomain": {
       "writing": 19,
@@ -74,9 +73,9 @@
       "prior-theses": 7,
       "integrity": 10
     },
-    "generatedAt": "2026-09-26T10:33:51.930Z",
+    "generatedAt": "2026-09-26T10:39:47.509Z",
     "repoCount": 285,
-    "toolCount": 415
+    "toolCount": 407
   },
   "repos": [
     {
@@ -9412,54 +9411,6 @@
       "repoId": "audacity-audacity"
     },
     {
-      "access": "student",
-      "category": "access",
-      "description": "Engineering and design software for students.",
-      "id": "autodesk-education",
-      "isOpenSource": false,
-      "name": "Autodesk Education",
-      "platform": [
-        "web"
-      ],
-      "requiresAccount": true,
-      "tags": [
-        "cad",
-        "design"
-      ],
-      "url": "https://www.autodesk.com/education",
-      "verifiedOn": "2026-09-20",
-      "haystack": "autodesk education cad design access engineering and design software for students.",
-      "icon": {
-        "kind": "category"
-      },
-      "linkStatus": "unchecked"
-    },
-    {
-      "access": "student",
-      "brandIcon": "Amazon Web Services",
-      "category": "access",
-      "description": "Guided cloud labs and credits.",
-      "id": "aws-educate",
-      "isOpenSource": false,
-      "name": "AWS Educate",
-      "platform": [
-        "web"
-      ],
-      "requiresAccount": true,
-      "tags": [
-        "cloud",
-        "credits"
-      ],
-      "url": "https://aws.amazon.com/education/awseducate",
-      "verifiedOn": "2026-09-20",
-      "haystack": "aws educate cloud credits access guided cloud labs and credits.",
-      "icon": {
-        "kind": "brand",
-        "light": "/resources/icons/aws-educate.svg"
-      },
-      "linkStatus": "redirect"
-    },
-    {
       "access": "free",
       "aliases": [
         "Bielefeld Academic Search Engine"
@@ -10709,30 +10660,6 @@
       "linkStatus": "ok"
     },
     {
-      "access": "student",
-      "brandIcon": "Figma",
-      "category": "access",
-      "description": "Professional design tools free for students.",
-      "id": "figma-for-education",
-      "isOpenSource": false,
-      "name": "Figma for Education",
-      "platform": [
-        "web"
-      ],
-      "requiresAccount": true,
-      "tags": [
-        "design"
-      ],
-      "url": "https://www.figma.com/education",
-      "verifiedOn": "2026-09-20",
-      "haystack": "figma for education design access professional design tools free for students.",
-      "icon": {
-        "kind": "brand",
-        "light": "/resources/icons/figma-for-education.svg"
-      },
-      "linkStatus": "redirect"
-    },
-    {
       "access": "free",
       "category": "writing",
       "description": "Self-hosted collaborative LaTeX with tracked changes. Single maintainer.",
@@ -11127,31 +11054,6 @@
       "icon": {
         "kind": "brand",
         "light": "/resources/icons/google-calendar.svg"
-      },
-      "linkStatus": "redirect"
-    },
-    {
-      "access": "freemium",
-      "brandIcon": "Google Cloud",
-      "category": "access",
-      "description": "Skill paths and lab credits.",
-      "id": "google-cloud-skills-boost",
-      "isOpenSource": false,
-      "name": "Google Cloud Skills Boost",
-      "platform": [
-        "web"
-      ],
-      "requiresAccount": true,
-      "tags": [
-        "cloud",
-        "courses"
-      ],
-      "url": "https://www.cloudskillsboost.google",
-      "verifiedOn": "2026-09-20",
-      "haystack": "google cloud skills boost cloud courses access skill paths and lab credits.",
-      "icon": {
-        "kind": "brand",
-        "light": "/resources/icons/google-cloud-skills-boost.svg"
       },
       "linkStatus": "redirect"
     },
@@ -11733,28 +11635,6 @@
       "url": "https://ieee-dataport.org",
       "verifiedOn": "2026-09-20",
       "haystack": "ieee dataport dataset literature engineering datasets, rf captures, and iot traffic.",
-      "icon": {
-        "kind": "category"
-      },
-      "linkStatus": "ok"
-    },
-    {
-      "access": "paid",
-      "category": "access",
-      "description": "Student rate for journals and conferences.",
-      "id": "ieee-student-membership",
-      "isOpenSource": false,
-      "name": "IEEE student membership",
-      "platform": [
-        "web"
-      ],
-      "requiresAccount": true,
-      "tags": [
-        "membership"
-      ],
-      "url": "https://www.ieee.org/membership/student.html",
-      "verifiedOn": "2026-09-20",
-      "haystack": "ieee student membership membership access student rate for journals and conferences.",
       "icon": {
         "kind": "category"
       },
@@ -12823,55 +12703,6 @@
       "repoId": "micropython-micropython"
     },
     {
-      "access": "student",
-      "brandIcon": "Microsoft Office",
-      "category": "access",
-      "description": "Word, Excel, PowerPoint under the university account.",
-      "id": "microsoft-365-education",
-      "isOpenSource": false,
-      "name": "Microsoft 365 Education",
-      "platform": [
-        "web"
-      ],
-      "requiresAccount": true,
-      "tags": [
-        "office"
-      ],
-      "url": "https://www.microsoft.com/education/products/office",
-      "verifiedOn": "2026-09-20",
-      "haystack": "microsoft 365 education office access word, excel, powerpoint under the university account.",
-      "icon": {
-        "kind": "brand",
-        "light": "/resources/icons/microsoft-365-education.svg"
-      },
-      "linkStatus": "redirect"
-    },
-    {
-      "access": "student",
-      "brandIcon": "Microsoft Azure",
-      "category": "access",
-      "description": "Annual credit without a card.",
-      "id": "azure-for-students",
-      "isOpenSource": false,
-      "name": "Microsoft Azure for Students",
-      "platform": [
-        "web"
-      ],
-      "requiresAccount": true,
-      "tags": [
-        "cloud",
-        "credits"
-      ],
-      "url": "https://azure.microsoft.com/en-us/free/students",
-      "verifiedOn": "2026-09-20",
-      "haystack": "microsoft azure for students cloud credits access annual credit without a card.",
-      "icon": {
-        "kind": "brand",
-        "light": "/resources/icons/azure-for-students.svg"
-      },
-      "linkStatus": "ok"
-    },
-    {
       "access": "free",
       "brandIcon": "Microsoft Copilot",
       "category": "ai-assistants",
@@ -13309,30 +13140,6 @@
       },
       "linkStatus": "ok",
       "repoId": "nmap-nmap"
-    },
-    {
-      "access": "student",
-      "brandIcon": "Notion",
-      "category": "access",
-      "description": "Free Plus plan with an academic email.",
-      "id": "notion-for-education",
-      "isOpenSource": false,
-      "name": "Notion for Education",
-      "platform": [
-        "web"
-      ],
-      "requiresAccount": true,
-      "tags": [
-        "notes"
-      ],
-      "url": "https://www.notion.so/product/notion-for-education",
-      "verifiedOn": "2026-09-20",
-      "haystack": "notion for education notes access free plus plan with an academic email.",
-      "icon": {
-        "kind": "brand",
-        "light": "/resources/icons/notion-for-education.svg"
-      },
-      "linkStatus": "ok"
     },
     {
       "access": "free",

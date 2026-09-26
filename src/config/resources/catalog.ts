@@ -1,4 +1,3 @@
-import { ACCESS } from "@/config/resources/catalog/access";
 import { AI_ASSISTANTS } from "@/config/resources/catalog/ai-assistants";
 import { DATA_ANALYSIS } from "@/config/resources/catalog/data-analysis";
 import { DATA_MINING } from "@/config/resources/catalog/data-mining";
@@ -75,7 +74,6 @@ export const RESOURCE_CATALOG: Resource[] = [
   ...REVIEW,
   ...THESIS_ARCHIVES,
   ...INTEGRITY_ARCHIVING,
-  ...ACCESS,
 ];
 
 export const REPO_CATALOG: Repository[] = [

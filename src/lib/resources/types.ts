@@ -1,4 +1,4 @@
-export type ResourceGroupId = "everyday" | "coursework" | "research" | "access";
+export type ResourceGroupId = "everyday" | "coursework" | "research";
 
 export type ResourceCategoryId =
   | "ai-assistants"
@@ -25,8 +25,7 @@ export type ResourceCategoryId =
   | "writing"
   | "review"
   | "thesis-archives"
-  | "integrity-archiving"
-  | "access";
+  | "integrity-archiving";
 
 /** What a student pays. Open source is a separate flag, not a cost. */
 export type AccessBadge = "free" | "freemium" | "trial" | "paid" | "student";
