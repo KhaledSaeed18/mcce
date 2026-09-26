@@ -54,7 +54,6 @@ export function useMarkupResize({
     const { current } = resizingRef;
     resizingRef.current = null;
     setPreview(null);
-    // biome-ignore lint/suspicious/noUnnecessaryConditions: the ref holds a resize only while a handle is being dragged
     if (current) {
       onReplace(scaleAnnotation(current.original, current.start, current.box));
     }

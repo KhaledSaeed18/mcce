@@ -36,12 +36,12 @@ export function normaliseFolderName(name: string): string {
 
   const stripped = name.replace(BRACKET_PREFIX, "").trim();
 
-  const range = NUMBERED_RANGE.exec(stripped);
+  const range = stripped.match(NUMBERED_RANGE);
   if (range) {
     return `${label(range[1])} ${pad(range[2])}-${pad(range[3])}`;
   }
 
-  const single = NUMBERED_GROUP.exec(stripped);
+  const single = stripped.match(NUMBERED_GROUP);
   if (single) {
     return `${label(single[1])} ${pad(single[2])}`;
   }

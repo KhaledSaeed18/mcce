@@ -18,7 +18,7 @@ interface StationDraft {
 
 /** "EENG537" -> 537, "CENG566L" -> 566.5. */
 export function stationFrequency(code: string): number {
-  const match = COURSE_NUMBER_PATTERN.exec(code);
+  const match = code.match(COURSE_NUMBER_PATTERN);
   if (!match) {
     return 0;
   }
@@ -53,7 +53,7 @@ export function buildHeroStations(nodes: DriveNode[]): HeroStation[] {
         code: node.courseCode,
         fileCount: 0,
         frequency: stationFrequency(node.courseCode),
-        label: COURSE_NUMBER_PATTERN.exec(node.courseCode)?.[0] ?? "",
+        label: node.courseCode.match(COURSE_NUMBER_PATTERN)?.[0] ?? "",
         materials: [],
         name: node.courseName,
         semester: node.semester ?? "",

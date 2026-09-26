@@ -41,7 +41,6 @@ export function useSound(
   }, [sound.dataUri]);
 
   const stop = useCallback(() => {
-    // biome-ignore lint/suspicious/noUnnecessaryConditions: current is set by play(), a sibling callback the analyzer can't see across
     if (sourceRef.current) {
       try {
         sourceRef.current.stop();
@@ -100,7 +99,6 @@ export function useSound(
   }, [stop, onPause]);
 
   useEffect(() => {
-    // biome-ignore lint/suspicious/noUnnecessaryConditions: current is set by play(), a sibling callback the analyzer can't see across
     if (gainRef.current) {
       gainRef.current.gain.value = volume;
     }
@@ -108,7 +106,6 @@ export function useSound(
 
   useEffect(() => {
     return () => {
-      // biome-ignore lint/suspicious/noUnnecessaryConditions: current is set by play(), a sibling callback the analyzer can't see across
       if (sourceRef.current) {
         try {
           sourceRef.current.stop();

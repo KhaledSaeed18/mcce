@@ -19,7 +19,6 @@ export function useDragMove(
   const handlePointerMove = useCallback(
     (event: PointerEvent<HTMLElement>) => {
       const { current: last } = lastRef;
-      // biome-ignore lint/suspicious/noUnnecessaryConditions: filled by the press handler, which the analyzer cannot see across
       if (!last) {
         return;
       }

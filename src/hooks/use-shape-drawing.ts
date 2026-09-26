@@ -92,7 +92,6 @@ export function useShapeDrawing({
   const handleMove = useCallback(
     (event: PointerEvent<HTMLCanvasElement>) => {
       const { current: origin } = startRef;
-      // biome-ignore lint/suspicious/noUnnecessaryConditions: set by the press handler, a sibling callback the analyzer cannot see across
       if (!origin) {
         return;
       }
@@ -113,7 +112,6 @@ export function useShapeDrawing({
     startRef.current = null;
     pointsRef.current = [];
     updateDraft(null);
-    // biome-ignore lint/suspicious/noUnnecessaryConditions: the ref holds a draft only while a drag is in progress
     if (current && !isEmptyAnnotation(current)) {
       onAdd(current);
     }

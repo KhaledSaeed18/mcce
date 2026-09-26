@@ -82,7 +82,6 @@ export function useMarkupDrag({
   // Browsers start a text selection on the mouse press that follows, so a
   // press that picked up markup cancels that one too.
   const handleMouseDown = useCallback((event: MouseEvent) => {
-    // biome-ignore lint/suspicious/noUnnecessaryConditions: set by the pointer press handler, a sibling callback the analyzer cannot see across
     if (pressRef.current) {
       event.preventDefault();
     }
@@ -95,7 +94,6 @@ export function useMarkupDrag({
       }
       const point = toPagePoint(event, zoom, size, rotation);
       const { current: press } = pressRef;
-      // biome-ignore lint/suspicious/noUnnecessaryConditions: set by the press handler, a sibling callback the analyzer cannot see across
       if (!press) {
         const isOver = findAnnotationAt(annotations, pageId, point) !== null;
         event.currentTarget.setAttribute(OVER_MARKUP_ATTRIBUTE, String(isOver));
@@ -115,7 +113,6 @@ export function useMarkupDrag({
     const { current } = dragRef;
     pressRef.current = null;
     update(null);
-    // biome-ignore lint/suspicious/noUnnecessaryConditions: the ref holds a drag only between a press and its release
     if (current && (current.dx !== 0 || current.dy !== 0)) {
       onMove(current.id, current.dx, current.dy);
     }

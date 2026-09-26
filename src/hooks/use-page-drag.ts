@@ -40,7 +40,6 @@ export function usePageDrag({ onMove, rootRef }: PageDragOptions) {
     (event: PointerEvent<HTMLElement>) => {
       const start = startRef.current;
       const root = rootRef.current;
-      // biome-ignore lint/suspicious/noUnnecessaryConditions: filled by the press handler, a sibling callback the analyzer cannot see across
       if (!(start && root)) {
         return;
       }
@@ -62,7 +61,6 @@ export function usePageDrag({ onMove, rootRef }: PageDragOptions) {
     const start = startRef.current;
     startRef.current = null;
     setDrag(null);
-    // biome-ignore lint/suspicious/noUnnecessaryConditions: filled by the press and move handlers, sibling callbacks the analyzer cannot see across
     if (!(start && drag && hasDraggedRef.current)) {
       return;
     }

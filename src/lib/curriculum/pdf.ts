@@ -193,7 +193,6 @@ export async function buildCurriculumPdf(
 
     // lastAutoTable is set imperatively by the jspdf-autotable plugin at runtime,
     // not something the type checker can see as definitely assigned here.
-    // biome-ignore lint/suspicious/noUnnecessaryConditions: see comment above
     cursorY = (doc.lastAutoTable?.finalY ?? cursorY) + 20;
   };
 

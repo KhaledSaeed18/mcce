@@ -4,7 +4,7 @@ const HEX_PATTERN = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i;
 const CHANNEL_MAX = 255;
 
 export function hexToRgb(hex: string): RGB {
-  const match = HEX_PATTERN.exec(hex);
+  const match = hex.match(HEX_PATTERN);
   if (!match) {
     return rgb(0, 0, 0);
   }

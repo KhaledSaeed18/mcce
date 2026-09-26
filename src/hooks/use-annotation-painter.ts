@@ -38,7 +38,6 @@ export function useAnnotationPainter({
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
-    // biome-ignore lint/suspicious/noUnnecessaryConditions: a ref is empty until the canvas mounts, which the analyzer cannot see
     if (!(canvas && ctx)) {
       return;
     }

@@ -61,7 +61,6 @@ export function useTextDrag({
     (point: Point) => {
       const { current: origin } = originRef;
       const { current: target } = targetRef;
-      // biome-ignore lint/suspicious/noUnnecessaryConditions: both refs are filled by start(), a sibling callback the analyzer cannot see across
       if (!(origin && target)) {
         return;
       }
@@ -80,7 +79,6 @@ export function useTextDrag({
   const end = useCallback((): TextDragResult | null => {
     const { current } = dragRef;
     const { current: target } = targetRef;
-    // biome-ignore lint/suspicious/noUnnecessaryConditions: the refs hold a press only between start() and this release
     if (!(current && target)) {
       return null;
     }

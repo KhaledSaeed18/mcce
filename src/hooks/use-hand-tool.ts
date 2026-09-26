@@ -38,7 +38,6 @@ export function useHandTool(): PointerHandlers {
 
   const handleMove = useCallback((event: PointerEvent<HTMLCanvasElement>) => {
     const drag = dragRef.current;
-    // biome-ignore lint/suspicious/noUnnecessaryConditions: set by the press handler, a sibling callback the analyzer cannot see across
     if (!drag) {
       return;
     }

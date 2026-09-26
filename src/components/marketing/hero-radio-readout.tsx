@@ -22,7 +22,7 @@ export function HeroRadioReadout({
   const frequency = useTransform(position, (value) =>
     frequencyAt(value, frequencies).toFixed(1)
   );
-  const prefix = COURSE_PREFIX_PATTERN.exec(station.code)?.[0] ?? "";
+  const prefix = station.code.match(COURSE_PREFIX_PATTERN)?.[0] ?? "";
 
   return (
     <div className="flex flex-col gap-1">

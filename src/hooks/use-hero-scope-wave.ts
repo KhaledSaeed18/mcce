@@ -26,7 +26,6 @@ export function useHeroScopeWave(
 
   useAnimationFrame((time) => {
     const trace = traceRef.current;
-    // biome-ignore lint/suspicious/noUnnecessaryConditions: a ref is empty until the path mounts, which the analyzer cannot see
     if (!trace) {
       return;
     }
