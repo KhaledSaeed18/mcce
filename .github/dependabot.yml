@@ -1,4 +1,5 @@
 version: 2
+insecure-external-code-execution: deny
 
 updates:
   - package-ecosystem: npm
@@ -12,7 +13,6 @@ updates:
     open-pull-requests-limit: 10
     rebase-strategy: auto
     versioning-strategy: increase
-    insecure-external-code-execution: deny
     commit-message:
       prefix: chore
       prefix-development: chore
