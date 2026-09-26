@@ -209,18 +209,4 @@ export const SATELLITE: Resource[] = [
     url: "https://www.orekit.org",
     verifiedOn: CATALOG_VERIFIED_ON,
   },
-  {
-    access: "student",
-    aliases: ["STK"],
-    category: "satellite",
-    description: "Industry mission analysis; student edition to be confirmed.",
-    id: "stk",
-    isOpenSource: false,
-    name: "Ansys STK",
-    platform: ["desktop"],
-    tags: ["mission"],
-    url: "https://www.ansys.com/products/missions/ansys-stk",
-    verification: "pending",
-    verifiedOn: CATALOG_VERIFIED_ON,
-  },
 ];

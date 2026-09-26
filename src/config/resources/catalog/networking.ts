@@ -43,22 +43,6 @@ export const NETWORKING: Resource[] = [
     verifiedOn: CATALOG_VERIFIED_ON,
   },
   {
-    access: "student",
-    brandIcon: "Cisco",
-    category: "networking",
-    description:
-      "Campus-standard topology simulator. Needs a free NetAcad account.",
-    featured: true,
-    id: "cisco-packet-tracer",
-    isOpenSource: false,
-    name: "Cisco Packet Tracer",
-    platform: ["desktop"],
-    requiresAccount: true,
-    tags: ["simulator", "topology"],
-    url: "https://www.netacad.com/courses/packet-tracer",
-    verifiedOn: CATALOG_VERIFIED_ON,
-  },
-  {
     access: "freemium",
     category: "networking",
     description: "Network emulation lab platform.",

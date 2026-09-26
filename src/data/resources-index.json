@@ -5,8 +5,7 @@
       "free": 314,
       "open-source": 236,
       "paid": 9,
-      "trial": 2,
-      "student": 6
+      "trial": 2
     },
     "countsByCategory": {
       "ai-assistants": 6,
@@ -14,20 +13,20 @@
       "diagramming": 11,
       "presentations": 18,
       "productivity": 16,
-      "dev": 14,
+      "dev": 13,
       "learning": 9,
-      "math": 19,
+      "math": 17,
       "data-analysis": 16,
       "dsp": 15,
       "wireless": 19,
-      "satellite": 17,
-      "networking": 19,
+      "satellite": 16,
+      "networking": 18,
       "multimedia": 6,
       "ml": 27,
       "data-mining": 12,
       "vision": 17,
       "security": 33,
-      "embedded": 25,
+      "embedded": 24,
       "literature": 32,
       "references": 9,
       "writing": 25,
@@ -64,7 +63,7 @@
       "defend": 20,
       "search": 14,
       "analyse": 15,
-      "experiment": 28,
+      "experiment": 27,
       "frame": 9,
       "retrieve": 4,
       "map": 5,
@@ -73,9 +72,9 @@
       "prior-theses": 7,
       "integrity": 10
     },
-    "generatedAt": "2026-09-26T10:39:47.509Z",
+    "generatedAt": "2026-09-26T10:44:23.905Z",
     "repoCount": 285,
-    "toolCount": 407
+    "toolCount": 401
   },
   "repos": [
     {
@@ -6474,32 +6473,6 @@
       "linkStatus": "ok"
     },
     {
-      "access": "student",
-      "brandIcon": "Cisco",
-      "category": "networking",
-      "description": "Campus-standard topology simulator. Needs a free NetAcad account.",
-      "featured": true,
-      "id": "cisco-packet-tracer",
-      "isOpenSource": false,
-      "name": "Cisco Packet Tracer",
-      "platform": [
-        "desktop"
-      ],
-      "requiresAccount": true,
-      "tags": [
-        "simulator",
-        "topology"
-      ],
-      "url": "https://www.netacad.com/courses/packet-tracer",
-      "verifiedOn": "2026-09-20",
-      "haystack": "cisco packet tracer simulator topology networking campus-standard topology simulator. needs a free netacad account.",
-      "icon": {
-        "kind": "brand",
-        "light": "/resources/icons/cisco-packet-tracer.svg"
-      },
-      "linkStatus": "redirect"
-    },
-    {
       "access": "freemium",
       "brandIcon": "Claude AI",
       "category": "ai-assistants",
@@ -9224,31 +9197,6 @@
       "linkStatus": "ok"
     },
     {
-      "access": "student",
-      "aliases": [
-        "STK"
-      ],
-      "category": "satellite",
-      "description": "Industry mission analysis; student edition to be confirmed.",
-      "id": "stk",
-      "isOpenSource": false,
-      "name": "Ansys STK",
-      "platform": [
-        "desktop"
-      ],
-      "tags": [
-        "mission"
-      ],
-      "url": "https://www.ansys.com/products/missions/ansys-stk",
-      "verification": "pending",
-      "verifiedOn": "2026-09-20",
-      "haystack": "ansys stk stk mission satellite industry mission analysis; student edition to be confirmed.",
-      "icon": {
-        "kind": "category"
-      },
-      "linkStatus": "redirect"
-    },
-    {
       "access": "free",
       "category": "data-mining",
       "description": "Columnar format under Polars, DuckDB, and pandas interop.",
@@ -11880,36 +11828,6 @@
       "repoId": "jamovi-jamovi"
     },
     {
-      "access": "student",
-      "aliases": [
-        "PyCharm",
-        "IntelliJ",
-        "CLion"
-      ],
-      "brandIcon": "JetBrains",
-      "category": "dev",
-      "description": "PyCharm, IntelliJ, CLion. Free while enrolled.",
-      "id": "jetbrains-ides",
-      "isOpenSource": false,
-      "name": "JetBrains IDEs",
-      "platform": [
-        "desktop"
-      ],
-      "requiresAccount": true,
-      "tags": [
-        "editor",
-        "ide"
-      ],
-      "url": "https://www.jetbrains.com/community/education",
-      "verifiedOn": "2026-09-20",
-      "haystack": "jetbrains ides pycharm intellij clion editor ide dev pycharm, intellij, clion. free while enrolled.",
-      "icon": {
-        "kind": "brand",
-        "light": "/resources/icons/jetbrains-ides.svg"
-      },
-      "linkStatus": "redirect"
-    },
-    {
       "access": "free",
       "category": "security",
       "description": "Password strength auditing.",
@@ -12550,37 +12468,6 @@
       "repoId": "marp-team-marp"
     },
     {
-      "access": "student",
-      "aliases": [
-        "MathWorks"
-      ],
-      "brandIcon": "matlab",
-      "category": "math",
-      "description": "Standard for DSP and communications teaching.",
-      "id": "matlab",
-      "isOpenSource": false,
-      "name": "MATLAB",
-      "note": "Student license from MathWorks; free where a campus license exists.",
-      "platform": [
-        "desktop"
-      ],
-      "tags": [
-        "numerical",
-        "simulation"
-      ],
-      "thesisStages": [
-        "experiment"
-      ],
-      "url": "https://www.mathworks.com/academia/students.html",
-      "verifiedOn": "2026-09-20",
-      "haystack": "matlab mathworks numerical simulation math standard for dsp and communications teaching.",
-      "icon": {
-        "kind": "brand",
-        "light": "/resources/icons/matlab.svg"
-      },
-      "linkStatus": "unchecked"
-    },
-    {
       "access": "free",
       "aliases": [
         "MDN"
@@ -12892,29 +12779,6 @@
       },
       "linkStatus": "redirect",
       "repoId": "open-mmlab-mmdetection"
-    },
-    {
-      "access": "student",
-      "category": "embedded",
-      "description": "Circuit simulation; student edition to be confirmed.",
-      "id": "multisim",
-      "isOpenSource": false,
-      "name": "Multisim",
-      "platform": [
-        "desktop"
-      ],
-      "tags": [
-        "circuit",
-        "simulator"
-      ],
-      "url": "https://www.ni.com/en/shop/electronic-test-instrumentation/application-software-for-electronic-test-and-instrumentation-category/what-is-multisim.html",
-      "verification": "pending",
-      "verifiedOn": "2026-09-20",
-      "haystack": "multisim circuit simulator embedded circuit simulation; student edition to be confirmed.",
-      "icon": {
-        "kind": "category"
-      },
-      "linkStatus": "ok"
     },
     {
       "access": "freemium",
@@ -15354,30 +15218,6 @@
       },
       "linkStatus": "ok",
       "repoId": "unipisa-simu5g"
-    },
-    {
-      "access": "student",
-      "brandIcon": "matlab",
-      "category": "math",
-      "description": "Block-based system and signal modelling. Same license question as MATLAB.",
-      "id": "simulink",
-      "isOpenSource": false,
-      "name": "Simulink",
-      "note": "Sold with the MATLAB student license.",
-      "platform": [
-        "desktop"
-      ],
-      "tags": [
-        "simulation"
-      ],
-      "url": "https://www.mathworks.com/products/simulink.html",
-      "verifiedOn": "2026-09-20",
-      "haystack": "simulink simulation math block-based system and signal modelling. same license question as matlab.",
-      "icon": {
-        "kind": "brand",
-        "light": "/resources/icons/simulink.svg"
-      },
-      "linkStatus": "unchecked"
     },
     {
       "access": "freemium",

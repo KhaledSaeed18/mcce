@@ -30,7 +30,6 @@ export const BADGE_FILTERS: BadgeFilter[] = [
   "free",
   "open-source",
   "freemium",
-  "student",
   "trial",
   "paid",
 ];

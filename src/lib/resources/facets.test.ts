@@ -7,11 +7,11 @@ describe("countByBadge", () => {
     const counts = countByBadge([
       makeTool({ access: "free", isOpenSource: true, name: "A" }),
       makeTool({ access: "free", name: "B" }),
-      makeTool({ access: "student", name: "C" }),
+      makeTool({ access: "trial", name: "C" }),
     ]);
     expect(counts.free).toBe(2);
     expect(counts["open-source"]).toBe(1);
-    expect(counts.student).toBe(1);
+    expect(counts.trial).toBe(1);
     expect(counts.paid).toBe(0);
   });
 });
