@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export function RouteError({ error }: ErrorComponentProps) {
   const router = useRouter();
+  const message = error instanceof Error ? error.message : undefined;
 
   // Clears the failed match so the route re-runs its loader instead of
   // re-rendering the same thrown error.
@@ -25,9 +26,9 @@ export function RouteError({ error }: ErrorComponentProps) {
           This page failed to load. Retrying often works, and the homepage is
           always there.
         </p>
-        {import.meta.env.DEV && error?.message ? (
+        {import.meta.env.DEV && message ? (
           <pre className="mt-2 overflow-x-auto rounded border-2 bg-muted p-3 text-left text-xs">
-            {error.message}
+            {message}
           </pre>
         ) : null}
       </div>
