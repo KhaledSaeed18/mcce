@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup project
         uses: ./.github/actions/setup-project
@@ -28,7 +28,7 @@ jobs:
         run: pnpm run build:resources -- --skip-icons
 
       - name: Open a pull request when any status changed
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           branch: chore/resource-link-check
           commit-message: "chore(data): refresh resource link statuses"
