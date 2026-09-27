@@ -1,13 +1,12 @@
 import type { RefObject } from "react";
 import { DEFAULT_EXPORT_NAME } from "@/config/pdf-editor";
-import { useCoverReveal } from "@/hooks/use-cover-reveal";
 import { useDocumentScroller } from "@/hooks/use-document-scroller";
 import { useEditorMarkup } from "@/hooks/use-editor-markup";
 import { useEditorPages } from "@/hooks/use-editor-pages";
 import { useEditorShortcuts } from "@/hooks/use-editor-shortcuts";
+import { useEditorStudy } from "@/hooks/use-editor-study";
 import { useEditorTools } from "@/hooks/use-editor-tools";
 import { useElementSize } from "@/hooks/use-element-size";
-import { usePageBookmarks } from "@/hooks/use-page-bookmarks";
 import { usePdfDocument } from "@/hooks/use-pdf-document";
 import { usePdfExport } from "@/hooks/use-pdf-export";
 import { usePdfZoom } from "@/hooks/use-pdf-zoom";
@@ -43,12 +42,12 @@ export function useEditorSession(
     doc,
     markup.pages
   );
-  const covers = useCoverReveal(node?.id, markup.annotations);
-  const bookmarks = usePageBookmarks(
-    node?.id,
-    markup.pages,
-    navigation.activeIndex
-  );
+  const { bookmarks, covers } = useEditorStudy({
+    activeIndex: navigation.activeIndex,
+    annotations: markup.annotations,
+    fileId: node?.id,
+    pages: markup.pages,
+  });
   const zoom = usePdfZoom({ pageSize: activeSize, viewport });
   useDocumentScroller(scrollRef, node?.id, zoom);
   useViewResume(node?.id, navigation, zoom);
