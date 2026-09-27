@@ -19,6 +19,8 @@ interface MarkupDragOptions {
   annotations: Annotation[];
   isEnabled: boolean;
   onMove: (id: string, dx: number, dy: number) => void;
+  /** A press that let go without moving, which is how a cover is looked under. */
+  onPress: (id: string) => void;
   onSelect: (id: string | null) => void;
   pageId: string;
   rotation: number;
@@ -39,6 +41,7 @@ export function useMarkupDrag({
   annotations,
   isEnabled,
   onMove,
+  onPress,
   onSelect,
   pageId,
   rotation,
@@ -113,16 +116,27 @@ export function useMarkupDrag({
     const { current } = dragRef;
     pressRef.current = null;
     update(null);
-    if (current && (current.dx !== 0 || current.dy !== 0)) {
-      onMove(current.id, current.dx, current.dy);
+    if (!current) {
+      return;
     }
-  }, [onMove, update]);
+    if (current.dx !== 0 || current.dy !== 0) {
+      onMove(current.id, current.dx, current.dy);
+      return;
+    }
+    onPress(current.id);
+  }, [onMove, onPress, update]);
+
+  // A press the browser took back was not a click on anything.
+  const handlePointerCancel = useCallback(() => {
+    pressRef.current = null;
+    update(null);
+  }, [update]);
 
   return {
     drag,
     handlers: {
       onMouseDownCapture: handleMouseDown,
-      onPointerCancel: handlePointerUp,
+      onPointerCancel: handlePointerCancel,
       onPointerDownCapture: handlePointerDown,
       onPointerMove: handlePointerMove,
       onPointerUp: handlePointerUp,

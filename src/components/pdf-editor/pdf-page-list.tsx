@@ -5,6 +5,7 @@ import { groupAnnotationsByPage } from "@/lib/pdf-editor/group-by-page";
 import type {
   Annotation,
   AnnotationActions,
+  CoverReveal,
   EditorPage,
   SearchHit,
   TextDraft,
@@ -18,6 +19,7 @@ const NO_HITS: SearchHit[] = [];
 interface PdfPageListProps {
   actions: AnnotationActions;
   annotations: Annotation[];
+  covers: CoverReveal;
   doc: PDFDocumentProxy;
   /** Search matches keyed by the position of the page they are on. */
   hitsByPosition: Map<number, SearchHit[]>;
@@ -32,6 +34,7 @@ interface PdfPageListProps {
 export function PdfPageList({
   actions,
   annotations,
+  covers,
   doc,
   hitsByPosition,
   onTextDraftChange,
@@ -52,6 +55,7 @@ export function PdfPageList({
         <PdfPage
           actions={actions}
           annotations={byPage.get(page.id) ?? NO_ANNOTATIONS}
+          covers={covers}
           doc={doc}
           key={page.id}
           onTextDraftChange={onTextDraftChange}

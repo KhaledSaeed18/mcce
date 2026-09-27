@@ -16,6 +16,7 @@ export const EDITOR_HELP_FACTS: readonly string[] = [
   "The page rail turns, copies, removes, and reorders pages, and adds a blank or squared page after any page to work a problem on. Drag a thumbnail to move it.",
   "The select tool picks text to copy, highlight, underline, or strike through, and picks up markup to move it. Delete removes what is selected.",
   "The contents panel, opened from the top right, lists the PDF's own table of contents when it has one, and the pages you bookmarked.",
+  "The answer cover draws a box over an answer to quiz yourself. With the select tool, click a cover to see what it hides and again to hide it. The eye button shows or hides every answer at once. Covers stay out of downloads.",
   "Restore the original file drops every change at once. Undo brings them back.",
   `The editor needs a screen at least ${EDITOR_MIN_WIDTH_PX}px wide.`,
 ];

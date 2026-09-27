@@ -86,6 +86,7 @@ export type EditorTool =
   | "ellipse"
   | "arrow"
   | "text"
+  | "cover"
   | "hand";
 
 /** Page space: PDF points, top-left origin, independent of the zoom it was drawn at. */
@@ -156,8 +157,15 @@ export interface TextAnnotation extends AnnotationBase, TextGeometry {
   type: "text";
 }
 
+/** A box laid over an answer, hiding it until the reader looks. It stays in
+ * the editor: a download is the file as marked, not a quiz. */
+export interface CoverAnnotation extends AnnotationBase, Box {
+  type: "cover";
+}
+
 export type Annotation =
   | ArrowAnnotation
+  | CoverAnnotation
   | HighlightAnnotation
   | PenAnnotation
   | ShapeAnnotation
@@ -257,6 +265,13 @@ export type FrameCorner =
 
 /** Which side of a text box a resize drag has hold of. */
 export type TextBoxEdge = "left" | "right";
+
+/** Which answer covers are showing what they hide, and how a page shows one. */
+export interface CoverReveal {
+  revealed: ReadonlySet<string>;
+  /** Shows a hidden answer, or hides a shown one. Anything but a cover is ignored. */
+  toggle: (id: string) => void;
+}
 
 /** Every way the rail can change the pages, kept together as they travel down. */
 export interface PageActions {

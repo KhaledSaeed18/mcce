@@ -63,6 +63,17 @@ const TEXT_HIGHLIGHT: Annotation = {
   style: "highlight",
 };
 
+const COVER: Annotation = {
+  color: "#3a6ea5",
+  height: 30,
+  id: "c",
+  pageId: "p0",
+  type: "cover",
+  width: 60,
+  x: 10,
+  y: 50,
+};
+
 async function exportWithPageTurnedBy(
   rotation: number,
   annotation: Annotation = STROKE
@@ -161,5 +172,22 @@ describe("drawAnnotationOnPage", () => {
     expect(opened).toBeGreaterThanOrEqual(0);
     expect(drawing.indexOf(" cm")).toBeGreaterThan(opened);
     expect(closed).toBeGreaterThan(drawing.indexOf(" cm"));
+  });
+
+  it("leaves an answer cover out of the copy, so every answer shows", async () => {
+    const source = await PDFDocument.create();
+    source.addPage([CONTENT_WIDTH, CONTENT_HEIGHT]);
+    const bytes = await source.save();
+
+    const out = await buildAnnotatedPdf(
+      bytes.buffer as ArrayBuffer,
+      [COVER, STROKE],
+      buildPages(1)
+    );
+    const drawing = readDrawing(Buffer.from(out));
+
+    // One piece of markup drawn, the stroke, each in its own turned space.
+    expect(drawing.match(/ cm/g)).toHaveLength(1);
+    expect(drawing).toContain("10 180 m");
   });
 });

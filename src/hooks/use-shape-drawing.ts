@@ -1,6 +1,7 @@
 import { type PointerEvent, useCallback, useRef, useState } from "react";
 import {
   buildArrow,
+  buildCover,
   buildHighlight,
   buildShape,
   buildStroke,
@@ -26,6 +27,9 @@ function buildDraft(
   }
   if (settings.tool === "rect" || settings.tool === "ellipse") {
     return buildShape(settings.tool, start, end, pageId, settings);
+  }
+  if (settings.tool === "cover") {
+    return buildCover(start, end, pageId);
   }
   return null;
 }

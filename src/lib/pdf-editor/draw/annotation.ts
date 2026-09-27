@@ -1,4 +1,5 @@
 import type { Annotation } from "../types";
+import { drawCover } from "./cover";
 import {
   drawArrow,
   drawHighlight,
@@ -11,8 +12,13 @@ import { drawText } from "./text";
 /** Draws in page space; the caller scales and turns the context to suit the page. */
 export function drawAnnotation(
   ctx: CanvasRenderingContext2D,
-  annotation: Annotation
+  annotation: Annotation,
+  isRevealed = false
 ): void {
+  if (annotation.type === "cover") {
+    drawCover(ctx, annotation, isRevealed);
+    return;
+  }
   if (annotation.type === "pen") {
     drawPen(ctx, annotation);
     return;

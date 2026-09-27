@@ -1,5 +1,6 @@
 import type { RefObject } from "react";
 import { DEFAULT_EXPORT_NAME } from "@/config/pdf-editor";
+import { useCoverReveal } from "@/hooks/use-cover-reveal";
 import { useDocumentScroller } from "@/hooks/use-document-scroller";
 import { useEditorMarkup } from "@/hooks/use-editor-markup";
 import { useEditorPages } from "@/hooks/use-editor-pages";
@@ -42,6 +43,7 @@ export function useEditorSession(
     doc,
     markup.pages
   );
+  const covers = useCoverReveal(node?.id, markup.annotations);
   const bookmarks = usePageBookmarks(
     node?.id,
     markup.pages,
@@ -93,6 +95,7 @@ export function useEditorSession(
 
   return {
     bookmarks,
+    covers,
     doc,
     exportPdf,
     exportStatus,

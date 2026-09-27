@@ -28,6 +28,11 @@ export function drawAnnotationOnPage(
   font: PDFFont | null,
   rotation: number
 ): void {
+  // A cover hides an answer while the reader studies; the copy they keep is
+  // the file as marked, with every answer showing.
+  if (annotation.type === "cover") {
+    return;
+  }
   const content = { height: page.getHeight(), width: page.getWidth() };
   const { height } = getRenderedSize(content, rotation);
 

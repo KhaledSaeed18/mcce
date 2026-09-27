@@ -361,6 +361,7 @@ export const DEFAULT_EXPORT_NAME = "document.pdf";
 
 export const TOOL_LABELS: Record<EditorTool, string> = {
   arrow: "Arrow",
+  cover: "Answer cover",
   ellipse: "Circle",
   eraser: "Eraser",
   hand: "Hand",
@@ -373,6 +374,8 @@ export const TOOL_LABELS: Record<EditorTool, string> = {
 
 export const TOOL_HOTKEYS: Record<EditorTool, string> = {
   arrow: "a",
+  /** Q for quiz: C and H, the obvious letters, are taken by circle and hand. */
+  cover: "q",
   ellipse: "c",
   eraser: "e",
   hand: "h",
@@ -403,6 +406,7 @@ export const EDITOR_SHORTCUT_TOOLS: readonly EditorTool[] = [
   "rect",
   "ellipse",
   "arrow",
+  "cover",
   "eraser",
   "select",
   "hand",
@@ -449,3 +453,19 @@ export const BOOKMARK_ADD_LABEL = "Bookmark this page";
 export const BOOKMARK_REMOVE_LABEL = "Remove bookmark";
 export const BOOKMARKS_EMPTY =
   "Bookmark the page you are on to come back to it. Bookmarks are kept in this browser.";
+
+/** Answer covers are one color whatever ink is in hand, so a cover never
+ * reads as markup that belongs to the page. */
+export const COVER_COLOR = "#3a6ea5";
+export const COVER_LABEL_COLOR = "#ffffff";
+export const COVER_LABEL = "Click to reveal";
+export const COVER_LABEL_SIZE = 10;
+/** Room the label needs around it before it is drawn at all. */
+export const COVER_LABEL_PADDING = 6;
+/** A revealed cover leaves a faint outline, so the answer can be hidden again. */
+export const COVER_REVEALED_ALPHA = 0.08;
+export const COVER_REVEALED_DASH = [5, 4];
+export const COVER_OUTLINE_WIDTH = 1.5;
+
+export const COVERS_SHOW_ALL_LABEL = "Show all answers";
+export const COVERS_HIDE_ALL_LABEL = "Hide all answers";

@@ -17,6 +17,7 @@ interface AnnotationPainterOptions {
   preview: Annotation | null;
   /** The page as it is shown, which a turned page measures differently. */
   rendered: PageSize;
+  revealed: ReadonlySet<string>;
   transform: RotationTransform;
   zoom: number;
 }
@@ -30,6 +31,7 @@ export function useAnnotationPainter({
   highlightId,
   preview,
   rendered,
+  revealed,
   transform,
   zoom,
 }: AnnotationPainterOptions) {
@@ -57,7 +59,7 @@ export function useAnnotationPainter({
         continue;
       }
       const annotation = preview?.id === stored.id ? preview : stored;
-      drawAnnotation(ctx, annotation);
+      drawAnnotation(ctx, annotation, revealed.has(annotation.id));
       if (annotation.type === "text" && annotation.id === highlightId) {
         drawTextHighlight(ctx, annotation);
       }
@@ -74,6 +76,7 @@ export function useAnnotationPainter({
     preview,
     rendered.height,
     rendered.width,
+    revealed,
     transform.angle,
     transform.tx,
     transform.ty,

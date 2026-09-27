@@ -1,4 +1,8 @@
-import { MIN_SHAPE_SIZE, MIN_STROKE_POINTS } from "@/config/pdf-editor";
+import {
+  COVER_COLOR,
+  MIN_SHAPE_SIZE,
+  MIN_STROKE_POINTS,
+} from "@/config/pdf-editor";
 import { normalizeRect } from "./geometry";
 import { createAnnotationId } from "./pointer";
 import type {
@@ -27,6 +31,21 @@ export function buildShape(
     pageId,
     strokeWidth: settings.strokeWidth,
     type: tool,
+  };
+}
+
+/** A cover takes its own color rather than the ink in hand. */
+export function buildCover(
+  start: Point,
+  end: Point,
+  pageId: string
+): Annotation {
+  return {
+    ...normalizeRect(start, end),
+    color: COVER_COLOR,
+    id: createAnnotationId(),
+    pageId,
+    type: "cover",
   };
 }
 

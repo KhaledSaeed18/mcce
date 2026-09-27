@@ -33,6 +33,7 @@ export function EditorDocumentColumn({
 }: EditorDocumentColumnProps) {
   const {
     bookmarks,
+    covers,
     doc,
     exportPdf,
     exportStatus,
@@ -63,6 +64,7 @@ export function EditorDocumentColumn({
           canRestore={!markup.isOriginal}
           canUndo={markup.canUndo}
           color={ink.color}
+          covers={covers}
           exportStatus={exportStatus}
           fontSize={tools.fontSize}
           navigation={navigation}
@@ -110,6 +112,7 @@ export function EditorDocumentColumn({
             <PdfPageList
               actions={markup.actions}
               annotations={markup.annotations}
+              covers={covers}
               doc={doc}
               hitsByPosition={search.hitsByPosition}
               onTextDraftChange={markup.openDraft}

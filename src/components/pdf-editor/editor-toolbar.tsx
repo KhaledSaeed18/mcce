@@ -1,5 +1,6 @@
 import { SearchIcon } from "lucide-react";
 import { BookmarkButton } from "@/components/pdf-editor/bookmark-button";
+import { CoversButton } from "@/components/pdf-editor/covers-button";
 import { ExportButton } from "@/components/pdf-editor/export-button";
 import { HistoryControls } from "@/components/pdf-editor/history-controls";
 import { InkControls } from "@/components/pdf-editor/ink-controls";
@@ -13,6 +14,7 @@ import {
   SEARCH_LABEL,
   SHORTCUT_HINTS,
 } from "@/config/pdf-editor";
+import type { CoverControls } from "@/hooks/use-cover-reveal";
 import type { PageBookmarks } from "@/hooks/use-page-bookmarks";
 import type { PdfExportStatus } from "@/hooks/use-pdf-export";
 import { withShortcut } from "@/lib/pdf-editor/shortcut-label";
@@ -29,6 +31,7 @@ interface EditorToolbarProps {
   canRestore: boolean;
   canUndo: boolean;
   color: string;
+  covers: CoverControls;
   exportStatus: PdfExportStatus;
   fontSize: number;
   navigation: PageNavigation;
@@ -54,6 +57,7 @@ export function EditorToolbar({
   canRestore,
   canUndo,
   color,
+  covers,
   exportStatus,
   fontSize,
   onClear,
@@ -105,6 +109,12 @@ export function EditorToolbar({
         className={EDITOR_CONTROL_HEIGHT_CLASS}
         orientation="vertical"
       />
+      {covers.hasCovers ? (
+        <CoversButton
+          isAllRevealed={covers.isAllRevealed}
+          onToggle={covers.toggleAll}
+        />
+      ) : null}
       <Button
         aria-label={SEARCH_LABEL}
         onClick={onOpenSearch}

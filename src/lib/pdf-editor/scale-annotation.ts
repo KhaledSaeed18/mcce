@@ -37,7 +37,8 @@ export function scaleAnnotation(
         to: map(annotation.to),
       };
     case "rect":
-    case "ellipse": {
+    case "ellipse":
+    case "cover": {
       const start = map({ x: annotation.x, y: annotation.y });
       const end = map({
         x: annotation.x + annotation.width,
