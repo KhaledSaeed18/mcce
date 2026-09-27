@@ -6,13 +6,19 @@ import {
   useCallback,
   useRef,
 } from "react";
+import { PageInsertMenu } from "@/components/pdf-editor/page-insert-menu";
 import { PageThumbnailAction } from "@/components/pdf-editor/page-thumbnail-action";
 import { RAIL_POSITION_ATTRIBUTE, THUMBNAIL_WIDTH } from "@/config/pdf-editor";
 import { useInViewport } from "@/hooks/use-in-viewport";
 import { usePdfPageRender } from "@/hooks/use-pdf-page-render";
 import { useScrollIntoView } from "@/hooks/use-scroll-into-view";
 import { getRenderedSize } from "@/lib/pdf-editor/rotation";
-import type { EditorPage, PageActions, PageSize } from "@/lib/pdf-editor/types";
+import type {
+  EditorPage,
+  PageActions,
+  PageSheet,
+  PageSize,
+} from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
 interface PageThumbnailProps {
@@ -50,13 +56,7 @@ export function PageThumbnail({
   const isVisible = useInViewport(wrapperRef, railRef);
   const rendered = getRenderedSize(size, page.rotation);
   const zoom = THUMBNAIL_WIDTH / rendered.width;
-  const { canvasRef } = usePdfPageRender(
-    doc,
-    page.sourceIndex,
-    zoom,
-    isVisible,
-    page.rotation
-  );
+  const { canvasRef } = usePdfPageRender(doc, page, zoom, isVisible);
   useScrollIntoView(wrapperRef, isActive);
 
   const handleSelect = useCallback(
@@ -64,10 +64,14 @@ export function PageThumbnail({
     [onSelect, position]
   );
 
-  const { copy, remove, rotate } = actions;
+  const { copy, insertSheet, remove, rotate } = actions;
   const handleRemove = useCallback(() => remove(page.id), [remove, page.id]);
   const handleRotate = useCallback(() => rotate(page.id), [rotate, page.id]);
   const handleCopy = useCallback(() => copy(page.id), [copy, page.id]);
+  const handleInsert = useCallback(
+    (sheet: PageSheet) => insertSheet(page.id, sheet),
+    [insertSheet, page.id]
+  );
 
   return (
     <div
@@ -122,6 +126,11 @@ export function PageThumbnail({
       >
         <CopyIcon className="size-3.5" />
       </PageThumbnailAction>
+      <PageInsertMenu
+        isActive={isActive}
+        onInsert={handleInsert}
+        position={position}
+      />
       <span
         className={cn(
           "font-head text-xs tabular-nums",

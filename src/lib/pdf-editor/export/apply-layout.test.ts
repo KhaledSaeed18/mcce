@@ -97,3 +97,41 @@ describe("applyLayout duplicating pages", () => {
     expect(second.getRotation().angle).toBe(90);
   });
 });
+
+describe("applyLayout sheets", () => {
+  it("writes a sheet as a new page the size of the page it follows", async () => {
+    const pdf = await makeDocument(2);
+    const layout = buildPages(2);
+    const sheet: EditorPage = { ...layout[0], id: "sheet", sheet: "grid" };
+
+    await applyLayout(pdf, [layout[0], sheet, layout[1]]);
+
+    expect(widths(pdf)).toEqual([100, 100, 101]);
+    expect(pdf.getPage(1)).not.toBe(pdf.getPage(0));
+  });
+
+  it("writes a sheet upright at the size a turned page shows at", async () => {
+    const pdf = await makeDocument(1);
+    pdf.getPage(0).setRotation(degrees(90));
+    const layout = buildPages(1);
+    const sheet: EditorPage = { ...layout[0], id: "sheet", sheet: "blank" };
+
+    await applyLayout(pdf, [layout[0], sheet]);
+    const added = pdf.getPage(1);
+
+    expect(added.getRotation().angle).toBe(0);
+    expect(added.getWidth()).toBe(200);
+    expect(added.getHeight()).toBe(100);
+  });
+
+  it("keeps the page a sheet follows as the file's own, not a copy", async () => {
+    const pdf = await makeDocument(1);
+    const [original] = pdf.getPages();
+    const layout = buildPages(1);
+    const sheet: EditorPage = { ...layout[0], id: "sheet", sheet: "blank" };
+
+    await applyLayout(pdf, [layout[0], sheet]);
+
+    expect(pdf.getPage(0)).toBe(original);
+  });
+});

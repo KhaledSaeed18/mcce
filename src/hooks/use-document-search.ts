@@ -33,7 +33,10 @@ export function useDocumentSearch({
     () =>
       isOpen
         ? findMatches(
-            pages.map((page) => text.pages[page.sourceIndex]),
+            // A sheet the reader put in has no text, whatever page it follows.
+            pages.map((page) =>
+              page.sheet ? undefined : text.pages[page.sourceIndex]
+            ),
             query
           )
         : [],

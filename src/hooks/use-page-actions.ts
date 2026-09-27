@@ -1,7 +1,12 @@
 import { useCallback, useMemo } from "react";
 import { duplicatePage } from "@/lib/pdf-editor/duplicate-page";
+import { insertSheet } from "@/lib/pdf-editor/insert-sheet";
 import { movePage, turnPage, withoutPage } from "@/lib/pdf-editor/pages";
-import type { EditorSnapshot, PageActions } from "@/lib/pdf-editor/types";
+import type {
+  EditorSnapshot,
+  PageActions,
+  PageSheet,
+} from "@/lib/pdf-editor/types";
 
 type Commit = (next: (current: EditorSnapshot) => EditorSnapshot) => void;
 
@@ -48,8 +53,17 @@ export function usePageActions(commit: Commit): PageActions {
     [commit]
   );
 
+  const insert = useCallback(
+    (afterId: string, sheet: PageSheet) =>
+      commit((current) => ({
+        ...current,
+        pages: insertSheet(current.pages, afterId, sheet),
+      })),
+    [commit]
+  );
+
   return useMemo(
-    () => ({ copy, move, remove, rotate }),
-    [copy, move, remove, rotate]
+    () => ({ copy, insertSheet: insert, move, remove, rotate }),
+    [copy, insert, move, remove, rotate]
   );
 }

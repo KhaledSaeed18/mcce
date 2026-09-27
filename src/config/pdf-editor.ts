@@ -2,6 +2,7 @@ import type {
   EditorPanels,
   EditorTool,
   LocalPdfProblem,
+  PageSheet,
   TextMarkStyle,
 } from "@/lib/pdf-editor/types";
 
@@ -410,3 +411,14 @@ export const EDITOR_PAPER_FAN = {
   middle: 3,
   transition: { damping: 12, stiffness: 140, type: "spring" },
 } as const;
+
+/** Squares 5 mm across, the ruling of most squared exercise books. */
+export const SHEET_GRID_SPACING = 14.17;
+export const SHEET_GRID_LINE_WIDTH = 0.5;
+export const SHEET_GRID_COLOR = "#b8c7d9";
+export const SHEET_PAPER_COLOR = "#ffffff";
+
+export const PAGE_SHEET_LABELS: Record<PageSheet, string> = {
+  blank: "Blank page",
+  grid: "Squared page",
+};

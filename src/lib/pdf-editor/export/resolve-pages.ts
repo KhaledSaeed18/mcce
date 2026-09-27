@@ -1,5 +1,6 @@
 import type { PDFDocument, PDFPage } from "pdf-lib";
 import type { EditorPage } from "../types";
+import { addSheetPage } from "./add-sheet-page";
 
 export interface ResolvedPage {
   entry: EditorPage;
@@ -26,7 +27,8 @@ function findRepeats(pages: ResolvedPage[]): number[] {
  * The page each entry is written from. A page the editor holds once is the one
  * the file already has, so it keeps everything that came with it. A page held
  * more than once cannot be the same page twice over, so each appearance after
- * the first is given a copy.
+ * the first is given a copy. A sheet the reader put in is a new page, sized by
+ * the page of the file it follows.
  */
 export async function resolveLayoutPages(
   pdf: PDFDocument,
@@ -38,16 +40,15 @@ export async function resolveLayoutPages(
     return page ? [{ entry, page }] : [];
   });
 
-  const repeats = findRepeats(present);
-  if (repeats.length === 0) {
-    return present;
-  }
-
-  const copies = await pdf.copyPages(pdf, repeats);
+  const repeats = findRepeats(present.filter(({ entry }) => !entry.sheet));
+  const copies = repeats.length ? await pdf.copyPages(pdf, repeats) : [];
   const seen = new Set<number>();
   let nextCopy = 0;
 
   return present.map(({ entry, page }) => {
+    if (entry.sheet) {
+      return { entry, page: addSheetPage(pdf, page, entry.sheet) };
+    }
     if (seen.has(entry.sourceIndex)) {
       const copy = copies[nextCopy] ?? page;
       nextCopy += 1;

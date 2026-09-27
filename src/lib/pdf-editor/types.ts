@@ -192,6 +192,9 @@ export interface PageDrag {
   insertAt: number;
 }
 
+/** A page the reader put in to work on: plain, or ruled in squares. */
+export type PageSheet = "blank" | "grid";
+
 /**
  * A page as the editor holds it, which is not necessarily how the file holds it:
  * which page of the file it shows, and how far it has been turned from upright.
@@ -200,6 +203,9 @@ export interface EditorPage {
   id: string;
   /** Quarter turns clockwise, on top of the page's own orientation. */
   rotation: number;
+  /** Set on a page the reader put in, which shows a sheet instead of the file's
+   * page. Its sourceIndex is then the page it was put in after, whose size it takes. */
+  sheet?: PageSheet;
   sourceIndex: number;
 }
 
@@ -255,6 +261,8 @@ export type TextBoxEdge = "left" | "right";
 /** Every way the rail can change the pages, kept together as they travel down. */
 export interface PageActions {
   copy: (id: string) => void;
+  /** Puts a sheet to work on directly after a page. */
+  insertSheet: (afterId: string, sheet: PageSheet) => void;
   move: (from: number, to: number) => void;
   remove: (id: string) => void;
   rotate: (id: string) => void;
