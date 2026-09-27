@@ -252,6 +252,14 @@ export type FrameCorner =
 /** Which side of a text box a resize drag has hold of. */
 export type TextBoxEdge = "left" | "right";
 
+/** Every way the rail can change the pages, kept together as they travel down. */
+export interface PageActions {
+  copy: (id: string) => void;
+  move: (from: number, to: number) => void;
+  remove: (id: string) => void;
+  rotate: (id: string) => void;
+}
+
 /** Every way the page list can change the markup, kept together as they travel down. */
 export interface AnnotationActions {
   add: (annotation: Annotation) => void;

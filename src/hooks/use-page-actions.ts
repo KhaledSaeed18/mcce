@@ -1,13 +1,13 @@
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { duplicatePage } from "@/lib/pdf-editor/duplicate-page";
 import { movePage, turnPage, withoutPage } from "@/lib/pdf-editor/pages";
-import type { EditorSnapshot } from "@/lib/pdf-editor/types";
+import type { EditorSnapshot, PageActions } from "@/lib/pdf-editor/types";
 
 type Commit = (next: (current: EditorSnapshot) => EditorSnapshot) => void;
 
 /** Changes to the pages themselves, which take their markup with them. */
-export function usePageActions(commit: Commit) {
-  const removePage = useCallback(
+export function usePageActions(commit: Commit): PageActions {
+  const remove = useCallback(
     (id: string) =>
       commit((current) => {
         const pages = withoutPage(current.pages, id);
@@ -25,7 +25,7 @@ export function usePageActions(commit: Commit) {
     [commit]
   );
 
-  const reorderPage = useCallback(
+  const move = useCallback(
     (from: number, to: number) =>
       commit((current) => ({
         ...current,
@@ -34,7 +34,7 @@ export function usePageActions(commit: Commit) {
     [commit]
   );
 
-  const rotatePage = useCallback(
+  const rotate = useCallback(
     (id: string) =>
       commit((current) => ({
         ...current,
@@ -43,10 +43,13 @@ export function usePageActions(commit: Commit) {
     [commit]
   );
 
-  const copyPage = useCallback(
+  const copy = useCallback(
     (id: string) => commit((current) => duplicatePage(current, id)),
     [commit]
   );
 
-  return { copyPage, removePage, reorderPage, rotatePage };
+  return useMemo(
+    () => ({ copy, move, remove, rotate }),
+    [copy, move, remove, rotate]
+  );
 }

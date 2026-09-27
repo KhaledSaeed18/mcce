@@ -12,10 +12,11 @@ import { useInViewport } from "@/hooks/use-in-viewport";
 import { usePdfPageRender } from "@/hooks/use-pdf-page-render";
 import { useScrollIntoView } from "@/hooks/use-scroll-into-view";
 import { getRenderedSize } from "@/lib/pdf-editor/rotation";
-import type { EditorPage, PageSize } from "@/lib/pdf-editor/types";
+import type { EditorPage, PageActions, PageSize } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
 interface PageThumbnailProps {
+  actions: PageActions;
   /** False for the last page left, which a document cannot do without. */
   canRemove: boolean;
   doc: PDFDocumentProxy;
@@ -23,9 +24,6 @@ interface PageThumbnailProps {
   dragHandlers: ComponentProps<"button">;
   isActive: boolean;
   isDragging: boolean;
-  onCopy: (id: string) => void;
-  onRemove: (id: string) => void;
-  onRotate: (id: string) => void;
   onSelect: (position: number) => void;
   page: EditorPage;
   /** Where the page sits now, which is what it is labelled and jumped to by. */
@@ -36,14 +34,12 @@ interface PageThumbnailProps {
 }
 
 export function PageThumbnail({
+  actions,
   canRemove,
   doc,
   dragHandlers,
   isActive,
   isDragging,
-  onCopy,
-  onRemove,
-  onRotate,
   onSelect,
   page,
   position,
@@ -68,17 +64,10 @@ export function PageThumbnail({
     [onSelect, position]
   );
 
-  const handleRemove = useCallback(
-    () => onRemove(page.id),
-    [onRemove, page.id]
-  );
-
-  const handleRotate = useCallback(
-    () => onRotate(page.id),
-    [onRotate, page.id]
-  );
-
-  const handleCopy = useCallback(() => onCopy(page.id), [onCopy, page.id]);
+  const { copy, remove, rotate } = actions;
+  const handleRemove = useCallback(() => remove(page.id), [remove, page.id]);
+  const handleRotate = useCallback(() => rotate(page.id), [rotate, page.id]);
+  const handleCopy = useCallback(() => copy(page.id), [copy, page.id]);
 
   return (
     <div

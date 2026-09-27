@@ -100,10 +100,7 @@ export function EditorDocumentColumn({
           isRailOpen={isRailOpen}
           layout={markup.pages}
           navigation={navigation}
-          onCopyPage={markup.copyPage}
-          onRemovePage={markup.removePage}
-          onReorderPage={markup.reorderPage}
-          onRotatePage={markup.rotatePage}
+          pageActions={markup.pageActions}
           scrollRef={scrollRef}
           sizes={sizes}
         >
