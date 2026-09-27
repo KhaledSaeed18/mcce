@@ -6,6 +6,7 @@ import { useEditorPages } from "@/hooks/use-editor-pages";
 import { useEditorShortcuts } from "@/hooks/use-editor-shortcuts";
 import { useEditorTools } from "@/hooks/use-editor-tools";
 import { useElementSize } from "@/hooks/use-element-size";
+import { usePageBookmarks } from "@/hooks/use-page-bookmarks";
 import { usePdfDocument } from "@/hooks/use-pdf-document";
 import { usePdfExport } from "@/hooks/use-pdf-export";
 import { usePdfZoom } from "@/hooks/use-pdf-zoom";
@@ -40,6 +41,11 @@ export function useEditorSession(
     scrollRef,
     doc,
     markup.pages
+  );
+  const bookmarks = usePageBookmarks(
+    node?.id,
+    markup.pages,
+    navigation.activeIndex
   );
   const zoom = usePdfZoom({ pageSize: activeSize, viewport });
   useDocumentScroller(scrollRef, node?.id, zoom);
@@ -86,6 +92,7 @@ export function useEditorSession(
   }
 
   return {
+    bookmarks,
     doc,
     exportPdf,
     exportStatus,

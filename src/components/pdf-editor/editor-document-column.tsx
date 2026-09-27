@@ -32,6 +32,7 @@ export function EditorDocumentColumn({
   session,
 }: EditorDocumentColumnProps) {
   const {
+    bookmarks,
     doc,
     exportPdf,
     exportStatus,
@@ -56,6 +57,7 @@ export function EditorDocumentColumn({
     <div className="flex min-w-0 flex-1 flex-col">
       {doc ? (
         <EditorToolbar
+          bookmarks={bookmarks}
           canClear={markup.annotations.length > 0}
           canRedo={markup.canRedo}
           canRestore={!markup.isOriginal}

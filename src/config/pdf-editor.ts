@@ -3,6 +3,7 @@ import type {
   EditorTool,
   LocalPdfProblem,
   PageSheet,
+  StudyPanelTab,
   TextMarkStyle,
 } from "@/lib/pdf-editor/types";
 
@@ -93,6 +94,7 @@ export const PDF_VIEW_KEY_PREFIX = "mcce.pdf-view.v1";
 export const DEFAULT_EDITOR_PANELS: EditorPanels = {
   isBrowserOpen: true,
   isRailOpen: false,
+  isStudyOpen: false,
 };
 
 /** The page list's padding and borders, which a fitted page has to leave room for. */
@@ -321,6 +323,7 @@ export const SHORTCUT_HINTS = {
   pasteMarkup: "Mod+V",
   previousPage: "Left arrow",
   redo: "Mod+Shift+Z",
+  bookmark: "B",
   scrollZoom: "Mod+Scroll",
   search: "Mod+F",
   searchNext: "Enter",
@@ -422,3 +425,27 @@ export const PAGE_SHEET_LABELS: Record<PageSheet, string> = {
   blank: "Blank page",
   grid: "Squared page",
 };
+
+/** One key per file: the pages the reader bookmarked, by page identity. */
+export const PDF_BOOKMARKS_KEY_PREFIX = "mcce.pdf-bookmarks.v1";
+
+export const BOOKMARK_HOTKEY_KEY = "b";
+
+export const STUDY_PANEL_SHOW_LABEL = "Show contents and bookmarks";
+export const STUDY_PANEL_HIDE_LABEL = "Hide contents and bookmarks";
+
+export const STUDY_PANEL_TAB_LABELS: Record<StudyPanelTab, string> = {
+  bookmarks: "Bookmarks",
+  contents: "Contents",
+};
+
+export const OUTLINE_EMPTY = "This PDF has no table of contents.";
+export const OUTLINE_LOADING = "Reading the table of contents";
+
+/** Each level of the table of contents steps in this far, in pixels. */
+export const OUTLINE_INDENT_PX = 12;
+
+export const BOOKMARK_ADD_LABEL = "Bookmark this page";
+export const BOOKMARK_REMOVE_LABEL = "Remove bookmark";
+export const BOOKMARKS_EMPTY =
+  "Bookmark the page you are on to come back to it. Bookmarks are kept in this browser.";

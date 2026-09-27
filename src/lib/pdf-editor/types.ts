@@ -306,6 +306,28 @@ export type SaveStatus = "saved" | "failed";
 export interface EditorPanels {
   isBrowserOpen: boolean;
   isRailOpen: boolean;
+  isStudyOpen: boolean;
+}
+
+/** The tabs of the panel right of the pages. */
+export type StudyPanelTab = "bookmarks" | "contents";
+
+/** One line of a PDF's own table of contents, flattened out of its tree. */
+export interface OutlineEntry {
+  /** How far down the tree it sits, from 0 at the top. */
+  depth: number;
+  /** Its path through the tree, which stays the same for as long as the file does. */
+  id: string;
+  /** The page of the file it points at, or null when that cannot be worked out. */
+  sourceIndex: number | null;
+  title: string;
+}
+
+/** What the contents panel needs of an entry in pdf.js's outline tree. */
+export interface OutlineNode {
+  dest: unknown;
+  items: OutlineNode[];
+  title: string;
 }
 
 /** The spot at the middle of the scroller, held as a place in a page rather

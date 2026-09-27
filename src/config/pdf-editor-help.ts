@@ -15,6 +15,7 @@ export const EDITOR_HELP_FACTS: readonly string[] = [
   "Download copy saves a new PDF with your markup and page changes. The file in Google Drive never changes.",
   "The page rail turns, copies, removes, and reorders pages, and adds a blank or squared page after any page to work a problem on. Drag a thumbnail to move it.",
   "The select tool picks text to copy, highlight, underline, or strike through, and picks up markup to move it. Delete removes what is selected.",
+  "The contents panel, opened from the top right, lists the PDF's own table of contents when it has one, and the pages you bookmarked.",
   "Restore the original file drops every change at once. Undo brings them back.",
   `The editor needs a screen at least ${EDITOR_MIN_WIDTH_PX}px wide.`,
 ];
@@ -49,6 +50,7 @@ export const EDITOR_HELP_SHORTCUT_GROUPS: readonly ShortcutGroup[] = [
     items: [
       { keys: SHORTCUT_HINTS.previousPage, label: "Previous page" },
       { keys: SHORTCUT_HINTS.nextPage, label: "Next page" },
+      { keys: SHORTCUT_HINTS.bookmark, label: "Bookmark this page" },
       { keys: SHORTCUT_HINTS.search, label: "Search this file" },
       { keys: SHORTCUT_HINTS.searchNext, label: "Next match" },
       { keys: SHORTCUT_HINTS.searchPrevious, label: "Previous match" },

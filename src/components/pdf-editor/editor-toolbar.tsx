@@ -1,4 +1,5 @@
 import { SearchIcon } from "lucide-react";
+import { BookmarkButton } from "@/components/pdf-editor/bookmark-button";
 import { ColorSwatches } from "@/components/pdf-editor/color-swatches";
 import { ExportButton } from "@/components/pdf-editor/export-button";
 import { HistoryControls } from "@/components/pdf-editor/history-controls";
@@ -18,6 +19,7 @@ import {
   SHORTCUT_HINTS,
   STROKE_WIDTHS,
 } from "@/config/pdf-editor";
+import type { PageBookmarks } from "@/hooks/use-page-bookmarks";
 import type { PdfExportStatus } from "@/hooks/use-pdf-export";
 import { withShortcut } from "@/lib/pdf-editor/shortcut-label";
 import { usesColor, usesStrokeWidth } from "@/lib/pdf-editor/tool-kind";
@@ -28,6 +30,7 @@ import type {
 } from "@/lib/pdf-editor/types";
 
 interface EditorToolbarProps {
+  bookmarks: PageBookmarks;
   canClear: boolean;
   canRedo: boolean;
   canRestore: boolean;
@@ -52,6 +55,7 @@ interface EditorToolbarProps {
 }
 
 export function EditorToolbar({
+  bookmarks,
   canClear,
   canRedo,
   canRestore,
@@ -140,6 +144,10 @@ export function EditorToolbar({
         <SearchIcon />
       </Button>
       {navigation.pageCount > 0 ? <PageControls {...navigation} /> : null}
+      <BookmarkButton
+        isMarked={bookmarks.isActiveMarked}
+        onToggle={bookmarks.toggleActive}
+      />
       <ZoomControls {...zoom} />
       <ExportButton onExport={onExport} status={exportStatus} />
     </div>
