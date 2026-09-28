@@ -112,6 +112,7 @@ export const QUICK_OPEN_DESCRIPTION =
   "Search every PDF in the index and open it in a new tab.";
 export const QUICK_OPEN_PLACEHOLDER = "Search the index";
 export const QUICK_OPEN_EMPTY = "No PDF in the index matches.";
+export const QUICK_OPEN_FOLDER_GROUP = "This folder";
 export const QUICK_OPEN_COURSE_GROUP = "This course";
 export const QUICK_OPEN_OTHERS_GROUP = "Other courses";
 export const QUICK_OPEN_INDEX_GROUP = "Index";

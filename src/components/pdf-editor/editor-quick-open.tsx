@@ -1,12 +1,11 @@
 import { PlusIcon } from "lucide-react";
 import { useCallback, useMemo } from "react";
-import { QuickOpenItem } from "@/components/pdf-editor/quick-open-item";
+import { QuickOpenGroup } from "@/components/pdf-editor/quick-open-group";
 import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandDialog,
   CommandEmpty,
-  CommandGroup,
   CommandInput,
   CommandList,
 } from "@/components/ui/command";
@@ -15,6 +14,7 @@ import {
   QUICK_OPEN_COURSE_GROUP,
   QUICK_OPEN_DESCRIPTION,
   QUICK_OPEN_EMPTY,
+  QUICK_OPEN_FOLDER_GROUP,
   QUICK_OPEN_INDEX_GROUP,
   QUICK_OPEN_LABEL,
   QUICK_OPEN_OTHERS_GROUP,
@@ -34,19 +34,22 @@ interface EditorQuickOpenProps {
   onShow: (file: OpenFile) => void;
 }
 
-/** Any PDF in the index, a search away, with the course being read listed
- * first. The button sits at the end of the tabs, where a new one appears. */
+/** Any PDF in the index, a search away, with the folder and then the
+ * course being read listed first. The button sits at the end of the tabs, where a new one appears. */
 export function EditorQuickOpen({
   activeId,
   nodes,
   onShow,
 }: EditorQuickOpenProps) {
   const { isOpen, open, setIsOpen } = useQuickOpen();
-  const groups = useMemo(() => {
-    const courseCode =
-      nodes.find((node) => node.id === activeId)?.courseCode ?? null;
-    return groupQuickOpenFiles(nodes, courseCode);
-  }, [activeId, nodes]);
+  const groups = useMemo(
+    () =>
+      groupQuickOpenFiles(
+        nodes,
+        nodes.find((node) => node.id === activeId) ?? null
+      ),
+    [activeId, nodes]
+  );
 
   const handleSelect = useCallback(
     (node: EditorTreeNode) => {
@@ -78,32 +81,25 @@ export function EditorQuickOpen({
           <CommandInput placeholder={QUICK_OPEN_PLACEHOLDER} />
           <CommandList>
             <CommandEmpty>{QUICK_OPEN_EMPTY}</CommandEmpty>
-            {groups.course.length > 0 ? (
-              <CommandGroup heading={QUICK_OPEN_COURSE_GROUP}>
-                {groups.course.map((node) => (
-                  <QuickOpenItem
-                    key={node.id}
-                    node={node}
-                    onSelect={handleSelect}
-                  />
-                ))}
-              </CommandGroup>
-            ) : null}
-            <CommandGroup
+            <QuickOpenGroup
+              heading={QUICK_OPEN_FOLDER_GROUP}
+              nodes={groups.folder}
+              onSelect={handleSelect}
+            />
+            <QuickOpenGroup
+              heading={QUICK_OPEN_COURSE_GROUP}
+              nodes={groups.course}
+              onSelect={handleSelect}
+            />
+            <QuickOpenGroup
               heading={
-                groups.course.length > 0
+                groups.folder.length + groups.course.length > 0
                   ? QUICK_OPEN_OTHERS_GROUP
                   : QUICK_OPEN_INDEX_GROUP
               }
-            >
-              {groups.others.map((node) => (
-                <QuickOpenItem
-                  key={node.id}
-                  node={node}
-                  onSelect={handleSelect}
-                />
-              ))}
-            </CommandGroup>
+              nodes={groups.others}
+              onSelect={handleSelect}
+            />
           </CommandList>
         </Command>
       </CommandDialog>
