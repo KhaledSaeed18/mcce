@@ -72,7 +72,7 @@
       "prior-theses": 7,
       "integrity": 10
     },
-    "generatedAt": "2026-09-26T10:44:23.905Z",
+    "generatedAt": "2026-09-28T20:01:05.141Z",
     "repoCount": 285,
     "toolCount": 401
   },
@@ -2518,7 +2518,7 @@
         "kind": "monogram",
         "text": "LI"
       },
-      "linkStatus": "unchecked",
+      "linkStatus": "ok",
       "url": "https://github.com/Lightning-AI/pytorch-lightning"
     },
     {
@@ -6470,7 +6470,7 @@
         "kind": "brand",
         "light": "/resources/icons/chatgpt.svg"
       },
-      "linkStatus": "ok"
+      "linkStatus": "unchecked"
     },
     {
       "access": "freemium",
@@ -7250,7 +7250,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "unchecked"
+      "linkStatus": "ok"
     },
     {
       "access": "free",
@@ -8116,7 +8116,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "redirect"
+      "linkStatus": "unchecked"
     },
     {
       "access": "free",
@@ -8304,7 +8304,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "ok",
+      "linkStatus": "redirect",
       "repoId": "renode-renode"
     },
     {
@@ -9539,7 +9539,7 @@
         "kind": "brand",
         "light": "/resources/icons/canva.svg"
       },
-      "linkStatus": "ok"
+      "linkStatus": "unchecked"
     },
     {
       "access": "free",
@@ -9729,7 +9729,7 @@
         "kind": "brand",
         "light": "/resources/icons/cloudflare-learning-center.svg"
       },
-      "linkStatus": "redirect"
+      "linkStatus": "unchecked"
     },
     {
       "access": "free",
@@ -13376,7 +13376,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "ok"
+      "linkStatus": "unchecked"
     },
     {
       "access": "free",
@@ -13476,7 +13476,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "ok",
+      "linkStatus": "unchecked",
       "repoId": "openocd-org-openocd"
     },
     {
@@ -13802,7 +13802,7 @@
         "kind": "brand",
         "light": "/resources/icons/perplexity.svg"
       },
-      "linkStatus": "ok"
+      "linkStatus": "unchecked"
     },
     {
       "access": "free",
@@ -14390,7 +14390,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "ok"
+      "linkStatus": "unchecked"
     },
     {
       "access": "freemium",
@@ -14819,7 +14819,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "unchecked"
+      "linkStatus": "broken"
     },
     {
       "access": "free",
@@ -14954,7 +14954,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "unchecked"
+      "linkStatus": "redirect"
     },
     {
       "access": "free",
@@ -15124,7 +15124,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "ok"
+      "linkStatus": "unchecked"
     },
     {
       "access": "free",
@@ -15549,7 +15549,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "redirect"
+      "linkStatus": "ok"
     },
     {
       "access": "free",
@@ -15713,7 +15713,7 @@
         "kind": "brand",
         "light": "/resources/icons/tensorflow.svg"
       },
-      "linkStatus": "redirect",
+      "linkStatus": "ok",
       "repoId": "tensorflow-tensorflow"
     },
     {
