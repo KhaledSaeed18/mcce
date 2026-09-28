@@ -169,6 +169,15 @@ export const PANE_DROP_LABELS = {
   split: { beside: "Show on the right", primary: "Show on the left" },
 } as const;
 
+/** What the suggested match opens, named for what the reader is after. */
+export const MATCH_LABELS = {
+  paper: "Questions beside",
+  solution: "Solution beside",
+} as const;
+
+export const MATCH_TAB_CLASS =
+  "group flex h-8 max-w-52 shrink-0 cursor-pointer items-center gap-1.5 rounded border-2 border-border/40 border-dashed px-1.5 font-medium text-muted-foreground text-xs transition-colors hover:border-border hover:text-foreground";
+
 export const PANE_MENU_LABEL = "Pane options";
 export const PANE_SWAP_LABEL = "Swap sides";
 export const PANE_ALONE_LABEL = "Show on its own";

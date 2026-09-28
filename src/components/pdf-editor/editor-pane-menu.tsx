@@ -1,5 +1,6 @@
 import {
   ArrowLeftRightIcon,
+  Columns2Icon,
   EllipsisIcon,
   Maximize2Icon,
   XIcon,
@@ -20,7 +21,10 @@ import {
 import type { EditorPaneSide } from "@/lib/pdf-editor/types";
 
 interface EditorPaneMenuProps {
+  /** What the pane's match item says, when it has a match not on screen. */
+  matchLabel: string | null;
   onClose: (side: EditorPaneSide) => void;
+  onOpenMatch: () => void;
   onSwap: () => void;
   side: EditorPaneSide;
 }
@@ -30,7 +34,13 @@ const OTHER_SIDE: Record<EditorPaneSide, EditorPaneSide> = {
   primary: "beside",
 };
 
-export function EditorPaneMenu({ onClose, onSwap, side }: EditorPaneMenuProps) {
+export function EditorPaneMenu({
+  matchLabel,
+  onClose,
+  onOpenMatch,
+  onSwap,
+  side,
+}: EditorPaneMenuProps) {
   const handleClose = useCallback(() => onClose(side), [onClose, side]);
   // On its own means the other pane goes, whichever side this one is on.
   const handleAlone = useCallback(
@@ -48,6 +58,12 @@ export function EditorPaneMenu({ onClose, onSwap, side }: EditorPaneMenuProps) {
         <EllipsisIcon className="size-3.5" />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-auto">
+        {matchLabel ? (
+          <DropdownMenuItem onClick={onOpenMatch}>
+            <Columns2Icon />
+            {matchLabel}
+          </DropdownMenuItem>
+        ) : null}
         <DropdownMenuItem onClick={onSwap}>
           <ArrowLeftRightIcon />
           {PANE_SWAP_LABEL}

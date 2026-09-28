@@ -10,7 +10,8 @@ import type { EditorTools } from "@/hooks/use-editor-tools";
 import { usePaneChips } from "@/hooks/use-pane-chips";
 import { usePaneDrop } from "@/hooks/use-pane-drop";
 import { usePaneFocusHotkey } from "@/hooks/use-pane-focus-hotkey";
-import { useScrollLock } from "@/hooks/use-scroll-lock";
+import { usePaneMatches } from "@/hooks/use-pane-matches";
+import type { ScrollLock } from "@/hooks/use-scroll-lock";
 import { useSplitResize } from "@/hooks/use-split-resize";
 import type {
   EditorPaneSide,
@@ -23,9 +24,11 @@ interface EditorPanesProps {
   isBrowserOpen: boolean;
   isPanelAnimated: boolean;
   isRailOpen: boolean;
+  lock: ScrollLock;
   nodes: EditorTreeNode[];
   onClosePane: (side: EditorPaneSide) => void;
   onFocus: (side: EditorPaneSide) => void;
+  onOpenMatch: (pane: EditorPaneView, match: EditorTreeNode) => void;
   /** Puts a file on one side, for a tab dropped on the pages. */
   onPlace: (
     file: Pick<OpenFile, "id" | "source">,
@@ -48,9 +51,11 @@ export function EditorPanes({
   isBrowserOpen,
   isPanelAnimated,
   isRailOpen,
+  lock,
   nodes,
   onClosePane,
   onFocus,
+  onOpenMatch,
   onPlace,
   onShowFiles,
   onSwap,
@@ -61,7 +66,7 @@ export function EditorPanes({
   const chips = usePaneChips(panes, nodes);
   const containerRef = useRef<HTMLDivElement>(null);
   const { handlers, ratio } = useSplitResize(containerRef);
-  const lock = useScrollLock(panes);
+  const matches = usePaneMatches(panes, nodes);
   const drop = usePaneDrop(containerRef, onPlace);
   const focusOther = useCallback(
     () => onFocus(focusedSide === "primary" ? "beside" : "primary"),
@@ -92,7 +97,9 @@ export function EditorPanes({
             {isSplit ? (
               <EditorPaneHeader
                 chip={chips[index]}
+                match={matches[index]}
                 onClose={onClosePane}
+                onOpenMatch={onOpenMatch}
                 onSwap={onSwap}
                 pane={pane}
               />

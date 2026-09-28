@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import { EditorDocumentColumn } from "@/components/pdf-editor/editor-document-column";
 import { EditorDropZone } from "@/components/pdf-editor/editor-drop-zone";
 import { EditorExamDialogs } from "@/components/pdf-editor/editor-exam-dialogs";
@@ -38,13 +38,15 @@ export function PdfEditorWorkspace({
   const rootRef = useRef<HTMLElement>(null);
   const fullscreen = useFullscreen(rootRef);
   const help = useEditorHelp();
-  const { desk, paneActions, panels, panes, tools } = useEditorWorkspace({
-    beside,
-    focus,
-    node,
-  });
+  const { desk, lock, match, openMatch, paneActions, panels, panes, tools } =
+    useEditorWorkspace({ beside, focus, node, nodes });
   const { focused } = panes;
   const { session } = focused;
+  const handleOpenMatch = useCallback(() => {
+    if (match) {
+      openMatch(focused, match);
+    }
+  }, [focused, match, openMatch]);
 
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
@@ -71,10 +73,12 @@ export function PdfEditorWorkspace({
           <EditorTabStrip
             activeId={desk.activeId}
             desk={desk.desk}
+            match={match}
             nodes={nodes}
             onClose={desk.close}
             onMove={desk.move}
             onOpenBeside={paneActions.openBeside}
+            onOpenMatch={handleOpenMatch}
             onShow={desk.show}
             sides={panes.sides}
           >
@@ -103,9 +107,11 @@ export function PdfEditorWorkspace({
               isBrowserOpen={panels.isBrowserOpen}
               isPanelAnimated={panels.isAnimated}
               isRailOpen={panels.isRailOpen}
+              lock={lock}
               nodes={nodes}
               onClosePane={paneActions.close}
               onFocus={paneActions.focus}
+              onOpenMatch={openMatch}
               onPlace={paneActions.place}
               onShowFiles={panels.toggleBrowser}
               onSwap={paneActions.swap}

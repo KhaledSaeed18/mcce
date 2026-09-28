@@ -3,6 +3,7 @@ import {
   useEditorSession,
 } from "@/hooks/use-editor-session";
 import type { EditorTools } from "@/hooks/use-editor-tools";
+import type { MatchArrival } from "@/hooks/use-match-arrival";
 import type {
   EditorFile,
   EditorPaneSide,
@@ -10,6 +11,8 @@ import type {
 } from "@/lib/pdf-editor/types";
 
 interface EditorPanesOptions {
+  /** A file on its way in, which opens on the page it was asked for. */
+  arrival: MatchArrival | null;
   beside: EditorFile | null;
   focus: EditorSearch["focus"];
   isSpacePanning: boolean;
@@ -27,17 +30,31 @@ export interface EditorPaneView {
 /** The one or two files on screen, and which has focus. Both sessions always
  * run, the second idle while nothing is beside, since hooks cannot come and
  * go; a session with no file costs next to nothing. */
+function startPageFor(
+  node: EditorFile | null,
+  arrival: MatchArrival | null
+): number | undefined {
+  return node && arrival?.fileId === node.id ? arrival.page : undefined;
+}
+
 export function useEditorPanes({
+  arrival,
   beside,
   focus,
   isSpacePanning,
   node,
   tools,
 }: EditorPanesOptions) {
-  const primarySession = useEditorSession({ isSpacePanning, node, tools });
+  const primarySession = useEditorSession({
+    isSpacePanning,
+    node,
+    startPage: startPageFor(node, arrival),
+    tools,
+  });
   const besideSession = useEditorSession({
     isSpacePanning,
     node: beside,
+    startPage: startPageFor(beside, arrival),
     tools,
   });
   const primary: EditorPaneView = {

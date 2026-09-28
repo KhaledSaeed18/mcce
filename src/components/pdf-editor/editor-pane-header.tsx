@@ -1,11 +1,19 @@
+import { useCallback } from "react";
 import { EditorPaneMenu } from "@/components/pdf-editor/editor-pane-menu";
 import { FileTypeChip } from "@/components/pdf-editor/file-type-chip";
 import type { EditorPaneView } from "@/hooks/use-editor-panes";
-import type { EditorPaneSide, FileChip } from "@/lib/pdf-editor/types";
+import { describeMatch } from "@/lib/pdf-editor/match-label";
+import type {
+  EditorPaneSide,
+  EditorTreeNode,
+  FileChip,
+} from "@/lib/pdf-editor/types";
 
 interface EditorPaneHeaderProps {
   chip: FileChip | null;
+  match: EditorTreeNode | null;
   onClose: (side: EditorPaneSide) => void;
+  onOpenMatch: (pane: EditorPaneView, match: EditorTreeNode) => void;
   onSwap: () => void;
   pane: EditorPaneView;
 }
@@ -14,10 +22,17 @@ interface EditorPaneHeaderProps {
  * where two files with near names need telling apart. */
 export function EditorPaneHeader({
   chip,
+  match,
   onClose,
+  onOpenMatch,
   onSwap,
   pane,
 }: EditorPaneHeaderProps) {
+  const handleOpenMatch = useCallback(() => {
+    if (match) {
+      onOpenMatch(pane, match);
+    }
+  }, [match, onOpenMatch, pane]);
   const { activeIndex, pageCount } = pane.session.navigation;
 
   return (
@@ -31,7 +46,13 @@ export function EditorPaneHeader({
           {activeIndex + 1} / {pageCount}
         </span>
       ) : null}
-      <EditorPaneMenu onClose={onClose} onSwap={onSwap} side={pane.side} />
+      <EditorPaneMenu
+        matchLabel={match ? describeMatch(match.name) : null}
+        onClose={onClose}
+        onOpenMatch={handleOpenMatch}
+        onSwap={onSwap}
+        side={pane.side}
+      />
     </div>
   );
 }

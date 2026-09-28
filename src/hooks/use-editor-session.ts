@@ -16,6 +16,8 @@ interface EditorSessionOptions {
   /** True while Space is held, which borrows the hand without changing the tool. */
   isSpacePanning: boolean;
   node: EditorFile | null;
+  /** A page to open the file on instead of where it was left. */
+  startPage?: number;
   /** Shared by every open file, so a pen picked up once writes on any of them. */
   tools: EditorTools;
 }
@@ -26,6 +28,7 @@ interface EditorSessionOptions {
 export function useEditorSession({
   isSpacePanning,
   node,
+  startPage,
   tools,
 }: EditorSessionOptions) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -60,6 +63,7 @@ export function useEditorSession({
     fileId: node?.id,
     navigation,
     scrollRef,
+    startPage,
   });
   const { exportPdf, status: exportStatus } = usePdfExport({
     annotations: markup.annotations,

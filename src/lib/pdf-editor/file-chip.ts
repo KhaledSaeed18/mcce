@@ -15,6 +15,11 @@ const CHIP_BY_MATERIAL: Partial<Record<MaterialType, FileChip>> = {
   lecture: "lec",
 };
 
+/** A solution says so in a bracketed tag, anywhere in its name. */
+export function isSolutionName(name: string): boolean {
+  return SOLUTION_TAG.test(name);
+}
+
 /** What a file is for, from its name first and its folder second: a solution,
  * a book, or a formula sheet says so in its name, whatever folder it sits
  * in. A file from the reader's computer has no material type, and gets no
@@ -23,7 +28,7 @@ export function findFileChip(
   name: string,
   materialType: MaterialType | null
 ): FileChip | null {
-  if (SOLUTION_TAG.test(name)) {
+  if (isSolutionName(name)) {
     return "sol";
   }
   if (BOOK_TAG.test(name)) {

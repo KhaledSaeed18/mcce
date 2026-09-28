@@ -16,9 +16,10 @@ export function useHiddenTabCount(
     }
     const measure = () => {
       const bounds = strip.getBoundingClientRect();
-      const tabs = [...strip.children].map((tab) =>
-        tab.getBoundingClientRect()
-      );
+      // The suggested match is not an open file, so it is not counted.
+      const tabs = [...strip.children]
+        .filter((tab) => !tab.hasAttribute("data-match-tab"))
+        .map((tab) => tab.getBoundingClientRect());
       setHiddenCount(
         tabs.filter(
           (tab) => tab.left < bounds.left - 1 || tab.right > bounds.right + 1
