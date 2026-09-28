@@ -16,3 +16,14 @@ export function suggestStudySetName(
   const course = nodes.find((node) => node.id === activeId)?.courseCode;
   return course ?? STUDY_SET_DEFAULT_NAME;
 }
+
+/** Said beside a copied link when the set holds files from this device,
+ * which only open in this browser. */
+export function describeLeftOut(count: number): string {
+  if (count === 0) {
+    return "";
+  }
+  const files = count === 1 ? "1 file" : `${count} files`;
+  const verb = count === 1 ? "was" : "were";
+  return `${files} from this device ${verb} left out: they only open in this browser.`;
+}

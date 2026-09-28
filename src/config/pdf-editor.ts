@@ -196,6 +196,17 @@ export const STUDY_SET_SAVE_TITLE = "Save as a study set";
 export const STUDY_SET_SAVE_DESCRIPTION =
   "The open tabs, the files side by side, and the scroll lock, to open again together.";
 export const STUDY_SET_RENAME_TITLE = "Rename study set";
+export const STUDY_SET_RENAME_LABEL = "Rename";
+export const STUDY_SET_DELETE_LABEL = "Delete";
+export const STUDY_SET_DELETE_TITLE = "Delete this study set";
+export const STUDY_SET_DELETE_DESCRIPTION =
+  "The set goes, and its files and their markup stay as they are.";
+export const STUDY_SET_COPY_LABEL = "Copy link";
+/** A small square action at the end of a row in the editor's lists. */
+export const ROW_ACTION_CLASS =
+  "flex size-7 shrink-0 cursor-pointer items-center justify-center rounded border-2 border-transparent text-muted-foreground hover:border-border hover:bg-accent hover:text-foreground";
+export const STUDY_SET_COPIED = "Link copied";
+export const STUDY_SET_COPY_FAILED = "This browser would not copy the link.";
 export const STUDY_SET_NAME_LABEL = "Name";
 export const STUDY_SET_EMPTY =
   "Save the open tabs as a set to come back to them together.";

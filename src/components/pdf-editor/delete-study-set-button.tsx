@@ -1,4 +1,4 @@
-import { Trash2Icon, XIcon } from "lucide-react";
+import { Trash2Icon } from "lucide-react";
 import { useCallback, useState } from "react";
 import {
   AlertDialog,
@@ -13,53 +13,52 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import {
-  LOCAL_PDF_REMOVE_DESCRIPTION,
-  LOCAL_PDF_REMOVE_TITLE,
   ROW_ACTION_CLASS,
+  STUDY_SET_DELETE_DESCRIPTION,
+  STUDY_SET_DELETE_LABEL,
+  STUDY_SET_DELETE_TITLE,
 } from "@/config/pdf-editor";
 
-interface RemoveLocalPdfButtonProps {
-  id: string;
+interface DeleteStudySetButtonProps {
   name: string;
-  onRemove: (id: string) => void;
+  onDelete: () => void;
 }
 
-export function RemoveLocalPdfButton({
-  id,
+export function DeleteStudySetButton({
   name,
-  onRemove,
-}: RemoveLocalPdfButtonProps) {
+  onDelete,
+}: DeleteStudySetButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleConfirm = useCallback(() => {
-    onRemove(id);
+    onDelete();
     setIsOpen(false);
-  }, [id, onRemove]);
+  }, [onDelete]);
 
   return (
     <AlertDialog onOpenChange={setIsOpen} open={isOpen}>
       <AlertDialogTrigger
-        aria-label={`${LOCAL_PDF_REMOVE_TITLE}: ${name}`}
+        aria-label={`${STUDY_SET_DELETE_LABEL}: ${name}`}
         className={ROW_ACTION_CLASS}
-        title={LOCAL_PDF_REMOVE_TITLE}
+        title={STUDY_SET_DELETE_LABEL}
       >
-        <XIcon className="size-3.5" />
+        <Trash2Icon className="size-3.5" />
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogMedia>
             <Trash2Icon />
           </AlertDialogMedia>
-          <AlertDialogTitle>{LOCAL_PDF_REMOVE_TITLE}</AlertDialogTitle>
+          <AlertDialogTitle>{STUDY_SET_DELETE_TITLE}</AlertDialogTitle>
           <AlertDialogDescription>
             <span className="font-head text-foreground">{name}</span>.{" "}
-            {LOCAL_PDF_REMOVE_DESCRIPTION}
+            {STUDY_SET_DELETE_DESCRIPTION}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction onClick={handleConfirm} variant="destructive">
-            Remove
+            {STUDY_SET_DELETE_LABEL}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
