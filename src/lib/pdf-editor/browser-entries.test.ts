@@ -6,15 +6,21 @@ import type { EditorTreeNode } from "./types";
 const [SOURCE] = DRIVE_SOURCES;
 const SOURCE_CRUMB = { id: SOURCE.rootFolderId, name: SOURCE.label };
 
-const TREE: EditorTreeNode[] = [
-  {
-    id: "semester",
+function folder(id: string, name: string, parentId: string): EditorTreeNode {
+  return {
+    courseCode: null,
+    id,
     kind: "folder",
-    name: "Fall",
-    parentId: SOURCE.rootFolderId,
-  },
-  { id: "course", kind: "folder", name: "CENG566", parentId: "semester" },
-  { id: "lectures", kind: "folder", name: "Lectures", parentId: "course" },
+    materialType: "other",
+    name,
+    parentId,
+  };
+}
+
+const TREE: EditorTreeNode[] = [
+  folder("semester", "Fall", SOURCE.rootFolderId),
+  folder("course", "CENG566", "semester"),
+  folder("lectures", "Lectures", "course"),
 ];
 
 describe("buildCrumbs", () => {

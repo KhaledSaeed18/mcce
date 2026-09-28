@@ -1,9 +1,10 @@
 import type { DriveNode } from "@/lib/drive/types";
 
-/** What the editor's file sidebar needs of a node: enough to list, sort, and walk up the tree. */
+/** What the editor needs of a node: enough to list, sort, and walk up the
+ * tree, to label a file by what it is for, and to find its course. */
 export type EditorTreeNode = Pick<
   DriveNode,
-  "id" | "kind" | "name" | "parentId"
+  "courseCode" | "id" | "kind" | "materialType" | "name" | "parentId"
 >;
 
 /** A file from the index, trimmed to what the file bar, export, and Drive link read. */
