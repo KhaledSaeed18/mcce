@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import { FileSearchFooter } from "@/components/pdf-editor/file-search-footer";
 import { FileSearchGroup } from "@/components/pdf-editor/file-search-group";
 import {
@@ -18,7 +17,7 @@ import type { EditorPaneView } from "@/hooks/use-editor-panes";
 import { useFileSearch } from "@/hooks/use-file-search";
 import { useFileSearchDialog } from "@/hooks/use-file-search-dialog";
 import { useFileSearchPicker } from "@/hooks/use-file-search-picker";
-import type { FileSearchPick } from "@/lib/pdf-editor/file-search/types";
+import { useSearchHandoff } from "@/hooks/use-search-handoff";
 import type { EditorTreeNode, OpenFile } from "@/lib/pdf-editor/types";
 
 const NO_PAGES: string[] = [];
@@ -48,11 +47,7 @@ export function EditorFileSearch({
     panes,
     query: dialog.query,
   });
-  const onPick = useCallback(
-    (file: OpenFile, _pick: FileSearchPick, isBeside: boolean) =>
-      (isBeside ? onOpenBeside : onShow)(file),
-    [onOpenBeside, onShow]
-  );
+  const onPick = useSearchHandoff({ onOpenBeside, onShow, panes });
   const picker = useFileSearchPicker({
     groups,
     onClose: dialog.close,
