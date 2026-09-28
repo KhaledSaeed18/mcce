@@ -23,6 +23,41 @@ export interface LocalEditorFile {
 /** The open file. Where it came from decides how its bytes are fetched. */
 export type EditorFile = DriveEditorFile | LocalEditorFile;
 
+/** A file kept open as a tab: enough to name it and open it again. */
+export interface OpenFile {
+  id: string;
+  name: string;
+  source: EditorFile["source"];
+}
+
+/** The files open as tabs, and what moving between them needs. */
+export interface EditorDesk {
+  /** Newest first, for bringing back a tab closed by mistake. */
+  closed: OpenFile[];
+  /** In tab order. */
+  files: OpenFile[];
+  /** Ids from the file shown most recently back. */
+  recent: string[];
+}
+
+/** The short tag a tab carries for what its file is for. */
+export type FileChip =
+  | "book"
+  | "ex"
+  | "exam"
+  | "hw"
+  | "lab"
+  | "lec"
+  | "quiz"
+  | "sheet"
+  | "sol";
+
+/** How a tab names its file: a tag for what it is, and a short name. */
+export interface TabLabel {
+  chip: FileChip | null;
+  text: string;
+}
+
 /** What is kept about a PDF from the reader's computer, apart from its bytes. */
 export interface LocalPdfMeta {
   addedAt: string;

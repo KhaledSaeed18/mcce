@@ -1,0 +1,57 @@
+import { Link } from "@tanstack/react-router";
+import { XIcon } from "lucide-react";
+import { useCallback, useRef } from "react";
+import { FileTypeChip } from "@/components/pdf-editor/file-type-chip";
+import {
+  EDITOR_PATH,
+  TAB_ACTIVE_CLASS,
+  TAB_CLASS,
+  TAB_IDLE_CLASS,
+} from "@/config/pdf-editor";
+import { useScrollIntoView } from "@/hooks/use-scroll-into-view";
+import { buildEditorSearch } from "@/lib/pdf-editor/editor-search";
+import type { OpenFile, TabLabel } from "@/lib/pdf-editor/types";
+import { cn } from "@/lib/utils";
+
+interface EditorTabProps {
+  file: OpenFile;
+  isActive: boolean;
+  label: TabLabel;
+  onClose: (id: string) => void;
+}
+
+export function EditorTab({ file, isActive, label, onClose }: EditorTabProps) {
+  const ref = useRef<HTMLLIElement>(null);
+  useScrollIntoView(ref, isActive);
+  const handleClose = useCallback(() => onClose(file.id), [file.id, onClose]);
+
+  return (
+    <li
+      className={cn(TAB_CLASS, isActive ? TAB_ACTIVE_CLASS : TAB_IDLE_CLASS)}
+      ref={ref}
+      title={file.name}
+    >
+      <Link
+        aria-current={isActive ? "page" : undefined}
+        className="flex h-full min-w-0 items-center gap-1.5 pl-1.5"
+        search={buildEditorSearch(file)}
+        to={EDITOR_PATH}
+      >
+        {label.chip ? <FileTypeChip chip={label.chip} /> : null}
+        <span className="truncate">{label.text}</span>
+      </Link>
+      <button
+        aria-label={`Close ${label.text}`}
+        className={cn(
+          "mx-0.5 grid size-5 shrink-0 cursor-pointer place-items-center rounded-sm hover:bg-foreground/10 focus-visible:opacity-100 group-hover:opacity-100",
+          isActive ? "opacity-100" : "opacity-0"
+        )}
+        onClick={handleClose}
+        title="Close"
+        type="button"
+      >
+        <XIcon className="size-3" />
+      </button>
+    </li>
+  );
+}

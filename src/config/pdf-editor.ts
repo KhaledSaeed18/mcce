@@ -1,6 +1,7 @@
 import type {
   EditorPanels,
   EditorTool,
+  FileChip,
   LocalPdfProblem,
   PageSheet,
   StudyPanelTab,
@@ -87,6 +88,52 @@ export const LOCAL_PDF_PROBLEM_COPY: Record<LocalPdfProblem, string> = {
 /** Shown when the browser refuses to keep the file, for example in a private window. */
 export const LOCAL_PDF_SAVE_FAILED =
   "This browser would not keep the file. Private windows often block it.";
+
+/** The open tabs, their order, and the ones closed recently. */
+export const EDITOR_DESK_STORAGE_KEY = "mcce.editor-desk.v1";
+
+/** Past this many tabs the one gone longest unseen closes. Only the few most
+ * recently shown stay loaded, so this bounds the tab strip, not memory. */
+export const EDITOR_TAB_LIMIT = 12;
+
+/** How many closed tabs can be brought back. */
+export const CLOSED_TAB_LIMIT = 10;
+
+export const OPEN_FILES_LABEL = "Open files";
+
+/** A tab keeps to the file bar's control height, and stops growing at a width
+ * where a short name still fits. */
+export const TAB_CLASS =
+  "group flex h-8 max-w-52 shrink-0 items-center rounded border-2 font-medium text-xs transition-colors";
+export const TAB_ACTIVE_CLASS =
+  "border-border bg-primary text-primary-foreground shadow-sm";
+export const TAB_IDLE_CLASS = "border-border/25 bg-card hover:border-border";
+
+export const FILE_CHIP_LABELS: Record<FileChip, string> = {
+  book: "BOOK",
+  ex: "EX",
+  exam: "EXAM",
+  hw: "HW",
+  lab: "LAB",
+  lec: "LEC",
+  quiz: "QUIZ",
+  sheet: "SHEET",
+  sol: "SOL",
+};
+
+/** Fills from the site's chart palette. The ink stays black on every fill,
+ * which each is light enough to carry in both themes. */
+export const FILE_CHIP_CLASSES: Record<FileChip, string> = {
+  book: "bg-accent text-accent-foreground",
+  ex: "bg-chart-3 text-black",
+  exam: "bg-chart-2 text-black",
+  hw: "bg-chart-3 text-black",
+  lab: "bg-chart-3 text-black",
+  lec: "bg-chart-5 text-black",
+  quiz: "bg-chart-2 text-black",
+  sheet: "bg-card text-card-foreground",
+  sol: "bg-chart-4 text-black",
+};
 
 /** One key per file: the page and zoom it was left at. */
 export const PDF_VIEW_KEY_PREFIX = "mcce.pdf-view.v1";
@@ -364,8 +411,6 @@ export const SAVE_STATUS_COPY = {
     label: "Saved on this device",
   },
 } as const;
-
-export const EDITOR_BRAND_LABEL = "Editor";
 
 /** Shown in the file bar before a file is picked. */
 export const EDITOR_EMPTY_TITLE = "PDF editor";

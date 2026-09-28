@@ -4,6 +4,7 @@ import {
   PanelLeftIcon,
   PanelRightIcon,
 } from "lucide-react";
+import type { ReactNode } from "react";
 import { OpenInDriveButton } from "@/components/drive/open-in-drive-button";
 import { EditorBrand } from "@/components/pdf-editor/editor-brand";
 import { EditorSaveStatus } from "@/components/pdf-editor/editor-save-status";
@@ -20,8 +21,12 @@ import {
 import { EDITOR_HELP_LABEL } from "@/config/pdf-editor-help";
 import { withShortcut } from "@/lib/pdf-editor/shortcut-label";
 import type { EditorFile, SaveStatus } from "@/lib/pdf-editor/types";
+import { cn } from "@/lib/utils";
 
 interface EditorFileBarProps {
+  /** The tab strip, which takes the middle of the bar once any file is open. */
+  children: ReactNode;
+  hasTabs: boolean;
   isBrowserOpen: boolean;
   isFullscreen: boolean;
   isFullscreenSupported: boolean;
@@ -38,6 +43,8 @@ interface EditorFileBarProps {
 }
 
 export function EditorFileBar({
+  children,
+  hasTabs,
   isBrowserOpen,
   isFullscreen,
   isFullscreenSupported,
@@ -57,8 +64,8 @@ export function EditorFileBar({
     : STUDY_PANEL_SHOW_LABEL;
 
   return (
-    <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 border-b-2 bg-background p-3">
-      <div className="flex min-w-0 items-center gap-2">
+    <div className="flex items-center gap-3 border-b-2 bg-background p-3">
+      <div className="flex shrink-0 items-center gap-2">
         <Button
           aria-label={isBrowserOpen ? "Hide files" : "Show files"}
           aria-pressed={isBrowserOpen}
@@ -83,14 +90,22 @@ export function EditorFileBar({
             <GalleryVerticalEndIcon />
           </Button>
         ) : null}
-        <h1 className="min-w-0 truncate font-head text-xs sm:text-sm">
-          {title}
-        </h1>
+        <EditorBrand />
       </div>
 
-      <EditorBrand />
+      {/* The active tab shows the title once there are tabs, so the heading is
+          kept for screen readers only. */}
+      <h1
+        className={cn(
+          "min-w-0 truncate font-head text-xs sm:text-sm",
+          hasTabs ? "sr-only" : "flex-1"
+        )}
+      >
+        {title}
+      </h1>
+      {children}
 
-      <div className="flex items-center justify-end gap-2">
+      <div className="flex shrink-0 items-center justify-end gap-2">
         {saveStatus ? <EditorSaveStatus status={saveStatus} /> : null}
         {node ? (
           <Button

@@ -5,10 +5,12 @@ import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
 import { EditorHelpDialog } from "@/components/pdf-editor/editor-help-dialog";
 import { EditorPane } from "@/components/pdf-editor/editor-pane";
 import { EditorSidePanel } from "@/components/pdf-editor/editor-side-panel";
+import { EditorTabStrip } from "@/components/pdf-editor/editor-tab-strip";
 import { ExamTimeUpDialog } from "@/components/pdf-editor/exam-time-up-dialog";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
 import { StudyPanel } from "@/components/pdf-editor/study-panel";
 import { DEFAULT_EXPORT_NAME, EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
+import { useEditorDesk } from "@/hooks/use-editor-desk";
 import { useEditorHelp } from "@/hooks/use-editor-help";
 import { useEditorPanels } from "@/hooks/use-editor-panels";
 import { useEditorSession } from "@/hooks/use-editor-session";
@@ -16,6 +18,7 @@ import { useEditorShortcuts } from "@/hooks/use-editor-shortcuts";
 import { useEditorTools } from "@/hooks/use-editor-tools";
 import { useFullscreen } from "@/hooks/use-fullscreen";
 import { useSpacePan } from "@/hooks/use-space-pan";
+import { useTabLabels } from "@/hooks/use-tab-labels";
 import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
@@ -50,6 +53,8 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     tools,
   });
   useEditorShortcuts(session, tools.setTool);
+  const { activeId, close, desk } = useEditorDesk(node);
+  const labels = useTabLabels(desk.files, nodes);
 
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
@@ -59,6 +64,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     >
       <EditorDropZone>
         <EditorFileBar
+          hasTabs={desk.files.length > 0}
           isBrowserOpen={isBrowserOpen}
           isFullscreen={isFullscreen}
           isFullscreenSupported={isFullscreenSupported}
@@ -71,7 +77,14 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
           onToggleRail={toggleRail}
           onToggleStudy={toggleStudy}
           saveStatus={session.saveStatus}
-        />
+        >
+          <EditorTabStrip
+            activeId={activeId}
+            files={desk.files}
+            labels={labels}
+            onClose={close}
+          />
+        </EditorFileBar>
         <div className="flex min-h-0 flex-1">
           <EditorSidePanel isAnimated={isAnimated} isOpen={isBrowserOpen}>
             <FileBrowserPanel activeNode={node} nodes={nodes} />
