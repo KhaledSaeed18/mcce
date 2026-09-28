@@ -1,10 +1,9 @@
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import type { ReactNode, RefObject } from "react";
-import { useEffect } from "react";
 import { EditorSidePanel } from "@/components/pdf-editor/editor-side-panel";
 import { PageThumbnailRail } from "@/components/pdf-editor/page-thumbnail-rail";
 import { PageThumbnailRailPlaceholder } from "@/components/pdf-editor/page-thumbnail-rail-placeholder";
-import { setScrollContainer } from "@/hooks/use-hand-tool";
+import { PageScrollerContext } from "@/hooks/use-page-scroller";
 import type {
   EditorPage,
   PageActions,
@@ -39,11 +38,6 @@ export function EditorDocumentArea({
   scrollRef,
   sizes,
 }: EditorDocumentAreaProps) {
-  useEffect(() => {
-    setScrollContainer(scrollRef.current);
-    return () => setScrollContainer(null);
-  }, [scrollRef]);
-
   return (
     <div className="flex min-h-0 flex-1">
       <EditorSidePanel
@@ -67,7 +61,7 @@ export function EditorDocumentArea({
         className="flex min-h-0 flex-1 flex-col overflow-auto bg-muted"
         ref={scrollRef}
       >
-        {children}
+        <PageScrollerContext value={scrollRef}>{children}</PageScrollerContext>
       </div>
     </div>
   );

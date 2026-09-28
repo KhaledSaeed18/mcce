@@ -1,11 +1,6 @@
 import type { PointerEvent } from "react";
 import { useCallback, useRef } from "react";
-
-let scrollContainer: HTMLDivElement | null = null;
-
-export function setScrollContainer(element: HTMLDivElement | null) {
-  scrollContainer = element;
-}
+import { usePageScroller } from "@/hooks/use-page-scroller";
 
 interface HandToolState {
   scrollLeft: number;
@@ -21,34 +16,38 @@ interface PointerHandlers {
 }
 
 export function useHandTool(): PointerHandlers {
+  const scrollerRef = usePageScroller();
   const dragRef = useRef<HandToolState | null>(null);
 
-  const handleDown = useCallback((event: PointerEvent<HTMLCanvasElement>) => {
-    if (!scrollContainer) {
-      return;
-    }
-    event.currentTarget.setPointerCapture(event.pointerId);
-    dragRef.current = {
-      scrollLeft: scrollContainer.scrollLeft,
-      scrollTop: scrollContainer.scrollTop,
-      startX: event.clientX,
-      startY: event.clientY,
-    };
-  }, []);
+  const handleDown = useCallback(
+    (event: PointerEvent<HTMLCanvasElement>) => {
+      const scroller = scrollerRef.current;
+      if (!scroller) {
+        return;
+      }
+      event.currentTarget.setPointerCapture(event.pointerId);
+      dragRef.current = {
+        scrollLeft: scroller.scrollLeft,
+        scrollTop: scroller.scrollTop,
+        startX: event.clientX,
+        startY: event.clientY,
+      };
+    },
+    [scrollerRef]
+  );
 
-  const handleMove = useCallback((event: PointerEvent<HTMLCanvasElement>) => {
-    const drag = dragRef.current;
-    if (!drag) {
-      return;
-    }
-    if (!scrollContainer) {
-      return;
-    }
-    const dx = event.clientX - drag.startX;
-    const dy = event.clientY - drag.startY;
-    scrollContainer.scrollLeft = drag.scrollLeft - dx;
-    scrollContainer.scrollTop = drag.scrollTop - dy;
-  }, []);
+  const handleMove = useCallback(
+    (event: PointerEvent<HTMLCanvasElement>) => {
+      const drag = dragRef.current;
+      const scroller = scrollerRef.current;
+      if (!(drag && scroller)) {
+        return;
+      }
+      scroller.scrollLeft = drag.scrollLeft - (event.clientX - drag.startX);
+      scroller.scrollTop = drag.scrollTop - (event.clientY - drag.startY);
+    },
+    [scrollerRef]
+  );
 
   const handleUp = useCallback((event: PointerEvent<HTMLCanvasElement>) => {
     event.currentTarget.releasePointerCapture(event.pointerId);
