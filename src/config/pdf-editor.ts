@@ -162,6 +162,10 @@ export const MAX_RENDER_DPR = 2;
  */
 export const PAGE_NEAR_VIEW_MARGIN = "100% 0px";
 
+/** Thumbnails are small enough to keep two rail heights either way, which
+ * saves redrawing them as the rail is scrolled back and forth. */
+export const RAIL_NEAR_VIEW_MARGIN = "200% 0px";
+
 export const ANNOTATION_COLORS = [
   "#e63946",
   "#1a1815",
