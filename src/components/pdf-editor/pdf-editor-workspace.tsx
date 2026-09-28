@@ -11,16 +11,9 @@ import { EditorStudySide } from "@/components/pdf-editor/editor-study-side";
 import { EditorTabStrip } from "@/components/pdf-editor/editor-tab-strip";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
 import { EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
-import { useEditorDesk } from "@/hooks/use-editor-desk";
 import { useEditorHelp } from "@/hooks/use-editor-help";
-import { useEditorPanels } from "@/hooks/use-editor-panels";
-import { useEditorPanes } from "@/hooks/use-editor-panes";
-import { useEditorShortcuts } from "@/hooks/use-editor-shortcuts";
-import { useEditorTools } from "@/hooks/use-editor-tools";
+import { useEditorWorkspace } from "@/hooks/use-editor-workspace";
 import { useFullscreen } from "@/hooks/use-fullscreen";
-import { usePaneActions } from "@/hooks/use-pane-actions";
-import { useSpacePan } from "@/hooks/use-space-pan";
-import { useSplitControls } from "@/hooks/use-split-controls";
 import type {
   EditorFile,
   EditorSearch,
@@ -44,27 +37,14 @@ export function PdfEditorWorkspace({
 }: PdfEditorWorkspaceProps) {
   const rootRef = useRef<HTMLElement>(null);
   const fullscreen = useFullscreen(rootRef);
-  const panels = useEditorPanels();
   const help = useEditorHelp();
-
-  const tools = useEditorTools();
-  const isSpacePanning = useSpacePan();
-  const { focused, other, panes, sides } = useEditorPanes({
+  const { desk, paneActions, panels, panes, tools } = useEditorWorkspace({
     beside,
     focus,
-    isSpacePanning,
     node,
-    tools,
   });
+  const { focused } = panes;
   const { session } = focused;
-  useEditorShortcuts(session, tools.setTool);
-  const { activeId, close, desk, forget, move, show } = useEditorDesk(
-    focused.node,
-    other?.node ?? null
-  );
-  const paneActions = usePaneActions();
-
-  useSplitControls({ activeId, desk, other, paneActions, panels, panes });
 
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
@@ -74,7 +54,7 @@ export function PdfEditorWorkspace({
     >
       <EditorDropZone>
         <EditorFileBar
-          hasTabs={desk.files.length > 0}
+          hasTabs={desk.desk.files.length > 0}
           isBrowserOpen={panels.isBrowserOpen}
           isFullscreen={fullscreen.isFullscreen}
           isFullscreenSupported={fullscreen.isSupported}
@@ -89,16 +69,20 @@ export function PdfEditorWorkspace({
           saveStatus={session.saveStatus}
         >
           <EditorTabStrip
-            activeId={activeId}
-            desk={desk}
+            activeId={desk.activeId}
+            desk={desk.desk}
             nodes={nodes}
-            onClose={close}
-            onMove={move}
+            onClose={desk.close}
+            onMove={desk.move}
             onOpenBeside={paneActions.openBeside}
-            onShow={show}
-            sides={sides}
+            onShow={desk.show}
+            sides={panes.sides}
           >
-            <EditorQuickOpen activeId={activeId} nodes={nodes} onShow={show} />
+            <EditorQuickOpen
+              activeId={desk.activeId}
+              nodes={nodes}
+              onShow={desk.show}
+            />
           </EditorTabStrip>
         </EditorFileBar>
         <div className="flex min-h-0 flex-1">
@@ -109,8 +93,8 @@ export function PdfEditorWorkspace({
             <FileBrowserPanel
               activeNode={focused.node}
               nodes={nodes}
-              onForget={forget}
-              openFiles={desk.files}
+              onForget={desk.forget}
+              openFiles={desk.desk.files}
             />
           </EditorSidePanel>
           <EditorDocumentColumn session={session} tools={tools}>
@@ -125,7 +109,7 @@ export function PdfEditorWorkspace({
               onPlace={paneActions.place}
               onShowFiles={panels.toggleBrowser}
               onSwap={paneActions.swap}
-              panes={panes}
+              panes={panes.panes}
               tools={tools}
             />
           </EditorDocumentColumn>
@@ -137,7 +121,7 @@ export function PdfEditorWorkspace({
         </div>
       </EditorDropZone>
       <EditorHelpDialog onOpenChange={help.setIsOpen} open={help.isOpen} />
-      <EditorExamDialogs panes={panes} />
+      <EditorExamDialogs panes={panes.panes} />
     </main>
   );
 }
