@@ -175,6 +175,14 @@ export const MATCH_LABELS = {
   solution: "Solution beside",
 } as const;
 
+/** M for match, which no tool uses. Held, not pressed. */
+export const MATCH_PEEK_HOTKEY_KEY = "m";
+
+export const MATCH_PEEK_NOTES = {
+  paper: "Peeking at the questions. Let go of M to go back.",
+  solution: "Peeking at the solution. Let go of M to go back.",
+} as const;
+
 export const MATCH_TAB_CLASS =
   "group flex h-8 max-w-52 shrink-0 cursor-pointer items-center gap-1.5 rounded border-2 border-border/40 border-dashed px-1.5 font-medium text-muted-foreground text-xs transition-colors hover:border-border hover:text-foreground";
 
@@ -473,6 +481,7 @@ export const SHORTCUT_HINTS = {
   nextPage: "Right arrow",
   nextTab: "Alt+]",
   otherPane: "`",
+  peekMatch: "M",
   pan: "Space",
   pasteMarkup: "Mod+V",
   previousPage: "Left arrow",

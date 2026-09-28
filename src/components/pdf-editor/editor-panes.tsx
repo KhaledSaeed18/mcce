@@ -3,6 +3,7 @@ import { EditorPane } from "@/components/pdf-editor/editor-pane";
 import { EditorPaneDivider } from "@/components/pdf-editor/editor-pane-divider";
 import { EditorPaneHeader } from "@/components/pdf-editor/editor-pane-header";
 import { EditorPaneSlot } from "@/components/pdf-editor/editor-pane-slot";
+import { MatchPeekOverlay } from "@/components/pdf-editor/match-peek-overlay";
 import { PaneDropOverlay } from "@/components/pdf-editor/pane-drop-overlay";
 import { ScrollLockButton } from "@/components/pdf-editor/scroll-lock-button";
 import type { EditorPaneView } from "@/hooks/use-editor-panes";
@@ -37,6 +38,8 @@ interface EditorPanesProps {
   onShowFiles: () => void;
   onSwap: () => void;
   panes: EditorPaneView[];
+  /** The match of the pane with focus, shown over it while M is held. */
+  peek: EditorPaneView | null;
   tools: EditorTools;
 }
 
@@ -60,6 +63,7 @@ export function EditorPanes({
   onShowFiles,
   onSwap,
   panes,
+  peek,
   tools,
 }: EditorPanesProps) {
   const isSplit = panes.length > 1;
@@ -114,6 +118,9 @@ export function EditorPanes({
               session={pane.session}
               tools={tools}
             />
+            {peek && pane.side === focusedSide ? (
+              <MatchPeekOverlay nodes={nodes} peek={peek} tools={tools} />
+            ) : null}
           </EditorPaneSlot>
         </Fragment>
       ))}

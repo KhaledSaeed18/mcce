@@ -38,8 +38,17 @@ export function PdfEditorWorkspace({
   const rootRef = useRef<HTMLElement>(null);
   const fullscreen = useFullscreen(rootRef);
   const help = useEditorHelp();
-  const { desk, lock, match, openMatch, paneActions, panels, panes, tools } =
-    useEditorWorkspace({ beside, focus, node, nodes });
+  const {
+    desk,
+    lock,
+    match,
+    openMatch,
+    paneActions,
+    panels,
+    panes,
+    peek,
+    tools,
+  } = useEditorWorkspace({ beside, focus, node, nodes });
   const { focused } = panes;
   const { session } = focused;
   const handleOpenMatch = useCallback(() => {
@@ -116,6 +125,7 @@ export function PdfEditorWorkspace({
               onShowFiles={panels.toggleBrowser}
               onSwap={paneActions.swap}
               panes={panes.panes}
+              peek={peek}
               tools={tools}
             />
           </EditorDocumentColumn>

@@ -5,6 +5,7 @@ import { useEditorShortcuts } from "@/hooks/use-editor-shortcuts";
 import { useEditorTools } from "@/hooks/use-editor-tools";
 import { useMatchArrival } from "@/hooks/use-match-arrival";
 import { useMatchOpener } from "@/hooks/use-match-opener";
+import { useMatchPeek } from "@/hooks/use-match-peek";
 import { useMatchingFile } from "@/hooks/use-matching-file";
 import { usePaneActions } from "@/hooks/use-pane-actions";
 import { useScrollLock } from "@/hooks/use-scroll-lock";
@@ -50,6 +51,7 @@ export function useEditorWorkspace({
   const paneActions = usePaneActions();
   const lock = useScrollLock(panes.panes, arrival.arrival, arrival.settle);
   const match = useMatchingFile(nodes, focused.node?.id);
+  const peek = useMatchPeek({ focused, isSpacePanning, match, tools });
   const openMatch = useMatchOpener({
     onArrive: arrival.request,
     onPlace: paneActions.place,
@@ -72,6 +74,7 @@ export function useEditorWorkspace({
     paneActions,
     panels,
     panes,
+    peek,
     tools,
   };
 }

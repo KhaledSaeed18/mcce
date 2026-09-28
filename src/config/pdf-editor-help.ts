@@ -18,6 +18,7 @@ export const EDITOR_HELP_FACTS: readonly string[] = [
   "Changes save on their own in this browser, one file at a time. They do not sync to other devices, and clearing site data removes them.",
   "Every file you open gets a tab in the top bar, so a lecture, its exercises, and a past exam stay one click apart. Tabs come back after a reload. The button at the end of the tabs lists them all, and the files closed recently.",
   "Two files can sit side by side: right-click a tab and pick Open beside, or drag a tab onto the right half of the pages. The toolbar and keys act on the pane with the orange frame. The lock on the divider scrolls both together, keeping them as many pages apart as they were.",
+  "A paper with a solution in the index shows a dashed Solution beside tab, which opens the solution on the same page with the two scrolling together. Hold M to peek at it without opening it.",
   "Download copy saves a new PDF with your markup and page changes. The file in Google Drive never changes.",
   "The page rail turns, copies, removes, and reorders pages, and adds a blank or squared page after any page to work a problem on. Drag a thumbnail to move it.",
   "The select tool picks text to copy, highlight, underline, or strike through, and picks up markup to move it. Delete removes what is selected.",
@@ -84,6 +85,10 @@ export const EDITOR_HELP_SHORTCUT_GROUPS: readonly ShortcutGroup[] = [
       { keys: SHORTCUT_HINTS.split, label: "Split, or back to one pane" },
       { keys: SHORTCUT_HINTS.otherPane, label: "Focus the other pane" },
       { keys: SHORTCUT_HINTS.scrollLock, label: "Scroll both panes together" },
+      {
+        keys: SHORTCUT_HINTS.peekMatch,
+        label: "Peek at the solution while held",
+      },
     ],
     title: "Side by side",
   },
