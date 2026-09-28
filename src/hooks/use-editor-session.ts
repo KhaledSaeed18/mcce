@@ -1,4 +1,4 @@
-import type { RefObject } from "react";
+import { useRef } from "react";
 import { DEFAULT_EXPORT_NAME } from "@/config/pdf-editor";
 import { useDocumentSearch } from "@/hooks/use-document-search";
 import { useEditorInk } from "@/hooks/use-editor-ink";
@@ -16,20 +16,19 @@ interface EditorSessionOptions {
   /** True while Space is held, which borrows the hand without changing the tool. */
   isSpacePanning: boolean;
   node: EditorFile | null;
-  scrollRef: RefObject<HTMLDivElement | null>;
   /** Shared by every open file, so a pen picked up once writes on any of them. */
   tools: EditorTools;
 }
 
-/** Everything about the open file: its pages, its markup, how the tools draw
- * on it, and its zoom and search. Its keys are bound by useEditorShortcuts,
+/** Everything about one file on screen: its pages, its markup, how the tools
+ * draw on it, and its scroller, zoom, and search. Its keys are bound by useEditorShortcuts,
  * for the session that has focus. */
 export function useEditorSession({
   isSpacePanning,
   node,
-  scrollRef,
   tools,
 }: EditorSessionOptions) {
+  const scrollRef = useRef<HTMLDivElement>(null);
   const { bytes, doc, retry, status } = usePdfDocument(node);
   // Recent files are shared with the rest of the site, which only knows Drive files.
   useRecordRecentFile(node?.source === "drive" ? node.id : undefined);
@@ -93,6 +92,7 @@ export function useEditorSession({
     navigation,
     retry,
     saveStatus,
+    scrollRef,
     search,
     settings,
     sizes,

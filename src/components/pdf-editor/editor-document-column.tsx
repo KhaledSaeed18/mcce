@@ -1,35 +1,19 @@
-import type { RefObject } from "react";
-import { EditorDocumentArea } from "@/components/pdf-editor/editor-document-area";
-import { EditorPlaceholder } from "@/components/pdf-editor/editor-placeholder";
-import { EditorSearchBar } from "@/components/pdf-editor/editor-search-bar";
+import type { ReactNode } from "react";
 import { EditorToolbar } from "@/components/pdf-editor/editor-toolbar";
-import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
-import { TextSelectionMarker } from "@/components/pdf-editor/text-selection-marker";
 import type { EditorSession } from "@/hooks/use-editor-session";
 import type { EditorTools } from "@/hooks/use-editor-tools";
-import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
 
 interface EditorDocumentColumnProps {
-  isBrowserOpen: boolean;
-  isPanelAnimated: boolean;
-  isRailOpen: boolean;
-  node: EditorFile | null;
-  nodes: EditorTreeNode[];
-  onShowFiles: () => void;
-  scrollRef: RefObject<HTMLDivElement | null>;
+  /** The panes, one per file on screen. */
+  children: ReactNode;
+  /** The session with focus, which the toolbar acts on. */
   session: EditorSession;
   tools: EditorTools;
 }
 
-/** Everything right of the file panel: the tools, the rail, and the pages. */
+/** Everything between the side panels: one toolbar over the panes it serves. */
 export function EditorDocumentColumn({
-  isBrowserOpen,
-  isPanelAnimated,
-  isRailOpen,
-  node,
-  nodes,
-  onShowFiles,
-  scrollRef,
+  children,
   session,
   tools,
 }: EditorDocumentColumnProps) {
@@ -41,14 +25,9 @@ export function EditorDocumentColumn({
     exportPdf,
     exportStatus,
     ink,
-    isDocumentShown,
     markup,
     navigation,
-    retry,
     search,
-    settings,
-    sizes,
-    status,
     zoom,
   } = session;
 
@@ -82,67 +61,7 @@ export function EditorDocumentColumn({
           zoom={zoom}
         />
       ) : null}
-      <div className="relative flex min-h-0 flex-1 flex-col">
-        {doc && search.isOpen ? (
-          <EditorSearchBar
-            current={search.current}
-            focusRequest={search.focusRequest}
-            isReading={search.isReading}
-            matchCount={search.matchCount}
-            onClose={search.close}
-            onNext={search.next}
-            onPrevious={search.previous}
-            onQueryChange={search.setQuery}
-            query={search.query}
-          />
-        ) : null}
-        <EditorDocumentArea
-          doc={doc}
-          isLoading={status === "loading"}
-          isPanelAnimated={isPanelAnimated}
-          isRailOpen={isRailOpen}
-          layout={markup.pages}
-          navigation={navigation}
-          pageActions={markup.pageActions}
-          scrollRef={scrollRef}
-          sizes={sizes}
-        >
-          {doc && isDocumentShown ? (
-            <PdfPageList
-              actions={markup.actions}
-              annotations={markup.annotations}
-              covers={covers}
-              doc={doc}
-              hitsByPosition={search.hitsByPosition}
-              onTextDraftChange={markup.openDraft}
-              pages={markup.pages}
-              selectedId={markup.selectedId}
-              settings={settings}
-              textDraft={markup.draft}
-              zoom={zoom.value}
-            />
-          ) : (
-            <EditorPlaceholder
-              isBrowserOpen={isBrowserOpen}
-              nodes={nodes}
-              onRetry={retry}
-              onShowFiles={onShowFiles}
-              source={node ? node.source : "drive"}
-              status={status}
-            />
-          )}
-        </EditorDocumentArea>
-      </div>
-      <TextSelectionMarker
-        highlightColor={tools.highlightColor}
-        isEnabled={tools.tool === "select"}
-        onAddMany={markup.actions.addMany}
-        pages={markup.pages}
-        penColor={tools.color}
-        scrollRef={scrollRef}
-        sizes={sizes}
-        zoom={zoom.value}
-      />
+      <div className="flex min-h-0 flex-1">{children}</div>
     </div>
   );
 }

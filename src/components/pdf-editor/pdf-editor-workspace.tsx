@@ -3,6 +3,7 @@ import { EditorDocumentColumn } from "@/components/pdf-editor/editor-document-co
 import { EditorDropZone } from "@/components/pdf-editor/editor-drop-zone";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
 import { EditorHelpDialog } from "@/components/pdf-editor/editor-help-dialog";
+import { EditorPane } from "@/components/pdf-editor/editor-pane";
 import { EditorSidePanel } from "@/components/pdf-editor/editor-side-panel";
 import { ExamTimeUpDialog } from "@/components/pdf-editor/exam-time-up-dialog";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
@@ -25,7 +26,6 @@ interface PdfEditorWorkspaceProps {
 
 export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
   const rootRef = useRef<HTMLElement>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
   const {
     isFullscreen,
     isSupported: isFullscreenSupported,
@@ -47,7 +47,6 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
   const session = useEditorSession({
     isSpacePanning,
     node,
-    scrollRef,
     tools,
   });
   useEditorShortcuts(session, tools.setTool);
@@ -77,17 +76,18 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
           <EditorSidePanel isAnimated={isAnimated} isOpen={isBrowserOpen}>
             <FileBrowserPanel activeNode={node} nodes={nodes} />
           </EditorSidePanel>
-          <EditorDocumentColumn
-            isBrowserOpen={isBrowserOpen}
-            isPanelAnimated={isAnimated}
-            isRailOpen={isRailOpen}
-            node={node}
-            nodes={nodes}
-            onShowFiles={toggleBrowser}
-            scrollRef={scrollRef}
-            session={session}
-            tools={tools}
-          />
+          <EditorDocumentColumn session={session} tools={tools}>
+            <EditorPane
+              isBrowserOpen={isBrowserOpen}
+              isPanelAnimated={isAnimated}
+              isRailOpen={isRailOpen}
+              node={node}
+              nodes={nodes}
+              onShowFiles={toggleBrowser}
+              session={session}
+              tools={tools}
+            />
+          </EditorDocumentColumn>
           <EditorSidePanel
             isAnimated={isAnimated}
             isOpen={isStudyOpen && session.doc !== null}
