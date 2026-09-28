@@ -1,7 +1,7 @@
 import type { PDFDocumentLoadingTask, PDFDocumentProxy } from "pdfjs-dist";
 import { PDF_STANDARD_FONTS_PATH } from "@/config/pdf-editor";
 import { loadPdfBytes } from "./load-pdf-bytes";
-import type { EditorFile } from "./types";
+import type { EditorFileRef } from "./types";
 
 export interface OpenedDocument {
   /** The file as it arrived, kept whole because the export writes into a copy of it. */
@@ -11,7 +11,9 @@ export interface OpenedDocument {
 }
 
 /** Loaded lazily: pdf.js and its worker are far too big to sit in the main bundle. */
-export async function openDocument(file: EditorFile): Promise<OpenedDocument> {
+export async function openDocument(
+  file: EditorFileRef
+): Promise<OpenedDocument> {
   // Reading a file is browser work: pdf.js runs against a worker and a canvas,
   // and the effect that calls this never runs on the server. Saying so lets the
   // bundler leave pdf.js out of the server build rather than carrying it there.

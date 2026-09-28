@@ -23,6 +23,9 @@ export interface LocalEditorFile {
 /** The open file. Where it came from decides how its bytes are fetched. */
 export type EditorFile = DriveEditorFile | LocalEditorFile;
 
+/** Enough of a file to fetch its bytes. */
+export type EditorFileRef = Pick<EditorFile, "id" | "source">;
+
 /** A file kept open as a tab: enough to name it and open it again. */
 export interface OpenFile {
   id: string;

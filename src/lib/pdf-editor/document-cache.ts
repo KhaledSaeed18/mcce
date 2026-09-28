@@ -1,6 +1,6 @@
 import { LOADED_DOCUMENT_LIMIT } from "@/config/pdf-editor";
 import { type OpenedDocument, openDocument } from "./open-document";
-import type { EditorFile } from "./types";
+import type { EditorFileRef } from "./types";
 
 interface CachedDocument {
   lastUsed: number;
@@ -42,7 +42,7 @@ function closeUnused(): void {
   }
 }
 
-function openEntry(file: EditorFile): CachedDocument {
+function openEntry(file: EditorFileRef): CachedDocument {
   const entry: CachedDocument = {
     lastUsed: 0,
     opening: openDocument(file),
@@ -59,7 +59,7 @@ function openEntry(file: EditorFile): CachedDocument {
 }
 
 /** Opens the file, or hands back the copy already open. */
-export function acquireDocument(file: EditorFile): DocumentLease {
+export function acquireDocument(file: EditorFileRef): DocumentLease {
   const entry = documents.get(file.id) ?? openEntry(file);
   entry.users += 1;
   useCount += 1;

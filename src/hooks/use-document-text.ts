@@ -2,7 +2,8 @@ import type { PDFDocumentProxy } from "pdfjs-dist";
 import { useEffect, useRef, useState } from "react";
 import { SEARCH_TEXT_BATCH_PAGES } from "@/config/pdf-editor";
 import { buildPageText } from "@/lib/pdf-editor/page-text";
-import type { PageText, PageTextItem } from "@/lib/pdf-editor/types";
+import { readPageItems } from "@/lib/pdf-editor/read-page-items";
+import type { PageText } from "@/lib/pdf-editor/types";
 
 interface DocumentText {
   doc: PDFDocumentProxy | null;
@@ -35,12 +36,7 @@ export function useDocumentText(
     setState({ doc, isComplete: false, pages: [] });
 
     const readPage = async (index: number) => {
-      const page = await doc.getPage(index + 1);
-      const content = await page.getTextContent();
-      const items = content.items.filter(
-        (item): item is PageTextItem & typeof item => "str" in item
-      );
-      pages[index] = buildPageText(items);
+      pages[index] = buildPageText(await readPageItems(doc, index));
     };
 
     const read = async () => {

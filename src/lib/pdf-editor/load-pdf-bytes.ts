@@ -1,9 +1,9 @@
 import { fetchPdfBytes } from "./fetch-pdf";
 import { readLocalPdfBytes } from "./local-pdf-store";
-import type { EditorFile } from "./types";
+import type { EditorFileRef } from "./types";
 
 /** The file's bytes, from wherever it lives. */
-export async function loadPdfBytes(file: EditorFile): Promise<ArrayBuffer> {
+export async function loadPdfBytes(file: EditorFileRef): Promise<ArrayBuffer> {
   if (file.source === "local") {
     const bytes = await readLocalPdfBytes(file.id);
     if (!bytes) {
