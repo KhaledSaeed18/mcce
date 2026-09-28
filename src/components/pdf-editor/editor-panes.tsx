@@ -3,11 +3,13 @@ import { EditorPane } from "@/components/pdf-editor/editor-pane";
 import { EditorPaneDivider } from "@/components/pdf-editor/editor-pane-divider";
 import { EditorPaneHeader } from "@/components/pdf-editor/editor-pane-header";
 import { EditorPaneSlot } from "@/components/pdf-editor/editor-pane-slot";
+import { ExamSolutionCover } from "@/components/pdf-editor/exam-solution-cover";
 import { MatchPeekOverlay } from "@/components/pdf-editor/match-peek-overlay";
 import { PaneDropOverlay } from "@/components/pdf-editor/pane-drop-overlay";
 import { ScrollLockButton } from "@/components/pdf-editor/scroll-lock-button";
 import type { EditorPaneView } from "@/hooks/use-editor-panes";
 import type { EditorTools } from "@/hooks/use-editor-tools";
+import type { ExamCover } from "@/hooks/use-exam-pairing";
 import { usePaneChips } from "@/hooks/use-pane-chips";
 import { usePaneDrop } from "@/hooks/use-pane-drop";
 import { usePaneFocusHotkey } from "@/hooks/use-pane-focus-hotkey";
@@ -21,6 +23,8 @@ import type {
 } from "@/lib/pdf-editor/types";
 
 interface EditorPanesProps {
+  /** A solution covered while the exam beside it runs. */
+  examCover: ExamCover | null;
   focusedSide: EditorPaneSide;
   isBrowserOpen: boolean;
   isPanelAnimated: boolean;
@@ -50,6 +54,7 @@ function shareOf(side: EditorPaneSide, ratio: number): number {
 /** One file on screen, or two side by side. Panes are keyed by side, so
  * the first keeps its place when the second comes and goes. */
 export function EditorPanes({
+  examCover,
   focusedSide,
   isBrowserOpen,
   isPanelAnimated,
@@ -118,6 +123,9 @@ export function EditorPanes({
               session={pane.session}
               tools={tools}
             />
+            {examCover?.side === pane.side ? (
+              <ExamSolutionCover remaining={examCover.remaining} />
+            ) : null}
             {peek && pane.side === focusedSide ? (
               <MatchPeekOverlay nodes={nodes} peek={peek} tools={tools} />
             ) : null}

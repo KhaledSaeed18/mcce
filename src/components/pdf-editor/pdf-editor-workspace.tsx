@@ -42,6 +42,7 @@ export function PdfEditorWorkspace({
   const help = useEditorHelp();
   const {
     desk,
+    examCover,
     lock,
     match,
     openMatch,
@@ -106,6 +107,7 @@ export function PdfEditorWorkspace({
           </EditorSidePanel>
           <EditorDocumentColumn session={session} tools={tools}>
             <EditorPanes
+              examCover={examCover}
               focusedSide={focused.side}
               isBrowserOpen={panels.isBrowserOpen}
               isPanelAnimated={panels.isAnimated}

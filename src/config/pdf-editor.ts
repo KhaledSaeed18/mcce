@@ -190,6 +190,10 @@ export const MATCH_PEEK_NOTES = {
 export const MATCH_TAB_CLASS =
   "group flex h-8 max-w-52 shrink-0 cursor-pointer items-center gap-1.5 rounded border-2 border-border/40 border-dashed px-1.5 font-medium text-muted-foreground text-xs transition-colors hover:border-border hover:text-foreground";
 
+export const EXAM_SOLUTION_COVER_TITLE = "Solution covered";
+export const EXAM_SOLUTION_COVER_NOTE =
+  "It uncovers when the exam beside it ends, on the page you are on.";
+
 export const STUDY_SETS_LABEL = "Study sets";
 export const STUDY_SET_SAVE_LABEL = "Save these tabs as a set";
 export const STUDY_SET_SAVE_TITLE = "Save as a study set";

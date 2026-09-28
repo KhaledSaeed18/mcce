@@ -3,6 +3,7 @@ import { useEditorPanels } from "@/hooks/use-editor-panels";
 import { useEditorPanes } from "@/hooks/use-editor-panes";
 import { useEditorShortcuts } from "@/hooks/use-editor-shortcuts";
 import { useEditorTools } from "@/hooks/use-editor-tools";
+import { useExamPairing } from "@/hooks/use-exam-pairing";
 import { useMatchArrival } from "@/hooks/use-match-arrival";
 import { useMatchOpener } from "@/hooks/use-match-opener";
 import { useMatchPeek } from "@/hooks/use-match-peek";
@@ -56,6 +57,7 @@ export function useEditorWorkspace({
   const paneActions = usePaneActions();
   const lock = useScrollLock(panes.panes, arrival.arrival, arrival.settle);
   const match = useMatchingFile(nodes, focused.node?.id);
+  const examCover = useExamPairing({ lock, nodes, panes: panes.panes });
   const saveSet = useStudySetSaver({
     files: desk.desk.files,
     lockGap: lock.gap,
@@ -84,6 +86,7 @@ export function useEditorWorkspace({
 
   return {
     desk,
+    examCover,
     lock,
     match,
     openMatch,

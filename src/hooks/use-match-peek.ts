@@ -23,7 +23,11 @@ export function useMatchPeek({
   match,
   tools,
 }: MatchPeekOptions): EditorPaneView | null {
-  const isHeld = useHeldKey(MATCH_PEEK_HOTKEY_KEY, match !== null);
+  // No peeking at the answers while the exam on this file runs.
+  const isHeld = useHeldKey(
+    MATCH_PEEK_HOTKEY_KEY,
+    match !== null && !focused.session.exam.isRunning
+  );
   const node = useMemo<DriveEditorFile | null>(
     () =>
       isHeld && match
