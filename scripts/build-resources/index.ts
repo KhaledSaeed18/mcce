@@ -8,6 +8,7 @@ import type { LinkStatus, ResourcesIndex } from "../../src/lib/resources/types";
 import { buildResourcesIndex, repoUrl } from "./build-index";
 import { buildValidationContext } from "./context";
 import { fetchBrandIcons } from "./icons";
+import { keepKnownStatuses } from "./keep-known-statuses";
 import { checkLinks } from "./links";
 import { validateCatalog } from "./validate";
 
@@ -61,21 +62,23 @@ async function resolveIcons(): Promise<Set<string>> {
 async function resolveLinks(
   previous: ResourcesIndex | null
 ): Promise<Map<string, LinkStatus>> {
-  if (skipLinks) {
-    // Keep the statuses from the last full run rather than resetting them.
-    const entries = previous
+  const previousStatuses = new Map(
+    previous
       ? [...previous.tools, ...previous.repos].map(
           (entry) => [entry.url, entry.linkStatus] as const
         )
-      : [];
-    return new Map(entries);
+      : []
+  );
+  if (skipLinks) {
+    // Keep the statuses from the last full run rather than resetting them.
+    return previousStatuses;
   }
   const urls = [
     ...RESOURCE_CATALOG.map((tool) => tool.url),
     ...REPO_CATALOG.map((repo) => repoUrl(repo)),
   ];
   console.log(`Checking ${urls.length} links...`);
-  const statuses = await checkLinks(urls);
+  const statuses = keepKnownStatuses(await checkLinks(urls), previousStatuses);
   const broken = [...statuses].filter(([, status]) => status !== "ok");
   for (const [url, status] of broken) {
     console.warn(`  ${status}: ${url}`);
