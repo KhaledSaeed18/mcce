@@ -42,6 +42,14 @@ export function useEditorPanels() {
     });
   }, []);
 
+  /** Sets several panels at once, as making room for a split does. */
+  const update = useCallback((changes: Partial<EditorPanels>) => {
+    setPanels((previous) => ({
+      ...(previous ?? DEFAULT_EDITOR_PANELS),
+      ...changes,
+    }));
+  }, []);
+
   const toggleBrowser = useCallback(() => toggle("isBrowserOpen"), [toggle]);
   const toggleRail = useCallback(() => toggle("isRailOpen"), [toggle]);
   const toggleStudy = useCallback(() => toggle("isStudyOpen"), [toggle]);
@@ -52,5 +60,6 @@ export function useEditorPanels() {
     toggleBrowser,
     toggleRail,
     toggleStudy,
+    update,
   };
 }

@@ -20,7 +20,7 @@ import { useEditorTools } from "@/hooks/use-editor-tools";
 import { useFullscreen } from "@/hooks/use-fullscreen";
 import { usePaneActions } from "@/hooks/use-pane-actions";
 import { useSpacePan } from "@/hooks/use-space-pan";
-import { useSplitToggle } from "@/hooks/use-split-toggle";
+import { useSplitControls } from "@/hooks/use-split-controls";
 import type {
   EditorFile,
   EditorSearch,
@@ -64,13 +64,7 @@ export function PdfEditorWorkspace({
   );
   const paneActions = usePaneActions();
 
-  useSplitToggle({
-    activeId,
-    desk,
-    onClosePane: paneActions.close,
-    onOpenBeside: paneActions.openBeside,
-    otherSide: other?.side ?? null,
-  });
+  useSplitControls({ activeId, desk, other, paneActions, panels, panes });
 
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
