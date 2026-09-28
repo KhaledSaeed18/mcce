@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { closePane, focusPane, swapPanes } from "./pane-layout";
+import {
+  closePane,
+  closePaneShowing,
+  focusPane,
+  swapPanes,
+} from "./pane-layout";
 import { openInOtherPane, placeFile } from "./pane-search";
 
 const EXAM = { id: "exam", source: "drive" } as const;
@@ -62,6 +67,12 @@ describe("pane layout", () => {
       closePane({ beside: "local-notes", file: "exam" }, "primary")
     ).toEqual({ local: "local-notes" });
     expect(closePane({ file: "exam" }, "primary")).toEqual({});
+  });
+
+  it("closes the pane showing a file, and leaves a file on no pane alone", () => {
+    expect(closePaneShowing(SPLIT, "solution")).toEqual({ file: "exam" });
+    expect(closePaneShowing(SPLIT, "exam")).toEqual({ file: "solution" });
+    expect(closePaneShowing(SPLIT, "notes")).toEqual(SPLIT);
   });
 
   it("swaps the files and keeps focus with the file that had it", () => {

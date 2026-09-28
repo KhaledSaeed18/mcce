@@ -4,6 +4,7 @@ import { KindIcon } from "@/components/drive/kind-icon";
 import { OpenFileDot } from "@/components/pdf-editor/open-file-dot";
 import {
   EDITOR_PATH,
+  FILE_LINK_ACTIVE_OPTIONS,
   FILE_ROW_ACTIVE_CLASS,
   FILE_ROW_CLASS,
   FILE_ROW_LINK_CLASS,
@@ -58,6 +59,7 @@ export function FileBrowserEntry({
 
   return (
     <Link
+      activeOptions={FILE_LINK_ACTIVE_OPTIONS}
       className={cn(
         FILE_ROW_CLASS,
         FILE_ROW_LINK_CLASS,

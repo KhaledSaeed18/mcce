@@ -4,6 +4,7 @@ import { OpenFileDot } from "@/components/pdf-editor/open-file-dot";
 import { RemoveLocalPdfButton } from "@/components/pdf-editor/remove-local-pdf-button";
 import {
   EDITOR_PATH,
+  FILE_LINK_ACTIVE_OPTIONS,
   FILE_ROW_ACTIVE_CLASS,
   FILE_ROW_CLASS,
   FILE_ROW_LINK_CLASS,
@@ -31,6 +32,7 @@ export function LocalPdfListItem({
   return (
     <li className="flex items-center gap-1">
       <Link
+        activeOptions={FILE_LINK_ACTIVE_OPTIONS}
         className={cn(
           FILE_ROW_CLASS,
           FILE_ROW_LINK_CLASS,

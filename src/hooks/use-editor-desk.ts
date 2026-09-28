@@ -5,30 +5,35 @@ import { showFile } from "@/lib/pdf-editor/desk";
 import { closeFile, forgetFile } from "@/lib/pdf-editor/desk-close";
 import { findNextFile, moveFile } from "@/lib/pdf-editor/desk-order";
 import { readDesk, writeDesk } from "@/lib/pdf-editor/desk-storage";
+import { closePaneShowing } from "@/lib/pdf-editor/pane-layout";
 import { placeFile } from "@/lib/pdf-editor/pane-search";
 import type { EditorFile, OpenFile } from "@/lib/pdf-editor/types";
 
-/** The files open as tabs. The URL still says which one is shown, so opening
- * a file anywhere, from the file panel or a shared link, gives it a tab. */
-export function useEditorDesk(activeFile: EditorFile | null) {
+function toOpenFile(file: EditorFile): OpenFile {
+  return { id: file.id, name: file.name, source: file.source };
+}
+
+/** The files open as tabs. The URL still says which are shown, so opening a
+ * file anywhere, from the file panel or a shared link, gives it a tab. The
+ * file in the pane with focus is the one most recently shown. */
+export function useEditorDesk(
+  focused: EditorFile | null,
+  other: EditorFile | null
+) {
   const navigate = useNavigate();
   // The workspace only renders in the browser, so storage can be read at once.
   const [desk, setDesk] = useState(readDesk);
-  const activeId = activeFile?.id;
-  const activeName = activeFile?.name ?? "";
-  const activeSource = activeFile?.source;
+  const activeId = focused?.id;
+  const otherId = other?.id;
 
   useEffect(() => {
-    if (activeId && activeSource) {
-      setDesk((current) =>
-        showFile(current, {
-          id: activeId,
-          name: activeName,
-          source: activeSource,
-        })
-      );
-    }
-  }, [activeId, activeName, activeSource]);
+    setDesk((current) =>
+      [other, focused].reduce(
+        (next, file) => (file ? showFile(next, toOpenFile(file)) : next),
+        current
+      )
+    );
+  }, [focused, other]);
 
   useEffect(() => writeDesk(desk), [desk]);
 
@@ -43,24 +48,37 @@ export function useEditorDesk(activeFile: EditorFile | null) {
     [navigate]
   );
 
-  const close = useCallback(
+  /** Moves off a file on screen before its tab goes: in a split its pane
+   * closes, and on its own the file seen before it takes its place. */
+  const leave = useCallback(
     (id: string) => {
-      if (id === activeId) {
+      if (otherId && (id === activeId || id === otherId)) {
+        navigate({
+          from: EDITOR_PATH,
+          search: (search) => closePaneShowing(search, id),
+          to: EDITOR_PATH,
+        });
+      } else if (id === activeId) {
         show(findNextFile(desk, id));
       }
+    },
+    [activeId, desk, navigate, otherId, show]
+  );
+
+  const close = useCallback(
+    (id: string) => {
+      leave(id);
       setDesk((current) => closeFile(current, id));
     },
-    [activeId, desk, show]
+    [leave]
   );
 
   const forget = useCallback(
     (id: string) => {
-      if (id === activeId) {
-        show(findNextFile(desk, id));
-      }
+      leave(id);
       setDesk((current) => forgetFile(current, id));
     },
-    [activeId, desk, show]
+    [leave]
   );
 
   const move = useCallback(

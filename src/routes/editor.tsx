@@ -54,10 +54,15 @@ export const Route = createFileRoute("/editor")({
 });
 
 function EditorPage() {
-  const { file, tree } = Route.useLoaderData();
-  const { local } = Route.useSearch();
+  const { besideFile, file, tree } = Route.useLoaderData();
+  const { beside, focus, local } = Route.useSearch();
   // A file from the index wins if the URL somehow names both.
   const localFile = useLocalEditorFile(file ? undefined : local);
+  const besideLocalFile = useLocalEditorFile(
+    beside && isLocalFileId(beside) ? beside : undefined
+  );
+  const node = file ?? localFile;
+  const besideNode = besideFile ?? besideLocalFile;
 
   const isHydrated = useIsHydrated();
   const isWide = useEditorViewport();
@@ -72,5 +77,16 @@ function EditorPage() {
     return <EditorViewportNotice node={file} />;
   }
 
-  return <PdfEditorWorkspace node={file ?? localFile} nodes={tree} />;
+  // A second pane needs a first, and a file is never beside itself.
+  const isSplit =
+    node !== null && besideNode !== null && besideNode.id !== node.id;
+
+  return (
+    <PdfEditorWorkspace
+      beside={isSplit ? besideNode : null}
+      focus={focus}
+      node={node}
+      nodes={tree}
+    />
+  );
 }

@@ -1,5 +1,6 @@
 import type {
   EditorPanels,
+  EditorPaneSide,
   EditorTool,
   FileChip,
   LocalPdfProblem,
@@ -124,6 +125,25 @@ export const TAB_CLASS =
 export const TAB_ACTIVE_CLASS =
   "border-border bg-primary text-primary-foreground shadow-sm";
 export const TAB_IDLE_CLASS = "border-border/25 bg-card hover:border-border";
+/** The tab of the file in the pane without focus, on screen but not in hand. */
+export const TAB_BESIDE_CLASS =
+  "border-border bg-accent text-accent-foreground";
+
+export const OPEN_BESIDE_LABEL = "Open beside";
+
+/** A link that opens a file counts as the page being read only when it would
+ * lead to exactly this URL: in a split, the other pane's link names the same
+ * two files and differs only in focus. */
+export const FILE_LINK_ACTIVE_OPTIONS = { exact: true } as const;
+
+export const PANE_LABELS: Record<EditorPaneSide, string> = {
+  beside: "Right pane",
+  primary: "Left pane",
+};
+
+/** Cmd/Ctrl+\ splits the view, the key code editors use for it. Read by
+ * position, since the backslash sits elsewhere on some layouts. */
+export const SPLIT_HOTKEY_CODE = "Backslash";
 
 export const FILE_CHIP_LABELS: Record<FileChip, string> = {
   book: "BOOK",
@@ -414,6 +434,7 @@ export const SHORTCUT_HINTS = {
   reopenTab: "Alt+Shift+T",
   bookmark: "B",
   scrollZoom: "Mod+Scroll",
+  split: "Mod+\\",
   search: "Mod+F",
   searchNext: "Enter",
   searchPrevious: "Shift+Enter",

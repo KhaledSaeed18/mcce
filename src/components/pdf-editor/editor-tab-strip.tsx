@@ -9,6 +9,7 @@ import { useTabDrag } from "@/hooks/use-tab-drag";
 import { useTabLabels } from "@/hooks/use-tab-labels";
 import type {
   EditorDesk,
+  EditorPaneSide,
   EditorTreeNode,
   OpenFile,
 } from "@/lib/pdf-editor/types";
@@ -22,7 +23,10 @@ interface EditorTabStripProps {
   nodes: EditorTreeNode[];
   onClose: (id: string) => void;
   onMove: (from: number, to: number) => void;
+  onOpenBeside: (file: OpenFile) => void;
   onShow: (file: OpenFile) => void;
+  /** Where each file on screen sits while the view is split, by id. */
+  sides: Partial<Record<string, EditorPaneSide>>;
 }
 
 /** The open files, in the file bar where the file's title used to be. */
@@ -33,7 +37,9 @@ export function EditorTabStrip({
   nodes,
   onClose,
   onMove,
+  onOpenBeside,
   onShow,
+  sides,
 }: EditorTabStripProps) {
   const stripRef = useRef<HTMLUListElement>(null);
   const labels = useTabLabels(desk.files, nodes);
@@ -72,6 +78,8 @@ export function EditorTabStrip({
                 key={file.id}
                 label={labels[index]}
                 onClose={onClose}
+                onOpenBeside={onOpenBeside}
+                side={sides[file.id] ?? null}
               />
             ))}
           </ul>

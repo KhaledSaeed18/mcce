@@ -1,4 +1,8 @@
-import { buildSearchForId, readPrimarySearch } from "./editor-search";
+import {
+  buildSearchForId,
+  readPrimaryId,
+  readPrimarySearch,
+} from "./editor-search";
 import type { EditorPaneSide, EditorSearch } from "./types";
 
 /** Closes one pane of a split; the other fills the view and keeps its file. */
@@ -12,6 +16,17 @@ export function closePane(
   return side === "beside"
     ? readPrimarySearch(search)
     : buildSearchForId(search.beside);
+}
+
+/** Closes whichever pane of a split shows the file, as closing its tab does. */
+export function closePaneShowing(
+  search: EditorSearch,
+  id: string
+): EditorSearch {
+  if (id === search.beside) {
+    return closePane(search, "beside");
+  }
+  return id === readPrimaryId(search) ? closePane(search, "primary") : search;
 }
 
 /** Trades the panes' files, so focus stays with the file that had it. */

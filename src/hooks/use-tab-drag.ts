@@ -53,3 +53,7 @@ export function useTabDrag(onMove: (from: number, to: number) => void) {
 
   return { draggingIndex, handlersFor };
 }
+
+export type TabDragHandlers = ReturnType<
+  ReturnType<typeof useTabDrag>["handlersFor"]
+>;
