@@ -1,3 +1,4 @@
+import { useClipTool } from "@/hooks/use-clip-tool";
 import { useEraser } from "@/hooks/use-eraser";
 import { useHandTool } from "@/hooks/use-hand-tool";
 import { useNoteTool } from "@/hooks/use-note-tool";
@@ -69,17 +70,19 @@ export function useAnnotationDrawing({
     size,
     zoom,
   });
-  const hand = useHandTool();
-  const active = pickPointerTool(settings.tool, {
-    eraser,
-    hand,
-    note,
-    shapes,
-    text,
+  const clip = useClipTool({
+    onClip: actions.clip,
+    pageId,
+    rotation,
+    size,
+    zoom,
   });
+  const hand = useHandTool();
+  const tools = { clip, eraser, hand, note, shapes, text };
+  const active = pickPointerTool(settings.tool, tools);
 
   return {
-    draft: shapes.draft,
+    draft: settings.tool === "clip" ? clip.draft : shapes.draft,
     drag: text.drag,
     handleDoubleClick: text.handleDoubleClick,
     handlePointerDown: active.handleDown,

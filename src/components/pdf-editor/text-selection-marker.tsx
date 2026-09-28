@@ -1,10 +1,12 @@
 import { type RefObject, useCallback, useMemo } from "react";
 import { TextSelectionMenu } from "@/components/pdf-editor/text-selection-menu";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+import { useSelectionClip } from "@/hooks/use-selection-clip";
 import { useTextMarking } from "@/hooks/use-text-marking";
 import { useTextSelection } from "@/hooks/use-text-selection";
 import type {
   Annotation,
+  Box,
   EditorPage,
   PageSize,
   TextMarkStyle,
@@ -15,6 +17,7 @@ interface TextSelectionMarkerProps {
   highlightColor: string;
   isEnabled: boolean;
   onAddMany: (annotations: Annotation[]) => void;
+  onClip: (pageId: string, box: Box) => void;
   pages: EditorPage[];
   penColor: string;
   scrollRef: RefObject<HTMLElement | null>;
@@ -27,6 +30,7 @@ export function TextSelectionMarker({
   highlightColor,
   isEnabled,
   onAddMany,
+  onClip,
   pages,
   penColor,
   scrollRef,
@@ -50,6 +54,7 @@ export function TextSelectionMarker({
     sizes,
     zoom,
   });
+  const clip = useSelectionClip({ onClip, pages, scrollRef, sizes, zoom });
   const { copy, isCopied } = useCopyToClipboard();
 
   const handleMark = useCallback(
@@ -60,6 +65,12 @@ export function TextSelectionMarker({
     },
     [mark, selection]
   );
+
+  const handleClip = useCallback(() => {
+    if (selection) {
+      clip(selection.range);
+    }
+  }, [clip, selection]);
 
   const handleCopy = useCallback(() => {
     if (selection) {
@@ -74,6 +85,7 @@ export function TextSelectionMarker({
   return (
     <TextSelectionMenu
       isCopied={isCopied}
+      onClip={handleClip}
       onCopy={handleCopy}
       onMark={handleMark}
       rect={selection.rect}

@@ -104,7 +104,14 @@ export function PdfEditorWorkspace({
               openFiles={desk.desk.files}
             />
           </EditorSidePanel>
-          <EditorDocumentColumn session={session} tools={tools}>
+          <EditorDocumentColumn
+            isRailOpen={panels.isRailOpen}
+            nodes={nodes}
+            onOpenBeside={paneActions.openBeside}
+            panes={panes.panes}
+            session={session}
+            tools={tools}
+          >
             <EditorPanes
               examCover={examCover}
               focusedSide={focused.side}

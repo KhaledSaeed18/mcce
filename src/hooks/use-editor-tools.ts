@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import {
   DEFAULT_COLOR,
   DEFAULT_FONT_SIZE,
@@ -11,7 +11,21 @@ import type { EditorTool } from "@/lib/pdf-editor/types";
 
 /** The tool in hand and the ink it draws with, shared by every open file. */
 export function useEditorTools() {
-  const [tool, setTool] = useState<EditorTool>(DEFAULT_TOOL);
+  const [tool, setToolState] = useState<EditorTool>(DEFAULT_TOOL);
+  // The clip tool hands the pointer back once a box is drawn.
+  const previousRef = useRef<EditorTool>(DEFAULT_TOOL);
+  const toolRef = useRef<EditorTool>(DEFAULT_TOOL);
+  const setTool = useCallback((next: EditorTool) => {
+    if (next !== toolRef.current) {
+      previousRef.current = toolRef.current;
+      toolRef.current = next;
+    }
+    setToolState(next);
+  }, []);
+  const restoreTool = useCallback(
+    () => setTool(previousRef.current),
+    [setTool]
+  );
   const [color, setColor] = useState<string>(DEFAULT_COLOR);
   const [strokeWidth, setStrokeWidth] = useState<number>(DEFAULT_STROKE_WIDTH);
   const [fontSize, setFontSize] = useState<number>(DEFAULT_FONT_SIZE);
@@ -27,6 +41,7 @@ export function useEditorTools() {
     fontSize,
     highlightColor,
     highlightWidth,
+    restoreTool,
     setColor,
     setFontSize,
     setHighlightColor,

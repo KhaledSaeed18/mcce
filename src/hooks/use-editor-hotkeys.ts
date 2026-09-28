@@ -135,7 +135,8 @@ function handleToolSwitch(
   event: KeyboardEvent,
   onToolChange: (tool: EditorTool) => void
 ): boolean {
-  if (event.metaKey || event.ctrlKey || event.altKey) {
+  // Shift with a tool's letter belongs to other keys, like Shift+S for clips.
+  if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) {
     return false;
   }
   const tool = KEY_TO_TOOL.get(event.key.toLowerCase());

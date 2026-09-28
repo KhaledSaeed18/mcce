@@ -27,6 +27,7 @@ export const EDITOR_HELP_FACTS: readonly string[] = [
   "The note tool (N) pins a sticky note to a place on the page. Downloaded copies keep notes as PDF notes that other readers open.",
   "The answer cover draws a box over an answer to quiz yourself. With the select tool, click a cover to see what it hides and again to hide it. The eye button shows or hides every answer at once. Covers stay out of downloads.",
   "Exam mode, the timer button, counts down a sample exam. Every answer cover stays hidden until time is up, then drawing stops and your answers are kept in this browser. A solution open beside the exam stays covered until then, and uncovers on the page you are on, scrolling with it.",
+  "Clips keep part of any page in view while another file is on screen, like a formula sheet or a table. Draw a box with the clip tool (S), pick Clip on selected text, or Clip this page from a thumbnail's menu. Cards float over the pages: drag one by its title, resize it from its corner, double click to fold it into the row along the bottom, and click its picture to open the page beside. The clips button in the toolbar lists them and the ones closed recently. Clips stay out of downloads.",
   "Restore the original file drops every change at once. Undo brings them back.",
   `The editor needs a screen at least ${EDITOR_MIN_WIDTH_PX}px wide.`,
 ];
@@ -73,6 +74,7 @@ export const EDITOR_HELP_SHORTCUT_GROUPS: readonly ShortcutGroup[] = [
     items: [
       { keys: SHORTCUT_HINTS.quickOpen, label: "Open a file from the index" },
       { keys: SHORTCUT_HINTS.searchFiles, label: "Search every open file" },
+      { keys: SHORTCUT_HINTS.toggleClips, label: "Hide or show clips" },
       { keys: SHORTCUT_HINTS.goToTab, label: "Go to a tab, 9 for the last" },
       { keys: SHORTCUT_HINTS.previousTab, label: "Previous tab" },
       { keys: SHORTCUT_HINTS.nextTab, label: "Next tab" },

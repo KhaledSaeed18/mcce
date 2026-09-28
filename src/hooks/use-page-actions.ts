@@ -11,7 +11,7 @@ import type {
 type Commit = (next: (current: EditorSnapshot) => EditorSnapshot) => void;
 
 /** Changes to the pages themselves, which take their markup with them. */
-export function usePageActions(commit: Commit): PageActions {
+export function usePageActions(commit: Commit): Omit<PageActions, "clip"> {
   const remove = useCallback(
     (id: string) =>
       commit((current) => {

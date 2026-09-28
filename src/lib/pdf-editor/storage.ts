@@ -5,7 +5,7 @@ import {
 import { readJson, removeStored, writeJson } from "@/lib/storage";
 import { buildPageId, buildPages } from "./pages";
 import { reconcileWithFile } from "./reconcile";
-import type { Annotation, EditorSnapshot } from "./types";
+import type { Annotation, EditorPage, EditorSnapshot } from "./types";
 
 /** Markup on disk, which may predate pages being pointed at by identity. */
 interface StoredAnnotation {
@@ -51,6 +51,16 @@ export function readDocument(
     return reconcileWithFile(stored, pageCount);
   }
   return { annotations: readAnnotations(fileId), pages: buildPages(pageCount) };
+}
+
+/** The pages as the reader last left them, or null for a file never
+ * changed, whose pages are still the file's own. */
+export function readStoredPages(fileId: string): EditorPage[] | null {
+  const stored = readJson<EditorSnapshot>(
+    buildDocumentKey(fileId),
+    NOTHING_STORED
+  );
+  return stored.pages.length > 0 ? stored.pages : null;
 }
 
 /** False when the browser would not keep it, which the reader is told about. */

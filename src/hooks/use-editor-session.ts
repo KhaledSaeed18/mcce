@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { DEFAULT_EXPORT_NAME } from "@/config/pdf-editor";
+import { useClipMaker } from "@/hooks/use-clip-maker";
 import { useDocumentSearch } from "@/hooks/use-document-search";
 import { useEditorInk } from "@/hooks/use-editor-ink";
 import { useEditorMarkup } from "@/hooks/use-editor-markup";
@@ -36,7 +37,7 @@ export function useEditorSession({
   const { bytes, doc, retry, status } = usePdfDocument(node);
   // Recent files are shared with the rest of the site, which only knows Drive files.
   useRecordRecentFile(node?.source === "drive" ? node.id : undefined);
-  const markup = useEditorMarkup({
+  const fileMarkup = useEditorMarkup({
     fileId: node?.id,
     pageCount: doc?.numPages ?? 0,
     setColor: tools.setColor,
@@ -45,8 +46,15 @@ export function useEditorSession({
   const { activeSize, isDocumentShown, navigation, sizes } = useEditorPages(
     scrollRef,
     doc,
-    markup.pages
+    fileMarkup.pages
   );
+  const { clips, markup } = useClipMaker({
+    doc,
+    markup: fileMarkup,
+    node,
+    sizes,
+    tools,
+  });
   const { bookmarks, covers, exam } = useEditorStudy({
     activeIndex: navigation.activeIndex,
     annotations: markup.annotations,
@@ -81,6 +89,7 @@ export function useEditorSession({
 
   return {
     bookmarks,
+    clips,
     covers,
     doc,
     exam,

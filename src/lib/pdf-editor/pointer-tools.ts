@@ -9,6 +9,7 @@ export interface PointerHandlers {
 
 /** The tools that take the pointer on a page, each with its own handlers. */
 export interface PointerTools {
+  clip: PointerHandlers;
   eraser: PointerHandlers;
   hand: PointerHandlers;
   note: PointerHandlers;
@@ -24,6 +25,7 @@ const IGNORE_POINTER: PointerHandlers = {
 
 /** Tools with handlers of their own; the rest draw shapes. */
 const OWN_HANDLERS: Partial<Record<EditorTool, keyof PointerTools>> = {
+  clip: "clip",
   eraser: "eraser",
   hand: "hand",
   note: "note",

@@ -183,6 +183,7 @@ export type EditorTool =
   | "text"
   | "note"
   | "cover"
+  | "clip"
   | "hand";
 
 /** Page space: PDF points, top-left origin, independent of the zoom it was drawn at. */
@@ -394,6 +395,8 @@ export interface CoverReveal {
 
 /** Every way the rail can change the pages, kept together as they travel down. */
 export interface PageActions {
+  /** Keeps the whole page in view as a clip. */
+  clip: (id: string) => void;
   copy: (id: string) => void;
   /** Puts a sheet to work on directly after a page. */
   insertSheet: (afterId: string, sheet: PageSheet) => void;
@@ -408,6 +411,8 @@ export interface AnnotationActions {
   /** Several at once, as a single undo step. */
   addMany: (annotations: Annotation[]) => void;
   batchErase: (pageId: string, points: Point[]) => void;
+  /** Keeps a part of the page in view as a clip. */
+  clip: (pageId: string, box: Box) => void;
   erase: (pageId: string, point: Point) => void;
   moveText: (id: string, dx: number, dy: number) => void;
   remove: (id: string) => void;

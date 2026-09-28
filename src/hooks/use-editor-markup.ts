@@ -54,7 +54,7 @@ export function useEditorMarkup({
     setFontSize,
   });
 
-  const actions: AnnotationActions = {
+  const actions: Omit<AnnotationActions, "clip"> = {
     add,
     addMany,
     batchErase: batchEraseAt,
@@ -87,3 +87,5 @@ export function useEditorMarkup({
     undo,
   };
 }
+
+export type EditorMarkup = ReturnType<typeof useEditorMarkup>;
