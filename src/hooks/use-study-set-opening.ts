@@ -6,12 +6,16 @@ import {
   openSharedSet,
 } from "@/lib/pdf-editor/study-set-opening";
 import { readStudySets } from "@/lib/pdf-editor/study-sets";
-import type { EditorTreeNode, OpenFile } from "@/lib/pdf-editor/types";
+import type {
+  EditorTreeNode,
+  OpenFile,
+  PaneLock,
+} from "@/lib/pdf-editor/types";
 
 interface StudySetOpeningOptions {
   beside?: string;
   nodes: EditorTreeNode[];
-  onLock: (lock: { files: string; gap: number }) => void;
+  onLock: (lock: PaneLock) => void;
   onReplace: (files: OpenFile[]) => void;
   /** A shared link's files, by id. */
   set?: string;

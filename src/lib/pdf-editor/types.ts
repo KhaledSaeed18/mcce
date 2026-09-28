@@ -68,6 +68,13 @@ export interface StudySet {
   savedAt: string;
 }
 
+/** Two panes scrolling together: the files it joins, as "first|second",
+ * and how many pages the second is ahead of the first. */
+export interface PaneLock {
+  files: string;
+  gap: number;
+}
+
 /** The short tag a tab carries for what its file is for. */
 export type FileChip =
   | "book"

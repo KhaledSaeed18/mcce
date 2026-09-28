@@ -1,12 +1,18 @@
 import { buildEditorSearch } from "./editor-search";
 import { readSetIds } from "./study-set-link";
-import type { EditorSearch, EditorTreeNode, OpenFile, StudySet } from "./types";
+import type {
+  EditorSearch,
+  EditorTreeNode,
+  OpenFile,
+  PaneLock,
+  StudySet,
+} from "./types";
 
 /** What opening a set does: the tabs it opens, the URL it shows them at,
  * and the scroll lock to put back, keyed by the two files it joins. */
 export interface StudySetOpening {
   files: OpenFile[];
-  lock: { files: string; gap: number } | null;
+  lock: PaneLock | null;
   search: EditorSearch;
 }
 
