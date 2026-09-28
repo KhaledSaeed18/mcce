@@ -2,7 +2,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
 import { EDITOR_PATH } from "@/config/pdf-editor";
 import { closePane, focusPane, swapPanes } from "@/lib/pdf-editor/pane-layout";
-import { openInOtherPane } from "@/lib/pdf-editor/pane-search";
+import { openInOtherPane, placeFileOnSide } from "@/lib/pdf-editor/pane-search";
 import type {
   EditorPaneSide,
   EditorSearch,
@@ -36,7 +36,13 @@ export function usePaneActions() {
     [update]
   );
 
+  const place = useCallback(
+    (file: Pick<OpenFile, "id" | "source">, side: EditorPaneSide) =>
+      update((search) => placeFileOnSide(search, file, side)),
+    [update]
+  );
+
   const swap = useCallback(() => update(swapPanes), [update]);
 
-  return { close, focus, openBeside, swap };
+  return { close, focus, openBeside, place, swap };
 }

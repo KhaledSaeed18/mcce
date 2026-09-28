@@ -5,7 +5,7 @@ import {
   focusPane,
   swapPanes,
 } from "./pane-layout";
-import { openInOtherPane, placeFile } from "./pane-search";
+import { openInOtherPane, placeFile, placeFileOnSide } from "./pane-search";
 
 const EXAM = { id: "exam", source: "drive" } as const;
 const SOLUTION = { id: "solution", source: "drive" } as const;
@@ -91,5 +91,35 @@ describe("pane layout", () => {
     expect(focusPane(SPLIT, "beside")).toEqual(SPLIT_BESIDE_FOCUSED);
     expect(focusPane(SPLIT_BESIDE_FOCUSED, "primary")).toEqual(SPLIT);
     expect(focusPane({ file: "exam" }, "beside")).toEqual({ file: "exam" });
+  });
+});
+
+describe("placeFileOnSide", () => {
+  it("splits the view when a file is dropped on the right of one", () => {
+    expect(placeFileOnSide({ file: "exam" }, SOLUTION, "beside")).toEqual(
+      SPLIT_BESIDE_FOCUSED
+    );
+  });
+
+  it("replaces the file on the side it is dropped on", () => {
+    expect(placeFileOnSide({ file: "exam" }, NOTES, "primary")).toEqual({
+      local: "local-notes",
+    });
+    expect(placeFileOnSide(SPLIT, NOTES, "primary")).toEqual({
+      beside: "solution",
+      local: "local-notes",
+    });
+    expect(placeFileOnSide(SPLIT, NOTES, "beside")).toEqual({
+      beside: "local-notes",
+      file: "exam",
+      focus: "beside",
+    });
+  });
+
+  it("trades sides when a file on screen is dropped on the other half", () => {
+    expect(placeFileOnSide(SPLIT, SOLUTION, "primary")).toEqual({
+      beside: "exam",
+      file: "solution",
+    });
   });
 });

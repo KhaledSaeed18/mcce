@@ -122,6 +122,7 @@ export function PdfEditorWorkspace({
               nodes={nodes}
               onClosePane={paneActions.close}
               onFocus={paneActions.focus}
+              onPlace={paneActions.place}
               onShowFiles={panels.toggleBrowser}
               onSwap={paneActions.swap}
               panes={panes}

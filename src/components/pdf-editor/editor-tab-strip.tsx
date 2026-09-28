@@ -71,7 +71,7 @@ export function EditorTabStrip({
           >
             {desk.files.map((file, index) => (
               <EditorTab
-                dragHandlers={handlersFor(index)}
+                dragHandlers={handlersFor(index, file)}
                 file={file}
                 isActive={file.id === activeId}
                 isDragging={index === draggingIndex}

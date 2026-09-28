@@ -1,4 +1,7 @@
 import { type DragEvent, useCallback, useRef, useState } from "react";
+import { TAB_DRAG_TYPE } from "@/config/pdf-editor";
+import { writeTabDragData } from "@/lib/pdf-editor/tab-drag-data";
+import type { OpenFile } from "@/lib/pdf-editor/types";
 
 /** Only past the middle of the tab it is over does a dragged tab take its
  * place. Swapping on first touch would put a narrower tab back under the
@@ -10,7 +13,8 @@ function isPastMiddle(event: DragEvent<HTMLElement>, isMovingRight: boolean) {
 }
 
 /** Drag a tab along the strip to reorder it. The tabs move as it passes
- * them, so where it lands is always on show. */
+ * them, so where it lands is always on show. The drag carries the file too,
+ * for dropping it on the pages. */
 export function useTabDrag(onMove: (from: number, to: number) => void) {
   const fromRef = useRef<number | null>(null);
   const [draggingIndex, setDraggingIndex] = useState<number | null>(null);
@@ -21,7 +25,7 @@ export function useTabDrag(onMove: (from: number, to: number) => void) {
   }, []);
 
   const handlersFor = useCallback(
-    (index: number) => ({
+    (index: number, file: OpenFile) => ({
       draggable: true,
       onDragEnd: end,
       onDragOver: (event: DragEvent<HTMLElement>) => {
@@ -41,6 +45,7 @@ export function useTabDrag(onMove: (from: number, to: number) => void) {
         fromRef.current = index;
         setDraggingIndex(index);
         event.dataTransfer.effectAllowed = "move";
+        event.dataTransfer.setData(TAB_DRAG_TYPE, writeTabDragData(file));
       },
       onDrop: (event: DragEvent<HTMLElement>) => {
         if (fromRef.current !== null) {

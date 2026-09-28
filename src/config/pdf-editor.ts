@@ -154,6 +154,15 @@ export const SCROLL_LOCK_HOTKEY_KEY = "l";
 export const SCROLL_LOCK_ON_LABEL = "Scroll both panes together";
 export const SCROLL_LOCK_OFF_LABEL = "Stop scrolling together";
 
+/** Marks a drag as a tab rather than a file from the computer. */
+export const TAB_DRAG_TYPE = "application/x-mcce-tab";
+
+/** What dropping a tab on each half of the pages does. */
+export const PANE_DROP_LABELS = {
+  single: { beside: "Open beside", primary: "Show here" },
+  split: { beside: "Show on the right", primary: "Show on the left" },
+} as const;
+
 export const PANE_MENU_LABEL = "Pane options";
 export const PANE_SWAP_LABEL = "Swap sides";
 export const PANE_ALONE_LABEL = "Show on its own";

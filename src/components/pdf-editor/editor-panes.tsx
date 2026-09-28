@@ -3,13 +3,19 @@ import { EditorPane } from "@/components/pdf-editor/editor-pane";
 import { EditorPaneDivider } from "@/components/pdf-editor/editor-pane-divider";
 import { EditorPaneHeader } from "@/components/pdf-editor/editor-pane-header";
 import { EditorPaneSlot } from "@/components/pdf-editor/editor-pane-slot";
+import { PaneDropOverlay } from "@/components/pdf-editor/pane-drop-overlay";
 import { ScrollLockButton } from "@/components/pdf-editor/scroll-lock-button";
 import type { EditorPaneView } from "@/hooks/use-editor-panes";
 import type { EditorTools } from "@/hooks/use-editor-tools";
 import { usePaneChips } from "@/hooks/use-pane-chips";
+import { usePaneDrop } from "@/hooks/use-pane-drop";
 import { useScrollLock } from "@/hooks/use-scroll-lock";
 import { useSplitResize } from "@/hooks/use-split-resize";
-import type { EditorPaneSide, EditorTreeNode } from "@/lib/pdf-editor/types";
+import type {
+  EditorPaneSide,
+  EditorTreeNode,
+  OpenFile,
+} from "@/lib/pdf-editor/types";
 
 interface EditorPanesProps {
   focusedSide: EditorPaneSide;
@@ -19,6 +25,11 @@ interface EditorPanesProps {
   nodes: EditorTreeNode[];
   onClosePane: (side: EditorPaneSide) => void;
   onFocus: (side: EditorPaneSide) => void;
+  /** Puts a file on one side, for a tab dropped on the pages. */
+  onPlace: (
+    file: Pick<OpenFile, "id" | "source">,
+    side: EditorPaneSide
+  ) => void;
   onShowFiles: () => void;
   onSwap: () => void;
   panes: EditorPaneView[];
@@ -39,6 +50,7 @@ export function EditorPanes({
   nodes,
   onClosePane,
   onFocus,
+  onPlace,
   onShowFiles,
   onSwap,
   panes,
@@ -49,9 +61,14 @@ export function EditorPanes({
   const containerRef = useRef<HTMLDivElement>(null);
   const { handlers, ratio } = useSplitResize(containerRef);
   const lock = useScrollLock(panes);
+  const drop = usePaneDrop(containerRef, onPlace);
 
   return (
-    <div className="flex min-h-0 min-w-0 flex-1" ref={containerRef}>
+    <div
+      {...drop.handlers}
+      className="relative flex min-h-0 min-w-0 flex-1"
+      ref={containerRef}
+    >
       {panes.map((pane, index) => (
         <Fragment key={pane.side}>
           {index > 0 ? (
@@ -87,6 +104,9 @@ export function EditorPanes({
           </EditorPaneSlot>
         </Fragment>
       ))}
+      {drop.target ? (
+        <PaneDropOverlay isSplit={isSplit} target={drop.target} />
+      ) : null}
     </div>
   );
 }

@@ -3,7 +3,8 @@ import {
   readPrimaryId,
   readPrimarySearch,
 } from "./editor-search";
-import type { EditorSearch, OpenFile } from "./types";
+import { focusPane, swapPanes } from "./pane-layout";
+import type { EditorPaneSide, EditorSearch, OpenFile } from "./types";
 
 type FileRef = Pick<OpenFile, "id" | "source">;
 
@@ -40,6 +41,28 @@ export function openInOtherPane(
   }
   if (search.beside && search.focus === "beside") {
     return { ...buildEditorSearch(file), beside: search.beside };
+  }
+  return { ...readPrimarySearch(search), beside: file.id, focus: "beside" };
+}
+
+/** Puts a file on one side, as dropping its tab on that half of the pages
+ * does, and focuses it. A file already on the other side trades places with
+ * the file there. */
+export function placeFileOnSide(
+  search: EditorSearch,
+  file: FileRef,
+  side: EditorPaneSide
+): EditorSearch {
+  const primaryId = readPrimaryId(search);
+  const isOnOtherSide =
+    side === "primary" ? file.id === search.beside : file.id === primaryId;
+  if (isOnOtherSide && search.beside) {
+    return focusPane(swapPanes(search), side);
+  }
+  if (side === "primary" || !primaryId) {
+    return search.beside && file.id !== search.beside
+      ? { ...buildEditorSearch(file), beside: search.beside }
+      : buildEditorSearch(file);
   }
   return { ...readPrimarySearch(search), beside: file.id, focus: "beside" };
 }
