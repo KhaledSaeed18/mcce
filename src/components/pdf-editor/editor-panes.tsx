@@ -1,4 +1,4 @@
-import { Fragment, useRef } from "react";
+import { Fragment, useCallback, useRef } from "react";
 import { EditorPane } from "@/components/pdf-editor/editor-pane";
 import { EditorPaneDivider } from "@/components/pdf-editor/editor-pane-divider";
 import { EditorPaneHeader } from "@/components/pdf-editor/editor-pane-header";
@@ -9,6 +9,7 @@ import type { EditorPaneView } from "@/hooks/use-editor-panes";
 import type { EditorTools } from "@/hooks/use-editor-tools";
 import { usePaneChips } from "@/hooks/use-pane-chips";
 import { usePaneDrop } from "@/hooks/use-pane-drop";
+import { usePaneFocusHotkey } from "@/hooks/use-pane-focus-hotkey";
 import { useScrollLock } from "@/hooks/use-scroll-lock";
 import { useSplitResize } from "@/hooks/use-split-resize";
 import type {
@@ -62,6 +63,11 @@ export function EditorPanes({
   const { handlers, ratio } = useSplitResize(containerRef);
   const lock = useScrollLock(panes);
   const drop = usePaneDrop(containerRef, onPlace);
+  const focusOther = useCallback(
+    () => onFocus(focusedSide === "primary" ? "beside" : "primary"),
+    [focusedSide, onFocus]
+  );
+  usePaneFocusHotkey(focusOther, isSplit);
 
   return (
     <div

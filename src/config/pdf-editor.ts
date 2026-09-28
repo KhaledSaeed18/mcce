@@ -149,6 +149,8 @@ export const SPLIT_DIVIDER_LABEL = "Resize panes";
 /** The divider's width, which the panes share the rest of. Matches its w-2.5. */
 export const SPLIT_DIVIDER_WIDTH = 10;
 
+export const PANE_FOCUS_HOTKEY_CODE = "Backquote";
+
 /** L for lock, which no tool uses. */
 export const SCROLL_LOCK_HOTKEY_KEY = "l";
 export const SCROLL_LOCK_ON_LABEL = "Scroll both panes together";
@@ -457,6 +459,7 @@ export const SHORTCUT_HINTS = {
   lastFile: "Alt+`",
   nextPage: "Right arrow",
   nextTab: "Alt+]",
+  otherPane: "`",
   pan: "Space",
   pasteMarkup: "Mod+V",
   previousPage: "Left arrow",
