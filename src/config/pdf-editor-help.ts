@@ -75,6 +75,8 @@ export const EDITOR_HELP_SHORTCUT_GROUPS: readonly ShortcutGroup[] = [
       { keys: SHORTCUT_HINTS.goToTab, label: "Go to a tab, 9 for the last" },
       { keys: SHORTCUT_HINTS.previousTab, label: "Previous tab" },
       { keys: SHORTCUT_HINTS.nextTab, label: "Next tab" },
+      { keys: SHORTCUT_HINTS.moveTabLeft, label: "Move the tab left" },
+      { keys: SHORTCUT_HINTS.moveTabRight, label: "Move the tab right" },
       { keys: SHORTCUT_HINTS.lastFile, label: "Back to the last file" },
       { keys: SHORTCUT_HINTS.closeTab, label: "Close the tab" },
       { keys: SHORTCUT_HINTS.reopenTab, label: "Reopen a closed tab" },

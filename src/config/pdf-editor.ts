@@ -510,6 +510,8 @@ export const SHORTCUT_HINTS = {
   goToTab: "Alt+1-9",
   help: "?",
   lastFile: "Alt+`",
+  moveTabLeft: "Alt+Shift+[",
+  moveTabRight: "Alt+Shift+]",
   nextPage: "Right arrow",
   nextTab: "Alt+]",
   otherPane: "`",

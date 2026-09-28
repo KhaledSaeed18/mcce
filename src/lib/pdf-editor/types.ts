@@ -46,11 +46,13 @@ export type TabKey =
   | { step: -1 | 1; type: "step" }
   | { type: "back" }
   | { type: "close" }
+  | { step: -1 | 1; type: "move" }
   | { type: "reopen" };
 
 /** What a tab key does once the tabs are known. */
 export type TabKeyResult =
   | { file: OpenFile; type: "show" }
+  | { from: number; to: number; type: "move" }
   | { id: string; type: "close" };
 
 /** A group of files saved to come back to together, like everything open

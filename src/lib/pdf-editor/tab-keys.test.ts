@@ -39,6 +39,18 @@ describe("readTabKey", () => {
     expect(press("KeyT", { shiftKey: true })).toEqual({ type: "reopen" });
   });
 
+  it("reads Shift with a bracket as moving the tab", () => {
+    expect(press("BracketLeft", { shiftKey: true })).toEqual({
+      step: -1,
+      type: "move",
+    });
+    expect(press("BracketRight", { shiftKey: true })).toEqual({
+      step: 1,
+      type: "move",
+    });
+    expect(press("Backquote", { shiftKey: true })).toBeNull();
+  });
+
   it("leaves keys without Alt, or with Cmd or Ctrl, to others", () => {
     expect(press("Digit1", { altKey: false })).toBeNull();
     expect(press("Digit1", { metaKey: true })).toBeNull();
@@ -72,5 +84,23 @@ describe("resolveTabKey", () => {
     expect(
       resolveTabKey(closeFile(desk, "b"), "c", { type: "reopen" })
     ).toEqual({ file: file("b"), type: "show" });
+  });
+
+  it("moves the tab on screen one place, stopping at either end", () => {
+    expect(resolveTabKey(desk, "b", { step: -1, type: "move" })).toEqual({
+      from: 1,
+      to: 0,
+      type: "move",
+    });
+    expect(resolveTabKey(desk, "b", { step: 1, type: "move" })).toEqual({
+      from: 1,
+      to: 2,
+      type: "move",
+    });
+    expect(resolveTabKey(desk, "a", { step: -1, type: "move" })).toBeNull();
+    expect(resolveTabKey(desk, "c", { step: 1, type: "move" })).toBeNull();
+    expect(
+      resolveTabKey(desk, undefined, { step: 1, type: "move" })
+    ).toBeNull();
   });
 });
