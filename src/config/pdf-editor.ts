@@ -136,6 +136,11 @@ export const OPEN_BESIDE_LABEL = "Open beside";
  * two files and differs only in focus. */
 export const FILE_LINK_ACTIVE_OPTIONS = { exact: true } as const;
 
+export const PANE_MENU_LABEL = "Pane options";
+export const PANE_SWAP_LABEL = "Swap sides";
+export const PANE_ALONE_LABEL = "Show on its own";
+export const PANE_CLOSE_LABEL = "Close this pane";
+
 export const PANE_LABELS: Record<EditorPaneSide, string> = {
   beside: "Right pane",
   primary: "Left pane",

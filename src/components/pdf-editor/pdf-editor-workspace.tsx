@@ -120,8 +120,10 @@ export function PdfEditorWorkspace({
               isPanelAnimated={panels.isAnimated}
               isRailOpen={panels.isRailOpen}
               nodes={nodes}
+              onClosePane={paneActions.close}
               onFocus={paneActions.focus}
               onShowFiles={panels.toggleBrowser}
+              onSwap={paneActions.swap}
               panes={panes}
               tools={tools}
             />
