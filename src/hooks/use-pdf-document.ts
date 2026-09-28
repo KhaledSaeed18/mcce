@@ -1,6 +1,6 @@
-import type { PDFDocumentLoadingTask, PDFDocumentProxy } from "pdfjs-dist";
+import type { PDFDocumentProxy } from "pdfjs-dist";
 import { useCallback, useEffect, useState } from "react";
-import { openDocument } from "@/lib/pdf-editor/open-document";
+import { acquireDocument } from "@/lib/pdf-editor/document-cache";
 import type { EditorFile } from "@/lib/pdf-editor/types";
 
 export type PdfLoadStatus = "idle" | "loading" | "ready" | "error";
@@ -27,7 +27,8 @@ const LOADING_STATE: PdfDocumentState = {
   status: "loading",
 };
 
-/** Reads the file from wherever it lives, then opens it. */
+/** Reads the file from wherever it lives, then opens it. A file opened a
+ * little while ago is still loaded, and comes back without being read again. */
 export function usePdfDocument(file: EditorFile | null): PdfDocument {
   const fileId = file ? file.id : null;
   const [state, setState] = useState<LoadedDocument>({
@@ -46,17 +47,14 @@ export function usePdfDocument(file: EditorFile | null): PdfDocument {
     const { id } = file;
 
     let active = true;
-    let task: PDFDocumentLoadingTask | null = null;
     setState({ ...LOADING_STATE, fileId: id });
 
-    openDocument(file)
-      .then(({ bytes, doc, task: opened }) => {
-        task = opened;
+    const lease = acquireDocument(file);
+    lease.opening
+      .then(({ bytes, doc }) => {
         if (active) {
           setState({ bytes, doc, fileId: id, status: "ready" });
-          return;
         }
-        opened.destroy();
       })
       .catch(() => {
         if (active) {
@@ -66,7 +64,7 @@ export function usePdfDocument(file: EditorFile | null): PdfDocument {
 
     return () => {
       active = false;
-      task?.destroy();
+      lease.release();
     };
   }, [attempt, fileId]);
 

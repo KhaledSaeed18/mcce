@@ -217,6 +217,13 @@ export const DEFAULT_FONT_SIZE = 16;
  */
 export const MAX_HISTORY_STEPS = 100;
 
+/**
+ * How many opened files stay loaded once nothing shows them, so going back to
+ * one is instant. Each holds its bytes and pdf.js's copy of them, so a few
+ * large books are as much as is worth keeping.
+ */
+export const LOADED_DOCUMENT_LIMIT = 4;
+
 /** Page-space radius around the pointer that counts as touching a stroke. */
 export const ERASER_TOLERANCE = 6;
 
