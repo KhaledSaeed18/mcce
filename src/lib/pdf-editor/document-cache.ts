@@ -86,6 +86,10 @@ export function acquireDocument(file: EditorFileRef): DocumentLease {
   };
 }
 
+export function hasLoadedDocument(fileId: string): boolean {
+  return documents.has(fileId);
+}
+
 /** For a file taken off this device, which should not open again from memory. */
 export function forgetDocument(fileId: string): void {
   const entry = documents.get(fileId);

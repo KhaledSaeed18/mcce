@@ -98,6 +98,7 @@ describe("opening a set", () => {
       id: file.id,
       kind: "pdf" as const,
       materialType: "exam" as const,
+      modifiedTime: "2026-01-01T00:00:00.000Z",
       name: file.name,
       parentId: null,
     }));

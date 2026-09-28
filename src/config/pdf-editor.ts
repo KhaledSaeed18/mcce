@@ -486,6 +486,44 @@ export const PASTE_OFFSET = 12;
  * count grows in steps rather than re-rendering after every page. */
 export const SEARCH_TEXT_BATCH_PAGES = 8;
 
+/** With Shift, the key searches every open file instead of the one in view. */
+export const FILE_SEARCH_LABEL = "Search open files";
+export const FILE_SEARCH_DESCRIPTION =
+  "Search the text of every open tab. Enter opens a match, Alt+Enter opens it beside.";
+export const FILE_SEARCH_PLACEHOLDER = "Search every open file";
+export const FILE_SEARCH_EMPTY = "No matches in the open files.";
+export const FILE_SEARCH_HINT_OPEN = "Open";
+export const FILE_SEARCH_HINT_BESIDE = "Open beside";
+export const FILE_SEARCH_PAGE_PREFIX = "p.";
+/** Joins a file's id and a match's place into one result's value. */
+export const FILE_SEARCH_VALUE_SEPARATOR = "#";
+export const FILE_SEARCH_SHOW_ALL_VALUE = "all";
+
+/** Results a file shows before its "Show all" line. */
+export const FILE_SEARCH_PREVIEW_COUNT = 5;
+
+/** Results a file lists at most once shown in full, so a one-letter search
+ * in a long book does not lay out thousands of lines. */
+export const FILE_SEARCH_RESULT_LIMIT = 200;
+
+/** Characters kept either side of a match in its result line. */
+export const FILE_SEARCH_SNIPPET_BEFORE = 36;
+export const FILE_SEARCH_SNIPPET_AFTER = 72;
+
+/** Selected words longer than this are not taken as the search. */
+export const FILE_SEARCH_SELECTION_LIMIT = 120;
+
+/** Files whose text is kept in this browser, the ones searched most
+ * recently, so searching them again needs no download. */
+export const FILE_TEXT_LIMIT = 40;
+export const FILE_TEXT_DB_NAME = "mcce-editor-text";
+export const FILE_TEXT_DB_VERSION = 1;
+export const FILE_TEXT_STORE = "file-text";
+export const FILE_TEXT_USE_STORE = "file-text-use";
+
+/** Local files are named by their content, so their text never changes. */
+export const LOCAL_FILE_TEXT_VERSION = "local";
+
 export const SEARCH_LABEL = "Search this file";
 export const SEARCH_PLACEHOLDER = "Search";
 export const SEARCH_NO_MATCHES = "No matches";
@@ -528,6 +566,9 @@ export const SHORTCUT_HINTS = {
   scrollZoom: "Mod+Scroll",
   split: "Mod+\\",
   search: "Mod+F",
+  searchFiles: "Mod+Shift+F",
+  searchFilesOpen: "Enter",
+  searchFilesOpenBeside: "Alt+Enter",
   searchNext: "Enter",
   searchPrevious: "Shift+Enter",
   undo: "Mod+Z",

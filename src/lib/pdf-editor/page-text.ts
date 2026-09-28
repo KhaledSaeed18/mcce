@@ -6,7 +6,7 @@ const LINE_BREAK = " ";
 
 /** Lowercased one character at a time: a character whose lowercase is longer
  * is kept as it is, so every offset still points at the same character. */
-function lowercaseInPlace(text: string): string {
+export function lowercaseInPlace(text: string): string {
   let result = "";
   for (const character of text) {
     const lower = character.toLowerCase();
@@ -15,7 +15,8 @@ function lowercaseInPlace(text: string): string {
   return result;
 }
 
-export function buildPageText(items: readonly PageTextItem[]): PageText {
+/** The page's items run together as printed, before lowercasing. */
+export function joinPageItems(items: readonly PageTextItem[]): PageText {
   const itemStarts: number[] = [];
   let text = "";
   for (const item of items) {
@@ -25,6 +26,11 @@ export function buildPageText(items: readonly PageTextItem[]): PageText {
       text += LINE_BREAK;
     }
   }
+  return { itemStarts, text };
+}
+
+export function buildPageText(items: readonly PageTextItem[]): PageText {
+  const { itemStarts, text } = joinPageItems(items);
   return { itemStarts, text: lowercaseInPlace(text) };
 }
 

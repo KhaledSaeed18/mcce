@@ -4,6 +4,7 @@ import { EditorDropZone } from "@/components/pdf-editor/editor-drop-zone";
 import { EditorExamDialogs } from "@/components/pdf-editor/editor-exam-dialogs";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
 import { EditorFileBarTabs } from "@/components/pdf-editor/editor-file-bar-tabs";
+import { EditorFileSearch } from "@/components/pdf-editor/editor-file-search";
 import { EditorHelpDialog } from "@/components/pdf-editor/editor-help-dialog";
 import { EditorPanes } from "@/components/pdf-editor/editor-panes";
 import { EditorSidePanel } from "@/components/pdf-editor/editor-side-panel";
@@ -133,6 +134,13 @@ export function PdfEditorWorkspace({
         </div>
       </EditorDropZone>
       <EditorHelpDialog onOpenChange={help.setIsOpen} open={help.isOpen} />
+      <EditorFileSearch
+        files={desk.desk.files}
+        nodes={nodes}
+        onOpenBeside={paneActions.openBeside}
+        onShow={desk.show}
+        panes={panes.panes}
+      />
       <EditorExamDialogs panes={panes.panes} />
     </main>
   );

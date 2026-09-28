@@ -11,6 +11,7 @@ export function useSearchHotkey(onOpen: () => void) {
       const isSearchKey =
         (event.metaKey || event.ctrlKey) &&
         !event.altKey &&
+        !event.shiftKey &&
         event.key.toLowerCase() === SEARCH_HOTKEY_KEY;
       if (!isSearchKey || isDialogTarget(event.target)) {
         return;

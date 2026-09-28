@@ -13,6 +13,7 @@ function pdf(
     id,
     kind: "pdf",
     materialType: "lecture",
+    modifiedTime: "2026-01-01T00:00:00.000Z",
     name,
     parentId,
   } satisfies EditorTreeNode;

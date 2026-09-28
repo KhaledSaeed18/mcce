@@ -4,7 +4,8 @@ import type { EditorTreeNode } from "./types";
 
 /**
  * The editor walks the whole tree, but only by id, name, kind, and parent,
- * and labels files by their material type and course. Trimming every node to
+ * labels files by their material type and course, and tells kept text of a
+ * file from an older copy by its modified time. Trimming every node to
  * those fields server-side keeps the editor from hydrating the full drive
  * index with each page load.
  */
@@ -14,11 +15,20 @@ export const getEditorTree = createServerFn({ method: "GET" }).handler(
       .default as DriveIndex;
 
     return nodes.map(
-      ({ courseCode, id, kind, materialType, name, parentId }) => ({
+      ({
         courseCode,
         id,
         kind,
         materialType,
+        modifiedTime,
+        name,
+        parentId,
+      }) => ({
+        courseCode,
+        id,
+        kind,
+        materialType,
+        modifiedTime,
         name,
         parentId,
       })

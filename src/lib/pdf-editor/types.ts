@@ -4,7 +4,13 @@ import type { DriveNode } from "@/lib/drive/types";
  * tree, to label a file by what it is for, and to find its course. */
 export type EditorTreeNode = Pick<
   DriveNode,
-  "courseCode" | "id" | "kind" | "materialType" | "name" | "parentId"
+  | "courseCode"
+  | "id"
+  | "kind"
+  | "materialType"
+  | "modifiedTime"
+  | "name"
+  | "parentId"
 >;
 
 /** A file from the index, trimmed to what the file bar, export, and Drive link read. */

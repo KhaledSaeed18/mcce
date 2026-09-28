@@ -1,6 +1,7 @@
 import { removeBookmarks } from "./bookmarks";
 import { forgetDocument } from "./document-cache";
 import { removeExam } from "./exam-storage";
+import { forgetFileText } from "./file-search/file-text";
 import { forgetHistory } from "./history-store";
 import { removeLocalPdf } from "./local-pdf-store";
 import { removeDocument } from "./storage";
@@ -18,4 +19,5 @@ export async function forgetLocalPdf(id: string): Promise<void> {
   forgetHistory(id);
   forgetDocument(id);
   forgetFileInStudySets(id);
+  await forgetFileText(id);
 }
