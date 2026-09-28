@@ -101,6 +101,7 @@ export const CLOSED_TAB_LIMIT = 10;
 
 export const OPEN_FILES_LABEL = "Open files";
 export const CLOSED_FILES_LABEL = "Recently closed";
+export const CLOSE_TAB_LABEL = "Close";
 export const OPEN_FILES_FILTER_PLACEHOLDER = "Filter open files";
 export const OPEN_FILES_FILTER_EMPTY = "No open file matches.";
 
@@ -380,18 +381,24 @@ export const DESELECT_HOTKEY_KEY = "Escape";
 
 /** Shown in each control's tooltip. "Mod" becomes Cmd on a Mac and Ctrl elsewhere. */
 export const SHORTCUT_HINTS = {
+  closeTab: "Alt+W",
   copyMarkup: "Mod+C",
   deleteText: "Delete",
   deselect: "Esc",
   export: "Mod+S",
   fitWidth: "Mod+0",
   fullscreen: "F",
+  goToTab: "Alt+1-9",
   help: "?",
+  lastFile: "Alt+`",
   nextPage: "Right arrow",
+  nextTab: "Alt+]",
   pan: "Space",
   pasteMarkup: "Mod+V",
   previousPage: "Left arrow",
+  previousTab: "Alt+[",
   redo: "Mod+Shift+Z",
+  reopenTab: "Alt+Shift+T",
   bookmark: "B",
   scrollZoom: "Mod+Scroll",
   search: "Mod+F",

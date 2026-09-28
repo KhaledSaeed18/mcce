@@ -3,6 +3,7 @@ import { EditorTab } from "@/components/pdf-editor/editor-tab";
 import { EditorTabMenu } from "@/components/pdf-editor/editor-tab-menu";
 import { OPEN_FILES_LABEL } from "@/config/pdf-editor";
 import { useActiveTabInView } from "@/hooks/use-active-tab-in-view";
+import { useEditorTabKeys } from "@/hooks/use-editor-tab-keys";
 import { useHiddenTabCount } from "@/hooks/use-hidden-tab-count";
 import { useTabDrag } from "@/hooks/use-tab-drag";
 import { useTabLabels } from "@/hooks/use-tab-labels";
@@ -39,6 +40,8 @@ export function EditorTabStrip({
     desk.files.findIndex((file) => file.id === activeId)
   );
   const { draggingIndex, handlersFor } = useTabDrag(onMove);
+  // Bound even with no tab open, so a tab closed last can still come back.
+  useEditorTabKeys({ activeId, desk, onClose, onShow });
 
   if (desk.files.length === 0) {
     return null;

@@ -3,12 +3,15 @@ import { XIcon } from "lucide-react";
 import { type ComponentProps, useCallback } from "react";
 import { FileTypeChip } from "@/components/pdf-editor/file-type-chip";
 import {
+  CLOSE_TAB_LABEL,
   EDITOR_PATH,
+  SHORTCUT_HINTS,
   TAB_ACTIVE_CLASS,
   TAB_CLASS,
   TAB_IDLE_CLASS,
 } from "@/config/pdf-editor";
 import { buildEditorSearch } from "@/lib/pdf-editor/editor-search";
+import { withShortcut } from "@/lib/pdf-editor/shortcut-label";
 import type { OpenFile, TabLabel } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
@@ -54,13 +57,17 @@ export function EditorTab({
         <span className="truncate">{label.text}</span>
       </Link>
       <button
-        aria-label={`Close ${label.text}`}
+        aria-label={`${CLOSE_TAB_LABEL} ${label.text}`}
         className={cn(
           "mx-0.5 grid size-5 shrink-0 cursor-pointer place-items-center rounded-sm hover:bg-foreground/10 focus-visible:opacity-100 group-hover:opacity-100",
           isActive ? "opacity-100" : "opacity-0"
         )}
         onClick={handleClose}
-        title="Close"
+        title={
+          isActive
+            ? withShortcut(CLOSE_TAB_LABEL, SHORTCUT_HINTS.closeTab)
+            : CLOSE_TAB_LABEL
+        }
         type="button"
       >
         <XIcon className="size-3" />

@@ -40,6 +40,19 @@ export interface EditorDesk {
   recent: string[];
 }
 
+/** What a tab key asks for, before the tabs it applies to are known. */
+export type TabKey =
+  | { index: number | "last"; type: "go" }
+  | { step: -1 | 1; type: "step" }
+  | { type: "back" }
+  | { type: "close" }
+  | { type: "reopen" };
+
+/** What a tab key does once the tabs are known. */
+export type TabKeyResult =
+  | { file: OpenFile; type: "show" }
+  | { id: string; type: "close" };
+
 /** The short tag a tab carries for what its file is for. */
 export type FileChip =
   | "book"

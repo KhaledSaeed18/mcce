@@ -16,6 +16,7 @@ export const EDITOR_HELP_FACTS: readonly string[] = [
   "Only PDF files open here. Other files in the index stay in Google Drive.",
   "PDFs you open from your computer are kept in this browser, so they open again later without choosing them.",
   "Changes save on their own in this browser, one file at a time. They do not sync to other devices, and clearing site data removes them.",
+  "Every file you open gets a tab in the top bar, so a lecture, its exercises, and a past exam stay one click apart. Tabs come back after a reload. The button at the end of the tabs lists them all, and the files closed recently.",
   "Download copy saves a new PDF with your markup and page changes. The file in Google Drive never changes.",
   "The page rail turns, copies, removes, and reorders pages, and adds a blank or squared page after any page to work a problem on. Drag a thumbnail to move it.",
   "The select tool picks text to copy, highlight, underline, or strike through, and picks up markup to move it. Delete removes what is selected.",
@@ -64,5 +65,16 @@ export const EDITOR_HELP_SHORTCUT_GROUPS: readonly ShortcutGroup[] = [
       { keys: SHORTCUT_HINTS.help, label: "Open this panel" },
     ],
     title: "Move around",
+  },
+  {
+    items: [
+      { keys: SHORTCUT_HINTS.goToTab, label: "Go to a tab, 9 for the last" },
+      { keys: SHORTCUT_HINTS.previousTab, label: "Previous tab" },
+      { keys: SHORTCUT_HINTS.nextTab, label: "Next tab" },
+      { keys: SHORTCUT_HINTS.lastFile, label: "Back to the last file" },
+      { keys: SHORTCUT_HINTS.closeTab, label: "Close the tab" },
+      { keys: SHORTCUT_HINTS.reopenTab, label: "Reopen a closed tab" },
+    ],
+    title: "Tabs",
   },
 ];
