@@ -52,7 +52,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     tools,
   });
   useEditorShortcuts(session, tools.setTool);
-  const { activeId, close, desk, move, show } = useEditorDesk(node);
+  const { activeId, close, desk, forget, move, show } = useEditorDesk(node);
 
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
@@ -87,7 +87,12 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
         </EditorFileBar>
         <div className="flex min-h-0 flex-1">
           <EditorSidePanel isAnimated={isAnimated} isOpen={isBrowserOpen}>
-            <FileBrowserPanel activeNode={node} nodes={nodes} />
+            <FileBrowserPanel
+              activeNode={node}
+              nodes={nodes}
+              onForget={forget}
+              openFiles={desk.files}
+            />
           </EditorSidePanel>
           <EditorDocumentColumn session={session} tools={tools}>
             <EditorPane

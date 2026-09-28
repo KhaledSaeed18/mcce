@@ -1,7 +1,8 @@
 import { useNavigate } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import { EDITOR_PATH } from "@/config/pdf-editor";
-import { closeFile, showFile } from "@/lib/pdf-editor/desk";
+import { showFile } from "@/lib/pdf-editor/desk";
+import { closeFile, forgetFile } from "@/lib/pdf-editor/desk-close";
 import { findNextFile, moveFile } from "@/lib/pdf-editor/desk-order";
 import { readDesk, writeDesk } from "@/lib/pdf-editor/desk-storage";
 import { buildEditorSearch } from "@/lib/pdf-editor/editor-search";
@@ -51,11 +52,21 @@ export function useEditorDesk(activeFile: EditorFile | null) {
     [activeId, desk, show]
   );
 
+  const forget = useCallback(
+    (id: string) => {
+      if (id === activeId) {
+        show(findNextFile(desk, id));
+      }
+      setDesk((current) => forgetFile(current, id));
+    },
+    [activeId, desk, show]
+  );
+
   const move = useCallback(
     (from: number, to: number) =>
       setDesk((current) => moveFile(current, from, to)),
     []
   );
 
-  return { activeId, close, desk, move, show };
+  return { activeId, close, desk, forget, move, show };
 }

@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { FileTextIcon } from "lucide-react";
+import { OpenFileDot } from "@/components/pdf-editor/open-file-dot";
 import { RemoveLocalPdfButton } from "@/components/pdf-editor/remove-local-pdf-button";
 import {
   EDITOR_PATH,
@@ -14,12 +15,14 @@ import { cn } from "@/lib/utils";
 interface LocalPdfListItemProps {
   file: LocalPdfMeta;
   isActive: boolean;
+  isOpen: boolean;
   onRemove: (id: string) => void;
 }
 
 export function LocalPdfListItem({
   file,
   isActive,
+  isOpen,
   onRemove,
 }: LocalPdfListItemProps) {
   return (
@@ -39,6 +42,7 @@ export function LocalPdfListItem({
         <span className="shrink-0 text-xs opacity-70">
           {formatBytes(file.size)}
         </span>
+        {isOpen && !isActive ? <OpenFileDot /> : null}
       </Link>
       <RemoveLocalPdfButton id={file.id} name={file.name} onRemove={onRemove} />
     </li>

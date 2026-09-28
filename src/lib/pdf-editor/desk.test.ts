@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { CLOSED_TAB_LIMIT, EDITOR_TAB_LIMIT } from "@/config/pdf-editor";
-import { closeFile, EMPTY_DESK, showFile } from "./desk";
+import { EMPTY_DESK, showFile } from "./desk";
+import { closeFile, forgetFile } from "./desk-close";
 import { findNextFile, findSiblingFile, moveFile } from "./desk-order";
 import { parseDesk } from "./desk-storage";
 import type { EditorDesk, OpenFile } from "./types";
@@ -74,6 +75,16 @@ describe("closeFile", () => {
     expect(desk.files).toEqual([]);
     expect(desk.closed).toHaveLength(CLOSED_TAB_LIMIT);
     expect(desk.closed[0].id).toBe(opened.at(-1));
+  });
+});
+
+describe("forgetFile", () => {
+  it("closes the tab without offering it for reopening", () => {
+    const desk = forgetFile(openAll(["a", "b"]), "a");
+
+    expect(ids(desk.files)).toEqual(["b"]);
+    expect(desk.closed).toEqual([]);
+    expect(desk.recent).toEqual(["b"]);
   });
 });
 

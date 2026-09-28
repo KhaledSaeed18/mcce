@@ -102,6 +102,7 @@ export const CLOSED_TAB_LIMIT = 10;
 export const OPEN_FILES_LABEL = "Open files";
 export const CLOSED_FILES_LABEL = "Recently closed";
 export const CLOSE_TAB_LABEL = "Close";
+export const OPEN_FILE_DOT_LABEL = "Open in a tab";
 export const OPEN_FILES_FILTER_PLACEHOLDER = "Filter open files";
 export const OPEN_FILES_FILTER_EMPTY = "No open file matches.";
 

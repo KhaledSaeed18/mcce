@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useCallback } from "react";
 import { KindIcon } from "@/components/drive/kind-icon";
+import { OpenFileDot } from "@/components/pdf-editor/open-file-dot";
 import {
   FILE_ROW_ACTIVE_CLASS,
   FILE_ROW_CLASS,
@@ -12,12 +13,14 @@ import { cn } from "@/lib/utils";
 interface FileBrowserEntryProps {
   entry: BrowserEntry;
   isActive: boolean;
+  isOpen: boolean;
   onOpenFolder: (id: string) => void;
 }
 
 export function FileBrowserEntry({
   entry,
   isActive,
+  isOpen,
   onOpenFolder,
 }: FileBrowserEntryProps) {
   const handleClick = useCallback(
@@ -62,6 +65,7 @@ export function FileBrowserEntry({
     >
       <KindIcon className="size-4 shrink-0" kind={entry.kind} />
       <span className="truncate">{entry.name}</span>
+      {isOpen && !isActive ? <OpenFileDot /> : null}
     </Link>
   );
 }

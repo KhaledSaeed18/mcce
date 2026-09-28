@@ -1,4 +1,5 @@
-import { CLOSED_TAB_LIMIT, EDITOR_TAB_LIMIT } from "@/config/pdf-editor";
+import { EDITOR_TAB_LIMIT } from "@/config/pdf-editor";
+import { closeFile } from "./desk-close";
 import type { EditorDesk, OpenFile } from "./types";
 
 export const EMPTY_DESK: EditorDesk = { closed: [], files: [], recent: [] };
@@ -41,16 +42,4 @@ export function showFile(desk: EditorDesk, file: OpenFile): EditorDesk {
   const after = desk.files.findIndex((item) => item.id === desk.recent[0]);
   const files = insertAt(desk.files, after + 1, file);
   return closeOverflow({ closed, files, recent });
-}
-
-export function closeFile(desk: EditorDesk, id: string): EditorDesk {
-  const file = desk.files.find((item) => item.id === id);
-  if (!file) {
-    return desk;
-  }
-  return {
-    closed: [file, ...desk.closed].slice(0, CLOSED_TAB_LIMIT),
-    files: desk.files.filter((item) => item.id !== id),
-    recent: desk.recent.filter((item) => item !== id),
-  };
 }

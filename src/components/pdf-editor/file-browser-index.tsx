@@ -7,10 +7,15 @@ import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
 interface FileBrowserIndexProps {
   activeNode: EditorFile | null;
   nodes: EditorTreeNode[];
+  openIds: ReadonlySet<string>;
 }
 
 /** The index's folders and files, walked one folder at a time. */
-export function FileBrowserIndex({ activeNode, nodes }: FileBrowserIndexProps) {
+export function FileBrowserIndex({
+  activeNode,
+  nodes,
+  openIds,
+}: FileBrowserIndexProps) {
   const { crumbs, entries, openFolder } = useEditorFileBrowser(
     nodes,
     activeNode
@@ -28,6 +33,7 @@ export function FileBrowserIndex({ activeNode, nodes }: FileBrowserIndexProps) {
               <FileBrowserEntry
                 entry={entry}
                 isActive={entry.id === activeNode?.id}
+                isOpen={openIds.has(entry.id)}
                 key={entry.id}
                 onOpenFolder={openFolder}
               />

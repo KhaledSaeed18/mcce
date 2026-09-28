@@ -1,14 +1,14 @@
-import { useNavigate } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
-import { EDITOR_PATH } from "@/config/pdf-editor";
 import { forgetLocalPdf } from "@/lib/pdf-editor/forget-local-pdf";
 import { listLocalPdfs } from "@/lib/pdf-editor/local-pdf-store";
 import type { LocalPdfMeta } from "@/lib/pdf-editor/types";
 
 /** The PDFs kept on this device. Read again whenever the open file changes,
  * which is when one may have just been added. */
-export function useLocalPdfList(activeId: string | null) {
-  const navigate = useNavigate();
+export function useLocalPdfList(
+  activeId: string | null,
+  onForget: (id: string) => void
+) {
   const [files, setFiles] = useState<LocalPdfMeta[]>([]);
 
   const refresh = useCallback(async () => {
@@ -29,11 +29,10 @@ export function useLocalPdfList(activeId: string | null) {
     async (id: string) => {
       await forgetLocalPdf(id);
       await refresh();
-      if (id === activeId) {
-        await navigate({ search: {}, to: EDITOR_PATH });
-      }
+      // Closing its tab also moves on from it when it is the file on screen.
+      onForget(id);
     },
-    [activeId, navigate, refresh]
+    [onForget, refresh]
   );
 
   return { files, remove };

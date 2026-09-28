@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { closeFile, EMPTY_DESK, showFile } from "./desk";
+import { EMPTY_DESK, showFile } from "./desk";
+import { closeFile } from "./desk-close";
 import { resolveTabKey } from "./tab-key-result";
 import { readTabKey } from "./tab-keys";
 import type { OpenFile } from "./types";
