@@ -494,7 +494,7 @@ export const FILE_SEARCH_PLACEHOLDER = "Search every open file";
 export const FILE_SEARCH_EMPTY = "No matches in the open files.";
 export const FILE_SEARCH_HINT_OPEN = "Open";
 export const FILE_SEARCH_HINT_BESIDE = "Open beside";
-export const FILE_SEARCH_PAGE_PREFIX = "p.";
+export const PAGE_NUMBER_PREFIX = "p.";
 /** Joins a file's id and a match's place into one result's value. */
 export const FILE_SEARCH_VALUE_SEPARATOR = "#";
 export const FILE_SEARCH_SHOW_ALL_VALUE = "all";

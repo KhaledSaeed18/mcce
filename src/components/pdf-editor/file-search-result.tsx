@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 import { CommandItem } from "@/components/ui/command";
 import {
-  FILE_SEARCH_PAGE_PREFIX,
   FILE_SEARCH_VALUE_SEPARATOR,
+  PAGE_NUMBER_PREFIX,
 } from "@/config/pdf-editor";
 import { buildSnippet } from "@/lib/pdf-editor/file-search/file-snippet";
 import type { FileSearchHit } from "@/lib/pdf-editor/file-search/types";
@@ -39,7 +39,7 @@ export function FileSearchResult({
         {after}
       </span>
       <span className="shrink-0 font-head text-muted-foreground text-xs tabular-nums">
-        {FILE_SEARCH_PAGE_PREFIX} {hit.position + 1}
+        {PAGE_NUMBER_PREFIX} {hit.position + 1}
       </span>
     </CommandItem>
   );
