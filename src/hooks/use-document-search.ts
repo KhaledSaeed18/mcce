@@ -1,7 +1,6 @@
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useDocumentText } from "@/hooks/use-document-text";
-import { useSearchHotkey } from "@/hooks/use-search-hotkey";
 import {
   findMatches,
   groupHitsByPosition,
@@ -79,8 +78,6 @@ export function useDocumentSearch({
   const close = useCallback(() => setIsOpen(false), []);
   const next = useCallback(() => goTo(current + 1), [current, goTo]);
   const previous = useCallback(() => goTo(current - 1), [current, goTo]);
-
-  useSearchHotkey(open);
 
   const hitsByPosition = useMemo(
     () => groupHitsByPosition(matches, current),

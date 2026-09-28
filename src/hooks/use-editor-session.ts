@@ -5,7 +5,6 @@ import { useDocumentSearch } from "@/hooks/use-document-search";
 import { useEditorInk } from "@/hooks/use-editor-ink";
 import { useEditorMarkup } from "@/hooks/use-editor-markup";
 import { useEditorPages } from "@/hooks/use-editor-pages";
-import { useEditorShortcuts } from "@/hooks/use-editor-shortcuts";
 import { useEditorStudy } from "@/hooks/use-editor-study";
 import type { EditorTools } from "@/hooks/use-editor-tools";
 import { useElementSize } from "@/hooks/use-element-size";
@@ -26,7 +25,8 @@ interface EditorSessionOptions {
 }
 
 /** Everything about the open file: its pages, its markup, how the tools draw
- * on it, and the zoom and keys it answers to. */
+ * on it, and its zoom and search. Its keys are bound by useEditorShortcuts,
+ * for the session that has focus. */
 export function useEditorSession({
   isSpacePanning,
   node,
@@ -68,14 +68,6 @@ export function useEditorSession({
     bytes,
     fileName: node ? node.name : DEFAULT_EXPORT_NAME,
     layout: markup.pages,
-  });
-
-  useEditorShortcuts({
-    markup,
-    navigation,
-    onExport: exportPdf,
-    onToolChange: tools.setTool,
-    zoom,
   });
 
   const { ink, settings } = useEditorInk({
