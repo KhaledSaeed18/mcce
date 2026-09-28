@@ -1,4 +1,4 @@
-import { EDITOR_TAB_LIMIT } from "@/config/pdf-editor";
+import { CLOSED_TAB_LIMIT, EDITOR_TAB_LIMIT } from "@/config/pdf-editor";
 import { closeFile } from "./desk-close";
 import type { EditorDesk, OpenFile } from "./types";
 
@@ -42,4 +42,19 @@ export function showFile(desk: EditorDesk, file: OpenFile): EditorDesk {
   const after = desk.files.findIndex((item) => item.id === desk.recent[0]);
   const files = insertAt(desk.files, after + 1, file);
   return closeOverflow({ closed, files, recent });
+}
+
+/** Makes a set of files the open tabs, in its order. The tabs open before
+ * are closed rather than lost, so they can be brought back. */
+export function replaceFiles(desk: EditorDesk, files: OpenFile[]): EditorDesk {
+  const ids = new Set(files.map((file) => file.id));
+  const leaving = desk.files.filter((file) => !ids.has(file.id));
+  return {
+    closed: [
+      ...leaving,
+      ...desk.closed.filter((file) => !ids.has(file.id)),
+    ].slice(0, CLOSED_TAB_LIMIT),
+    files: files.slice(0, EDITOR_TAB_LIMIT),
+    recent: files.map((file) => file.id),
+  };
 }

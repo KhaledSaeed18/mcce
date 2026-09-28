@@ -1,7 +1,7 @@
 import { useNavigate } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import { EDITOR_PATH } from "@/config/pdf-editor";
-import { showFile } from "@/lib/pdf-editor/desk";
+import { replaceFiles, showFile } from "@/lib/pdf-editor/desk";
 import { closeFile, forgetFile } from "@/lib/pdf-editor/desk-close";
 import { findNextFile, moveFile } from "@/lib/pdf-editor/desk-order";
 import { readDesk, writeDesk } from "@/lib/pdf-editor/desk-storage";
@@ -81,11 +81,18 @@ export function useEditorDesk(
     [leave]
   );
 
+  const replace = useCallback(
+    (files: OpenFile[]) => setDesk((current) => replaceFiles(current, files)),
+    []
+  );
+
   const move = useCallback(
     (from: number, to: number) =>
       setDesk((current) => moveFile(current, from, to)),
     []
   );
 
-  return { activeId, close, desk, forget, move, show };
+  return { activeId, close, desk, forget, move, replace, show };
 }
+
+export type EditorDeskControls = ReturnType<typeof useEditorDesk>;

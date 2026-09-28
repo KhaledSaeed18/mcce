@@ -50,12 +50,14 @@ export const Route = createFileRoute("/editor")({
     file: readOptionalString(search.file),
     focus: search.focus === "beside" ? "beside" : undefined,
     local: readOptionalString(search.local),
+    set: readOptionalString(search.set),
+    setId: readOptionalString(search.setId),
   }),
 });
 
 function EditorPage() {
   const { besideFile, file, tree } = Route.useLoaderData();
-  const { beside, focus, local } = Route.useSearch();
+  const { beside, focus, local, set, setId } = Route.useSearch();
   // A file from the index wins if the URL somehow names both.
   const localFile = useLocalEditorFile(file ? undefined : local);
   const besideLocalFile = useLocalEditorFile(
@@ -87,6 +89,7 @@ function EditorPage() {
       focus={focus}
       node={node}
       nodes={tree}
+      setLink={{ beside, set, setId }}
     />
   );
 }

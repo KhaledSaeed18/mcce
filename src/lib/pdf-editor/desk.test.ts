@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { CLOSED_TAB_LIMIT, EDITOR_TAB_LIMIT } from "@/config/pdf-editor";
-import { EMPTY_DESK, showFile } from "./desk";
+import { EMPTY_DESK, replaceFiles, showFile } from "./desk";
 import { closeFile, forgetFile } from "./desk-close";
 import { findNextFile, findSiblingFile, moveFile } from "./desk-order";
 import { parseDesk } from "./desk-storage";
@@ -75,6 +75,16 @@ describe("closeFile", () => {
     expect(desk.files).toEqual([]);
     expect(desk.closed).toHaveLength(CLOSED_TAB_LIMIT);
     expect(desk.closed[0].id).toBe(opened.at(-1));
+  });
+});
+
+describe("replaceFiles", () => {
+  it("opens a set's files in its order and closes the rest", () => {
+    const desk = replaceFiles(openAll(["a", "b"]), [file("c"), file("b")]);
+
+    expect(ids(desk.files)).toEqual(["c", "b"]);
+    expect(ids(desk.closed)).toEqual(["a"]);
+    expect(desk.recent).toEqual(["c", "b"]);
   });
 });
 

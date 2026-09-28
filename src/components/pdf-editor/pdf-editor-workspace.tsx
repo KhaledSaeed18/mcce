@@ -3,12 +3,11 @@ import { EditorDocumentColumn } from "@/components/pdf-editor/editor-document-co
 import { EditorDropZone } from "@/components/pdf-editor/editor-drop-zone";
 import { EditorExamDialogs } from "@/components/pdf-editor/editor-exam-dialogs";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
+import { EditorFileBarTabs } from "@/components/pdf-editor/editor-file-bar-tabs";
 import { EditorHelpDialog } from "@/components/pdf-editor/editor-help-dialog";
 import { EditorPanes } from "@/components/pdf-editor/editor-panes";
-import { EditorQuickOpen } from "@/components/pdf-editor/editor-quick-open";
 import { EditorSidePanel } from "@/components/pdf-editor/editor-side-panel";
 import { EditorStudySide } from "@/components/pdf-editor/editor-study-side";
-import { EditorTabStrip } from "@/components/pdf-editor/editor-tab-strip";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
 import { EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
 import { useEditorHelp } from "@/hooks/use-editor-help";
@@ -27,6 +26,8 @@ interface PdfEditorWorkspaceProps {
   focus: EditorSearch["focus"];
   node: EditorFile | null;
   nodes: EditorTreeNode[];
+  /** A study set the URL asks to open. */
+  setLink: Pick<EditorSearch, "beside" | "set" | "setId">;
 }
 
 export function PdfEditorWorkspace({
@@ -34,6 +35,7 @@ export function PdfEditorWorkspace({
   focus,
   node,
   nodes,
+  setLink,
 }: PdfEditorWorkspaceProps) {
   const rootRef = useRef<HTMLElement>(null);
   const fullscreen = useFullscreen(rootRef);
@@ -47,8 +49,9 @@ export function PdfEditorWorkspace({
     panels,
     panes,
     peek,
+    saveSet,
     tools,
-  } = useEditorWorkspace({ beside, focus, node, nodes });
+  } = useEditorWorkspace({ beside, focus, node, nodes, setLink });
   const { focused } = panes;
   const { session } = focused;
   const handleOpenMatch = useCallback(() => {
@@ -79,24 +82,15 @@ export function PdfEditorWorkspace({
           onToggleStudy={panels.toggleStudy}
           saveStatus={session.saveStatus}
         >
-          <EditorTabStrip
-            activeId={desk.activeId}
-            desk={desk.desk}
+          <EditorFileBarTabs
+            desk={desk}
             match={match}
             nodes={nodes}
-            onClose={desk.close}
-            onMove={desk.move}
             onOpenBeside={paneActions.openBeside}
             onOpenMatch={handleOpenMatch}
-            onShow={desk.show}
+            onSaveSet={saveSet}
             sides={panes.sides}
-          >
-            <EditorQuickOpen
-              activeId={desk.activeId}
-              nodes={nodes}
-              onShow={desk.show}
-            />
-          </EditorTabStrip>
+          />
         </EditorFileBar>
         <div className="flex min-h-0 flex-1">
           <EditorSidePanel

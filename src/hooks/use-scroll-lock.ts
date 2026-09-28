@@ -38,13 +38,16 @@ function hasArrived(panes: EditorPaneView[], arrival: MatchArrival): boolean {
  * they were apart when it was turned on: an exam on page 3 and its solution
  * on page 5 stay two pages apart, and at the same spot on the page. Zoom is
  * left to each pane. L turns it on and off, and a file opened beside its
- * match turns it on once it reaches the page it was opened on. */
+ * match turns it on once it reaches the page it was opened on. A study set
+ * puts back the lock it was saved with once both its files are in. */
 export function useScrollLock(
   panes: EditorPaneView[],
   arrival: MatchArrival | null,
   onArrived: () => void
 ) {
   const [lock, setLock] = useState<StoredLock | null>(null);
+  // A lock saved with a study set, put back once both its files are in.
+  const [pending, setPending] = useState<StoredLock | null>(null);
   const [first, second] = panes;
   const files = panes.map((pane) => pane.node?.id ?? "").join("|");
   const gap = second && lock?.files === files ? lock.gap : null;
@@ -77,6 +80,16 @@ export function useScrollLock(
     }
   }, [files, isArrived, onArrived, panes]);
 
+  const isPendingReady =
+    pending?.files === files &&
+    panes.every((pane) => pane.session.navigation.pageCount > 0);
+  useEffect(() => {
+    if (isPendingReady && pending) {
+      setLock(pending);
+      setPending(null);
+    }
+  }, [isPendingReady, pending]);
+
   useEffect(() => {
     const a = firstScroller.current;
     const b = secondScroller?.current;
@@ -86,7 +99,7 @@ export function useScrollLock(
     return linkScrollers(a, b, gap);
   }, [firstScroller, gap, secondScroller]);
 
-  return { gap, toggle };
+  return { gap, restore: setPending, toggle };
 }
 
 export type ScrollLock = ReturnType<typeof useScrollLock>;

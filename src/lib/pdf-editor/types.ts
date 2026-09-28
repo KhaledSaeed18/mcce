@@ -53,6 +53,21 @@ export type TabKeyResult =
   | { file: OpenFile; type: "show" }
   | { id: string; type: "close" };
 
+/** A group of files saved to come back to together, like everything open
+ * while preparing for one exam, with how they were laid out. */
+export interface StudySet {
+  /** The file in the second pane, when the set was saved split. */
+  besideId: string | null;
+  files: OpenFile[];
+  id: string;
+  /** The scroll lock's gap, when the two panes scrolled together. */
+  lockGap: number | null;
+  name: string;
+  /** The file in the first pane, or on its own. */
+  primaryId: string | null;
+  savedAt: string;
+}
+
 /** The short tag a tab carries for what its file is for. */
 export type FileChip =
   | "book"
@@ -133,6 +148,10 @@ export interface EditorSearch {
   /** Set while the second pane has focus. */
   focus?: "beside";
   local?: string;
+  /** Files to open together, by id, from a shared study set link. */
+  set?: string;
+  /** A study set saved in this browser to open. */
+  setId?: string;
 }
 
 export type EditorTool =

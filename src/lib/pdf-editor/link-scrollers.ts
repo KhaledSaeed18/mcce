@@ -2,9 +2,9 @@ import { PAGE_INDEX_ATTRIBUTE } from "@/config/pdf-editor";
 import { fromPagePosition, toPagePosition } from "./page-position";
 import { readScrollAnchor, scrollToPageSpot } from "./scroll-anchor";
 
-/** Keeps two page scrollers the same distance apart in pages: scrolling
- * either moves the other, `gap` pages further on in the second. Returns what
- * undoes it. */
+/** Keeps two page scrollers the same distance apart in pages: the second
+ * starts `gap` pages on from the first, and scrolling either moves the other.
+ * Returns what undoes it. */
 export function linkScrollers(
   first: HTMLElement,
   second: HTMLElement,
@@ -43,6 +43,9 @@ export function linkScrollers(
   const handleSecond = listen(second, first, -gap);
   first.addEventListener("scroll", handleFirst, { passive: true });
   second.addEventListener("scroll", handleSecond, { passive: true });
+  // A lock measured where the two are is already met, but one brought back
+  // with a study set finds each file where it was last left.
+  follow(first, second, gap);
   return () => {
     cancelAnimationFrame(frame);
     first.removeEventListener("scroll", handleFirst);

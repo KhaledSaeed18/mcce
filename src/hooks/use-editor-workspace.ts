@@ -11,6 +11,8 @@ import { usePaneActions } from "@/hooks/use-pane-actions";
 import { useScrollLock } from "@/hooks/use-scroll-lock";
 import { useSpacePan } from "@/hooks/use-space-pan";
 import { useSplitControls } from "@/hooks/use-split-controls";
+import { useStudySetOpening } from "@/hooks/use-study-set-opening";
+import { useStudySetSaver } from "@/hooks/use-study-set-saver";
 import type {
   EditorFile,
   EditorSearch,
@@ -22,6 +24,8 @@ interface EditorWorkspaceOptions {
   focus: EditorSearch["focus"];
   node: EditorFile | null;
   nodes: EditorTreeNode[];
+  /** A study set the URL asks to open, saved or shared. */
+  setLink: Pick<EditorSearch, "beside" | "set" | "setId">;
 }
 
 /** Everything the workspace shows, put together: the shared tools, the
@@ -32,6 +36,7 @@ export function useEditorWorkspace({
   focus,
   node,
   nodes,
+  setLink,
 }: EditorWorkspaceOptions) {
   const panels = useEditorPanels();
   const tools = useEditorTools();
@@ -51,6 +56,17 @@ export function useEditorWorkspace({
   const paneActions = usePaneActions();
   const lock = useScrollLock(panes.panes, arrival.arrival, arrival.settle);
   const match = useMatchingFile(nodes, focused.node?.id);
+  const saveSet = useStudySetSaver({
+    files: desk.desk.files,
+    lockGap: lock.gap,
+    panes: panes.panes,
+  });
+  useStudySetOpening({
+    ...setLink,
+    nodes,
+    onLock: lock.restore,
+    onReplace: desk.replace,
+  });
   const peek = useMatchPeek({ focused, isSpacePanning, match, tools });
   const openMatch = useMatchOpener({
     onArrive: arrival.request,
@@ -75,6 +91,7 @@ export function useEditorWorkspace({
     panels,
     panes,
     peek,
+    saveSet,
     tools,
   };
 }

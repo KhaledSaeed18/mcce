@@ -90,6 +90,9 @@ export const LOCAL_PDF_PROBLEM_COPY: Record<LocalPdfProblem, string> = {
 export const LOCAL_PDF_SAVE_FAILED =
   "This browser would not keep the file. Private windows often block it.";
 
+/** Study sets saved in this browser. */
+export const STUDY_SETS_STORAGE_KEY = "mcce.editor-sets.v1";
+
 /** The open tabs, their order, and the ones closed recently. */
 export const EDITOR_DESK_STORAGE_KEY = "mcce.editor-desk.v1";
 
@@ -186,6 +189,19 @@ export const MATCH_PEEK_NOTES = {
 
 export const MATCH_TAB_CLASS =
   "group flex h-8 max-w-52 shrink-0 cursor-pointer items-center gap-1.5 rounded border-2 border-border/40 border-dashed px-1.5 font-medium text-muted-foreground text-xs transition-colors hover:border-border hover:text-foreground";
+
+export const STUDY_SETS_LABEL = "Study sets";
+export const STUDY_SET_SAVE_LABEL = "Save these tabs as a set";
+export const STUDY_SET_SAVE_TITLE = "Save as a study set";
+export const STUDY_SET_SAVE_DESCRIPTION =
+  "The open tabs, the files side by side, and the scroll lock, to open again together.";
+export const STUDY_SET_RENAME_TITLE = "Rename study set";
+export const STUDY_SET_NAME_LABEL = "Name";
+export const STUDY_SET_EMPTY =
+  "Save the open tabs as a set to come back to them together.";
+/** Sets are named after the course they are for, when the file on screen
+ * has one, which the reader can change. */
+export const STUDY_SET_DEFAULT_NAME = "Study set";
 
 export const PANE_MENU_LABEL = "Pane options";
 export const PANE_SWAP_LABEL = "Swap sides";
