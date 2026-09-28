@@ -1,6 +1,7 @@
 import { SearchIcon } from "lucide-react";
 import { BookmarkButton } from "@/components/pdf-editor/bookmark-button";
 import { CoversButton } from "@/components/pdf-editor/covers-button";
+import { ExamControl } from "@/components/pdf-editor/exam-control";
 import { ExportButton } from "@/components/pdf-editor/export-button";
 import { HistoryControls } from "@/components/pdf-editor/history-controls";
 import { InkControls } from "@/components/pdf-editor/ink-controls";
@@ -15,6 +16,7 @@ import {
   SHORTCUT_HINTS,
 } from "@/config/pdf-editor";
 import type { CoverControls } from "@/hooks/use-cover-reveal";
+import type { ExamTimer } from "@/hooks/use-exam-timer";
 import type { PageBookmarks } from "@/hooks/use-page-bookmarks";
 import type { PdfExportStatus } from "@/hooks/use-pdf-export";
 import { withShortcut } from "@/lib/pdf-editor/shortcut-label";
@@ -32,6 +34,7 @@ interface EditorToolbarProps {
   canUndo: boolean;
   color: string;
   covers: CoverControls;
+  exam: ExamTimer;
   exportStatus: PdfExportStatus;
   fontSize: number;
   navigation: PageNavigation;
@@ -58,6 +61,7 @@ export function EditorToolbar({
   canUndo,
   color,
   covers,
+  exam,
   exportStatus,
   fontSize,
   onClear,
@@ -112,9 +116,11 @@ export function EditorToolbar({
       {covers.hasCovers ? (
         <CoversButton
           isAllRevealed={covers.isAllRevealed}
+          isLocked={covers.isLocked}
           onToggle={covers.toggleAll}
         />
       ) : null}
+      <ExamControl exam={exam} />
       <Button
         aria-label={SEARCH_LABEL}
         onClick={onOpenSearch}

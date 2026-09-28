@@ -42,10 +42,11 @@ export function useEditorSession(
     doc,
     markup.pages
   );
-  const { bookmarks, covers } = useEditorStudy({
+  const { bookmarks, covers, exam } = useEditorStudy({
     activeIndex: navigation.activeIndex,
     annotations: markup.annotations,
     fileId: node?.id,
+    onToolChange: tools.setTool,
     pages: markup.pages,
   });
   const zoom = usePdfZoom({ pageSize: activeSize, viewport });
@@ -96,6 +97,7 @@ export function useEditorSession(
     bookmarks,
     covers,
     doc,
+    exam,
     exportPdf,
     exportStatus,
     ink,

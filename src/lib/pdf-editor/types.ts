@@ -266,6 +266,13 @@ export type FrameCorner =
 /** Which side of a text box a resize drag has hold of. */
 export type TextBoxEdge = "left" | "right";
 
+/** A timed attempt at the open file, kept so a reload does not stop the clock. */
+export interface ExamSession {
+  /** When time runs out, in milliseconds since the epoch. */
+  endsAt: number;
+  minutes: number;
+}
+
 /** Which answer covers are showing what they hide, and how a page shows one. */
 export interface CoverReveal {
   revealed: ReadonlySet<string>;

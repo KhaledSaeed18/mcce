@@ -2,6 +2,7 @@ import { DownloadIcon, LoaderIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   EDITOR_CONTROL_HEIGHT_CLASS,
+  EXPORT_LABEL,
   SHORTCUT_HINTS,
 } from "@/config/pdf-editor";
 import type { PdfExportStatus } from "@/hooks/use-pdf-export";
@@ -35,7 +36,7 @@ export function ExportButton({ onExport, status }: ExportButtonProps) {
         ) : (
           <DownloadIcon data-icon="inline-start" />
         )}
-        Download copy
+        {EXPORT_LABEL}
       </Button>
     </div>
   );

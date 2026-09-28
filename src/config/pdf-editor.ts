@@ -469,3 +469,27 @@ export const COVER_OUTLINE_WIDTH = 1.5;
 
 export const COVERS_SHOW_ALL_LABEL = "Show all answers";
 export const COVERS_HIDE_ALL_LABEL = "Hide all answers";
+
+/** One key per file: the exam running on it, if any. */
+export const PDF_EXAM_KEY_PREFIX = "mcce.pdf-exam.v1";
+
+/** The lengths most sample exams are set for, in minutes. */
+export const EXAM_DURATIONS = [30, 45, 60, 90, 120, 180] as const;
+
+/** How often the countdown is redrawn. It shows seconds, so no more often. */
+export const EXAM_TICK_MS = 1000;
+
+/** The countdown turns to a warning for the last few minutes. */
+export const EXAM_WARNING_MS = 5 * 60 * 1000;
+
+export const EXAM_START_LABEL = "Exam mode";
+export const EXAM_START_DESCRIPTION =
+  "A countdown for a sample exam. Every answer stays covered until time is up.";
+export const EXAM_END_LABEL = "End exam";
+export const EXAM_TIME_UP_TITLE = "Time is up";
+export const EXAM_TIME_UP_DESCRIPTION =
+  "Your answers are saved in this browser. Covers can be revealed again, so check your work against them.";
+export const EXAM_REVIEW_LABEL = "Review answers";
+export const EXAM_TIME_LEFT_LABEL = "Time left";
+export const COVERS_LOCKED_LABEL = "Answers stay covered until the exam ends";
+export const EXPORT_LABEL = "Download copy";

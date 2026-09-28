@@ -4,6 +4,7 @@ import { EditorDropZone } from "@/components/pdf-editor/editor-drop-zone";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
 import { EditorHelpDialog } from "@/components/pdf-editor/editor-help-dialog";
 import { EditorSidePanel } from "@/components/pdf-editor/editor-side-panel";
+import { ExamTimeUpDialog } from "@/components/pdf-editor/exam-time-up-dialog";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
 import { StudyPanel } from "@/components/pdf-editor/study-panel";
 import { EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
@@ -91,6 +92,11 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
         </div>
       </EditorDropZone>
       <EditorHelpDialog onOpenChange={help.setIsOpen} open={help.isOpen} />
+      <ExamTimeUpDialog
+        isOpen={session.exam.isOver}
+        onClose={session.exam.end}
+        onDownload={session.exportPdf}
+      />
     </main>
   );
 }

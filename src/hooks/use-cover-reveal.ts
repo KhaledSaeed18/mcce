@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   isEveryCoverRevealed,
   listCoverIds,
@@ -16,41 +16,54 @@ const NONE_REVEALED: ReadonlySet<string> = new Set();
 /**
  * Which answer covers the reader has looked under. It lasts only as long as
  * the file is open: every cover is hidden again the next time, so a page can
- * be tried afresh. A newly drawn cover starts out hidden.
+ * be tried afresh. A newly drawn cover starts out hidden. While locked, as in
+ * an exam, every answer stays covered.
  */
 export function useCoverReveal(
   fileId: string | undefined,
-  annotations: Annotation[]
+  annotations: Annotation[],
+  isLocked: boolean
 ) {
   const [state, setState] = useState<RevealState>({
     fileId,
     revealed: NONE_REVEALED,
   });
-  const revealed = state.fileId === fileId ? state.revealed : NONE_REVEALED;
+  const isOwnState = state.fileId === fileId && !isLocked;
+  const revealed = isOwnState ? state.revealed : NONE_REVEALED;
   const coverIds = useMemo(() => listCoverIds(annotations), [annotations]);
   const isAllRevealed = isEveryCoverRevealed(coverIds, revealed);
 
   const toggle = useCallback(
     (id: string) => {
-      if (coverIds.includes(id)) {
+      if (!isLocked && coverIds.includes(id)) {
         setState({ fileId, revealed: toggleRevealed(revealed, id) });
       }
     },
-    [coverIds, fileId, revealed]
+    [coverIds, fileId, isLocked, revealed]
   );
 
-  const toggleAll = useCallback(
-    () =>
-      setState({
-        fileId,
-        revealed: isAllRevealed ? NONE_REVEALED : new Set(coverIds),
-      }),
-    [coverIds, fileId, isAllRevealed]
-  );
+  // Locking covers everything, so what was looked under before is hidden
+  // again once the lock comes off.
+  useEffect(() => {
+    if (isLocked) {
+      setState({ fileId, revealed: NONE_REVEALED });
+    }
+  }, [fileId, isLocked]);
+
+  const toggleAll = useCallback(() => {
+    if (isLocked) {
+      return;
+    }
+    setState({
+      fileId,
+      revealed: isAllRevealed ? NONE_REVEALED : new Set(coverIds),
+    });
+  }, [coverIds, fileId, isAllRevealed, isLocked]);
 
   return {
     hasCovers: coverIds.length > 0,
     isAllRevealed,
+    isLocked,
     revealed,
     toggle,
     toggleAll,

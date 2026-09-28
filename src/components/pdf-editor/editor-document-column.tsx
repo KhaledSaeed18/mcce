@@ -35,6 +35,7 @@ export function EditorDocumentColumn({
     bookmarks,
     covers,
     doc,
+    exam,
     exportPdf,
     exportStatus,
     ink,
@@ -65,6 +66,7 @@ export function EditorDocumentColumn({
           canUndo={markup.canUndo}
           color={ink.color}
           covers={covers}
+          exam={exam}
           exportStatus={exportStatus}
           fontSize={tools.fontSize}
           navigation={navigation}
