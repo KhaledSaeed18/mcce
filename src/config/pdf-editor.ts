@@ -1,6 +1,8 @@
 import type {
   EditorPanels,
+  EditorPaneSide,
   EditorTool,
+  FileChip,
   LocalPdfProblem,
   PageSheet,
   StudyPanelTab,
@@ -88,6 +90,174 @@ export const LOCAL_PDF_PROBLEM_COPY: Record<LocalPdfProblem, string> = {
 export const LOCAL_PDF_SAVE_FAILED =
   "This browser would not keep the file. Private windows often block it.";
 
+/** Study sets saved in this browser. */
+export const STUDY_SETS_STORAGE_KEY = "mcce.editor-sets.v1";
+
+/** The open tabs, their order, and the ones closed recently. */
+export const EDITOR_DESK_STORAGE_KEY = "mcce.editor-desk.v1";
+
+/** Past this many tabs the one gone longest unseen closes. Only the few most
+ * recently shown stay loaded, so this bounds the tab strip, not memory. */
+export const EDITOR_TAB_LIMIT = 12;
+
+/** How many closed tabs can be brought back. */
+export const CLOSED_TAB_LIMIT = 10;
+
+export const OPEN_FILES_LABEL = "Open files";
+export const CLOSED_FILES_LABEL = "Recently closed";
+export const CLOSE_TAB_LABEL = "Close";
+export const OPEN_FILE_DOT_LABEL = "Open in a tab";
+
+/** Matches the key the rest of the site searches with. */
+export const QUICK_OPEN_HOTKEY_KEY = "k";
+export const QUICK_OPEN_LABEL = "Open a file";
+export const QUICK_OPEN_DESCRIPTION =
+  "Search every PDF in the index and open it in a new tab.";
+export const QUICK_OPEN_PLACEHOLDER = "Search the index";
+export const QUICK_OPEN_EMPTY = "No PDF in the index matches.";
+export const QUICK_OPEN_FOLDER_GROUP = "This folder";
+export const QUICK_OPEN_COURSE_GROUP = "This course";
+export const QUICK_OPEN_OTHERS_GROUP = "Other courses";
+export const QUICK_OPEN_INDEX_GROUP = "Index";
+export const OPEN_FILES_FILTER_PLACEHOLDER = "Filter open files";
+export const OPEN_FILES_FILTER_EMPTY = "No open file matches.";
+
+/** A tab keeps to the file bar's control height, and stops growing at a width
+ * where a short name still fits. */
+export const TAB_CLASS =
+  "group flex h-8 max-w-52 shrink-0 items-center rounded border-2 font-medium text-xs transition-colors";
+export const TAB_ACTIVE_CLASS =
+  "border-border bg-primary text-primary-foreground shadow-sm";
+export const TAB_IDLE_CLASS = "border-border/25 bg-card hover:border-border";
+/** The tab of the file in the pane without focus, on screen but not in hand. */
+export const TAB_BESIDE_CLASS =
+  "border-border bg-accent text-accent-foreground";
+
+export const OPEN_BESIDE_LABEL = "Open beside";
+
+/** A link that opens a file counts as the page being read only when it would
+ * lead to exactly this URL: in a split, the other pane's link names the same
+ * two files and differs only in focus. */
+export const FILE_LINK_ACTIVE_OPTIONS = { exact: true } as const;
+
+/** The left panels as they were before a split closed them, kept until it
+ * ends so a reload in between does not lose them. */
+export const SPLIT_SAVED_PANELS_KEY = "mcce.editor-split-panels.v1";
+
+/** Where the divider was left, as the first pane's share of the width. */
+export const SPLIT_RATIO_STORAGE_KEY = "mcce.editor-split.v1";
+export const DEFAULT_SPLIT_RATIO = 0.5;
+/** Narrower than this, an A4 page fitted to the pane is too small to read. */
+export const MIN_PANE_WIDTH = 420;
+/** Within this of the middle, the divider settles on it. */
+export const SPLIT_SNAP_DISTANCE = 0.03;
+/** One arrow key press on the divider. */
+export const SPLIT_KEY_STEP = 0.05;
+export const SPLIT_DIVIDER_LABEL = "Resize panes";
+/** The divider's width, which the panes share the rest of. Matches its w-2.5. */
+export const SPLIT_DIVIDER_WIDTH = 10;
+
+export const PANE_FOCUS_HOTKEY_CODE = "Backquote";
+
+/** L for lock, which no tool uses. */
+export const SCROLL_LOCK_HOTKEY_KEY = "l";
+export const SCROLL_LOCK_ON_LABEL = "Scroll both panes together";
+export const SCROLL_LOCK_OFF_LABEL = "Stop scrolling together";
+
+/** Marks a drag as a tab rather than a file from the computer. */
+export const TAB_DRAG_TYPE = "application/x-mcce-tab";
+
+/** What dropping a tab on each half of the pages does. */
+export const PANE_DROP_LABELS = {
+  single: { beside: "Open beside", primary: "Show here" },
+  split: { beside: "Show on the right", primary: "Show on the left" },
+} as const;
+
+/** What the suggested match opens, named for what the reader is after. */
+export const MATCH_LABELS = {
+  paper: "Questions beside",
+  solution: "Solution beside",
+} as const;
+
+/** M for match, which no tool uses. Held, not pressed. */
+export const MATCH_PEEK_HOTKEY_KEY = "m";
+
+export const MATCH_PEEK_NOTES = {
+  paper: "Peeking at the questions. Let go of M to go back.",
+  solution: "Peeking at the solution. Let go of M to go back.",
+} as const;
+
+export const MATCH_TAB_CLASS =
+  "group flex h-8 max-w-52 shrink-0 cursor-pointer items-center gap-1.5 rounded border-2 border-border/40 border-dashed px-1.5 font-medium text-muted-foreground text-xs transition-colors hover:border-border hover:text-foreground";
+
+export const EXAM_SOLUTION_COVER_TITLE = "Solution covered";
+export const EXAM_SOLUTION_COVER_NOTE =
+  "It uncovers when the exam beside it ends, on the page you are on.";
+
+export const STUDY_SETS_LABEL = "Study sets";
+export const STUDY_SET_SAVE_LABEL = "Save these tabs as a set";
+export const STUDY_SET_SAVE_TITLE = "Save as a study set";
+export const STUDY_SET_SAVE_DESCRIPTION =
+  "The open tabs, the files side by side, and the scroll lock, to open again together.";
+export const STUDY_SET_RENAME_TITLE = "Rename study set";
+export const STUDY_SET_RENAME_LABEL = "Rename";
+export const STUDY_SET_DELETE_LABEL = "Delete";
+export const STUDY_SET_DELETE_TITLE = "Delete this study set";
+export const STUDY_SET_DELETE_DESCRIPTION =
+  "The set goes, and its files and their markup stay as they are.";
+export const STUDY_SET_COPY_LABEL = "Copy link";
+/** A small square action at the end of a row in the editor's lists. */
+export const ROW_ACTION_CLASS =
+  "flex size-7 shrink-0 cursor-pointer items-center justify-center rounded border-2 border-transparent text-muted-foreground hover:border-border hover:bg-accent hover:text-foreground";
+export const STUDY_SET_COPIED = "Link copied";
+export const STUDY_SET_COPY_FAILED = "This browser would not copy the link.";
+export const STUDY_SET_NAME_LABEL = "Name";
+export const STUDY_SET_EMPTY =
+  "Save the open tabs as a set to come back to them together.";
+/** Sets are named after the course they are for, when the file on screen
+ * has one, which the reader can change. */
+export const STUDY_SET_DEFAULT_NAME = "Study set";
+
+export const PANE_MENU_LABEL = "Pane options";
+export const PANE_SWAP_LABEL = "Swap sides";
+export const PANE_ALONE_LABEL = "Show on its own";
+export const PANE_CLOSE_LABEL = "Close this pane";
+
+export const PANE_LABELS: Record<EditorPaneSide, string> = {
+  beside: "Right pane",
+  primary: "Left pane",
+};
+
+/** Cmd/Ctrl+\ splits the view, the key code editors use for it. Read by
+ * position, since the backslash sits elsewhere on some layouts. */
+export const SPLIT_HOTKEY_CODE = "Backslash";
+
+export const FILE_CHIP_LABELS: Record<FileChip, string> = {
+  book: "BOOK",
+  ex: "EX",
+  exam: "EXAM",
+  hw: "HW",
+  lab: "LAB",
+  lec: "LEC",
+  quiz: "QUIZ",
+  sheet: "SHEET",
+  sol: "SOL",
+};
+
+/** Fills from the site's chart palette. The ink stays black on every fill,
+ * which each is light enough to carry in both themes. */
+export const FILE_CHIP_CLASSES: Record<FileChip, string> = {
+  book: "bg-accent text-accent-foreground",
+  ex: "bg-chart-3 text-black",
+  exam: "bg-chart-2 text-black",
+  hw: "bg-chart-3 text-black",
+  lab: "bg-chart-3 text-black",
+  lec: "bg-chart-5 text-black",
+  quiz: "bg-chart-2 text-black",
+  sheet: "bg-card text-card-foreground",
+  sol: "bg-chart-4 text-black",
+};
+
 /** One key per file: the page and zoom it was left at. */
 export const PDF_VIEW_KEY_PREFIX = "mcce.pdf-view.v1";
 
@@ -154,6 +324,18 @@ export const VISIBLE_PAGE_ROOT_MARGIN = "-50% 0px -50% 0px";
 /** Above this the canvas costs more memory than the sharpness is worth. */
 export const MAX_RENDER_DPR = 2;
 
+/**
+ * How far past the part of the scroller being read a page keeps its drawn
+ * layers: one scroller height above and below, so the next page is ready
+ * before it arrives. A page further away lets them go, since each costs about
+ * 9 MB and a long book read end to end would otherwise hold gigabytes.
+ */
+export const PAGE_NEAR_VIEW_MARGIN = "100% 0px";
+
+/** Thumbnails are small enough to keep two rail heights either way, which
+ * saves redrawing them as the rail is scrolled back and forth. */
+export const RAIL_NEAR_VIEW_MARGIN = "200% 0px";
+
 export const ANNOTATION_COLORS = [
   "#e63946",
   "#1a1815",
@@ -216,6 +398,13 @@ export const DEFAULT_FONT_SIZE = 16;
  * pages, so an uncapped history would grow without limit over a long sitting.
  */
 export const MAX_HISTORY_STEPS = 100;
+
+/**
+ * How many opened files stay loaded once nothing shows them, so going back to
+ * one is instant. Each holds its bytes and pdf.js's copy of them, so a few
+ * large books are as much as is worth keeping.
+ */
+export const LOADED_DOCUMENT_LIMIT = 4;
 
 /** Page-space radius around the pointer that counts as touching a stroke. */
 export const ERASER_TOLERANCE = 6;
@@ -311,20 +500,31 @@ export const DESELECT_HOTKEY_KEY = "Escape";
 
 /** Shown in each control's tooltip. "Mod" becomes Cmd on a Mac and Ctrl elsewhere. */
 export const SHORTCUT_HINTS = {
+  closeTab: "Alt+W",
   copyMarkup: "Mod+C",
   deleteText: "Delete",
   deselect: "Esc",
   export: "Mod+S",
   fitWidth: "Mod+0",
   fullscreen: "F",
+  goToTab: "Alt+1-9",
   help: "?",
+  lastFile: "Alt+`",
   nextPage: "Right arrow",
+  nextTab: "Alt+]",
+  otherPane: "`",
+  peekMatch: "M",
   pan: "Space",
   pasteMarkup: "Mod+V",
   previousPage: "Left arrow",
+  previousTab: "Alt+[",
+  quickOpen: "Mod+K",
   redo: "Mod+Shift+Z",
+  reopenTab: "Alt+Shift+T",
   bookmark: "B",
+  scrollLock: "L",
   scrollZoom: "Mod+Scroll",
+  split: "Mod+\\",
   search: "Mod+F",
   searchNext: "Enter",
   searchPrevious: "Shift+Enter",
@@ -345,8 +545,6 @@ export const SAVE_STATUS_COPY = {
     label: "Saved on this device",
   },
 } as const;
-
-export const EDITOR_BRAND_LABEL = "Editor";
 
 /** Shown in the file bar before a file is picked. */
 export const EDITOR_EMPTY_TITLE = "PDF editor";
@@ -438,6 +636,10 @@ export const PDF_BOOKMARKS_KEY_PREFIX = "mcce.pdf-bookmarks.v1";
 
 export const BOOKMARK_HOTKEY_KEY = "b";
 
+export const FILES_PANEL_SHOW_LABEL = "Show files";
+export const FILES_PANEL_HIDE_LABEL = "Hide files";
+export const PAGES_PANEL_SHOW_LABEL = "Show pages";
+export const PAGES_PANEL_HIDE_LABEL = "Hide pages";
 export const STUDY_PANEL_SHOW_LABEL = "Show contents and notes";
 export const STUDY_PANEL_HIDE_LABEL = "Hide contents and notes";
 

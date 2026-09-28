@@ -9,6 +9,7 @@ import {
 } from "@/config/pdf-editor";
 import type { EditorTool } from "@/lib/pdf-editor/types";
 
+/** The tool in hand and the ink it draws with, shared by every open file. */
 export function useEditorTools() {
   const [tool, setTool] = useState<EditorTool>(DEFAULT_TOOL);
   const [color, setColor] = useState<string>(DEFAULT_COLOR);
@@ -36,3 +37,5 @@ export function useEditorTools() {
     tool,
   };
 }
+
+export type EditorTools = ReturnType<typeof useEditorTools>;

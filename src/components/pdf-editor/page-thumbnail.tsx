@@ -8,8 +8,12 @@ import {
 } from "react";
 import { PageInsertMenu } from "@/components/pdf-editor/page-insert-menu";
 import { PageThumbnailAction } from "@/components/pdf-editor/page-thumbnail-action";
-import { RAIL_POSITION_ATTRIBUTE, THUMBNAIL_WIDTH } from "@/config/pdf-editor";
-import { useInViewport } from "@/hooks/use-in-viewport";
+import {
+  RAIL_NEAR_VIEW_MARGIN,
+  RAIL_POSITION_ATTRIBUTE,
+  THUMBNAIL_WIDTH,
+} from "@/config/pdf-editor";
+import { useNearView } from "@/hooks/use-near-view";
 import { usePdfPageRender } from "@/hooks/use-pdf-page-render";
 import { useScrollIntoView } from "@/hooks/use-scroll-into-view";
 import { getRenderedSize } from "@/lib/pdf-editor/rotation";
@@ -53,10 +57,10 @@ export function PageThumbnail({
   size,
 }: PageThumbnailProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const isVisible = useInViewport(wrapperRef, railRef);
+  const isNear = useNearView(wrapperRef, railRef, RAIL_NEAR_VIEW_MARGIN);
   const rendered = getRenderedSize(size, page.rotation);
   const zoom = THUMBNAIL_WIDTH / rendered.width;
-  const { canvasRef } = usePdfPageRender(doc, page, zoom, isVisible);
+  const { canvasRef } = usePdfPageRender(doc, page, zoom, isNear);
   useScrollIntoView(wrapperRef, isActive);
 
   const handleSelect = useCallback(

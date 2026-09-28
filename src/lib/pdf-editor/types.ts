@@ -1,9 +1,10 @@
 import type { DriveNode } from "@/lib/drive/types";
 
-/** What the editor's file sidebar needs of a node: enough to list, sort, and walk up the tree. */
+/** What the editor needs of a node: enough to list, sort, and walk up the
+ * tree, to label a file by what it is for, and to find its course. */
 export type EditorTreeNode = Pick<
   DriveNode,
-  "id" | "kind" | "name" | "parentId"
+  "courseCode" | "id" | "kind" | "materialType" | "name" | "parentId"
 >;
 
 /** A file from the index, trimmed to what the file bar, export, and Drive link read. */
@@ -21,6 +22,76 @@ export interface LocalEditorFile {
 
 /** The open file. Where it came from decides how its bytes are fetched. */
 export type EditorFile = DriveEditorFile | LocalEditorFile;
+
+/** A file kept open as a tab: enough to name it and open it again. */
+export interface OpenFile {
+  id: string;
+  name: string;
+  source: EditorFile["source"];
+}
+
+/** The files open as tabs, and what moving between them needs. */
+export interface EditorDesk {
+  /** Newest first, for bringing back a tab closed by mistake. */
+  closed: OpenFile[];
+  /** In tab order. */
+  files: OpenFile[];
+  /** Ids from the file shown most recently back. */
+  recent: string[];
+}
+
+/** What a tab key asks for, before the tabs it applies to are known. */
+export type TabKey =
+  | { index: number | "last"; type: "go" }
+  | { step: -1 | 1; type: "step" }
+  | { type: "back" }
+  | { type: "close" }
+  | { type: "reopen" };
+
+/** What a tab key does once the tabs are known. */
+export type TabKeyResult =
+  | { file: OpenFile; type: "show" }
+  | { id: string; type: "close" };
+
+/** A group of files saved to come back to together, like everything open
+ * while preparing for one exam, with how they were laid out. */
+export interface StudySet {
+  /** The file in the second pane, when the set was saved split. */
+  besideId: string | null;
+  files: OpenFile[];
+  id: string;
+  /** The scroll lock's gap, when the two panes scrolled together. */
+  lockGap: number | null;
+  name: string;
+  /** The file in the first pane, or on its own. */
+  primaryId: string | null;
+  savedAt: string;
+}
+
+/** Two panes scrolling together: the files it joins, as "first|second",
+ * and how many pages the second is ahead of the first. */
+export interface PaneLock {
+  files: string;
+  gap: number;
+}
+
+/** The short tag a tab carries for what its file is for. */
+export type FileChip =
+  | "book"
+  | "ex"
+  | "exam"
+  | "hw"
+  | "lab"
+  | "lec"
+  | "quiz"
+  | "sheet"
+  | "sol";
+
+/** How a tab names its file: a tag for what it is, and a short name. */
+export interface TabLabel {
+  chip: FileChip | null;
+  text: string;
+}
 
 /** What is kept about a PDF from the reader's computer, apart from its bytes. */
 export interface LocalPdfMeta {
@@ -71,10 +142,23 @@ export interface SearchMatch extends TextSpan {
   position: number;
 }
 
-/** The editor's URL: a file from the index, or one from this device. */
+/** The two panes files can be shown in, the first always there. */
+export type EditorPaneSide = "beside" | "primary";
+
+/** The editor's URL: the file in the first pane, from the index or from this
+ * device, and any file shown beside it. */
 export interface EditorSearch {
+  /** The second pane's file, from either place: ids from this device carry
+   * their own prefix. */
+  beside?: string;
   file?: string;
+  /** Set while the second pane has focus. */
+  focus?: "beside";
   local?: string;
+  /** Files to open together, by id, from a shared study set link. */
+  set?: string;
+  /** A study set saved in this browser to open. */
+  setId?: string;
 }
 
 export type EditorTool =
@@ -235,6 +319,13 @@ export interface EditorPage {
 export interface EditorSnapshot {
   annotations: Annotation[];
   pages: EditorPage[];
+}
+
+/** A file's steps either side of what is on screen, for undo and redo. */
+export interface EditorHistory {
+  future: EditorSnapshot[];
+  past: EditorSnapshot[];
+  present: EditorSnapshot;
 }
 
 /** Whether the zoom is a number the reader picked or one fitted to the window. */

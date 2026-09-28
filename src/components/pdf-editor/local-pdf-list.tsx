@@ -6,10 +6,17 @@ import { useLocalPdfList } from "@/hooks/use-local-pdf-list";
 
 interface LocalPdfListProps {
   activeId: string | null;
+  /** Told once a file has left this device, so its tab can close. */
+  onForget: (id: string) => void;
+  openIds: ReadonlySet<string>;
 }
 
-export function LocalPdfList({ activeId }: LocalPdfListProps) {
-  const { files, remove } = useLocalPdfList(activeId);
+export function LocalPdfList({
+  activeId,
+  onForget,
+  openIds,
+}: LocalPdfListProps) {
+  const { files, remove } = useLocalPdfList(activeId, onForget);
 
   return (
     <ScrollArea className="min-h-0 flex-1">
@@ -21,6 +28,7 @@ export function LocalPdfList({ activeId }: LocalPdfListProps) {
             <LocalPdfListItem
               file={file}
               isActive={file.id === activeId}
+              isOpen={openIds.has(file.id)}
               key={file.id}
               onRemove={remove}
             />

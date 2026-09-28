@@ -3,14 +3,16 @@ import type { PageNavigation, ZoomControl } from "@/lib/pdf-editor/types";
 import { readView, writeView } from "@/lib/pdf-editor/view-storage";
 
 /**
- * Reopens each file at the page and zoom it was left at. The page is only
+ * Reopens each file at the page and zoom it was left at, or at a page it is
+ * asked to start on. The page is only
  * scrolled to once the saved zoom has reached the pages, since scrolling at the
  * old zoom would land short of it.
  */
 export function useViewResume(
   fileId: string | undefined,
   navigation: PageNavigation,
-  zoom: ZoomControl
+  zoom: ZoomControl,
+  startPage?: number
 ) {
   const restoredIdRef = useRef<string | null>(null);
   const pendingPageRef = useRef<number | null>(null);
@@ -30,7 +32,16 @@ export function useViewResume(
       return;
     }
     restoredIdRef.current = fileId;
-    const saved = readView(fileId, pageCount);
+    // A file opened to sit beside another starts on that one's page, fitted,
+    // rather than where it was left.
+    const saved =
+      startPage === undefined
+        ? readView(fileId, pageCount)
+        : {
+            page: Math.min(startPage, pageCount - 1),
+            zoom: value,
+            zoomMode: "fit-width" as const,
+          };
     if (!saved) {
       return;
     }
@@ -43,7 +54,7 @@ export function useViewResume(
     }
     pendingPageRef.current = saved.page;
     restore(saved.zoomMode, saved.zoom);
-  }, [fileId, goToPage, mode, pageCount, restore, value]);
+  }, [fileId, goToPage, mode, pageCount, restore, startPage, value]);
 
   // Runs once the restored zoom has been laid out, before it is painted.
   useLayoutEffect(() => {

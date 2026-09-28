@@ -4,8 +4,10 @@ import {
   PanelLeftIcon,
   PanelRightIcon,
 } from "lucide-react";
+import type { ReactNode } from "react";
 import { OpenInDriveButton } from "@/components/drive/open-in-drive-button";
 import { EditorBrand } from "@/components/pdf-editor/editor-brand";
+import { EditorPanelToggle } from "@/components/pdf-editor/editor-panel-toggle";
 import { EditorSaveStatus } from "@/components/pdf-editor/editor-save-status";
 import { FullscreenButton } from "@/components/pdf-editor/fullscreen-button";
 import { ThemeSwitcher } from "@/components/theme-switcher";
@@ -13,6 +15,10 @@ import { Button } from "@/components/ui/button";
 import {
   EDITOR_EMPTY_TITLE,
   EDITOR_HEADER_ICON_BUTTON_CLASS,
+  FILES_PANEL_HIDE_LABEL,
+  FILES_PANEL_SHOW_LABEL,
+  PAGES_PANEL_HIDE_LABEL,
+  PAGES_PANEL_SHOW_LABEL,
   SHORTCUT_HINTS,
   STUDY_PANEL_HIDE_LABEL,
   STUDY_PANEL_SHOW_LABEL,
@@ -20,8 +26,12 @@ import {
 import { EDITOR_HELP_LABEL } from "@/config/pdf-editor-help";
 import { withShortcut } from "@/lib/pdf-editor/shortcut-label";
 import type { EditorFile, SaveStatus } from "@/lib/pdf-editor/types";
+import { cn } from "@/lib/utils";
 
 interface EditorFileBarProps {
+  /** The tab strip, which takes the middle of the bar once any file is open. */
+  children: ReactNode;
+  hasTabs: boolean;
   isBrowserOpen: boolean;
   isFullscreen: boolean;
   isFullscreenSupported: boolean;
@@ -38,6 +48,8 @@ interface EditorFileBarProps {
 }
 
 export function EditorFileBar({
+  children,
+  hasTabs,
   isBrowserOpen,
   isFullscreen,
   isFullscreenSupported,
@@ -52,58 +64,59 @@ export function EditorFileBar({
   saveStatus,
 }: EditorFileBarProps) {
   const title = node ? node.name : EDITOR_EMPTY_TITLE;
-  const studyLabel = isStudyOpen
-    ? STUDY_PANEL_HIDE_LABEL
-    : STUDY_PANEL_SHOW_LABEL;
 
   return (
-    <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 border-b-2 bg-background p-3">
-      <div className="flex min-w-0 items-center gap-2">
-        <Button
-          aria-label={isBrowserOpen ? "Hide files" : "Show files"}
-          aria-pressed={isBrowserOpen}
-          className={EDITOR_HEADER_ICON_BUTTON_CLASS}
-          onClick={onToggleBrowser}
-          size="icon"
-          title={isBrowserOpen ? "Hide files" : "Show files"}
-          variant="outline"
+    <div className="flex items-center gap-3 border-b-2 bg-background p-3">
+      <div className="flex shrink-0 items-center gap-2">
+        <EditorPanelToggle
+          hideLabel={FILES_PANEL_HIDE_LABEL}
+          isOpen={isBrowserOpen}
+          onToggle={onToggleBrowser}
+          showLabel={FILES_PANEL_SHOW_LABEL}
         >
           <PanelLeftIcon />
-        </Button>
+        </EditorPanelToggle>
         {node ? (
-          <Button
-            aria-label={isRailOpen ? "Hide pages" : "Show pages"}
-            aria-pressed={isRailOpen}
-            className={EDITOR_HEADER_ICON_BUTTON_CLASS}
-            onClick={onToggleRail}
-            size="icon"
-            title={isRailOpen ? "Hide pages" : "Show pages"}
-            variant="outline"
+          <EditorPanelToggle
+            hideLabel={PAGES_PANEL_HIDE_LABEL}
+            isOpen={isRailOpen}
+            onToggle={onToggleRail}
+            showLabel={PAGES_PANEL_SHOW_LABEL}
           >
             <GalleryVerticalEndIcon />
-          </Button>
+          </EditorPanelToggle>
         ) : null}
-        <h1 className="min-w-0 truncate font-head text-xs sm:text-sm">
-          {title}
-        </h1>
+        <EditorBrand />
       </div>
 
-      <EditorBrand />
+      {/* The active tab shows the title once there are tabs, so the heading is
+          kept for screen readers only. */}
+      <h1
+        className={cn(
+          "min-w-0 truncate font-head text-xs sm:text-sm",
+          hasTabs ? "sr-only" : "flex-1"
+        )}
+      >
+        {title}
+      </h1>
+      {children}
 
-      <div className="flex items-center justify-end gap-2">
-        {saveStatus ? <EditorSaveStatus status={saveStatus} /> : null}
+      <div className="flex shrink-0 items-center justify-end gap-2">
         {node ? (
-          <Button
-            aria-label={studyLabel}
-            aria-pressed={isStudyOpen}
-            className={EDITOR_HEADER_ICON_BUTTON_CLASS}
-            onClick={onToggleStudy}
-            size="icon"
-            title={studyLabel}
-            variant="outline"
+          <EditorSaveStatus
+            isPending={saveStatus === null}
+            status={saveStatus ?? "saved"}
+          />
+        ) : null}
+        {node ? (
+          <EditorPanelToggle
+            hideLabel={STUDY_PANEL_HIDE_LABEL}
+            isOpen={isStudyOpen}
+            onToggle={onToggleStudy}
+            showLabel={STUDY_PANEL_SHOW_LABEL}
           >
             <PanelRightIcon />
-          </Button>
+          </EditorPanelToggle>
         ) : null}
         {node?.source === "drive" ? (
           <OpenInDriveButton href={node.webViewLink} />

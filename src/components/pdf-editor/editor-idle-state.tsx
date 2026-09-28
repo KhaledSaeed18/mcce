@@ -2,6 +2,7 @@ import { PanelLeftIcon } from "lucide-react";
 import { EditorIdleSheet } from "@/components/pdf-editor/editor-idle-sheet";
 import { EditorRecentFiles } from "@/components/pdf-editor/editor-recent-files";
 import { EditorShortcutList } from "@/components/pdf-editor/editor-shortcut-list";
+import { EditorStudySets } from "@/components/pdf-editor/editor-study-sets";
 import { OpenLocalPdfButton } from "@/components/pdf-editor/open-local-pdf-button";
 import { Button } from "@/components/ui/button";
 import { EDITOR_IDLE_SHOW_FILES } from "@/config/pdf-editor";
@@ -36,6 +37,7 @@ export function EditorIdleState({
       </div>
 
       <div className="flex w-full max-w-xl flex-col gap-6">
+        <EditorStudySets />
         {recentFiles.length > 0 ? (
           <EditorRecentFiles nodes={recentFiles} />
         ) : null}

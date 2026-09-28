@@ -5,10 +5,14 @@ import {
 
 const PDF_EXTENSION_PATTERN = /\.pdf$/i;
 
+export function stripPdfExtension(name: string): string {
+  return name.replace(PDF_EXTENSION_PATTERN, "");
+}
+
 export function buildAnnotatedFileName(name: string): string {
-  return `${name.replace(PDF_EXTENSION_PATTERN, "")}${EDITOR_EXPORT_SUFFIX}`;
+  return `${stripPdfExtension(name)}${EDITOR_EXPORT_SUFFIX}`;
 }
 
 export function buildSummaryFileName(name: string): string {
-  return `${name.replace(PDF_EXTENSION_PATTERN, "")}${SUMMARY_EXPORT_SUFFIX}`;
+  return `${stripPdfExtension(name)}${SUMMARY_EXPORT_SUFFIX}`;
 }

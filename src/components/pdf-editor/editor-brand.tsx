@@ -1,11 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { LogoMark } from "@/components/logo-mark";
-import { EDITOR_BRAND_LABEL } from "@/config/pdf-editor";
 import { SITE_NAME } from "@/config/site";
 
 const BRAND_CLASSES =
-  "group flex h-8 items-center gap-2 rounded border-2 bg-card py-1 pr-3 pl-2 shadow-sm transition duration-200 hover:bg-primary hover:text-primary-foreground hover:shadow-md active:shadow-none";
+  "grid size-8 shrink-0 place-items-center rounded border-2 bg-card shadow-sm transition duration-200 hover:bg-primary hover:shadow-md active:shadow-none";
 
+/** Just the mark, so the file bar's middle is left to the tabs. */
 export function EditorBrand() {
   return (
     <Link
@@ -15,11 +15,6 @@ export function EditorBrand() {
       to="/"
     >
       <LogoMark className="size-5" />
-      <span className="font-head text-sm leading-none">{SITE_NAME}</span>
-      <span className="h-4 w-px bg-border" />
-      <span className="font-head text-[0.65rem] text-muted-foreground uppercase leading-none tracking-[0.18em] transition-colors duration-200 group-hover:text-primary-foreground">
-        {EDITOR_BRAND_LABEL}
-      </span>
     </Link>
   );
 }

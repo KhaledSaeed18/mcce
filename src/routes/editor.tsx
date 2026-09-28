@@ -6,6 +6,7 @@ import { SITE_NAME, SITE_URL } from "@/config/site";
 import { useEditorViewport } from "@/hooks/use-editor-viewport";
 import { useIsHydrated } from "@/hooks/use-is-hydrated";
 import { useLocalEditorFile } from "@/hooks/use-local-editor-file";
+import { isLocalFileId } from "@/lib/pdf-editor/editor-search";
 import {
   editorFileQueryOptions,
   editorTreeQueryOptions,
@@ -29,28 +30,41 @@ export const Route = createFileRoute("/editor")({
     }),
   }),
   loader: async ({ context, deps }) => {
-    const [tree, file] = await Promise.all([
+    const besideId =
+      deps.beside && !isLocalFileId(deps.beside) ? deps.beside : undefined;
+    const [tree, file, besideFile] = await Promise.all([
       context.queryClient.ensureQueryData(editorTreeQueryOptions),
       context.queryClient.ensureQueryData(editorFileQueryOptions(deps.file)),
+      context.queryClient.ensureQueryData(editorFileQueryOptions(besideId)),
     ]);
-    return { file, tree };
+    return { besideFile, file, tree };
   },
   // Typed up front so inference does not depend on key order, which the
   // formatter sorts alphabetically, putting this after the loader that reads it.
   loaderDeps: ({ search }: { search: EditorSearch }) => ({
+    beside: search.beside,
     file: search.file,
   }),
   validateSearch: (search: Record<string, unknown>): EditorSearch => ({
+    beside: readOptionalString(search.beside),
     file: readOptionalString(search.file),
+    focus: search.focus === "beside" ? "beside" : undefined,
     local: readOptionalString(search.local),
+    set: readOptionalString(search.set),
+    setId: readOptionalString(search.setId),
   }),
 });
 
 function EditorPage() {
-  const { file, tree } = Route.useLoaderData();
-  const { local } = Route.useSearch();
+  const { besideFile, file, tree } = Route.useLoaderData();
+  const { beside, focus, local, set, setId } = Route.useSearch();
   // A file from the index wins if the URL somehow names both.
   const localFile = useLocalEditorFile(file ? undefined : local);
+  const besideLocalFile = useLocalEditorFile(
+    beside && isLocalFileId(beside) ? beside : undefined
+  );
+  const node = file ?? localFile;
+  const besideNode = besideFile ?? besideLocalFile;
 
   const isHydrated = useIsHydrated();
   const isWide = useEditorViewport();
@@ -65,5 +79,17 @@ function EditorPage() {
     return <EditorViewportNotice node={file} />;
   }
 
-  return <PdfEditorWorkspace node={file ?? localFile} nodes={tree} />;
+  // A second pane needs a first, and a file is never beside itself.
+  const isSplit =
+    node !== null && besideNode !== null && besideNode.id !== node.id;
+
+  return (
+    <PdfEditorWorkspace
+      beside={isSplit ? besideNode : null}
+      focus={focus}
+      node={node}
+      nodes={tree}
+      setLink={{ beside, set, setId }}
+    />
+  );
 }

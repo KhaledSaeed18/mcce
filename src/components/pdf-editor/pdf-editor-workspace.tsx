@@ -1,45 +1,65 @@
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import { EditorDocumentColumn } from "@/components/pdf-editor/editor-document-column";
 import { EditorDropZone } from "@/components/pdf-editor/editor-drop-zone";
+import { EditorExamDialogs } from "@/components/pdf-editor/editor-exam-dialogs";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
+import { EditorFileBarTabs } from "@/components/pdf-editor/editor-file-bar-tabs";
 import { EditorHelpDialog } from "@/components/pdf-editor/editor-help-dialog";
+import { EditorPanes } from "@/components/pdf-editor/editor-panes";
 import { EditorSidePanel } from "@/components/pdf-editor/editor-side-panel";
-import { ExamTimeUpDialog } from "@/components/pdf-editor/exam-time-up-dialog";
+import { EditorStudySide } from "@/components/pdf-editor/editor-study-side";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
-import { StudyPanel } from "@/components/pdf-editor/study-panel";
-import { DEFAULT_EXPORT_NAME, EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
+import { EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
 import { useEditorHelp } from "@/hooks/use-editor-help";
-import { useEditorPanels } from "@/hooks/use-editor-panels";
-import { useEditorSession } from "@/hooks/use-editor-session";
+import { useEditorWorkspace } from "@/hooks/use-editor-workspace";
 import { useFullscreen } from "@/hooks/use-fullscreen";
-import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
+import type {
+  EditorFile,
+  EditorSearch,
+  EditorTreeNode,
+} from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
 interface PdfEditorWorkspaceProps {
+  /** The file in the second pane, while the view is split. */
+  beside: EditorFile | null;
+  focus: EditorSearch["focus"];
   node: EditorFile | null;
   nodes: EditorTreeNode[];
+  /** A study set the URL asks to open. */
+  setLink: Pick<EditorSearch, "beside" | "set" | "setId">;
 }
 
-export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
+export function PdfEditorWorkspace({
+  beside,
+  focus,
+  node,
+  nodes,
+  setLink,
+}: PdfEditorWorkspaceProps) {
   const rootRef = useRef<HTMLElement>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const {
-    isFullscreen,
-    isSupported: isFullscreenSupported,
-    toggle: toggleFullscreen,
-  } = useFullscreen(rootRef);
-  const {
-    isAnimated,
-    isBrowserOpen,
-    isRailOpen,
-    isStudyOpen,
-    toggleBrowser,
-    toggleRail,
-    toggleStudy,
-  } = useEditorPanels();
+  const fullscreen = useFullscreen(rootRef);
   const help = useEditorHelp();
-
-  const session = useEditorSession(node, scrollRef);
+  const {
+    desk,
+    examCover,
+    lock,
+    match,
+    openMatch,
+    paneActions,
+    panels,
+    panes,
+    peek,
+    saveSet,
+    tools,
+  } = useEditorWorkspace({ beside, focus, node, nodes, setLink });
+  const { focused } = panes;
+  const { session } = focused;
+  const handleOpenMatch = useCallback(() => {
+    if (match) {
+      openMatch(focused, match);
+    }
+  }, [focused, match, openMatch]);
 
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
@@ -49,57 +69,71 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     >
       <EditorDropZone>
         <EditorFileBar
-          isBrowserOpen={isBrowserOpen}
-          isFullscreen={isFullscreen}
-          isFullscreenSupported={isFullscreenSupported}
-          isRailOpen={isRailOpen}
-          isStudyOpen={isStudyOpen}
-          node={node}
+          hasTabs={desk.desk.files.length > 0}
+          isBrowserOpen={panels.isBrowserOpen}
+          isFullscreen={fullscreen.isFullscreen}
+          isFullscreenSupported={fullscreen.isSupported}
+          isRailOpen={panels.isRailOpen}
+          isStudyOpen={panels.isStudyOpen}
+          node={focused.node}
           onOpenHelp={help.open}
-          onToggleBrowser={toggleBrowser}
-          onToggleFullscreen={toggleFullscreen}
-          onToggleRail={toggleRail}
-          onToggleStudy={toggleStudy}
+          onToggleBrowser={panels.toggleBrowser}
+          onToggleFullscreen={fullscreen.toggle}
+          onToggleRail={panels.toggleRail}
+          onToggleStudy={panels.toggleStudy}
           saveStatus={session.saveStatus}
-        />
-        <div className="flex min-h-0 flex-1">
-          <EditorSidePanel isAnimated={isAnimated} isOpen={isBrowserOpen}>
-            <FileBrowserPanel activeNode={node} nodes={nodes} />
-          </EditorSidePanel>
-          <EditorDocumentColumn
-            isBrowserOpen={isBrowserOpen}
-            isPanelAnimated={isAnimated}
-            isRailOpen={isRailOpen}
-            node={node}
+        >
+          <EditorFileBarTabs
+            desk={desk}
+            match={match}
             nodes={nodes}
-            onShowFiles={toggleBrowser}
-            scrollRef={scrollRef}
-            session={session}
+            onOpenBeside={paneActions.openBeside}
+            onOpenMatch={handleOpenMatch}
+            onSaveSet={saveSet}
+            sides={panes.sides}
           />
+        </EditorFileBar>
+        <div className="flex min-h-0 flex-1">
           <EditorSidePanel
-            isAnimated={isAnimated}
-            isOpen={isStudyOpen && session.doc !== null}
+            isAnimated={panels.isAnimated}
+            isOpen={panels.isBrowserOpen}
           >
-            {session.doc ? (
-              <StudyPanel
-                annotations={session.markup.annotations}
-                bookmarks={session.bookmarks}
-                doc={session.doc}
-                fileName={node ? node.name : DEFAULT_EXPORT_NAME}
-                navigation={session.navigation}
-                onSelect={session.markup.actions.select}
-                pages={session.markup.pages}
-              />
-            ) : null}
+            <FileBrowserPanel
+              activeNode={focused.node}
+              nodes={nodes}
+              onForget={desk.forget}
+              openFiles={desk.desk.files}
+            />
           </EditorSidePanel>
+          <EditorDocumentColumn session={session} tools={tools}>
+            <EditorPanes
+              examCover={examCover}
+              focusedSide={focused.side}
+              isBrowserOpen={panels.isBrowserOpen}
+              isPanelAnimated={panels.isAnimated}
+              isRailOpen={panels.isRailOpen}
+              lock={lock}
+              nodes={nodes}
+              onClosePane={paneActions.close}
+              onFocus={paneActions.focus}
+              onOpenMatch={openMatch}
+              onPlace={paneActions.place}
+              onShowFiles={panels.toggleBrowser}
+              onSwap={paneActions.swap}
+              panes={panes.panes}
+              peek={peek}
+              tools={tools}
+            />
+          </EditorDocumentColumn>
+          <EditorStudySide
+            isAnimated={panels.isAnimated}
+            isOpen={panels.isStudyOpen}
+            pane={focused}
+          />
         </div>
       </EditorDropZone>
       <EditorHelpDialog onOpenChange={help.setIsOpen} open={help.isOpen} />
-      <ExamTimeUpDialog
-        isOpen={session.exam.isOver}
-        onClose={session.exam.end}
-        onDownload={session.exportPdf}
-      />
+      <EditorExamDialogs panes={panes.panes} />
     </main>
   );
 }

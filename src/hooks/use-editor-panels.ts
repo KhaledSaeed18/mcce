@@ -42,6 +42,14 @@ export function useEditorPanels() {
     });
   }, []);
 
+  /** Sets several panels at once, as making room for a split does. */
+  const update = useCallback((changes: Partial<EditorPanels>) => {
+    setPanels((previous) => ({
+      ...(previous ?? DEFAULT_EDITOR_PANELS),
+      ...changes,
+    }));
+  }, []);
+
   const toggleBrowser = useCallback(() => toggle("isBrowserOpen"), [toggle]);
   const toggleRail = useCallback(() => toggle("isRailOpen"), [toggle]);
   const toggleStudy = useCallback(() => toggle("isStudyOpen"), [toggle]);
@@ -49,8 +57,12 @@ export function useEditorPanels() {
   return {
     ...activePanels,
     isAnimated,
+    /** False until the stored layout has been read, before which a change
+     * made from outside would be overwritten by it. */
+    isHydrated: panels !== null,
     toggleBrowser,
     toggleRail,
     toggleStudy,
+    update,
   };
 }

@@ -15,6 +15,7 @@ import {
 import {
   LOCAL_PDF_REMOVE_DESCRIPTION,
   LOCAL_PDF_REMOVE_TITLE,
+  ROW_ACTION_CLASS,
 } from "@/config/pdf-editor";
 
 interface RemoveLocalPdfButtonProps {
@@ -39,7 +40,7 @@ export function RemoveLocalPdfButton({
     <AlertDialog onOpenChange={setIsOpen} open={isOpen}>
       <AlertDialogTrigger
         aria-label={`${LOCAL_PDF_REMOVE_TITLE}: ${name}`}
-        className="flex size-7 shrink-0 cursor-pointer items-center justify-center rounded border-2 border-transparent text-muted-foreground hover:border-border hover:bg-accent hover:text-foreground"
+        className={ROW_ACTION_CLASS}
         title={LOCAL_PDF_REMOVE_TITLE}
       >
         <XIcon className="size-3.5" />

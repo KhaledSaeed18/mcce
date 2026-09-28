@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useAnnotationActions } from "@/hooks/use-annotation-actions";
 import { useEditorHistory } from "@/hooks/use-editor-history";
 import { usePageActions } from "@/hooks/use-page-actions";
@@ -10,29 +10,28 @@ export function useEditorDocument(
   fileId: string | undefined,
   pageCount: number
 ) {
-  const { canRedo, canUndo, commit, redo, reset, snapshot, undo } =
-    useEditorHistory();
-  const hydratedIdRef = useRef<string | null>(null);
+  const { canRedo, canUndo, commit, isOpen, open, redo, snapshot, undo } =
+    useEditorHistory(fileId);
   const [isSaved, setIsSaved] = useState(true);
   const annotations = useAnnotationActions(commit);
   const pageActions = usePageActions(commit);
 
   useEffect(() => {
-    // The file's own page count is what a stored list is checked against.
-    if (!(fileId && pageCount)) {
+    // The file's own page count is what a stored list is checked against. A
+    // file already open this visit is not read again, which keeps its undo steps.
+    if (!(fileId && pageCount) || isOpen) {
       return;
     }
-    hydratedIdRef.current = fileId;
-    reset(readDocument(fileId, pageCount));
-  }, [fileId, pageCount, reset]);
+    open(readDocument(fileId, pageCount));
+  }, [fileId, isOpen, open, pageCount]);
 
   useEffect(() => {
-    // Writing before hydration would overwrite what is stored with an empty file.
-    if (!fileId || hydratedIdRef.current !== fileId) {
+    // Writing before the file is read would overwrite what is stored with an empty file.
+    if (!(fileId && isOpen)) {
       return;
     }
     setIsSaved(writeDocument(fileId, snapshot));
-  }, [fileId, snapshot]);
+  }, [fileId, isOpen, snapshot]);
 
   /** One undo step, so a restore pressed by mistake is taken back like any edit. */
   const restore = useCallback(

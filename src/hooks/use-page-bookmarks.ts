@@ -1,6 +1,4 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { BOOKMARK_HOTKEY_KEY } from "@/config/pdf-editor";
-import { useKeyHotkey } from "@/hooks/use-key-hotkey";
 import {
   listBookmarkedPositions,
   readBookmarks,
@@ -17,7 +15,7 @@ interface StoredBookmarks {
 const NOTHING_MARKED: StoredBookmarks = { fileId: undefined, ids: [] };
 
 /** The pages the reader bookmarked in the open file, kept in this browser. A
- * bookmark follows its page wherever it moves. B marks the page being read. */
+ * bookmark follows its page wherever it moves. */
 export function usePageBookmarks(
   fileId: string | undefined,
   pages: EditorPage[],
@@ -50,8 +48,6 @@ export function usePageBookmarks(
       toggle(activeId);
     }
   }, [activeId, toggle]);
-
-  useKeyHotkey(BOOKMARK_HOTKEY_KEY, toggleActive);
 
   const positions = useMemo(
     () => listBookmarkedPositions(ids, pages),
