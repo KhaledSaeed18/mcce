@@ -1,18 +1,15 @@
 import type { RefObject } from "react";
 import { DEFAULT_EXPORT_NAME } from "@/config/pdf-editor";
-import { useDocumentScroller } from "@/hooks/use-document-scroller";
 import { useDocumentSearch } from "@/hooks/use-document-search";
 import { useEditorInk } from "@/hooks/use-editor-ink";
 import { useEditorMarkup } from "@/hooks/use-editor-markup";
 import { useEditorPages } from "@/hooks/use-editor-pages";
 import { useEditorStudy } from "@/hooks/use-editor-study";
 import type { EditorTools } from "@/hooks/use-editor-tools";
-import { useElementSize } from "@/hooks/use-element-size";
+import { useEditorZoom } from "@/hooks/use-editor-zoom";
 import { usePdfDocument } from "@/hooks/use-pdf-document";
 import { usePdfExport } from "@/hooks/use-pdf-export";
-import { usePdfZoom } from "@/hooks/use-pdf-zoom";
 import { useRecordRecentFile } from "@/hooks/use-record-recent-file";
-import { useViewResume } from "@/hooks/use-view-resume";
 import type { EditorFile, SaveStatus } from "@/lib/pdf-editor/types";
 
 interface EditorSessionOptions {
@@ -36,7 +33,6 @@ export function useEditorSession({
   const { bytes, doc, retry, status } = usePdfDocument(node);
   // Recent files are shared with the rest of the site, which only knows Drive files.
   useRecordRecentFile(node?.source === "drive" ? node.id : undefined);
-  const viewport = useElementSize(scrollRef);
   const markup = useEditorMarkup({
     fileId: node?.id,
     pageCount: doc?.numPages ?? 0,
@@ -60,9 +56,12 @@ export function useEditorSession({
     goToPage: navigation.goToPage,
     pages: markup.pages,
   });
-  const zoom = usePdfZoom({ pageSize: activeSize, viewport });
-  useDocumentScroller(scrollRef, node?.id, zoom);
-  useViewResume(node?.id, navigation, zoom);
+  const zoom = useEditorZoom({
+    activeSize,
+    fileId: node?.id,
+    navigation,
+    scrollRef,
+  });
   const { exportPdf, status: exportStatus } = usePdfExport({
     annotations: markup.annotations,
     bytes,
