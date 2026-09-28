@@ -2,8 +2,9 @@ import type { PDFDocumentProxy, TextLayer } from "pdfjs-dist";
 import { useEffect, useRef, useState } from "react";
 
 /** Lays the page's own text over it, invisibly, at the zoom and turn the page
- * is shown at, so it can be selected and searched. Rebuilt on each change:
- * the text of one page is cheap to lay out again. */
+ * is shown at, so it can be selected and searched. Rebuilt on each change and
+ * cleared while the page is inactive: the text of one page is cheap to lay out
+ * again. */
 export function usePdfTextLayer(
   doc: PDFDocumentProxy,
   pageIndex: number,
@@ -18,7 +19,13 @@ export function usePdfTextLayer(
 
   useEffect(() => {
     const container = layerRef.current;
-    if (!(isActive && container)) {
+    if (!container) {
+      return;
+    }
+    if (!isActive) {
+      container.replaceChildren();
+      // A page that never had text keeps its empty list rather than rendering again.
+      setTextDivs((current) => (current.length ? [] : current));
       return;
     }
 

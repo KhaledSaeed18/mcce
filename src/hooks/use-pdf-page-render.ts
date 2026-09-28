@@ -5,9 +5,19 @@ import { drawSheet } from "@/lib/pdf-editor/draw/sheet";
 import { getRenderedSize } from "@/lib/pdf-editor/rotation";
 import type { EditorPage, PageSize } from "@/lib/pdf-editor/types";
 
+/** A canvas with no pixels holds no memory. Its box keeps the size it was
+ * given, so the page does not jump. */
+function releaseCanvas(canvas: HTMLCanvasElement | null): void {
+  if (canvas) {
+    canvas.width = 0;
+    canvas.height = 0;
+  }
+}
+
 /** Renders one page into its own canvas, re-running when the zoom or the turn
- * changes. A sheet the reader put in is painted rather than rendered, at the
- * size of the page of the file it follows. */
+ * changes, and lets the picture go while the page is inactive. A sheet the
+ * reader put in is painted rather than rendered, at the size of the page of
+ * the file it follows. */
 export function usePdfPageRender(
   doc: PDFDocumentProxy,
   page: EditorPage,
@@ -20,6 +30,7 @@ export function usePdfPageRender(
 
   useEffect(() => {
     if (!isActive) {
+      releaseCanvas(canvasRef.current);
       return;
     }
 

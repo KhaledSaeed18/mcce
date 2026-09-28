@@ -154,6 +154,14 @@ export const VISIBLE_PAGE_ROOT_MARGIN = "-50% 0px -50% 0px";
 /** Above this the canvas costs more memory than the sharpness is worth. */
 export const MAX_RENDER_DPR = 2;
 
+/**
+ * How far past the part of the scroller being read a page keeps its drawn
+ * layers: one scroller height above and below, so the next page is ready
+ * before it arrives. A page further away lets them go, since each costs about
+ * 9 MB and a long book read end to end would otherwise hold gigabytes.
+ */
+export const PAGE_NEAR_VIEW_MARGIN = "100% 0px";
+
 export const ANNOTATION_COLORS = [
   "#e63946",
   "#1a1815",

@@ -57,7 +57,7 @@ export function PdfPage({
   zoom,
 }: PdfPageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { canvasRef, size, textDivs, textLayerRef } = usePdfPageLayers(
+  const { canvasRef, isNear, size, textDivs, textLayerRef } = usePdfPageLayers(
     containerRef,
     doc,
     page,
@@ -111,7 +111,8 @@ export function PdfPage({
         boxes={highlights.boxes}
         currentRef={highlights.currentRef}
       />
-      {size ? (
+      {/* Unmounted far from view, which lets its full-page canvas go. */}
+      {size && isNear ? (
         <AnnotationCanvas
           actions={actions}
           annotations={annotations}
