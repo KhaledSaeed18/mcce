@@ -21,6 +21,7 @@ import {
   OPEN_FILES_FILTER_PLACEHOLDER,
   OPEN_FILES_LABEL,
 } from "@/config/pdf-editor";
+import { filterByKeywords } from "@/lib/pdf-editor/command-filter";
 import type { OpenFile, TabLabel } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
@@ -79,7 +80,7 @@ export function EditorTabMenu({
         )}
       </PopoverTrigger>
       <PopoverContent align="end" className="w-80 p-0">
-        <Command>
+        <Command filter={filterByKeywords}>
           <CommandInput placeholder={OPEN_FILES_FILTER_PLACEHOLDER} />
           <CommandList>
             <CommandEmpty>{OPEN_FILES_FILTER_EMPTY}</CommandEmpty>

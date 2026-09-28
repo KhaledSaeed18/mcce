@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { type ReactNode, useRef } from "react";
 import { EditorTab } from "@/components/pdf-editor/editor-tab";
 import { EditorTabMenu } from "@/components/pdf-editor/editor-tab-menu";
 import { OPEN_FILES_LABEL } from "@/config/pdf-editor";
@@ -12,9 +12,12 @@ import type {
   EditorTreeNode,
   OpenFile,
 } from "@/lib/pdf-editor/types";
+import { cn } from "@/lib/utils";
 
 interface EditorTabStripProps {
   activeId: string | undefined;
+  /** Controls that follow the last tab, like opening another file. */
+  children: ReactNode;
   desk: EditorDesk;
   nodes: EditorTreeNode[];
   onClose: (id: string) => void;
@@ -25,6 +28,7 @@ interface EditorTabStripProps {
 /** The open files, in the file bar where the file's title used to be. */
 export function EditorTabStrip({
   activeId,
+  children,
   desk,
   nodes,
   onClose,
@@ -43,42 +47,46 @@ export function EditorTabStrip({
   // Bound even with no tab open, so a tab closed last can still come back.
   useEditorTabKeys({ activeId, desk, onClose, onShow });
 
-  if (desk.files.length === 0) {
-    return null;
-  }
+  const hasTabs = desk.files.length > 0;
 
   return (
     <nav
       aria-label={OPEN_FILES_LABEL}
-      className="flex min-w-0 flex-1 items-center gap-1.5"
+      className={cn("flex min-w-0 items-center gap-1.5", hasTabs && "flex-1")}
     >
-      {/* Room below and right for the active tab's shadow, which the scroller
-          would clip, taken back from the bar so it keeps its height. */}
-      <ul
-        className="-mb-1 flex min-w-0 items-center gap-1.5 overflow-x-auto pr-1 pb-1 [scrollbar-width:none]"
-        ref={stripRef}
-      >
-        {desk.files.map((file, index) => (
-          <EditorTab
-            dragHandlers={handlersFor(index)}
-            file={file}
-            isActive={file.id === activeId}
-            isDragging={index === draggingIndex}
-            key={file.id}
-            label={labels[index]}
-            onClose={onClose}
+      {hasTabs ? (
+        <>
+          {/* Room below and right for the active tab's shadow, which the
+              scroller would clip, taken back from the bar so it keeps its
+              height. */}
+          <ul
+            className="-mb-1 flex min-w-0 items-center gap-1.5 overflow-x-auto pr-1 pb-1 [scrollbar-width:none]"
+            ref={stripRef}
+          >
+            {desk.files.map((file, index) => (
+              <EditorTab
+                dragHandlers={handlersFor(index)}
+                file={file}
+                isActive={file.id === activeId}
+                isDragging={index === draggingIndex}
+                key={file.id}
+                label={labels[index]}
+                onClose={onClose}
+              />
+            ))}
+          </ul>
+          <EditorTabMenu
+            activeId={activeId}
+            closed={desk.closed}
+            closedLabels={closedLabels}
+            files={desk.files}
+            hiddenCount={hiddenCount}
+            labels={labels}
+            onShow={onShow}
           />
-        ))}
-      </ul>
-      <EditorTabMenu
-        activeId={activeId}
-        closed={desk.closed}
-        closedLabels={closedLabels}
-        files={desk.files}
-        hiddenCount={hiddenCount}
-        labels={labels}
-        onShow={onShow}
-      />
+        </>
+      ) : null}
+      {children}
     </nav>
   );
 }

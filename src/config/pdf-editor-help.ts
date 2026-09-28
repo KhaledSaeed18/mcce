@@ -68,6 +68,7 @@ export const EDITOR_HELP_SHORTCUT_GROUPS: readonly ShortcutGroup[] = [
   },
   {
     items: [
+      { keys: SHORTCUT_HINTS.quickOpen, label: "Open a file from the index" },
       { keys: SHORTCUT_HINTS.goToTab, label: "Go to a tab, 9 for the last" },
       { keys: SHORTCUT_HINTS.previousTab, label: "Previous tab" },
       { keys: SHORTCUT_HINTS.nextTab, label: "Next tab" },

@@ -1,8 +1,8 @@
 import type { MaterialType } from "@/lib/drive/types";
 import { findFileChip } from "./file-chip";
+import { stripPdfExtension } from "./file-name";
 import type { TabLabel } from "./types";
 
-const EXTENSION = /\.pdf$/i;
 /** Tags that only say what the chip already says. */
 const CHIP_TAG = /\[[^\]]*(?:solution|solved|book)[^\]]*\]/gi;
 const COURSE_CODE = /\b[A-Z]{3,4}\d{3}[A-Z]?\b[-_]?/g;
@@ -30,10 +30,7 @@ function tidy(text: string): string {
 }
 
 function stripName(name: string): string {
-  return name
-    .replace(EXTENSION, "")
-    .replace(CHIP_TAG, "")
-    .replace(COURSE_CODE, "");
+  return stripPdfExtension(name).replace(CHIP_TAG, "").replace(COURSE_CODE, "");
 }
 
 /** Short names for a row of tabs. The term drops from every name when all of

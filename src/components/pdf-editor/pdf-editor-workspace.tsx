@@ -4,6 +4,7 @@ import { EditorDropZone } from "@/components/pdf-editor/editor-drop-zone";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
 import { EditorHelpDialog } from "@/components/pdf-editor/editor-help-dialog";
 import { EditorPane } from "@/components/pdf-editor/editor-pane";
+import { EditorQuickOpen } from "@/components/pdf-editor/editor-quick-open";
 import { EditorSidePanel } from "@/components/pdf-editor/editor-side-panel";
 import { EditorTabStrip } from "@/components/pdf-editor/editor-tab-strip";
 import { ExamTimeUpDialog } from "@/components/pdf-editor/exam-time-up-dialog";
@@ -83,7 +84,9 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
             onClose={close}
             onMove={move}
             onShow={show}
-          />
+          >
+            <EditorQuickOpen activeId={activeId} nodes={nodes} onShow={show} />
+          </EditorTabStrip>
         </EditorFileBar>
         <div className="flex min-h-0 flex-1">
           <EditorSidePanel isAnimated={isAnimated} isOpen={isBrowserOpen}>

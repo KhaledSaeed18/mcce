@@ -103,6 +103,17 @@ export const OPEN_FILES_LABEL = "Open files";
 export const CLOSED_FILES_LABEL = "Recently closed";
 export const CLOSE_TAB_LABEL = "Close";
 export const OPEN_FILE_DOT_LABEL = "Open in a tab";
+
+/** Matches the key the rest of the site searches with. */
+export const QUICK_OPEN_HOTKEY_KEY = "k";
+export const QUICK_OPEN_LABEL = "Open a file";
+export const QUICK_OPEN_DESCRIPTION =
+  "Search every PDF in the index and open it in a new tab.";
+export const QUICK_OPEN_PLACEHOLDER = "Search the index";
+export const QUICK_OPEN_EMPTY = "No PDF in the index matches.";
+export const QUICK_OPEN_COURSE_GROUP = "This course";
+export const QUICK_OPEN_OTHERS_GROUP = "Other courses";
+export const QUICK_OPEN_INDEX_GROUP = "Index";
 export const OPEN_FILES_FILTER_PLACEHOLDER = "Filter open files";
 export const OPEN_FILES_FILTER_EMPTY = "No open file matches.";
 
@@ -398,6 +409,7 @@ export const SHORTCUT_HINTS = {
   pasteMarkup: "Mod+V",
   previousPage: "Left arrow",
   previousTab: "Alt+[",
+  quickOpen: "Mod+K",
   redo: "Mod+Shift+Z",
   reopenTab: "Alt+Shift+T",
   bookmark: "B",
