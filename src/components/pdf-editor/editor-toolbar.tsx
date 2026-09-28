@@ -1,26 +1,25 @@
 import { SearchIcon } from "lucide-react";
-import { ColorSwatches } from "@/components/pdf-editor/color-swatches";
+import { BookmarkButton } from "@/components/pdf-editor/bookmark-button";
+import { CoversButton } from "@/components/pdf-editor/covers-button";
+import { ExamControl } from "@/components/pdf-editor/exam-control";
 import { ExportButton } from "@/components/pdf-editor/export-button";
 import { HistoryControls } from "@/components/pdf-editor/history-controls";
+import { InkControls } from "@/components/pdf-editor/ink-controls";
 import { PageControls } from "@/components/pdf-editor/page-controls";
-import { SizeSelect } from "@/components/pdf-editor/size-select";
 import { ToolPicker } from "@/components/pdf-editor/tool-picker";
 import { ZoomControls } from "@/components/pdf-editor/zoom-controls";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
-  ANNOTATION_COLORS,
   EDITOR_CONTROL_HEIGHT_CLASS,
-  FONT_SIZES,
-  HIGHLIGHT_COLORS,
-  HIGHLIGHT_WIDTHS,
   SEARCH_LABEL,
   SHORTCUT_HINTS,
-  STROKE_WIDTHS,
 } from "@/config/pdf-editor";
+import type { CoverControls } from "@/hooks/use-cover-reveal";
+import type { ExamTimer } from "@/hooks/use-exam-timer";
+import type { PageBookmarks } from "@/hooks/use-page-bookmarks";
 import type { PdfExportStatus } from "@/hooks/use-pdf-export";
 import { withShortcut } from "@/lib/pdf-editor/shortcut-label";
-import { usesColor, usesStrokeWidth } from "@/lib/pdf-editor/tool-kind";
 import type {
   EditorTool,
   PageNavigation,
@@ -28,11 +27,14 @@ import type {
 } from "@/lib/pdf-editor/types";
 
 interface EditorToolbarProps {
+  bookmarks: PageBookmarks;
   canClear: boolean;
   canRedo: boolean;
   canRestore: boolean;
   canUndo: boolean;
   color: string;
+  covers: CoverControls;
+  exam: ExamTimer;
   exportStatus: PdfExportStatus;
   fontSize: number;
   navigation: PageNavigation;
@@ -52,11 +54,14 @@ interface EditorToolbarProps {
 }
 
 export function EditorToolbar({
+  bookmarks,
   canClear,
   canRedo,
   canRestore,
   canUndo,
   color,
+  covers,
+  exam,
   exportStatus,
   fontSize,
   onClear,
@@ -81,37 +86,15 @@ export function EditorToolbar({
       role="toolbar"
     >
       <ToolPicker onSelect={onToolChange} value={tool} />
-      {usesColor(tool) && (
-        <Separator
-          className={EDITOR_CONTROL_HEIGHT_CLASS}
-          orientation="vertical"
-        />
-      )}
-      {usesColor(tool) && (
-        <ColorSwatches
-          colors={tool === "highlight" ? HIGHLIGHT_COLORS : ANNOTATION_COLORS}
-          onSelect={onColorChange}
-          value={color}
-        />
-      )}
-      {tool === "text" && (
-        <SizeSelect
-          label="Text size"
-          onValueChange={onFontSizeChange}
-          options={FONT_SIZES}
-          suffix="px"
-          value={fontSize}
-        />
-      )}
-      {usesStrokeWidth(tool) && (
-        <SizeSelect
-          label="Stroke width"
-          onValueChange={onStrokeWidthChange}
-          options={tool === "highlight" ? HIGHLIGHT_WIDTHS : STROKE_WIDTHS}
-          suffix="px"
-          value={strokeWidth}
-        />
-      )}
+      <InkControls
+        color={color}
+        fontSize={fontSize}
+        onColorChange={onColorChange}
+        onFontSizeChange={onFontSizeChange}
+        onStrokeWidthChange={onStrokeWidthChange}
+        strokeWidth={strokeWidth}
+        tool={tool}
+      />
       <Separator
         className={EDITOR_CONTROL_HEIGHT_CLASS}
         orientation="vertical"
@@ -130,6 +113,14 @@ export function EditorToolbar({
         className={EDITOR_CONTROL_HEIGHT_CLASS}
         orientation="vertical"
       />
+      {covers.hasCovers ? (
+        <CoversButton
+          isAllRevealed={covers.isAllRevealed}
+          isLocked={covers.isLocked}
+          onToggle={covers.toggleAll}
+        />
+      ) : null}
+      <ExamControl exam={exam} />
       <Button
         aria-label={SEARCH_LABEL}
         onClick={onOpenSearch}
@@ -140,6 +131,10 @@ export function EditorToolbar({
         <SearchIcon />
       </Button>
       {navigation.pageCount > 0 ? <PageControls {...navigation} /> : null}
+      <BookmarkButton
+        isMarked={bookmarks.isActiveMarked}
+        onToggle={bookmarks.toggleActive}
+      />
       <ZoomControls {...zoom} />
       <ExportButton onExport={onExport} status={exportStatus} />
     </div>

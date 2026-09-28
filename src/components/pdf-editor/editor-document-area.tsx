@@ -7,6 +7,7 @@ import { PageThumbnailRailPlaceholder } from "@/components/pdf-editor/page-thumb
 import { setScrollContainer } from "@/hooks/use-hand-tool";
 import type {
   EditorPage,
+  PageActions,
   PageNavigation,
   PageSize,
 } from "@/lib/pdf-editor/types";
@@ -20,10 +21,7 @@ interface EditorDocumentAreaProps {
   isRailOpen: boolean;
   layout: EditorPage[];
   navigation: PageNavigation;
-  onCopyPage: (id: string) => void;
-  onRemovePage: (id: string) => void;
-  onReorderPage: (from: number, to: number) => void;
-  onRotatePage: (id: string) => void;
+  pageActions: PageActions;
   scrollRef: RefObject<HTMLDivElement | null>;
   sizes: PageSize[];
 }
@@ -37,10 +35,7 @@ export function EditorDocumentArea({
   isRailOpen,
   layout,
   navigation,
-  onCopyPage,
-  onRemovePage,
-  onReorderPage,
-  onRotatePage,
+  pageActions,
   scrollRef,
   sizes,
 }: EditorDocumentAreaProps) {
@@ -57,13 +52,10 @@ export function EditorDocumentArea({
       >
         {doc ? (
           <PageThumbnailRail
+            actions={pageActions}
             activeIndex={navigation.activeIndex}
             doc={doc}
             layout={layout}
-            onCopy={onCopyPage}
-            onMove={onReorderPage}
-            onRemove={onRemovePage}
-            onRotate={onRotatePage}
             onSelect={navigation.goToPage}
             sizes={sizes}
           />

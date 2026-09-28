@@ -1,14 +1,17 @@
-import { MIN_SHAPE_SIZE, MIN_STROKE_POINTS } from "@/config/pdf-editor";
+import {
+  COVER_COLOR,
+  MIN_SHAPE_SIZE,
+  MIN_STROKE_POINTS,
+} from "@/config/pdf-editor";
 import { normalizeRect } from "./geometry";
 import { createAnnotationId } from "./pointer";
 import type {
   Annotation,
-  Box,
   EditorTool,
   Point,
   TextAnnotation,
   TextDraft,
-  TextMarkStyle,
+  TextMarkAnnotation,
   ToolSettings,
 } from "./types";
 
@@ -27,6 +30,21 @@ export function buildShape(
     pageId,
     strokeWidth: settings.strokeWidth,
     type: tool,
+  };
+}
+
+/** A cover takes its own color rather than the ink in hand. */
+export function buildCover(
+  start: Point,
+  end: Point,
+  pageId: string
+): Annotation {
+  return {
+    ...normalizeRect(start, end),
+    color: COVER_COLOR,
+    id: createAnnotationId(),
+    pageId,
+    type: "cover",
   };
 }
 
@@ -78,19 +96,12 @@ export function buildHighlight(
 }
 
 export function buildTextMark(
-  style: TextMarkStyle,
-  boxes: Box[],
-  pageId: string,
-  color: string
+  mark: Pick<
+    TextMarkAnnotation,
+    "boxes" | "color" | "pageId" | "style" | "text"
+  >
 ): Annotation {
-  return {
-    boxes,
-    color,
-    id: createAnnotationId(),
-    pageId,
-    style,
-    type: "mark",
-  };
+  return { ...mark, id: createAnnotationId(), type: "mark" };
 }
 
 /** Keeps the draft's id when there is one, so editing replaces rather than duplicates. */
@@ -117,7 +128,9 @@ export function isEmptyAnnotation(annotation: Annotation): boolean {
   if (annotation.type === "pen" || annotation.type === "highlight") {
     return annotation.points.length < MIN_STROKE_POINTS;
   }
-  if (annotation.type === "text") {
+  // A note with nothing in it is taken off when its card closes, not here,
+  // since it starts out empty while the reader writes it.
+  if (annotation.type === "text" || annotation.type === "note") {
     return false;
   }
   if (annotation.type === "mark") {

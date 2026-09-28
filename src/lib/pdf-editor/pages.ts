@@ -25,7 +25,7 @@ export function buildPages(pageCount: number): EditorPage[] {
   }));
 }
 
-/** Whether the pages are still the file's own: all there, upright, and in order. */
+/** Whether the pages are still the file's own: all there, upright, in order, and nothing put in. */
 export function isOriginalLayout(
   pages: EditorPage[],
   pageCount: number
@@ -33,7 +33,8 @@ export function isOriginalLayout(
   return (
     pages.length === pageCount &&
     pages.every(
-      (page, index) => page.sourceIndex === index && page.rotation === 0
+      (page, index) =>
+        page.sourceIndex === index && page.rotation === 0 && !page.sheet
     )
   );
 }

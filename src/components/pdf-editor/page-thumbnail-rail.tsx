@@ -4,7 +4,12 @@ import { PageDropLine } from "@/components/pdf-editor/page-drop-line";
 import { PageThumbnail } from "@/components/pdf-editor/page-thumbnail";
 import { RAIL_WIDTH_CLASS } from "@/config/pdf-editor";
 import { usePageDrag } from "@/hooks/use-page-drag";
-import type { EditorPage, PageDrag, PageSize } from "@/lib/pdf-editor/types";
+import type {
+  EditorPage,
+  PageActions,
+  PageDrag,
+  PageSize,
+} from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
 /** A gap either side of the page being carried would put it back where it was. */
@@ -22,30 +27,27 @@ interface PageEntry {
 }
 
 interface PageThumbnailRailProps {
+  actions: PageActions;
   activeIndex: number;
   doc: PDFDocumentProxy;
   layout: EditorPage[];
-  onCopy: (id: string) => void;
-  onMove: (from: number, to: number) => void;
-  onRemove: (id: string) => void;
-  onRotate: (id: string) => void;
   onSelect: (index: number) => void;
   sizes: PageSize[];
 }
 
 export function PageThumbnailRail({
+  actions,
   activeIndex,
   doc,
   layout,
-  onMove,
-  onCopy,
-  onRemove,
-  onRotate,
   onSelect,
   sizes,
 }: PageThumbnailRailProps) {
   const railRef = useRef<HTMLElement>(null);
-  const { drag, handlers } = usePageDrag({ onMove, rootRef: railRef });
+  const { drag, handlers } = usePageDrag({
+    onMove: actions.move,
+    rootRef: railRef,
+  });
   const pages = useMemo<PageEntry[]>(
     () =>
       layout.flatMap((page, position) => {
@@ -68,14 +70,12 @@ export function PageThumbnailRail({
         <Fragment key={page.id}>
           {isDropShown(drag, position) ? <PageDropLine /> : null}
           <PageThumbnail
+            actions={actions}
             canRemove={layout.length > 1}
             doc={doc}
             dragHandlers={handlers}
             isActive={position === activeIndex}
             isDragging={drag?.from === position}
-            onCopy={onCopy}
-            onRemove={onRemove}
-            onRotate={onRotate}
             onSelect={onSelect}
             page={page}
             position={position}

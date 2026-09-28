@@ -15,7 +15,7 @@ export function useEditorDocument(
   const hydratedIdRef = useRef<string | null>(null);
   const [isSaved, setIsSaved] = useState(true);
   const annotations = useAnnotationActions(commit);
-  const pages = usePageActions(commit);
+  const pageActions = usePageActions(commit);
 
   useEffect(() => {
     // The file's own page count is what a stored list is checked against.
@@ -48,11 +48,11 @@ export function useEditorDocument(
       snapshot.annotations.length === 0 &&
       isOriginalLayout(snapshot.pages, pageCount),
     isSaved,
+    pageActions,
     pages: snapshot.pages,
     redo,
     restore,
     undo,
     ...annotations,
-    ...pages,
   };
 }

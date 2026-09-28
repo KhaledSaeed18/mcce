@@ -18,6 +18,7 @@ import { findShownSelection } from "@/lib/pdf-editor/selected-markup";
 import type {
   Annotation,
   AnnotationActions,
+  CoverReveal,
   EditorPage,
   SearchHit,
   TextDraft,
@@ -27,6 +28,7 @@ import type {
 interface PdfPageProps {
   actions: AnnotationActions;
   annotations: Annotation[];
+  covers: CoverReveal;
   doc: PDFDocumentProxy;
   onTextDraftChange: (draft: TextDraft | null) => void;
   page: EditorPage;
@@ -43,6 +45,7 @@ interface PdfPageProps {
 export function PdfPage({
   actions,
   annotations,
+  covers,
   doc,
   onTextDraftChange,
   page,
@@ -76,6 +79,7 @@ export function PdfPage({
     annotations,
     isEnabled: settings.tool === "select",
     onMove: actions.moveText,
+    onPress: covers.toggle,
     onSelect: actions.select,
     pageId: page.id,
     rotation: page.rotation,
@@ -116,6 +120,7 @@ export function PdfPage({
           onDraft={editing.field.request}
           pageId={page.id}
           preview={editing.selection.preview ?? resize.preview}
+          revealed={covers.revealed}
           rotation={page.rotation}
           selectedId={selectedId}
           settings={settings}
@@ -124,6 +129,7 @@ export function PdfPage({
         />
       ) : null}
       <PdfPageOverlays
+        actions={actions}
         editing={editing}
         resize={resize}
         rotation={page.rotation}

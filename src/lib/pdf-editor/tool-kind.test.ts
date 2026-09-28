@@ -15,8 +15,8 @@ describe("usesColor", () => {
     }
   });
 
-  it("is false for tools that only move, rub out, or pick text", () => {
-    for (const tool of ["hand", "eraser", "select"] as const) {
+  it("is false for tools that move, rub out, pick text, or bring their own color", () => {
+    for (const tool of ["hand", "eraser", "select", "cover", "note"] as const) {
       expect(usesColor(tool)).toBe(false);
     }
   });

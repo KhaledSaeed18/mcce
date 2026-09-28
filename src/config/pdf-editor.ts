@@ -2,6 +2,8 @@ import type {
   EditorPanels,
   EditorTool,
   LocalPdfProblem,
+  PageSheet,
+  StudyPanelTab,
   TextMarkStyle,
 } from "@/lib/pdf-editor/types";
 
@@ -92,6 +94,7 @@ export const PDF_VIEW_KEY_PREFIX = "mcce.pdf-view.v1";
 export const DEFAULT_EDITOR_PANELS: EditorPanels = {
   isBrowserOpen: true,
   isRailOpen: false,
+  isStudyOpen: false,
 };
 
 /** The page list's padding and borders, which a fitted page has to leave room for. */
@@ -320,6 +323,7 @@ export const SHORTCUT_HINTS = {
   pasteMarkup: "Mod+V",
   previousPage: "Left arrow",
   redo: "Mod+Shift+Z",
+  bookmark: "B",
   scrollZoom: "Mod+Scroll",
   search: "Mod+F",
   searchNext: "Enter",
@@ -357,6 +361,8 @@ export const DEFAULT_EXPORT_NAME = "document.pdf";
 
 export const TOOL_LABELS: Record<EditorTool, string> = {
   arrow: "Arrow",
+  cover: "Answer cover",
+  note: "Note",
   ellipse: "Circle",
   eraser: "Eraser",
   hand: "Hand",
@@ -369,6 +375,9 @@ export const TOOL_LABELS: Record<EditorTool, string> = {
 
 export const TOOL_HOTKEYS: Record<EditorTool, string> = {
   arrow: "a",
+  /** Q for quiz: C and H, the obvious letters, are taken by circle and hand. */
+  cover: "q",
+  note: "n",
   ellipse: "c",
   eraser: "e",
   hand: "h",
@@ -399,6 +408,8 @@ export const EDITOR_SHORTCUT_TOOLS: readonly EditorTool[] = [
   "rect",
   "ellipse",
   "arrow",
+  "note",
+  "cover",
   "eraser",
   "select",
   "hand",
@@ -410,3 +421,127 @@ export const EDITOR_PAPER_FAN = {
   middle: 3,
   transition: { damping: 12, stiffness: 140, type: "spring" },
 } as const;
+
+/** Squares 5 mm across, the ruling of most squared exercise books. */
+export const SHEET_GRID_SPACING = 14.17;
+export const SHEET_GRID_LINE_WIDTH = 0.5;
+export const SHEET_GRID_COLOR = "#b8c7d9";
+export const SHEET_PAPER_COLOR = "#ffffff";
+
+export const PAGE_SHEET_LABELS: Record<PageSheet, string> = {
+  blank: "Blank page",
+  grid: "Squared page",
+};
+
+/** One key per file: the pages the reader bookmarked, by page identity. */
+export const PDF_BOOKMARKS_KEY_PREFIX = "mcce.pdf-bookmarks.v1";
+
+export const BOOKMARK_HOTKEY_KEY = "b";
+
+export const STUDY_PANEL_SHOW_LABEL = "Show contents and notes";
+export const STUDY_PANEL_HIDE_LABEL = "Hide contents and notes";
+
+export const STUDY_PANEL_TAB_LABELS: Record<StudyPanelTab, string> = {
+  bookmarks: "Bookmarks",
+  contents: "Contents",
+  notes: "Notes",
+};
+
+export const OUTLINE_EMPTY = "This PDF has no table of contents.";
+export const OUTLINE_LOADING = "Reading the table of contents";
+
+/** Each level of the table of contents steps in this far, in pixels. */
+export const OUTLINE_INDENT_PX = 12;
+
+export const BOOKMARK_ADD_LABEL = "Bookmark this page";
+export const BOOKMARK_REMOVE_LABEL = "Remove bookmark";
+export const BOOKMARKS_EMPTY =
+  "Bookmark the page you are on to come back to it. Bookmarks are kept in this browser.";
+
+/** Answer covers are one color whatever ink is in hand, so a cover never
+ * reads as markup that belongs to the page. */
+export const COVER_COLOR = "#3a6ea5";
+export const COVER_LABEL_COLOR = "#ffffff";
+export const COVER_LABEL = "Click to reveal";
+export const COVER_LABEL_SIZE = 10;
+/** Room the label needs around it before it is drawn at all. */
+export const COVER_LABEL_PADDING = 6;
+/** A revealed cover leaves a faint outline, so the answer can be hidden again. */
+export const COVER_REVEALED_ALPHA = 0.08;
+export const COVER_REVEALED_DASH = [5, 4];
+export const COVER_OUTLINE_WIDTH = 1.5;
+
+export const COVERS_SHOW_ALL_LABEL = "Show all answers";
+export const COVERS_HIDE_ALL_LABEL = "Hide all answers";
+
+/** One key per file: the exam running on it, if any. */
+export const PDF_EXAM_KEY_PREFIX = "mcce.pdf-exam.v1";
+
+/** The lengths most sample exams are set for, in minutes. */
+export const EXAM_DURATIONS = [30, 45, 60, 90, 120, 180] as const;
+
+/** How often the countdown is redrawn. It shows seconds, so no more often. */
+export const EXAM_TICK_MS = 1000;
+
+/** The countdown turns to a warning for the last few minutes. */
+export const EXAM_WARNING_MS = 5 * 60 * 1000;
+
+export const EXAM_START_LABEL = "Exam mode";
+export const EXAM_START_DESCRIPTION =
+  "A countdown for a sample exam. Every answer stays covered until time is up.";
+export const EXAM_END_LABEL = "End exam";
+export const EXAM_TIME_UP_TITLE = "Time is up";
+export const EXAM_TIME_UP_DESCRIPTION =
+  "Your answers are saved in this browser. Covers can be revealed again, so check your work against them.";
+export const EXAM_REVIEW_LABEL = "Review answers";
+export const EXAM_TIME_LEFT_LABEL = "Time left";
+export const COVERS_LOCKED_LABEL = "Answers stay covered until the exam ends";
+export const EXPORT_LABEL = "Download copy";
+
+/** A note's icon on the page, in page points, and the colors it is drawn in. */
+export const NOTE_SIZE = 18;
+export const NOTE_COLOR = "#ffd60a";
+export const NOTE_EDGE_COLOR = "#1a1815";
+export const NOTE_EDGE_WIDTH = 1;
+/** How much of the corner is folded over, as a share of the icon. */
+export const NOTE_FOLD_RATIO = 0.3;
+
+/** The card a note is read and written in, in screen pixels. */
+export const NOTE_CARD_WIDTH = 224;
+export const NOTE_CARD_HEIGHT = 128;
+export const NOTE_CARD_GAP = 6;
+
+export const NOTE_PLACEHOLDER = "Write a note";
+export const NOTE_REMOVE_LABEL = "Remove note";
+
+export const NOTES_EMPTY =
+  "Notes you pin with the note tool (N) and text you highlight are listed here by page.";
+export const NOTE_EMPTY_LABEL = "Empty note";
+export const HIGHLIGHT_ITEM_LABEL = "Highlight";
+
+export const SUMMARY_DOWNLOAD_LABEL = "Download summary";
+export const SUMMARY_DOWNLOAD_HINT =
+  "Download these notes and highlights as a revision summary PDF";
+export const SUMMARY_ERROR = "The summary could not be built";
+export const SUMMARY_TITLE = "Revision summary";
+export const SUMMARY_EXPORT_SUFFIX = "-summary.pdf";
+
+/** A4, the paper most printers here take, in points. */
+export const SUMMARY_PAGE_SIZE: [number, number] = [595.28, 841.89];
+export const SUMMARY_MARGIN = 56;
+export const SUMMARY_TITLE_SIZE = 18;
+export const SUMMARY_SUBTITLE_SIZE = 10;
+export const SUMMARY_HEADING_SIZE = 12;
+export const SUMMARY_BODY_SIZE = 10;
+export const SUMMARY_LINE_RATIO = 1.4;
+/** Space after a block, as a share of the body size. */
+export const SUMMARY_GAP_RATIO = 0.8;
+/** How far a list item's text sits in from its bullet. */
+export const SUMMARY_BULLET_INDENT = 12;
+export const SUMMARY_MUTED_COLOR = "#6b6660";
+/** Stands in for a character the summary's font cannot write. */
+export const SUMMARY_MISSING_CHARACTER = "?";
+
+/** Marks what floats over a page to be typed in or clicked, which a press
+ * with the select tool leaves alone rather than treating as a press on the page. */
+export const MARKUP_OVERLAY_ATTRIBUTE = "data-markup-overlay";

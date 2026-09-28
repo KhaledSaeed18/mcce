@@ -1,5 +1,7 @@
+import { useCallback } from "react";
 import { MarkupResizeHandle } from "@/components/pdf-editor/markup-resize-handle";
 import { MarkupSelectionFrame } from "@/components/pdf-editor/markup-selection-frame";
+import { NoteCard } from "@/components/pdf-editor/note-card";
 import { PageOverlayLayer } from "@/components/pdf-editor/page-overlay-layer";
 import { TextDraftField } from "@/components/pdf-editor/text-draft-field";
 import { TextSelectionBox } from "@/components/pdf-editor/text-selection-box";
@@ -9,6 +11,7 @@ import { getAnnotationBox } from "@/lib/pdf-editor/annotation-box";
 import { isResizable } from "@/lib/pdf-editor/scale-annotation";
 import type {
   Annotation,
+  AnnotationActions,
   FrameCorner,
   PageSize,
   TextDraft,
@@ -22,6 +25,7 @@ const CORNERS: readonly FrameCorner[] = [
 ];
 
 interface PdfPageOverlaysProps {
+  actions: AnnotationActions;
   editing: PageTextEditing;
   resize: MarkupResize;
   rotation: number;
@@ -35,6 +39,7 @@ interface PdfPageOverlaysProps {
 /** What sits over a page's markup: the frame on whatever is selected, and the
  * field text is typed into. */
 export function PdfPageOverlays({
+  actions,
   editing,
   resize,
   rotation,
@@ -44,6 +49,8 @@ export function PdfPageOverlays({
   zoom,
 }: PdfPageOverlaysProps) {
   const { field, selected, selection } = editing;
+  const { select } = actions;
+  const handleClose = useCallback(() => select(null), [select]);
 
   return (
     <PageOverlayLayer rotation={rotation} size={size} zoom={zoom}>
@@ -58,7 +65,18 @@ export function PdfPageOverlays({
           zoom={zoom}
         />
       ) : null}
-      {shown && shown.type !== "text" ? (
+      {shown?.type === "note" ? (
+        <NoteCard
+          key={shown.id}
+          note={shown}
+          onClose={handleClose}
+          onRemove={actions.remove}
+          onReplace={actions.replace}
+          size={size}
+          zoom={zoom}
+        />
+      ) : null}
+      {shown && shown.type !== "text" && shown.type !== "note" ? (
         <MarkupSelectionFrame
           box={getAnnotationBox(resize.preview ?? shown)}
           zoom={zoom}

@@ -6,16 +6,23 @@ import {
   useCallback,
   useRef,
 } from "react";
+import { PageInsertMenu } from "@/components/pdf-editor/page-insert-menu";
 import { PageThumbnailAction } from "@/components/pdf-editor/page-thumbnail-action";
 import { RAIL_POSITION_ATTRIBUTE, THUMBNAIL_WIDTH } from "@/config/pdf-editor";
 import { useInViewport } from "@/hooks/use-in-viewport";
 import { usePdfPageRender } from "@/hooks/use-pdf-page-render";
 import { useScrollIntoView } from "@/hooks/use-scroll-into-view";
 import { getRenderedSize } from "@/lib/pdf-editor/rotation";
-import type { EditorPage, PageSize } from "@/lib/pdf-editor/types";
+import type {
+  EditorPage,
+  PageActions,
+  PageSheet,
+  PageSize,
+} from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
 interface PageThumbnailProps {
+  actions: PageActions;
   /** False for the last page left, which a document cannot do without. */
   canRemove: boolean;
   doc: PDFDocumentProxy;
@@ -23,9 +30,6 @@ interface PageThumbnailProps {
   dragHandlers: ComponentProps<"button">;
   isActive: boolean;
   isDragging: boolean;
-  onCopy: (id: string) => void;
-  onRemove: (id: string) => void;
-  onRotate: (id: string) => void;
   onSelect: (position: number) => void;
   page: EditorPage;
   /** Where the page sits now, which is what it is labelled and jumped to by. */
@@ -36,14 +40,12 @@ interface PageThumbnailProps {
 }
 
 export function PageThumbnail({
+  actions,
   canRemove,
   doc,
   dragHandlers,
   isActive,
   isDragging,
-  onCopy,
-  onRemove,
-  onRotate,
   onSelect,
   page,
   position,
@@ -54,13 +56,7 @@ export function PageThumbnail({
   const isVisible = useInViewport(wrapperRef, railRef);
   const rendered = getRenderedSize(size, page.rotation);
   const zoom = THUMBNAIL_WIDTH / rendered.width;
-  const { canvasRef } = usePdfPageRender(
-    doc,
-    page.sourceIndex,
-    zoom,
-    isVisible,
-    page.rotation
-  );
+  const { canvasRef } = usePdfPageRender(doc, page, zoom, isVisible);
   useScrollIntoView(wrapperRef, isActive);
 
   const handleSelect = useCallback(
@@ -68,17 +64,14 @@ export function PageThumbnail({
     [onSelect, position]
   );
 
-  const handleRemove = useCallback(
-    () => onRemove(page.id),
-    [onRemove, page.id]
+  const { copy, insertSheet, remove, rotate } = actions;
+  const handleRemove = useCallback(() => remove(page.id), [remove, page.id]);
+  const handleRotate = useCallback(() => rotate(page.id), [rotate, page.id]);
+  const handleCopy = useCallback(() => copy(page.id), [copy, page.id]);
+  const handleInsert = useCallback(
+    (sheet: PageSheet) => insertSheet(page.id, sheet),
+    [insertSheet, page.id]
   );
-
-  const handleRotate = useCallback(
-    () => onRotate(page.id),
-    [onRotate, page.id]
-  );
-
-  const handleCopy = useCallback(() => onCopy(page.id), [onCopy, page.id]);
 
   return (
     <div
@@ -133,6 +126,11 @@ export function PageThumbnail({
       >
         <CopyIcon className="size-3.5" />
       </PageThumbnailAction>
+      <PageInsertMenu
+        isActive={isActive}
+        onInsert={handleInsert}
+        position={position}
+      />
       <span
         className={cn(
           "font-head text-xs tabular-nums",

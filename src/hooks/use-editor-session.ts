@@ -4,6 +4,7 @@ import { useDocumentScroller } from "@/hooks/use-document-scroller";
 import { useEditorMarkup } from "@/hooks/use-editor-markup";
 import { useEditorPages } from "@/hooks/use-editor-pages";
 import { useEditorShortcuts } from "@/hooks/use-editor-shortcuts";
+import { useEditorStudy } from "@/hooks/use-editor-study";
 import { useEditorTools } from "@/hooks/use-editor-tools";
 import { useElementSize } from "@/hooks/use-element-size";
 import { usePdfDocument } from "@/hooks/use-pdf-document";
@@ -41,6 +42,13 @@ export function useEditorSession(
     doc,
     markup.pages
   );
+  const { bookmarks, covers, exam } = useEditorStudy({
+    activeIndex: navigation.activeIndex,
+    annotations: markup.annotations,
+    fileId: node?.id,
+    onToolChange: tools.setTool,
+    pages: markup.pages,
+  });
   const zoom = usePdfZoom({ pageSize: activeSize, viewport });
   useDocumentScroller(scrollRef, node?.id, zoom);
   useViewResume(node?.id, navigation, zoom);
@@ -86,7 +94,10 @@ export function useEditorSession(
   }
 
   return {
+    bookmarks,
+    covers,
     doc,
+    exam,
     exportPdf,
     exportStatus,
     ink,

@@ -37,7 +37,10 @@ export function useTextMarking({
         return;
       }
       const marks: Annotation[] = [];
-      for (const [position, boxes] of collectSelectionBoxes(range, root)) {
+      for (const [position, { boxes, text }] of collectSelectionBoxes(
+        range,
+        root
+      )) {
         const page = pages[position];
         const size = page ? sizes[page.sourceIndex] : undefined;
         if (!(page && size)) {
@@ -47,12 +50,13 @@ export function useTextMarking({
           toPageBox(box, zoom, size, page.rotation)
         );
         marks.push(
-          buildTextMark(
+          buildTextMark({
+            boxes: mergeLineBoxes(pageBoxes),
+            color: colors[style],
+            pageId: page.id,
             style,
-            mergeLineBoxes(pageBoxes),
-            page.id,
-            colors[style]
-          )
+            text,
+          })
         );
       }
       onAddMany(marks);

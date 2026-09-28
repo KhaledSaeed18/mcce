@@ -6,14 +6,16 @@ import {
 import type { EditorPanels } from "@/lib/pdf-editor/types";
 import { readJson, writeJson } from "@/lib/storage";
 
+/** A layout stored before a panel existed leaves that panel at its default. */
 function readStoredPanels(): EditorPanels {
-  return readJson<EditorPanels>(
-    EDITOR_PANELS_STORAGE_KEY,
-    DEFAULT_EDITOR_PANELS
-  );
+  return {
+    ...DEFAULT_EDITOR_PANELS,
+    ...readJson<Partial<EditorPanels>>(EDITOR_PANELS_STORAGE_KEY, {}),
+  };
 }
 
-/** The two panels flanking the pages: the file list and the thumbnail rail. */
+/** The panels flanking the pages: the file list and the thumbnail rail on the
+ * left, and the contents and bookmarks on the right. */
 export function useEditorPanels() {
   const [panels, setPanels] = useState<EditorPanels | null>(null);
   // Restoring the stored layout is not the reader's doing, so motion comes on
@@ -33,25 +35,22 @@ export function useEditorPanels() {
 
   const activePanels = panels ?? DEFAULT_EDITOR_PANELS;
 
-  const toggleBrowser = useCallback(() => {
+  const toggle = useCallback((panel: keyof EditorPanels) => {
     setPanels((previous) => {
       const current = previous ?? DEFAULT_EDITOR_PANELS;
-      return { ...current, isBrowserOpen: !current.isBrowserOpen };
+      return { ...current, [panel]: !current[panel] };
     });
   }, []);
 
-  const toggleRail = useCallback(() => {
-    setPanels((previous) => {
-      const current = previous ?? DEFAULT_EDITOR_PANELS;
-      return { ...current, isRailOpen: !current.isRailOpen };
-    });
-  }, []);
+  const toggleBrowser = useCallback(() => toggle("isBrowserOpen"), [toggle]);
+  const toggleRail = useCallback(() => toggle("isRailOpen"), [toggle]);
+  const toggleStudy = useCallback(() => toggle("isStudyOpen"), [toggle]);
 
   return {
+    ...activePanels,
     isAnimated,
-    isBrowserOpen: activePanels.isBrowserOpen,
-    isRailOpen: activePanels.isRailOpen,
     toggleBrowser,
     toggleRail,
+    toggleStudy,
   };
 }

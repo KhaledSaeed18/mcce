@@ -2,6 +2,7 @@ import {
   CircleHelpIcon,
   GalleryVerticalEndIcon,
   PanelLeftIcon,
+  PanelRightIcon,
 } from "lucide-react";
 import { OpenInDriveButton } from "@/components/drive/open-in-drive-button";
 import { EditorBrand } from "@/components/pdf-editor/editor-brand";
@@ -13,6 +14,8 @@ import {
   EDITOR_EMPTY_TITLE,
   EDITOR_HEADER_ICON_BUTTON_CLASS,
   SHORTCUT_HINTS,
+  STUDY_PANEL_HIDE_LABEL,
+  STUDY_PANEL_SHOW_LABEL,
 } from "@/config/pdf-editor";
 import { EDITOR_HELP_LABEL } from "@/config/pdf-editor-help";
 import { withShortcut } from "@/lib/pdf-editor/shortcut-label";
@@ -23,11 +26,13 @@ interface EditorFileBarProps {
   isFullscreen: boolean;
   isFullscreenSupported: boolean;
   isRailOpen: boolean;
+  isStudyOpen: boolean;
   node: EditorFile | null;
   onOpenHelp: () => void;
   onToggleBrowser: () => void;
   onToggleFullscreen: () => void;
   onToggleRail: () => void;
+  onToggleStudy: () => void;
   /** Absent until a file is open and its markup has somewhere to go. */
   saveStatus: SaveStatus | null;
 }
@@ -37,14 +42,19 @@ export function EditorFileBar({
   isFullscreen,
   isFullscreenSupported,
   isRailOpen,
+  isStudyOpen,
   node,
   onOpenHelp,
   onToggleBrowser,
   onToggleFullscreen,
   onToggleRail,
+  onToggleStudy,
   saveStatus,
 }: EditorFileBarProps) {
   const title = node ? node.name : EDITOR_EMPTY_TITLE;
+  const studyLabel = isStudyOpen
+    ? STUDY_PANEL_HIDE_LABEL
+    : STUDY_PANEL_SHOW_LABEL;
 
   return (
     <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 border-b-2 bg-background p-3">
@@ -82,6 +92,19 @@ export function EditorFileBar({
 
       <div className="flex items-center justify-end gap-2">
         {saveStatus ? <EditorSaveStatus status={saveStatus} /> : null}
+        {node ? (
+          <Button
+            aria-label={studyLabel}
+            aria-pressed={isStudyOpen}
+            className={EDITOR_HEADER_ICON_BUTTON_CLASS}
+            onClick={onToggleStudy}
+            size="icon"
+            title={studyLabel}
+            variant="outline"
+          >
+            <PanelRightIcon />
+          </Button>
+        ) : null}
         {node?.source === "drive" ? (
           <OpenInDriveButton href={node.webViewLink} />
         ) : null}

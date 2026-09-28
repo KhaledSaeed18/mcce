@@ -32,7 +32,10 @@ export function EditorDocumentColumn({
   session,
 }: EditorDocumentColumnProps) {
   const {
+    bookmarks,
+    covers,
     doc,
+    exam,
     exportPdf,
     exportStatus,
     ink,
@@ -56,11 +59,14 @@ export function EditorDocumentColumn({
     <div className="flex min-w-0 flex-1 flex-col">
       {doc ? (
         <EditorToolbar
+          bookmarks={bookmarks}
           canClear={markup.annotations.length > 0}
           canRedo={markup.canRedo}
           canRestore={!markup.isOriginal}
           canUndo={markup.canUndo}
           color={ink.color}
+          covers={covers}
+          exam={exam}
           exportStatus={exportStatus}
           fontSize={tools.fontSize}
           navigation={navigation}
@@ -100,10 +106,7 @@ export function EditorDocumentColumn({
           isRailOpen={isRailOpen}
           layout={markup.pages}
           navigation={navigation}
-          onCopyPage={markup.copyPage}
-          onRemovePage={markup.removePage}
-          onReorderPage={markup.reorderPage}
-          onRotatePage={markup.rotatePage}
+          pageActions={markup.pageActions}
           scrollRef={scrollRef}
           sizes={sizes}
         >
@@ -111,6 +114,7 @@ export function EditorDocumentColumn({
             <PdfPageList
               actions={markup.actions}
               annotations={markup.annotations}
+              covers={covers}
               doc={doc}
               hitsByPosition={search.hitsByPosition}
               onTextDraftChange={markup.openDraft}

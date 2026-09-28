@@ -1,3 +1,4 @@
+import { getNoteBox } from "./note-box";
 import { getTextBox } from "./text-layout";
 import type { Annotation, Box, Point } from "./types";
 
@@ -31,6 +32,8 @@ export function getAnnotationBox(annotation: Annotation): Box {
       return getTextBox(annotation);
     case "mark":
       return union(annotation.boxes);
+    case "note":
+      return getNoteBox(annotation);
     default:
       return {
         height: annotation.height,

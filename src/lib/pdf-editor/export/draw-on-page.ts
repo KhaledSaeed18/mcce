@@ -7,6 +7,7 @@ import {
 } from "pdf-lib";
 import { getRenderedSize } from "../rotation";
 import type { Annotation } from "../types";
+import { attachNote } from "./attach-note";
 import { getContentMatrix } from "./content-space";
 import {
   drawArrow,
@@ -28,6 +29,17 @@ export function drawAnnotationOnPage(
   font: PDFFont | null,
   rotation: number
 ): void {
+  // A cover hides an answer while the reader studies; the copy they keep is
+  // the file as marked, with every answer showing.
+  if (annotation.type === "cover") {
+    return;
+  }
+  // A note is written as the PDF's own sticky note rather than drawn, so any
+  // reader can open it.
+  if (annotation.type === "note") {
+    attachNote(page, annotation, rotation);
+    return;
+  }
   const content = { height: page.getHeight(), width: page.getWidth() };
   const { height } = getRenderedSize(content, rotation);
 

@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import {
+  BlindsIcon,
   CircleIcon,
   EraserIcon,
   HandIcon,
@@ -7,6 +8,7 @@ import {
   MoveUpRightIcon,
   PenLineIcon,
   SquareIcon,
+  StickyNoteIcon,
   TextCursorIcon,
   TypeIcon,
 } from "lucide-react";
@@ -22,6 +24,8 @@ const TOOLS: Array<{ icon: LucideIcon; tool: EditorTool }> = [
   { icon: CircleIcon, tool: "ellipse" },
   { icon: MoveUpRightIcon, tool: "arrow" },
   { icon: TypeIcon, tool: "text" },
+  { icon: StickyNoteIcon, tool: "note" },
+  { icon: BlindsIcon, tool: "cover" },
   { icon: EraserIcon, tool: "eraser" },
 ];
 

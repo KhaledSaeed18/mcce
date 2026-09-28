@@ -1,18 +1,22 @@
 import type { PDFDocumentProxy, RenderTask } from "pdfjs-dist";
 import { useEffect, useRef, useState } from "react";
 import { MAX_RENDER_DPR } from "@/config/pdf-editor";
-import type { PageSize } from "@/lib/pdf-editor/types";
+import { drawSheet } from "@/lib/pdf-editor/draw/sheet";
+import { getRenderedSize } from "@/lib/pdf-editor/rotation";
+import type { EditorPage, PageSize } from "@/lib/pdf-editor/types";
 
-/** Renders one page into its own canvas, re-running when the zoom or the turn changes. */
+/** Renders one page into its own canvas, re-running when the zoom or the turn
+ * changes. A sheet the reader put in is painted rather than rendered, at the
+ * size of the page of the file it follows. */
 export function usePdfPageRender(
   doc: PDFDocumentProxy,
-  pageIndex: number,
+  page: EditorPage,
   zoom: number,
-  isActive: boolean,
-  rotation = 0
+  isActive: boolean
 ) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [size, setSize] = useState<PageSize | null>(null);
+  const { rotation, sheet, sourceIndex } = page;
 
   useEffect(() => {
     if (!isActive) {
@@ -23,9 +27,9 @@ export function usePdfPageRender(
     let task: RenderTask | null = null;
 
     doc
-      .getPage(pageIndex + 1)
-      .then((page) => {
-        const base = page.getViewport({ scale: 1 });
+      .getPage(sourceIndex + 1)
+      .then((source) => {
+        const base = source.getViewport({ scale: 1 });
         setSize({ height: base.height, width: base.width });
 
         const canvas = canvasRef.current;
@@ -36,8 +40,8 @@ export function usePdfPageRender(
         const dpr = Math.min(window.devicePixelRatio || 1, MAX_RENDER_DPR);
         // The page's own orientation is what the base size already accounts for,
         // so the editor's turn is added to it rather than replacing it.
-        const viewport = page.getViewport({
-          rotation: page.rotate + rotation,
+        const viewport = source.getViewport({
+          rotation: source.rotate + rotation,
           scale: zoom * dpr,
         });
         canvas.width = viewport.width;
@@ -45,7 +49,15 @@ export function usePdfPageRender(
         canvas.style.width = `${viewport.width / dpr}px`;
         canvas.style.height = `${viewport.height / dpr}px`;
 
-        task = page.render({ canvas, viewport });
+        if (sheet) {
+          const ctx = canvas.getContext("2d");
+          if (ctx) {
+            ctx.setTransform(zoom * dpr, 0, 0, zoom * dpr, 0, 0);
+            drawSheet(ctx, sheet, getRenderedSize(base, rotation));
+          }
+          return;
+        }
+        task = source.render({ canvas, viewport });
         return task.promise;
       })
       .catch(() => {
@@ -56,7 +68,7 @@ export function usePdfPageRender(
       cancelled = true;
       task?.cancel();
     };
-  }, [doc, isActive, pageIndex, rotation, zoom]);
+  }, [doc, isActive, rotation, sheet, sourceIndex, zoom]);
 
   return { canvasRef, size };
 }

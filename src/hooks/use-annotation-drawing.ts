@@ -1,6 +1,7 @@
 import type { PointerEvent } from "react";
 import { useEraser } from "@/hooks/use-eraser";
 import { useHandTool } from "@/hooks/use-hand-tool";
+import { useNoteTool } from "@/hooks/use-note-tool";
 import { useShapeDrawing } from "@/hooks/use-shape-drawing";
 import { useTextTool } from "@/hooks/use-text-tool";
 import type {
@@ -21,6 +22,7 @@ interface PointerHandlers {
 interface Tools {
   eraser: PointerHandlers;
   hand: PointerHandlers;
+  note: PointerHandlers;
   shapes: PointerHandlers;
   text: PointerHandlers;
 }
@@ -43,6 +45,9 @@ function pickTool(tool: EditorTool, tools: Tools): PointerHandlers {
   }
   if (tool === "hand") {
     return tools.hand;
+  }
+  if (tool === "note") {
+    return tools.note;
   }
   return tools.shapes;
 }
@@ -95,8 +100,17 @@ export function useAnnotationDrawing({
     size,
     zoom,
   });
+  const note = useNoteTool({
+    annotations,
+    onAdd: actions.add,
+    onSelect: actions.select,
+    pageId,
+    rotation,
+    size,
+    zoom,
+  });
   const hand = useHandTool();
-  const active = pickTool(settings.tool, { eraser, hand, shapes, text });
+  const active = pickTool(settings.tool, { eraser, hand, note, shapes, text });
 
   return {
     draft: shapes.draft,

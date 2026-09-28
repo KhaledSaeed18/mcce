@@ -86,6 +86,8 @@ export type EditorTool =
   | "ellipse"
   | "arrow"
   | "text"
+  | "note"
+  | "cover"
   | "hand";
 
 /** Page space: PDF points, top-left origin, independent of the zoom it was drawn at. */
@@ -121,7 +123,15 @@ export type TextMarkStyle = "highlight" | "strike" | "underline";
 export interface TextMarkAnnotation extends AnnotationBase {
   boxes: Box[];
   style: TextMarkStyle;
+  /** The words it marks, kept for the notes list. Absent on marks made before it was. */
+  text?: string;
   type: "mark";
+}
+
+/** A sticky note pinned to a place on the page, by its top left corner. */
+export interface NoteAnnotation extends AnnotationBase, Point {
+  text: string;
+  type: "note";
 }
 
 export interface ShapeAnnotation extends AnnotationBase {
@@ -156,9 +166,17 @@ export interface TextAnnotation extends AnnotationBase, TextGeometry {
   type: "text";
 }
 
+/** A box laid over an answer, hiding it until the reader looks. It stays in
+ * the editor: a download is the file as marked, not a quiz. */
+export interface CoverAnnotation extends AnnotationBase, Box {
+  type: "cover";
+}
+
 export type Annotation =
   | ArrowAnnotation
+  | CoverAnnotation
   | HighlightAnnotation
+  | NoteAnnotation
   | PenAnnotation
   | ShapeAnnotation
   | TextAnnotation
@@ -192,6 +210,9 @@ export interface PageDrag {
   insertAt: number;
 }
 
+/** A page the reader put in to work on: plain, or ruled in squares. */
+export type PageSheet = "blank" | "grid";
+
 /**
  * A page as the editor holds it, which is not necessarily how the file holds it:
  * which page of the file it shows, and how far it has been turned from upright.
@@ -200,6 +221,9 @@ export interface EditorPage {
   id: string;
   /** Quarter turns clockwise, on top of the page's own orientation. */
   rotation: number;
+  /** Set on a page the reader put in, which shows a sheet instead of the file's
+   * page. Its sourceIndex is then the page it was put in after, whose size it takes. */
+  sheet?: PageSheet;
   sourceIndex: number;
 }
 
@@ -252,6 +276,30 @@ export type FrameCorner =
 /** Which side of a text box a resize drag has hold of. */
 export type TextBoxEdge = "left" | "right";
 
+/** A timed attempt at the open file, kept so a reload does not stop the clock. */
+export interface ExamSession {
+  /** When time runs out, in milliseconds since the epoch. */
+  endsAt: number;
+  minutes: number;
+}
+
+/** Which answer covers are showing what they hide, and how a page shows one. */
+export interface CoverReveal {
+  revealed: ReadonlySet<string>;
+  /** Shows a hidden answer, or hides a shown one. Anything but a cover is ignored. */
+  toggle: (id: string) => void;
+}
+
+/** Every way the rail can change the pages, kept together as they travel down. */
+export interface PageActions {
+  copy: (id: string) => void;
+  /** Puts a sheet to work on directly after a page. */
+  insertSheet: (afterId: string, sheet: PageSheet) => void;
+  move: (from: number, to: number) => void;
+  remove: (id: string) => void;
+  rotate: (id: string) => void;
+}
+
 /** Every way the page list can change the markup, kept together as they travel down. */
 export interface AnnotationActions {
   add: (annotation: Annotation) => void;
@@ -290,6 +338,37 @@ export type SaveStatus = "saved" | "failed";
 export interface EditorPanels {
   isBrowserOpen: boolean;
   isRailOpen: boolean;
+  isStudyOpen: boolean;
+}
+
+/** The tabs of the panel right of the pages. */
+export type StudyPanelTab = "bookmarks" | "contents" | "notes";
+
+/** A note or a highlight as the notes list shows it, in reading order. */
+export interface StudyItem {
+  annotation: HighlightAnnotation | NoteAnnotation | TextMarkAnnotation;
+  /** Where its page sits in the document now. */
+  position: number;
+  /** What it says or marks, empty when there is nothing to show. */
+  text: string;
+}
+
+/** One line of a PDF's own table of contents, flattened out of its tree. */
+export interface OutlineEntry {
+  /** How far down the tree it sits, from 0 at the top. */
+  depth: number;
+  /** Its path through the tree, which stays the same for as long as the file does. */
+  id: string;
+  /** The page of the file it points at, or null when that cannot be worked out. */
+  sourceIndex: number | null;
+  title: string;
+}
+
+/** What the contents panel needs of an entry in pdf.js's outline tree. */
+export interface OutlineNode {
+  dest: unknown;
+  items: OutlineNode[];
+  title: string;
 }
 
 /** The spot at the middle of the scroller, held as a place in a page rather

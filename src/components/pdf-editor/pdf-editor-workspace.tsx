@@ -4,8 +4,10 @@ import { EditorDropZone } from "@/components/pdf-editor/editor-drop-zone";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
 import { EditorHelpDialog } from "@/components/pdf-editor/editor-help-dialog";
 import { EditorSidePanel } from "@/components/pdf-editor/editor-side-panel";
+import { ExamTimeUpDialog } from "@/components/pdf-editor/exam-time-up-dialog";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
-import { EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
+import { StudyPanel } from "@/components/pdf-editor/study-panel";
+import { DEFAULT_EXPORT_NAME, EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
 import { useEditorHelp } from "@/hooks/use-editor-help";
 import { useEditorPanels } from "@/hooks/use-editor-panels";
 import { useEditorSession } from "@/hooks/use-editor-session";
@@ -26,8 +28,15 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     isSupported: isFullscreenSupported,
     toggle: toggleFullscreen,
   } = useFullscreen(rootRef);
-  const { isAnimated, isBrowserOpen, isRailOpen, toggleBrowser, toggleRail } =
-    useEditorPanels();
+  const {
+    isAnimated,
+    isBrowserOpen,
+    isRailOpen,
+    isStudyOpen,
+    toggleBrowser,
+    toggleRail,
+    toggleStudy,
+  } = useEditorPanels();
   const help = useEditorHelp();
 
   const session = useEditorSession(node, scrollRef);
@@ -44,11 +53,13 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
           isFullscreen={isFullscreen}
           isFullscreenSupported={isFullscreenSupported}
           isRailOpen={isRailOpen}
+          isStudyOpen={isStudyOpen}
           node={node}
           onOpenHelp={help.open}
           onToggleBrowser={toggleBrowser}
           onToggleFullscreen={toggleFullscreen}
           onToggleRail={toggleRail}
+          onToggleStudy={toggleStudy}
           saveStatus={session.saveStatus}
         />
         <div className="flex min-h-0 flex-1">
@@ -65,9 +76,30 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
             scrollRef={scrollRef}
             session={session}
           />
+          <EditorSidePanel
+            isAnimated={isAnimated}
+            isOpen={isStudyOpen && session.doc !== null}
+          >
+            {session.doc ? (
+              <StudyPanel
+                annotations={session.markup.annotations}
+                bookmarks={session.bookmarks}
+                doc={session.doc}
+                fileName={node ? node.name : DEFAULT_EXPORT_NAME}
+                navigation={session.navigation}
+                onSelect={session.markup.actions.select}
+                pages={session.markup.pages}
+              />
+            ) : null}
+          </EditorSidePanel>
         </div>
       </EditorDropZone>
       <EditorHelpDialog onOpenChange={help.setIsOpen} open={help.isOpen} />
+      <ExamTimeUpDialog
+        isOpen={session.exam.isOver}
+        onClose={session.exam.end}
+        onDownload={session.exportPdf}
+      />
     </main>
   );
 }

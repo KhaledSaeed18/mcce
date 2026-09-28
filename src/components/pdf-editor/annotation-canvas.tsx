@@ -16,10 +16,12 @@ import { cn } from "@/lib/utils";
 
 const CURSOR_BY_TOOL: Record<ToolSettings["tool"], string> = {
   arrow: "cursor-crosshair",
+  cover: "cursor-crosshair",
   ellipse: "cursor-crosshair",
   eraser: "cursor-cell",
   hand: "cursor-grab",
   highlight: "cursor-crosshair",
+  note: "cursor-copy",
   pen: "cursor-crosshair",
   rect: "cursor-crosshair",
   select: "cursor-text",
@@ -55,6 +57,8 @@ interface AnnotationCanvasProps {
   pageId: string;
   /** Markup mid-resize, drawn at the size the pointer is holding it at. */
   preview: Annotation | null;
+  /** Covers whose answers are showing, drawn as an outline instead of solid. */
+  revealed: ReadonlySet<string>;
   /** Quarter turns the page has been given, which the markup is drawn through. */
   rotation: number;
   /** Framed by its own overlay, so it needs no hover ring of its own. */
@@ -72,6 +76,7 @@ export function AnnotationCanvas({
   onDraft,
   pageId,
   preview,
+  revealed,
   rotation,
   selectedId,
   settings,
@@ -108,6 +113,7 @@ export function AnnotationCanvas({
     highlightId: drag?.id ?? hoverId,
     preview,
     rendered,
+    revealed,
     transform,
     zoom,
   });

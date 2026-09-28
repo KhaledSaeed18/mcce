@@ -14,18 +14,13 @@ export function usePdfPageLayers(
   zoom: number
 ) {
   const isVisible = useInViewport(containerRef);
-  const { canvasRef, size } = usePdfPageRender(
-    doc,
-    page.sourceIndex,
-    zoom,
-    isVisible,
-    page.rotation
-  );
+  const { canvasRef, size } = usePdfPageRender(doc, page, zoom, isVisible);
+  // A sheet the reader put in has no text of its own to lay over it.
   const { layerRef, textDivs } = usePdfTextLayer(
     doc,
     page.sourceIndex,
     zoom,
-    isVisible,
+    isVisible && !page.sheet,
     page.rotation
   );
   return { canvasRef, size, textDivs, textLayerRef: layerRef };

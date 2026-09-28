@@ -1,5 +1,6 @@
 import { ERASER_TOLERANCE } from "@/config/pdf-editor";
 import { distanceToSegment, distanceToStroke } from "./distance";
+import { getNoteBox } from "./note-box";
 import { getTextBox } from "./text-layout";
 import type { Annotation, Box, Point } from "./types";
 
@@ -42,6 +43,9 @@ export function isAnnotationHit(
   }
   if (annotation.type === "mark") {
     return annotation.boxes.some((box) => isInsideBox(box, target));
+  }
+  if (annotation.type === "note") {
+    return isInsideBox(getNoteBox(annotation), target);
   }
   if (annotation.type === "arrow") {
     return (
