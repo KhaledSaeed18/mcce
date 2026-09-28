@@ -1,98 +1,69 @@
-import { useCallback, useState } from "react";
-import { MAX_HISTORY_STEPS } from "@/config/pdf-editor";
+import { useCallback, useSyncExternalStore } from "react";
+import {
+  commitStep,
+  EMPTY_HISTORY,
+  redoStep,
+  undoStep,
+} from "@/lib/pdf-editor/history";
+import {
+  openHistory,
+  readHistory,
+  subscribeHistory,
+  updateHistory,
+} from "@/lib/pdf-editor/history-store";
 import type { EditorSnapshot } from "@/lib/pdf-editor/types";
 
-interface HistoryState {
-  future: EditorSnapshot[];
-  past: EditorSnapshot[];
-  present: EditorSnapshot;
-}
+const readServerHistory = () => EMPTY_HISTORY;
 
-const EMPTY_SNAPSHOT: EditorSnapshot = { annotations: [], pages: [] };
-
-/** The oldest steps fall off the back once there are more than are worth keeping. */
-function pushStep(
-  past: EditorSnapshot[],
-  present: EditorSnapshot
-): EditorSnapshot[] {
-  return [...past, present].slice(-MAX_HISTORY_STEPS);
-}
-
-const EMPTY: HistoryState = {
-  future: [],
-  past: [],
-  present: EMPTY_SNAPSHOT,
-};
-
-/** Undo steps are whole snapshots: a file's markup and pages are small enough that
- * diffing them is not worth it. */
-export function useEditorHistory() {
-  const [history, setHistory] = useState<HistoryState>(EMPTY);
+/** The open file's undo steps. They belong to the file rather than to this
+ * hook, so they are still there when the reader comes back to it. */
+export function useEditorHistory(fileId: string | undefined) {
+  const history = useSyncExternalStore(
+    subscribeHistory,
+    () => readHistory(fileId),
+    readServerHistory
+  );
 
   const commit = useCallback(
-    (next: (current: EditorSnapshot) => EditorSnapshot) =>
-      setHistory((state) => {
-        const present = next(state.present);
-        if (
-          present.annotations === state.present.annotations &&
-          present.pages === state.present.pages
-        ) {
-          return state;
-        }
-        return {
-          future: [],
-          past: pushStep(state.past, state.present),
-          present,
-        };
-      }),
-    []
+    (next: (current: EditorSnapshot) => EditorSnapshot) => {
+      if (fileId) {
+        updateHistory(fileId, (state) => commitStep(state, next));
+      }
+    },
+    [fileId]
   );
 
-  /** Replaces the snapshot without a history entry, for hydrating a stored file. */
-  const reset = useCallback(
-    (snapshot: EditorSnapshot) =>
-      setHistory({ future: [], past: [], present: snapshot }),
-    []
+  /** Starts the file from a stored snapshot, without a history entry. */
+  const open = useCallback(
+    (snapshot: EditorSnapshot) => {
+      if (fileId) {
+        openHistory(fileId, snapshot);
+      }
+    },
+    [fileId]
   );
 
-  const undo = useCallback(
-    () =>
-      setHistory((state) => {
-        const previous = state.past.at(-1);
-        if (!previous) {
-          return state;
-        }
-        return {
-          future: [state.present, ...state.future],
-          past: state.past.slice(0, -1),
-          present: previous,
-        };
-      }),
-    []
-  );
+  const undo = useCallback(() => {
+    if (fileId) {
+      updateHistory(fileId, undoStep);
+    }
+  }, [fileId]);
 
-  const redo = useCallback(
-    () =>
-      setHistory((state) => {
-        const [next, ...rest] = state.future;
-        if (!next) {
-          return state;
-        }
-        return {
-          future: rest,
-          past: pushStep(state.past, state.present),
-          present: next,
-        };
-      }),
-    []
-  );
+  const redo = useCallback(() => {
+    if (fileId) {
+      updateHistory(fileId, redoStep);
+    }
+  }, [fileId]);
 
   return {
     canRedo: history.future.length > 0,
     canUndo: history.past.length > 0,
     commit,
+    /** False until the file has been read from storage this visit. A file
+     * not held reads as EMPTY_HISTORY itself, never a copy of it. */
+    isOpen: history !== EMPTY_HISTORY,
+    open,
     redo,
-    reset,
     snapshot: history.present,
     undo,
   };

@@ -237,6 +237,13 @@ export interface EditorSnapshot {
   pages: EditorPage[];
 }
 
+/** A file's steps either side of what is on screen, for undo and redo. */
+export interface EditorHistory {
+  future: EditorSnapshot[];
+  past: EditorSnapshot[];
+  present: EditorSnapshot;
+}
+
 /** Whether the zoom is a number the reader picked or one fitted to the window. */
 export type ZoomMode = "custom" | "fit-page" | "fit-width";
 
