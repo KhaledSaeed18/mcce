@@ -10,7 +10,7 @@ import {
   TAB_CLASS,
   TAB_IDLE_CLASS,
 } from "@/config/pdf-editor";
-import { buildEditorSearch } from "@/lib/pdf-editor/editor-search";
+import { usePlaceFileSearch } from "@/hooks/use-place-file-search";
 import { withShortcut } from "@/lib/pdf-editor/shortcut-label";
 import type { OpenFile, TabLabel } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
@@ -34,6 +34,7 @@ export function EditorTab({
   onClose,
 }: EditorTabProps) {
   const handleClose = useCallback(() => onClose(file.id), [file.id, onClose]);
+  const placeSearch = usePlaceFileSearch(file.id, file.source);
 
   return (
     <li
@@ -50,7 +51,8 @@ export function EditorTab({
         className="flex h-full min-w-0 items-center gap-1.5 pl-1.5"
         // The whole tab is what drags, not the link's address.
         draggable={false}
-        search={buildEditorSearch(file)}
+        from={EDITOR_PATH}
+        search={placeSearch}
         to={EDITOR_PATH}
       >
         {label.chip ? <FileTypeChip chip={label.chip} /> : null}

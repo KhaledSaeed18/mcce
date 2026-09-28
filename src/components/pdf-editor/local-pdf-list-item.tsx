@@ -8,6 +8,7 @@ import {
   FILE_ROW_CLASS,
   FILE_ROW_LINK_CLASS,
 } from "@/config/pdf-editor";
+import { usePlaceFileSearch } from "@/hooks/use-place-file-search";
 import { formatBytes } from "@/lib/drive/format";
 import type { LocalPdfMeta } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
@@ -25,6 +26,8 @@ export function LocalPdfListItem({
   isOpen,
   onRemove,
 }: LocalPdfListItemProps) {
+  const placeSearch = usePlaceFileSearch(file.id, "local");
+
   return (
     <li className="flex items-center gap-1">
       <Link
@@ -34,7 +37,8 @@ export function LocalPdfListItem({
           "min-w-0",
           isActive && FILE_ROW_ACTIVE_CLASS
         )}
-        search={{ local: file.id }}
+        from={EDITOR_PATH}
+        search={placeSearch}
         to={EDITOR_PATH}
       >
         <FileTextIcon className="size-4 shrink-0" />

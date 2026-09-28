@@ -6,6 +6,7 @@ import { SITE_NAME, SITE_URL } from "@/config/site";
 import { useEditorViewport } from "@/hooks/use-editor-viewport";
 import { useIsHydrated } from "@/hooks/use-is-hydrated";
 import { useLocalEditorFile } from "@/hooks/use-local-editor-file";
+import { isLocalFileId } from "@/lib/pdf-editor/editor-search";
 import {
   editorFileQueryOptions,
   editorTreeQueryOptions,
@@ -29,19 +30,25 @@ export const Route = createFileRoute("/editor")({
     }),
   }),
   loader: async ({ context, deps }) => {
-    const [tree, file] = await Promise.all([
+    const besideId =
+      deps.beside && !isLocalFileId(deps.beside) ? deps.beside : undefined;
+    const [tree, file, besideFile] = await Promise.all([
       context.queryClient.ensureQueryData(editorTreeQueryOptions),
       context.queryClient.ensureQueryData(editorFileQueryOptions(deps.file)),
+      context.queryClient.ensureQueryData(editorFileQueryOptions(besideId)),
     ]);
-    return { file, tree };
+    return { besideFile, file, tree };
   },
   // Typed up front so inference does not depend on key order, which the
   // formatter sorts alphabetically, putting this after the loader that reads it.
   loaderDeps: ({ search }: { search: EditorSearch }) => ({
+    beside: search.beside,
     file: search.file,
   }),
   validateSearch: (search: Record<string, unknown>): EditorSearch => ({
+    beside: readOptionalString(search.beside),
     file: readOptionalString(search.file),
+    focus: search.focus === "beside" ? "beside" : undefined,
     local: readOptionalString(search.local),
   }),
 });

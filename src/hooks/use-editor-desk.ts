@@ -5,7 +5,7 @@ import { showFile } from "@/lib/pdf-editor/desk";
 import { closeFile, forgetFile } from "@/lib/pdf-editor/desk-close";
 import { findNextFile, moveFile } from "@/lib/pdf-editor/desk-order";
 import { readDesk, writeDesk } from "@/lib/pdf-editor/desk-storage";
-import { buildEditorSearch } from "@/lib/pdf-editor/editor-search";
+import { placeFile } from "@/lib/pdf-editor/pane-search";
 import type { EditorFile, OpenFile } from "@/lib/pdf-editor/types";
 
 /** The files open as tabs. The URL still says which one is shown, so opening
@@ -32,11 +32,12 @@ export function useEditorDesk(activeFile: EditorFile | null) {
 
   useEffect(() => writeDesk(desk), [desk]);
 
-  /** Shows a file, or the blank editor for none. */
+  /** Shows a file in the pane with focus, or the blank editor for none. */
   const show = useCallback(
     (file: OpenFile | null) =>
       navigate({
-        search: file ? buildEditorSearch(file) : {},
+        from: EDITOR_PATH,
+        search: (search) => (file ? placeFile(search, file) : {}),
         to: EDITOR_PATH,
       }),
     [navigate]

@@ -120,9 +120,18 @@ export interface SearchMatch extends TextSpan {
   position: number;
 }
 
-/** The editor's URL: a file from the index, or one from this device. */
+/** The two panes files can be shown in, the first always there. */
+export type EditorPaneSide = "beside" | "primary";
+
+/** The editor's URL: the file in the first pane, from the index or from this
+ * device, and any file shown beside it. */
 export interface EditorSearch {
+  /** The second pane's file, from either place: ids from this device carry
+   * their own prefix. */
+  beside?: string;
   file?: string;
+  /** Set while the second pane has focus. */
+  focus?: "beside";
   local?: string;
 }
 

@@ -3,10 +3,12 @@ import { useCallback } from "react";
 import { KindIcon } from "@/components/drive/kind-icon";
 import { OpenFileDot } from "@/components/pdf-editor/open-file-dot";
 import {
+  EDITOR_PATH,
   FILE_ROW_ACTIVE_CLASS,
   FILE_ROW_CLASS,
   FILE_ROW_LINK_CLASS,
 } from "@/config/pdf-editor";
+import { usePlaceFileSearch } from "@/hooks/use-place-file-search";
 import type { BrowserEntry } from "@/lib/pdf-editor/browser-entries";
 import { cn } from "@/lib/utils";
 
@@ -27,6 +29,7 @@ export function FileBrowserEntry({
     () => onOpenFolder(entry.id),
     [entry.id, onOpenFolder]
   );
+  const placeSearch = usePlaceFileSearch(entry.id, "drive");
 
   if (!entry.isFile) {
     return (
@@ -60,8 +63,9 @@ export function FileBrowserEntry({
         FILE_ROW_LINK_CLASS,
         isActive && FILE_ROW_ACTIVE_CLASS
       )}
-      search={{ file: entry.id }}
-      to="/editor"
+      from={EDITOR_PATH}
+      search={placeSearch}
+      to={EDITOR_PATH}
     >
       <KindIcon className="size-4 shrink-0" kind={entry.kind} />
       <span className="truncate">{entry.name}</span>
