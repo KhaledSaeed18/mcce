@@ -7,7 +7,7 @@ import { EditorSidePanel } from "@/components/pdf-editor/editor-side-panel";
 import { ExamTimeUpDialog } from "@/components/pdf-editor/exam-time-up-dialog";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
 import { StudyPanel } from "@/components/pdf-editor/study-panel";
-import { EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
+import { DEFAULT_EXPORT_NAME, EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
 import { useEditorHelp } from "@/hooks/use-editor-help";
 import { useEditorPanels } from "@/hooks/use-editor-panels";
 import { useEditorSession } from "@/hooks/use-editor-session";
@@ -82,9 +82,12 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
           >
             {session.doc ? (
               <StudyPanel
+                annotations={session.markup.annotations}
                 bookmarks={session.bookmarks}
                 doc={session.doc}
+                fileName={node ? node.name : DEFAULT_EXPORT_NAME}
                 navigation={session.navigation}
+                onSelect={session.markup.actions.select}
                 pages={session.markup.pages}
               />
             ) : null}

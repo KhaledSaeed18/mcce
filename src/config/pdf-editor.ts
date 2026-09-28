@@ -438,12 +438,13 @@ export const PDF_BOOKMARKS_KEY_PREFIX = "mcce.pdf-bookmarks.v1";
 
 export const BOOKMARK_HOTKEY_KEY = "b";
 
-export const STUDY_PANEL_SHOW_LABEL = "Show contents and bookmarks";
-export const STUDY_PANEL_HIDE_LABEL = "Hide contents and bookmarks";
+export const STUDY_PANEL_SHOW_LABEL = "Show contents and notes";
+export const STUDY_PANEL_HIDE_LABEL = "Hide contents and notes";
 
 export const STUDY_PANEL_TAB_LABELS: Record<StudyPanelTab, string> = {
   bookmarks: "Bookmarks",
   contents: "Contents",
+  notes: "Notes",
 };
 
 export const OUTLINE_EMPTY = "This PDF has no table of contents.";
@@ -512,6 +513,34 @@ export const NOTE_CARD_GAP = 6;
 
 export const NOTE_PLACEHOLDER = "Write a note";
 export const NOTE_REMOVE_LABEL = "Remove note";
+
+export const NOTES_EMPTY =
+  "Notes you pin with the note tool (N) and text you highlight are listed here by page.";
+export const NOTE_EMPTY_LABEL = "Empty note";
+export const HIGHLIGHT_ITEM_LABEL = "Highlight";
+
+export const SUMMARY_DOWNLOAD_LABEL = "Download summary";
+export const SUMMARY_DOWNLOAD_HINT =
+  "Download these notes and highlights as a revision summary PDF";
+export const SUMMARY_ERROR = "The summary could not be built";
+export const SUMMARY_TITLE = "Revision summary";
+export const SUMMARY_EXPORT_SUFFIX = "-summary.pdf";
+
+/** A4, the paper most printers here take, in points. */
+export const SUMMARY_PAGE_SIZE: [number, number] = [595.28, 841.89];
+export const SUMMARY_MARGIN = 56;
+export const SUMMARY_TITLE_SIZE = 18;
+export const SUMMARY_SUBTITLE_SIZE = 10;
+export const SUMMARY_HEADING_SIZE = 12;
+export const SUMMARY_BODY_SIZE = 10;
+export const SUMMARY_LINE_RATIO = 1.4;
+/** Space after a block, as a share of the body size. */
+export const SUMMARY_GAP_RATIO = 0.8;
+/** How far a list item's text sits in from its bullet. */
+export const SUMMARY_BULLET_INDENT = 12;
+export const SUMMARY_MUTED_COLOR = "#6b6660";
+/** Stands in for a character the summary's font cannot write. */
+export const SUMMARY_MISSING_CHARACTER = "?";
 
 /** Marks what floats over a page to be typed in or clicked, which a press
  * with the select tool leaves alone rather than treating as a press on the page. */

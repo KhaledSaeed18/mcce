@@ -1,31 +1,39 @@
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import { BookmarkList } from "@/components/pdf-editor/bookmark-list";
+import { NotesList } from "@/components/pdf-editor/notes-list";
 import { OutlineList } from "@/components/pdf-editor/outline-list";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { STUDY_PANEL_TAB_LABELS } from "@/config/pdf-editor";
 import type { PageBookmarks } from "@/hooks/use-page-bookmarks";
 import type {
+  Annotation,
   EditorPage,
   PageNavigation,
   StudyPanelTab,
 } from "@/lib/pdf-editor/types";
 
-const TABS: readonly StudyPanelTab[] = ["contents", "bookmarks"];
+const TABS: readonly StudyPanelTab[] = ["contents", "bookmarks", "notes"];
 
 const TAB_CONTENT_CLASS = "flex min-h-0 flex-1 flex-col border-t-2";
 
 interface StudyPanelProps {
+  annotations: Annotation[];
   bookmarks: PageBookmarks;
   doc: PDFDocumentProxy;
+  fileName: string;
   navigation: PageNavigation;
+  onSelect: (id: string | null) => void;
   pages: EditorPage[];
 }
 
 /** The panel right of the pages: ways to find a place in the file. */
 export function StudyPanel({
+  annotations,
   bookmarks,
   doc,
+  fileName,
   navigation,
+  onSelect,
   pages,
 }: StudyPanelProps) {
   return (
@@ -33,7 +41,7 @@ export function StudyPanel({
       <Tabs className="min-h-0 flex-1 gap-0" defaultValue={TABS[0]}>
         <TabsList className="m-2 w-auto">
           {TABS.map((tab) => (
-            <TabsTrigger key={tab} value={tab}>
+            <TabsTrigger className="px-2" key={tab} value={tab}>
               {STUDY_PANEL_TAB_LABELS[tab]}
             </TabsTrigger>
           ))}
@@ -49,6 +57,15 @@ export function StudyPanel({
           <BookmarkList
             bookmarks={bookmarks}
             navigation={navigation}
+            pages={pages}
+          />
+        </TabsContent>
+        <TabsContent className={TAB_CONTENT_CLASS} value="notes">
+          <NotesList
+            annotations={annotations}
+            fileName={fileName}
+            navigation={navigation}
+            onSelect={onSelect}
             pages={pages}
           />
         </TabsContent>

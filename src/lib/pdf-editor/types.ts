@@ -342,7 +342,16 @@ export interface EditorPanels {
 }
 
 /** The tabs of the panel right of the pages. */
-export type StudyPanelTab = "bookmarks" | "contents";
+export type StudyPanelTab = "bookmarks" | "contents" | "notes";
+
+/** A note or a highlight as the notes list shows it, in reading order. */
+export interface StudyItem {
+  annotation: HighlightAnnotation | NoteAnnotation | TextMarkAnnotation;
+  /** Where its page sits in the document now. */
+  position: number;
+  /** What it says or marks, empty when there is nothing to show. */
+  text: string;
+}
 
 /** One line of a PDF's own table of contents, flattened out of its tree. */
 export interface OutlineEntry {
