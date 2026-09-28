@@ -10,6 +10,7 @@ interface SplitControlsOptions {
   other: EditorPaneView | null;
   paneActions: ReturnType<typeof usePaneActions>;
   panels: EditorPanels & {
+    isHydrated: boolean;
     update: (changes: Partial<EditorPanels>) => void;
   };
   panes: EditorPaneView[];
@@ -26,6 +27,7 @@ export function useSplitControls({
 }: SplitControlsOptions) {
   useSplitRoom({
     isBrowserOpen: panels.isBrowserOpen,
+    isPanelsHydrated: panels.isHydrated,
     isRailOpen: panels.isRailOpen,
     onPanelsChange: panels.update,
     panes,

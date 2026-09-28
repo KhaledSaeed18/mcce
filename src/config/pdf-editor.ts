@@ -136,6 +136,10 @@ export const OPEN_BESIDE_LABEL = "Open beside";
  * two files and differs only in focus. */
 export const FILE_LINK_ACTIVE_OPTIONS = { exact: true } as const;
 
+/** The left panels as they were before a split closed them, kept until it
+ * ends so a reload in between does not lose them. */
+export const SPLIT_SAVED_PANELS_KEY = "mcce.editor-split-panels.v1";
+
 /** Where the divider was left, as the first pane's share of the width. */
 export const SPLIT_RATIO_STORAGE_KEY = "mcce.editor-split.v1";
 export const DEFAULT_SPLIT_RATIO = 0.5;

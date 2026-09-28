@@ -57,6 +57,9 @@ export function useEditorPanels() {
   return {
     ...activePanels,
     isAnimated,
+    /** False until the stored layout has been read, before which a change
+     * made from outside would be overwritten by it. */
+    isHydrated: panels !== null,
     toggleBrowser,
     toggleRail,
     toggleStudy,
