@@ -362,6 +362,7 @@ export const DEFAULT_EXPORT_NAME = "document.pdf";
 export const TOOL_LABELS: Record<EditorTool, string> = {
   arrow: "Arrow",
   cover: "Answer cover",
+  note: "Note",
   ellipse: "Circle",
   eraser: "Eraser",
   hand: "Hand",
@@ -376,6 +377,7 @@ export const TOOL_HOTKEYS: Record<EditorTool, string> = {
   arrow: "a",
   /** Q for quiz: C and H, the obvious letters, are taken by circle and hand. */
   cover: "q",
+  note: "n",
   ellipse: "c",
   eraser: "e",
   hand: "h",
@@ -406,6 +408,7 @@ export const EDITOR_SHORTCUT_TOOLS: readonly EditorTool[] = [
   "rect",
   "ellipse",
   "arrow",
+  "note",
   "cover",
   "eraser",
   "select",
@@ -493,3 +496,23 @@ export const EXAM_REVIEW_LABEL = "Review answers";
 export const EXAM_TIME_LEFT_LABEL = "Time left";
 export const COVERS_LOCKED_LABEL = "Answers stay covered until the exam ends";
 export const EXPORT_LABEL = "Download copy";
+
+/** A note's icon on the page, in page points, and the colors it is drawn in. */
+export const NOTE_SIZE = 18;
+export const NOTE_COLOR = "#ffd60a";
+export const NOTE_EDGE_COLOR = "#1a1815";
+export const NOTE_EDGE_WIDTH = 1;
+/** How much of the corner is folded over, as a share of the icon. */
+export const NOTE_FOLD_RATIO = 0.3;
+
+/** The card a note is read and written in, in screen pixels. */
+export const NOTE_CARD_WIDTH = 224;
+export const NOTE_CARD_HEIGHT = 128;
+export const NOTE_CARD_GAP = 6;
+
+export const NOTE_PLACEHOLDER = "Write a note";
+export const NOTE_REMOVE_LABEL = "Remove note";
+
+/** Marks what floats over a page to be typed in or clicked, which a press
+ * with the select tool leaves alone rather than treating as a press on the page. */
+export const MARKUP_OVERLAY_ATTRIBUTE = "data-markup-overlay";

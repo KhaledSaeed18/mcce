@@ -13,9 +13,14 @@ function mapPoint(point: Point, from: Box, to: Box): Point {
 }
 
 /** Markup that can be stretched by its frame. Text rewraps by width instead,
- * and a text mark follows the lines of text it was laid on. */
+ * a text mark follows the lines of text it was laid on, and a note's icon
+ * keeps one size. */
 export function isResizable(annotation: Annotation): boolean {
-  return annotation.type !== "text" && annotation.type !== "mark";
+  return (
+    annotation.type !== "text" &&
+    annotation.type !== "mark" &&
+    annotation.type !== "note"
+  );
 }
 
 /** The markup stretched from one frame to another. Line widths stay as they

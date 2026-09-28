@@ -22,6 +22,7 @@ export const EDITOR_HELP_FACTS: readonly string[] = [
   "The contents panel, opened from the top right, lists the PDF's own table of contents when it has one, and the pages you bookmarked.",
   "The answer cover draws a box over an answer to quiz yourself. With the select tool, click a cover to see what it hides and again to hide it. The eye button shows or hides every answer at once. Covers stay out of downloads.",
   "Exam mode, the timer button, counts down a sample exam. Every answer cover stays hidden until time is up, then drawing stops and your answers are kept in this browser.",
+  "The note tool (N) pins a sticky note to a place on the page. Downloaded copies keep notes as PDF notes that other readers open.",
   "Restore the original file drops every change at once. Undo brings them back.",
   `The editor needs a screen at least ${EDITOR_MIN_WIDTH_PX}px wide.`,
 ];

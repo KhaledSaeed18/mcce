@@ -21,6 +21,7 @@ const CURSOR_BY_TOOL: Record<ToolSettings["tool"], string> = {
   eraser: "cursor-cell",
   hand: "cursor-grab",
   highlight: "cursor-crosshair",
+  note: "cursor-copy",
   pen: "cursor-crosshair",
   rect: "cursor-crosshair",
   select: "cursor-text",

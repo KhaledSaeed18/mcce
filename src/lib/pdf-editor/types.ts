@@ -86,6 +86,7 @@ export type EditorTool =
   | "ellipse"
   | "arrow"
   | "text"
+  | "note"
   | "cover"
   | "hand";
 
@@ -125,6 +126,12 @@ export interface TextMarkAnnotation extends AnnotationBase {
   /** The words it marks, kept for the notes list. Absent on marks made before it was. */
   text?: string;
   type: "mark";
+}
+
+/** A sticky note pinned to a place on the page, by its top left corner. */
+export interface NoteAnnotation extends AnnotationBase, Point {
+  text: string;
+  type: "note";
 }
 
 export interface ShapeAnnotation extends AnnotationBase {
@@ -169,6 +176,7 @@ export type Annotation =
   | ArrowAnnotation
   | CoverAnnotation
   | HighlightAnnotation
+  | NoteAnnotation
   | PenAnnotation
   | ShapeAnnotation
   | TextAnnotation

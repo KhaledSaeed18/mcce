@@ -5,7 +5,9 @@ import {
   useRef,
   useState,
 } from "react";
+import { MARKUP_OVERLAY_ATTRIBUTE } from "@/config/pdf-editor";
 import { getAnnotationBox } from "@/lib/pdf-editor/annotation-box";
+import { blurFocusedOverlay } from "@/lib/pdf-editor/blur-overlay";
 import { clampDelta } from "@/lib/pdf-editor/bounds";
 import { type AnnotationDrag, findAnnotationAt } from "@/lib/pdf-editor/move";
 import { toPagePoint } from "@/lib/pdf-editor/pointer";
@@ -59,11 +61,15 @@ export function useMarkupDrag({
 
   const handlePointerDown = useCallback(
     (event: PointerEvent<HTMLDivElement>) => {
-      // Handles on the selected markup are buttons with drags of their own.
-      const isHandle = (event.target as Element).closest("button");
+      // Handles on the selected markup are buttons with drags of their own,
+      // and a note's card is typed in rather than pressed.
+      const isHandle = (event.target as Element).closest(
+        `button, [${MARKUP_OVERLAY_ATTRIBUTE}]`
+      );
       if (!isEnabled || event.button !== 0 || isHandle) {
         return;
       }
+      blurFocusedOverlay();
       const point = toPagePoint(event, zoom, size, rotation);
       const target = findAnnotationAt(annotations, pageId, point);
       onSelect(target ? target.id : null);

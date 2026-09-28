@@ -1,5 +1,6 @@
 import type { Annotation } from "../types";
 import { drawCover } from "./cover";
+import { drawNote } from "./note";
 import {
   drawArrow,
   drawHighlight,
@@ -15,6 +16,10 @@ export function drawAnnotation(
   annotation: Annotation,
   isRevealed = false
 ): void {
+  if (annotation.type === "note") {
+    drawNote(ctx, annotation);
+    return;
+  }
   if (annotation.type === "cover") {
     drawCover(ctx, annotation, isRevealed);
     return;

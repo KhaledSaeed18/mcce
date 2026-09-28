@@ -129,6 +129,7 @@ export function PdfPage({
         />
       ) : null}
       <PdfPageOverlays
+        actions={actions}
         editing={editing}
         resize={resize}
         rotation={page.rotation}

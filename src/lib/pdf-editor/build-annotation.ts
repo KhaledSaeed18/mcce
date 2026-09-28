@@ -128,7 +128,9 @@ export function isEmptyAnnotation(annotation: Annotation): boolean {
   if (annotation.type === "pen" || annotation.type === "highlight") {
     return annotation.points.length < MIN_STROKE_POINTS;
   }
-  if (annotation.type === "text") {
+  // A note with nothing in it is taken off when its card closes, not here,
+  // since it starts out empty while the reader writes it.
+  if (annotation.type === "text" || annotation.type === "note") {
     return false;
   }
   if (annotation.type === "mark") {
