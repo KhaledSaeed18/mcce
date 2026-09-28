@@ -1,19 +1,8 @@
 import { EDITOR_DESK_STORAGE_KEY } from "@/config/pdf-editor";
 import { readJson, writeJson } from "@/lib/storage";
 import { EMPTY_DESK } from "./desk";
+import { isOpenFile } from "./open-file-parse";
 import type { EditorDesk, OpenFile } from "./types";
-
-function isOpenFile(value: unknown): value is OpenFile {
-  if (typeof value !== "object" || value === null) {
-    return false;
-  }
-  const { id, name, source } = value as Record<string, unknown>;
-  return (
-    typeof id === "string" &&
-    typeof name === "string" &&
-    (source === "drive" || source === "local")
-  );
-}
 
 function readFiles(value: unknown): OpenFile[] {
   return Array.isArray(value) ? value.filter(isOpenFile) : [];
