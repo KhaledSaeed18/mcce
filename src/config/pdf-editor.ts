@@ -136,6 +136,19 @@ export const OPEN_BESIDE_LABEL = "Open beside";
  * two files and differs only in focus. */
 export const FILE_LINK_ACTIVE_OPTIONS = { exact: true } as const;
 
+/** Where the divider was left, as the first pane's share of the width. */
+export const SPLIT_RATIO_STORAGE_KEY = "mcce.editor-split.v1";
+export const DEFAULT_SPLIT_RATIO = 0.5;
+/** Narrower than this, an A4 page fitted to the pane is too small to read. */
+export const MIN_PANE_WIDTH = 420;
+/** Within this of the middle, the divider settles on it. */
+export const SPLIT_SNAP_DISTANCE = 0.03;
+/** One arrow key press on the divider. */
+export const SPLIT_KEY_STEP = 0.05;
+export const SPLIT_DIVIDER_LABEL = "Resize panes";
+/** The divider's width, which the panes share the rest of. Matches its w-2.5. */
+export const SPLIT_DIVIDER_WIDTH = 10;
+
 export const PANE_MENU_LABEL = "Pane options";
 export const PANE_SWAP_LABEL = "Swap sides";
 export const PANE_ALONE_LABEL = "Show on its own";

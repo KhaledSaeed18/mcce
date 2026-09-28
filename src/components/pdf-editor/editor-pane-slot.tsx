@@ -8,6 +8,9 @@ interface EditorPaneSlotProps {
   isFocused: boolean;
   isSplit: boolean;
   onFocus: (side: EditorPaneSide) => void;
+  /** The pane's part of the width, grown from nothing so the divider's own
+   * width comes out of both. */
+  share: number;
   side: EditorPaneSide;
 }
 
@@ -18,6 +21,7 @@ export function EditorPaneSlot({
   isFocused,
   isSplit,
   onFocus,
+  share,
   side,
 }: EditorPaneSlotProps) {
   const handleFocus = useCallback(() => {
@@ -29,9 +33,10 @@ export function EditorPaneSlot({
   return (
     <section
       aria-label={isSplit ? PANE_LABELS[side] : undefined}
-      className="relative flex min-h-0 min-w-0 flex-1 flex-col"
+      className="relative flex min-h-0 min-w-0 flex-col"
       onFocusCapture={handleFocus}
       onPointerDownCapture={handleFocus}
+      style={{ flex: `${share} 1 0` }}
     >
       {children}
       {isSplit && isFocused ? (
