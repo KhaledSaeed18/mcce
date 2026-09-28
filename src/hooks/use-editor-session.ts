@@ -1,6 +1,7 @@
 import type { RefObject } from "react";
 import { DEFAULT_EXPORT_NAME } from "@/config/pdf-editor";
 import { useDocumentScroller } from "@/hooks/use-document-scroller";
+import { useDocumentSearch } from "@/hooks/use-document-search";
 import { useEditorInk } from "@/hooks/use-editor-ink";
 import { useEditorMarkup } from "@/hooks/use-editor-markup";
 import { useEditorPages } from "@/hooks/use-editor-pages";
@@ -54,6 +55,11 @@ export function useEditorSession({
     onToolChange: tools.setTool,
     pages: markup.pages,
   });
+  const search = useDocumentSearch({
+    doc,
+    goToPage: navigation.goToPage,
+    pages: markup.pages,
+  });
   const zoom = usePdfZoom({ pageSize: activeSize, viewport });
   useDocumentScroller(scrollRef, node?.id, zoom);
   useViewResume(node?.id, navigation, zoom);
@@ -96,6 +102,7 @@ export function useEditorSession({
     navigation,
     retry,
     saveStatus,
+    search,
     settings,
     sizes,
     status,

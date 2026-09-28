@@ -5,7 +5,6 @@ import { EditorSearchBar } from "@/components/pdf-editor/editor-search-bar";
 import { EditorToolbar } from "@/components/pdf-editor/editor-toolbar";
 import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
 import { TextSelectionMarker } from "@/components/pdf-editor/text-selection-marker";
-import { useDocumentSearch } from "@/hooks/use-document-search";
 import type { EditorSession } from "@/hooks/use-editor-session";
 import type { EditorTools } from "@/hooks/use-editor-tools";
 import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
@@ -46,16 +45,12 @@ export function EditorDocumentColumn({
     markup,
     navigation,
     retry,
+    search,
     settings,
     sizes,
     status,
     zoom,
   } = session;
-  const search = useDocumentSearch({
-    doc,
-    goToPage: navigation.goToPage,
-    pages: markup.pages,
-  });
 
   return (
     <div className="flex min-w-0 flex-1 flex-col">
