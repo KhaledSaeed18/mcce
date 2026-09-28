@@ -1,5 +1,6 @@
 import { EditorTab } from "@/components/pdf-editor/editor-tab";
 import { OPEN_FILES_LABEL } from "@/config/pdf-editor";
+import { useTabDrag } from "@/hooks/use-tab-drag";
 import type { OpenFile, TabLabel } from "@/lib/pdf-editor/types";
 
 interface EditorTabStripProps {
@@ -8,6 +9,7 @@ interface EditorTabStripProps {
   /** One per file, in the same order. */
   labels: TabLabel[];
   onClose: (id: string) => void;
+  onMove: (from: number, to: number) => void;
 }
 
 /** The open files, in the file bar where the file's title used to be. */
@@ -16,7 +18,10 @@ export function EditorTabStrip({
   files,
   labels,
   onClose,
+  onMove,
 }: EditorTabStripProps) {
+  const { draggingIndex, handlersFor } = useTabDrag(onMove);
+
   return (
     <nav aria-label={OPEN_FILES_LABEL} className="flex min-w-0 flex-1">
       {/* Room below and right for the active tab's shadow, which the scroller
@@ -24,8 +29,10 @@ export function EditorTabStrip({
       <ul className="-mb-1 flex min-w-0 items-center gap-1.5 overflow-x-auto pr-1 pb-1 [scrollbar-width:none]">
         {files.map((file, index) => (
           <EditorTab
+            dragHandlers={handlersFor(index)}
             file={file}
             isActive={file.id === activeId}
+            isDragging={index === draggingIndex}
             key={file.id}
             label={labels[index]}
             onClose={onClose}

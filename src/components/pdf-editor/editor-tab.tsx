@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { XIcon } from "lucide-react";
-import { useCallback, useRef } from "react";
+import { type ComponentProps, useCallback, useRef } from "react";
 import { FileTypeChip } from "@/components/pdf-editor/file-type-chip";
 import {
   EDITOR_PATH,
@@ -14,26 +14,43 @@ import type { OpenFile, TabLabel } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
 interface EditorTabProps {
+  /** Handlers that carry this tab to another place in the strip. */
+  dragHandlers: ComponentProps<"li">;
   file: OpenFile;
   isActive: boolean;
+  isDragging: boolean;
   label: TabLabel;
   onClose: (id: string) => void;
 }
 
-export function EditorTab({ file, isActive, label, onClose }: EditorTabProps) {
+export function EditorTab({
+  dragHandlers,
+  file,
+  isActive,
+  isDragging,
+  label,
+  onClose,
+}: EditorTabProps) {
   const ref = useRef<HTMLLIElement>(null);
   useScrollIntoView(ref, isActive);
   const handleClose = useCallback(() => onClose(file.id), [file.id, onClose]);
 
   return (
     <li
-      className={cn(TAB_CLASS, isActive ? TAB_ACTIVE_CLASS : TAB_IDLE_CLASS)}
+      {...dragHandlers}
+      className={cn(
+        TAB_CLASS,
+        isActive ? TAB_ACTIVE_CLASS : TAB_IDLE_CLASS,
+        isDragging && "opacity-50"
+      )}
       ref={ref}
       title={file.name}
     >
       <Link
         aria-current={isActive ? "page" : undefined}
         className="flex h-full min-w-0 items-center gap-1.5 pl-1.5"
+        // The whole tab is what drags, not the link's address.
+        draggable={false}
         search={buildEditorSearch(file)}
         to={EDITOR_PATH}
       >

@@ -53,7 +53,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     tools,
   });
   useEditorShortcuts(session, tools.setTool);
-  const { activeId, close, desk } = useEditorDesk(node);
+  const { activeId, close, desk, move } = useEditorDesk(node);
   const labels = useTabLabels(desk.files, nodes);
 
   return (
@@ -83,6 +83,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
             files={desk.files}
             labels={labels}
             onClose={close}
+            onMove={move}
           />
         </EditorFileBar>
         <div className="flex min-h-0 flex-1">
