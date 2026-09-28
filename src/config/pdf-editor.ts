@@ -525,6 +525,10 @@ export const PDF_BOOKMARKS_KEY_PREFIX = "mcce.pdf-bookmarks.v1";
 
 export const BOOKMARK_HOTKEY_KEY = "b";
 
+export const FILES_PANEL_SHOW_LABEL = "Show files";
+export const FILES_PANEL_HIDE_LABEL = "Hide files";
+export const PAGES_PANEL_SHOW_LABEL = "Show pages";
+export const PAGES_PANEL_HIDE_LABEL = "Hide pages";
 export const STUDY_PANEL_SHOW_LABEL = "Show contents and notes";
 export const STUDY_PANEL_HIDE_LABEL = "Hide contents and notes";
 
