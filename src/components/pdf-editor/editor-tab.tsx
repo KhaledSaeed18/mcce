@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { XIcon } from "lucide-react";
-import { type ComponentProps, useCallback, useRef } from "react";
+import { type ComponentProps, useCallback } from "react";
 import { FileTypeChip } from "@/components/pdf-editor/file-type-chip";
 import {
   EDITOR_PATH,
@@ -8,7 +8,6 @@ import {
   TAB_CLASS,
   TAB_IDLE_CLASS,
 } from "@/config/pdf-editor";
-import { useScrollIntoView } from "@/hooks/use-scroll-into-view";
 import { buildEditorSearch } from "@/lib/pdf-editor/editor-search";
 import type { OpenFile, TabLabel } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
@@ -31,8 +30,6 @@ export function EditorTab({
   label,
   onClose,
 }: EditorTabProps) {
-  const ref = useRef<HTMLLIElement>(null);
-  useScrollIntoView(ref, isActive);
   const handleClose = useCallback(() => onClose(file.id), [file.id, onClose]);
 
   return (
@@ -43,7 +40,6 @@ export function EditorTab({
         isActive ? TAB_ACTIVE_CLASS : TAB_IDLE_CLASS,
         isDragging && "opacity-50"
       )}
-      ref={ref}
       title={file.name}
     >
       <Link

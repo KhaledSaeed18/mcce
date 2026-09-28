@@ -100,6 +100,9 @@ export const EDITOR_TAB_LIMIT = 12;
 export const CLOSED_TAB_LIMIT = 10;
 
 export const OPEN_FILES_LABEL = "Open files";
+export const CLOSED_FILES_LABEL = "Recently closed";
+export const OPEN_FILES_FILTER_PLACEHOLDER = "Filter open files";
+export const OPEN_FILES_FILTER_EMPTY = "No open file matches.";
 
 /** A tab keeps to the file bar's control height, and stops growing at a width
  * where a short name still fits. */

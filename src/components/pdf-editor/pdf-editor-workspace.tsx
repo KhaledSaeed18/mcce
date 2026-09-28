@@ -18,7 +18,6 @@ import { useEditorShortcuts } from "@/hooks/use-editor-shortcuts";
 import { useEditorTools } from "@/hooks/use-editor-tools";
 import { useFullscreen } from "@/hooks/use-fullscreen";
 import { useSpacePan } from "@/hooks/use-space-pan";
-import { useTabLabels } from "@/hooks/use-tab-labels";
 import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
@@ -53,8 +52,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
     tools,
   });
   useEditorShortcuts(session, tools.setTool);
-  const { activeId, close, desk, move } = useEditorDesk(node);
-  const labels = useTabLabels(desk.files, nodes);
+  const { activeId, close, desk, move, show } = useEditorDesk(node);
 
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
@@ -80,10 +78,11 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
         >
           <EditorTabStrip
             activeId={activeId}
-            files={desk.files}
-            labels={labels}
+            desk={desk}
+            nodes={nodes}
             onClose={close}
             onMove={move}
+            onShow={show}
           />
         </EditorFileBar>
         <div className="flex min-h-0 flex-1">

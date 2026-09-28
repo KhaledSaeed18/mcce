@@ -1,33 +1,61 @@
+import { useRef } from "react";
 import { EditorTab } from "@/components/pdf-editor/editor-tab";
+import { EditorTabMenu } from "@/components/pdf-editor/editor-tab-menu";
 import { OPEN_FILES_LABEL } from "@/config/pdf-editor";
+import { useActiveTabInView } from "@/hooks/use-active-tab-in-view";
+import { useHiddenTabCount } from "@/hooks/use-hidden-tab-count";
 import { useTabDrag } from "@/hooks/use-tab-drag";
-import type { OpenFile, TabLabel } from "@/lib/pdf-editor/types";
+import { useTabLabels } from "@/hooks/use-tab-labels";
+import type {
+  EditorDesk,
+  EditorTreeNode,
+  OpenFile,
+} from "@/lib/pdf-editor/types";
 
 interface EditorTabStripProps {
   activeId: string | undefined;
-  files: OpenFile[];
-  /** One per file, in the same order. */
-  labels: TabLabel[];
+  desk: EditorDesk;
+  nodes: EditorTreeNode[];
   onClose: (id: string) => void;
   onMove: (from: number, to: number) => void;
+  onShow: (file: OpenFile) => void;
 }
 
 /** The open files, in the file bar where the file's title used to be. */
 export function EditorTabStrip({
   activeId,
-  files,
-  labels,
+  desk,
+  nodes,
   onClose,
   onMove,
+  onShow,
 }: EditorTabStripProps) {
+  const stripRef = useRef<HTMLUListElement>(null);
+  const labels = useTabLabels(desk.files, nodes);
+  const closedLabels = useTabLabels(desk.closed, nodes);
+  const hiddenCount = useHiddenTabCount(stripRef, desk.files.length);
+  useActiveTabInView(
+    stripRef,
+    desk.files.findIndex((file) => file.id === activeId)
+  );
   const { draggingIndex, handlersFor } = useTabDrag(onMove);
 
+  if (desk.files.length === 0) {
+    return null;
+  }
+
   return (
-    <nav aria-label={OPEN_FILES_LABEL} className="flex min-w-0 flex-1">
+    <nav
+      aria-label={OPEN_FILES_LABEL}
+      className="flex min-w-0 flex-1 items-center gap-1.5"
+    >
       {/* Room below and right for the active tab's shadow, which the scroller
           would clip, taken back from the bar so it keeps its height. */}
-      <ul className="-mb-1 flex min-w-0 items-center gap-1.5 overflow-x-auto pr-1 pb-1 [scrollbar-width:none]">
-        {files.map((file, index) => (
+      <ul
+        className="-mb-1 flex min-w-0 items-center gap-1.5 overflow-x-auto pr-1 pb-1 [scrollbar-width:none]"
+        ref={stripRef}
+      >
+        {desk.files.map((file, index) => (
           <EditorTab
             dragHandlers={handlersFor(index)}
             file={file}
@@ -39,6 +67,15 @@ export function EditorTabStrip({
           />
         ))}
       </ul>
+      <EditorTabMenu
+        activeId={activeId}
+        closed={desk.closed}
+        closedLabels={closedLabels}
+        files={desk.files}
+        hiddenCount={hiddenCount}
+        labels={labels}
+        onShow={onShow}
+      />
     </nav>
   );
 }

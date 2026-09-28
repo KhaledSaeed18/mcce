@@ -106,7 +106,12 @@ export function EditorFileBar({
       {children}
 
       <div className="flex shrink-0 items-center justify-end gap-2">
-        {saveStatus ? <EditorSaveStatus status={saveStatus} /> : null}
+        {node ? (
+          <EditorSaveStatus
+            isPending={saveStatus === null}
+            status={saveStatus ?? "saved"}
+          />
+        ) : null}
         {node ? (
           <Button
             aria-label={studyLabel}
