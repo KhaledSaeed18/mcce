@@ -18,24 +18,35 @@ function clipToRun(selection: Range, text: Text): Range {
   return run;
 }
 
+/** What of the selection sits on one page: where, and what it says. */
+export interface PageSelection {
+  boxes: Box[];
+  text: string;
+}
+
+const WHITESPACE_PATTERN = /\s+/g;
+
 /** The selected text's boxes on each page, in pixels from that page's corner,
- * keyed by the page's position. */
+ * and the words they cover, keyed by the page's position. */
 export function collectSelectionBoxes(
   selection: Range,
   root: HTMLElement
-): Map<number, Box[]> {
-  const byPage = new Map<number, Box[]>();
+): Map<number, PageSelection> {
+  const byPage = new Map<number, PageSelection>();
   for (const page of root.querySelectorAll<HTMLElement>(
     `[${PAGE_INDEX_ATTRIBUTE}]`
   )) {
     const origin = page.getBoundingClientRect();
     const boxes: Box[] = [];
+    const words: string[] = [];
     for (const run of page.querySelectorAll(TEXT_RUN_SELECTOR)) {
       const text = run.firstChild;
       if (!(text instanceof Text && selection.intersectsNode(text))) {
         continue;
       }
-      for (const rect of clipToRun(selection, text).getClientRects()) {
+      const clipped = clipToRun(selection, text);
+      words.push(clipped.toString());
+      for (const rect of clipped.getClientRects()) {
         if (rect.width > 0 && rect.height > 0) {
           boxes.push({
             height: rect.height,
@@ -47,7 +58,12 @@ export function collectSelectionBoxes(
       }
     }
     if (boxes.length) {
-      byPage.set(Number(page.getAttribute(PAGE_INDEX_ATTRIBUTE)), boxes);
+      byPage.set(Number(page.getAttribute(PAGE_INDEX_ATTRIBUTE)), {
+        boxes,
+        // Runs are laid out one per piece of a line, so they are joined with
+        // a space and any run of spaces that makes is closed back up.
+        text: words.join(" ").replace(WHITESPACE_PATTERN, " ").trim(),
+      });
     }
   }
   return byPage;

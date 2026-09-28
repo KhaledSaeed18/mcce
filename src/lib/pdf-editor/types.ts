@@ -122,6 +122,8 @@ export type TextMarkStyle = "highlight" | "strike" | "underline";
 export interface TextMarkAnnotation extends AnnotationBase {
   boxes: Box[];
   style: TextMarkStyle;
+  /** The words it marks, kept for the notes list. Absent on marks made before it was. */
+  text?: string;
   type: "mark";
 }
 

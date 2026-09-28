@@ -7,12 +7,11 @@ import { normalizeRect } from "./geometry";
 import { createAnnotationId } from "./pointer";
 import type {
   Annotation,
-  Box,
   EditorTool,
   Point,
   TextAnnotation,
   TextDraft,
-  TextMarkStyle,
+  TextMarkAnnotation,
   ToolSettings,
 } from "./types";
 
@@ -97,19 +96,12 @@ export function buildHighlight(
 }
 
 export function buildTextMark(
-  style: TextMarkStyle,
-  boxes: Box[],
-  pageId: string,
-  color: string
+  mark: Pick<
+    TextMarkAnnotation,
+    "boxes" | "color" | "pageId" | "style" | "text"
+  >
 ): Annotation {
-  return {
-    boxes,
-    color,
-    id: createAnnotationId(),
-    pageId,
-    style,
-    type: "mark",
-  };
+  return { ...mark, id: createAnnotationId(), type: "mark" };
 }
 
 /** Keeps the draft's id when there is one, so editing replaces rather than duplicates. */
