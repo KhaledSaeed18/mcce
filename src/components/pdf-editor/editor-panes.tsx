@@ -3,9 +3,11 @@ import { EditorPane } from "@/components/pdf-editor/editor-pane";
 import { EditorPaneDivider } from "@/components/pdf-editor/editor-pane-divider";
 import { EditorPaneHeader } from "@/components/pdf-editor/editor-pane-header";
 import { EditorPaneSlot } from "@/components/pdf-editor/editor-pane-slot";
+import { ScrollLockButton } from "@/components/pdf-editor/scroll-lock-button";
 import type { EditorPaneView } from "@/hooks/use-editor-panes";
 import type { EditorTools } from "@/hooks/use-editor-tools";
 import { usePaneChips } from "@/hooks/use-pane-chips";
+import { useScrollLock } from "@/hooks/use-scroll-lock";
 import { useSplitResize } from "@/hooks/use-split-resize";
 import type { EditorPaneSide, EditorTreeNode } from "@/lib/pdf-editor/types";
 
@@ -46,13 +48,16 @@ export function EditorPanes({
   const chips = usePaneChips(panes, nodes);
   const containerRef = useRef<HTMLDivElement>(null);
   const { handlers, ratio } = useSplitResize(containerRef);
+  const lock = useScrollLock(panes);
 
   return (
     <div className="flex min-h-0 min-w-0 flex-1" ref={containerRef}>
       {panes.map((pane, index) => (
         <Fragment key={pane.side}>
           {index > 0 ? (
-            <EditorPaneDivider handlers={handlers} ratio={ratio} />
+            <EditorPaneDivider handlers={handlers} ratio={ratio}>
+              <ScrollLockButton gap={lock.gap} onToggle={lock.toggle} />
+            </EditorPaneDivider>
           ) : null}
           <EditorPaneSlot
             isFocused={pane.side === focusedSide}

@@ -4,8 +4,15 @@ import { isEditableTarget } from "@/lib/is-editable-target";
 
 /** A single letter pressed on its own, anywhere but a field or a dialog. It
  * steps aside when a modifier is held, so it never shadows Cmd or Ctrl keys. */
-export function useKeyHotkey(key: string, onPress: () => void) {
+export function useKeyHotkey(
+  key: string,
+  onPress: () => void,
+  isEnabled = true
+) {
   useEffect(() => {
+    if (!isEnabled) {
+      return;
+    }
     const handleKeyDown = (event: KeyboardEvent) => {
       const hasModifier = event.metaKey || event.ctrlKey || event.altKey;
       if (
@@ -21,5 +28,5 @@ export function useKeyHotkey(key: string, onPress: () => void) {
     };
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [key, onPress]);
+  }, [isEnabled, key, onPress]);
 }

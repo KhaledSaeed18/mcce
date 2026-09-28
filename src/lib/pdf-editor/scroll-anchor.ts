@@ -29,19 +29,31 @@ export function readScrollAnchor(scroller: HTMLElement): ScrollAnchor | null {
   return null;
 }
 
+/** Scrolls up or down so a spot on a page sits across the middle, leaving
+ * the scroll across alone. False when the page is not in the list. */
+export function scrollToPageSpot(
+  scroller: HTMLElement,
+  index: number,
+  fraction: number
+): boolean {
+  const page = scroller.querySelector<HTMLElement>(
+    `[${PAGE_INDEX_ATTRIBUTE}="${index}"]`
+  );
+  if (!page) {
+    return false;
+  }
+  const top = offsetWithin(scroller, page);
+  scroller.scrollTop =
+    top + fraction * page.offsetHeight - scroller.clientHeight / 2;
+  return true;
+}
+
 export function restoreScrollAnchor(
   scroller: HTMLElement,
   anchor: ScrollAnchor
 ): void {
-  const page = scroller.querySelector<HTMLElement>(
-    `[${PAGE_INDEX_ATTRIBUTE}="${anchor.index}"]`
-  );
-  if (!page) {
-    return;
+  if (scrollToPageSpot(scroller, anchor.index, anchor.fraction)) {
+    scroller.scrollLeft =
+      anchor.centerX * scroller.scrollWidth - scroller.clientWidth / 2;
   }
-  const top = offsetWithin(scroller, page);
-  scroller.scrollTop =
-    top + anchor.fraction * page.offsetHeight - scroller.clientHeight / 2;
-  scroller.scrollLeft =
-    anchor.centerX * scroller.scrollWidth - scroller.clientWidth / 2;
 }

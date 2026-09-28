@@ -149,6 +149,11 @@ export const SPLIT_DIVIDER_LABEL = "Resize panes";
 /** The divider's width, which the panes share the rest of. Matches its w-2.5. */
 export const SPLIT_DIVIDER_WIDTH = 10;
 
+/** L for lock, which no tool uses. */
+export const SCROLL_LOCK_HOTKEY_KEY = "l";
+export const SCROLL_LOCK_ON_LABEL = "Scroll both panes together";
+export const SCROLL_LOCK_OFF_LABEL = "Stop scrolling together";
+
 export const PANE_MENU_LABEL = "Pane options";
 export const PANE_SWAP_LABEL = "Swap sides";
 export const PANE_ALONE_LABEL = "Show on its own";
@@ -451,6 +456,7 @@ export const SHORTCUT_HINTS = {
   redo: "Mod+Shift+Z",
   reopenTab: "Alt+Shift+T",
   bookmark: "B",
+  scrollLock: "L",
   scrollZoom: "Mod+Scroll",
   split: "Mod+\\",
   search: "Mod+F",
