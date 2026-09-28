@@ -7,6 +7,7 @@ import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
 import { TextSelectionMarker } from "@/components/pdf-editor/text-selection-marker";
 import { useDocumentSearch } from "@/hooks/use-document-search";
 import type { EditorSession } from "@/hooks/use-editor-session";
+import type { EditorTools } from "@/hooks/use-editor-tools";
 import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
 
 interface EditorDocumentColumnProps {
@@ -18,6 +19,7 @@ interface EditorDocumentColumnProps {
   onShowFiles: () => void;
   scrollRef: RefObject<HTMLDivElement | null>;
   session: EditorSession;
+  tools: EditorTools;
 }
 
 /** Everything right of the file panel: the tools, the rail, and the pages. */
@@ -30,6 +32,7 @@ export function EditorDocumentColumn({
   onShowFiles,
   scrollRef,
   session,
+  tools,
 }: EditorDocumentColumnProps) {
   const {
     bookmarks,
@@ -46,7 +49,6 @@ export function EditorDocumentColumn({
     settings,
     sizes,
     status,
-    tools,
     zoom,
   } = session;
   const search = useDocumentSearch({

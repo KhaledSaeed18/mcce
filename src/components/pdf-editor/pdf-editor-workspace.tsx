@@ -11,7 +11,9 @@ import { DEFAULT_EXPORT_NAME, EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
 import { useEditorHelp } from "@/hooks/use-editor-help";
 import { useEditorPanels } from "@/hooks/use-editor-panels";
 import { useEditorSession } from "@/hooks/use-editor-session";
+import { useEditorTools } from "@/hooks/use-editor-tools";
 import { useFullscreen } from "@/hooks/use-fullscreen";
+import { useSpacePan } from "@/hooks/use-space-pan";
 import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
@@ -39,7 +41,14 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
   } = useEditorPanels();
   const help = useEditorHelp();
 
-  const session = useEditorSession(node, scrollRef);
+  const tools = useEditorTools();
+  const isSpacePanning = useSpacePan();
+  const session = useEditorSession({
+    isSpacePanning,
+    node,
+    scrollRef,
+    tools,
+  });
 
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
@@ -75,6 +84,7 @@ export function PdfEditorWorkspace({ node, nodes }: PdfEditorWorkspaceProps) {
             onShowFiles={toggleBrowser}
             scrollRef={scrollRef}
             session={session}
+            tools={tools}
           />
           <EditorSidePanel
             isAnimated={isAnimated}

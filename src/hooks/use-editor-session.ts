@@ -1,36 +1,41 @@
 import type { RefObject } from "react";
 import { DEFAULT_EXPORT_NAME } from "@/config/pdf-editor";
 import { useDocumentScroller } from "@/hooks/use-document-scroller";
+import { useEditorInk } from "@/hooks/use-editor-ink";
 import { useEditorMarkup } from "@/hooks/use-editor-markup";
 import { useEditorPages } from "@/hooks/use-editor-pages";
 import { useEditorShortcuts } from "@/hooks/use-editor-shortcuts";
 import { useEditorStudy } from "@/hooks/use-editor-study";
-import { useEditorTools } from "@/hooks/use-editor-tools";
+import type { EditorTools } from "@/hooks/use-editor-tools";
 import { useElementSize } from "@/hooks/use-element-size";
 import { usePdfDocument } from "@/hooks/use-pdf-document";
 import { usePdfExport } from "@/hooks/use-pdf-export";
 import { usePdfZoom } from "@/hooks/use-pdf-zoom";
 import { useRecordRecentFile } from "@/hooks/use-record-recent-file";
-import { useSpacePan } from "@/hooks/use-space-pan";
 import { useViewResume } from "@/hooks/use-view-resume";
-import type {
-  EditorFile,
-  SaveStatus,
-  ToolSettings,
-} from "@/lib/pdf-editor/types";
+import type { EditorFile, SaveStatus } from "@/lib/pdf-editor/types";
 
-/** Everything about the open file: its pages, its markup, the tools drawing
- * it, and the zoom and keys it answers to. */
-export function useEditorSession(
-  node: EditorFile | null,
-  scrollRef: RefObject<HTMLDivElement | null>
-) {
+interface EditorSessionOptions {
+  /** True while Space is held, which borrows the hand without changing the tool. */
+  isSpacePanning: boolean;
+  node: EditorFile | null;
+  scrollRef: RefObject<HTMLDivElement | null>;
+  /** Shared by every open file, so a pen picked up once writes on any of them. */
+  tools: EditorTools;
+}
+
+/** Everything about the open file: its pages, its markup, how the tools draw
+ * on it, and the zoom and keys it answers to. */
+export function useEditorSession({
+  isSpacePanning,
+  node,
+  scrollRef,
+  tools,
+}: EditorSessionOptions) {
   const { bytes, doc, retry, status } = usePdfDocument(node);
   // Recent files are shared with the rest of the site, which only knows Drive files.
   useRecordRecentFile(node?.source === "drive" ? node.id : undefined);
   const viewport = useElementSize(scrollRef);
-  const tools = useEditorTools();
-  const isSpacePanning = useSpacePan();
   const markup = useEditorMarkup({
     fileId: node?.id,
     pageCount: doc?.numPages ?? 0,
@@ -67,26 +72,11 @@ export function useEditorSession(
     zoom,
   });
 
-  // The highlighter keeps its own ink, so picking a marker shade leaves the
-  // pen's color alone, and the toolbar edits whichever the tool in hand uses.
-  const isHighlighter = tools.tool === "highlight";
-  const ink = {
-    changeColor: isHighlighter ? tools.setHighlightColor : markup.changeColor,
-    changeStrokeWidth: isHighlighter
-      ? tools.setHighlightWidth
-      : tools.setStrokeWidth,
-    color: isHighlighter ? tools.highlightColor : tools.color,
-    strokeWidth: isHighlighter ? tools.highlightWidth : tools.strokeWidth,
-  };
-
-  // The pages draw with the borrowed hand while the toolbar keeps showing the
-  // tool the reader picked, which is what they get back when Space comes up.
-  const settings: ToolSettings = {
-    color: ink.color,
-    fontSize: tools.fontSize,
-    strokeWidth: ink.strokeWidth,
-    tool: isSpacePanning ? "hand" : tools.tool,
-  };
+  const { ink, settings } = useEditorInk({
+    changeColor: markup.changeColor,
+    isSpacePanning,
+    tools,
+  });
 
   let saveStatus: SaveStatus | null = null;
   if (doc) {
@@ -109,7 +99,6 @@ export function useEditorSession(
     settings,
     sizes,
     status,
-    tools,
     zoom,
   };
 }
