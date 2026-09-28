@@ -1,56 +1,16 @@
-import type { PointerEvent } from "react";
 import { useEraser } from "@/hooks/use-eraser";
 import { useHandTool } from "@/hooks/use-hand-tool";
 import { useNoteTool } from "@/hooks/use-note-tool";
 import { useShapeDrawing } from "@/hooks/use-shape-drawing";
 import { useTextTool } from "@/hooks/use-text-tool";
+import { pickPointerTool } from "@/lib/pdf-editor/pointer-tools";
 import type {
   Annotation,
   AnnotationActions,
-  EditorTool,
   PageSize,
   TextDraft,
   ToolSettings,
 } from "@/lib/pdf-editor/types";
-
-interface PointerHandlers {
-  handleDown: (event: PointerEvent<HTMLCanvasElement>) => void;
-  handleMove: (event: PointerEvent<HTMLCanvasElement>) => void;
-  handleUp: (event: PointerEvent<HTMLCanvasElement>) => void;
-}
-
-interface Tools {
-  eraser: PointerHandlers;
-  hand: PointerHandlers;
-  note: PointerHandlers;
-  shapes: PointerHandlers;
-  text: PointerHandlers;
-}
-
-const IGNORE_POINTER: PointerHandlers = {
-  handleDown: () => undefined,
-  handleMove: () => undefined,
-  handleUp: () => undefined,
-};
-
-function pickTool(tool: EditorTool, tools: Tools): PointerHandlers {
-  if (tool === "select") {
-    return IGNORE_POINTER;
-  }
-  if (tool === "text") {
-    return tools.text;
-  }
-  if (tool === "eraser") {
-    return tools.eraser;
-  }
-  if (tool === "hand") {
-    return tools.hand;
-  }
-  if (tool === "note") {
-    return tools.note;
-  }
-  return tools.shapes;
-}
 
 interface AnnotationDrawingOptions {
   actions: AnnotationActions;
@@ -110,7 +70,13 @@ export function useAnnotationDrawing({
     zoom,
   });
   const hand = useHandTool();
-  const active = pickTool(settings.tool, { eraser, hand, note, shapes, text });
+  const active = pickPointerTool(settings.tool, {
+    eraser,
+    hand,
+    note,
+    shapes,
+    text,
+  });
 
   return {
     draft: shapes.draft,

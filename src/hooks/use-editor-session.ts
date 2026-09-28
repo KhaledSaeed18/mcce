@@ -10,7 +10,8 @@ import { useEditorZoom } from "@/hooks/use-editor-zoom";
 import { usePdfDocument } from "@/hooks/use-pdf-document";
 import { usePdfExport } from "@/hooks/use-pdf-export";
 import { useRecordRecentFile } from "@/hooks/use-record-recent-file";
-import type { EditorFile, SaveStatus } from "@/lib/pdf-editor/types";
+import { findSaveStatus } from "@/lib/pdf-editor/save-status";
+import type { EditorFile } from "@/lib/pdf-editor/types";
 
 interface EditorSessionOptions {
   /** True while Space is held, which borrows the hand without changing the tool. */
@@ -78,11 +79,6 @@ export function useEditorSession({
     tools,
   });
 
-  let saveStatus: SaveStatus | null = null;
-  if (doc) {
-    saveStatus = markup.isSaved ? "saved" : "failed";
-  }
-
   return {
     bookmarks,
     covers,
@@ -95,7 +91,7 @@ export function useEditorSession({
     markup,
     navigation,
     retry,
-    saveStatus,
+    saveStatus: findSaveStatus(doc !== null, markup.isSaved),
     scrollRef,
     search,
     settings,
