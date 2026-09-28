@@ -2,7 +2,7 @@ import type { PDFDocumentProxy } from "pdfjs-dist";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useDocumentText } from "@/hooks/use-document-text";
 import {
-  findMatches,
+  findLayoutMatches,
   groupHitsByPosition,
 } from "@/lib/pdf-editor/find-matches";
 import type { EditorPage, SearchMatch } from "@/lib/pdf-editor/types";
@@ -29,16 +29,7 @@ export function useDocumentSearch({
   const text = useDocumentText(doc, isOpen);
 
   const matches = useMemo<SearchMatch[]>(
-    () =>
-      isOpen
-        ? findMatches(
-            // A sheet the reader put in has no text, whatever page it follows.
-            pages.map((page) =>
-              page.sheet ? undefined : text.pages[page.sourceIndex]
-            ),
-            query
-          )
-        : [],
+    () => (isOpen ? findLayoutMatches(pages, text.pages, query) : []),
     [isOpen, pages, query, text.pages]
   );
   const current = matches.length
