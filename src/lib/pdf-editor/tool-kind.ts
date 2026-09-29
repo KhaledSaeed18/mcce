@@ -2,6 +2,7 @@ import type { EditorTool } from "./types";
 
 /** Tools that put ink down, and so take a color. A cover and a note have their own. */
 const OWN_COLOR_TOOLS: ReadonlySet<EditorTool> = new Set([
+  "clip",
   "cover",
   "eraser",
   "hand",

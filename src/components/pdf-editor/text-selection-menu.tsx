@@ -2,13 +2,17 @@ import type { LucideIcon } from "lucide-react";
 import {
   CheckIcon,
   CopyIcon,
+  CropIcon,
   HighlighterIcon,
   StrikethroughIcon,
   UnderlineIcon,
 } from "lucide-react";
 import { TextMarkButton } from "@/components/pdf-editor/text-mark-button";
 import { Button } from "@/components/ui/button";
-import { SELECTION_MENU_OFFSET } from "@/config/pdf-editor";
+import {
+  CLIP_SELECTION_LABEL,
+  SELECTION_MENU_OFFSET,
+} from "@/config/pdf-editor";
 import { keepSelection } from "@/lib/keep-selection";
 import type { TextMarkStyle } from "@/lib/pdf-editor/types";
 
@@ -23,6 +27,7 @@ const COPIED_LABEL = "Copied";
 
 interface TextSelectionMenuProps {
   isCopied: boolean;
+  onClip: () => void;
   onCopy: () => void;
   onMark: (style: TextMarkStyle) => void;
   rect: DOMRect;
@@ -30,6 +35,7 @@ interface TextSelectionMenuProps {
 
 export function TextSelectionMenu({
   isCopied,
+  onClip,
   onCopy,
   onMark,
   rect,
@@ -56,6 +62,16 @@ export function TextSelectionMenu({
         variant="ghost"
       >
         {isCopied ? <CheckIcon /> : <CopyIcon />}
+      </Button>
+      <Button
+        aria-label={CLIP_SELECTION_LABEL}
+        onClick={onClip}
+        onMouseDown={keepSelection}
+        size="icon-sm"
+        title={CLIP_SELECTION_LABEL}
+        variant="ghost"
+      >
+        <CropIcon />
       </Button>
     </div>
   );

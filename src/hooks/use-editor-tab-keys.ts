@@ -9,16 +9,18 @@ interface EditorTabKeyOptions {
   activeId: string | undefined;
   desk: EditorDesk;
   onClose: (id: string) => void;
+  onMove: (from: number, to: number) => void;
   onShow: (file: OpenFile) => void;
 }
 
 /** Alt+1 to 9 goes to a tab, Alt+[ and Alt+] step through them, Alt+` goes
- * back to the last file, Alt+W closes the tab, and Alt+Shift+T reopens the
- * one closed last. */
+ * back to the last file, Alt+W closes the tab, Alt+Shift+[ and Alt+Shift+]
+ * move it one place, and Alt+Shift+T reopens the one closed last. */
 export function useEditorTabKeys({
   activeId,
   desk,
   onClose,
+  onMove,
   onShow,
 }: EditorTabKeyOptions) {
   useEffect(() => {
@@ -34,11 +36,13 @@ export function useEditorTabKeys({
       const result = resolveTabKey(desk, activeId, key);
       if (result?.type === "close") {
         onClose(result.id);
+      } else if (result?.type === "move") {
+        onMove(result.from, result.to);
       } else if (result) {
         onShow(result.file);
       }
     };
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [activeId, desk, onClose, onShow]);
+  }, [activeId, desk, onClose, onMove, onShow]);
 }

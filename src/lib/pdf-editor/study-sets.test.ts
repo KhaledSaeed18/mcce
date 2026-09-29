@@ -25,6 +25,7 @@ const NOTES = {
 
 const SET: StudySet = {
   besideId: "sol",
+  clips: [],
   files: [EXAM, SOLUTION, NOTES],
   id: "set-1",
   lockGap: 2,
@@ -51,6 +52,28 @@ describe("study set store", () => {
     ]);
   });
 
+  it("takes a forgotten file's clips out of a set with the file", () => {
+    const place = { corner: "bottom-right" as const, width: 320, x: 12, y: 12 };
+    const clipOf = (file: typeof EXAM | typeof SOLUTION, id: string) => ({
+      aspect: 2,
+      box: { height: 10, width: 20, x: 0, y: 0 },
+      file,
+      id,
+      isFolded: false,
+      pageId: "p0",
+      pageNumber: 1,
+      place,
+      version: 0,
+    });
+    addStudySet({
+      ...SET,
+      clips: [clipOf(EXAM, "keep"), clipOf(SOLUTION, "gone")],
+    });
+    forgetFileInStudySets("sol");
+
+    expect(readStudySets()[0].clips.map((clip) => clip.id)).toEqual(["keep"]);
+  });
+
   it("takes a forgotten file out of every set, and drops a set left empty", () => {
     addStudySet(SET);
     addStudySet({ ...SET, files: [NOTES], id: "set-2" });
@@ -70,6 +93,23 @@ describe("study set links", () => {
       search: { beside: "sol", set: "exam,sol" },
     });
     expect(readSetIds("exam,sol")).toEqual(["exam", "sol"]);
+    const clipped = buildStudySetSearch({
+      ...SET,
+      clips: [
+        {
+          aspect: 2,
+          box: { height: 10, width: 20, x: 1, y: 2 },
+          file: SOLUTION,
+          id: "c",
+          isFolded: false,
+          pageId: "p4",
+          pageNumber: 5,
+          place: { corner: "top-left", width: 320, x: 12, y: 12 },
+          version: 0,
+        },
+      ],
+    });
+    expect(clipped.search.clips).toBe("sol.4.1.2.20.10");
     expect(readSetIds(undefined)).toEqual([]);
   });
 });
@@ -80,6 +120,8 @@ describe("parseStudySets", () => {
       parseStudySets([SET, { id: "x", name: "Empty", files: [] }, "nope"])
     ).toEqual([SET]);
     expect(parseStudySets(null)).toEqual([]);
+    const { clips: _clips, ...savedBeforeClips } = SET;
+    expect(parseStudySets([savedBeforeClips])).toEqual([SET]);
   });
 });
 
@@ -98,6 +140,7 @@ describe("opening a set", () => {
       id: file.id,
       kind: "pdf" as const,
       materialType: "exam" as const,
+      modifiedTime: "2026-01-01T00:00:00.000Z",
       name: file.name,
       parentId: null,
     }));

@@ -68,7 +68,8 @@ export function PageThumbnail({
     [onSelect, position]
   );
 
-  const { copy, insertSheet, remove, rotate } = actions;
+  const { clip, copy, insertSheet, remove, rotate } = actions;
+  const handleClip = useCallback(() => clip(page.id), [clip, page.id]);
   const handleRemove = useCallback(() => remove(page.id), [remove, page.id]);
   const handleRotate = useCallback(() => rotate(page.id), [rotate, page.id]);
   const handleCopy = useCallback(() => copy(page.id), [copy, page.id]);
@@ -132,6 +133,7 @@ export function PageThumbnail({
       </PageThumbnailAction>
       <PageInsertMenu
         isActive={isActive}
+        onClip={handleClip}
         onInsert={handleInsert}
         position={position}
       />

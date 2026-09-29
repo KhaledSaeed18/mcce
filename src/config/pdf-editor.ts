@@ -90,6 +90,85 @@ export const LOCAL_PDF_PROBLEM_COPY: Record<LocalPdfProblem, string> = {
 export const LOCAL_PDF_SAVE_FAILED =
   "This browser would not keep the file. Private windows often block it.";
 
+/** Clips on screen, their places, and the ones closed recently. */
+export const CLIPS_STORAGE_KEY = "mcce.editor-clips.v1";
+
+/** Clips on screen at once; past this the oldest goes to recently closed. */
+export const CLIP_LIMIT = 12;
+/** Closed clips that can be brought back, pictures and all. */
+export const CLIP_CLOSED_LIMIT = 8;
+
+/** A clip's picture is drawn at this many times its size on the page, so it
+ * stays sharp when the card is made larger than the part it shows. */
+export const CLIP_PICTURE_SCALE = 3;
+/** No side of a picture goes past this, so a clip of a poster-sized page
+ * does not ask for a canvas the browser will refuse. */
+export const CLIP_PICTURE_MAX_SIDE = 4096;
+export const CLIP_PICTURE_TYPE = "image/png";
+
+export const CLIP_DB_NAME = "mcce-editor-clips";
+export const CLIP_DB_VERSION = 1;
+export const CLIP_PICTURE_STORE = "clip-picture";
+
+/** Card sizes and spacing, in CSS pixels. */
+export const CLIP_START_WIDTH = 320;
+export const CLIP_MIN_WIDTH = 160;
+export const CLIP_HEADER_HEIGHT = 32;
+export const CLIP_BORDER_WIDTH = 2;
+/** Space kept between a card and the edges, and between stacked cards. */
+export const CLIP_MARGIN = 12;
+/** A card let go this close to an edge sits against it. */
+export const CLIP_SNAP_DISTANCE = 32;
+/** How far the arrow keys move a card, and with Shift held. */
+export const CLIP_MOVE_STEP = 8;
+export const CLIP_MOVE_STEP_LARGE = 48;
+/** Height of the row folded cards sit in. */
+export const CLIP_FOLD_ROW_HEIGHT = 36;
+
+/** A box smaller than this, in page points, is taken as a slip. */
+export const CLIP_MIN_BOX = 8;
+/** Room left around selected lines when they are clipped, in page points. */
+export const CLIP_SELECTION_MARGIN = 6;
+/** The outline drawn while a clip box is dragged out. */
+export const CLIP_DRAFT_COLOR = "#ff9f1c";
+export const CLIP_DRAFT_WIDTH = 2;
+
+/** In a split the layer starts below the pane headers, which are h-7, so a
+ * card never covers a pane's name or menu. */
+export const CLIP_LAYER_SPLIT_TOP_CLASS = "top-7";
+/** With one pane, the layer starts right of an open page rail, which is
+ * RAIL_WIDTH_CLASS wide, so no card covers the thumbnails. */
+export const CLIP_LAYER_RAIL_LEFT_CLASS = "left-40";
+
+/** How a shared link joins its clips, and each clip's parts: file id,
+ * page in the file, and box. Drive ids hold neither. */
+export const CLIP_LINK_SEPARATOR = "~";
+export const CLIP_LINK_PART_SEPARATOR = ".";
+
+/** Marks a card, so a press on it is not taken for a stroke on the pages. */
+export const CLIP_CARD_ATTRIBUTE = "data-clip-card";
+
+export const CLIPS_LABEL = "Clips";
+export const CLIPS_ON_SCREEN_LABEL = "On screen";
+export const CLIPS_CLOSED_LABEL = "Recently closed";
+export const CLIPS_REOPEN_LABEL = "Bring back";
+export const CLIPS_HIDE_LABEL = "Hide clips";
+export const CLIPS_SHOW_LABEL = "Show clips";
+export const CLIP_FOLD_LABEL = "Fold";
+export const CLIP_UNFOLD_LABEL = "Unfold";
+export const CLIP_OPEN_SOURCE_LABEL = "Open the page beside";
+export const CLIP_CLOSE_LABEL = "Close clip";
+export const CLIP_MORE_LABEL = "More";
+export const CLIP_REDRAW_LABEL = "Redraw from the page";
+export const CLIP_REDRAW_UNAVAILABLE = "Open the file to redraw";
+export const CLIP_RESIZE_LABEL = "Resize";
+export const CLIP_MOVE_HINT =
+  "Drag or use the arrow keys to move. Double click to fold. Delete closes.";
+export const CLIP_FOLDED_LABEL = "Folded clips";
+export const CLIP_SELECTION_LABEL = "Clip";
+export const CLIP_PAGE_LABEL = "Clip this page";
+export const CLIP_PAGE_GONE = "page removed";
+
 /** Study sets saved in this browser. */
 export const STUDY_SETS_STORAGE_KEY = "mcce.editor-sets.v1";
 
@@ -486,6 +565,44 @@ export const PASTE_OFFSET = 12;
  * count grows in steps rather than re-rendering after every page. */
 export const SEARCH_TEXT_BATCH_PAGES = 8;
 
+/** With Shift, the key searches every open file instead of the one in view. */
+export const FILE_SEARCH_LABEL = "Search open files";
+export const FILE_SEARCH_DESCRIPTION =
+  "Search the text of every open tab. Enter opens a match, Alt+Enter opens it beside.";
+export const FILE_SEARCH_PLACEHOLDER = "Search every open file";
+export const FILE_SEARCH_EMPTY = "No matches in the open files.";
+export const FILE_SEARCH_HINT_OPEN = "Open";
+export const FILE_SEARCH_HINT_BESIDE = "Open beside";
+export const PAGE_NUMBER_PREFIX = "p.";
+/** Joins a file's id and a match's place into one result's value. */
+export const FILE_SEARCH_VALUE_SEPARATOR = "#";
+export const FILE_SEARCH_SHOW_ALL_VALUE = "all";
+
+/** Results a file shows before its "Show all" line. */
+export const FILE_SEARCH_PREVIEW_COUNT = 5;
+
+/** Results a file lists at most once shown in full, so a one-letter search
+ * in a long book does not lay out thousands of lines. */
+export const FILE_SEARCH_RESULT_LIMIT = 200;
+
+/** Characters kept either side of a match in its result line. */
+export const FILE_SEARCH_SNIPPET_BEFORE = 36;
+export const FILE_SEARCH_SNIPPET_AFTER = 72;
+
+/** Selected words longer than this are not taken as the search. */
+export const FILE_SEARCH_SELECTION_LIMIT = 120;
+
+/** Files whose text is kept in this browser, the ones searched most
+ * recently, so searching them again needs no download. */
+export const FILE_TEXT_LIMIT = 40;
+export const FILE_TEXT_DB_NAME = "mcce-editor-text";
+export const FILE_TEXT_DB_VERSION = 1;
+export const FILE_TEXT_STORE = "file-text";
+export const FILE_TEXT_USE_STORE = "file-text-use";
+
+/** Local files are named by their content, so their text never changes. */
+export const LOCAL_FILE_TEXT_VERSION = "local";
+
 export const SEARCH_LABEL = "Search this file";
 export const SEARCH_PLACEHOLDER = "Search";
 export const SEARCH_NO_MATCHES = "No matches";
@@ -510,6 +627,8 @@ export const SHORTCUT_HINTS = {
   goToTab: "Alt+1-9",
   help: "?",
   lastFile: "Alt+`",
+  moveTabLeft: "Alt+Shift+[",
+  moveTabRight: "Alt+Shift+]",
   nextPage: "Right arrow",
   nextTab: "Alt+]",
   otherPane: "`",
@@ -526,6 +645,10 @@ export const SHORTCUT_HINTS = {
   scrollZoom: "Mod+Scroll",
   split: "Mod+\\",
   search: "Mod+F",
+  toggleClips: "Shift+S",
+  searchFiles: "Mod+Shift+F",
+  searchFilesOpen: "Enter",
+  searchFilesOpenBeside: "Alt+Enter",
   searchNext: "Enter",
   searchPrevious: "Shift+Enter",
   undo: "Mod+Z",
@@ -559,6 +682,7 @@ export const DEFAULT_EXPORT_NAME = "document.pdf";
 
 export const TOOL_LABELS: Record<EditorTool, string> = {
   arrow: "Arrow",
+  clip: "Clip",
   cover: "Answer cover",
   note: "Note",
   ellipse: "Circle",
@@ -573,6 +697,8 @@ export const TOOL_LABELS: Record<EditorTool, string> = {
 
 export const TOOL_HOTKEYS: Record<EditorTool, string> = {
   arrow: "a",
+  /** S for snip: C is taken by the circle. */
+  clip: "s",
   /** Q for quiz: C and H, the obvious letters, are taken by circle and hand. */
   cover: "q",
   note: "n",
@@ -608,6 +734,7 @@ export const EDITOR_SHORTCUT_TOOLS: readonly EditorTool[] = [
   "arrow",
   "note",
   "cover",
+  "clip",
   "eraser",
   "select",
   "hand",
@@ -627,8 +754,8 @@ export const SHEET_GRID_COLOR = "#b8c7d9";
 export const SHEET_PAPER_COLOR = "#ffffff";
 
 export const PAGE_SHEET_LABELS: Record<PageSheet, string> = {
-  blank: "Blank page",
-  grid: "Squared page",
+  blank: "Add a blank page after",
+  grid: "Add a squared page after",
 };
 
 /** One key per file: the pages the reader bookmarked, by page identity. */

@@ -1,16 +1,6 @@
-import type { OpenFile, StudySet } from "./types";
-
-function isOpenFile(value: unknown): value is OpenFile {
-  if (typeof value !== "object" || value === null) {
-    return false;
-  }
-  const { id, name, source } = value as Record<string, unknown>;
-  return (
-    typeof id === "string" &&
-    typeof name === "string" &&
-    (source === "drive" || source === "local")
-  );
-}
+import { parseClips } from "./clips/clip-desk-parse";
+import { isOpenFile } from "./open-file-parse";
+import type { StudySet } from "./types";
 
 function readId(value: unknown): string | null {
   return typeof value === "string" ? value : null;
@@ -33,6 +23,8 @@ function parseSet(value: unknown): StudySet | null {
   }
   return {
     besideId: readId(stored.besideId),
+    // Sets saved before clips existed have none.
+    clips: parseClips(stored.clips),
     files,
     id: stored.id,
     lockGap: typeof stored.lockGap === "number" ? stored.lockGap : null,

@@ -47,6 +47,7 @@ export const Route = createFileRoute("/editor")({
   }),
   validateSearch: (search: Record<string, unknown>): EditorSearch => ({
     beside: readOptionalString(search.beside),
+    clips: readOptionalString(search.clips),
     file: readOptionalString(search.file),
     focus: search.focus === "beside" ? "beside" : undefined,
     local: readOptionalString(search.local),
@@ -57,7 +58,7 @@ export const Route = createFileRoute("/editor")({
 
 function EditorPage() {
   const { besideFile, file, tree } = Route.useLoaderData();
-  const { beside, focus, local, set, setId } = Route.useSearch();
+  const { beside, clips, focus, local, set, setId } = Route.useSearch();
   // A file from the index wins if the URL somehow names both.
   const localFile = useLocalEditorFile(file ? undefined : local);
   const besideLocalFile = useLocalEditorFile(
@@ -89,7 +90,7 @@ function EditorPage() {
       focus={focus}
       node={node}
       nodes={tree}
-      setLink={{ beside, set, setId }}
+      setLink={{ beside, clips, set, setId }}
     />
   );
 }

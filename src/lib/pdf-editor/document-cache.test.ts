@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { LOADED_DOCUMENT_LIMIT } from "@/config/pdf-editor";
+import { borrowDocument } from "./borrow-document";
 import { acquireDocument, forgetDocument } from "./document-cache";
 import { openDocument } from "./open-document";
 import type { EditorFile } from "./types";
@@ -111,5 +112,42 @@ describe("forgetDocument", () => {
     lease.release();
     await settle();
     expect(destroyed).toEqual([file.id]);
+  });
+});
+
+describe("borrowDocument", () => {
+  it("shares a file already loaded, keeping it loaded after", async () => {
+    const file = nextFile();
+    const held = acquireDocument(file);
+
+    const borrowed = borrowDocument(file);
+    borrowed.release();
+    await settle();
+
+    expect(borrowed.opening).toBe(held.opening);
+    expect(destroyed).not.toContain(file.id);
+    held.release();
+    forgetDocument(file.id);
+  });
+
+  it("opens any other file outside the cache and closes it on release", async () => {
+    const loaded = Array.from({ length: LOADED_DOCUMENT_LIMIT }, nextFile);
+    for (const file of loaded) {
+      acquireDocument(file).release();
+    }
+    const passing = nextFile();
+
+    const borrowed = borrowDocument(passing);
+    await borrowed.opening;
+    borrowed.release();
+    await settle();
+
+    expect(destroyed).toEqual([passing.id]);
+    const again = acquireDocument(loaded[0]);
+    expect(open).toHaveBeenCalledTimes(LOADED_DOCUMENT_LIMIT + 1);
+    again.release();
+    for (const file of loaded) {
+      forgetDocument(file.id);
+    }
   });
 });

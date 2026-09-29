@@ -18,6 +18,7 @@ import type {
   EditorFile,
   EditorSearch,
   EditorTreeNode,
+  StudySetLink,
 } from "@/lib/pdf-editor/types";
 
 interface EditorWorkspaceOptions {
@@ -26,7 +27,7 @@ interface EditorWorkspaceOptions {
   node: EditorFile | null;
   nodes: EditorTreeNode[];
   /** A study set the URL asks to open, saved or shared. */
-  setLink: Pick<EditorSearch, "beside" | "set" | "setId">;
+  setLink: StudySetLink;
 }
 
 /** Everything the workspace shows, put together: the shared tools, the

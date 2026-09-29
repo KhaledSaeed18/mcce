@@ -1,5 +1,7 @@
 import { useCallback } from "react";
 import type { EditorPaneView } from "@/hooks/use-editor-panes";
+import { readClipDesk } from "@/lib/pdf-editor/clips/clip-store";
+import { copyClips } from "@/lib/pdf-editor/clips/copy-clips";
 import { addStudySet } from "@/lib/pdf-editor/study-sets";
 import type { OpenFile } from "@/lib/pdf-editor/types";
 
@@ -14,7 +16,7 @@ function buildSetId(): string {
 }
 
 /** Saves the open tabs as a study set under a name, with the file in each
- * pane and the scroll lock between them. */
+ * pane, the scroll lock between them, and the clips on screen. */
 export function useStudySetSaver({
   files,
   lockGap,
@@ -23,9 +25,10 @@ export function useStudySetSaver({
   const [primary, beside] = panes;
 
   return useCallback(
-    (name: string) =>
+    async (name: string) =>
       addStudySet({
         besideId: beside?.node?.id ?? null,
+        clips: await copyClips(readClipDesk().clips).catch(() => []),
         files,
         id: buildSetId(),
         lockGap: beside ? lockGap : null,

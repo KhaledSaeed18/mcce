@@ -1,5 +1,5 @@
 import { locateCharacter } from "./page-text";
-import type { PageText, SearchHit, SearchMatch } from "./types";
+import type { EditorPage, PageText, SearchHit, SearchMatch } from "./types";
 
 /** Every place the query appears, page by page in the order the pages sit in
  * now. A page whose text has not been read yet is passed as undefined. */
@@ -28,6 +28,20 @@ export function findMatches(
     }
   }
   return matches;
+}
+
+/** Matches in the pages as the reader has them arranged, from the text read
+ * by each page's place in the file. A sheet the reader put in has no text,
+ * whatever page it follows. */
+export function findLayoutMatches(
+  pages: readonly EditorPage[],
+  textPages: readonly (PageText | undefined)[],
+  query: string
+): SearchMatch[] {
+  return findMatches(
+    pages.map((page) => (page.sheet ? undefined : textPages[page.sourceIndex])),
+    query
+  );
 }
 
 /** The matches each page has to draw, keyed by the page's position. */

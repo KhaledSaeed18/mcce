@@ -1,10 +1,17 @@
 import type { DriveNode } from "@/lib/drive/types";
+import type { EditorClip } from "./clips/types";
 
 /** What the editor needs of a node: enough to list, sort, and walk up the
  * tree, to label a file by what it is for, and to find its course. */
 export type EditorTreeNode = Pick<
   DriveNode,
-  "courseCode" | "id" | "kind" | "materialType" | "name" | "parentId"
+  | "courseCode"
+  | "id"
+  | "kind"
+  | "materialType"
+  | "modifiedTime"
+  | "name"
+  | "parentId"
 >;
 
 /** A file from the index, trimmed to what the file bar, export, and Drive link read. */
@@ -22,6 +29,9 @@ export interface LocalEditorFile {
 
 /** The open file. Where it came from decides how its bytes are fetched. */
 export type EditorFile = DriveEditorFile | LocalEditorFile;
+
+/** Enough of a file to fetch its bytes. */
+export type EditorFileRef = Pick<EditorFile, "id" | "source">;
 
 /** A file kept open as a tab: enough to name it and open it again. */
 export interface OpenFile {
@@ -46,11 +56,13 @@ export type TabKey =
   | { step: -1 | 1; type: "step" }
   | { type: "back" }
   | { type: "close" }
+  | { step: -1 | 1; type: "move" }
   | { type: "reopen" };
 
 /** What a tab key does once the tabs are known. */
 export type TabKeyResult =
   | { file: OpenFile; type: "show" }
+  | { from: number; to: number; type: "move" }
   | { id: string; type: "close" };
 
 /** A group of files saved to come back to together, like everything open
@@ -58,6 +70,8 @@ export type TabKeyResult =
 export interface StudySet {
   /** The file in the second pane, when the set was saved split. */
   besideId: string | null;
+  /** The clips on screen when it was saved, with pictures of their own. */
+  clips: EditorClip[];
   files: OpenFile[];
   id: string;
   /** The scroll lock's gap, when the two panes scrolled together. */
@@ -151,6 +165,9 @@ export interface EditorSearch {
   /** The second pane's file, from either place: ids from this device carry
    * their own prefix. */
   beside?: string;
+  /** Clips a shared study set link carries, each as its file, page, and
+   * box, for the browser opening it to draw. */
+  clips?: string;
   file?: string;
   /** Set while the second pane has focus. */
   focus?: "beside";
@@ -160,6 +177,12 @@ export interface EditorSearch {
   /** A study set saved in this browser to open. */
   setId?: string;
 }
+
+/** What in the URL opens a study set, saved or shared. */
+export type StudySetLink = Pick<
+  EditorSearch,
+  "beside" | "clips" | "set" | "setId"
+>;
 
 export type EditorTool =
   | "select"
@@ -172,6 +195,7 @@ export type EditorTool =
   | "text"
   | "note"
   | "cover"
+  | "clip"
   | "hand";
 
 /** Page space: PDF points, top-left origin, independent of the zoom it was drawn at. */
@@ -383,6 +407,8 @@ export interface CoverReveal {
 
 /** Every way the rail can change the pages, kept together as they travel down. */
 export interface PageActions {
+  /** Keeps the whole page in view as a clip. */
+  clip: (id: string) => void;
   copy: (id: string) => void;
   /** Puts a sheet to work on directly after a page. */
   insertSheet: (afterId: string, sheet: PageSheet) => void;
@@ -397,6 +423,8 @@ export interface AnnotationActions {
   /** Several at once, as a single undo step. */
   addMany: (annotations: Annotation[]) => void;
   batchErase: (pageId: string, points: Point[]) => void;
+  /** Keeps a part of the page in view as a clip. */
+  clip: (pageId: string, box: Box) => void;
   erase: (pageId: string, point: Point) => void;
   moveText: (id: string, dx: number, dy: number) => void;
   remove: (id: string) => void;

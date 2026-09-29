@@ -12,6 +12,7 @@ function folder(id: string, name: string, parentId: string): EditorTreeNode {
     id,
     kind: "folder",
     materialType: "other",
+    modifiedTime: "2026-01-01T00:00:00.000Z",
     name,
     parentId,
   };

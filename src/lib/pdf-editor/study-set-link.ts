@@ -1,8 +1,9 @@
+import { writeClipLink } from "./clips/clip-link";
 import type { EditorSearch, StudySet } from "./types";
 
 /** A study set as a link another reader can open: the index files in it,
- * and which sits beside which. Files from this device are left out, since
- * they are only in this browser. */
+ * which sits beside which, and its clips. Files from this device are left
+ * out, since they are only in this browser. */
 export function buildStudySetSearch(set: StudySet): {
   leftOut: number;
   search: EditorSearch;
@@ -19,7 +20,7 @@ export function buildStudySetSearch(set: StudySet): {
       : undefined;
   return {
     leftOut: set.files.length - shared.length,
-    search: { beside, set: ordered.join(",") },
+    search: { beside, clips: writeClipLink(set.clips), set: ordered.join(",") },
   };
 }
 

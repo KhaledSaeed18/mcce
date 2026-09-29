@@ -1,13 +1,12 @@
 import { useCallback, useRef } from "react";
 import { EditorDocumentColumn } from "@/components/pdf-editor/editor-document-column";
 import { EditorDropZone } from "@/components/pdf-editor/editor-drop-zone";
-import { EditorExamDialogs } from "@/components/pdf-editor/editor-exam-dialogs";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
 import { EditorFileBarTabs } from "@/components/pdf-editor/editor-file-bar-tabs";
-import { EditorHelpDialog } from "@/components/pdf-editor/editor-help-dialog";
 import { EditorPanes } from "@/components/pdf-editor/editor-panes";
 import { EditorSidePanel } from "@/components/pdf-editor/editor-side-panel";
 import { EditorStudySide } from "@/components/pdf-editor/editor-study-side";
+import { EditorWorkspaceDialogs } from "@/components/pdf-editor/editor-workspace-dialogs";
 import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
 import { EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
 import { useEditorHelp } from "@/hooks/use-editor-help";
@@ -17,6 +16,7 @@ import type {
   EditorFile,
   EditorSearch,
   EditorTreeNode,
+  StudySetLink,
 } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
@@ -27,7 +27,7 @@ interface PdfEditorWorkspaceProps {
   node: EditorFile | null;
   nodes: EditorTreeNode[];
   /** A study set the URL asks to open. */
-  setLink: Pick<EditorSearch, "beside" | "set" | "setId">;
+  setLink: StudySetLink;
 }
 
 export function PdfEditorWorkspace({
@@ -105,7 +105,14 @@ export function PdfEditorWorkspace({
               openFiles={desk.desk.files}
             />
           </EditorSidePanel>
-          <EditorDocumentColumn session={session} tools={tools}>
+          <EditorDocumentColumn
+            isRailOpen={panels.isRailOpen}
+            nodes={nodes}
+            onOpenBeside={paneActions.openBeside}
+            panes={panes.panes}
+            session={session}
+            tools={tools}
+          >
             <EditorPanes
               examCover={examCover}
               focusedSide={focused.side}
@@ -132,8 +139,14 @@ export function PdfEditorWorkspace({
           />
         </div>
       </EditorDropZone>
-      <EditorHelpDialog onOpenChange={help.setIsOpen} open={help.isOpen} />
-      <EditorExamDialogs panes={panes.panes} />
+      <EditorWorkspaceDialogs
+        files={desk.desk.files}
+        help={help}
+        nodes={nodes}
+        onOpenBeside={paneActions.openBeside}
+        onShow={desk.show}
+        panes={panes.panes}
+      />
     </main>
   );
 }

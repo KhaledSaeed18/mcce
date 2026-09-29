@@ -1,4 +1,5 @@
 import { SearchIcon } from "lucide-react";
+import type { ReactNode } from "react";
 import { BookmarkButton } from "@/components/pdf-editor/bookmark-button";
 import { CoversButton } from "@/components/pdf-editor/covers-button";
 import { ExamControl } from "@/components/pdf-editor/exam-control";
@@ -32,6 +33,8 @@ interface EditorToolbarProps {
   canRedo: boolean;
   canRestore: boolean;
   canUndo: boolean;
+  /** Controls that act across files, like the clips button. */
+  children?: ReactNode;
   color: string;
   covers: CoverControls;
   exam: ExamTimer;
@@ -55,6 +58,7 @@ interface EditorToolbarProps {
 
 export function EditorToolbar({
   bookmarks,
+  children,
   canClear,
   canRedo,
   canRestore,
@@ -135,6 +139,7 @@ export function EditorToolbar({
         isMarked={bookmarks.isActiveMarked}
         onToggle={bookmarks.toggleActive}
       />
+      {children}
       <ZoomControls {...zoom} />
       <ExportButton onExport={onExport} status={exportStatus} />
     </div>

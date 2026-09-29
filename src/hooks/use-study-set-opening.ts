@@ -1,6 +1,7 @@
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { EDITOR_PATH } from "@/config/pdf-editor";
+import { useStudySetClips } from "@/hooks/use-study-set-clips";
 import {
   openSavedSet,
   openSharedSet,
@@ -14,6 +15,8 @@ import type {
 
 interface StudySetOpeningOptions {
   beside?: string;
+  /** A shared link's clips, drawn from their files. */
+  clips?: string;
   nodes: EditorTreeNode[];
   onLock: (lock: PaneLock) => void;
   onReplace: (files: OpenFile[]) => void;
@@ -28,6 +31,7 @@ interface StudySetOpeningOptions {
  * those panes, so a reload does not open the set again over later changes. */
 export function useStudySetOpening({
   beside,
+  clips,
   nodes,
   onLock,
   onReplace,
@@ -35,6 +39,7 @@ export function useStudySetOpening({
   setId,
 }: StudySetOpeningOptions) {
   const navigate = useNavigate();
+  useStudySetClips({ clips, nodes, setId });
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: a set opens once, when the URL names it; later changes to what it opened are the reader's
   useEffect(() => {

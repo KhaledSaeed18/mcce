@@ -10,7 +10,8 @@ function boxAround(points: readonly Point[]): Box {
   return { height: Math.max(...ys) - y, width: Math.max(...xs) - x, x, y };
 }
 
-function union(boxes: readonly Box[]): Box {
+/** The smallest box around all of them. */
+export function boxAroundBoxes(boxes: readonly Box[]): Box {
   return boxAround(
     boxes.flatMap((box) => [
       { x: box.x, y: box.y },
@@ -31,7 +32,7 @@ export function getAnnotationBox(annotation: Annotation): Box {
     case "text":
       return getTextBox(annotation);
     case "mark":
-      return union(annotation.boxes);
+      return boxAroundBoxes(annotation.boxes);
     case "note":
       return getNoteBox(annotation);
     default:

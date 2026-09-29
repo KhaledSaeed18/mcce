@@ -58,7 +58,7 @@ export function EditorTabStrip({
   );
   const { draggingIndex, handlersFor } = useTabDrag(onMove);
   // Bound even with no tab open, so a tab closed last can still come back.
-  useEditorTabKeys({ activeId, desk, onClose, onShow });
+  useEditorTabKeys({ activeId, desk, onClose, onMove, onShow });
 
   const hasTabs = desk.files.length > 0;
   const offered = match && sides[match.id] === undefined ? match : null;

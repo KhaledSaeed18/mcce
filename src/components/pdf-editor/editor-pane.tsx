@@ -99,6 +99,7 @@ export function EditorPane({
         highlightColor={tools.highlightColor}
         isEnabled={tools.tool === "select"}
         onAddMany={markup.actions.addMany}
+        onClip={markup.actions.clip}
         pages={markup.pages}
         penColor={tools.color}
         scrollRef={scrollRef}

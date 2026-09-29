@@ -1,8 +1,9 @@
 import type { PDFDocumentProxy } from "pdfjs-dist";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useDocumentText } from "@/hooks/use-document-text";
+import { useSearchJump } from "@/hooks/use-search-jump";
 import {
-  findMatches,
+  findLayoutMatches,
   groupHitsByPosition,
 } from "@/lib/pdf-editor/find-matches";
 import type { EditorPage, SearchMatch } from "@/lib/pdf-editor/types";
@@ -14,7 +15,7 @@ interface DocumentSearchOptions {
 }
 
 /** Search across the open file: the query, what it matches, and which match
- * the reader is on. Typing jumps to the first match once one is found. */
+ * the reader is on. Typing goes to the first match once one is found. */
 export function useDocumentSearch({
   doc,
   goToPage,
@@ -25,20 +26,10 @@ export function useDocumentSearch({
   const [currentIndex, setCurrentIndex] = useState(0);
   // Bumped on every open, so a field already on screen takes focus again.
   const [focusRequest, setFocusRequest] = useState(0);
-  const jumpedQueryRef = useRef<string | null>(null);
   const text = useDocumentText(doc, isOpen);
 
   const matches = useMemo<SearchMatch[]>(
-    () =>
-      isOpen
-        ? findMatches(
-            // A sheet the reader put in has no text, whatever page it follows.
-            pages.map((page) =>
-              page.sheet ? undefined : text.pages[page.sourceIndex]
-            ),
-            query
-          )
-        : [],
+    () => (isOpen ? findLayoutMatches(pages, text.pages, query) : []),
     [isOpen, pages, query, text.pages]
   );
   const current = matches.length
@@ -57,14 +48,7 @@ export function useDocumentSearch({
     [goToPage, matches]
   );
 
-  const firstMatch = matches.at(0);
-  useEffect(() => {
-    if (!firstMatch || jumpedQueryRef.current === query) {
-      return;
-    }
-    jumpedQueryRef.current = query;
-    goToPage(firstMatch.position);
-  }, [firstMatch, goToPage, query]);
+  const jumpTo = useSearchJump(matches, query, goToPage);
 
   const setQuery = useCallback((nextQuery: string) => {
     setQueryState(nextQuery);
@@ -75,6 +59,17 @@ export function useDocumentSearch({
     setIsOpen(true);
     setFocusRequest((count) => count + 1);
   }, []);
+
+  /** Opens on a match found by search across files, so Enter steps on from it. */
+  const showMatch = useCallback(
+    (nextQuery: string, index: number) => {
+      jumpTo(nextQuery, index);
+      setQueryState(nextQuery);
+      setCurrentIndex(index);
+      open();
+    },
+    [jumpTo, open]
+  );
   const close = useCallback(() => setIsOpen(false), []);
   const next = useCallback(() => goTo(current + 1), [current, goTo]);
   const previous = useCallback(() => goTo(current - 1), [current, goTo]);
@@ -97,5 +92,6 @@ export function useDocumentSearch({
     previous,
     query,
     setQuery,
+    showMatch,
   };
 }
