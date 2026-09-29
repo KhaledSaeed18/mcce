@@ -1,4 +1,5 @@
 import { useCallback, useMemo } from "react";
+import { useClipExamCovers } from "@/hooks/use-clip-exam-covers";
 import { useClipLabels } from "@/hooks/use-clip-labels";
 import { useClipSource } from "@/hooks/use-clip-source";
 import { useClips } from "@/hooks/use-clips";
@@ -44,6 +45,7 @@ export function useClipView({ nodes, onOpenBeside, panes }: ClipViewOptions) {
   const desk = useClips();
   const all = useMemo(() => [...desk.clips, ...desk.closed], [desk]);
   const { labels, pageNumbers } = useClipLabels(all, nodes, panes);
+  const examCovers = useClipExamCovers(desk.clips, nodes);
   const openSource = useClipSource({ onOpenBeside, panes });
   useClipsHotkey(toggleHidden);
 
@@ -65,6 +67,7 @@ export function useClipView({ nodes, onOpenBeside, panes }: ClipViewOptions) {
     actions: ACTIONS,
     canRedraw,
     desk,
+    examCovers,
     labels,
     openSource,
     pageNumbers,

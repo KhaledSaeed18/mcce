@@ -10,6 +10,7 @@ import { findCardBox, findCardHeight } from "./clip-card-box";
 import { addClip, closeClip, EMPTY_CLIP_DESK, reopenClip } from "./clip-desk";
 import { forgetFileClips } from "./clip-desk-forget";
 import { parseClipDesk } from "./clip-desk-parse";
+import { findClipExamPaper } from "./clip-exam-paper";
 import { findClipPageNumber } from "./clip-page-number";
 import { placeCardAt, placeNewClip } from "./clip-place";
 import { toRenderedBox } from "./rendered-box";
@@ -82,6 +83,35 @@ describe("forgetFileClips", () => {
     expect(change.desk.clips.map((item) => item.id)).toEqual(["b"]);
     expect(change.desk.closed).toEqual([]);
     expect(change.dropped).toEqual(["a", "c"]);
+  });
+});
+
+describe("findClipExamPaper", () => {
+  const node = (id: string, name: string) => ({
+    courseCode: "EENG527",
+    id,
+    kind: "pdf" as const,
+    materialType: "exam" as const,
+    modifiedTime: "2026-01-01T00:00:00.000Z",
+    name,
+    parentId: "exams",
+  });
+  const nodes = [
+    node("paper", "Final.pdf"),
+    node("sol", "[Solution]Final.pdf"),
+  ];
+
+  it("finds the paper for a solution's clip, and none for any other", () => {
+    const solution = {
+      id: "sol",
+      name: "[Solution]Final.pdf",
+      source: "drive" as const,
+    };
+    const paper = { id: "paper", name: "Final.pdf", source: "drive" as const };
+    expect(findClipExamPaper(clip("a", { file: solution }), nodes)).toBe(
+      "paper"
+    );
+    expect(findClipExamPaper(clip("b", { file: paper }), nodes)).toBeNull();
   });
 });
 

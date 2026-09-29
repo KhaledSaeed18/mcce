@@ -49,6 +49,7 @@ export function EditorClipLayer({
               box={box}
               canRedraw={view.canRedraw(clip)}
               clip={clip}
+              examRemaining={view.examCovers.get(clip.id) ?? null}
               isPassedUnder={passedUnder.has(clip.id)}
               key={clip.id}
               label={labels.get(clip.id)}

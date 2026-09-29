@@ -12,6 +12,7 @@ import {
 import type { TabLabel } from "@/lib/pdf-editor/types";
 
 interface ClipCardHeaderProps {
+  canOpenSource: boolean;
   canRedraw: boolean;
   label: TabLabel | undefined;
   moveHandlers: {
@@ -31,6 +32,7 @@ interface ClipCardHeaderProps {
 /** The card's title, which drags it, folds it on a double click, and moves
  * it with the arrow keys, and its buttons. */
 export function ClipCardHeader({
+  canOpenSource,
   canRedraw,
   label,
   moveHandlers,
@@ -54,6 +56,7 @@ export function ClipCardHeader({
       </button>
       <Button
         aria-label={CLIP_OPEN_SOURCE_LABEL}
+        disabled={!canOpenSource}
         onClick={onOpenSource}
         size="icon-xs"
         title={CLIP_OPEN_SOURCE_LABEL}

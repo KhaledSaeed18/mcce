@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { ClipCardHeader } from "@/components/pdf-editor/clip-card-header";
 import { ClipCardPicture } from "@/components/pdf-editor/clip-card-picture";
+import { ClipExamCover } from "@/components/pdf-editor/clip-exam-cover";
 import { ClipResizeHandle } from "@/components/pdf-editor/clip-resize-handle";
 import {
   CLIP_BORDER_WIDTH,
@@ -22,6 +23,8 @@ interface ClipCardProps {
   box: Box;
   canRedraw: boolean;
   clip: EditorClip;
+  /** Time left on the exam covering the clip, or null when none does. */
+  examRemaining: number | null;
   /** True while a stroke on the pages passes under it. */
   isPassedUnder: boolean;
   label: TabLabel | undefined;
@@ -38,6 +41,7 @@ export function ClipCard({
   box,
   canRedraw,
   clip,
+  examRemaining,
   isPassedUnder,
   label,
   onOpenSource,
@@ -73,6 +77,8 @@ export function ClipCard({
     place: clip.place,
   });
   const shown = resize.box ?? move.box;
+  // A solution's clip cannot be looked at, or opened, while its exam runs.
+  const isCovered = examRemaining !== null;
   const name = `${CLIPS_LABEL}: ${label?.text ?? clip.file.name}`;
 
   return (
@@ -92,7 +98,8 @@ export function ClipCard({
       }}
     >
       <ClipCardHeader
-        canRedraw={canRedraw}
+        canOpenSource={!isCovered}
+        canRedraw={canRedraw && !isCovered}
         label={label}
         moveHandlers={move.handlers}
         onClose={handleClose}
@@ -101,14 +108,18 @@ export function ClipCard({
         onRedraw={handleRedraw}
         pageNumber={pageNumber}
       />
-      <ClipCardPicture
-        alt={name}
-        height={shown.height - CLIP_HEADER_HEIGHT - 2 * CLIP_BORDER_WIDTH}
-        id={clip.id}
-        onOpen={handleOpen}
-        version={clip.version}
-        width={shown.width - 2 * CLIP_BORDER_WIDTH}
-      />
+      {isCovered ? (
+        <ClipExamCover remaining={examRemaining} />
+      ) : (
+        <ClipCardPicture
+          alt={name}
+          height={shown.height - CLIP_HEADER_HEIGHT - 2 * CLIP_BORDER_WIDTH}
+          id={clip.id}
+          onOpen={handleOpen}
+          version={clip.version}
+          width={shown.width - 2 * CLIP_BORDER_WIDTH}
+        />
+      )}
       <ClipResizeHandle corner={clip.place.corner} handlers={resize.handlers} />
     </section>
   );
