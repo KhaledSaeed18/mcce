@@ -1,16 +1,14 @@
 import { useRef } from "react";
 import { DEFAULT_EXPORT_NAME } from "@/config/pdf-editor";
-import { useClipMaker } from "@/hooks/use-clip-maker";
 import { useDocumentSearch } from "@/hooks/use-document-search";
 import { useEditorInk } from "@/hooks/use-editor-ink";
-import { useEditorMarkup } from "@/hooks/use-editor-markup";
-import { useEditorPages } from "@/hooks/use-editor-pages";
 import { useEditorStudy } from "@/hooks/use-editor-study";
 import type { EditorTools } from "@/hooks/use-editor-tools";
 import { useEditorZoom } from "@/hooks/use-editor-zoom";
 import { usePdfDocument } from "@/hooks/use-pdf-document";
 import { usePdfExport } from "@/hooks/use-pdf-export";
 import { useRecordRecentFile } from "@/hooks/use-record-recent-file";
+import { useSessionMarkup } from "@/hooks/use-session-markup";
 import { findSaveStatus } from "@/lib/pdf-editor/save-status";
 import type { EditorFile } from "@/lib/pdf-editor/types";
 
@@ -37,24 +35,8 @@ export function useEditorSession({
   const { bytes, doc, retry, status } = usePdfDocument(node);
   // Recent files are shared with the rest of the site, which only knows Drive files.
   useRecordRecentFile(node?.source === "drive" ? node.id : undefined);
-  const fileMarkup = useEditorMarkup({
-    fileId: node?.id,
-    pageCount: doc?.numPages ?? 0,
-    setColor: tools.setColor,
-    setFontSize: tools.setFontSize,
-  });
-  const { activeSize, isDocumentShown, navigation, sizes } = useEditorPages(
-    scrollRef,
-    doc,
-    fileMarkup.pages
-  );
-  const { clips, markup } = useClipMaker({
-    doc,
-    markup: fileMarkup,
-    node,
-    sizes,
-    tools,
-  });
+  const { activeSize, clips, isDocumentShown, markup, navigation, sizes } =
+    useSessionMarkup({ doc, node, scrollRef, tools });
   const { bookmarks, covers, exam } = useEditorStudy({
     activeIndex: navigation.activeIndex,
     annotations: markup.annotations,

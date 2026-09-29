@@ -41,5 +41,7 @@ export function useFileSearchDialog() {
 
   const close = useCallback(() => setIsOpen(false), []);
 
-  return { close, isOpen, query, setIsOpen, setQuery };
+  return { close, isOpen, open, query, setIsOpen, setQuery };
 }
+
+export type FileSearchDialog = ReturnType<typeof useFileSearchDialog>;

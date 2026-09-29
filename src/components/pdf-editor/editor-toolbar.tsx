@@ -1,4 +1,3 @@
-import { SearchIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { BookmarkButton } from "@/components/pdf-editor/bookmark-button";
 import { CoversButton } from "@/components/pdf-editor/covers-button";
@@ -7,20 +6,15 @@ import { ExportButton } from "@/components/pdf-editor/export-button";
 import { HistoryControls } from "@/components/pdf-editor/history-controls";
 import { InkControls } from "@/components/pdf-editor/ink-controls";
 import { PageControls } from "@/components/pdf-editor/page-controls";
+import { SearchButtons } from "@/components/pdf-editor/search-buttons";
 import { ToolPicker } from "@/components/pdf-editor/tool-picker";
 import { ZoomControls } from "@/components/pdf-editor/zoom-controls";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import {
-  EDITOR_CONTROL_HEIGHT_CLASS,
-  SEARCH_LABEL,
-  SHORTCUT_HINTS,
-} from "@/config/pdf-editor";
+import { EDITOR_CONTROL_HEIGHT_CLASS } from "@/config/pdf-editor";
 import type { CoverControls } from "@/hooks/use-cover-reveal";
 import type { ExamTimer } from "@/hooks/use-exam-timer";
 import type { PageBookmarks } from "@/hooks/use-page-bookmarks";
 import type { PdfExportStatus } from "@/hooks/use-pdf-export";
-import { withShortcut } from "@/lib/pdf-editor/shortcut-label";
 import type {
   EditorTool,
   PageNavigation,
@@ -45,6 +39,7 @@ interface EditorToolbarProps {
   onColorChange: (color: string) => void;
   onExport: () => void;
   onFontSizeChange: (size: number) => void;
+  onOpenFileSearch: () => void;
   onOpenSearch: () => void;
   onRedo: () => void;
   onRestore: () => void;
@@ -73,6 +68,7 @@ export function EditorToolbar({
   onExport,
   onFontSizeChange,
   onRedo,
+  onOpenFileSearch,
   onOpenSearch,
   onRestore,
   onStrokeWidthChange,
@@ -125,15 +121,10 @@ export function EditorToolbar({
         />
       ) : null}
       <ExamControl exam={exam} />
-      <Button
-        aria-label={SEARCH_LABEL}
-        onClick={onOpenSearch}
-        size="icon"
-        title={withShortcut(SEARCH_LABEL, SHORTCUT_HINTS.search)}
-        variant="outline"
-      >
-        <SearchIcon />
-      </Button>
+      <SearchButtons
+        onOpenFileSearch={onOpenFileSearch}
+        onOpenSearch={onOpenSearch}
+      />
       {navigation.pageCount > 0 ? <PageControls {...navigation} /> : null}
       <BookmarkButton
         isMarked={bookmarks.isActiveMarked}

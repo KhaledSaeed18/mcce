@@ -9,6 +9,10 @@ export const EDITOR_HELP_LABEL = "Help and shortcuts";
 
 export const EDITOR_HELP_TITLE = "Using the editor";
 
+export const EDITOR_HELP_GUIDE_TAB = "Guide";
+
+export const EDITOR_HELP_SHORTCUTS_TAB = "Shortcuts";
+
 export const EDITOR_HELP_DESCRIPTION =
   "Mark up PDFs from the MCCE index or your computer, then download a copy.";
 

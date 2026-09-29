@@ -27,6 +27,7 @@ interface ClipCardProps {
   examRemaining: number | null;
   /** True while a stroke on the pages passes under it. */
   isPassedUnder: boolean;
+  keepClear: (box: Box) => Box;
   label: TabLabel | undefined;
   onOpenSource: (clip: EditorClip) => void;
   onRedraw: (clip: EditorClip) => void;
@@ -43,6 +44,7 @@ export function ClipCard({
   clip,
   examRemaining,
   isPassedUnder,
+  keepClear,
   label,
   onOpenSource,
   onRedraw,
@@ -65,6 +67,7 @@ export function ClipCard({
     area,
     bottomInset,
     box,
+    keepClear,
     onClose: handleClose,
     onPlace: handlePlace,
   });

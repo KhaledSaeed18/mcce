@@ -2,7 +2,7 @@ import type { PDFDocumentProxy } from "pdfjs-dist";
 import { Fragment, useMemo, useRef } from "react";
 import { PageDropLine } from "@/components/pdf-editor/page-drop-line";
 import { PageThumbnail } from "@/components/pdf-editor/page-thumbnail";
-import { RAIL_WIDTH_CLASS } from "@/config/pdf-editor";
+import { PAGE_RAIL_ATTRIBUTE, RAIL_WIDTH_CLASS } from "@/config/pdf-editor";
 import { usePageDrag } from "@/hooks/use-page-drag";
 import type {
   EditorPage,
@@ -59,6 +59,7 @@ export function PageThumbnailRail({
 
   return (
     <nav
+      {...{ [PAGE_RAIL_ATTRIBUTE]: "" }}
       aria-label="Pages"
       className={cn(
         "flex shrink-0 flex-col gap-4 overflow-y-auto border-r-2 bg-card p-4",

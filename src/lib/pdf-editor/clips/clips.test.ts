@@ -6,15 +6,17 @@ import {
   CLIP_START_WIDTH,
 } from "@/config/pdf-editor";
 import { type PointerTools, pickPointerTool } from "../pointer-tools";
+import { avoidBands } from "./avoid-bands";
 import { findCardBox, findCardHeight } from "./clip-card-box";
 import { addClip, closeClip, EMPTY_CLIP_DESK, reopenClip } from "./clip-desk";
 import { forgetFileClips } from "./clip-desk-forget";
 import { parseClipDesk } from "./clip-desk-parse";
 import { replaceClips } from "./clip-desk-replace";
 import { findClipExamPaper } from "./clip-exam-paper";
-import { readClipLink, writeClipLink } from "./clip-link";
+import { writeClipLink } from "./clip-link";
 import { findClipPageNumber } from "./clip-page-number";
 import { placeCardAt, placeNewClip } from "./clip-place";
+import { readClipLink } from "./read-clip-link";
 import { toRenderedBox } from "./rendered-box";
 import { findSelectionClipBox } from "./selection-clip-box";
 import type { EditorClip } from "./types";
@@ -29,6 +31,7 @@ function clip(id: string, change: Partial<EditorClip> = {}): EditorClip {
     pageId: "p0",
     pageNumber: 1,
     place: { corner: "bottom-right", width: CLIP_START_WIDTH, x: 12, y: 12 },
+    rotation: 0,
     version: 0,
     ...change,
   };
@@ -163,9 +166,17 @@ describe("clip links", () => {
       {
         box: { height: 50, width: 100, x: 10, y: 20 },
         file: { id: "file", name: "Sheet.pdf", source: "drive" },
+        rotation: 0,
         sourceIndex: 3,
       },
     ]);
+  });
+
+  it("carries a page's turn, and reads links made before turns were", () => {
+    const turned = writeClipLink([clip("t", { pageId: "p0", rotation: 90 })]);
+    expect(turned).toBe("file.0.10.20.100.50.90");
+    expect(readClipLink(turned, nodes)[0].rotation).toBe(90);
+    expect(readClipLink("file.0.10.20.100.50.45", nodes)).toEqual([]);
   });
 
   it("leaves out clips of unknown files and parts that do not fit", () => {
@@ -174,6 +185,21 @@ describe("clip links", () => {
       readClipLink("gone.1.0.0.10.10~file.x.0.0.10.10~file.1.0.0.0.10", nodes)
     ).toEqual([]);
     expect(readClipLink(undefined, nodes)).toEqual([]);
+  });
+});
+
+describe("avoidBands", () => {
+  const rail = { left: 500, right: 660 };
+  const card = { height: 100, width: 200, x: 0, y: 0 };
+
+  it("moves a card off a rail to the nearer side that has room", () => {
+    expect(avoidBands({ ...card, x: 420 }, [rail], 1000).x).toBe(300);
+    expect(avoidBands({ ...card, x: 560 }, [rail], 1000).x).toBe(660);
+    expect(avoidBands({ ...card, x: 560 }, [rail], 800).x).toBe(300);
+  });
+
+  it("leaves a card clear of every rail where it is", () => {
+    expect(avoidBands({ ...card, x: 700 }, [rail], 1000).x).toBe(700);
   });
 });
 

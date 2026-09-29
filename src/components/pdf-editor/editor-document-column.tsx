@@ -14,6 +14,7 @@ interface EditorDocumentColumnProps {
   isRailOpen: boolean;
   nodes: EditorTreeNode[];
   onOpenBeside: (file: OpenFile) => void;
+  onOpenFileSearch: () => void;
   panes: EditorPaneView[];
   /** The session with focus, which the toolbar acts on. */
   session: EditorSession;
@@ -27,6 +28,7 @@ export function EditorDocumentColumn({
   isRailOpen,
   nodes,
   onOpenBeside,
+  onOpenFileSearch,
   panes,
   session,
   tools,
@@ -65,6 +67,7 @@ export function EditorDocumentColumn({
           onColorChange={ink.changeColor}
           onExport={exportPdf}
           onFontSizeChange={markup.changeFontSize}
+          onOpenFileSearch={onOpenFileSearch}
           onOpenSearch={search.open}
           onRedo={markup.redo}
           onRestore={markup.restore}

@@ -145,6 +145,9 @@ export const CLIP_LAYER_RAIL_LEFT_CLASS = "left-40";
 export const CLIP_LINK_SEPARATOR = "~";
 export const CLIP_LINK_PART_SEPARATOR = ".";
 
+/** Marks each page rail, so clip cards can keep clear of it. */
+export const PAGE_RAIL_ATTRIBUTE = "data-page-rail";
+
 /** Marks a card, so a press on it is not taken for a stroke on the pages. */
 export const CLIP_CARD_ATTRIBUTE = "data-clip-card";
 
@@ -654,19 +657,6 @@ export const SHORTCUT_HINTS = {
   undo: "Mod+Z",
   zoomIn: "Mod+=",
   zoomOut: "Mod+-",
-} as const;
-
-export const SAVE_STATUS_COPY = {
-  failed: {
-    detail:
-      "This browser would not store your changes, most likely because its storage is full. Download a copy to keep them.",
-    label: "Not saved",
-  },
-  saved: {
-    detail:
-      "Your markup and page changes are kept in this browser. Clearing its site data removes them.",
-    label: "Saved on this device",
-  },
 } as const;
 
 /** Shown in the file bar before a file is picked. */

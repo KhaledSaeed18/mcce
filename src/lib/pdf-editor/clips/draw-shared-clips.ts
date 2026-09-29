@@ -1,10 +1,9 @@
 import { borrowDocument } from "../borrow-document";
 import { buildPageId } from "../pages";
-import type { SharedClip } from "./clip-link";
 import { drawClipPicture } from "./clip-picture";
 import { saveClipPicture } from "./clip-picture-store";
 import { placeNewClip } from "./clip-place";
-import type { EditorClip } from "./types";
+import type { EditorClip, SharedClip } from "./types";
 
 async function drawSharedClip(
   shared: SharedClip,
@@ -17,7 +16,11 @@ async function drawSharedClip(
       return null;
     }
     const pageId = buildPageId(shared.sourceIndex);
-    const page = { id: pageId, rotation: 0, sourceIndex: shared.sourceIndex };
+    const page = {
+      id: pageId,
+      rotation: shared.rotation,
+      sourceIndex: shared.sourceIndex,
+    };
     const picture = await drawClipPicture({
       annotations: [],
       box: shared.box,
@@ -35,6 +38,7 @@ async function drawSharedClip(
       pageId,
       pageNumber: shared.sourceIndex + 1,
       place: placeNewClip(placed),
+      rotation: shared.rotation,
       version: 0,
     };
   } finally {

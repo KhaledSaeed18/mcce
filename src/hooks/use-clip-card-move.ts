@@ -9,6 +9,8 @@ export interface ClipCardMoveOptions {
   area: PageSize;
   bottomInset: number;
   box: Box;
+  /** Moves a card that would settle over a page rail clear of it. */
+  keepClear: (box: Box) => Box;
   onClose: () => void;
   onPlace: (place: ClipPlace) => void;
 }
@@ -20,6 +22,7 @@ export function useClipCardMove({
   area,
   bottomInset,
   box,
+  keepClear,
   onClose,
   onPlace,
 }: ClipCardMoveOptions) {
@@ -65,14 +68,15 @@ export function useClipCardMove({
     liveRef.current = null;
     setLive(null);
     if (moved) {
-      onPlace(placeCardAt(moved, area, bottomInset));
+      onPlace(placeCardAt(keepClear(moved), area, bottomInset));
     }
-  }, [area, bottomInset, onPlace]);
+  }, [area, bottomInset, keepClear, onPlace]);
 
   const handleKeyDown = useClipCardKeys({
     area,
     bottomInset,
     box,
+    keepClear,
     onClose,
     onPlace,
   });

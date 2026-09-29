@@ -9,6 +9,7 @@ import { useClipLayout } from "@/hooks/use-clip-layout";
 import { useClipSeeThrough } from "@/hooks/use-clip-see-through";
 import type { ClipView } from "@/hooks/use-clip-view";
 import { useElementSize } from "@/hooks/use-element-size";
+import { useRailAvoidance } from "@/hooks/use-rail-avoidance";
 import { cn } from "@/lib/utils";
 
 interface EditorClipLayerProps {
@@ -29,6 +30,7 @@ export function EditorClipLayer({
   const { desk, labels, pageNumbers } = view;
   const layout = useClipLayout(desk.clips, area);
   const passedUnder = useClipSeeThrough(layerRef, layout.boxes);
+  const keepClear = useRailAvoidance(layerRef);
   const isShown = area !== null && !desk.isHidden;
 
   return (
@@ -51,6 +53,7 @@ export function EditorClipLayer({
               clip={clip}
               examRemaining={view.examCovers.get(clip.id) ?? null}
               isPassedUnder={passedUnder.has(clip.id)}
+              keepClear={keepClear}
               key={clip.id}
               label={labels.get(clip.id)}
               onOpenSource={view.openSource}

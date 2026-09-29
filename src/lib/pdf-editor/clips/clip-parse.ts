@@ -59,6 +59,9 @@ export function parseClip(value: unknown): EditorClip | null {
     pageId: value.pageId as string,
     pageNumber: value.pageNumber as number,
     place,
+    // Clips kept before turns were recorded were drawn from their pages as
+    // they were turned then, which is not known; upright is the best guess.
+    rotation: Number.isFinite(value.rotation) ? (value.rotation as number) : 0,
     version: value.version as number,
   };
 }
