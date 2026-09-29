@@ -165,6 +165,9 @@ export interface EditorSearch {
   /** The second pane's file, from either place: ids from this device carry
    * their own prefix. */
   beside?: string;
+  /** Clips a shared study set link carries, each as its file, page, and
+   * box, for the browser opening it to draw. */
+  clips?: string;
   file?: string;
   /** Set while the second pane has focus. */
   focus?: "beside";
@@ -174,6 +177,12 @@ export interface EditorSearch {
   /** A study set saved in this browser to open. */
   setId?: string;
 }
+
+/** What in the URL opens a study set, saved or shared. */
+export type StudySetLink = Pick<
+  EditorSearch,
+  "beside" | "clips" | "set" | "setId"
+>;
 
 export type EditorTool =
   | "select"

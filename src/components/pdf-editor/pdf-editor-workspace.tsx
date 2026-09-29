@@ -16,6 +16,7 @@ import type {
   EditorFile,
   EditorSearch,
   EditorTreeNode,
+  StudySetLink,
 } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
@@ -26,7 +27,7 @@ interface PdfEditorWorkspaceProps {
   node: EditorFile | null;
   nodes: EditorTreeNode[];
   /** A study set the URL asks to open. */
-  setLink: Pick<EditorSearch, "beside" | "set" | "setId">;
+  setLink: StudySetLink;
 }
 
 export function PdfEditorWorkspace({

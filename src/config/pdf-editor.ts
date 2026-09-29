@@ -140,6 +140,11 @@ export const CLIP_LAYER_SPLIT_TOP_CLASS = "top-7";
  * RAIL_WIDTH_CLASS wide, so no card covers the thumbnails. */
 export const CLIP_LAYER_RAIL_LEFT_CLASS = "left-40";
 
+/** How a shared link joins its clips, and each clip's parts: file id,
+ * page in the file, and box. Drive ids hold neither. */
+export const CLIP_LINK_SEPARATOR = "~";
+export const CLIP_LINK_PART_SEPARATOR = ".";
+
 /** Marks a card, so a press on it is not taken for a stroke on the pages. */
 export const CLIP_CARD_ATTRIBUTE = "data-clip-card";
 

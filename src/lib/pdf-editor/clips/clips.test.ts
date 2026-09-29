@@ -12,6 +12,7 @@ import { forgetFileClips } from "./clip-desk-forget";
 import { parseClipDesk } from "./clip-desk-parse";
 import { replaceClips } from "./clip-desk-replace";
 import { findClipExamPaper } from "./clip-exam-paper";
+import { readClipLink, writeClipLink } from "./clip-link";
 import { findClipPageNumber } from "./clip-page-number";
 import { placeCardAt, placeNewClip } from "./clip-place";
 import { toRenderedBox } from "./rendered-box";
@@ -126,6 +127,53 @@ describe("replaceClips", () => {
     expect(change.desk.clips.map((item) => item.id)).toEqual(["s"]);
     expect(change.desk.closed.map((item) => item.id)).toEqual(["b", "a"]);
     expect(change.desk.isHidden).toBe(false);
+  });
+});
+
+describe("clip links", () => {
+  const nodes = [
+    {
+      courseCode: "EENG587",
+      id: "file",
+      kind: "pdf" as const,
+      materialType: "other" as const,
+      modifiedTime: "2026-01-01T00:00:00.000Z",
+      name: "Sheet.pdf",
+      parentId: "sheets",
+    },
+  ];
+
+  it("carries index clips on the file's own pages, and reads them back", () => {
+    const local = {
+      id: "local-1",
+      name: "Notes.pdf",
+      source: "local" as const,
+    };
+    const link = writeClipLink([
+      clip("a", {
+        box: { height: 50.4, width: 100, x: 10.2, y: 20 },
+        pageId: "p3",
+      }),
+      clip("sheet", { pageId: "0b6e" }),
+      clip("mine", { file: local }),
+    ]);
+
+    expect(link).toBe("file.3.10.20.100.50");
+    expect(readClipLink(link, nodes)).toEqual([
+      {
+        box: { height: 50, width: 100, x: 10, y: 20 },
+        file: { id: "file", name: "Sheet.pdf", source: "drive" },
+        sourceIndex: 3,
+      },
+    ]);
+  });
+
+  it("leaves out clips of unknown files and parts that do not fit", () => {
+    expect(writeClipLink([])).toBeUndefined();
+    expect(
+      readClipLink("gone.1.0.0.10.10~file.x.0.0.10.10~file.1.0.0.0.10", nodes)
+    ).toEqual([]);
+    expect(readClipLink(undefined, nodes)).toEqual([]);
   });
 });
 

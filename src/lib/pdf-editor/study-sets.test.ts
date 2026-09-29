@@ -93,6 +93,23 @@ describe("study set links", () => {
       search: { beside: "sol", set: "exam,sol" },
     });
     expect(readSetIds("exam,sol")).toEqual(["exam", "sol"]);
+    const clipped = buildStudySetSearch({
+      ...SET,
+      clips: [
+        {
+          aspect: 2,
+          box: { height: 10, width: 20, x: 1, y: 2 },
+          file: SOLUTION,
+          id: "c",
+          isFolded: false,
+          pageId: "p4",
+          pageNumber: 5,
+          place: { corner: "top-left", width: 320, x: 12, y: 12 },
+          version: 0,
+        },
+      ],
+    });
+    expect(clipped.search.clips).toBe("sol.4.1.2.20.10");
     expect(readSetIds(undefined)).toEqual([]);
   });
 });

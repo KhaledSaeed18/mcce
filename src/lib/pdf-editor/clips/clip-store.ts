@@ -11,8 +11,10 @@ import {
 import { forgetFileClips } from "./clip-desk-forget";
 import { parseClipDesk } from "./clip-desk-parse";
 import { replaceClips } from "./clip-desk-replace";
+import type { SharedClip } from "./clip-link";
 import { removeClipPictures } from "./clip-picture-store";
 import { copyClips } from "./copy-clips";
+import { drawSharedClips } from "./draw-shared-clips";
 import type { ClipDesk, EditorClip } from "./types";
 
 const listeners = new Set<() => void>();
@@ -62,6 +64,15 @@ export const reopenStoredClip = (id: string) =>
 export async function openSetClips(clips: readonly EditorClip[]) {
   const copies = await copyClips(clips);
   apply(replaceClips(readClipDesk(), copies));
+}
+
+/** Draws a shared link's clips from their files and shows them in place of
+ * the clips on screen. */
+export async function openSharedClips(shared: readonly SharedClip[]) {
+  const clips = await drawSharedClips(shared);
+  if (clips.length > 0) {
+    apply(replaceClips(readClipDesk(), clips));
+  }
 }
 
 export const forgetStoredFileClips = (fileId: string) =>
