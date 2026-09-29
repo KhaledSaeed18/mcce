@@ -1,4 +1,4 @@
-import { useCallback, useRef } from "react";
+import { useRef } from "react";
 import { EditorDocumentColumn } from "@/components/pdf-editor/editor-document-column";
 import { EditorDropZone } from "@/components/pdf-editor/editor-drop-zone";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
@@ -11,6 +11,7 @@ import { FileBrowserPanel } from "@/components/pdf-editor/file-browser-panel";
 import { EDITOR_HEIGHT_CLASS } from "@/config/pdf-editor";
 import { useEditorHelp } from "@/hooks/use-editor-help";
 import { useEditorWorkspace } from "@/hooks/use-editor-workspace";
+import { useFocusedMatchOpener } from "@/hooks/use-focused-match-opener";
 import { useFullscreen } from "@/hooks/use-fullscreen";
 import type {
   EditorFile,
@@ -55,11 +56,7 @@ export function PdfEditorWorkspace({
   } = useEditorWorkspace({ beside, focus, node, nodes, setLink });
   const { focused } = panes;
   const { session } = focused;
-  const handleOpenMatch = useCallback(() => {
-    if (match) {
-      openMatch(focused, match);
-    }
-  }, [focused, match, openMatch]);
+  const handleOpenMatch = useFocusedMatchOpener(focused, match, openMatch);
 
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
