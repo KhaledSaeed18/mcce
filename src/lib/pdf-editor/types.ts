@@ -1,4 +1,5 @@
 import type { DriveNode } from "@/lib/drive/types";
+import type { EditorClip } from "./clips/types";
 
 /** What the editor needs of a node: enough to list, sort, and walk up the
  * tree, to label a file by what it is for, and to find its course. */
@@ -69,6 +70,8 @@ export type TabKeyResult =
 export interface StudySet {
   /** The file in the second pane, when the set was saved split. */
   besideId: string | null;
+  /** The clips on screen when it was saved, with pictures of their own. */
+  clips: EditorClip[];
   files: OpenFile[];
   id: string;
   /** The scroll lock's gap, when the two panes scrolled together. */

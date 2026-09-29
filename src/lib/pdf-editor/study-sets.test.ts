@@ -25,6 +25,7 @@ const NOTES = {
 
 const SET: StudySet = {
   besideId: "sol",
+  clips: [],
   files: [EXAM, SOLUTION, NOTES],
   id: "set-1",
   lockGap: 2,
@@ -49,6 +50,28 @@ describe("study set store", () => {
       "Wireless",
       "DSP midterm",
     ]);
+  });
+
+  it("takes a forgotten file's clips out of a set with the file", () => {
+    const place = { corner: "bottom-right" as const, width: 320, x: 12, y: 12 };
+    const clipOf = (file: typeof EXAM | typeof SOLUTION, id: string) => ({
+      aspect: 2,
+      box: { height: 10, width: 20, x: 0, y: 0 },
+      file,
+      id,
+      isFolded: false,
+      pageId: "p0",
+      pageNumber: 1,
+      place,
+      version: 0,
+    });
+    addStudySet({
+      ...SET,
+      clips: [clipOf(EXAM, "keep"), clipOf(SOLUTION, "gone")],
+    });
+    forgetFileInStudySets("sol");
+
+    expect(readStudySets()[0].clips.map((clip) => clip.id)).toEqual(["keep"]);
   });
 
   it("takes a forgotten file out of every set, and drops a set left empty", () => {
@@ -80,6 +103,8 @@ describe("parseStudySets", () => {
       parseStudySets([SET, { id: "x", name: "Empty", files: [] }, "nope"])
     ).toEqual([SET]);
     expect(parseStudySets(null)).toEqual([]);
+    const { clips: _clips, ...savedBeforeClips } = SET;
+    expect(parseStudySets([savedBeforeClips])).toEqual([SET]);
   });
 });
 

@@ -1,6 +1,7 @@
 import { useNavigate } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { EDITOR_PATH } from "@/config/pdf-editor";
+import { openSetClips } from "@/lib/pdf-editor/clips/clip-store";
 import {
   openSavedSet,
   openSharedSet,
@@ -35,10 +36,13 @@ export function useStudySetOpening({
   setId,
 }: StudySetOpeningOptions) {
   const navigate = useNavigate();
+  // Copying a set's clips is not safe to repeat, and effects can run twice.
+  const openedClipsRef = useRef<string | null>(null);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: a set opens once, when the URL names it; later changes to what it opened are the reader's
   useEffect(() => {
     if (!(set || setId)) {
+      openedClipsRef.current = null;
       return;
     }
     const saved = setId
@@ -47,6 +51,14 @@ export function useStudySetOpening({
     const opening = saved
       ? openSavedSet(saved)
       : openSharedSet(nodes, set, beside);
+    if (
+      saved &&
+      saved.clips.length > 0 &&
+      openedClipsRef.current !== saved.id
+    ) {
+      openedClipsRef.current = saved.id;
+      openSetClips(saved.clips).catch(() => undefined);
+    }
     if (opening) {
       onReplace(opening.files);
       if (opening.lock) {

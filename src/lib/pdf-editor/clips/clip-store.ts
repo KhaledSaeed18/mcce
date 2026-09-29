@@ -10,7 +10,9 @@ import {
 } from "./clip-desk";
 import { forgetFileClips } from "./clip-desk-forget";
 import { parseClipDesk } from "./clip-desk-parse";
+import { replaceClips } from "./clip-desk-replace";
 import { removeClipPictures } from "./clip-picture-store";
+import { copyClips } from "./copy-clips";
 import type { ClipDesk, EditorClip } from "./types";
 
 const listeners = new Set<() => void>();
@@ -54,6 +56,13 @@ export const closeStoredClip = (id: string) =>
   apply(closeClip(readClipDesk(), id));
 export const reopenStoredClip = (id: string) =>
   apply(reopenClip(readClipDesk(), id));
+
+/** Shows a saved set's clips, as copies with pictures of their own, in
+ * place of the clips on screen. */
+export async function openSetClips(clips: readonly EditorClip[]) {
+  const copies = await copyClips(clips);
+  apply(replaceClips(readClipDesk(), copies));
+}
 
 export const forgetStoredFileClips = (fileId: string) =>
   apply(forgetFileClips(readClipDesk(), fileId));

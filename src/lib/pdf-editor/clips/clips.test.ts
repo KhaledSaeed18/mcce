@@ -10,6 +10,7 @@ import { findCardBox, findCardHeight } from "./clip-card-box";
 import { addClip, closeClip, EMPTY_CLIP_DESK, reopenClip } from "./clip-desk";
 import { forgetFileClips } from "./clip-desk-forget";
 import { parseClipDesk } from "./clip-desk-parse";
+import { replaceClips } from "./clip-desk-replace";
 import { findClipExamPaper } from "./clip-exam-paper";
 import { findClipPageNumber } from "./clip-page-number";
 import { placeCardAt, placeNewClip } from "./clip-place";
@@ -112,6 +113,19 @@ describe("findClipExamPaper", () => {
       "paper"
     );
     expect(findClipExamPaper(clip("b", { file: paper }), nodes)).toBeNull();
+  });
+});
+
+describe("replaceClips", () => {
+  it("shows a set's clips and closes the ones on screen, newest first", () => {
+    let { desk } = addClip(EMPTY_CLIP_DESK, clip("a"));
+    ({ desk } = addClip(desk, clip("b")));
+
+    const change = replaceClips({ ...desk, isHidden: true }, [clip("s")]);
+
+    expect(change.desk.clips.map((item) => item.id)).toEqual(["s"]);
+    expect(change.desk.closed.map((item) => item.id)).toEqual(["b", "a"]);
+    expect(change.desk.isHidden).toBe(false);
   });
 });
 

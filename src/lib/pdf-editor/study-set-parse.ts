@@ -1,3 +1,4 @@
+import { parseClips } from "./clips/clip-desk-parse";
 import { isOpenFile } from "./open-file-parse";
 import type { StudySet } from "./types";
 
@@ -22,6 +23,8 @@ function parseSet(value: unknown): StudySet | null {
   }
   return {
     besideId: readId(stored.besideId),
+    // Sets saved before clips existed have none.
+    clips: parseClips(stored.clips),
     files,
     id: stored.id,
     lockGap: typeof stored.lockGap === "number" ? stored.lockGap : null,

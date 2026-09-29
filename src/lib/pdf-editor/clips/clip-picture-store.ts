@@ -34,6 +34,27 @@ export function readClipPicture(id: string): Promise<Blob | null> {
   });
 }
 
+/** Copies pictures from one clip to another, as [from, to] pairs, so a
+ * saved set and the clips on screen never share one. A picture already
+ * gone is skipped. */
+export function copyClipPictures(
+  pairs: ReadonlyArray<readonly [string, string]>
+): Promise<void> {
+  return withStore(async (db) => {
+    const transaction = db.transaction(STORES, "readwrite");
+    const store = transaction.objectStore(CLIP_PICTURE_STORE);
+    const done = transactionDone(transaction);
+    for (const [from, to] of pairs) {
+      // biome-ignore lint/performance/noAwaitInLoops: each put follows its own get inside the one transaction
+      const picture = await requestResult<Blob | undefined>(store.get(from));
+      if (picture) {
+        store.put(picture, to);
+      }
+    }
+    return done;
+  });
+}
+
 export function removeClipPictures(ids: readonly string[]): Promise<void> {
   return withStore((db) => {
     const transaction = db.transaction(STORES, "readwrite");

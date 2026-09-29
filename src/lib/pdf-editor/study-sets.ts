@@ -1,5 +1,6 @@
 import { STUDY_SETS_STORAGE_KEY } from "@/config/pdf-editor";
 import { readJson, writeJson } from "@/lib/storage";
+import { dropClipPictures } from "./clips/copy-clips";
 import { parseStudySets } from "./study-set-parse";
 import type { StudySet } from "./types";
 
@@ -43,21 +44,28 @@ export function renameStudySet(id: string, name: string): void {
 }
 
 export function removeStudySet(id: string): void {
-  write(readStudySets().filter((set) => set.id !== id));
+  const sets = readStudySets();
+  dropClipPictures(sets.find((set) => set.id === id)?.clips ?? []);
+  write(sets.filter((set) => set.id !== id));
 }
 
-/** For a file taken off this device: it leaves every set, and a set left
- * with nothing in it goes too. */
+/** For a file taken off this device: it leaves every set with its clips,
+ * and a set left with nothing in it goes too. */
 export function forgetFileInStudySets(fileId: string): void {
   const next = readStudySets().flatMap((set) => {
     const files = set.files.filter((file) => file.id !== fileId);
-    if (files.length === 0) {
+    const isGone = files.length === 0;
+    dropClipPictures(
+      set.clips.filter((clip) => isGone || clip.file.id === fileId)
+    );
+    if (isGone) {
       return [];
     }
     return [
       {
         ...set,
         besideId: set.besideId === fileId ? null : set.besideId,
+        clips: set.clips.filter((clip) => clip.file.id !== fileId),
         files,
         lockGap: set.besideId === fileId ? null : set.lockGap,
         primaryId: set.primaryId === fileId ? files[0].id : set.primaryId,
