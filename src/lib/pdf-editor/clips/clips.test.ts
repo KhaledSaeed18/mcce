@@ -6,6 +6,7 @@ import {
   CLIP_START_WIDTH,
 } from "@/config/pdf-editor";
 import { type PointerTools, pickPointerTool } from "../pointer-tools";
+import { avoidBands } from "./avoid-bands";
 import { findCardBox, findCardHeight } from "./clip-card-box";
 import { addClip, closeClip, EMPTY_CLIP_DESK, reopenClip } from "./clip-desk";
 import { forgetFileClips } from "./clip-desk-forget";
@@ -174,6 +175,21 @@ describe("clip links", () => {
       readClipLink("gone.1.0.0.10.10~file.x.0.0.10.10~file.1.0.0.0.10", nodes)
     ).toEqual([]);
     expect(readClipLink(undefined, nodes)).toEqual([]);
+  });
+});
+
+describe("avoidBands", () => {
+  const rail = { left: 500, right: 660 };
+  const card = { height: 100, width: 200, x: 0, y: 0 };
+
+  it("moves a card off a rail to the nearer side that has room", () => {
+    expect(avoidBands({ ...card, x: 420 }, [rail], 1000).x).toBe(300);
+    expect(avoidBands({ ...card, x: 560 }, [rail], 1000).x).toBe(660);
+    expect(avoidBands({ ...card, x: 560 }, [rail], 800).x).toBe(300);
+  });
+
+  it("leaves a card clear of every rail where it is", () => {
+    expect(avoidBands({ ...card, x: 700 }, [rail], 1000).x).toBe(700);
   });
 });
 

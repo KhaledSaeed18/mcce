@@ -19,6 +19,7 @@ export function useClipCardKeys({
   area,
   bottomInset,
   box,
+  keepClear,
   onClose,
   onPlace,
 }: ClipCardMoveOptions) {
@@ -41,8 +42,8 @@ export function useClipCardKeys({
         area,
         bottomInset
       );
-      onPlace(placeCardAt(moved, area, bottomInset, false));
+      onPlace(placeCardAt(keepClear(moved), area, bottomInset, false));
     },
-    [area, bottomInset, box, onClose, onPlace]
+    [area, bottomInset, box, keepClear, onClose, onPlace]
   );
 }

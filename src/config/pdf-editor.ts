@@ -145,6 +145,9 @@ export const CLIP_LAYER_RAIL_LEFT_CLASS = "left-40";
 export const CLIP_LINK_SEPARATOR = "~";
 export const CLIP_LINK_PART_SEPARATOR = ".";
 
+/** Marks each page rail, so clip cards can keep clear of it. */
+export const PAGE_RAIL_ATTRIBUTE = "data-page-rail";
+
 /** Marks a card, so a press on it is not taken for a stroke on the pages. */
 export const CLIP_CARD_ATTRIBUTE = "data-clip-card";
 
