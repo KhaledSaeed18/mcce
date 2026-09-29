@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
-import { readClipLink } from "@/lib/pdf-editor/clips/clip-link";
 import {
   openSetClips,
   openSharedClips,
 } from "@/lib/pdf-editor/clips/clip-store";
+import { readClipLink } from "@/lib/pdf-editor/clips/read-clip-link";
 import { readStudySets } from "@/lib/pdf-editor/study-sets";
 import type { EditorTreeNode } from "@/lib/pdf-editor/types";
 

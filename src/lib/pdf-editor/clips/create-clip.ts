@@ -35,6 +35,7 @@ export async function createClip(source: ClipSource, box: Box): Promise<void> {
     pageId: page.id,
     pageNumber: position + 1,
     place: placeNewClip(readClipDesk().clips),
+    rotation: page.rotation,
     version: 0,
   };
   storeClip(clip);
@@ -56,6 +57,7 @@ export async function redrawClip(
   changeStoredClip(clip.id, {
     aspect: picture.width / picture.height,
     pageNumber: source.position + 1,
+    rotation: source.page.rotation,
     version: clip.version + 1,
   });
 }

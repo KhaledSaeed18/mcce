@@ -31,6 +31,9 @@ export interface EditorClip {
    * are known. */
   pageNumber: number;
   place: ClipPlace;
+  /** Quarter turns the page had when the picture was drawn, so a shared
+   * link draws it turned the same way. */
+  rotation: number;
   /** Bumped when the picture is drawn again, so it is read afresh. */
   version: number;
 }
@@ -49,4 +52,14 @@ export interface ClipPicture {
   blob: Blob;
   height: number;
   width: number;
+}
+
+/** A clip as a shared link names it, for the browser opening the link to
+ * draw from its file. */
+export interface SharedClip {
+  box: Box;
+  file: OpenFile;
+  rotation: number;
+  /** The page's place in the file, which is the same in every browser. */
+  sourceIndex: number;
 }

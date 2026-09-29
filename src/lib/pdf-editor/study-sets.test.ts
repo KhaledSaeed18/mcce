@@ -63,6 +63,7 @@ describe("study set store", () => {
       pageId: "p0",
       pageNumber: 1,
       place,
+      rotation: 0,
       version: 0,
     });
     addStudySet({
@@ -105,6 +106,7 @@ describe("study set links", () => {
           pageId: "p4",
           pageNumber: 5,
           place: { corner: "top-left", width: 320, x: 12, y: 12 },
+          rotation: 0,
           version: 0,
         },
       ],
