@@ -8,6 +8,7 @@ import {
   EMPTY_CLIP_DESK,
   reopenClip,
 } from "./clip-desk";
+import { forgetFileClips } from "./clip-desk-forget";
 import { parseClipDesk } from "./clip-desk-parse";
 import { removeClipPictures } from "./clip-picture-store";
 import type { ClipDesk, EditorClip } from "./types";
@@ -53,6 +54,9 @@ export const closeStoredClip = (id: string) =>
   apply(closeClip(readClipDesk(), id));
 export const reopenStoredClip = (id: string) =>
   apply(reopenClip(readClipDesk(), id));
+
+export const forgetStoredFileClips = (fileId: string) =>
+  apply(forgetFileClips(readClipDesk(), fileId));
 
 export function changeStoredClip(id: string, change: Partial<EditorClip>) {
   write(changeClip(readClipDesk(), id, change));

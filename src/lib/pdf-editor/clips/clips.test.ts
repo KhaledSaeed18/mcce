@@ -8,6 +8,7 @@ import {
 import { type PointerTools, pickPointerTool } from "../pointer-tools";
 import { findCardBox, findCardHeight } from "./clip-card-box";
 import { addClip, closeClip, EMPTY_CLIP_DESK, reopenClip } from "./clip-desk";
+import { forgetFileClips } from "./clip-desk-forget";
 import { parseClipDesk } from "./clip-desk-parse";
 import { findClipPageNumber } from "./clip-page-number";
 import { placeCardAt, placeNewClip } from "./clip-place";
@@ -65,6 +66,22 @@ describe("clip desk", () => {
     expect(back.clips[1].isFolded).toBe(false);
     expect(back.closed).toEqual([]);
     expect(back.isHidden).toBe(false);
+  });
+});
+
+describe("forgetFileClips", () => {
+  it("drops a file's clips, on screen and closed, naming their pictures", () => {
+    const other = { id: "other", name: "Notes.pdf", source: "local" as const };
+    let { desk } = addClip(EMPTY_CLIP_DESK, clip("a"));
+    ({ desk } = addClip(desk, clip("b", { file: other })));
+    ({ desk } = addClip(desk, clip("c")));
+    ({ desk } = closeClip(desk, "c"));
+
+    const change = forgetFileClips(desk, "file");
+
+    expect(change.desk.clips.map((item) => item.id)).toEqual(["b"]);
+    expect(change.desk.closed).toEqual([]);
+    expect(change.dropped).toEqual(["a", "c"]);
   });
 });
 
