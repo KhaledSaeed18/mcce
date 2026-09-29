@@ -15,7 +15,7 @@ import {
 } from "@/config/pdf-editor";
 import type { EditorPaneView } from "@/hooks/use-editor-panes";
 import { useFileSearch } from "@/hooks/use-file-search";
-import { useFileSearchDialog } from "@/hooks/use-file-search-dialog";
+import type { FileSearchDialog } from "@/hooks/use-file-search-dialog";
 import { useFileSearchPicker } from "@/hooks/use-file-search-picker";
 import { useSearchHandoff } from "@/hooks/use-search-handoff";
 import type { EditorTreeNode, OpenFile } from "@/lib/pdf-editor/types";
@@ -23,6 +23,7 @@ import type { EditorTreeNode, OpenFile } from "@/lib/pdf-editor/types";
 const NO_PAGES: string[] = [];
 
 interface EditorFileSearchProps {
+  dialog: FileSearchDialog;
   files: OpenFile[];
   nodes: EditorTreeNode[];
   onOpenBeside: (file: OpenFile) => void;
@@ -33,13 +34,13 @@ interface EditorFileSearchProps {
 /** Search every open tab at once, from Cmd/Ctrl+Shift+F. A pick opens in a
  * pane, whose own search bar then steps on through that file. */
 export function EditorFileSearch({
+  dialog,
   files,
   nodes,
   onOpenBeside,
   onShow,
   panes,
 }: EditorFileSearchProps) {
-  const dialog = useFileSearchDialog();
   const { groups, labels, progress, texts } = useFileSearch({
     files,
     isOpen: dialog.isOpen,

@@ -34,5 +34,3 @@ export function useEditorHelp() {
 
   return { isOpen, open, setIsOpen };
 }
-
-export type EditorHelp = ReturnType<typeof useEditorHelp>;
