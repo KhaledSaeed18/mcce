@@ -8,7 +8,6 @@ import type { ReactNode } from "react";
 import { OpenInDriveButton } from "@/components/drive/open-in-drive-button";
 import { EditorBrand } from "@/components/pdf-editor/editor-brand";
 import { EditorPanelToggle } from "@/components/pdf-editor/editor-panel-toggle";
-import { EditorSaveStatus } from "@/components/pdf-editor/editor-save-status";
 import { FullscreenButton } from "@/components/pdf-editor/fullscreen-button";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Button } from "@/components/ui/button";
@@ -25,7 +24,7 @@ import {
 } from "@/config/pdf-editor";
 import { EDITOR_HELP_LABEL } from "@/config/pdf-editor-help";
 import { withShortcut } from "@/lib/pdf-editor/shortcut-label";
-import type { EditorFile, SaveStatus } from "@/lib/pdf-editor/types";
+import type { EditorFile } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
 interface EditorFileBarProps {
@@ -43,8 +42,6 @@ interface EditorFileBarProps {
   onToggleFullscreen: () => void;
   onToggleRail: () => void;
   onToggleStudy: () => void;
-  /** Absent until a file is open and its markup has somewhere to go. */
-  saveStatus: SaveStatus | null;
 }
 
 export function EditorFileBar({
@@ -61,7 +58,6 @@ export function EditorFileBar({
   onToggleFullscreen,
   onToggleRail,
   onToggleStudy,
-  saveStatus,
 }: EditorFileBarProps) {
   const title = node ? node.name : EDITOR_EMPTY_TITLE;
 
@@ -102,12 +98,6 @@ export function EditorFileBar({
       {children}
 
       <div className="flex shrink-0 items-center justify-end gap-2">
-        {node ? (
-          <EditorSaveStatus
-            isPending={saveStatus === null}
-            status={saveStatus ?? "saved"}
-          />
-        ) : null}
         {node ? (
           <EditorPanelToggle
             hideLabel={STUDY_PANEL_HIDE_LABEL}

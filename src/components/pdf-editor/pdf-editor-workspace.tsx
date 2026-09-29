@@ -78,7 +78,6 @@ export function PdfEditorWorkspace({
           onToggleFullscreen={fullscreen.toggle}
           onToggleRail={panels.toggleRail}
           onToggleStudy={panels.toggleStudy}
-          saveStatus={session.saveStatus}
         >
           <EditorFileBarTabs
             desk={desk}
