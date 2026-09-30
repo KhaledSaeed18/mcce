@@ -1,4 +1,5 @@
 import { InfoIcon } from "lucide-react";
+import { OpenInDriveButton } from "@/components/drive/open-in-drive-button";
 import { Badge } from "@/components/ui/badge";
 import {
   COURSE_KIND_BADGE_LABEL,
@@ -6,23 +7,30 @@ import {
 } from "@/config/courses";
 import type { CurriculumCourseContext } from "@/lib/curriculum/types";
 import { getCourseIcon } from "@/lib/drive/courses";
+import { buildDriveFolderUrl } from "@/lib/drive/urls";
 
 interface CourseHeaderProps {
   context: CurriculumCourseContext;
+  folderId: string | null;
 }
 
-export function CourseHeader({ context }: CourseHeaderProps) {
+export function CourseHeader({ context, folderId }: CourseHeaderProps) {
   const { course, semester, year } = context;
   const Icon = getCourseIcon(course.code, course.name);
   const kindBadgeLabel = COURSE_KIND_BADGE_LABEL[course.kind];
 
   return (
     <header className="flex flex-col gap-3">
-      <div className="flex items-center gap-3">
-        <div className="flex size-10 shrink-0 items-center justify-center rounded border-2 border-black bg-primary">
-          <Icon className="size-5" />
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex min-w-0 items-center gap-3">
+          <div className="flex size-10 shrink-0 items-center justify-center rounded border-2 border-black bg-primary">
+            <Icon className="size-5" />
+          </div>
+          <h1 className="font-head text-xl sm:text-2xl">{course.name}</h1>
         </div>
-        <h1 className="font-head text-xl sm:text-2xl">{course.name}</h1>
+        {folderId ? (
+          <OpenInDriveButton href={buildDriveFolderUrl(folderId)} />
+        ) : null}
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
