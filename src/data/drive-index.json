@@ -1,7 +1,7 @@
 {
   "meta": {
     "baselineAt": "2026-08-17T06:41:16.505Z",
-    "generatedAt": "2026-09-28T12:38:27.247Z",
+    "generatedAt": "2026-09-30T20:25:30.324Z",
     "sources": [
       {
         "description": "LIU - MCCE | First Year, Both Semesters | materials, videos, exercises, and previous exams.",
@@ -11,11 +11,11 @@
         "totalBytes": 14554444742
       },
       {
-        "description": "LIU - MCCE | Second Year, Fall Semester | materials, videos, exercises, and previous exams.",
-        "fileCount": 239,
-        "folderCount": 65,
+        "description": "LIU - MCCE | Second Year, Fall Semester |materials, videos, exercises, and previous exams.",
+        "fileCount": 249,
+        "folderCount": 70,
         "id": "year2",
-        "totalBytes": 14208310468
+        "totalBytes": 14224468751
       },
       {
         "description": "LIU - MCCE | Second Year, Spring Semester | materials, videos, exercises, and previous exams.",
@@ -34888,6 +34888,45 @@
       "depth": 4,
       "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1kSIRe1O01a404iRwAUm2OamT-Iw3sojT",
+      "isShortcut": false,
+      "kind": "folder",
+      "materialType": "exam",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-09-30T20:08:06.746Z",
+      "name": "Paper Based",
+      "parentId": "1Xv_mv8DPj2h5cO43EAnMMoNyKyEjMBSs",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "1msocpdWRsVh8OcE7LRAMaSplWxQCKxfY",
+        "1Xv_mv8DPj2h5cO43EAnMMoNyKyEjMBSs",
+        "1kSIRe1O01a404iRwAUm2OamT-Iw3sojT"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Exams",
+        "Final",
+        "Paper Based"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": null,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1kSIRe1O01a404iRwAUm2OamT-Iw3sojT",
+      "firstSeenAt": "2026-09-30T20:25:30.324Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 4,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
       "id": "1K5LMLgPJljNHVZmCYdSZ-R7Rjlpe5k2c",
       "isShortcut": false,
       "kind": "folder",
@@ -37343,36 +37382,36 @@
       "courseCode": "CENG645",
       "courseName": "Mobile Communication",
       "depth": 4,
-      "extension": "pdf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
-      "id": "1SYL3NRWrQ-7Q6GWWrTGsjqKtwv8eCgZd",
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1a2gVEulusHb9DRAXpH76VEx07yLjZTx7",
       "isShortcut": false,
-      "kind": "pdf",
+      "kind": "folder",
       "materialType": "exam",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-09-04T16:18:35.901Z",
-      "name": "V1-CENG645-SolvedQuestions-Final.pdf",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-09-30T20:10:03.581Z",
+      "name": "Paper Based",
       "parentId": "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
       "pathIds": [
         "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
         "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
         "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
         "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-        "1SYL3NRWrQ-7Q6GWWrTGsjqKtwv8eCgZd"
+        "1a2gVEulusHb9DRAXpH76VEx07yLjZTx7"
       ],
       "pathNames": [
         "Second Year | Fall Semester",
         "CENG645 - Mobile Communication",
         "Exams",
         "Final",
-        "V1-CENG645-SolvedQuestions-Final.pdf"
+        "Paper Based"
       ],
       "semester": "Second Year | Fall Semester",
-      "sizeBytes": 213873,
+      "sizeBytes": null,
       "sourceId": "year2",
       "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1SYL3NRWrQ-7Q6GWWrTGsjqKtwv8eCgZd/view?usp=drivesdk",
-      "firstSeenAt": "2026-09-04T16:23:27.892Z"
+      "webViewLink": "https://drive.google.com/drive/folders/1a2gVEulusHb9DRAXpH76VEx07yLjZTx7",
+      "firstSeenAt": "2026-09-30T20:25:30.324Z"
     },
     {
       "categoryPath": [
@@ -37382,504 +37421,75 @@
       "courseCode": "CENG645",
       "courseName": "Mobile Communication",
       "depth": 4,
-      "extension": "pdf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
-      "id": "1eVWf5SW44ULH8ns_5X6Rmpw_8wYNp5p-",
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
       "isShortcut": false,
-      "kind": "pdf",
+      "kind": "folder",
       "materialType": "exam",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-09-04T16:18:28.139Z",
-      "name": "V2-CENG645-SolvedQuestions-Final.pdf",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-09-30T20:07:06.162Z",
+      "name": "Moodle",
       "parentId": "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
       "pathIds": [
         "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
         "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
         "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
         "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-        "1eVWf5SW44ULH8ns_5X6Rmpw_8wYNp5p-"
+        "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg"
       ],
       "pathNames": [
         "Second Year | Fall Semester",
         "CENG645 - Mobile Communication",
         "Exams",
         "Final",
-        "V2-CENG645-SolvedQuestions-Final.pdf"
+        "Moodle"
       ],
       "semester": "Second Year | Fall Semester",
-      "sizeBytes": 1425376,
+      "sizeBytes": null,
       "sourceId": "year2",
       "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1eVWf5SW44ULH8ns_5X6Rmpw_8wYNp5p-/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+      "webViewLink": "https://drive.google.com/drive/folders/12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+      "firstSeenAt": "2026-09-30T20:25:30.324Z"
     },
     {
       "categoryPath": [
         "Exams",
-        "Final"
+        "Midterm"
       ],
       "courseCode": "CENG645",
       "courseName": "Mobile Communication",
       "depth": 4,
-      "extension": "pdf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
-      "id": "1nACmOtsNv1X9rjbtag9uDiJ0rRVdXt_m",
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1NOsLqnn6HLgw7Ch4jHuEAvpIZp3Hyf2M",
       "isShortcut": false,
-      "kind": "pdf",
+      "kind": "folder",
       "materialType": "exam",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-09-04T16:18:03.567Z",
-      "name": "CENG645-(2021)V9-Final.pdf",
-      "parentId": "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-09-30T20:08:23.503Z",
+      "name": "Paper Based",
+      "parentId": "1juezbkv9NqxrLPykXxUntnIFWTBq6XbH",
       "pathIds": [
         "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
         "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
         "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
-        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-        "1nACmOtsNv1X9rjbtag9uDiJ0rRVdXt_m"
+        "1juezbkv9NqxrLPykXxUntnIFWTBq6XbH",
+        "1NOsLqnn6HLgw7Ch4jHuEAvpIZp3Hyf2M"
       ],
       "pathNames": [
         "Second Year | Fall Semester",
         "CENG645 - Mobile Communication",
         "Exams",
-        "Final",
-        "CENG645-(2021)V9-Final.pdf"
+        "Midterm",
+        "Paper Based"
       ],
       "semester": "Second Year | Fall Semester",
-      "sizeBytes": 1348840,
-      "sourceId": "year2",
-      "termLabel": "Fall 2021-2022",
-      "webViewLink": "https://drive.google.com/file/d/1nACmOtsNv1X9rjbtag9uDiJ0rRVdXt_m/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
-    },
-    {
-      "categoryPath": [
-        "Exams",
-        "Final"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 4,
-      "extension": "pdf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
-      "id": "1bTKvenhP10_TcgRRZ4HdUCMfbxT5cft7",
-      "isShortcut": false,
-      "kind": "pdf",
-      "materialType": "exam",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-09-04T16:16:34.647Z",
-      "name": "CENG645-(2021)V8-Final.pdf",
-      "parentId": "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
-        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-        "1bTKvenhP10_TcgRRZ4HdUCMfbxT5cft7"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Exams",
-        "Final",
-        "CENG645-(2021)V8-Final.pdf"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 1159775,
-      "sourceId": "year2",
-      "termLabel": "Fall 2021-2022",
-      "webViewLink": "https://drive.google.com/file/d/1bTKvenhP10_TcgRRZ4HdUCMfbxT5cft7/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
-    },
-    {
-      "categoryPath": [
-        "Exams",
-        "Final"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 4,
-      "extension": "pdf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
-      "id": "1uh2U5XG6rOTPmZIygILpba8g6XsSBeyU",
-      "isShortcut": false,
-      "kind": "pdf",
-      "materialType": "exam",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-09-04T16:12:44.394Z",
-      "name": "CENG645-(2021)V7-Final.pdf",
-      "parentId": "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
-        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-        "1uh2U5XG6rOTPmZIygILpba8g6XsSBeyU"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Exams",
-        "Final",
-        "CENG645-(2021)V7-Final.pdf"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 1384829,
-      "sourceId": "year2",
-      "termLabel": "Fall 2021-2022",
-      "webViewLink": "https://drive.google.com/file/d/1uh2U5XG6rOTPmZIygILpba8g6XsSBeyU/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
-    },
-    {
-      "categoryPath": [
-        "Exams",
-        "Final"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 4,
-      "extension": "pdf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
-      "id": "1Ag9EmAp7iiiJ1GTVvFj_PbNHo8PyZuNQ",
-      "isShortcut": false,
-      "kind": "pdf",
-      "materialType": "exam",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-09-04T16:12:38.690Z",
-      "name": "CENG645-(2021)V6-Final.pdf",
-      "parentId": "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
-        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-        "1Ag9EmAp7iiiJ1GTVvFj_PbNHo8PyZuNQ"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Exams",
-        "Final",
-        "CENG645-(2021)V6-Final.pdf"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 1303017,
-      "sourceId": "year2",
-      "termLabel": "Fall 2021-2022",
-      "webViewLink": "https://drive.google.com/file/d/1Ag9EmAp7iiiJ1GTVvFj_PbNHo8PyZuNQ/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
-    },
-    {
-      "categoryPath": [
-        "Exams",
-        "Final"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 4,
-      "extension": "pdf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
-      "id": "1TRiw0vtjB6JRFZv_dCQXcl_7UpSD60Dy",
-      "isShortcut": false,
-      "kind": "pdf",
-      "materialType": "exam",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-09-04T16:11:56.006Z",
-      "name": "CENG645-(2021)V5-Final.pdf",
-      "parentId": "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
-        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-        "1TRiw0vtjB6JRFZv_dCQXcl_7UpSD60Dy"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Exams",
-        "Final",
-        "CENG645-(2021)V5-Final.pdf"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 1158221,
-      "sourceId": "year2",
-      "termLabel": "Fall 2021-2022",
-      "webViewLink": "https://drive.google.com/file/d/1TRiw0vtjB6JRFZv_dCQXcl_7UpSD60Dy/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
-    },
-    {
-      "categoryPath": [
-        "Exams",
-        "Final"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 4,
-      "extension": "pdf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
-      "id": "1LeUHIfQlfPU5qboAMkRB0wtqnskWUIXS",
-      "isShortcut": false,
-      "kind": "pdf",
-      "materialType": "exam",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-09-04T16:11:48.899Z",
-      "name": "CENG645-(2021)V4-Final.pdf",
-      "parentId": "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
-        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-        "1LeUHIfQlfPU5qboAMkRB0wtqnskWUIXS"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Exams",
-        "Final",
-        "CENG645-(2021)V4-Final.pdf"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 990545,
-      "sourceId": "year2",
-      "termLabel": "Fall 2021-2022",
-      "webViewLink": "https://drive.google.com/file/d/1LeUHIfQlfPU5qboAMkRB0wtqnskWUIXS/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
-    },
-    {
-      "categoryPath": [
-        "Exams",
-        "Final"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 4,
-      "extension": "pdf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
-      "id": "1G0gfCO3VMKnfy9rDL4L0ZeHYxLUkEmBv",
-      "isShortcut": false,
-      "kind": "pdf",
-      "materialType": "exam",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-09-04T16:11:10.859Z",
-      "name": "CENG645-(2021)V3-Final.pdf",
-      "parentId": "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
-        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-        "1G0gfCO3VMKnfy9rDL4L0ZeHYxLUkEmBv"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Exams",
-        "Final",
-        "CENG645-(2021)V3-Final.pdf"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 1796503,
-      "sourceId": "year2",
-      "termLabel": "Fall 2021-2022",
-      "webViewLink": "https://drive.google.com/file/d/1G0gfCO3VMKnfy9rDL4L0ZeHYxLUkEmBv/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
-    },
-    {
-      "categoryPath": [
-        "Exams",
-        "Final"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 4,
-      "extension": "pdf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
-      "id": "1EBv4yYRHaDFnxugPTC3VsYHjw38CIDBv",
-      "isShortcut": false,
-      "kind": "pdf",
-      "materialType": "exam",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-09-04T16:08:40.043Z",
-      "name": "CENG645-MCQs-Final.pdf",
-      "parentId": "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
-        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-        "1EBv4yYRHaDFnxugPTC3VsYHjw38CIDBv"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Exams",
-        "Final",
-        "CENG645-MCQs-Final.pdf"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 549638,
+      "sizeBytes": null,
       "sourceId": "year2",
       "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1EBv4yYRHaDFnxugPTC3VsYHjw38CIDBv/view?usp=drivesdk",
-      "firstSeenAt": "2026-09-04T16:23:27.892Z"
-    },
-    {
-      "categoryPath": [
-        "Exams",
-        "Final"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 4,
-      "extension": "pdf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
-      "id": "11wqiw-tU77kqidfjgULCn51MgYP2Ywbt",
-      "isShortcut": false,
-      "kind": "pdf",
-      "materialType": "exam",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-09-04T16:07:56.803Z",
-      "name": "CENG645-(2021)V2-Final.pdf",
-      "parentId": "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
-        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-        "11wqiw-tU77kqidfjgULCn51MgYP2Ywbt"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Exams",
-        "Final",
-        "CENG645-(2021)V2-Final.pdf"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 1181764,
-      "sourceId": "year2",
-      "termLabel": "Fall 2021-2022",
-      "webViewLink": "https://drive.google.com/file/d/11wqiw-tU77kqidfjgULCn51MgYP2Ywbt/view?usp=drivesdk",
-      "firstSeenAt": "2026-09-04T16:23:27.892Z"
-    },
-    {
-      "categoryPath": [
-        "Exams",
-        "Final"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 4,
-      "extension": "pdf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
-      "id": "1LIbIr9mt_9q3-b_BuKjQxQLBLf25ij7U",
-      "isShortcut": false,
-      "kind": "pdf",
-      "materialType": "exam",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-09-04T16:07:51.668Z",
-      "name": "CENG645-(2021)V1-Final.pdf",
-      "parentId": "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
-        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-        "1LIbIr9mt_9q3-b_BuKjQxQLBLf25ij7U"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Exams",
-        "Final",
-        "CENG645-(2021)V1-Final.pdf"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 1497623,
-      "sourceId": "year2",
-      "termLabel": "Fall 2021-2022",
-      "webViewLink": "https://drive.google.com/file/d/1LIbIr9mt_9q3-b_BuKjQxQLBLf25ij7U/view?usp=drivesdk",
-      "firstSeenAt": "2026-09-04T16:23:27.892Z"
-    },
-    {
-      "categoryPath": [
-        "Exams",
-        "Final"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 4,
-      "extension": "pdf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
-      "id": "1qQcnvLKEtDXI3S97P1nRZf682ULKnkws",
-      "isShortcut": false,
-      "kind": "pdf",
-      "materialType": "exam",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-09-04T16:07:20.394Z",
-      "name": "CENG645-(Fall2023-2024)Final.pdf",
-      "parentId": "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
-        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-        "1qQcnvLKEtDXI3S97P1nRZf682ULKnkws"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Exams",
-        "Final",
-        "CENG645-(Fall2023-2024)Final.pdf"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 659762,
-      "sourceId": "year2",
-      "termLabel": "Fall 2023-2024",
-      "webViewLink": "https://drive.google.com/file/d/1qQcnvLKEtDXI3S97P1nRZf682ULKnkws/view?usp=drivesdk",
-      "firstSeenAt": "2026-09-04T16:23:27.892Z"
-    },
-    {
-      "categoryPath": [
-        "Exams",
-        "Final"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 4,
-      "extension": "pdf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
-      "id": "1LtwmFiqpf0CyXei4uT_b3LYeOhjxkCbN",
-      "isShortcut": false,
-      "kind": "pdf",
-      "materialType": "exam",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-09-04T16:07:12.455Z",
-      "name": "CENG645-(Fall2025-2026)Final.pdf",
-      "parentId": "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
-        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
-        "1LtwmFiqpf0CyXei4uT_b3LYeOhjxkCbN"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Exams",
-        "Final",
-        "CENG645-(Fall2025-2026)Final.pdf"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 1410367,
-      "sourceId": "year2",
-      "termLabel": "Fall 2025-2026",
-      "webViewLink": "https://drive.google.com/file/d/1LtwmFiqpf0CyXei4uT_b3LYeOhjxkCbN/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+      "webViewLink": "https://drive.google.com/drive/folders/1NOsLqnn6HLgw7Ch4jHuEAvpIZp3Hyf2M",
+      "firstSeenAt": "2026-09-30T20:25:30.324Z"
     },
     {
       "categoryPath": [
@@ -37919,6 +37529,45 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/drive/folders/1I2A6hss3GWq1-iYY0fvYWn9C4D8hVqmp",
       "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1LO4w-5OOpxu5nOzLXtxdoPf2KmGCSQqT",
+      "isShortcut": false,
+      "kind": "folder",
+      "materialType": "exam",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-09-30T20:18:29.042Z",
+      "name": "Paper Based",
+      "parentId": "1I8_oEWSDEE1tAuZFHwXjHG9qHJC-BDkp",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "12N64QrzcD3theM4mf-qWVg_mpJYWTcnD",
+        "1I8_oEWSDEE1tAuZFHwXjHG9qHJC-BDkp",
+        "1LO4w-5OOpxu5nOzLXtxdoPf2KmGCSQqT"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Exams",
+        "Final",
+        "Paper Based"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": null,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1LO4w-5OOpxu5nOzLXtxdoPf2KmGCSQqT",
+      "firstSeenAt": "2026-09-30T20:25:30.324Z"
     },
     {
       "categoryPath": [
@@ -41712,6 +41361,804 @@
     {
       "categoryPath": [
         "Exams",
+        "Final",
+        "Paper Based"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1zALAHr5FS4X6xtC5mKHknSIl_-6s3G8G",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-30T20:13:06.407Z",
+      "name": "[SOLUTION]CENG645-Final-2018.pdf",
+      "parentId": "1a2gVEulusHb9DRAXpH76VEx07yLjZTx7",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+        "1a2gVEulusHb9DRAXpH76VEx07yLjZTx7",
+        "1zALAHr5FS4X6xtC5mKHknSIl_-6s3G8G"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Final",
+        "Paper Based",
+        "[SOLUTION]CENG645-Final-2018.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1573320,
+      "sourceId": "year2",
+      "termLabel": "Fall 2018-2019",
+      "webViewLink": "https://drive.google.com/file/d/1zALAHr5FS4X6xtC5mKHknSIl_-6s3G8G/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-30T20:25:30.324Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Paper Based"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1YEiAZuuZE6OlGN_ulpl1Nsffk8k0ps_Z",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-30T20:12:59.301Z",
+      "name": "[SOLUTION]CENG645-Final-2017.pdf",
+      "parentId": "1a2gVEulusHb9DRAXpH76VEx07yLjZTx7",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+        "1a2gVEulusHb9DRAXpH76VEx07yLjZTx7",
+        "1YEiAZuuZE6OlGN_ulpl1Nsffk8k0ps_Z"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Final",
+        "Paper Based",
+        "[SOLUTION]CENG645-Final-2017.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1320522,
+      "sourceId": "year2",
+      "termLabel": "Fall 2017-2018",
+      "webViewLink": "https://drive.google.com/file/d/1YEiAZuuZE6OlGN_ulpl1Nsffk8k0ps_Z/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-30T20:25:30.324Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Paper Based"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1kpdMAs97LDheEgzcJRpTkid3hhzkweX_",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-30T20:12:53.098Z",
+      "name": "[SOLUTION]CENG645-Final-2016.pdf",
+      "parentId": "1a2gVEulusHb9DRAXpH76VEx07yLjZTx7",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+        "1a2gVEulusHb9DRAXpH76VEx07yLjZTx7",
+        "1kpdMAs97LDheEgzcJRpTkid3hhzkweX_"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Final",
+        "Paper Based",
+        "[SOLUTION]CENG645-Final-2016.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1524975,
+      "sourceId": "year2",
+      "termLabel": "Fall 2016-2017",
+      "webViewLink": "https://drive.google.com/file/d/1kpdMAs97LDheEgzcJRpTkid3hhzkweX_/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-30T20:25:30.324Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Moodle"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1SYL3NRWrQ-7Q6GWWrTGsjqKtwv8eCgZd",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:18:35.901Z",
+      "name": "V1-CENG645-SolvedQuestions-Final.pdf",
+      "parentId": "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+        "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+        "1SYL3NRWrQ-7Q6GWWrTGsjqKtwv8eCgZd"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Final",
+        "Moodle",
+        "V1-CENG645-SolvedQuestions-Final.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 213873,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1SYL3NRWrQ-7Q6GWWrTGsjqKtwv8eCgZd/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Moodle"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1eVWf5SW44ULH8ns_5X6Rmpw_8wYNp5p-",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:18:28.139Z",
+      "name": "V2-CENG645-SolvedQuestions-Final.pdf",
+      "parentId": "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+        "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+        "1eVWf5SW44ULH8ns_5X6Rmpw_8wYNp5p-"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Final",
+        "Moodle",
+        "V2-CENG645-SolvedQuestions-Final.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1425376,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1eVWf5SW44ULH8ns_5X6Rmpw_8wYNp5p-/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Moodle"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1nACmOtsNv1X9rjbtag9uDiJ0rRVdXt_m",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:18:03.567Z",
+      "name": "CENG645-(2021)V9-Final.pdf",
+      "parentId": "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+        "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+        "1nACmOtsNv1X9rjbtag9uDiJ0rRVdXt_m"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Final",
+        "Moodle",
+        "CENG645-(2021)V9-Final.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1348840,
+      "sourceId": "year2",
+      "termLabel": "Fall 2021-2022",
+      "webViewLink": "https://drive.google.com/file/d/1nACmOtsNv1X9rjbtag9uDiJ0rRVdXt_m/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Moodle"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1bTKvenhP10_TcgRRZ4HdUCMfbxT5cft7",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:16:34.647Z",
+      "name": "CENG645-(2021)V8-Final.pdf",
+      "parentId": "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+        "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+        "1bTKvenhP10_TcgRRZ4HdUCMfbxT5cft7"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Final",
+        "Moodle",
+        "CENG645-(2021)V8-Final.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1159775,
+      "sourceId": "year2",
+      "termLabel": "Fall 2021-2022",
+      "webViewLink": "https://drive.google.com/file/d/1bTKvenhP10_TcgRRZ4HdUCMfbxT5cft7/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Moodle"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1uh2U5XG6rOTPmZIygILpba8g6XsSBeyU",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:12:44.394Z",
+      "name": "CENG645-(2021)V7-Final.pdf",
+      "parentId": "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+        "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+        "1uh2U5XG6rOTPmZIygILpba8g6XsSBeyU"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Final",
+        "Moodle",
+        "CENG645-(2021)V7-Final.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1384829,
+      "sourceId": "year2",
+      "termLabel": "Fall 2021-2022",
+      "webViewLink": "https://drive.google.com/file/d/1uh2U5XG6rOTPmZIygILpba8g6XsSBeyU/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Moodle"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1Ag9EmAp7iiiJ1GTVvFj_PbNHo8PyZuNQ",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:12:38.690Z",
+      "name": "CENG645-(2021)V6-Final.pdf",
+      "parentId": "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+        "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+        "1Ag9EmAp7iiiJ1GTVvFj_PbNHo8PyZuNQ"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Final",
+        "Moodle",
+        "CENG645-(2021)V6-Final.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1303017,
+      "sourceId": "year2",
+      "termLabel": "Fall 2021-2022",
+      "webViewLink": "https://drive.google.com/file/d/1Ag9EmAp7iiiJ1GTVvFj_PbNHo8PyZuNQ/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Moodle"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1TRiw0vtjB6JRFZv_dCQXcl_7UpSD60Dy",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:11:56.006Z",
+      "name": "CENG645-(2021)V5-Final.pdf",
+      "parentId": "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+        "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+        "1TRiw0vtjB6JRFZv_dCQXcl_7UpSD60Dy"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Final",
+        "Moodle",
+        "CENG645-(2021)V5-Final.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1158221,
+      "sourceId": "year2",
+      "termLabel": "Fall 2021-2022",
+      "webViewLink": "https://drive.google.com/file/d/1TRiw0vtjB6JRFZv_dCQXcl_7UpSD60Dy/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Moodle"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1LeUHIfQlfPU5qboAMkRB0wtqnskWUIXS",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:11:48.899Z",
+      "name": "CENG645-(2021)V4-Final.pdf",
+      "parentId": "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+        "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+        "1LeUHIfQlfPU5qboAMkRB0wtqnskWUIXS"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Final",
+        "Moodle",
+        "CENG645-(2021)V4-Final.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 990545,
+      "sourceId": "year2",
+      "termLabel": "Fall 2021-2022",
+      "webViewLink": "https://drive.google.com/file/d/1LeUHIfQlfPU5qboAMkRB0wtqnskWUIXS/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Moodle"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1G0gfCO3VMKnfy9rDL4L0ZeHYxLUkEmBv",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:11:10.859Z",
+      "name": "CENG645-(2021)V3-Final.pdf",
+      "parentId": "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+        "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+        "1G0gfCO3VMKnfy9rDL4L0ZeHYxLUkEmBv"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Final",
+        "Moodle",
+        "CENG645-(2021)V3-Final.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1796503,
+      "sourceId": "year2",
+      "termLabel": "Fall 2021-2022",
+      "webViewLink": "https://drive.google.com/file/d/1G0gfCO3VMKnfy9rDL4L0ZeHYxLUkEmBv/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Moodle"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1EBv4yYRHaDFnxugPTC3VsYHjw38CIDBv",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:08:40.043Z",
+      "name": "CENG645-MCQs-Final.pdf",
+      "parentId": "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+        "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+        "1EBv4yYRHaDFnxugPTC3VsYHjw38CIDBv"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Final",
+        "Moodle",
+        "CENG645-MCQs-Final.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 549638,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1EBv4yYRHaDFnxugPTC3VsYHjw38CIDBv/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Moodle"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "11wqiw-tU77kqidfjgULCn51MgYP2Ywbt",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:07:56.803Z",
+      "name": "CENG645-(2021)V2-Final.pdf",
+      "parentId": "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+        "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+        "11wqiw-tU77kqidfjgULCn51MgYP2Ywbt"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Final",
+        "Moodle",
+        "CENG645-(2021)V2-Final.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1181764,
+      "sourceId": "year2",
+      "termLabel": "Fall 2021-2022",
+      "webViewLink": "https://drive.google.com/file/d/11wqiw-tU77kqidfjgULCn51MgYP2Ywbt/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Moodle"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1LIbIr9mt_9q3-b_BuKjQxQLBLf25ij7U",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:07:51.668Z",
+      "name": "CENG645-(2021)V1-Final.pdf",
+      "parentId": "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+        "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+        "1LIbIr9mt_9q3-b_BuKjQxQLBLf25ij7U"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Final",
+        "Moodle",
+        "CENG645-(2021)V1-Final.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1497623,
+      "sourceId": "year2",
+      "termLabel": "Fall 2021-2022",
+      "webViewLink": "https://drive.google.com/file/d/1LIbIr9mt_9q3-b_BuKjQxQLBLf25ij7U/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Moodle"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1qQcnvLKEtDXI3S97P1nRZf682ULKnkws",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:07:20.394Z",
+      "name": "CENG645-(Fall2023-2024)Final.pdf",
+      "parentId": "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+        "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+        "1qQcnvLKEtDXI3S97P1nRZf682ULKnkws"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Final",
+        "Moodle",
+        "CENG645-(Fall2023-2024)Final.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 659762,
+      "sourceId": "year2",
+      "termLabel": "Fall 2023-2024",
+      "webViewLink": "https://drive.google.com/file/d/1qQcnvLKEtDXI3S97P1nRZf682ULKnkws/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Moodle"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1LtwmFiqpf0CyXei4uT_b3LYeOhjxkCbN",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-04T16:07:12.455Z",
+      "name": "CENG645-(Fall2025-2026)Final.pdf",
+      "parentId": "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1VJiEIHFty5SiCFMUprreH7rRzypd5Y9s",
+        "12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg",
+        "1LtwmFiqpf0CyXei4uT_b3LYeOhjxkCbN"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Final",
+        "Moodle",
+        "CENG645-(Fall2025-2026)Final.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1410367,
+      "sourceId": "year2",
+      "termLabel": "Fall 2025-2026",
+      "webViewLink": "https://drive.google.com/file/d/1LtwmFiqpf0CyXei4uT_b3LYeOhjxkCbN/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Paper Based"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1TsXAMM08N94rJ4mszzdkMtX0znlNHYzM",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-30T20:12:32.764Z",
+      "name": "[SOLUTION]CENG645-Midterm-2017.pdf",
+      "parentId": "1NOsLqnn6HLgw7Ch4jHuEAvpIZp3Hyf2M",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1juezbkv9NqxrLPykXxUntnIFWTBq6XbH",
+        "1NOsLqnn6HLgw7Ch4jHuEAvpIZp3Hyf2M",
+        "1TsXAMM08N94rJ4mszzdkMtX0znlNHYzM"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Midterm",
+        "Paper Based",
+        "[SOLUTION]CENG645-Midterm-2017.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1880933,
+      "sourceId": "year2",
+      "termLabel": "Fall 2017-2018",
+      "webViewLink": "https://drive.google.com/file/d/1TsXAMM08N94rJ4mszzdkMtX0znlNHYzM/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-30T20:25:30.324Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Paper Based"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1aLucUShWdH1mh8SX9KrZdDiooJ6tk6YI",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-30T20:12:20.758Z",
+      "name": "[SOLUTION]CENG645-Midterm-2018.pdf",
+      "parentId": "1NOsLqnn6HLgw7Ch4jHuEAvpIZp3Hyf2M",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1juezbkv9NqxrLPykXxUntnIFWTBq6XbH",
+        "1NOsLqnn6HLgw7Ch4jHuEAvpIZp3Hyf2M",
+        "1aLucUShWdH1mh8SX9KrZdDiooJ6tk6YI"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Midterm",
+        "Paper Based",
+        "[SOLUTION]CENG645-Midterm-2018.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1905029,
+      "sourceId": "year2",
+      "termLabel": "Fall 2018-2019",
+      "webViewLink": "https://drive.google.com/file/d/1aLucUShWdH1mh8SX9KrZdDiooJ6tk6YI/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-30T20:25:30.324Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
         "Midterm",
         "Moodle"
       ],
@@ -41876,6 +42323,174 @@
       "termLabel": "Fall 2025-2026",
       "webViewLink": "https://drive.google.com/file/d/1wWvKy3SgoHs2mD2caB4TU502j6f6xC8z/view?usp=drivesdk",
       "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Paper Based"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1344-Kgn8lGnz789xBaoprTCjMClg5Kjg",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-30T20:22:20.569Z",
+      "name": "[SOLUTION]CENG625-Final-2018.pdf",
+      "parentId": "1LO4w-5OOpxu5nOzLXtxdoPf2KmGCSQqT",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "12N64QrzcD3theM4mf-qWVg_mpJYWTcnD",
+        "1I8_oEWSDEE1tAuZFHwXjHG9qHJC-BDkp",
+        "1LO4w-5OOpxu5nOzLXtxdoPf2KmGCSQqT",
+        "1344-Kgn8lGnz789xBaoprTCjMClg5Kjg"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Exams",
+        "Final",
+        "Paper Based",
+        "[SOLUTION]CENG625-Final-2018.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1182171,
+      "sourceId": "year2",
+      "termLabel": "Fall 2018-2019",
+      "webViewLink": "https://drive.google.com/file/d/1344-Kgn8lGnz789xBaoprTCjMClg5Kjg/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-30T20:25:30.324Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Paper Based"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1F57U-DD2SXTYO_G0kGL7_huEnF5kIVQT",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-30T20:22:16.171Z",
+      "name": "[SOLUTION]CENG625-Final-2017.pdf",
+      "parentId": "1LO4w-5OOpxu5nOzLXtxdoPf2KmGCSQqT",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "12N64QrzcD3theM4mf-qWVg_mpJYWTcnD",
+        "1I8_oEWSDEE1tAuZFHwXjHG9qHJC-BDkp",
+        "1LO4w-5OOpxu5nOzLXtxdoPf2KmGCSQqT",
+        "1F57U-DD2SXTYO_G0kGL7_huEnF5kIVQT"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Exams",
+        "Final",
+        "Paper Based",
+        "[SOLUTION]CENG625-Final-2017.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 999594,
+      "sourceId": "year2",
+      "termLabel": "Fall 2017-2018",
+      "webViewLink": "https://drive.google.com/file/d/1F57U-DD2SXTYO_G0kGL7_huEnF5kIVQT/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-30T20:25:30.324Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Paper Based"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1Oh89kYpnJatVmyqYh4NL_-q4zz4-jSZ6",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-30T20:22:12.728Z",
+      "name": "[SOLUTION]CENG625-Final-2015.pdf",
+      "parentId": "1LO4w-5OOpxu5nOzLXtxdoPf2KmGCSQqT",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "12N64QrzcD3theM4mf-qWVg_mpJYWTcnD",
+        "1I8_oEWSDEE1tAuZFHwXjHG9qHJC-BDkp",
+        "1LO4w-5OOpxu5nOzLXtxdoPf2KmGCSQqT",
+        "1Oh89kYpnJatVmyqYh4NL_-q4zz4-jSZ6"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Exams",
+        "Final",
+        "Paper Based",
+        "[SOLUTION]CENG625-Final-2015.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 733422,
+      "sourceId": "year2",
+      "termLabel": "Fall 2015-2016",
+      "webViewLink": "https://drive.google.com/file/d/1Oh89kYpnJatVmyqYh4NL_-q4zz4-jSZ6/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-30T20:25:30.324Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Final",
+        "Paper Based"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1u-bBpDkwmC97VcVXHxM628UHllJ8tMw2",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-30T20:21:03.795Z",
+      "name": "CENG625-Final-2016.pdf",
+      "parentId": "1LO4w-5OOpxu5nOzLXtxdoPf2KmGCSQqT",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "12N64QrzcD3theM4mf-qWVg_mpJYWTcnD",
+        "1I8_oEWSDEE1tAuZFHwXjHG9qHJC-BDkp",
+        "1LO4w-5OOpxu5nOzLXtxdoPf2KmGCSQqT",
+        "1u-bBpDkwmC97VcVXHxM628UHllJ8tMw2"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Exams",
+        "Final",
+        "Paper Based",
+        "CENG625-Final-2016.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1064476,
+      "sourceId": "year2",
+      "termLabel": "Fall 2016-2017",
+      "webViewLink": "https://drive.google.com/file/d/1u-bBpDkwmC97VcVXHxM628UHllJ8tMw2/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-30T20:25:30.324Z"
     },
     {
       "categoryPath": [
@@ -42296,6 +42911,48 @@
       "termLabel": "Fall 2021-2022",
       "webViewLink": "https://drive.google.com/file/d/1mwVhQ09eXhj_SkWr2ZHog932nH5XFmrS/view?usp=drivesdk",
       "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Paper Based"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 5,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1NkBNK7a3ZP_h-VaBnGTqZTb15vEl0-Nc",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-09-30T20:17:49.287Z",
+      "name": "[SOLVED]CENG625-Midterm-2018.pdf",
+      "parentId": "1tVP9mEv5s0eKv3u-JS8NiPyOzVW_fg_a",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "12N64QrzcD3theM4mf-qWVg_mpJYWTcnD",
+        "1tQFCLtxD5rcnIkd0FB9xSDoZTud4SnUd",
+        "1tVP9mEv5s0eKv3u-JS8NiPyOzVW_fg_a",
+        "1NkBNK7a3ZP_h-VaBnGTqZTb15vEl0-Nc"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Exams",
+        "Midterm",
+        "Paper Based",
+        "[SOLVED]CENG625-Midterm-2018.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 3973841,
+      "sourceId": "year2",
+      "termLabel": "Fall 2018-2019",
+      "webViewLink": "https://drive.google.com/file/d/1NkBNK7a3ZP_h-VaBnGTqZTb15vEl0-Nc/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-30T20:25:30.324Z"
     },
     {
       "categoryPath": [
