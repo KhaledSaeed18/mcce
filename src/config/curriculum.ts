@@ -277,12 +277,25 @@ const YEAR_2_FALL: CurriculumYear["semesters"][number] = {
       code: "CENG645",
       corequisites: [],
       credits: 3,
-      description: null,
+      description:
+        "This course aims to cover the breadth of topics relevant to state-of-the-art mobile communication networks. The course deals with the fundamental cellular network concepts such as frequency reuse, duplexing, handoff, trunking, frequency management, channel assignment, and antenna design. Covered systems include: Global System for Mobile communications (GSM), Interim Standard 95 (IS-95), Universal Mobile Telecommunications System (UMTS), also known as Wideband Code Division Multiple Access (WCDMA), 3GPP Long-Term Evolution (LTE), and WiMAX. The course also addresses physical layer aspects, Medium Access Control (MAC) layer, networking considerations, radio resource allocation, sharing, control and management in cellular networks, uplink and downlink scheduling issues, as well as capacity evolution for the radio access network.",
       kind: "course",
       name: "Mobile Communication",
-      objectives: [],
+      objectives: [
+        "Describe the topics relevant to mobile communication networks.",
+        "Explain the multiple mobile communications standards.",
+        "Explain the multiple network layers as applied to mobile communications.",
+      ],
       prerequisites: ["EENG587"],
       requirementCategory: "major-elective",
+      topics: [
+        "Cellular concepts and frequency reuse",
+        "GSM and IS-95",
+        "UMTS/WCDMA",
+        "LTE and WiMAX",
+        "MAC and radio resource management",
+        "Uplink and downlink scheduling",
+      ],
     },
     {
       code: "CENG646",
