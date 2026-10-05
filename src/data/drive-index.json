@@ -1,32 +1,60 @@
 {
   "meta": {
     "baselineAt": "2026-08-17T06:41:16.505Z",
-    "generatedAt": "2026-10-05T13:19:03.856Z",
+    "generatedAt": "2026-10-05T18:26:28.380Z",
     "sources": [
       {
         "description": "LIU - MCCE | First Year, Both Semesters | materials, videos, exercises, and previous exams.",
-        "fileCount": 617,
+        "fileCount": 626,
         "folderCount": 199,
         "id": "year1",
-        "totalBytes": 14554444742
+        "totalBytes": 14554534527
       },
       {
         "description": "LIU - MCCE | Second Year, Fall Semester |materials, videos, exercises, and previous exams.",
-        "fileCount": 249,
+        "fileCount": 254,
         "folderCount": 70,
         "id": "year2",
-        "totalBytes": 14224468751
+        "totalBytes": 14224511665
       },
       {
         "description": "LIU - MCCE | Second Year, Spring Semester | materials, videos, exercises, and previous exams.",
-        "fileCount": 11,
+        "fileCount": 15,
         "folderCount": 7,
         "id": "year2-spring",
-        "totalBytes": 22895217
+        "totalBytes": 22923615
       }
     ]
   },
   "nodes": [
+    {
+      "categoryPath": [],
+      "courseCode": null,
+      "courseName": null,
+      "depth": 0,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1zGPfqMT-wfGFHBQ7DoN_av2HELe--lMSeASjlclYpuk",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:32:56.507Z",
+      "name": "README (start here)",
+      "parentId": "15A8bxA33GichTPcZkyXxaZnP_dRyryTq",
+      "pathIds": [
+        "1zGPfqMT-wfGFHBQ7DoN_av2HELe--lMSeASjlclYpuk"
+      ],
+      "pathNames": [
+        "README (start here)"
+      ],
+      "semester": null,
+      "sizeBytes": 9674,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1zGPfqMT-wfGFHBQ7DoN_av2HELe--lMSeASjlclYpuk/edit?usp=drivesdk",
+      "firstSeenAt": "2026-08-19T09:27:41.052Z"
+    },
     {
       "categoryPath": [],
       "courseCode": null,
@@ -87,29 +115,31 @@
       "categoryPath": [],
       "courseCode": null,
       "courseName": null,
-      "depth": 0,
+      "depth": 1,
       "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
-      "id": "1zGPfqMT-wfGFHBQ7DoN_av2HELe--lMSeASjlclYpuk",
+      "id": "1uny476YlsJr_1X0wOcw6EqAthx-tSzovEl8lB3rmKO8",
       "isShortcut": false,
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-08-19T09:24:11.643Z",
-      "name": "README (start here)",
-      "parentId": "15A8bxA33GichTPcZkyXxaZnP_dRyryTq",
+      "modifiedTime": "2026-10-05T17:33:10.834Z",
+      "name": "README (First Year, Spring Semester)",
+      "parentId": "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
       "pathIds": [
-        "1zGPfqMT-wfGFHBQ7DoN_av2HELe--lMSeASjlclYpuk"
+        "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
+        "1uny476YlsJr_1X0wOcw6EqAthx-tSzovEl8lB3rmKO8"
       ],
       "pathNames": [
-        "README (start here)"
+        "First Year | Spring Semester",
+        "README (First Year, Spring Semester)"
       ],
-      "semester": null,
-      "sizeBytes": 5172,
+      "semester": "First Year | Spring Semester",
+      "sizeBytes": 9213,
       "sourceId": "year1",
       "termLabel": null,
-      "webViewLink": "https://docs.google.com/document/d/1zGPfqMT-wfGFHBQ7DoN_av2HELe--lMSeASjlclYpuk/edit?usp=drivesdk",
-      "firstSeenAt": "2026-08-19T09:27:41.052Z"
+      "webViewLink": "https://docs.google.com/document/d/1uny476YlsJr_1X0wOcw6EqAthx-tSzovEl8lB3rmKO8/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
     },
     {
       "categoryPath": [],
@@ -266,60 +296,30 @@
       "courseCode": null,
       "courseName": null,
       "depth": 1,
-      "extension": "rtf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/text/rtf",
-      "id": "17xIHO7cfLRDpCBch-qenEdEAczj0HwFP",
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1fqEfjp7KcIpmhpWMH6VBppNzjYyBpXIhQMTDZSRpzuw",
       "isShortcut": false,
-      "kind": "text",
+      "kind": "doc",
       "materialType": "other",
-      "mimeType": "text/rtf",
-      "modifiedTime": "2026-08-19T09:26:04.393Z",
-      "name": "README.rtf",
-      "parentId": "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
-      "pathIds": [
-        "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
-        "17xIHO7cfLRDpCBch-qenEdEAczj0HwFP"
-      ],
-      "pathNames": [
-        "First Year | Spring Semester",
-        "README.rtf"
-      ],
-      "semester": "First Year | Spring Semester",
-      "sizeBytes": 1679,
-      "sourceId": "year1",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/17xIHO7cfLRDpCBch-qenEdEAczj0HwFP/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-17T06:41:16.505Z"
-    },
-    {
-      "categoryPath": [],
-      "courseCode": null,
-      "courseName": null,
-      "depth": 1,
-      "extension": "rtf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/text/rtf",
-      "id": "1JGxodw8eLoG7r7hUsn-vd6ln_9rjSQ0o",
-      "isShortcut": false,
-      "kind": "text",
-      "materialType": "other",
-      "mimeType": "text/rtf",
-      "modifiedTime": "2026-08-19T09:26:01.104Z",
-      "name": "README.rtf",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:33:07.729Z",
+      "name": "README (First Year, Fall Semester)",
       "parentId": "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
       "pathIds": [
         "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
-        "1JGxodw8eLoG7r7hUsn-vd6ln_9rjSQ0o"
+        "1fqEfjp7KcIpmhpWMH6VBppNzjYyBpXIhQMTDZSRpzuw"
       ],
       "pathNames": [
         "First Year | Fall Semester",
-        "README.rtf"
+        "README (First Year, Fall Semester)"
       ],
       "semester": "First Year | Fall Semester",
-      "sizeBytes": 1634,
+      "sizeBytes": 8218,
       "sourceId": "year1",
       "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1JGxodw8eLoG7r7hUsn-vd6ln_9rjSQ0o/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-17T06:41:16.505Z"
+      "webViewLink": "https://docs.google.com/document/d/1fqEfjp7KcIpmhpWMH6VBppNzjYyBpXIhQMTDZSRpzuw/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
     },
     {
       "categoryPath": [],
@@ -440,6 +440,38 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/drive/folders/1QuvHbZxbOYjz0-pWR0g8ZPFn4jhNNsIK",
       "firstSeenAt": "2026-08-17T06:41:16.505Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "EENG587",
+      "courseName": "Wireless Communication",
+      "depth": 2,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1guIfNpaGX-sPFdq408UAhcq78kNDkQITSewHYT7fy3w",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:33:36.278Z",
+      "name": "README (EENG587 Wireless Communication)",
+      "parentId": "12terLwVgzvDHZAifTdF8uPqd1IL1vZHA",
+      "pathIds": [
+        "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
+        "12terLwVgzvDHZAifTdF8uPqd1IL1vZHA",
+        "1guIfNpaGX-sPFdq408UAhcq78kNDkQITSewHYT7fy3w"
+      ],
+      "pathNames": [
+        "First Year | Spring Semester",
+        "EENG587 - Wireless Communication",
+        "README (EENG587 Wireless Communication)"
+      ],
+      "semester": "First Year | Spring Semester",
+      "sizeBytes": 7788,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1guIfNpaGX-sPFdq408UAhcq78kNDkQITSewHYT7fy3w/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
     },
     {
       "categoryPath": [],
@@ -575,6 +607,38 @@
       "courseName": "Multimedia Networks",
       "depth": 2,
       "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1oA2EsdQ3aHT_IJRiDtXEOroo2IYyDmCr27gwo67OkmU",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:33:39.291Z",
+      "name": "README (CENG675 Multimedia Networks)",
+      "parentId": "1mjflikwZCsULyAoGBmmu8J8x5_26nAhW",
+      "pathIds": [
+        "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
+        "1mjflikwZCsULyAoGBmmu8J8x5_26nAhW",
+        "1oA2EsdQ3aHT_IJRiDtXEOroo2IYyDmCr27gwo67OkmU"
+      ],
+      "pathNames": [
+        "First Year | Spring Semester",
+        "CENG675 - Multimedia Networks",
+        "README (CENG675 Multimedia Networks)"
+      ],
+      "semester": "First Year | Spring Semester",
+      "sizeBytes": 7590,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1oA2EsdQ3aHT_IJRiDtXEOroo2IYyDmCr27gwo67OkmU/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG675",
+      "courseName": "Multimedia Networks",
+      "depth": 2,
+      "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
       "id": "1vMb2Ljwzm-HKhR0nxdApBtJsdfENNPdz",
       "isShortcut": false,
@@ -696,6 +760,38 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/drive/folders/1tmFl5jMNLfq_nlRvZ_hFdTIn8fs1yGMa",
       "firstSeenAt": "2026-08-17T06:41:16.505Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG566L",
+      "courseName": "Machine Learning Laboratory",
+      "depth": 2,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1VO8kGs9TcoqC0ukva3YNiHPqabpp8LbqyowqnrbIGu0",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "lab",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:33:46.151Z",
+      "name": "README (CENG566L Machine Learning Laboratory)",
+      "parentId": "1f-pH8oPVzXN_Yz0TesY1BRvwHsjoe3H5",
+      "pathIds": [
+        "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
+        "1f-pH8oPVzXN_Yz0TesY1BRvwHsjoe3H5",
+        "1VO8kGs9TcoqC0ukva3YNiHPqabpp8LbqyowqnrbIGu0"
+      ],
+      "pathNames": [
+        "First Year | Spring Semester",
+        "CENG566L - Machine Learning Laboratory",
+        "README (CENG566L Machine Learning Laboratory)"
+      ],
+      "semester": "First Year | Spring Semester",
+      "sizeBytes": 7043,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1VO8kGs9TcoqC0ukva3YNiHPqabpp8LbqyowqnrbIGu0/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
     },
     {
       "categoryPath": [],
@@ -831,6 +927,38 @@
       "courseName": "Machine Learning",
       "depth": 2,
       "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1p8g4Uw5Y5pwc2NEE5JAcOcQHh-KXGlVtpqj--EFRBXY",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:33:41.368Z",
+      "name": "README (CENG566 Machine Learning)",
+      "parentId": "1lsqY8_PBsBI_Las6QDwRc_w7DrgePgW5",
+      "pathIds": [
+        "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
+        "1lsqY8_PBsBI_Las6QDwRc_w7DrgePgW5",
+        "1p8g4Uw5Y5pwc2NEE5JAcOcQHh-KXGlVtpqj--EFRBXY"
+      ],
+      "pathNames": [
+        "First Year | Spring Semester",
+        "CENG566 - Machine Learning",
+        "README (CENG566 Machine Learning)"
+      ],
+      "semester": "First Year | Spring Semester",
+      "sizeBytes": 8022,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1p8g4Uw5Y5pwc2NEE5JAcOcQHh-KXGlVtpqj--EFRBXY/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG566",
+      "courseName": "Machine Learning",
+      "depth": 2,
+      "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
       "id": "13z5UemDYZROx0tLwe74EyIfeexA07UeS",
       "isShortcut": false,
@@ -959,6 +1087,38 @@
       "courseName": "Advanced Network Architectures",
       "depth": 2,
       "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1i1qqMcKLYyOIHcx5fE09IbP6rAn-MM0ljHDYkAckdm8",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:33:32.887Z",
+      "name": "README (CENG557 Advanced Network Architectures)",
+      "parentId": "1NGKWicSFltorrxLrhb4UEj6OinZ1rzeV",
+      "pathIds": [
+        "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
+        "1NGKWicSFltorrxLrhb4UEj6OinZ1rzeV",
+        "1i1qqMcKLYyOIHcx5fE09IbP6rAn-MM0ljHDYkAckdm8"
+      ],
+      "pathNames": [
+        "First Year | Spring Semester",
+        "CENG557 - Advanced Network Architectures",
+        "README (CENG557 Advanced Network Architectures)"
+      ],
+      "semester": "First Year | Spring Semester",
+      "sizeBytes": 7778,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1i1qqMcKLYyOIHcx5fE09IbP6rAn-MM0ljHDYkAckdm8/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG557",
+      "courseName": "Advanced Network Architectures",
+      "depth": 2,
+      "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
       "id": "1ve3tkyJUPEewEpw1q8DaJLqVblvLmw23",
       "isShortcut": false,
@@ -1080,6 +1240,38 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/drive/folders/1tcFkqQlm8Mg1AP8bwIKn7sdWQBuaCQlT",
       "firstSeenAt": "2026-08-17T06:41:16.505Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG507",
+      "courseName": "Embedded Systems",
+      "depth": 2,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1RMbJ7vm5IP9ljy5Gm939MjbRTl35OLgT8RTJ9UmTrS0",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:33:19.927Z",
+      "name": "README (CENG507 Embedded Systems)",
+      "parentId": "1432OoeuqOyaf-cNuDrYiAr6vcuy7k3Ee",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1432OoeuqOyaf-cNuDrYiAr6vcuy7k3Ee",
+        "1RMbJ7vm5IP9ljy5Gm939MjbRTl35OLgT8RTJ9UmTrS0"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "CENG507 - Embedded Systems",
+        "README (CENG507 Embedded Systems)"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": 7623,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1RMbJ7vm5IP9ljy5Gm939MjbRTl35OLgT8RTJ9UmTrS0/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
     },
     {
       "categoryPath": [],
@@ -1240,6 +1432,38 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/drive/folders/1IZZ-HqPSNpcu5jyr5ngKppIX5ippqvuj",
       "firstSeenAt": "2026-08-17T06:41:16.505Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "EENG527",
+      "courseName": "Digital Signal Processing",
+      "depth": 2,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1xNz6rCXx_3i5_kaY4XzDMNERe7rM6QO1VyIEOUAOTqk",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:33:23.334Z",
+      "name": "README (EENG527 Digital Signal Processing)",
+      "parentId": "1DxWIAF_1v9ghF2VaXfsbDOOIyo5mg1yy",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1DxWIAF_1v9ghF2VaXfsbDOOIyo5mg1yy",
+        "1xNz6rCXx_3i5_kaY4XzDMNERe7rM6QO1VyIEOUAOTqk"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "EENG527 - Digital Signal Processing",
+        "README (EENG527 Digital Signal Processing)"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": 7997,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1xNz6rCXx_3i5_kaY4XzDMNERe7rM6QO1VyIEOUAOTqk/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
     },
     {
       "categoryPath": [],
@@ -1439,6 +1663,38 @@
       "courseName": "Digital Communications",
       "depth": 2,
       "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "17SLTNNVMqEnBv7-PSTgY4lfN7NywuJZzGTicla-2cRk",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:33:26.736Z",
+      "name": "README (EENG537 Digital Communications)",
+      "parentId": "1uFrj9_vFykJV-skuQnrfC70DZamodO3E",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1uFrj9_vFykJV-skuQnrfC70DZamodO3E",
+        "17SLTNNVMqEnBv7-PSTgY4lfN7NywuJZzGTicla-2cRk"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "EENG537 - Digital Communications",
+        "README (EENG537 Digital Communications)"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": 8037,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/17SLTNNVMqEnBv7-PSTgY4lfN7NywuJZzGTicla-2cRk/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "EENG537",
+      "courseName": "Digital Communications",
+      "depth": 2,
+      "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
       "id": "1xb3ChlBvVloL2jysMxf5fLtL-TSSoaxH",
       "isShortcut": false,
@@ -1624,6 +1880,38 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/drive/folders/1KGJ6R6ZDYjnY9dKaI-9Gr72yNZ1omS97",
       "firstSeenAt": "2026-08-17T06:41:16.505Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "ENGG515",
+      "courseName": "Advanced Engineering Mathematics",
+      "depth": 2,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1f3Fdr2e2EUlQJ2th_yHynLaBzVsQOlks08hiDkARvC4",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:33:29.626Z",
+      "name": "README (ENGG515 Advanced Engineering Mathematics)",
+      "parentId": "1QuvHbZxbOYjz0-pWR0g8ZPFn4jhNNsIK",
+      "pathIds": [
+        "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
+        "1QuvHbZxbOYjz0-pWR0g8ZPFn4jhNNsIK",
+        "1f3Fdr2e2EUlQJ2th_yHynLaBzVsQOlks08hiDkARvC4"
+      ],
+      "pathNames": [
+        "First Year | Fall Semester",
+        "ENGG515 - Advanced Engineering Mathematics",
+        "README (ENGG515 Advanced Engineering Mathematics)"
+      ],
+      "semester": "First Year | Fall Semester",
+      "sizeBytes": 7510,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1f3Fdr2e2EUlQJ2th_yHynLaBzVsQOlks08hiDkARvC4/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
     },
     {
       "categoryPath": [],
@@ -4817,6 +5105,42 @@
       "courseName": "Advanced Network Architectures",
       "depth": 3,
       "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1wJ08zFID9x6vPG7IpY0RA9ovJkWRtwwab95aQHM6_lU",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "lecture",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:34:09.030Z",
+      "name": "CENG557 Lecture Videos",
+      "parentId": "1ve3tkyJUPEewEpw1q8DaJLqVblvLmw23",
+      "pathIds": [
+        "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
+        "1NGKWicSFltorrxLrhb4UEj6OinZ1rzeV",
+        "1ve3tkyJUPEewEpw1q8DaJLqVblvLmw23",
+        "1wJ08zFID9x6vPG7IpY0RA9ovJkWRtwwab95aQHM6_lU"
+      ],
+      "pathNames": [
+        "First Year | Spring Semester",
+        "CENG557 - Advanced Network Architectures",
+        "Lectures",
+        "CENG557 Lecture Videos"
+      ],
+      "semester": "First Year | Spring Semester",
+      "sizeBytes": 3033,
+      "sourceId": "year1",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1wJ08zFID9x6vPG7IpY0RA9ovJkWRtwwab95aQHM6_lU/edit?usp=drivesdk",
+      "firstSeenAt": "2026-08-17T06:41:16.505Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures"
+      ],
+      "courseCode": "CENG557",
+      "courseName": "Advanced Network Architectures",
+      "depth": 3,
+      "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
       "id": "1wslO1ZJ51NN-IFvSwxcJpIpb2cccvIKz",
       "isShortcut": false,
@@ -5059,42 +5383,6 @@
       "sourceId": "year1",
       "termLabel": null,
       "webViewLink": "https://drive.google.com/drive/folders/1hsDVi0ctshJkbRac5-bppIPzbEwJUicU",
-      "firstSeenAt": "2026-08-17T06:41:16.505Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures"
-      ],
-      "courseCode": "CENG557",
-      "courseName": "Advanced Network Architectures",
-      "depth": 3,
-      "extension": "rtf",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
-      "id": "1wJ08zFID9x6vPG7IpY0RA9ovJkWRtwwab95aQHM6_lU",
-      "isShortcut": false,
-      "kind": "doc",
-      "materialType": "lecture",
-      "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-06-13T20:48:59.626Z",
-      "name": "Videos.rtf",
-      "parentId": "1ve3tkyJUPEewEpw1q8DaJLqVblvLmw23",
-      "pathIds": [
-        "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
-        "1NGKWicSFltorrxLrhb4UEj6OinZ1rzeV",
-        "1ve3tkyJUPEewEpw1q8DaJLqVblvLmw23",
-        "1wJ08zFID9x6vPG7IpY0RA9ovJkWRtwwab95aQHM6_lU"
-      ],
-      "pathNames": [
-        "First Year | Spring Semester",
-        "CENG557 - Advanced Network Architectures",
-        "Lectures",
-        "Videos.rtf"
-      ],
-      "semester": "First Year | Spring Semester",
-      "sizeBytes": 1256,
-      "sourceId": "year1",
-      "termLabel": null,
-      "webViewLink": "https://docs.google.com/document/d/1wJ08zFID9x6vPG7IpY0RA9ovJkWRtwwab95aQHM6_lU/edit?usp=drivesdk",
       "firstSeenAt": "2026-08-17T06:41:16.505Z"
     },
     {
@@ -18488,15 +18776,15 @@
       "courseCode": "CENG557",
       "courseName": "Advanced Network Architectures",
       "depth": 4,
-      "extension": "rtf",
+      "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
       "id": "1o68MjV0CgrBK7zARvWNdmkgUFDcJqhZlFz-eii0cWDg",
       "isShortcut": false,
       "kind": "doc",
       "materialType": "lecture",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-06-13T20:50:27.156Z",
-      "name": "Videos.rtf",
+      "modifiedTime": "2026-10-05T17:34:12.653Z",
+      "name": "Lecture 01 Videos",
       "parentId": "1wslO1ZJ51NN-IFvSwxcJpIpb2cccvIKz",
       "pathIds": [
         "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
@@ -18510,7 +18798,7 @@
         "CENG557 - Advanced Network Architectures",
         "Lectures",
         "Lecture 01",
-        "Videos.rtf"
+        "Lecture 01 Videos"
       ],
       "semester": "First Year | Spring Semester",
       "sizeBytes": 1291,
@@ -18566,15 +18854,15 @@
       "courseCode": "CENG557",
       "courseName": "Advanced Network Architectures",
       "depth": 4,
-      "extension": "rtf",
+      "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
       "id": "1WS5RBeeJ8Vkv0hisceZbQvTSTUAnp9eRAHOO-NgXfUY",
       "isShortcut": false,
       "kind": "doc",
       "materialType": "lecture",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-06-13T20:50:46.243Z",
-      "name": "Videos.rtf",
+      "modifiedTime": "2026-10-05T17:34:16.480Z",
+      "name": "Lecture 02 Videos",
       "parentId": "1jChCU0y-qIqNPdRJlauI8ziPWNdJhzJN",
       "pathIds": [
         "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
@@ -18588,7 +18876,7 @@
         "CENG557 - Advanced Network Architectures",
         "Lectures",
         "Lecture 02",
-        "Videos.rtf"
+        "Lecture 02 Videos"
       ],
       "semester": "First Year | Spring Semester",
       "sizeBytes": 1291,
@@ -18644,15 +18932,15 @@
       "courseCode": "CENG557",
       "courseName": "Advanced Network Architectures",
       "depth": 4,
-      "extension": "rtf",
+      "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
       "id": "1p2OHhoA43nDfABhmeFxm7bgiujXm4dr-SLsSehEk39o",
       "isShortcut": false,
       "kind": "doc",
       "materialType": "lecture",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-06-13T20:52:30.036Z",
-      "name": "Videos.rtf",
+      "modifiedTime": "2026-10-05T17:34:20.877Z",
+      "name": "Lecture 03 Videos",
       "parentId": "1DXJXVYwImeiP8O-ineNkWcOPvzXQTzJQ",
       "pathIds": [
         "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
@@ -18666,7 +18954,7 @@
         "CENG557 - Advanced Network Architectures",
         "Lectures",
         "Lecture 03",
-        "Videos.rtf"
+        "Lecture 03 Videos"
       ],
       "semester": "First Year | Spring Semester",
       "sizeBytes": 1291,
@@ -18722,15 +19010,15 @@
       "courseCode": "CENG557",
       "courseName": "Advanced Network Architectures",
       "depth": 4,
-      "extension": "rtf",
+      "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
       "id": "1n-QEu_QkBwWEC4ftKXYdN4o-pxyEZY5O4fzcFy2Ctc8",
       "isShortcut": false,
       "kind": "doc",
       "materialType": "lecture",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-06-13T20:52:17.925Z",
-      "name": "Videos.rtf",
+      "modifiedTime": "2026-10-05T17:34:25.757Z",
+      "name": "Lecture 04 Videos",
       "parentId": "1nbb69MIh91SdOX0sV5GeeljPzNK_JsOJ",
       "pathIds": [
         "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
@@ -18744,7 +19032,7 @@
         "CENG557 - Advanced Network Architectures",
         "Lectures",
         "Lecture 04",
-        "Videos.rtf"
+        "Lecture 04 Videos"
       ],
       "semester": "First Year | Spring Semester",
       "sizeBytes": 1291,
@@ -18800,15 +19088,15 @@
       "courseCode": "CENG557",
       "courseName": "Advanced Network Architectures",
       "depth": 4,
-      "extension": "rtf",
+      "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
       "id": "1sIHyQe2AcUVyEPbLnUkdj1DvaRkCv7cqSbbOgffgkGI",
       "isShortcut": false,
       "kind": "doc",
       "materialType": "lecture",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-06-13T20:52:49.033Z",
-      "name": "Videos.rtf",
+      "modifiedTime": "2026-10-05T17:34:28.703Z",
+      "name": "Lecture 05 Videos",
       "parentId": "16azUGzaf9QB2iyAcbzkQK0AoRkoWmrxw",
       "pathIds": [
         "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
@@ -18822,7 +19110,7 @@
         "CENG557 - Advanced Network Architectures",
         "Lectures",
         "Lecture 05",
-        "Videos.rtf"
+        "Lecture 05 Videos"
       ],
       "semester": "First Year | Spring Semester",
       "sizeBytes": 1291,
@@ -31077,6 +31365,34 @@
       "courseName": null,
       "depth": 0,
       "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1rpInCi6UNAv0ZUoTEdptqtWXazww9hqdMHO5H7SlZUk",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:32:59.651Z",
+      "name": "README (start here)",
+      "parentId": "1O5i5a7CgmPEwQ7G6MFyM75zIfmtDi5pt",
+      "pathIds": [
+        "1rpInCi6UNAv0ZUoTEdptqtWXazww9hqdMHO5H7SlZUk"
+      ],
+      "pathNames": [
+        "README (start here)"
+      ],
+      "semester": null,
+      "sizeBytes": 8773,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1rpInCi6UNAv0ZUoTEdptqtWXazww9hqdMHO5H7SlZUk/edit?usp=drivesdk",
+      "firstSeenAt": "2026-08-19T09:40:37.876Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": null,
+      "courseName": null,
+      "depth": 0,
+      "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
       "id": "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
       "isShortcut": false,
@@ -31103,29 +31419,31 @@
       "categoryPath": [],
       "courseCode": null,
       "courseName": null,
-      "depth": 0,
+      "depth": 1,
       "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
-      "id": "1rpInCi6UNAv0ZUoTEdptqtWXazww9hqdMHO5H7SlZUk",
+      "id": "17WS3IbsPV1WMl3TFcUAEYqPaeahCDWNTLutLD4IhpcU",
       "isShortcut": false,
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-09-04T16:02:54.057Z",
-      "name": "README (start here)",
-      "parentId": "1O5i5a7CgmPEwQ7G6MFyM75zIfmtDi5pt",
+      "modifiedTime": "2026-10-05T17:33:13.793Z",
+      "name": "README (Second Year, Fall Semester)",
+      "parentId": "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
       "pathIds": [
-        "1rpInCi6UNAv0ZUoTEdptqtWXazww9hqdMHO5H7SlZUk"
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "17WS3IbsPV1WMl3TFcUAEYqPaeahCDWNTLutLD4IhpcU"
       ],
       "pathNames": [
-        "README (start here)"
+        "Second Year | Fall Semester",
+        "README (Second Year, Fall Semester)"
       ],
-      "semester": null,
-      "sizeBytes": 4983,
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 9007,
       "sourceId": "year2",
       "termLabel": null,
-      "webViewLink": "https://docs.google.com/document/d/1rpInCi6UNAv0ZUoTEdptqtWXazww9hqdMHO5H7SlZUk/edit?usp=drivesdk",
-      "firstSeenAt": "2026-08-19T09:40:37.876Z"
+      "webViewLink": "https://docs.google.com/document/d/17WS3IbsPV1WMl3TFcUAEYqPaeahCDWNTLutLD4IhpcU/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
     },
     {
       "categoryPath": [],
@@ -31253,6 +31571,38 @@
       "courseName": "Engineering Project Management and Control",
       "depth": 2,
       "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1MzEpFQgakU1SAU7T7SXKAPukGSzmJmzfZwx-tCw0yVo",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "assignment",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:33:51.719Z",
+      "name": "README (ENGG550 Engineering Project Management and Control)",
+      "parentId": "1wFrTbuaGZSIwNMrTkRw-Sb0au1K89GJR",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1wFrTbuaGZSIwNMrTkRw-Sb0au1K89GJR",
+        "1MzEpFQgakU1SAU7T7SXKAPukGSzmJmzfZwx-tCw0yVo"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "ENGG550 - Engineering Project Management and Control",
+        "README (ENGG550 Engineering Project Management and Control)"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 6885,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1MzEpFQgakU1SAU7T7SXKAPukGSzmJmzfZwx-tCw0yVo/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "ENGG550",
+      "courseName": "Engineering Project Management and Control",
+      "depth": 2,
+      "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
       "id": "1oOSS9u9ThHixtJarplsfxCrIfhSYyC--",
       "isShortcut": false,
@@ -31342,6 +31692,38 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/drive/folders/1iLdE8ja8ZxR6yBSCZtuUFBssyQkm4HE0",
       "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 2,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1uqYQRr_xeWjR1NqpgltZ7sQwddPV2qK3Lvz40e7nc4Q",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:34:00.646Z",
+      "name": "README (CENG646 Data Mining)",
+      "parentId": "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "1uqYQRr_xeWjR1NqpgltZ7sQwddPV2qK3Lvz40e7nc4Q"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "README (CENG646 Data Mining)"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 7492,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1uqYQRr_xeWjR1NqpgltZ7sQwddPV2qK3Lvz40e7nc4Q/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
     },
     {
       "categoryPath": [],
@@ -31477,6 +31859,38 @@
       "courseName": "Mobile Communication",
       "depth": 2,
       "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1e2bFansjoKncT83JF5usXzj6CIKT1d3YsqK7nKUt77I",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:33:57.630Z",
+      "name": "README (CENG645 Mobile Communication)",
+      "parentId": "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1e2bFansjoKncT83JF5usXzj6CIKT1d3YsqK7nKUt77I"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "README (CENG645 Mobile Communication)"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 7764,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1e2bFansjoKncT83JF5usXzj6CIKT1d3YsqK7nKUt77I/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 2,
+      "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
       "id": "1Z_Ts6pIX8dqKNGkazoC3vq-KpH6HVDOU",
       "isShortcut": false,
@@ -31566,6 +31980,38 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/drive/folders/1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
       "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 2,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1TDNyvjH3GS3IVlAzJ-pQzkf8Z18DyjNrpFbPwrs2vvA",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:33:54.942Z",
+      "name": "README (CENG625 Cryptography & Advanced Computer Security)",
+      "parentId": "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1TDNyvjH3GS3IVlAzJ-pQzkf8Z18DyjNrpFbPwrs2vvA"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "README (CENG625 Cryptography & Advanced Computer Security)"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 7976,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1TDNyvjH3GS3IVlAzJ-pQzkf8Z18DyjNrpFbPwrs2vvA/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
     },
     {
       "categoryPath": [],
@@ -43470,7 +43916,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-09-04T16:04:41.385Z",
+      "modifiedTime": "2026-10-05T17:33:04.060Z",
       "name": "README (start here)",
       "parentId": "1Ed1qu98go160SHcte4FstkPVhxX9pRK1",
       "pathIds": [
@@ -43480,7 +43926,7 @@
         "README (start here)"
       ],
       "semester": null,
-      "sizeBytes": 4965,
+      "sizeBytes": 8676,
       "sourceId": "year2-spring",
       "termLabel": null,
       "webViewLink": "https://docs.google.com/document/d/1PslUrJTrurQNCa0pDQ4CwGbRFaemjXZ7WICNhIuZB8M/edit?usp=drivesdk",
@@ -43513,6 +43959,36 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/drive/folders/1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
       "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": null,
+      "courseName": null,
+      "depth": 1,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1ScpqX93zNXbQe3hgkx6a7YGl_jMcch4eYgsM09EF2kI",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:33:17.370Z",
+      "name": "README (Second Year, Spring Semester)",
+      "parentId": "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1ScpqX93zNXbQe3hgkx6a7YGl_jMcch4eYgsM09EF2kI"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "README (Second Year, Spring Semester)"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": 8056,
+      "sourceId": "year2-spring",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1ScpqX93zNXbQe3hgkx6a7YGl_jMcch4eYgsM09EF2kI/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
     },
     {
       "categoryPath": [],
@@ -43610,6 +44086,38 @@
       "courseName": "Information Security",
       "depth": 2,
       "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1Ek9pjKzGyXTP2gofDnQ4ARQoLSftONJs67t-c4GzV6Q",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:34:02.845Z",
+      "name": "README (CENG685 Information Security)",
+      "parentId": "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
+        "1Ek9pjKzGyXTP2gofDnQ4ARQoLSftONJs67t-c4GzV6Q"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG685 - Information Security",
+        "README (CENG685 Information Security)"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": 6213,
+      "sourceId": "year2-spring",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1Ek9pjKzGyXTP2gofDnQ4ARQoLSftONJs67t-c4GzV6Q/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG685",
+      "courseName": "Information Security",
+      "depth": 2,
+      "extension": null,
       "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
       "id": "1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx",
       "isShortcut": false,
@@ -43635,6 +44143,70 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/drive/folders/1yhykkyTUe-uDvSkGAtcHvH5XTzwrQ0wx",
       "firstSeenAt": "2026-09-04T16:57:00.080Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG678",
+      "courseName": "Image Processing and Computer Vision",
+      "depth": 2,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1N25CsuGFBll4zCkviVFunY-7weFVCYhOYdYqbd6A-0U",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:34:05.140Z",
+      "name": "README (CENG678 Image Processing and Computer Vision)",
+      "parentId": "1kjFRbLFfbrkXUURcAtXOBS8sbeqwhkol",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1kjFRbLFfbrkXUURcAtXOBS8sbeqwhkol",
+        "1N25CsuGFBll4zCkviVFunY-7weFVCYhOYdYqbd6A-0U"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG678 - Image Processing and Computer Vision",
+        "README (CENG678 Image Processing and Computer Vision)"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": 5239,
+      "sourceId": "year2-spring",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1N25CsuGFBll4zCkviVFunY-7weFVCYhOYdYqbd6A-0U/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG679",
+      "courseName": "Satellite and Space Communications",
+      "depth": 2,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1Wg2iMS6K7pnXUhgQjDKQv1t2HVslHx5yxvojpS2XzFM",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-05T17:34:07.228Z",
+      "name": "README (CENG679 Satellite and Space Communications)",
+      "parentId": "1xsJs5zkz9lS-5Trf1qaAPiOMbN-WcNIk",
+      "pathIds": [
+        "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
+        "1xsJs5zkz9lS-5Trf1qaAPiOMbN-WcNIk",
+        "1Wg2iMS6K7pnXUhgQjDKQv1t2HVslHx5yxvojpS2XzFM"
+      ],
+      "pathNames": [
+        "Second Year | Spring Semester",
+        "CENG679 - Satellite and Space Communications",
+        "README (CENG679 Satellite and Space Communications)"
+      ],
+      "semester": "Second Year | Spring Semester",
+      "sizeBytes": 5179,
+      "sourceId": "year2-spring",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1Wg2iMS6K7pnXUhgQjDKQv1t2HVslHx5yxvojpS2XzFM/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-05T18:26:28.380Z"
     },
     {
       "categoryPath": [
