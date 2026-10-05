@@ -283,22 +283,31 @@ refactor/extract-order-hooks
 
 ## CI
 
-Every push and pull request against `main` runs the following jobs (`.github/workflows/ci.yml`):
+One workflow, `.github/workflows/pipeline.yml`, takes every change from pull request to
+production. These jobs run in parallel on every push and pull request against `main`:
 
 - **Lint**: `pnpm check` (Biome via Ultracite)
 - **Typecheck**: `pnpm typecheck`
 - **Test**: `pnpm test`
 - **Knip**: `pnpm knip` (unused files, exports, and dependencies)
 - **Build**: `pnpm build`
+- **Workflows**: actionlint and shellcheck over the workflow files
 
-All jobs must pass before a pull request can merge. On merge to `main`, a separate workflow
-deploys the production bundle to Cloudflare Workers.
+All jobs must pass before a pull request can merge. A change that only touches Markdown or repo
+templates skips them.
 
-A scheduled workflow (`sync-drive.yml`) re-crawls Google Drive weekly and commits the regenerated
+On a push to `main`, the Build job builds with the production secrets and keeps the output as an
+artifact. Once every job has passed, the deploy job uploads that same build to Cloudflare Workers
+without installing or rebuilding, then checks that the live site answers and serves the new
+build. A push that changes nothing the Worker serves (tests, scripts, other workflows) is checked
+but not deployed. "Run workflow" on `main` deploys unconditionally.
+
+A scheduled workflow (`sync-drive.yml`) re-crawls Google Drive weekly, commits the regenerated
 `src/data/drive-index.json`, `public/sitemap.xml`, and `public/feed.xml`. Each carries the run's
 own timestamp, which the site shows as the last sync, so the commit lands every week whether or
-not new material appeared. You do not need to run this yourself unless you are working on the
-sync script.
+not new material appeared. It then runs the pipeline on that commit, since a commit pushed by a
+workflow does not start other workflows by itself. You do not need to run this yourself unless you
+are working on the sync script.
 
 ## Reporting bugs and requesting features
 
