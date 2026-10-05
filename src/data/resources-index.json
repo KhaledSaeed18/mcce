@@ -72,7 +72,7 @@
       "prior-theses": 7,
       "integrity": 10
     },
-    "generatedAt": "2026-09-28T20:01:05.141Z",
+    "generatedAt": "2026-10-05T15:31:04.371Z",
     "repoCount": 285,
     "toolCount": 401
   },
@@ -7750,7 +7750,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "unchecked",
+      "linkStatus": "ok",
       "repoId": "ourresearch-openalex-api"
     },
     {
@@ -10101,7 +10101,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "unchecked"
+      "linkStatus": "redirect"
     },
     {
       "access": "free",
@@ -13376,7 +13376,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "unchecked"
+      "linkStatus": "ok"
     },
     {
       "access": "free",
@@ -13476,7 +13476,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "unchecked",
+      "linkStatus": "ok",
       "repoId": "openocd-org-openocd"
     },
     {
@@ -13579,7 +13579,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "ok",
+      "linkStatus": "redirect",
       "repoId": "google-or-tools"
     },
     {
@@ -15686,7 +15686,7 @@
         "kind": "brand",
         "light": "/resources/icons/tensorboard.svg"
       },
-      "linkStatus": "ok"
+      "linkStatus": "redirect"
     },
     {
       "access": "free",
