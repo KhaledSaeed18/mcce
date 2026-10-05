@@ -1,0 +1,306 @@
+name: Pipeline
+
+# One workflow from pull request to production.
+#
+# Pull requests run the quality gates in parallel and build the Worker, without
+# deploying. A push to main runs the same gates, builds once with the production
+# secrets, and deploys that exact build to Cloudflare Workers when every gate
+# has passed and the push changed something that ships. "Run workflow" on main
+# deploys unconditionally.
+#
+# The deploy job never installs the project or rebuilds. The Cloudflare Vite
+# plugin already bundled the Worker into dist/server (no_bundle: true in the
+# generated wrangler.json), so deploying is an upload of the build artifact.
+#
+# The weekly Drive sync calls this workflow with the commit it pushed, because
+# a push made with GITHUB_TOKEN does not start other workflows.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      ref:
+        description: Commit to check, build, and deploy.
+        required: true
+        type: string
+
+concurrency:
+  group: pipeline-${{ github.ref }}
+  # A newer pull request run supersedes an older one. A main run is never
+  # cancelled part way: its deploy job may already be changing production.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+env:
+  SITE_URL: https://mcce.khaledsaeed.tech
+  # inputs.ref is only set when the Drive sync calls this workflow.
+  CHECKOUT_REF: ${{ inputs.ref || github.sha }}
+
+jobs:
+  changes:
+    name: Detect changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      code: ${{ steps.detect.outputs.code }}
+      deploy: ${{ steps.detect.outputs.deploy }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.CHECKOUT_REF }}
+          fetch-depth: 0
+
+      # code: anything the gates can judge; Markdown and repo templates are not.
+      # runtime: anything that changes what the Worker serves; tests, scripts,
+      # and repo meta are not. The data files under src/data are runtime.
+      - name: Classify changed files
+        id: detect
+        shell: bash
+        env:
+          EVENT: ${{ github.event_name }}
+          IS_CALLED: ${{ inputs.ref && 'true' || 'false' }}
+          IS_MAIN: ${{ github.ref == 'refs/heads/main' }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+        run: |
+          CAN_DEPLOY=false
+          if [ "$IS_MAIN" = true ] && [ "$EVENT" != pull_request ]; then CAN_DEPLOY=true; fi
+
+          BASE="$PR_BASE"
+          [ "$EVENT" = push ] && BASE="$PUSH_BEFORE"
+          if [ "$IS_CALLED" = true ] || [ "$EVENT" = workflow_dispatch ] || [ -z "$BASE" ] \
+              || [[ "$BASE" =~ ^0+$ ]] || ! git cat-file -e "$BASE^{commit}" 2>/dev/null; then
+              { echo "code=true"; echo "deploy=$CAN_DEPLOY"; } >> "$GITHUB_OUTPUT"
+              echo "No usable base; treating every path as changed. deploy=$CAN_DEPLOY"
+              exit 0
+          fi
+
+          FILES="$(git diff --name-only "$BASE" HEAD)"
+          printf 'Changed files:\n%s\n' "$FILES"
+
+          CODE=false
+          if grep -qvE '\.md$|^LICENSE$|^\.github/(ISSUE_TEMPLATE/|pull_request_template\.md$|dependabot\.yml$)' <<< "$FILES"; then
+              CODE=true
+          fi
+          RUNTIME=false
+          if grep -vE '\.test\.tsx?$' <<< "$FILES" \
+              | grep -qE '^(src/|public/|package\.json$|pnpm-lock\.yaml$|pnpm-workspace\.yaml$|vite\.config\.ts$|wrangler\.jsonc$|tsconfig\.json$|\.github/actions/|\.github/workflows/pipeline\.yml$)'; then
+              RUNTIME=true
+          fi
+          DEPLOY=false
+          if [ "$CAN_DEPLOY" = true ] && [ "$RUNTIME" = true ]; then DEPLOY=true; fi
+          { echo "code=$CODE"; echo "deploy=$DEPLOY"; } >> "$GITHUB_OUTPUT"
+          echo "code=$CODE runtime=$RUNTIME deploy=$DEPLOY"
+
+  workflows:
+    name: Workflows
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.CHECKOUT_REF }}
+
+      # The image bundles shellcheck, so every run: block is checked too.
+      - name: Actionlint
+        run: docker run --rm -v "$PWD:/repo" -w /repo rhysd/actionlint:1.7.7 -color
+
+  lint:
+    name: Lint
+    needs: changes
+    if: ${{ needs.changes.outputs.code == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.CHECKOUT_REF }}
+      - uses: ./.github/actions/setup-project
+      - name: Run Biome checks
+        run: pnpm check
+
+  typecheck:
+    name: Typecheck
+    needs: changes
+    if: ${{ needs.changes.outputs.code == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.CHECKOUT_REF }}
+      - uses: ./.github/actions/setup-project
+      - name: Run TypeScript compiler
+        run: pnpm typecheck
+
+  test:
+    name: Test
+    needs: changes
+    if: ${{ needs.changes.outputs.code == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.CHECKOUT_REF }}
+      - uses: ./.github/actions/setup-project
+      - name: Run unit tests
+        run: pnpm test
+
+  knip:
+    name: Unused code and dependencies
+    needs: changes
+    if: ${{ needs.changes.outputs.code == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.CHECKOUT_REF }}
+      - uses: ./.github/actions/setup-project
+      - name: Run Knip
+        run: pnpm knip
+
+  build:
+    name: Build
+    needs: changes
+    if: ${{ needs.changes.outputs.code == 'true' || needs.changes.outputs.deploy == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      wrangler-version: ${{ steps.wrangler.outputs.version }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.CHECKOUT_REF }}
+      - uses: ./.github/actions/setup-project
+
+      # The VITE_ values are inlined into the client bundle, so only the build
+      # that is going to be deployed receives them. They end up public on the
+      # live site either way; pull request builds simply leave them empty.
+      - name: Build production bundle
+        env:
+          VITE_WEB3FORMS_ACCESS_KEY: ${{ needs.changes.outputs.deploy == 'true' && secrets.WEB3FORMS_ACCESS_KEY || '' }}
+          VITE_GA_MEASUREMENT_ID: ${{ needs.changes.outputs.deploy == 'true' && secrets.GA_MEASUREMENT_ID || '' }}
+        run: pnpm build
+
+      # Deploying with the same wrangler the lockfile pins keeps the upload
+      # identical to `pnpm deploy` on a workstation.
+      - name: Read the pinned wrangler version
+        id: wrangler
+        run: echo "version=$(node -p "require('wrangler/package.json').version")" >> "$GITHUB_OUTPUT"
+
+      # .wrangler/deploy/config.json is how wrangler finds dist/server/wrangler.json,
+      # and upload-artifact skips dot-directories unless told otherwise.
+      - name: Upload the Worker build
+        if: ${{ needs.changes.outputs.deploy == 'true' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: worker-build
+          path: |
+            dist
+            .wrangler/deploy/config.json
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 3
+
+  ci:
+    name: CI
+    if: ${{ always() }}
+    needs: [changes, workflows, lint, typecheck, test, knip, build]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check job results
+        env:
+          FAILED: ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}
+        run: |
+          if [ "$FAILED" = true ]; then
+              echo "One or more required checks failed."
+              exit 1
+          fi
+          echo "All required checks passed or were not needed."
+
+  deploy:
+    name: Deploy to Cloudflare Workers
+    needs: [changes, ci, build]
+    if: ${{ needs.changes.outputs.deploy == 'true' && needs.ci.result == 'success' && needs.build.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    defaults:
+      run:
+        shell: bash
+    steps:
+      # The generated wrangler.json records the absolute path of the checkout it
+      # was built in, which is the same on every runner for this repository.
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.CHECKOUT_REF }}
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Download the Worker build
+        uses: actions/download-artifact@v8
+        with:
+          name: worker-build
+
+      - name: Deploy to Cloudflare Workers
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          WRANGLER_VERSION: ${{ needs.build.outputs.wrangler-version }}
+        run: |
+          [ -f .wrangler/deploy/config.json ] || { echo "Build artifact is missing the wrangler redirect"; exit 1; }
+          npx --yes "wrangler@$WRANGLER_VERSION" deploy
+
+      # Every hashed asset the live home page references must come from this
+      # build, which proves the new version is the one serving.
+      - name: Probe the live site
+        run: |
+          for PATH_TO_CHECK in / /course/CENG507 /exams /plan-of-study /sitemap.xml; do
+              OK=false
+              for _ in $(seq 1 12); do
+                  if curl -fsS --max-time 10 -o /dev/null "$SITE_URL$PATH_TO_CHECK"; then OK=true; break; fi
+                  sleep 5
+              done
+              [ "$OK" = true ] || { echo "Not reachable: $SITE_URL$PATH_TO_CHECK"; exit 1; }
+              echo "ok: $PATH_TO_CHECK"
+          done
+
+          # A function so a missing asset fails the check and the loop retries,
+          # where an exit inside the while would end the whole step.
+          serves_this_build() {
+              local assets asset
+              assets="$(grep -oE '/assets/[A-Za-z0-9._-]+\.js' home.html | sort -u)"
+              [ -n "$assets" ] || return 1
+              while read -r asset; do
+                  [ -f "dist/client$asset" ] || return 1
+              done <<< "$assets"
+          }
+
+          SERVING=false
+          for _ in $(seq 1 12); do
+              if curl -fsS --max-time 10 -o home.html "$SITE_URL/" && serves_this_build; then
+                  SERVING=true
+                  break
+              fi
+              sleep 5
+          done
+          [ "$SERVING" = true ] || { echo "The live home page does not reference this build's assets"; exit 1; }
+          echo "Live site serves this build."
+          {
+              echo "### Deployed"
+              echo ""
+              echo "- Commit: \`$CHECKOUT_REF\`"
+              echo "- Site: $SITE_URL"
+          } >> "$GITHUB_STEP_SUMMARY"
