@@ -19,7 +19,7 @@ export function useContactForm() {
   const [values, setValues] = useState<ContactFormValues>(INITIAL_VALUES);
   const [errors, setErrors] = useState<ContactFormErrors>({});
   const [status, setStatus] = useState<ContactFormStatus>("idle");
-  const captchaRef = useRef<HCaptcha>(null);
+  const captchaRef = useRef<HCaptcha | null>(null);
 
   const setField = useCallback(
     <K extends keyof ContactFormValues>(
