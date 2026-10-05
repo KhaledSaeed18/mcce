@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       committed: ${{ steps.commit_push.outputs.committed }}
+      sha: ${{ steps.commit_push.outputs.sha }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -56,10 +57,15 @@ jobs:
           git commit -m "chore(data): sync drive index" --no-verify
           git push
           echo "committed=true" >> "$GITHUB_OUTPUT"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
-  deploy:
-    name: Deploy
+  # A push made with GITHUB_TOKEN does not start the pipeline on its own, so
+  # it is called here with the exact commit the sync pushed.
+  pipeline:
+    name: Pipeline
     needs: sync
     if: needs.sync.outputs.committed == 'true'
-    uses: ./.github/workflows/deploy.yml
+    uses: ./.github/workflows/pipeline.yml
+    with:
+      ref: ${{ needs.sync.outputs.sha }}
     secrets: inherit
