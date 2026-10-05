@@ -281,7 +281,9 @@ jobs:
           # where an exit inside the while would end the whole step.
           serves_this_build() {
               local assets asset
-              assets="$(grep -oE '/assets/[A-Za-z0-9._-]+\.js' home.html | sort -u)"
+              # -a: the router state TanStack Start embeds in the page carries NUL
+              # characters, and GNU grep would otherwise report "binary file matches".
+              assets="$(grep -aoE '/assets/[A-Za-z0-9._-]+\.js' home.html | sort -u)"
               [ -n "$assets" ] || return 1
               while read -r asset; do
                   [ -f "dist/client$asset" ] || return 1
