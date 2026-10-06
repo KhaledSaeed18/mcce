@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import { CourseHeader } from "@/components/course/course-header";
 import { CourseMaterials } from "@/components/course/course-materials";
 import { CourseNotFound } from "@/components/course/course-not-found";
@@ -9,7 +9,10 @@ import { FilePreviewHost } from "@/components/drive/file-preview-host";
 import { JsonLd } from "@/components/seo/json-ld";
 import { CURRICULUM } from "@/config/curriculum";
 import { SITE_URL } from "@/config/site";
-import { buildCourseContextLookup } from "@/lib/curriculum/lookup";
+import {
+  buildCourseContextLookup,
+  findCourseCode,
+} from "@/lib/curriculum/lookup";
 import { courseDetailQueryOptions } from "@/lib/drive/queries";
 import type { FilePreviewSearch } from "@/lib/drive/types";
 import { readOptionalString } from "@/lib/search-params";
@@ -19,6 +22,20 @@ import { buildBreadcrumbSchema, buildCourseSchema } from "@/lib/seo/schema";
 const courseLookup = buildCourseContextLookup(CURRICULUM);
 
 export const Route = createFileRoute("/course/$code")({
+  // A permanent redirect folds /course/engg515 and friends into the one URL
+  // search engines should index, instead of serving a noindex not-found page.
+  beforeLoad: ({ params, search }) => {
+    const code = findCourseCode(courseLookup, params.code);
+
+    if (code && code !== params.code) {
+      throw redirect({
+        params: { code },
+        search,
+        statusCode: 301,
+        to: "/course/$code",
+      });
+    }
+  },
   component: CoursePage,
   // `loader` must precede `head`: otherwise the loader data type is not yet
   // known when `head` is checked, and useLoaderData degrades to undefined.

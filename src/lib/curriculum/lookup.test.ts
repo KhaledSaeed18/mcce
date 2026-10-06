@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { buildCourseContextLookup, flattenCourses } from "./lookup";
+import {
+  buildCourseContextLookup,
+  findCourseCode,
+  flattenCourses,
+} from "./lookup";
 import type { CurriculumYear } from "./types";
 
 const YEARS: CurriculumYear[] = [
@@ -67,5 +71,19 @@ describe("buildCourseContextLookup", () => {
 
   it("returns undefined for an unknown course code", () => {
     expect(buildCourseContextLookup(YEARS).get("NOPE")).toBeUndefined();
+  });
+});
+
+describe("findCourseCode", () => {
+  const lookup = buildCourseContextLookup(YEARS);
+
+  it("resolves a code typed in any case to the curriculum spelling", () => {
+    expect(findCourseCode(lookup, "engg515")).toBe("ENGG515");
+    expect(findCourseCode(lookup, "Ceng557")).toBe("CENG557");
+    expect(findCourseCode(lookup, "ENGG515")).toBe("ENGG515");
+  });
+
+  it("returns null for a code the curriculum does not list", () => {
+    expect(findCourseCode(lookup, "ceng999")).toBeNull();
   });
 });
