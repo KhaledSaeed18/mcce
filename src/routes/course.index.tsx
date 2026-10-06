@@ -4,16 +4,15 @@ import { CourseIndexHero } from "@/components/course/course-index-hero";
 import { CourseIndexYear } from "@/components/course/course-index-year";
 import { JsonLd } from "@/components/seo/json-ld";
 import { CURRICULUM } from "@/config/curriculum";
-import { SITE_URL } from "@/config/site";
 import { getProgramCredits } from "@/lib/curriculum/credits";
 import { flattenCourses } from "@/lib/curriculum/lookup";
 import { buildCourseSummaryMap } from "@/lib/drive/courses";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
+import { COURSES_URL } from "@/lib/seo/course-url";
 import { buildPageMeta } from "@/lib/seo/meta";
 import { formatPageTitle } from "@/lib/seo/page-title";
 import { buildCurriculumSchema } from "@/lib/seo/schema";
 
-const COURSES_URL = `${SITE_URL}/course`;
 const COURSE_COUNT = flattenCourses(CURRICULUM).length;
 
 export const Route = createFileRoute("/course/")({

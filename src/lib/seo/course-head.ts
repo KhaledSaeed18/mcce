@@ -1,5 +1,6 @@
-import { SITE_NAME, SITE_URL } from "@/config/site";
+import { SITE_NAME } from "@/config/site";
 import type { CurriculumCourseContext } from "@/lib/curriculum/types";
+import { courseUrl } from "@/lib/seo/course-url";
 import { buildPageMeta } from "@/lib/seo/meta";
 import { formatPageTitle } from "@/lib/seo/page-title";
 
@@ -19,7 +20,7 @@ export function buildCourseHead(
   code: string,
   isPreview = false
 ) {
-  const url = `${SITE_URL}/course/${code}`;
+  const url = courseUrl(code);
   const previewRobots = isPreview ? "noindex, follow" : undefined;
 
   return {

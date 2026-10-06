@@ -9,7 +9,6 @@ import {
   PROGRAM_NAME,
   PROGRAM_OFFICIAL_URL,
   PROGRAM_UNIVERSITY,
-  PROGRAM_UNIVERSITY_SHORT,
   SITE_AUTHOR,
   SITE_AUTHOR_URL,
   SITE_DESCRIPTION,
@@ -26,6 +25,8 @@ import type {
   CurriculumCourseContext,
   CurriculumYear,
 } from "@/lib/curriculum/types";
+import { courseUrl } from "@/lib/seo/course-url";
+import { UNIVERSITY_PROVIDER } from "@/lib/seo/provider";
 
 export function buildWebSiteSchema() {
   return {
@@ -62,12 +63,7 @@ export function buildProgramSchema() {
     name: PROGRAM_NAME,
     occupationalCategory: PROGRAM_DEPARTMENT,
     programType: "Master's degree",
-    provider: {
-      "@type": "CollegeOrUniversity",
-      alternateName: PROGRAM_UNIVERSITY_SHORT,
-      name: PROGRAM_UNIVERSITY,
-      url: "https://cce.liu.edu.lb",
-    },
+    provider: UNIVERSITY_PROVIDER,
     sameAs: PROGRAM_OFFICIAL_URL,
     timeToComplete: PROGRAM_DURATION_ISO,
   };
@@ -118,7 +114,7 @@ export function buildCourseSchema(context: CurriculumCourseContext) {
       "@type": "CollegeOrUniversity",
       name: PROGRAM_UNIVERSITY,
     },
-    url: `${SITE_URL}/course/${course.code}`,
+    url: courseUrl(course.code),
   };
 }
 
@@ -195,12 +191,7 @@ export function buildTuitionSchema() {
       },
     ],
     programType: "Master's degree",
-    provider: {
-      "@type": "CollegeOrUniversity",
-      alternateName: PROGRAM_UNIVERSITY_SHORT,
-      name: PROGRAM_UNIVERSITY,
-      url: "https://cce.liu.edu.lb",
-    },
+    provider: UNIVERSITY_PROVIDER,
     timeToComplete: PROGRAM_DURATION_ISO,
     url: `${SITE_URL}${TUITION_PAGE_PATH}`,
   };

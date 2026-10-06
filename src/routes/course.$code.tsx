@@ -17,6 +17,7 @@ import { courseDetailQueryOptions } from "@/lib/drive/queries";
 import type { FilePreviewSearch } from "@/lib/drive/types";
 import { readOptionalString } from "@/lib/search-params";
 import { buildCourseHead } from "@/lib/seo/course-head";
+import { COURSES_URL, courseUrl } from "@/lib/seo/course-url";
 import { buildBreadcrumbSchema, buildCourseSchema } from "@/lib/seo/schema";
 
 const courseLookup = buildCourseContextLookup(CURRICULUM);
@@ -80,8 +81,8 @@ function CoursePage() {
       <JsonLd
         data={buildBreadcrumbSchema([
           { name: "Home", url: SITE_URL },
-          { name: "All courses", url: `${SITE_URL}/course` },
-          { name: context.course.name, url: `${SITE_URL}/course/${code}` },
+          { name: "All courses", url: COURSES_URL },
+          { name: context.course.name, url: courseUrl(code) },
         ])}
       />
     </main>
