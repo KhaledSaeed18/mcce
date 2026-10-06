@@ -12,9 +12,10 @@ import { buildDriveFolderUrl } from "@/lib/drive/urls";
 interface CourseHeaderProps {
   context: CurriculumCourseContext;
   folderId: string | null;
+  intro: string;
 }
 
-export function CourseHeader({ context, folderId }: CourseHeaderProps) {
+export function CourseHeader({ context, folderId, intro }: CourseHeaderProps) {
   const { course, semester, year } = context;
   const Icon = getCourseIcon(course.code, course.name);
   const kindBadgeLabel = COURSE_KIND_BADGE_LABEL[course.kind];
@@ -26,7 +27,11 @@ export function CourseHeader({ context, folderId }: CourseHeaderProps) {
           <div className="flex size-10 shrink-0 items-center justify-center rounded border-2 border-black bg-primary">
             <Icon className="size-5" />
           </div>
-          <h1 className="font-head text-xl sm:text-2xl">{course.name}</h1>
+          {/* The code sits in the h1 because it is what people search for. */}
+          <h1 className="font-head text-xl sm:text-2xl">
+            <span className="text-muted-foreground">{course.code}</span>{" "}
+            {course.name}
+          </h1>
         </div>
         {folderId ? (
           <OpenInDriveButton href={buildDriveFolderUrl(folderId)} />
@@ -34,7 +39,6 @@ export function CourseHeader({ context, folderId }: CourseHeaderProps) {
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
-        <Badge variant="outline">{course.code}</Badge>
         <Badge variant="outline">{course.credits} cr</Badge>
         <Badge variant="default">
           {COURSE_REQUIREMENT_CATEGORY_LABEL[course.requirementCategory]}
@@ -46,6 +50,8 @@ export function CourseHeader({ context, folderId }: CourseHeaderProps) {
           {year.label}, {semester.label}
         </Badge>
       </div>
+
+      <p className="text-sm">{intro}</p>
 
       <p className="text-sm">
         {course.description ?? "No description available yet."}

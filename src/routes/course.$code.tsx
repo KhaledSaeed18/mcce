@@ -9,6 +9,7 @@ import { FilePreviewHost } from "@/components/drive/file-preview-host";
 import { CourseJsonLd } from "@/components/seo/course-json-ld";
 import { CURRICULUM } from "@/config/curriculum";
 import { redirectToCanonicalCourse } from "@/lib/curriculum/canonical-course";
+import { buildCourseIntro } from "@/lib/curriculum/course-intro";
 import { buildCourseContextLookup } from "@/lib/curriculum/lookup";
 import { courseDetailQueryOptions } from "@/lib/drive/queries";
 import type { FilePreviewSearch } from "@/lib/drive/types";
@@ -25,10 +26,11 @@ export const Route = createFileRoute("/course/$code")({
   // known when `head` is checked, and useLoaderData degrades to undefined.
   loader: ({ context, params }) =>
     context.queryClient.ensureQueryData(courseDetailQueryOptions(params.code)),
-  head: ({ match, params }) =>
+  head: ({ loaderData, match, params }) =>
     buildCourseHead(
       courseLookup.get(params.code),
       params.code,
+      loaderData?.materials ?? [],
       Boolean(match.search.file)
     ),
   validateSearch: (search: Record<string, unknown>): FilePreviewSearch => ({
@@ -49,7 +51,11 @@ function CoursePage() {
 
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-6 p-4 sm:p-6">
-      <CourseHeader context={context} folderId={folderId} />
+      <CourseHeader
+        context={context}
+        folderId={folderId}
+        intro={buildCourseIntro(context, materials)}
+      />
 
       <CourseTopics topics={context.course.topics ?? []} />
 

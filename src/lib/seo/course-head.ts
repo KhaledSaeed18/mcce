@@ -1,23 +1,29 @@
-import { SITE_NAME } from "@/config/site";
+import { PROGRAM_UNIVERSITY_SHORT, SITE_BRAND, SITE_NAME } from "@/config/site";
 import type { CurriculumCourseContext } from "@/lib/curriculum/types";
+import { formatMaterialList } from "@/lib/drive/material-list";
+import type { CourseMaterialGroup } from "@/lib/drive/types";
 import { courseUrl } from "@/lib/seo/course-url";
 import { buildPageMeta } from "@/lib/seo/meta";
 import { formatPageTitle } from "@/lib/seo/page-title";
 
-function buildDescription(context: CurriculumCourseContext): string {
-  const { course, semester, year } = context;
+/** Code, university, and program lead, since those are what a searcher types. */
+function buildDescription(
+  { course }: CurriculumCourseContext,
+  groups: CourseMaterialGroup[]
+): string {
+  const kinds = formatMaterialList(groups);
+  const contents = kinds
+    ? `${kinds}, plus the course description and prerequisites`
+    : "course description, credits, and prerequisites";
 
-  if (course.description) {
-    return `${course.code}, ${course.name}. ${course.description}`;
-  }
-
-  return `${course.code}, ${course.name}. ${course.credits} credits, ${year.label}, ${semester.label}. Lectures, exams, exercises, and labs indexed from the program Drive.`;
+  return `${course.code} ${course.name} at ${PROGRAM_UNIVERSITY_SHORT}, part of the ${SITE_NAME} program: ${contents}.`;
 }
 
 /** Head tags for a course page, which has to cover codes the curriculum does not list. */
 export function buildCourseHead(
   context: CurriculumCourseContext | undefined,
   code: string,
+  groups: CourseMaterialGroup[],
   isPreview = false
 ) {
   const url = courseUrl(code);
@@ -27,11 +33,11 @@ export function buildCourseHead(
     links: [{ href: url, rel: "canonical" }],
     meta: context
       ? buildPageMeta({
-          description: buildDescription(context),
+          description: buildDescription(context, groups),
           robots: previewRobots,
           title: formatPageTitle(
-            `${context.course.code}, ${context.course.name}`,
-            SITE_NAME
+            `${context.course.code}: ${context.course.name}`,
+            SITE_BRAND
           ),
           url,
         })
