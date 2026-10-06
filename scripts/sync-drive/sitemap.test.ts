@@ -49,6 +49,26 @@ describe("getIndexDate", () => {
       "2026-08-01"
     );
   });
+
+  it("dates newly indexed historical files from when they appeared on the site", () => {
+    const index = makeIndex(
+      [
+        makeNode({
+          courseCode: "ENGG515",
+          firstSeenAt: "2026-10-12T00:00:00.000Z",
+          id: "old-exam",
+          modifiedTime: "2020-08-01T00:00:00.000Z",
+        }),
+      ],
+      "2026-10-13T00:00:00.000Z"
+    );
+
+    expect(getIndexDate(index)).toBe("2026-10-12");
+    expect(buildCourseDateMap(index.nodes).get("ENGG515")).toBe("2026-10-12");
+    expect(
+      lastmodFor(buildSitemapXml(index, RESOURCES_DATE), "/course/ENGG515")
+    ).toBe("2026-10-12");
+  });
 });
 
 describe("buildCourseDateMap", () => {
@@ -122,13 +142,38 @@ describe("buildSitemapXml", () => {
     expect(lastmodFor(xml, "/cce")).toBe("2026-09-21");
   });
 
-  it("dates a course page from its own material", () => {
+  it("dates course pages from content when their material is older", () => {
     const xml = buildSitemapXml(
       makeIndex(nodes, "2026-08-24T06:43:16.162Z"),
       RESOURCES_DATE
     );
 
-    expect(lastmodFor(xml, "/course/CENG557")).toBe("2026-08-18");
+    expect(lastmodFor(xml, "/course/CENG557")).toBe("2026-10-07");
+    expect(lastmodFor(xml, "/course/CENG695A")).toBe("2026-10-07");
+    expect(lastmodFor(xml, "/course/CENG695B")).toBe("2026-10-07");
+    expect(lastmodFor(xml, "/course")).toBe("2026-10-06");
+    expect(lastmodFor(xml, "/exams")).toBe("2026-10-06");
+    expect(lastmodFor(xml, "/plan-of-study")).toBe("2026-10-06");
+  });
+
+  it("keeps later Drive dates for pages whose material changes", () => {
+    const xml = buildSitemapXml(
+      makeIndex(
+        [
+          makeNode({
+            courseCode: "CENG557",
+            id: "new-material",
+            modifiedTime: "2026-10-12T00:00:00.000Z",
+          }),
+        ],
+        "2026-10-13T00:00:00.000Z"
+      ),
+      RESOURCES_DATE
+    );
+
+    expect(lastmodFor(xml, "/course/CENG557")).toBe("2026-10-12");
+    expect(lastmodFor(xml, "/course")).toBe("2026-10-12");
+    expect(lastmodFor(xml, "/exams")).toBe("2026-10-12");
   });
 
   // Pages added to the committed XML by hand were dropped by the next sync,

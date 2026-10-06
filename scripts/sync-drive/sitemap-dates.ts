@@ -1,10 +1,11 @@
 import type { DriveIndex, DriveNode } from "../../src/lib/drive/types";
 import type { ResourcesIndex } from "../../src/lib/resources/types";
+import { latestDate } from "../../src/lib/seo/latestDate";
 
 /** Drive stamps every node in the same RFC 3339 UTC shape, so plain string
  * comparison orders them correctly without parsing a Date. */
-function newer(a: string, b: string): string {
-  return a > b ? a : b;
+function getNodeDate(node: DriveNode): string {
+  return latestDate(node.modifiedTime, node.firstSeenAt);
 }
 
 function toIsoDate(timestamp: string): string {
@@ -12,15 +13,14 @@ function toIsoDate(timestamp: string): string {
 }
 
 /**
- * The newest modification time anywhere in the index. Pages that exist to list
- * Drive content change exactly when this does, so it stands in for their
- * lastmod. Falls back to the baseline run when the index holds no nodes.
+ * Adding an older file changes the page when it is first indexed, even if
+ * its Drive modification time predates the site's baseline.
  */
 export function getIndexDate(index: DriveIndex): string {
   let newest = index.meta.baselineAt;
 
   for (const node of index.nodes) {
-    newest = newer(newest, node.modifiedTime);
+    newest = latestDate(newest, getNodeDate(node));
   }
 
   return toIsoDate(newest);
@@ -36,10 +36,7 @@ export function buildCourseDateMap(nodes: DriveNode[]): Map<string, string> {
     }
 
     const current = byCode.get(node.courseCode);
-    byCode.set(
-      node.courseCode,
-      current ? newer(current, node.modifiedTime) : node.modifiedTime
-    );
+    byCode.set(node.courseCode, latestDate(current ?? "", getNodeDate(node)));
   }
 
   return new Map(

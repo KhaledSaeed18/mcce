@@ -5,6 +5,7 @@ import {
   TRACKS_RESOURCES,
 } from "../../src/config/seo/sitemap";
 import { SITE_URL } from "../../src/config/site";
+import { latestDate } from "../../src/lib/seo/latestDate";
 import { buildUrlEntry } from "./sitemapXml";
 
 function resolveLastmod(
@@ -28,7 +29,10 @@ export function buildStaticEntries(
   return STATIC_PAGES.map((page) =>
     buildUrlEntry(
       `${SITE_URL}${page.path}`,
-      resolveLastmod(page.lastmod, indexDate, resourcesDate),
+      latestDate(
+        page.contentLastmod ?? "",
+        resolveLastmod(page.lastmod, indexDate, resourcesDate)
+      ),
       page.changefreq,
       page.priority
     )
