@@ -19,9 +19,9 @@ import { buildCourseContextLookup } from "@/lib/curriculum/lookup";
 import { buildCourseSummaryMap } from "@/lib/drive/courses";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
 import { readOptionalString } from "@/lib/search-params";
+import { buildCurriculumSchema } from "@/lib/seo/course-schema";
 import { buildPageMeta } from "@/lib/seo/meta";
 import { formatPageTitle } from "@/lib/seo/page-title";
-import { buildCurriculumSchema } from "@/lib/seo/schema";
 
 const PLAN_OF_STUDY_URL = `${SITE_URL}/plan-of-study`;
 const courseLookup = buildCourseContextLookup(CURRICULUM);

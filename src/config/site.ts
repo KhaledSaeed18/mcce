@@ -1,8 +1,10 @@
 export const SITE_URL = "https://mcce.khaledsaeed.tech";
 export const SITE_NAME = "MCCE";
+/** The name searchers pair with a course code, e.g. "ENGG515 LIU MCCE". */
+export const SITE_BRAND = "LIU MCCE";
 export const PAGE_TITLE_SEPARATOR = " | ";
 export const SITE_TITLE = [
-  "LIU MCCE",
+  SITE_BRAND,
   "M.S. in Computer and Communication Engineering",
 ].join(PAGE_TITLE_SEPARATOR);
 export const SITE_DESCRIPTION =

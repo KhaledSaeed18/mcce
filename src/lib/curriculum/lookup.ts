@@ -27,3 +27,12 @@ export function buildCourseContextLookup(
 
   return lookup;
 }
+
+/** The curriculum spelling of a course code typed in any case, or null when the curriculum does not list it. */
+export function findCourseCode(
+  lookup: Map<string, CurriculumCourseContext>,
+  code: string
+): string | null {
+  const normalized = code.toUpperCase();
+  return lookup.has(normalized) ? normalized : null;
+}

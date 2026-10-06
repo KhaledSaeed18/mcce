@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { ExamTermGroup } from "@/components/exams/exam-term-group";
 import { getCourseIcon } from "@/lib/drive/courses";
 import type { ExamCourseGroup } from "@/lib/drive/types";
@@ -17,7 +18,13 @@ export function ExamCourseSection({ group }: ExamCourseSectionProps) {
         </div>
         <div className="min-w-0 flex-1">
           <h2 className="truncate font-head text-lg sm:text-xl">
-            {group.code}
+            <Link
+              className="underline-offset-2 hover:underline"
+              params={{ code: group.code }}
+              to="/course/$code"
+            >
+              {group.code}
+            </Link>
           </h2>
           <p className="truncate text-muted-foreground text-xs">{group.name}</p>
         </div>

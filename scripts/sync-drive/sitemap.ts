@@ -8,6 +8,8 @@ import {
 import { SITE_URL } from "../../src/config/site";
 import { flattenCourses } from "../../src/lib/curriculum/lookup";
 import type { DriveIndex } from "../../src/lib/drive/types";
+import { courseUrl } from "../../src/lib/seo/course-url";
+import { findFolderCourseCode } from "../../src/lib/seo/folder-canonical";
 import { buildCourseDateMap, getIndexDate } from "./sitemap-dates";
 
 /**
@@ -203,18 +205,25 @@ export function buildSitemapXml(
   // the description, credits, and prerequisites either way.
   const courseEntries = flattenCourses(CURRICULUM).map((course) =>
     buildUrlEntry(
-      `${SITE_URL}/course/${course.code}`,
+      courseUrl(course.code),
       courseDates.get(course.code) ?? CURRICULUM_LASTMOD,
       "weekly",
       "0.8"
     )
   );
 
-  // Only course-level folders (depth 1, one per course) get a sitemap entry.
-  // Deeper folders (lectures, exams, labs, ...) are thin, near-duplicate
+  // Only course-level folders (depth 1, one per course) can get a sitemap
+  // entry. Deeper folders (lectures, exams, labs, ...) are thin, near-duplicate
   // listings that would dilute crawl budget away from the pages worth ranking.
+  // A folder whose canonical is its course page is left out too, since a
+  // sitemap should list canonical URLs only.
   const folderEntries = index.nodes
-    .filter((node) => node.kind === "folder" && node.depth === 1)
+    .filter(
+      (node) =>
+        node.kind === "folder" &&
+        node.depth === 1 &&
+        findFolderCourseCode(node) === null
+    )
     .map((node) =>
       buildUrlEntry(
         `${SITE_URL}/browse/${node.id}`,

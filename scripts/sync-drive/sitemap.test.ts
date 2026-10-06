@@ -171,6 +171,34 @@ describe("buildSitemapXml", () => {
       "<loc>https://mcce.khaledsaeed.tech/search</loc>"
     );
   });
+
+  it("leaves out a course folder, whose canonical is the course page", () => {
+    const xml = buildSitemapXml(
+      makeIndex(nodes, "2026-08-24T06:43:16.162Z"),
+      RESOURCES_DATE
+    );
+
+    expect(lastmodFor(xml, "/browse/course-a")).toBeUndefined();
+  });
+
+  it("keeps a top-level folder that maps to no curriculum course", () => {
+    const xml = buildSitemapXml(
+      makeIndex(
+        [
+          makeNode({
+            depth: 1,
+            id: "loose-folder",
+            kind: "folder",
+            modifiedTime: "2026-08-12T00:00:00.000Z",
+          }),
+        ],
+        "2026-08-24T06:43:16.162Z"
+      ),
+      RESOURCES_DATE
+    );
+
+    expect(lastmodFor(xml, "/browse/loose-folder")).toBe("2026-08-12");
+  });
 });
 
 describe("resource hub pages", () => {

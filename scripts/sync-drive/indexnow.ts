@@ -1,5 +1,6 @@
 import { SITE_URL } from "../../src/config/site";
 import type { DriveNode } from "../../src/lib/drive/types";
+import { courseUrl } from "../../src/lib/seo/course-url";
 
 const INDEXNOW_KEY = "7f293b7f1ee83ad47e9d311265772bf7";
 const INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow";
@@ -28,7 +29,7 @@ export function buildChangedUrls(
     `${SITE_URL}/`,
     `${SITE_URL}/recent`,
     ...[...folderIds].map((id) => `${SITE_URL}/browse/${id}`),
-    ...[...courseCodes].map((code) => `${SITE_URL}/course/${code}`),
+    ...[...courseCodes].map(courseUrl),
   ];
 }
 
