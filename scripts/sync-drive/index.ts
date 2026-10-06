@@ -4,11 +4,12 @@ import { DRIVE_SOURCES } from "../../src/config/sources";
 import type { DriveIndex, DriveNode } from "../../src/lib/drive/types";
 import type { ResourcesIndex } from "../../src/lib/resources/types";
 import { getAccessToken } from "./auth";
+import { buildChangedUrls } from "./buildChangedUrls";
 import { type CrawledNode, crawlSource } from "./crawl";
 import { stampFirstSeen } from "./diff";
 import { getFileMetadata } from "./drive-client";
 import { buildFeedXml } from "./feed";
-import { buildChangedUrls, submitToIndexNow } from "./indexnow";
+import { submitToIndexNow } from "./indexnow";
 import { buildSitemapXml } from "./sitemap";
 import { getResourcesDate } from "./sitemap-dates";
 

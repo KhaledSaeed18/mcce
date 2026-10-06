@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { makeNode } from "../../src/lib/drive/test-fixtures";
-import { buildChangedUrls } from "./indexnow";
+import { buildChangedUrls } from "./buildChangedUrls";
 
 const RUN = "2026-08-20T00:00:00.000Z";
 const OLD = "2026-08-01T00:00:00.000Z";
