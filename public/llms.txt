@@ -29,26 +29,26 @@ This site is not an official LIU page. For admissions, curriculum, and official 
 
 ## Curriculum
 
-- CENG507: Embedded Systems
-- EENG527: Digital Signal Processing
-- EENG537: Digital Communications
-- ENGG515: Advanced Engineering Mathematics
-- CENG557: Advanced Network Architectures
-- EENG587: Wireless Communication
-- CENG675: Multimedia Networks
-- CENG566: Machine Learning
-- CENG566L: Machine Learning Laboratory
-- CENG695A: Master Thesis Project (Part I)
-- ENGG550: Engineering Project Management and Control
-- CENG625: Cryptography & Advanced Computer Security
-- CENG645: Mobile Communication
-- CENG646: Data Mining
-- CENG695B: Master Thesis Project (Part II)
-- CENG685: Information Security
-- CENG678: Image Processing and Computer Vision
-- CENG679: Satellite and Space Communications
+- [CENG507: Embedded Systems](https://mcce.khaledsaeed.tech/course/CENG507)
+- [EENG527: Digital Signal Processing](https://mcce.khaledsaeed.tech/course/EENG527)
+- [EENG537: Digital Communications](https://mcce.khaledsaeed.tech/course/EENG537)
+- [ENGG515: Advanced Engineering Mathematics](https://mcce.khaledsaeed.tech/course/ENGG515)
+- [CENG557: Advanced Network Architectures](https://mcce.khaledsaeed.tech/course/CENG557)
+- [EENG587: Wireless Communication](https://mcce.khaledsaeed.tech/course/EENG587)
+- [CENG675: Multimedia Networks](https://mcce.khaledsaeed.tech/course/CENG675)
+- [CENG566: Machine Learning](https://mcce.khaledsaeed.tech/course/CENG566)
+- [CENG566L: Machine Learning Laboratory](https://mcce.khaledsaeed.tech/course/CENG566L)
+- [CENG695A: Master Thesis Project (Part I)](https://mcce.khaledsaeed.tech/course/CENG695A)
+- [ENGG550: Engineering Project Management and Control](https://mcce.khaledsaeed.tech/course/ENGG550)
+- [CENG625: Cryptography & Advanced Computer Security](https://mcce.khaledsaeed.tech/course/CENG625)
+- [CENG645: Mobile Communication](https://mcce.khaledsaeed.tech/course/CENG645)
+- [CENG646: Data Mining](https://mcce.khaledsaeed.tech/course/CENG646)
+- [CENG695B: Master Thesis Project (Part II)](https://mcce.khaledsaeed.tech/course/CENG695B)
+- [CENG685: Information Security](https://mcce.khaledsaeed.tech/course/CENG685)
+- [CENG678: Image Processing and Computer Vision](https://mcce.khaledsaeed.tech/course/CENG678)
+- [CENG679: Satellite and Space Communications](https://mcce.khaledsaeed.tech/course/CENG679)
 
-Each course has its own page at `https://mcce.khaledsaeed.tech/course/{code}`, for example [CENG557](https://mcce.khaledsaeed.tech/course/CENG557).
+Each course page at `https://mcce.khaledsaeed.tech/course/{code}` is the main page for that course code at LIU: description, objectives, topics, credits, prerequisites, and the files indexed for it, grouped into lectures, past exams, exercises, and the rest.
 
 ## Frequently asked
 
