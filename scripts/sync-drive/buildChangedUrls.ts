@@ -1,30 +1,52 @@
+import { CURRICULUM } from "../../src/config/curriculum";
+import { PAPER_MATERIAL_TYPES } from "../../src/config/materials";
 import { SITE_URL } from "../../src/config/site";
+import {
+  buildCourseContextLookup,
+  findCourseCode,
+} from "../../src/lib/curriculum/lookup";
 import type { DriveNode } from "../../src/lib/drive/types";
-import { courseUrl } from "../../src/lib/seo/course-url";
+import { COURSES_URL, courseUrl } from "../../src/lib/seo/course-url";
 
-/** Course folder (depth 1) and course page URLs touched by nodes first seen this sync. */
+const COURSE_LOOKUP = buildCourseContextLookup(CURRICULUM);
+
 export function buildChangedUrls(
   nodes: DriveNode[],
   generatedAt: string
 ): string[] {
-  const added = nodes.filter((node) => node.firstSeenAt === generatedAt);
-  const folderIds = new Set(
-    added.map((node) => node.pathIds[1]).filter((id): id is string => !!id)
-  );
-  const courseCodes = new Set(
-    added
-      .map((node) => node.courseCode)
-      .filter((code): code is string => !!code)
-  );
+  const changedPages = new Set<string>();
+  let hasCourseChanges = false;
+  let hasNewPapers = false;
 
-  if (folderIds.size === 0 && courseCodes.size === 0) {
+  for (const node of nodes) {
+    if (node.firstSeenAt !== generatedAt) {
+      continue;
+    }
+    const courseCode = findCourseCode(COURSE_LOOKUP, node.courseCode ?? "");
+    const [, folderId] = node.pathIds;
+
+    if (courseCode) {
+      changedPages.add(courseUrl(courseCode));
+      hasCourseChanges = true;
+    } else if (folderId) {
+      changedPages.add(`${SITE_URL}/browse/${folderId}`);
+    }
+
+    hasNewPapers ||=
+      node.kind !== "folder" &&
+      node.courseCode !== null &&
+      PAPER_MATERIAL_TYPES.has(node.materialType);
+  }
+
+  if (changedPages.size === 0) {
     return [];
   }
 
   return [
     `${SITE_URL}/`,
     `${SITE_URL}/recent`,
-    ...[...folderIds].map((id) => `${SITE_URL}/browse/${id}`),
-    ...[...courseCodes].map(courseUrl),
+    ...(hasCourseChanges ? [COURSES_URL] : []),
+    ...(hasNewPapers ? [`${SITE_URL}/exams`] : []),
+    ...changedPages,
   ];
 }

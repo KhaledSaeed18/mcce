@@ -14,7 +14,7 @@ describe("buildChangedUrls", () => {
     expect(buildChangedUrls(nodes, RUN)).toEqual([]);
   });
 
-  it("includes home, recent, and the touched course folder and course page", () => {
+  it("submits the canonical course page and affected listings", () => {
     const nodes = [
       makeNode({
         courseCode: "CENG557",
@@ -27,7 +27,7 @@ describe("buildChangedUrls", () => {
     expect(buildChangedUrls(nodes, RUN)).toEqual([
       "https://mcce.khaledsaeed.tech/",
       "https://mcce.khaledsaeed.tech/recent",
-      "https://mcce.khaledsaeed.tech/browse/course-a",
+      "https://mcce.khaledsaeed.tech/course",
       "https://mcce.khaledsaeed.tech/course/CENG557",
     ]);
   });
@@ -51,7 +51,7 @@ describe("buildChangedUrls", () => {
     expect(buildChangedUrls(nodes, RUN)).toEqual([
       "https://mcce.khaledsaeed.tech/",
       "https://mcce.khaledsaeed.tech/recent",
-      "https://mcce.khaledsaeed.tech/browse/course-a",
+      "https://mcce.khaledsaeed.tech/course",
       "https://mcce.khaledsaeed.tech/course/CENG557",
     ]);
   });
@@ -63,4 +63,45 @@ describe("buildChangedUrls", () => {
 
     expect(buildChangedUrls(nodes, RUN)).toEqual([]);
   });
+
+  it("keeps unknown-course folders without submitting a missing course page", () => {
+    const urls = buildChangedUrls(
+      [
+        makeNode({
+          courseCode: "CENG999",
+          firstSeenAt: RUN,
+          id: "unknown",
+          pathIds: ["root", "unknown-course", "unknown"],
+        }),
+      ],
+      RUN
+    );
+
+    expect(urls).toEqual([
+      "https://mcce.khaledsaeed.tech/",
+      "https://mcce.khaledsaeed.tech/recent",
+      "https://mcce.khaledsaeed.tech/browse/unknown-course",
+    ]);
+  });
+
+  it.each(["exam", "assessment"] as const)(
+    "submits the archive for new %s papers",
+    (materialType) => {
+      const urls = buildChangedUrls(
+        [
+          makeNode({
+            courseCode: "ENGG515",
+            firstSeenAt: RUN,
+            id: "paper",
+            materialType,
+            pathIds: ["root", "course", "paper"],
+          }),
+        ],
+        RUN
+      );
+
+      expect(urls).toContain("https://mcce.khaledsaeed.tech/exams");
+      expect(urls).not.toContain("https://mcce.khaledsaeed.tech/browse/course");
+    }
+  );
 });
