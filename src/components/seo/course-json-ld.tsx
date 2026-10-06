@@ -1,8 +1,9 @@
 import { JsonLd } from "@/components/seo/json-ld";
 import { SITE_URL } from "@/config/site";
 import type { CurriculumCourseContext } from "@/lib/curriculum/types";
+import { buildCourseSchema } from "@/lib/seo/course-schema";
 import { COURSES_URL, courseUrl } from "@/lib/seo/course-url";
-import { buildBreadcrumbSchema, buildCourseSchema } from "@/lib/seo/schema";
+import { buildBreadcrumbSchema } from "@/lib/seo/schema";
 
 interface CourseJsonLdProps {
   context: CurriculumCourseContext;

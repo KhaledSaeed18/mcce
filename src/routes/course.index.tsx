@@ -8,10 +8,10 @@ import { getProgramCredits } from "@/lib/curriculum/credits";
 import { flattenCourses } from "@/lib/curriculum/lookup";
 import { buildCourseSummaryMap } from "@/lib/drive/courses";
 import { driveIndexQueryOptions } from "@/lib/drive/queries";
+import { buildCurriculumSchema } from "@/lib/seo/course-schema";
 import { COURSES_URL } from "@/lib/seo/course-url";
 import { buildPageMeta } from "@/lib/seo/meta";
 import { formatPageTitle } from "@/lib/seo/page-title";
-import { buildCurriculumSchema } from "@/lib/seo/schema";
 
 const COURSE_COUNT = flattenCourses(CURRICULUM).length;
 
