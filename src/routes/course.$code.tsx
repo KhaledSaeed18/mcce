@@ -1,4 +1,4 @@
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { CourseHeader } from "@/components/course/course-header";
 import { CourseMaterials } from "@/components/course/course-materials";
 import { CourseNotFound } from "@/components/course/course-not-found";
@@ -6,37 +6,20 @@ import { CourseQuickLinks } from "@/components/course/course-quick-links";
 import { CourseRequirements } from "@/components/course/course-requirements";
 import { CourseTopics } from "@/components/course/course-topics";
 import { FilePreviewHost } from "@/components/drive/file-preview-host";
-import { JsonLd } from "@/components/seo/json-ld";
+import { CourseJsonLd } from "@/components/seo/course-json-ld";
 import { CURRICULUM } from "@/config/curriculum";
-import { SITE_URL } from "@/config/site";
-import {
-  buildCourseContextLookup,
-  findCourseCode,
-} from "@/lib/curriculum/lookup";
+import { redirectToCanonicalCourse } from "@/lib/curriculum/canonical-course";
+import { buildCourseContextLookup } from "@/lib/curriculum/lookup";
 import { courseDetailQueryOptions } from "@/lib/drive/queries";
 import type { FilePreviewSearch } from "@/lib/drive/types";
 import { readOptionalString } from "@/lib/search-params";
 import { buildCourseHead } from "@/lib/seo/course-head";
-import { COURSES_URL, courseUrl } from "@/lib/seo/course-url";
-import { buildBreadcrumbSchema, buildCourseSchema } from "@/lib/seo/schema";
 
 const courseLookup = buildCourseContextLookup(CURRICULUM);
 
 export const Route = createFileRoute("/course/$code")({
-  // A permanent redirect folds /course/engg515 and friends into the one URL
-  // search engines should index, instead of serving a noindex not-found page.
-  beforeLoad: ({ params, search }) => {
-    const code = findCourseCode(courseLookup, params.code);
-
-    if (code && code !== params.code) {
-      throw redirect({
-        params: { code },
-        search,
-        statusCode: 301,
-        to: "/course/$code",
-      });
-    }
-  },
+  beforeLoad: ({ params, search }) =>
+    redirectToCanonicalCourse(courseLookup, params.code, search),
   component: CoursePage,
   // `loader` must precede `head`: otherwise the loader data type is not yet
   // known when `head` is checked, and useLoaderData degrades to undefined.
@@ -77,14 +60,7 @@ function CoursePage() {
       <CourseMaterials courseCode={code} groups={materials} />
 
       <FilePreviewHost nodes={previewNodes} />
-      <JsonLd data={buildCourseSchema(context)} />
-      <JsonLd
-        data={buildBreadcrumbSchema([
-          { name: "Home", url: SITE_URL },
-          { name: "All courses", url: COURSES_URL },
-          { name: context.course.name, url: courseUrl(code) },
-        ])}
-      />
+      <CourseJsonLd context={context} />
     </main>
   );
 }
