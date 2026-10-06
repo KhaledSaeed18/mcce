@@ -19,7 +19,10 @@ export function CourseJsonLd({ context }: CourseJsonLdProps) {
         data={buildBreadcrumbSchema([
           { name: "Home", url: SITE_URL },
           { name: "All courses", url: COURSES_URL },
-          { name: course.name, url: courseUrl(course.code) },
+          {
+            name: `${course.code} ${course.name}`,
+            url: courseUrl(course.code),
+          },
         ])}
       />
     </>
