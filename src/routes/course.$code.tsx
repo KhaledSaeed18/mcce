@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CourseHeader } from "@/components/course/course-header";
 import { CourseMaterials } from "@/components/course/course-materials";
 import { CourseNotFound } from "@/components/course/course-not-found";
+import { CourseObjectives } from "@/components/course/course-objectives";
 import { CourseQuickLinks } from "@/components/course/course-quick-links";
 import { CourseRequirements } from "@/components/course/course-requirements";
 import { CourseTopics } from "@/components/course/course-topics";
@@ -58,6 +59,8 @@ function CoursePage() {
       />
 
       <CourseTopics topics={context.course.topics ?? []} />
+
+      <CourseObjectives objectives={context.course.objectives} />
 
       <CourseRequirements context={context} lookup={courseLookup} />
 

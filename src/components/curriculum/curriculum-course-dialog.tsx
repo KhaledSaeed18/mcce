@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { FolderOpenIcon, InfoIcon } from "lucide-react";
+import { CourseObjectiveList } from "@/components/course/course-objective-list";
 import { CurriculumRequirementList } from "@/components/curriculum/curriculum-requirement-list";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -77,11 +78,7 @@ export function CurriculumCourseDialog({
           {course.objectives.length === 0 ? (
             <p className="text-sm">No objectives listed.</p>
           ) : (
-            <ul className="flex list-disc flex-col gap-1 pl-5 text-sm">
-              {course.objectives.map((objective) => (
-                <li key={objective}>{objective}</li>
-              ))}
-            </ul>
+            <CourseObjectiveList objectives={course.objectives} />
           )}
         </div>
 
