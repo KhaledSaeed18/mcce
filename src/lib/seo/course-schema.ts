@@ -1,4 +1,4 @@
-import { PROGRAM_NAME, SITE_NAME, SITE_URL } from "@/config/site";
+import { PROGRAM_NAME, SITE_URL } from "@/config/site";
 import { flattenCourses } from "@/lib/curriculum/lookup";
 import type {
   CurriculumCourseContext,
@@ -6,15 +6,6 @@ import type {
 } from "@/lib/curriculum/types";
 import { buildCourseNode } from "@/lib/seo/course-node";
 import { courseUrl } from "@/lib/seo/course-url";
-import { UNIVERSITY_PROVIDER } from "@/lib/seo/provider";
-
-const PROGRAM_NODE = {
-  "@type": "EducationalOccupationalProgram",
-  alternateName: SITE_NAME,
-  name: PROGRAM_NAME,
-  provider: UNIVERSITY_PROVIDER,
-  url: `${SITE_URL}/plan-of-study`,
-};
 
 function nonEmpty<T>(items: T[]): T[] | undefined {
   return items.length > 0 ? items : undefined;
@@ -59,7 +50,7 @@ export function buildCourseSchema(context: CurriculumCourseContext) {
       name: `${year.label}, ${semester.label}`,
     },
     inLanguage: "en",
-    isPartOf: PROGRAM_NODE,
+    isPartOf: `${SITE_URL}/plan-of-study`,
     numberOfCredits: course.credits,
     teaches: nonEmpty(course.objectives),
   };

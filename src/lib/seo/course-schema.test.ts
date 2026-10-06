@@ -43,6 +43,10 @@ describe("buildCourseSchema", () => {
     ]);
   });
 
+  it("uses a URL for the program relationship", () => {
+    expect(schema.isPartOf).toBe("https://mcce.khaledsaeed.tech/plan-of-study");
+  });
+
   it("leaves out empty lists instead of emitting []", () => {
     const bare = buildCourseSchema({
       ...CONTEXT,
