@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { CourseNotFound } from "@/components/course/CourseNotFound";
+import { CourseRouteNotFound } from "@/components/course/CourseRouteNotFound";
 import { CourseHeader } from "@/components/course/course-header";
 import { CourseMaterials } from "@/components/course/course-materials";
-import { CourseNotFound } from "@/components/course/course-not-found";
 import { CourseObjectives } from "@/components/course/course-objectives";
 import { CourseQuickLinks } from "@/components/course/course-quick-links";
 import { CourseRequirements } from "@/components/course/course-requirements";
@@ -9,9 +10,9 @@ import { CourseTopics } from "@/components/course/course-topics";
 import { FilePreviewHost } from "@/components/drive/file-preview-host";
 import { CourseJsonLd } from "@/components/seo/course-json-ld";
 import { CURRICULUM } from "@/config/curriculum";
-import { redirectToCanonicalCourse } from "@/lib/curriculum/canonical-course";
 import { buildCourseIntro } from "@/lib/curriculum/course-intro";
 import { buildCourseContextLookup } from "@/lib/curriculum/lookup";
+import { resolveCourseRoute } from "@/lib/curriculum/resolveCourseRoute";
 import { courseDetailQueryOptions } from "@/lib/drive/queries";
 import type { FilePreviewSearch } from "@/lib/drive/types";
 import { readOptionalString } from "@/lib/search-params";
@@ -21,8 +22,9 @@ const courseLookup = buildCourseContextLookup(CURRICULUM);
 
 export const Route = createFileRoute("/course/$code")({
   beforeLoad: ({ params, search }) =>
-    redirectToCanonicalCourse(courseLookup, params.code, search),
+    resolveCourseRoute(courseLookup, params.code, search),
   component: CoursePage,
+  notFoundComponent: CourseRouteNotFound,
   // `loader` must precede `head`: otherwise the loader data type is not yet
   // known when `head` is checked, and useLoaderData degrades to undefined.
   loader: ({ context, params }) =>

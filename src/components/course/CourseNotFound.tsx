@@ -9,7 +9,11 @@ import {
   EmptyTitle,
 } from "@/components/ui/empty";
 
-export function CourseNotFound({ code }: { code: string }) {
+interface CourseNotFoundProps {
+  code: string;
+}
+
+export function CourseNotFound({ code }: CourseNotFoundProps) {
   return (
     <main className="mx-auto max-w-6xl p-4 sm:p-6">
       <Empty>
@@ -17,7 +21,9 @@ export function CourseNotFound({ code }: { code: string }) {
           <EmptyMedia variant="icon">
             <BookOpenIcon />
           </EmptyMedia>
-          <EmptyTitle>No course called {code}</EmptyTitle>
+          <EmptyTitle>
+            <h1>No course called {code}</h1>
+          </EmptyTitle>
           <EmptyDescription>
             The plan of study doesn't list this code. It may be spelled
             differently, or belong to another program.
