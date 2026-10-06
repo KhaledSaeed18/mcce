@@ -5,6 +5,18 @@
     "ultracite/biome/tanstack",
     "ultracite/biome/vitest"
   ],
+  "linter": {
+    "rules": {
+      "style": {
+        "useFilenamingConvention": {
+          "level": "error",
+          "options": {
+            "filenameCases": ["camelCase", "PascalCase", "kebab-case"]
+          }
+        }
+      }
+    }
+  },
   "files": {
     "includes": [
       "!src/data/drive-index.json",
