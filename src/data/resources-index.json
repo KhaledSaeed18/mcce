@@ -72,7 +72,7 @@
       "prior-theses": 7,
       "integrity": 10
     },
-    "generatedAt": "2026-10-05T15:31:04.371Z",
+    "generatedAt": "2026-10-12T16:26:03.309Z",
     "repoCount": 285,
     "toolCount": 401
   },
@@ -13579,7 +13579,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "redirect",
+      "linkStatus": "ok",
       "repoId": "google-or-tools"
     },
     {
@@ -13802,7 +13802,7 @@
         "kind": "brand",
         "light": "/resources/icons/perplexity.svg"
       },
-      "linkStatus": "unchecked"
+      "linkStatus": "ok"
     },
     {
       "access": "free",
@@ -14819,7 +14819,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "broken"
+      "linkStatus": "ok"
     },
     {
       "access": "free",
@@ -15686,7 +15686,7 @@
         "kind": "brand",
         "light": "/resources/icons/tensorboard.svg"
       },
-      "linkStatus": "redirect"
+      "linkStatus": "ok"
     },
     {
       "access": "free",
