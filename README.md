@@ -5,6 +5,17 @@
 </p>
 
 <p align="center">
+  <a href="https://mcce.khaledsaeed.tech"><img src=".github/assets/mcce-showcase.webp" alt="Your degree, wired together: real MCCE views of file search, past exams, the prerequisite roadmap, and GPA planning, connected around the program index." width="1600" height="1160" /></a>
+</p>
+
+<p align="center">
+  <a href="https://mcce.khaledsaeed.tech/search">Find files</a> ·
+  <a href="https://mcce.khaledsaeed.tech/exams">Past exams</a> ·
+  <a href="https://mcce.khaledsaeed.tech/plan-of-study?tab=roadmap">Course roadmap</a> ·
+  <a href="https://mcce.khaledsaeed.tech/gpa-calculator">GPA calculator</a>
+</p>
+
+<p align="center">
   <a href="https://mcce.khaledsaeed.tech"><img src="https://shieldcn.dev/badge/site-mcce.khaledsaeed.tech-ffb454.svg?logo=lu:Globe&variant=branded&animate=shimmer" alt="Site" /></a>
 </p>
 
@@ -19,10 +30,6 @@
   <a href="https://drive.google.com/drive/folders/15A8bxA33GichTPcZkyXxaZnP_dRyryTq"><img src="https://shieldcn.dev/badge/First_Year-ff9f1c.svg?logo=googledrive" alt="First Year Drive" /></a>
   <a href="https://drive.google.com/drive/folders/1O5i5a7CgmPEwQ7G6MFyM75zIfmtDi5pt"><img src="https://shieldcn.dev/badge/Second_Year_(Fall)-ff9f1c.svg?logo=googledrive" alt="Second Year Fall Drive" /></a>
   <a href="https://drive.google.com/drive/folders/1Ed1qu98go160SHcte4FstkPVhxX9pRK1"><img src="https://shieldcn.dev/badge/Second_Year_(Spring)-ff9f1c.svg?logo=googledrive" alt="Second Year Spring Drive" /></a>
-</p>
-
-<p align="center">
-  <img src=".github/assets/mcce-demo.webp" alt="A tour of MCCE: the home page, search, a course page, the plan of study, the GPA calculator, tuition and fees, and more." width="100%" />
 </p>
 
 ---
