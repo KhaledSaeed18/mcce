@@ -3,5 +3,10 @@
   "tags": ["-lintignore"],
   "ignoreDependencies": ["@biomejs/biome"],
   "ignoreExportsUsedInFile": true,
-  "ignore": [".agents/skills/**", "src/components/ui/**", "public/sw.js"]
+  "ignore": [
+    ".agents/skills/**",
+    ".github/assets/readme/showcase.css",
+    "src/components/ui/**",
+    "public/sw.js"
+  ]
 }
