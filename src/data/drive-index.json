@@ -1,17 +1,17 @@
 {
   "meta": {
     "baselineAt": "2026-08-17T06:41:16.505Z",
-    "generatedAt": "2026-10-05T18:26:28.380Z",
+    "generatedAt": "2026-10-12T14:08:51.403Z",
     "sources": [
       {
         "description": "LIU - MCCE | First Year, Both Semesters | materials, videos, exercises, and previous exams.",
         "fileCount": 626,
         "folderCount": 199,
         "id": "year1",
-        "totalBytes": 14554534527
+        "totalBytes": 14556080010
       },
       {
-        "description": "LIU - MCCE | Second Year, Fall Semester |materials, videos, exercises, and previous exams.",
+        "description": "LIU - MCCE | Second Year, Fall Semester | materials, videos, exercises, and previous exams.",
         "fileCount": 254,
         "folderCount": 70,
         "id": "year2",
@@ -5860,34 +5860,34 @@
       "courseCode": "CENG507",
       "courseName": "Embedded Systems",
       "depth": 3,
-      "extension": "md",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/text/markdown",
-      "id": "1lVBNChSRWuC6FvyZPKBaT1UZT00puOYy",
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1w-DPP7mNNWGubcd7EPfjgAlRxeTHScA_uHef_jCW-Is",
       "isShortcut": false,
-      "kind": "text",
+      "kind": "doc",
       "materialType": "assignment",
-      "mimeType": "text/markdown",
-      "modifiedTime": "2026-08-28T20:42:53.907Z",
-      "name": "CENG507-Part2-Project.md",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-09T19:38:48.283Z",
+      "name": "CENG507 Part2 Practical Implementation",
       "parentId": "1Bq3CyS6ffDjwXttGk2jYJsTxTdFQ26PZ",
       "pathIds": [
         "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
         "1432OoeuqOyaf-cNuDrYiAr6vcuy7k3Ee",
         "1Bq3CyS6ffDjwXttGk2jYJsTxTdFQ26PZ",
-        "1lVBNChSRWuC6FvyZPKBaT1UZT00puOYy"
+        "1w-DPP7mNNWGubcd7EPfjgAlRxeTHScA_uHef_jCW-Is"
       ],
       "pathNames": [
         "First Year | Fall Semester",
         "CENG507 - Embedded Systems",
         "Project",
-        "CENG507-Part2-Project.md"
+        "CENG507 Part2 Practical Implementation"
       ],
       "semester": "First Year | Fall Semester",
-      "sizeBytes": 3583,
+      "sizeBytes": 790852,
       "sourceId": "year1",
       "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1lVBNChSRWuC6FvyZPKBaT1UZT00puOYy/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-28T21:10:27.467Z"
+      "webViewLink": "https://docs.google.com/document/d/1w-DPP7mNNWGubcd7EPfjgAlRxeTHScA_uHef_jCW-Is/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-12T14:08:51.403Z"
     },
     {
       "categoryPath": [
@@ -6868,34 +6868,34 @@
       "courseCode": "EENG527",
       "courseName": "Digital Signal Processing",
       "depth": 3,
-      "extension": "md",
-      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/text/markdown",
-      "id": "1f2k44NyBjYDH70qwm_nhMzOdfTlTwuZx",
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1DJVNZ2qgSmKL4JbvM4CW7L1tJuRufKAda_TG-csFvx8",
       "isShortcut": false,
-      "kind": "text",
+      "kind": "doc",
       "materialType": "assignment",
-      "mimeType": "text/markdown",
-      "modifiedTime": "2026-08-28T20:54:08.000Z",
-      "name": "EENG527-Project-Overview.md",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-09T20:45:25.619Z",
+      "name": "EENG527 Parts A and B Practical Implementation",
       "parentId": "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
       "pathIds": [
         "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
         "1DxWIAF_1v9ghF2VaXfsbDOOIyo5mg1yy",
         "1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B",
-        "1f2k44NyBjYDH70qwm_nhMzOdfTlTwuZx"
+        "1DJVNZ2qgSmKL4JbvM4CW7L1tJuRufKAda_TG-csFvx8"
       ],
       "pathNames": [
         "First Year | Fall Semester",
         "EENG527 - Digital Signal Processing",
         "Project",
-        "EENG527-Project-Overview.md"
+        "EENG527 Parts A and B Practical Implementation"
       ],
       "semester": "First Year | Fall Semester",
-      "sizeBytes": 4120,
+      "sizeBytes": 762334,
       "sourceId": "year1",
       "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1f2k44NyBjYDH70qwm_nhMzOdfTlTwuZx/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-28T21:10:27.467Z"
+      "webViewLink": "https://docs.google.com/document/d/1DJVNZ2qgSmKL4JbvM4CW7L1tJuRufKAda_TG-csFvx8/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-12T14:08:51.403Z"
     },
     {
       "categoryPath": [

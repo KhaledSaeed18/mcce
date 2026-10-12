@@ -4,8 +4,20 @@
     <title>MCCE: recently added</title>
     <link>https://mcce.khaledsaeed.tech/recent</link>
     <description>Material added to the MCCE index, updated weekly.</description>
-    <lastBuildDate>Mon, 05 Oct 2026 18:26:28 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2026 14:08:51 GMT</lastBuildDate>
     <atom:link href="https://mcce.khaledsaeed.tech/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CENG507: CENG507 Part2 Practical Implementation</title>
+      <link>https://mcce.khaledsaeed.tech/browse/1Bq3CyS6ffDjwXttGk2jYJsTxTdFQ26PZ?file=1w-DPP7mNNWGubcd7EPfjgAlRxeTHScA_uHef_jCW-Is</link>
+      <guid isPermaLink="false">1w-DPP7mNNWGubcd7EPfjgAlRxeTHScA_uHef_jCW-Is</guid>
+      <pubDate>Mon, 12 Oct 2026 14:08:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>EENG527: EENG527 Parts A and B Practical Implementation</title>
+      <link>https://mcce.khaledsaeed.tech/browse/1lNvFGKwf18B4ulK_ctdgGKAD95WWyk0B?file=1DJVNZ2qgSmKL4JbvM4CW7L1tJuRufKAda_TG-csFvx8</link>
+      <guid isPermaLink="false">1DJVNZ2qgSmKL4JbvM4CW7L1tJuRufKAda_TG-csFvx8</guid>
+      <pubDate>Mon, 12 Oct 2026 14:08:51 GMT</pubDate>
+    </item>
     <item>
       <title>CENG507: README (CENG507 Embedded Systems)</title>
       <link>https://mcce.khaledsaeed.tech/browse/1432OoeuqOyaf-cNuDrYiAr6vcuy7k3Ee?file=1RMbJ7vm5IP9ljy5Gm939MjbRTl35OLgT8RTJ9UmTrS0</link>
@@ -292,18 +304,6 @@
       <title>CENG645: CENG645-(2021)V1-Final.pdf</title>
       <link>https://mcce.khaledsaeed.tech/browse/12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg?file=1LIbIr9mt_9q3-b_BuKjQxQLBLf25ij7U</link>
       <guid isPermaLink="false">1LIbIr9mt_9q3-b_BuKjQxQLBLf25ij7U</guid>
-      <pubDate>Fri, 04 Sep 2026 16:57:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>CENG645: CENG645-(2021)V2-Final.pdf</title>
-      <link>https://mcce.khaledsaeed.tech/browse/12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg?file=11wqiw-tU77kqidfjgULCn51MgYP2Ywbt</link>
-      <guid isPermaLink="false">11wqiw-tU77kqidfjgULCn51MgYP2Ywbt</guid>
-      <pubDate>Fri, 04 Sep 2026 16:57:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>CENG645: CENG645-(Fall2023-2024)Final.pdf</title>
-      <link>https://mcce.khaledsaeed.tech/browse/12zgY6WTGtYvLTPCoWuXNFaaFNHmwW6Kg?file=1qQcnvLKEtDXI3S97P1nRZf682ULKnkws</link>
-      <guid isPermaLink="false">1qQcnvLKEtDXI3S97P1nRZf682ULKnkws</guid>
       <pubDate>Fri, 04 Sep 2026 16:57:00 GMT</pubDate>
     </item>
   </channel>
