@@ -2,4 +2,7 @@
 User-agent: *
 Disallow:
 
+User-agent: MJ12bot
+Disallow: /
+
 Sitemap: https://mcce.khaledsaeed.tech/sitemap.xml
