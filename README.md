@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://mcce.khaledsaeed.tech"><img src=".github/assets/mcce-showcase.webp" alt="Your degree, wired together: real MCCE views of file search, past exams, the prerequisite roadmap, and GPA planning, connected around the program index." width="1600" height="1160" /></a>
+  <a href="https://mcce.khaledsaeed.tech"><img src=".github/assets/mcce-showcase.webp" alt="MCCE, the whole program indexed: real views of the prerequisite roadmap, file search, the PDF editor, and the GPA calculator." width="1600" height="720" /></a>
 </p>
 
 <p align="center">

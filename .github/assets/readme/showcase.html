@@ -3,138 +3,73 @@
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>MCCE: Your degree, wired together.</title>
+    <title>MCCE: The whole program, indexed.</title>
     <link href="showcase.css" rel="stylesheet">
   </head>
   <body>
-    <main aria-label="MCCE product showcase" class="board">
-      <header>
+    <main aria-label="MCCE README header" class="board">
+      <header class="intro">
         <p class="brand">
-          MCCE <span class="brand-detail">/ A STUDENT-BUILT PROGRAM INDEX</span>
+          <img
+            alt=""
+            height="40"
+            src="../../../src/assets/brand/mark.svg"
+            width="40"
+          >MCCE
         </p>
-        <p class="program">
-          LIU / M.S. COMPUTER &amp; COMMUNICATION ENGINEERING
+        <h1>The whole program, <span class="underline">indexed.</span></h1>
+        <p class="lede">
+          Course files, past exams, the prerequisite map, GPA planning, and a
+          PDF editor for the LIU M.S. in Computer and Communication Engineering.
         </p>
-        <h1>
-          Your degree,<br>
-          <span class="headline-highlight">wired together.</span>
-        </h1>
-        <p class="intro">
-          Course files. Past papers.<br>A plan for what comes next.<br>
-          <strong>All connected through MCCE.</strong>
-        </p>
+        <p class="address">mcce.khaledsaeed.tech</p>
       </header>
-      <svg
-        aria-hidden="true"
-        class="circuit"
-        viewBox="0 0 1600 1160"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <path d="M400 591V631L445 676H710" id="search-trace" />
-          <path d="M962 585H925L895 615H830" id="roadmap-trace" />
-          <path d="M405 787V757L458 704H710" id="exams-trace" />
-          <path d="M1260 800V782L1232 754H830V737" id="gpa-trace" />
-        </defs>
-        <g class="trace-border">
-          <use href="#search-trace" />
-          <use href="#roadmap-trace" />
-          <use href="#exams-trace" />
-          <use href="#gpa-trace" />
-        </g>
-        <use class="trace search-color" href="#search-trace" />
-        <use class="trace roadmap-color" href="#roadmap-trace" />
-        <use class="trace exams-color" href="#exams-trace" />
-        <use class="trace gpa-color" href="#gpa-trace" />
-        <g class="vias">
-          <circle cx="400" cy="591" r="10" />
-          <circle cx="962" cy="585" r="10" />
-          <circle cx="405" cy="787" r="10" />
-          <circle cx="1260" cy="800" r="10" />
-        </g>
-      </svg>
-      <section class="window search">
-        <div class="window-bar">
-          <span>SEARCH / THE SHARED DRIVE INDEX</span
-          ><span class="window-symbol">⌘ K</span>
-        </div>
-        <div class="window-heading">
-          <h2>Find the file.</h2>
-          <p>One search across both years.</p>
-        </div>
-        <img
-          alt="Search for FinalSampleExam returns papers and solutions from Embedded Systems."
-          height="190"
-          src="search.webp"
-          width="1096"
-        >
-      </section>
-      <section class="window roadmap">
-        <div class="window-bar">
-          <span>PLAN OF STUDY / PREREQUISITES</span
-          ><span class="window-symbol">↗</span>
-        </div>
-        <div class="window-heading">
-          <h2>See the connections.</h2>
-          <p>Every course. What to take first.</p>
-        </div>
-        <img
-          alt="The actual prerequisite roadmap connects courses across the four semesters."
-          height="494"
-          src="roadmap.webp"
-          width="1096"
-        >
-      </section>
-      <div class="hub">
-        <img
-          alt=""
-          height="64"
-          src="../../../src/assets/brand/mark.svg"
-          width="64"
-        ><strong>MCCE</strong><span>THE WHOLE PROGRAM, INDEXED.</span>
+      <div class="tiles">
+        <figure class="tile roadmap">
+          <figcaption><i></i>Roadmap</figcaption>
+          <div class="frame">
+            <img
+              alt="The prerequisite roadmap with EENG527 traced to every course it unlocks."
+              height="1472"
+              src="roadmap-trace.webp"
+              width="3300"
+            >
+          </div>
+        </figure>
+        <figure class="tile search">
+          <figcaption><i></i>Search</figcaption>
+          <div class="frame">
+            <img
+              alt="Search for final sample lists exam papers from across the program."
+              height="1011"
+              src="search.webp"
+              width="1152"
+            >
+          </div>
+        </figure>
+        <figure class="tile editor">
+          <figcaption><i></i>PDF editor</figcaption>
+          <div class="frame">
+            <img
+              alt="A DSP lecture open in the PDF editor with highlights and a circled formula."
+              height="1800"
+              src="editor.webp"
+              width="2280"
+            >
+          </div>
+        </figure>
+        <figure class="tile gpa">
+          <figcaption><i></i>GPA calculator</figcaption>
+          <div class="frame">
+            <img
+              alt="Sample grades yield a cumulative GPA of 3.62, with 12 of 52 credits graded."
+              height="1842"
+              src="gpa.webp"
+              width="3372"
+            >
+          </div>
+        </figure>
       </div>
-      <p class="signal">FILES. COURSES. NEXT STEPS.</p>
-      <section class="window exams">
-        <div class="window-bar">
-          <span>PAST EXAMS / PAPERS &amp; SOLUTIONS</span
-          ><span class="window-symbol">↗</span>
-        </div>
-        <div class="window-heading">
-          <h2>Prepare with past papers.</h2>
-          <p>Grouped by course and term.</p>
-        </div>
-        <img
-          alt="Embedded Systems exam archive, with sample finals, solutions, and assessments."
-          height="257"
-          src="exams.webp"
-          width="1096"
-        >
-      </section>
-      <section class="window gpa">
-        <div class="window-bar">
-          <span>GPA CALCULATOR / SAMPLE GRADES</span
-          ><span class="window-symbol">↗</span>
-        </div>
-        <div class="window-heading">
-          <h2>Know where you stand.</h2>
-          <p>Your grades. Your device.</p>
-        </div>
-        <img
-          alt="Sample grades yield a cumulative GPA of 3.62, with 12 of 52 credits graded."
-          height="100"
-          src="gpa.webp"
-          width="1104"
-        >
-        <p class="gpa-note">Semester GPA · targets · projections · exports</p>
-      </section>
-      <footer>
-        <p>Search. Study. Plan.</p>
-        <p class="offline">
-          No sign-in <span>·</span> Offline browsing <span>·</span> Weekly Drive
-          sync
-        </p>
-        <p class="address">mcce.khaledsaeed.tech ↗</p>
-      </footer>
     </main>
   </body>
 </html>
