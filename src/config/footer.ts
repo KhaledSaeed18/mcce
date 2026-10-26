@@ -7,6 +7,7 @@ import {
 } from "@/config/resources/copy";
 import { PROGRAM_OFFICIAL_URL } from "@/config/site";
 import { DRIVE_SOURCES } from "@/config/sources";
+import { THESIS_GUIDE_PATH } from "@/config/thesis";
 
 export type FooterNavLink =
   | {
@@ -15,6 +16,7 @@ export type FooterNavLink =
       to:
         | "/"
         | "/admissions"
+        | "/thesis"
         | "/tuition-fees"
         | "/plan-of-study"
         | "/gpa-calculator"
@@ -88,6 +90,7 @@ export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
       { label: "About MCCE", to: "/about" },
       { label: "CCE undergraduate programs", to: "/cce" },
       { label: "Admissions guide", to: "/admissions" },
+      { label: "Thesis guide", to: THESIS_GUIDE_PATH },
       { label: "PDF editor", to: EDITOR_PATH },
       { label: "Tools", to: RESOURCES_PAGE_PATH },
       { label: "Thesis toolkit", to: RESOURCES_THESIS_PATH },

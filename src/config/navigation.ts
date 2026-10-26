@@ -1,6 +1,7 @@
 import {
   BadgeCheckIcon,
   BookmarkIcon,
+  BookOpenTextIcon,
   CalculatorIcon,
   ClockIcon,
   CompassIcon,
@@ -34,6 +35,7 @@ import {
 } from "@/config/resources/copy";
 import { PROGRAM_OFFICIAL_POS_URL, PROGRAM_OFFICIAL_URL } from "@/config/site";
 import { DRIVE_SOURCES } from "@/config/sources";
+import { THESIS_GUIDE_PATH } from "@/config/thesis";
 
 /** The command palette shows a shortlist; the search page is where everything is. */
 export const COMMAND_RESULT_LIMIT = 8;
@@ -49,6 +51,7 @@ export type NavRoute =
   | "/recent"
   | "/saved"
   | "/admissions"
+  | "/thesis"
   | "/tuition-fees"
   | "/plan-of-study"
   | "/gpa-calculator"
@@ -162,6 +165,12 @@ const PROGRAM_ENTRIES: NavEntry[] = [
     icon: GraduationCapIcon,
     label: "Admissions guide",
     to: "/admissions",
+  },
+  {
+    description: "CENG695A and CENG695B: rules, chapters, and finding a topic.",
+    icon: BookOpenTextIcon,
+    label: "Thesis guide",
+    to: THESIS_GUIDE_PATH,
   },
   {
     description: "The CENG and TENG bachelor programs in the same department.",

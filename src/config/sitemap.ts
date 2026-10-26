@@ -16,6 +16,7 @@ import {
   RESOURCES_THESIS_PATH,
 } from "@/config/resources/copy";
 import { DRIVE_SOURCES } from "@/config/sources";
+import { THESIS_GUIDE_PATH } from "@/config/thesis";
 
 export interface SitemapEntry {
   description: string;
@@ -28,6 +29,7 @@ export interface SitemapEntry {
     | "/recent"
     | "/saved"
     | "/admissions"
+    | "/thesis"
     | "/tuition-fees"
     | "/plan-of-study"
     | "/gpa-calculator"
@@ -125,6 +127,12 @@ export const SITEMAP_GROUPS: SitemapGroup[] = [
           "Graduate admissions requirements, LIU and non-LIU tracks, and official contact points.",
         label: "Admissions guide",
         to: "/admissions",
+      },
+      {
+        description:
+          "How CENG695A and CENG695B run: eligibility, deliverables, the template chapters, topic selection, and the literature review.",
+        label: "Thesis guide",
+        to: THESIS_GUIDE_PATH,
       },
       {
         description:

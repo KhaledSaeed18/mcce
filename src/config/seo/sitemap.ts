@@ -68,6 +68,12 @@ export const STATIC_PAGES: StaticPage[] = [
   },
   {
     changefreq: "monthly",
+    lastmod: "2026-10-26",
+    path: THESIS_GUIDE_PATH,
+    priority: "0.8",
+  },
+  {
+    changefreq: "monthly",
     lastmod: "2026-09-21",
     path: "/tuition-fees",
     priority: "0.8",
@@ -133,3 +139,4 @@ import {
   RESOURCES_PAGE_PATH,
   RESOURCES_THESIS_PATH,
 } from "@/config/resources/copy";
+import { THESIS_GUIDE_PATH } from "@/config/thesis";
