@@ -72,7 +72,7 @@
       "prior-theses": 7,
       "integrity": 10
     },
-    "generatedAt": "2026-10-19T14:18:06.608Z",
+    "generatedAt": "2026-10-26T13:49:58.393Z",
     "repoCount": 285,
     "toolCount": 401
   },
@@ -14390,7 +14390,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "unchecked"
+      "linkStatus": "ok"
     },
     {
       "access": "freemium",
@@ -14533,7 +14533,7 @@
       "icon": {
         "kind": "category"
       },
-      "linkStatus": "redirect",
+      "linkStatus": "ok",
       "repoId": "geodes-sms-relis"
     },
     {
