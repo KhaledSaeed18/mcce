@@ -47,9 +47,10 @@ browse, search, and link to material by semester and course. It re-syncs from Dr
 schedule, so the index tracks what's actually shared without anyone maintaining it by hand.
 Alongside the index, it carries the parts of the program that are otherwise scattered across
 PDFs and screenshots: the plan of study, the prerequisite roadmap, a GPA calculator on the
-program's grading scale, the admissions flow, and the tuition numbers with a planner to work
-a year's fees out from them. A PDF editor opens any indexed PDF in the browser to mark it up,
-and a tools directory covers what is worth installing for the coursework and the thesis.
+program's grading scale, the admissions flow, a guide to the two-part master thesis, and the
+tuition numbers with a planner to work a year's fees out from them. A PDF editor opens any
+indexed PDF in the browser to mark it up, and a tools directory covers what is worth installing
+for the coursework and the thesis.
 
 This is an independent, student-built site. It is not an official page of Lebanese International
 University. For admissions, curriculum, and official program details, see the
@@ -95,6 +96,10 @@ Direct links to the three shared Google Drive folders:
 - **Admissions guide**: the graduate admissions flow in one place, with the documents and fees
   required, separate step-by-step tracks for LIU and non-LIU bachelor graduates, the GPA bar for
   each, the application window, and the offices to contact.
+- **Thesis guide**: how the two-part master thesis (CENG695A and CENG695B) runs, with the
+  registration conditions, what each part delivers and how Part A is graded, the eight chapters
+  of the department template, a step-by-step method for finding a topic with prompts to copy, the
+  systematic literature review, and the template's formatting rules.
 - **Tuition and fees**: the official per credit and per year rates in both USD and LBP, plus a
   planner that turns the credits you intend to take each semester into semester and year totals,
   with registration and NSSF charges, a financial aid percent applied the way LIU bills it, and
