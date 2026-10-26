@@ -3,7 +3,7 @@ import { NavEntryAnchor } from "@/components/nav/nav-entry-anchor";
 import type { NavEntry } from "@/config/navigation";
 
 const CARD_CLASSES =
-  "group/card flex items-start gap-3 rounded border-2 border-transparent p-2 transition duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:border-border hover:bg-card hover:shadow-sm active:translate-x-0.5 active:translate-y-0.5 active:shadow-none data-[status=active]:border-border data-[status=active]:bg-card data-[status=active]:shadow-sm";
+  "group/card flex items-start gap-3 rounded border-2 border-transparent p-2 transition duration-200 lift-hit-area hover:-translate-x-0.5 hover:-translate-y-0.5 hover:border-border hover:bg-card hover:shadow-sm active:translate-x-0.5 active:translate-y-0.5 active:shadow-none data-[status=active]:border-border data-[status=active]:bg-card data-[status=active]:shadow-sm";
 
 interface MegaMenuCardProps {
   color: string;

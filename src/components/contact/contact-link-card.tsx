@@ -7,7 +7,7 @@ interface ContactLinkCardProps {
 }
 
 const CARD_CLASS =
-  "group flex items-center gap-4 rounded border-2 bg-card p-4 shadow-md transition duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg active:translate-x-1 active:translate-y-1 active:shadow-none sm:p-5";
+  "group flex items-center gap-4 rounded border-2 bg-card p-4 shadow-md transition duration-200 lift-hit-area hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg active:translate-x-1 active:translate-y-1 active:shadow-none sm:p-5";
 
 export function ContactLinkCard({ link }: ContactLinkCardProps) {
   const Icon = link.icon;

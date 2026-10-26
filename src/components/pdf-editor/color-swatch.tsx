@@ -17,7 +17,7 @@ export function ColorSwatch({ color, isActive, onSelect }: ColorSwatchProps) {
       aria-label={color}
       aria-pressed={isActive}
       className={cn(
-        "w-9 cursor-pointer rounded border-2 transition duration-200 hover:-translate-y-0.5",
+        "lift-hit-area w-9 cursor-pointer rounded border-2 transition duration-200 hover:-translate-y-0.5",
         EDITOR_CONTROL_HEIGHT_CLASS,
         isActive ? "shadow-md" : "shadow-xs"
       )}

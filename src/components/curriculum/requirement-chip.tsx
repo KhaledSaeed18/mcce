@@ -1,5 +1,5 @@
 export const REQUIREMENT_CHIP_CLASSNAME =
-  "inline-flex max-w-full items-baseline gap-1.5 rounded border-2 bg-background px-2.5 py-1 text-left text-sm shadow-sm transition duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-md active:translate-x-0 active:translate-y-0 active:shadow-none focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2";
+  "inline-flex max-w-full items-baseline gap-1.5 rounded border-2 bg-background px-2.5 py-1 text-left text-sm shadow-sm transition duration-200 lift-hit-area hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-md active:translate-x-0 active:translate-y-0 active:shadow-none focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2";
 
 interface RequirementChipLabelProps {
   code: string;

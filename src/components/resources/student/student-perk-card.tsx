@@ -14,7 +14,7 @@ export function StudentPerkCard({ featured, perk }: StudentPerkCardProps) {
     <Link
       className={cn(
         "group relative flex h-full flex-col gap-4 rounded-lg border-2 bg-card p-5 pt-6 shadow-md transition duration-200",
-        "hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg",
+        "lift-hit-area hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg",
         "focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
       )}
       params={{ perkId: perk.id }}

@@ -276,6 +276,20 @@
   }
 }
 
+/* An element that lifts on hover slides out from under a cursor resting on its
+   edge, drops back, and lifts again, which reads as flicker. While hovered, this
+   keeps a ring around the element hoverable. It relies on the hover translate
+   to anchor the pseudo-element and to give z-index -1 a stacking context, so
+   only use it on elements that move on hover, and never with overflow-hidden. */
+@utility lift-hit-area {
+  &:hover::after {
+    position: absolute;
+    inset: -4px;
+    z-index: -1;
+    content: "";
+  }
+}
+
 @keyframes roadmap-edge-flow {
   to {
     stroke-dashoffset: -16;

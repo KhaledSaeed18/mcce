@@ -15,7 +15,7 @@ export function StudentPerkSiblings({ perk }: StudentPerkSiblingsProps) {
       <div className="flex flex-wrap gap-3">
         {others.map((item) => (
           <Link
-            className="inline-flex items-center gap-1.5 rounded border-2 bg-card px-3 py-2 font-head text-sm shadow-sm transition hover:-translate-y-0.5"
+            className="lift-hit-area inline-flex items-center gap-1.5 rounded border-2 bg-card px-3 py-2 font-head text-sm shadow-sm transition hover:-translate-y-0.5"
             key={item.id}
             params={{ perkId: item.id }}
             to="/resources/student/$perkId"

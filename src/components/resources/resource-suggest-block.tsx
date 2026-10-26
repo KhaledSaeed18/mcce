@@ -16,7 +16,7 @@ export function ResourceSuggestBlock() {
         </p>
       </div>
       <Link
-        className="inline-flex w-fit shrink-0 items-center rounded border-2 border-black bg-primary px-3 py-1.5 font-head text-sm shadow-sm transition hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+        className="lift-hit-area inline-flex w-fit shrink-0 items-center rounded border-2 border-black bg-primary px-3 py-1.5 font-head text-sm shadow-sm transition hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
         to="/contact"
       >
         {RESOURCES_SUGGEST_ACTION}

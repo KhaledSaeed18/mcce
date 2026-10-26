@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 const CARD_CLASSES = cn(
   "group flex h-full flex-col gap-4 rounded-lg border-2 bg-card p-4 shadow-md transition duration-200",
-  "hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg",
+  "lift-hit-area hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg",
   "active:translate-x-1 active:translate-y-1 active:shadow-none"
 );
 

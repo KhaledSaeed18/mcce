@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 /** Same lift and press as the Drive cards, so the hub reads as part of the site. */
 export const RESOURCE_CARD_CLASSES = cn(
   "group flex h-full flex-col gap-3 rounded-lg border-2 bg-card p-4 shadow-md transition duration-200",
-  "hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg",
+  "lift-hit-area hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg",
   "active:translate-x-1 active:translate-y-1 active:shadow-none",
   "focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
 );

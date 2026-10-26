@@ -70,7 +70,7 @@ export function HeroRadioPanel({ stations }: HeroRadioPanelProps) {
         <div className="flex items-center gap-3">
           <HeroRadioGrille />
           <Link
-            className="flex h-10 shrink-0 items-center gap-1.5 rounded border-2 border-black bg-primary px-3 font-head text-black text-xs shadow-[3px_3px_0_0_rgb(0_0_0)] transition-transform hover:-translate-y-0.5"
+            className="lift-hit-area flex h-10 shrink-0 items-center gap-1.5 rounded border-2 border-black bg-primary px-3 font-head text-black text-xs shadow-[3px_3px_0_0_rgb(0_0_0)] transition-transform hover:-translate-y-0.5"
             params={{ code: station.code }}
             to="/course/$code"
           >

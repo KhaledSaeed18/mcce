@@ -31,7 +31,7 @@ export function StudentPerkDetailPage({ perk }: StudentPerkDetailPageProps) {
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 py-8 sm:p-6 sm:py-14">
       <Link
-        className="inline-flex w-fit items-center gap-1.5 rounded border-2 bg-card px-3 py-1.5 font-head text-sm shadow-sm transition hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+        className="lift-hit-area inline-flex w-fit items-center gap-1.5 rounded border-2 bg-card px-3 py-1.5 font-head text-sm shadow-sm transition hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
         to={RESOURCES_STUDENT_PATH}
       >
         <ArrowLeftIcon aria-hidden="true" className="size-4" />
@@ -46,7 +46,7 @@ export function StudentPerkDetailPage({ perk }: StudentPerkDetailPageProps) {
         <StudentPerkFacts perk={perk} />
         <div className="flex flex-wrap gap-3">
           <a
-            className="inline-flex items-center gap-1.5 rounded border-2 border-black bg-primary px-4 py-2 font-head text-sm shadow-sm transition hover:-translate-y-0.5"
+            className="lift-hit-area inline-flex items-center gap-1.5 rounded border-2 border-black bg-primary px-4 py-2 font-head text-sm shadow-sm transition hover:-translate-y-0.5"
             href={perk.applyUrl}
             rel="noopener"
             target="_blank"
@@ -55,7 +55,7 @@ export function StudentPerkDetailPage({ perk }: StudentPerkDetailPageProps) {
             <ArrowUpRightIcon aria-hidden="true" className="size-4" />
           </a>
           <a
-            className="inline-flex items-center gap-1.5 rounded border-2 bg-card px-4 py-2 font-head text-sm shadow-sm transition hover:-translate-y-0.5"
+            className="lift-hit-area inline-flex items-center gap-1.5 rounded border-2 bg-card px-4 py-2 font-head text-sm shadow-sm transition hover:-translate-y-0.5"
             href={perk.docsUrl}
             rel="noopener"
             target="_blank"
