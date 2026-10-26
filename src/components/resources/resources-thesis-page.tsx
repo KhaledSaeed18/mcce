@@ -4,6 +4,7 @@ import { ResourceEmptyState } from "@/components/resources/resource-empty-state"
 import { ResourceFilters } from "@/components/resources/resource-filters";
 import { ResourcesHero } from "@/components/resources/resources-hero";
 import { ThesisDefaultStack } from "@/components/resources/thesis-default-stack";
+import { ThesisGuideLink } from "@/components/resources/thesis-guide-link";
 import { ThesisRouteMap } from "@/components/resources/thesis-route-map";
 import { ThesisStageJump } from "@/components/resources/thesis-stage-jump";
 import { ThesisStageSection } from "@/components/resources/thesis-stage-section";
@@ -58,6 +59,7 @@ export function ResourcesThesisPage({
         highlight={THESIS_HERO.highlight}
         title={THESIS_HERO.title}
       >
+        <ThesisGuideLink />
         <ThesisRouteMap />
         <ResourceFilters
           badgeCounts={badgeCounts}
