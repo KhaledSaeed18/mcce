@@ -110,7 +110,7 @@ export const STATIC_PAGES: StaticPage[] = [
   },
   {
     changefreq: "monthly",
-    lastmod: "2026-08-19",
+    lastmod: "2026-10-26",
     path: "/faq",
     priority: "0.6",
   },
