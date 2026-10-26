@@ -24,6 +24,7 @@ import { Route as RecentRouteImport } from './routes/recent'
 import { Route as SavedRouteImport } from './routes/saved'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as SitemapRouteImport } from './routes/sitemap'
+import { Route as ThesisRouteImport } from './routes/thesis'
 import { Route as TuitionFeesRouteImport } from './routes/tuition-fees'
 import { Route as BrowseFolderIdRouteImport } from './routes/browse.$folderId'
 import { Route as CourseIndexRouteImport } from './routes/course.index'
@@ -111,6 +112,11 @@ const SitemapRoute = SitemapRouteImport.update({
   path: '/sitemap',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ThesisRoute = ThesisRouteImport.update({
+  id: '/thesis',
+  path: '/thesis',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TuitionFeesRoute = TuitionFeesRouteImport.update({
   id: '/tuition-fees',
   path: '/tuition-fees',
@@ -183,6 +189,7 @@ export interface FileRoutesByFullPath {
   '/saved': typeof SavedRoute
   '/search': typeof SearchRoute
   '/sitemap': typeof SitemapRoute
+  '/thesis': typeof ThesisRoute
   '/tuition-fees': typeof TuitionFeesRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
@@ -211,6 +218,7 @@ export interface FileRoutesByTo {
   '/saved': typeof SavedRoute
   '/search': typeof SearchRoute
   '/sitemap': typeof SitemapRoute
+  '/thesis': typeof ThesisRoute
   '/tuition-fees': typeof TuitionFeesRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
@@ -239,6 +247,7 @@ export interface FileRoutesById {
   '/saved': typeof SavedRoute
   '/search': typeof SearchRoute
   '/sitemap': typeof SitemapRoute
+  '/thesis': typeof ThesisRoute
   '/tuition-fees': typeof TuitionFeesRoute
   '/browse/$folderId': typeof BrowseFolderIdRoute
   '/course/$code': typeof CourseCodeRoute
@@ -269,6 +278,7 @@ export interface FileRouteTypes {
     | '/saved'
     | '/search'
     | '/sitemap'
+    | '/thesis'
     | '/tuition-fees'
     | '/browse/$folderId'
     | '/course/$code'
@@ -297,6 +307,7 @@ export interface FileRouteTypes {
     | '/saved'
     | '/search'
     | '/sitemap'
+    | '/thesis'
     | '/tuition-fees'
     | '/browse/$folderId'
     | '/course/$code'
@@ -324,6 +335,7 @@ export interface FileRouteTypes {
     | '/saved'
     | '/search'
     | '/sitemap'
+    | '/thesis'
     | '/tuition-fees'
     | '/browse/$folderId'
     | '/course/$code'
@@ -353,6 +365,7 @@ export interface RootRouteChildren {
   SavedRoute: typeof SavedRoute
   SearchRoute: typeof SearchRoute
   SitemapRoute: typeof SitemapRoute
+  ThesisRoute: typeof ThesisRoute
   TuitionFeesRoute: typeof TuitionFeesRoute
   BrowseFolderIdRoute: typeof BrowseFolderIdRoute
   CourseCodeRoute: typeof CourseCodeRoute
@@ -471,6 +484,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/thesis': {
+      id: '/thesis'
+      path: '/thesis'
+      fullPath: '/thesis'
+      preLoaderRoute: typeof ThesisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tuition-fees': {
       id: '/tuition-fees'
       path: '/tuition-fees'
@@ -580,6 +600,7 @@ const rootRouteChildren: RootRouteChildren = {
   SavedRoute: SavedRoute,
   SearchRoute: SearchRoute,
   SitemapRoute: SitemapRoute,
+  ThesisRoute: ThesisRoute,
   TuitionFeesRoute: TuitionFeesRoute,
   BrowseFolderIdRoute: BrowseFolderIdRoute,
   CourseCodeRoute: CourseCodeRoute,

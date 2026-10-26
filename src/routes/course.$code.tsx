@@ -6,6 +6,7 @@ import { CourseMaterials } from "@/components/course/course-materials";
 import { CourseObjectives } from "@/components/course/course-objectives";
 import { CourseQuickLinks } from "@/components/course/course-quick-links";
 import { CourseRequirements } from "@/components/course/course-requirements";
+import { CourseThesisPanel } from "@/components/course/course-thesis-panel";
 import { CourseTopics } from "@/components/course/course-topics";
 import { FilePreviewHost } from "@/components/drive/file-preview-host";
 import { CourseJsonLd } from "@/components/seo/course-json-ld";
@@ -63,6 +64,10 @@ function CoursePage() {
       <CourseTopics topics={context.course.topics ?? []} />
 
       <CourseObjectives objectives={context.course.objectives} />
+
+      {context.course.kind === "thesis" ? (
+        <CourseThesisPanel code={code} />
+      ) : null}
 
       <CourseRequirements context={context} lookup={courseLookup} />
 

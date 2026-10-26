@@ -6,6 +6,7 @@ import { FeatureGridSection } from "@/components/marketing/feature-grid-section"
 import { FeatureLinksSection } from "@/components/marketing/feature-links-section";
 import { HeroSection } from "@/components/marketing/hero-section";
 import { HomeCtaSection } from "@/components/marketing/home-cta-section";
+import { HomeThesisSection } from "@/components/marketing/home-thesis-section";
 import { ProgramGlanceSection } from "@/components/marketing/program-glance-section";
 import { RecentStrip } from "@/components/marketing/recent-strip";
 import { SectionDivider } from "@/components/marketing/section-divider";
@@ -56,6 +57,8 @@ function HomePage() {
       <SectionDividerDots />
 
       <FeatureLinksSection />
+
+      <HomeThesisSection />
 
       <SectionDividerDots />
 

@@ -15,6 +15,7 @@ export const MATERIAL_FOLDER_DESCRIPTIONS: Record<string, string> = {
   Exams: "Past papers, split into Midterm and Final",
   Books: "Reference textbooks for the course",
   Project: "Course project briefs and material",
+  Templates: "Official document templates to write the report in",
 };
 
 export const MATERIAL_FOLDER_ORDER = Object.keys(MATERIAL_FOLDER_DESCRIPTIONS);
@@ -80,8 +81,13 @@ export const SITE_PAGES: [path: string, label: string, purpose: string][] = [
     "Software and references picked per subject: DSP, networking, ML, security, and more",
   ],
   [
-    "/resources/thesis",
+    "/thesis",
     "Thesis guide",
+    "How CENG695A and CENG695B run: eligibility, deliverables, chapters, and finding a topic",
+  ],
+  [
+    "/resources/thesis",
+    "Thesis toolkit",
     "Stages of the master thesis, with tools for each one",
   ],
   [

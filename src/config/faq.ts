@@ -26,7 +26,8 @@ export const PROGRAM_FAQ: FaqItem[] = [
     question: "What does MCCE stand for?",
   },
   {
-    answer: "Two years, combining coursework with a research project.",
+    answer:
+      "Two years of coursework, with the master thesis running across the last two semesters.",
     category: "program",
     question: "How long is the program?",
   },
@@ -35,6 +36,24 @@ export const PROGRAM_FAQ: FaqItem[] = [
       "Modern communications networks and systems: telecommunications, data communications, network architecture, wireless systems, and optical networking.",
     category: "program",
     question: "What does the program focus on?",
+  },
+  {
+    answer:
+      "It is one project spread over the last two semesters: CENG695A in the fall and CENG695B in the spring, 3 credits each. Each part has its own grade and its own presentation to the committee. Part A ends with chapters 1 to 5 of the department template and a preliminary design; Part B adds the implementation, the results, and the conclusion.",
+    category: "program",
+    question: "How does the master thesis work?",
+  },
+  {
+    answer:
+      "A GPA of 2.0 or above, at least 24 credits of the program completed, and CENG695A taken in your second-to-last semester. Eligibility is checked after registration, and students who miss a condition are removed from the section.",
+    category: "program",
+    question: "Who can register for the thesis?",
+  },
+  {
+    answer:
+      "Yes. Only groups of two are allowed. You pick a partner through the coordinator's form, or you are matched with a remaining student at the end of assignment. The department committee then assigns each group a supervisor.",
+    category: "program",
+    question: "Do I need a thesis partner?",
   },
   {
     answer:

@@ -1,21 +1,21 @@
 {
   "meta": {
     "baselineAt": "2026-08-17T06:41:16.505Z",
-    "generatedAt": "2026-10-19T11:49:49.130Z",
+    "generatedAt": "2026-10-26T11:42:58.872Z",
     "sources": [
       {
         "description": "LIU - MCCE | First Year, Both Semesters | materials, videos, exercises, and previous exams.",
         "fileCount": 626,
         "folderCount": 199,
         "id": "year1",
-        "totalBytes": 14556080010
+        "totalBytes": 14556081054
       },
       {
         "description": "LIU - MCCE | Second Year, Fall Semester | materials, videos, exercises, and previous exams.",
-        "fileCount": 254,
-        "folderCount": 70,
+        "fileCount": 258,
+        "folderCount": 73,
         "id": "year2",
-        "totalBytes": 14224511665
+        "totalBytes": 14225370469
       },
       {
         "description": "LIU - MCCE | Second Year, Spring Semester | materials, videos, exercises, and previous exams.",
@@ -39,7 +39,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:32:56.507Z",
+      "modifiedTime": "2026-10-26T11:36:24.783Z",
       "name": "README (start here)",
       "parentId": "15A8bxA33GichTPcZkyXxaZnP_dRyryTq",
       "pathIds": [
@@ -49,7 +49,7 @@
         "README (start here)"
       ],
       "semester": null,
-      "sizeBytes": 9674,
+      "sizeBytes": 10718,
       "sourceId": "year1",
       "termLabel": null,
       "webViewLink": "https://docs.google.com/document/d/1zGPfqMT-wfGFHBQ7DoN_av2HELe--lMSeASjlclYpuk/edit?usp=drivesdk",
@@ -123,7 +123,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:33:10.834Z",
+      "modifiedTime": "2026-10-26T11:36:34.803Z",
       "name": "README (First Year, Spring Semester)",
       "parentId": "1w9brDt63Ma-miOLPet9JNru8AnWzpfRI",
       "pathIds": [
@@ -303,7 +303,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:33:07.729Z",
+      "modifiedTime": "2026-10-26T11:36:32.637Z",
       "name": "README (First Year, Fall Semester)",
       "parentId": "1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV",
       "pathIds": [
@@ -453,7 +453,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:33:36.278Z",
+      "modifiedTime": "2026-10-26T11:36:54.961Z",
       "name": "README (EENG587 Wireless Communication)",
       "parentId": "12terLwVgzvDHZAifTdF8uPqd1IL1vZHA",
       "pathIds": [
@@ -613,7 +613,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:33:39.291Z",
+      "modifiedTime": "2026-10-26T11:36:57.373Z",
       "name": "README (CENG675 Multimedia Networks)",
       "parentId": "1mjflikwZCsULyAoGBmmu8J8x5_26nAhW",
       "pathIds": [
@@ -773,7 +773,7 @@
       "kind": "doc",
       "materialType": "lab",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:33:46.151Z",
+      "modifiedTime": "2026-10-26T11:37:02.112Z",
       "name": "README (CENG566L Machine Learning Laboratory)",
       "parentId": "1f-pH8oPVzXN_Yz0TesY1BRvwHsjoe3H5",
       "pathIds": [
@@ -933,7 +933,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:33:41.368Z",
+      "modifiedTime": "2026-10-26T11:36:59.663Z",
       "name": "README (CENG566 Machine Learning)",
       "parentId": "1lsqY8_PBsBI_Las6QDwRc_w7DrgePgW5",
       "pathIds": [
@@ -1093,7 +1093,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:33:32.887Z",
+      "modifiedTime": "2026-10-26T11:36:52.679Z",
       "name": "README (CENG557 Advanced Network Architectures)",
       "parentId": "1NGKWicSFltorrxLrhb4UEj6OinZ1rzeV",
       "pathIds": [
@@ -1253,7 +1253,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:33:19.927Z",
+      "modifiedTime": "2026-10-26T11:36:42.787Z",
       "name": "README (CENG507 Embedded Systems)",
       "parentId": "1432OoeuqOyaf-cNuDrYiAr6vcuy7k3Ee",
       "pathIds": [
@@ -1445,7 +1445,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:33:23.334Z",
+      "modifiedTime": "2026-10-26T11:36:45.278Z",
       "name": "README (EENG527 Digital Signal Processing)",
       "parentId": "1DxWIAF_1v9ghF2VaXfsbDOOIyo5mg1yy",
       "pathIds": [
@@ -1669,7 +1669,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:33:26.736Z",
+      "modifiedTime": "2026-10-26T11:36:47.589Z",
       "name": "README (EENG537 Digital Communications)",
       "parentId": "1uFrj9_vFykJV-skuQnrfC70DZamodO3E",
       "pathIds": [
@@ -1893,7 +1893,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:33:29.626Z",
+      "modifiedTime": "2026-10-26T11:36:50.185Z",
       "name": "README (ENGG515 Advanced Engineering Mathematics)",
       "parentId": "1QuvHbZxbOYjz0-pWR0g8ZPFn4jhNNsIK",
       "pathIds": [
@@ -5111,7 +5111,7 @@
       "kind": "doc",
       "materialType": "lecture",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:34:09.030Z",
+      "modifiedTime": "2026-10-26T11:37:22.570Z",
       "name": "CENG557 Lecture Videos",
       "parentId": "1ve3tkyJUPEewEpw1q8DaJLqVblvLmw23",
       "pathIds": [
@@ -18783,7 +18783,7 @@
       "kind": "doc",
       "materialType": "lecture",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:34:12.653Z",
+      "modifiedTime": "2026-10-26T11:37:24.878Z",
       "name": "Lecture 01 Videos",
       "parentId": "1wslO1ZJ51NN-IFvSwxcJpIpb2cccvIKz",
       "pathIds": [
@@ -18861,7 +18861,7 @@
       "kind": "doc",
       "materialType": "lecture",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:34:16.480Z",
+      "modifiedTime": "2026-10-26T11:37:27.101Z",
       "name": "Lecture 02 Videos",
       "parentId": "1jChCU0y-qIqNPdRJlauI8ziPWNdJhzJN",
       "pathIds": [
@@ -18939,7 +18939,7 @@
       "kind": "doc",
       "materialType": "lecture",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:34:20.877Z",
+      "modifiedTime": "2026-10-26T11:37:29.290Z",
       "name": "Lecture 03 Videos",
       "parentId": "1DXJXVYwImeiP8O-ineNkWcOPvzXQTzJQ",
       "pathIds": [
@@ -19017,7 +19017,7 @@
       "kind": "doc",
       "materialType": "lecture",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:34:25.757Z",
+      "modifiedTime": "2026-10-26T11:37:31.773Z",
       "name": "Lecture 04 Videos",
       "parentId": "1nbb69MIh91SdOX0sV5GeeljPzNK_JsOJ",
       "pathIds": [
@@ -19095,7 +19095,7 @@
       "kind": "doc",
       "materialType": "lecture",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:34:28.703Z",
+      "modifiedTime": "2026-10-26T11:37:34.083Z",
       "name": "Lecture 05 Videos",
       "parentId": "16azUGzaf9QB2iyAcbzkQK0AoRkoWmrxw",
       "pathIds": [
@@ -31371,7 +31371,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:32:59.651Z",
+      "modifiedTime": "2026-10-26T11:36:27.918Z",
       "name": "README (start here)",
       "parentId": "1O5i5a7CgmPEwQ7G6MFyM75zIfmtDi5pt",
       "pathIds": [
@@ -31427,7 +31427,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:33:13.793Z",
+      "modifiedTime": "2026-10-26T11:36:37.358Z",
       "name": "README (Second Year, Fall Semester)",
       "parentId": "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
       "pathIds": [
@@ -31444,6 +31444,36 @@
       "termLabel": null,
       "webViewLink": "https://docs.google.com/document/d/17WS3IbsPV1WMl3TFcUAEYqPaeahCDWNTLutLD4IhpcU/edit?usp=drivesdk",
       "firstSeenAt": "2026-10-05T18:26:28.380Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG695A",
+      "courseName": "Master Thesis Project (Part I)",
+      "depth": 1,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1smupOYmCrHXW8edjUUAq_I7DPYYs2eZa",
+      "isShortcut": false,
+      "kind": "folder",
+      "materialType": "assignment",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-10-26T11:20:59.847Z",
+      "name": "CENG695A - Master Thesis Project (Part I)",
+      "parentId": "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1smupOYmCrHXW8edjUUAq_I7DPYYs2eZa"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG695A - Master Thesis Project (Part I)"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": null,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1smupOYmCrHXW8edjUUAq_I7DPYYs2eZa",
+      "firstSeenAt": "2026-10-26T11:29:48.701Z"
     },
     {
       "categoryPath": [],
@@ -31567,6 +31597,134 @@
     },
     {
       "categoryPath": [],
+      "courseCode": "CENG695A",
+      "courseName": "Master Thesis Project (Part I)",
+      "depth": 2,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+      "id": "1FLbZd4D9UHSz798OxTmV1kMctmhfmp6hLw50U4ofu0U",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "assignment",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-10-26T11:37:04.645Z",
+      "name": "README (CENG695A Master Thesis Project (Part I))",
+      "parentId": "1smupOYmCrHXW8edjUUAq_I7DPYYs2eZa",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1smupOYmCrHXW8edjUUAq_I7DPYYs2eZa",
+        "1FLbZd4D9UHSz798OxTmV1kMctmhfmp6hLw50U4ofu0U"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG695A - Master Thesis Project (Part I)",
+        "README (CENG695A Master Thesis Project (Part I))"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 6450,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://docs.google.com/document/d/1FLbZd4D9UHSz798OxTmV1kMctmhfmp6hLw50U4ofu0U/edit?usp=drivesdk",
+      "firstSeenAt": "2026-10-26T11:39:44.554Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG695A",
+      "courseName": "Master Thesis Project (Part I)",
+      "depth": 2,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1inxqTkmErUrzesuKrHI9d9qfesBLOtPu",
+      "isShortcut": false,
+      "kind": "folder",
+      "materialType": "other",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-10-26T11:21:02.280Z",
+      "name": "Templates",
+      "parentId": "1smupOYmCrHXW8edjUUAq_I7DPYYs2eZa",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1smupOYmCrHXW8edjUUAq_I7DPYYs2eZa",
+        "1inxqTkmErUrzesuKrHI9d9qfesBLOtPu"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG695A - Master Thesis Project (Part I)",
+        "Templates"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": null,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1inxqTkmErUrzesuKrHI9d9qfesBLOtPu",
+      "firstSeenAt": "2026-10-26T11:29:48.701Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG695A",
+      "courseName": "Master Thesis Project (Part I)",
+      "depth": 2,
+      "extension": null,
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder+shared",
+      "id": "1BBxBCiJb8ZDDU4Gnlo5g06s5ADnLHOTZ",
+      "isShortcut": false,
+      "kind": "folder",
+      "materialType": "lecture",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-10-26T11:21:01.232Z",
+      "name": "Lectures",
+      "parentId": "1smupOYmCrHXW8edjUUAq_I7DPYYs2eZa",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1smupOYmCrHXW8edjUUAq_I7DPYYs2eZa",
+        "1BBxBCiJb8ZDDU4Gnlo5g06s5ADnLHOTZ"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG695A - Master Thesis Project (Part I)",
+        "Lectures"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": null,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1BBxBCiJb8ZDDU4Gnlo5g06s5ADnLHOTZ",
+      "firstSeenAt": "2026-10-26T11:29:48.701Z"
+    },
+    {
+      "categoryPath": [],
+      "courseCode": "CENG695A",
+      "courseName": "Master Thesis Project (Part I)",
+      "depth": 2,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1ijSxvDewLDgiMb41KPkuaWsa22YaV5XQ",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "other",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-10-26T10:31:47.923Z",
+      "name": "CENG695A-syllabus.pdf",
+      "parentId": "1smupOYmCrHXW8edjUUAq_I7DPYYs2eZa",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1smupOYmCrHXW8edjUUAq_I7DPYYs2eZa",
+        "1ijSxvDewLDgiMb41KPkuaWsa22YaV5XQ"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG695A - Master Thesis Project (Part I)",
+        "CENG695A-syllabus.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 222001,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1ijSxvDewLDgiMb41KPkuaWsa22YaV5XQ/view?usp=drivesdk",
+      "firstSeenAt": "2026-10-26T11:29:48.701Z"
+    },
+    {
+      "categoryPath": [],
       "courseCode": "ENGG550",
       "courseName": "Engineering Project Management and Control",
       "depth": 2,
@@ -31577,7 +31735,7 @@
       "kind": "doc",
       "materialType": "assignment",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:33:51.719Z",
+      "modifiedTime": "2026-10-26T11:37:07.032Z",
       "name": "README (ENGG550 Engineering Project Management and Control)",
       "parentId": "1wFrTbuaGZSIwNMrTkRw-Sb0au1K89GJR",
       "pathIds": [
@@ -31705,7 +31863,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:34:00.646Z",
+      "modifiedTime": "2026-10-26T11:37:13.776Z",
       "name": "README (CENG646 Data Mining)",
       "parentId": "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
       "pathIds": [
@@ -31865,7 +32023,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:33:57.630Z",
+      "modifiedTime": "2026-10-26T11:37:11.724Z",
       "name": "README (CENG645 Mobile Communication)",
       "parentId": "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
       "pathIds": [
@@ -31993,7 +32151,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:33:54.942Z",
+      "modifiedTime": "2026-10-26T11:37:09.297Z",
       "name": "README (CENG625 Cryptography & Advanced Computer Security)",
       "parentId": "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
       "pathIds": [
@@ -32140,6 +32298,78 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/drive/folders/1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
       "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Templates"
+      ],
+      "courseCode": "CENG695A",
+      "courseName": "Master Thesis Project (Part I)",
+      "depth": 3,
+      "extension": "docx",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "id": "1kc45VTNaYrWLD5303d2TZlIq1Mmjv83Y",
+      "isShortcut": false,
+      "kind": "doc",
+      "materialType": "other",
+      "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "modifiedTime": "2026-10-23T09:44:44.991Z",
+      "name": "MasterThesis_Template_CCE_2025-2026.docx",
+      "parentId": "1inxqTkmErUrzesuKrHI9d9qfesBLOtPu",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1smupOYmCrHXW8edjUUAq_I7DPYYs2eZa",
+        "1inxqTkmErUrzesuKrHI9d9qfesBLOtPu",
+        "1kc45VTNaYrWLD5303d2TZlIq1Mmjv83Y"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG695A - Master Thesis Project (Part I)",
+        "Templates",
+        "MasterThesis_Template_CCE_2025-2026.docx"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 327077,
+      "sourceId": "year2",
+      "termLabel": "2025-2026",
+      "webViewLink": "https://docs.google.com/document/d/1kc45VTNaYrWLD5303d2TZlIq1Mmjv83Y/edit?usp=drivesdk&ouid=110887459839678167250&rtpof=true&sd=true",
+      "firstSeenAt": "2026-10-26T11:42:58.872Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures"
+      ],
+      "courseCode": "CENG695A",
+      "courseName": "Master Thesis Project (Part I)",
+      "depth": 3,
+      "extension": "pdf",
+      "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+      "id": "1tJ-WTm8ZpA74AyWOfVbFa4Wm2NVUa3ER",
+      "isShortcut": false,
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-10-22T13:37:47.000Z",
+      "name": "Master Thesis Part A Kickoff Session.pdf",
+      "parentId": "1BBxBCiJb8ZDDU4Gnlo5g06s5ADnLHOTZ",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1smupOYmCrHXW8edjUUAq_I7DPYYs2eZa",
+        "1BBxBCiJb8ZDDU4Gnlo5g06s5ADnLHOTZ",
+        "1tJ-WTm8ZpA74AyWOfVbFa4Wm2NVUa3ER"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG695A - Master Thesis Project (Part I)",
+        "Lectures",
+        "Master Thesis Part A Kickoff Session.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 303276,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1tJ-WTm8ZpA74AyWOfVbFa4Wm2NVUa3ER/view?usp=drivesdk",
+      "firstSeenAt": "2026-10-26T11:29:48.701Z"
     },
     {
       "categoryPath": [
@@ -43916,7 +44146,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:33:04.060Z",
+      "modifiedTime": "2026-10-26T11:36:30.448Z",
       "name": "README (start here)",
       "parentId": "1Ed1qu98go160SHcte4FstkPVhxX9pRK1",
       "pathIds": [
@@ -43972,7 +44202,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:33:17.370Z",
+      "modifiedTime": "2026-10-26T11:36:39.585Z",
       "name": "README (Second Year, Spring Semester)",
       "parentId": "1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b",
       "pathIds": [
@@ -44092,7 +44322,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:34:02.845Z",
+      "modifiedTime": "2026-10-26T11:37:16.236Z",
       "name": "README (CENG685 Information Security)",
       "parentId": "1nek1i4XdgFU2f9CARg68pa_eMJSNS7Fe",
       "pathIds": [
@@ -44156,7 +44386,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:34:05.140Z",
+      "modifiedTime": "2026-10-26T11:37:18.483Z",
       "name": "README (CENG678 Image Processing and Computer Vision)",
       "parentId": "1kjFRbLFfbrkXUURcAtXOBS8sbeqwhkol",
       "pathIds": [
@@ -44188,7 +44418,7 @@
       "kind": "doc",
       "materialType": "other",
       "mimeType": "application/vnd.google-apps.document",
-      "modifiedTime": "2026-10-05T17:34:07.228Z",
+      "modifiedTime": "2026-10-26T11:37:20.638Z",
       "name": "README (CENG679 Satellite and Space Communications)",
       "parentId": "1xsJs5zkz9lS-5Trf1qaAPiOMbN-WcNIk",
       "pathIds": [

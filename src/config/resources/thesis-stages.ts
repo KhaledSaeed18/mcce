@@ -16,14 +16,14 @@ export const THESIS_STAGES: ThesisStage[] = [
     defaultPick: "openalex",
     id: "frame",
     label: "Frame the topic",
-    note: "Lock the problem sentence, method family, dataset or testbed, baselines, and target venue before searching in depth. Bring three candidate titles and five seed papers to the first advisor meeting.",
+    note: "Lock the problem sentence, method family, dataset or testbed, and baseline before searching in depth, with AI at the core of the method. Bring three candidates to the first supervisor meeting, each with its ten most cited papers of the last five years and a one-page summary.",
     term: "A",
   },
   {
     defaultPick: "google-scholar",
     id: "search",
     label: "Systematic search",
-    note: "Record database, exact query, date, and hit count for every search, including the ones that found nothing. Run each query in at least two databases.",
+    note: "Run each query in at least two of IEEE Xplore, Scopus, and the ACM Digital Library, filtered to the last five years. Record database, exact query, date, and hit count for every search, including the ones that found nothing.",
     term: "A",
   },
   {
@@ -79,7 +79,7 @@ export const THESIS_STAGES: ThesisStage[] = [
     defaultPick: "quarto",
     id: "write",
     label: "Write and typeset",
-    note: "Confirm the thesis office template first; it decides LaTeX, Typst, or Word. Write methodology and setup in term one, before results exist.",
+    note: "The department template is a Word file, so write in it or render to it with the template as the reference document. Chapters 1 to 5 and a preliminary design are due at the end of Part A, so writing starts in term one.",
     term: "B",
   },
   {
@@ -93,7 +93,7 @@ export const THESIS_STAGES: ThesisStage[] = [
     defaultPick: "projectlibre",
     id: "defend",
     label: "Plan the work and defend",
-    note: "Mirror the plan as a Gantt with proposal, mid-review, and defense as fixed milestones. Build the deck from the same source as the thesis so numbers cannot drift.",
+    note: "Mirror the plan as a Gantt with the Part A and Part B committee presentations as fixed milestones; it also feeds the project management section of chapter 5. Build the deck from the same source as the thesis so numbers cannot drift.",
     term: "B",
   },
 ];
@@ -109,28 +109,39 @@ export interface ThesisRouteMapRow {
   weeks: string;
 }
 
-/** The week-by-week shape four of the research drafts agree on. */
+/**
+ * Paced over the 14-week terms of the CENG695A syllabus. The deliverables are the
+ * department's; the week splits are a suggestion.
+ */
 export const THESIS_ROUTE_MAP: ThesisRouteMapRow[] = [
-  { activity: "Topic discovery and scope", term: "A", weeks: "1 to 4" },
   {
-    activity: "Literature search and structured reading",
+    activity: "Topic chosen and agreed with the supervisor",
     term: "A",
-    weeks: "5 to 10",
+    weeks: "1 to 3",
   },
   {
-    activity: "Proposal chapter and agreed method",
+    activity: "Systematic review and chapters 1 to 4",
     term: "A",
-    weeks: "11 to 16",
-  },
-  { activity: "Implementation and experiments", term: "B", weeks: "1 to 8" },
-  {
-    activity: "Analysis, figures, and results chapters",
-    term: "B",
-    weeks: "9 to 12",
+    weeks: "4 to 9",
   },
   {
-    activity: "Polishing, integrity check, submission",
+    activity: "Chapter 5, preliminary design, report, and presentation",
+    term: "A",
+    weeks: "10 to 14",
+  },
+  {
+    activity: "Detailed design and implementation",
     term: "B",
-    weeks: "13 to 16",
+    weeks: "1 to 7",
+  },
+  {
+    activity: "Experiments, results, and chapter 7",
+    term: "B",
+    weeks: "8 to 11",
+  },
+  {
+    activity: "Chapter 8, abstract, final report, and defense",
+    term: "B",
+    weeks: "12 to 14",
   },
 ];
