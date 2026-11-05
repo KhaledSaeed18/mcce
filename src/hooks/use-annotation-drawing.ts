@@ -24,6 +24,19 @@ interface AnnotationDrawingOptions {
   zoom: number;
 }
 
+/** The markup the tool in hand is drawing right now. */
+function pickDraft(
+  tool: ToolSettings["tool"],
+  clipDraft: Annotation | null,
+  shapeDraft: Annotation | null,
+  textBoxDraft: Annotation | null
+): Annotation | null {
+  if (tool === "clip") {
+    return clipDraft;
+  }
+  return tool === "text" ? textBoxDraft : shapeDraft;
+}
+
 /** Routes one page's pointer events to whichever tool is selected. */
 export function useAnnotationDrawing({
   actions,
@@ -82,9 +95,8 @@ export function useAnnotationDrawing({
   const active = pickPointerTool(settings.tool, tools);
 
   return {
-    draft: settings.tool === "clip" ? clip.draft : shapes.draft,
+    draft: pickDraft(settings.tool, clip.draft, shapes.draft, text.boxDraft),
     drag: text.drag,
-    handleDoubleClick: text.handleDoubleClick,
     handlePointerDown: active.handleDown,
     handlePointerLeave: text.handleLeave,
     handlePointerMove: active.handleMove,

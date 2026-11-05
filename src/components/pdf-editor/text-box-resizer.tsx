@@ -3,24 +3,27 @@ import { useDragMove } from "@/hooks/use-drag-move";
 import type { TextBoxEdge } from "@/lib/pdf-editor/types";
 import { cn } from "@/lib/utils";
 
-const EDGE_LABELS: Record<TextBoxEdge, string> = {
-  left: "Drag to set the text width from the left",
-  right: "Drag to set the text width from the right",
-};
+const RESIZER_LABEL =
+  "Drag to set where the text wraps, double click to fit it";
+
+/** A page on its side turns the frame with it, so its sides run across the screen. */
+const SIDEWAYS_TURN = 180;
 
 interface TextBoxResizerProps {
   edge: TextBoxEdge;
-  /** Called on release, for a caller that turns a whole drag into one change. */
-  onEnd?: () => void;
+  onEnd: () => void;
+  /** A double click lets the box hug its text again. */
+  onFit: () => void;
   onResize: (edge: TextBoxEdge, dx: number) => void;
   rotation: number;
   zoom: number;
 }
 
-/** The grab strip on a box's side: pulling it in rewraps the text to the new width. */
+/** The grab strip down a box's side: pulling it rewraps the text to the new width. */
 export function TextBoxResizer({
   edge,
   onEnd,
+  onFit,
   onResize,
   rotation,
   zoom,
@@ -37,23 +40,25 @@ export function TextBoxResizer({
 
   const handleUp = useCallback(() => {
     handlePointerUp();
-    onEnd?.();
+    onEnd();
   }, [handlePointerUp, onEnd]);
 
   return (
     <button
-      aria-label={EDGE_LABELS[edge]}
+      aria-label={RESIZER_LABEL}
       className={cn(
-        "pointer-events-auto absolute inset-y-0 flex w-2 cursor-ew-resize touch-none items-center justify-center",
-        edge === "left" ? "-left-1" : "-right-1"
+        "pointer-events-auto absolute -inset-y-1 flex w-3 touch-none items-center justify-center",
+        edge === "left" ? "-left-2.5" : "-right-2.5",
+        rotation % SIDEWAYS_TURN === 0 ? "cursor-ew-resize" : "cursor-ns-resize"
       )}
+      onDoubleClick={onFit}
       onPointerCancel={handleUp}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handleUp}
       type="button"
     >
-      <span className="bg-foreground h-full w-[3px] rounded-full" />
+      <span className="border-primary bg-card h-4 w-1.5 rounded-full border" />
     </button>
   );
 }

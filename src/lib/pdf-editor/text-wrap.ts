@@ -1,13 +1,19 @@
 import { measureTextWidth } from "./text-metrics";
+import type { TextFormat } from "./types";
 
 /** Splits one word that is wider than the box, which no space can break for us. */
-function breakWord(word: string, fontSize: number, width: number): string[] {
+function breakWord(
+  word: string,
+  fontSize: number,
+  width: number,
+  format: TextFormat
+): string[] {
   const parts: string[] = [];
   let current = "";
 
   for (const character of word) {
     const next = current + character;
-    if (current && measureTextWidth(next, fontSize) > width) {
+    if (current && measureTextWidth(next, fontSize, format) > width) {
       parts.push(current);
       current = character;
       continue;
@@ -19,13 +25,18 @@ function breakWord(word: string, fontSize: number, width: number): string[] {
   return parts;
 }
 
-function wrapLine(line: string, fontSize: number, width: number): string[] {
+function wrapLine(
+  line: string,
+  fontSize: number,
+  width: number,
+  format: TextFormat
+): string[] {
   const lines: string[] = [];
   let current = "";
 
   for (const word of line.split(" ")) {
     const candidate = current ? `${current} ${word}` : word;
-    if (measureTextWidth(candidate, fontSize) <= width) {
+    if (measureTextWidth(candidate, fontSize, format) <= width) {
       current = candidate;
       continue;
     }
@@ -33,7 +44,7 @@ function wrapLine(line: string, fontSize: number, width: number): string[] {
     if (current) {
       lines.push(current);
     }
-    const parts = breakWord(word, fontSize, width);
+    const parts = breakWord(word, fontSize, width, format);
     lines.push(...parts.slice(0, -1));
     current = parts.at(-1) ?? "";
   }
@@ -46,11 +57,12 @@ function wrapLine(line: string, fontSize: number, width: number): string[] {
 export function wrapText(
   text: string,
   fontSize: number,
-  width: number | undefined
+  width: number | undefined,
+  format: TextFormat = {}
 ): string[] {
   const paragraphs = text.split("\n");
   if (width === undefined) {
     return paragraphs;
   }
-  return paragraphs.flatMap((line) => wrapLine(line, fontSize, width));
+  return paragraphs.flatMap((line) => wrapLine(line, fontSize, width, format));
 }

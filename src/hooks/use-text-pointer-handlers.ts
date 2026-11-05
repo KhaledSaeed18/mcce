@@ -1,71 +1,90 @@
 import { type PointerEvent, useCallback } from "react";
+import type { TextBoxDrawResult } from "@/hooks/use-text-box-draw";
 import type { TextDragResult } from "@/hooks/use-text-drag";
+import { isPressConsumed } from "@/lib/pdf-editor/consumed-press";
 import { toPagePoint } from "@/lib/pdf-editor/pointer";
-import type { PageSize, Point } from "@/lib/pdf-editor/types";
+import type { Box, PageSize, Point } from "@/lib/pdf-editor/types";
 
-interface TextHover {
-  clear: () => void;
-  update: (point: Point) => void;
-}
-
-interface TextOpen {
-  openAt: (event: PointerEvent<HTMLCanvasElement>) => void;
+export interface TextPointerActions {
+  beginBox: (point: Point) => void;
+  endBox: () => TextBoxDrawResult;
+  endDrag: () => TextDragResult | null;
+  moveBox: (point: Point) => void;
+  moveDrag: (point: Point) => void;
+  onHover: (point: Point) => void;
+  onOpenAt: (point: Point) => void;
+  onOpenBox: (box: Box) => void;
+  onOpenOn: (result: TextDragResult, point: Point) => void;
+  onSelect: (id: string) => void;
+  startDrag: (point: Point) => boolean;
 }
 
 interface TextPointerHandlerOptions {
-  end: () => TextDragResult | null;
-  hover: TextHover;
-  move: (point: Point) => void;
-  onSelect: (id: string | null) => void;
-  open: TextOpen;
+  actions: TextPointerActions;
   rotation: number;
   size: PageSize;
-  start: (point: Point) => boolean;
   zoom: number;
 }
 
-/** Pointer event wiring for the text tool: down, move, and up handlers. */
+/**
+ * The text tool's press. On text, a drag moves it and a click edits it. On bare
+ * page, a drag draws a box and a click opens one, unless the same press just
+ * finished the text being typed.
+ *
+ * Every field opens on the release, because the mouse press that comes with
+ * the pointer press would otherwise take the focus straight back from it.
+ */
 export function useTextPointerHandlers({
-  end,
-  hover,
-  move,
-  onSelect,
-  open,
+  actions,
   rotation,
   size,
-  start,
   zoom,
 }: TextPointerHandlerOptions) {
   const handleDown = useCallback(
     (event: PointerEvent<HTMLCanvasElement>) => {
-      if (start(toPagePoint(event, zoom, size, rotation))) {
+      const point = toPagePoint(event, zoom, size, rotation);
+      if (actions.startDrag(point)) {
         event.currentTarget.setPointerCapture(event.pointerId);
+        return;
+      }
+      if (!isPressConsumed(event.nativeEvent)) {
+        event.currentTarget.setPointerCapture(event.pointerId);
+        actions.beginBox(point);
       }
     },
-    [rotation, size, start, zoom]
+    [actions, rotation, size, zoom]
   );
 
   const handleMove = useCallback(
     (event: PointerEvent<HTMLCanvasElement>) => {
       const point = toPagePoint(event, zoom, size, rotation);
-      move(point);
-      hover.update(point);
+      actions.moveDrag(point);
+      actions.moveBox(point);
+      actions.onHover(point);
     },
-    [hover, move, rotation, size, zoom]
+    [actions, rotation, size, zoom]
   );
 
   const handleUp = useCallback(
     (event: PointerEvent<HTMLCanvasElement>) => {
-      const pressed = end();
+      const point = toPagePoint(event, zoom, size, rotation);
+      const pressed = actions.endDrag();
       if (pressed) {
-        if (!pressed.moved) {
-          onSelect(pressed.target.id);
+        if (pressed.moved) {
+          actions.onSelect(pressed.target.id);
+        } else {
+          actions.onOpenOn(pressed, point);
         }
         return;
       }
-      open.openAt(event);
+      const drawn = actions.endBox();
+      if (drawn === "click") {
+        actions.onOpenAt(point);
+      } else if (drawn) {
+        actions.onOpenBox(drawn);
+      }
     },
-    [end, onSelect, open]
+    [actions, rotation, size, zoom]
   );
 
   return { handleDown, handleMove, handleUp };

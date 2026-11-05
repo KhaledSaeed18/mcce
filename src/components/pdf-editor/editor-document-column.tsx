@@ -61,12 +61,10 @@ export function EditorDocumentColumn({
           covers={covers}
           exam={exam}
           exportStatus={exportStatus}
-          fontSize={tools.fontSize}
           navigation={navigation}
           onClear={markup.clear}
           onColorChange={ink.changeColor}
           onExport={exportPdf}
-          onFontSizeChange={markup.changeFontSize}
           onOpenFileSearch={onOpenFileSearch}
           onOpenSearch={search.open}
           onRedo={markup.redo}

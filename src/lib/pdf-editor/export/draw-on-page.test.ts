@@ -191,3 +191,75 @@ describe("drawAnnotationOnPage", () => {
     expect(drawing).toContain("10 180 m");
   });
 });
+
+const FILL_OPERATOR = /^f$/mu;
+const TEXT_POSITION = /([\d.]+) [\d.]+ Tm/u;
+
+function readTextStart(drawing: string): number {
+  return Number(TEXT_POSITION.exec(drawing)?.[1]);
+}
+
+describe("text formatting in the export", () => {
+  const TEXT: Annotation = {
+    color: "#1a1815",
+    fontSize: 10,
+    id: "t",
+    pageId: "p0",
+    text: "hi",
+    type: "text",
+    x: 10,
+    y: 20,
+  };
+
+  async function exportText(overrides: object): Promise<string> {
+    return await exportWithPageTurnedBy(0, {
+      ...TEXT,
+      ...overrides,
+    } as Annotation);
+  }
+
+  async function exportFontNames(overrides: object): Promise<string> {
+    const source = await PDFDocument.create();
+    source.addPage([CONTENT_WIDTH, CONTENT_HEIGHT]);
+    const out = await buildAnnotatedPdf(
+      (await source.save()).buffer as ArrayBuffer,
+      [{ ...TEXT, ...overrides } as Annotation],
+      buildPages(1)
+    );
+    const pdf = await PDFDocument.load(out);
+    return pdf.context
+      .enumerateIndirectObjects()
+      .map(([, object]) => object.toString())
+      .join(" ");
+  }
+
+  it("writes in the face the text is set in", async () => {
+    expect(await exportFontNames({})).toContain("/Helvetica");
+    expect(
+      await exportFontNames({ bold: true, fontFamily: "serif", italic: true })
+    ).toContain("/Times-BoldItalic");
+    expect(
+      await exportFontNames({ fontFamily: "mono", italic: true })
+    ).toContain("/Courier-Oblique");
+  });
+
+  it("draws a line under underlined text and none otherwise", async () => {
+    expect(await exportText({ underline: true })).toMatch(STROKE_OPERATOR);
+    expect(await exportText({})).not.toMatch(STROKE_OPERATOR);
+  });
+
+  it("paints a fill before the text it sits behind", async () => {
+    const drawing = await exportText({ background: "#ffffff" });
+    const fill = drawing.search(FILL_OPERATOR);
+
+    expect(fill).toBeGreaterThan(-1);
+    expect(fill).toBeLessThan(drawing.indexOf("BT"));
+  });
+
+  it("starts a right aligned line further along than a left aligned one", async () => {
+    const left = await exportText({ width: 60 });
+    const right = await exportText({ align: "right", width: 60 });
+
+    expect(readTextStart(right)).toBeGreaterThan(readTextStart(left));
+  });
+});

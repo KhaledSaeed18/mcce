@@ -1,6 +1,5 @@
 import {
   concatTransformationMatrix,
-  type PDFFont,
   type PDFPage,
   popGraphicsState,
   pushGraphicsState,
@@ -17,6 +16,7 @@ import {
   drawTextMark,
 } from "./draw-shapes";
 import { drawText } from "./draw-text";
+import type { AnnotationFonts } from "./embed-font";
 
 /**
  * Draws one piece of markup in the space it was made in, which is the page as a
@@ -26,7 +26,7 @@ import { drawText } from "./draw-text";
 export function drawAnnotationOnPage(
   page: PDFPage,
   annotation: Annotation,
-  font: PDFFont | null,
+  fonts: AnnotationFonts,
   rotation: number
 ): void {
   // A cover hides an answer while the reader studies; the copy they keep is
@@ -50,7 +50,7 @@ export function drawAnnotationOnPage(
   if (annotation.type === "pen") {
     drawPen(page, annotation, height);
   } else if (annotation.type === "text") {
-    drawText(page, annotation, font, height);
+    drawText(page, annotation, fonts, height);
   } else if (annotation.type === "highlight") {
     drawHighlight(page, annotation, height);
   } else if (annotation.type === "mark") {

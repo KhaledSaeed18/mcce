@@ -71,7 +71,9 @@ export function PdfPage({
     actions,
     annotations,
     draft: textDraft,
+    isMeasured: size !== null,
     onDraftChange: onTextDraftChange,
+    onOtherPress: covers.toggle,
     selectedId,
     size: pageSize,
   });
@@ -79,10 +81,11 @@ export function PdfPage({
     annotations,
     isEnabled: settings.tool === "select",
     onMove: actions.moveText,
-    onPress: covers.toggle,
+    onPress: editing.handlePress,
     onSelect: actions.select,
     pageId: page.id,
     rotation: page.rotation,
+    selectedId,
     size: pageSize,
     zoom,
   });
@@ -94,11 +97,13 @@ export function PdfPage({
   });
 
   return (
-    /* Nothing may spill past the sheet: the markup layers stop where the page does. */
+    /* Nothing may spill past the sheet, the markup layers stopping where the page
+       does, except by the margin that keeps the handles of a frame at its edge
+       within reach. */
     <div
       {...pageMarker}
       {...markupDrag.handlers}
-      className="bg-card relative scroll-mt-6 overflow-hidden border-2 shadow-md data-[over-markup=true]:cursor-move data-[over-markup=true]:[&_.textLayer_span]:cursor-move"
+      className="bg-card relative scroll-mt-6 overflow-clip border-2 shadow-md [overflow-clip-margin:14px] data-[over-markup=true]:cursor-move data-[over-markup=true]:[&_.textLayer_span]:cursor-move"
       ref={containerRef}
       style={{ height: rendered.height * zoom, width: rendered.width * zoom }}
     >
@@ -118,7 +123,7 @@ export function PdfPage({
           annotations={annotations}
           editingId={textDraft?.id ?? null}
           markupDrag={markupDrag.drag}
-          onDraft={editing.field.request}
+          onDraft={editing.request}
           pageId={page.id}
           preview={editing.selection.preview ?? resize.preview}
           revealed={covers.revealed}

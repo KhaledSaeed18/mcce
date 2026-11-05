@@ -260,7 +260,28 @@ export interface ArrowAnnotation extends AnnotationBase {
 }
 
 /** What it takes to lay text out, which a committed annotation and a draft both have. */
-export interface TextGeometry {
+export type TextAlign = "center" | "left" | "right";
+
+export type TextFontFamily = "mono" | "sans" | "serif";
+
+/** How text is set. All optional, because text saved before these existed has none. */
+export interface TextFormat {
+  align?: TextAlign;
+  /** Filled behind the text, which also hides what the page prints under it. */
+  background?: string;
+  bold?: boolean;
+  fontFamily?: TextFontFamily;
+  italic?: boolean;
+  underline?: boolean;
+}
+
+/** Everything the text toolbar can change. */
+export interface TextStyle extends TextFormat {
+  color: string;
+  fontSize: number;
+}
+
+export interface TextGeometry extends TextFormat {
   fontSize: number;
   text: string;
   /** The width text wraps at, absent while the box still grows with its content. */
@@ -305,9 +326,14 @@ export interface Box {
 
 /** Where a text annotation is being typed, before it is committed. */
 export interface TextDraft extends TextGeometry {
+  /** Where the caret starts, as a place in the text. Absent means the end. */
+  caret?: number;
   color: string;
   /** Set while existing text is being edited, and empty while new text is written. */
   id?: string;
+  /** The width was set by reaching the page's edge, not by the reader, so it
+   * lets go again once the text fits. */
+  isEdgeWrapped?: boolean;
   pageId: string;
 }
 
@@ -425,17 +451,22 @@ export interface AnnotationActions {
   batchErase: (pageId: string, points: Point[]) => void;
   /** Keeps a part of the page in view as a clip. */
   clip: (pageId: string, box: Box) => void;
+  /** Puts a copy of the selected text beside it, and selects the copy. */
+  duplicateText: () => void;
   erase: (pageId: string, point: Point) => void;
   moveText: (id: string, dx: number, dy: number) => void;
   remove: (id: string) => void;
   replace: (annotation: Annotation) => void;
+  /** Changes the text being typed or the text selected, and what comes next. */
+  restyleText: (style: Partial<TextStyle>) => void;
   select: (id: string | null) => void;
 }
 
 export interface ToolSettings {
   color: string;
-  fontSize: number;
   strokeWidth: number;
+  /** Text keeps its own ink, so writing does not take the pen's color. */
+  textStyle: TextStyle;
   tool: EditorTool;
 }
 

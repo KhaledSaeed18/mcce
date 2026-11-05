@@ -11,6 +11,8 @@ import type {
 
 interface TextDragOptions {
   annotations: Annotation[];
+  /** Called once a press becomes a move, since a frame left behind would not follow it. */
+  onLift: () => void;
   onMove: (id: string, dx: number, dy: number) => void;
   pageId: string;
   size: PageSize;
@@ -25,6 +27,7 @@ export interface TextDragResult {
 /** Repositioning text already on the page: press it, drag, and the move lands as one undo step. */
 export function useTextDrag({
   annotations,
+  onLift,
   onMove,
   pageId,
   size,
@@ -34,7 +37,7 @@ export function useTextDrag({
   const originRef = useRef<Point | null>(null);
   const targetRef = useRef<TextAnnotation | null>(null);
   // Measured from the pointer, not from the text, which stops at the page edge.
-  const hasTravelledRef = useRef(false);
+  const hasTravelledRef = useRef<boolean>(false);
 
   const update = useCallback((next: AnnotationDrag | null) => {
     dragRef.current = next;
@@ -64,15 +67,20 @@ export function useTextDrag({
       if (!(origin && target)) {
         return;
       }
-      if (
-        Math.hypot(point.x - origin.x, point.y - origin.y) > TEXT_MOVE_TOLERANCE
-      ) {
+      const isFar =
+        Math.hypot(point.x - origin.x, point.y - origin.y) >
+        TEXT_MOVE_TOLERANCE;
+      if (!hasTravelledRef.current) {
+        if (!isFar) {
+          return;
+        }
         hasTravelledRef.current = true;
+        onLift();
       }
       const delta = boundedTextDelta(target, origin, point, size);
       update({ dx: delta.x, dy: delta.y, id: target.id });
     },
-    [size, update]
+    [onLift, size, update]
   );
 
   /** Non-null when a press was in progress, so the release must not open a new field. */

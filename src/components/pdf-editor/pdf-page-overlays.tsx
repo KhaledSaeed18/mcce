@@ -3,12 +3,13 @@ import { MarkupResizeHandle } from "@/components/pdf-editor/markup-resize-handle
 import { MarkupSelectionFrame } from "@/components/pdf-editor/markup-selection-frame";
 import { NoteCard } from "@/components/pdf-editor/note-card";
 import { PageOverlayLayer } from "@/components/pdf-editor/page-overlay-layer";
+import { TextBoxFrame } from "@/components/pdf-editor/text-box-frame";
 import { TextDraftField } from "@/components/pdf-editor/text-draft-field";
-import { TextSelectionBox } from "@/components/pdf-editor/text-selection-box";
 import type { MarkupResize } from "@/hooks/use-markup-resize";
 import type { PageTextEditing } from "@/hooks/use-page-text-editing";
 import { getAnnotationBox } from "@/lib/pdf-editor/annotation-box";
 import { isResizable } from "@/lib/pdf-editor/scale-annotation";
+import { getFieldBox } from "@/lib/pdf-editor/text-box";
 import type {
   Annotation,
   AnnotationActions,
@@ -51,17 +52,26 @@ export function PdfPageOverlays({
   const { field, selected, selection } = editing;
   const { select } = actions;
   const handleClose = useCallback(() => select(null), [select]);
+  const { preview } = selection;
 
   return (
     <PageOverlayLayer rotation={rotation} size={size} zoom={zoom}>
       {selected && !textDraft ? (
-        <TextSelectionBox
-          annotation={
-            selection.preview ?? (shown?.type === "text" ? shown : selected)
-          }
-          onResize={selection.resize}
+        <TextBoxFrame
+          box={getFieldBox(
+            preview ?? (shown?.type === "text" ? shown : selected)
+          )}
+          isEditing={false}
+          onFit={selection.fitWidth}
+          onResizeCorner={selection.resizeCorner}
           onResizeEnd={selection.end}
+          onResizeSide={selection.resizeSide}
           rotation={rotation}
+          sizeLabel={
+            preview && preview.fontSize !== selected.fontSize
+              ? `${preview.fontSize} px`
+              : undefined
+          }
           zoom={zoom}
         />
       ) : null}
@@ -98,11 +108,15 @@ export function PdfPageOverlays({
       {textDraft ? (
         <TextDraftField
           draft={textDraft}
-          onCancel={field.cancel}
+          key={textDraft.id ?? "new"}
           onCommit={field.commit}
           onEdit={field.edit}
+          onFit={field.fitWidth}
           onMove={field.move}
-          onResize={field.resize}
+          onResizeCorner={field.resizeCorner}
+          onResizeEnd={field.finish}
+          onResizeSide={field.resizeSide}
+          onRestyle={actions.restyleText}
           rotation={rotation}
           zoom={zoom}
         />

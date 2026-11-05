@@ -106,17 +106,8 @@ export function buildTextMark(
 
 /** Keeps the draft's id when there is one, so editing replaces rather than duplicates. */
 export function buildText(draft: TextDraft, text: string): TextAnnotation {
-  return {
-    color: draft.color,
-    fontSize: draft.fontSize,
-    id: draft.id ?? createAnnotationId(),
-    pageId: draft.pageId,
-    text,
-    type: "text",
-    width: draft.width,
-    x: draft.x,
-    y: draft.y,
-  };
+  const { caret: _caret, id, isEdgeWrapped: _isEdgeWrapped, ...rest } = draft;
+  return { ...rest, id: id ?? createAnnotationId(), text, type: "text" };
 }
 
 /**

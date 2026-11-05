@@ -64,7 +64,6 @@ export function useEditorSession({
   });
 
   const { ink, settings } = useEditorInk({
-    changeColor: markup.changeColor,
     isSpacePanning,
     tools,
   });

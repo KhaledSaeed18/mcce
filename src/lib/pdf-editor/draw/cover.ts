@@ -1,5 +1,4 @@
 import {
-  ANNOTATION_FONT_FAMILY,
   COVER_LABEL,
   COVER_LABEL_COLOR,
   COVER_LABEL_PADDING,
@@ -7,12 +6,13 @@ import {
   COVER_OUTLINE_WIDTH,
   COVER_REVEALED_ALPHA,
   COVER_REVEALED_DASH,
+  TEXT_FONTS,
 } from "@/config/pdf-editor";
 import type { CoverAnnotation } from "../types";
 
 /** The hint is left off a cover too small to hold it, rather than spilling out. */
 function drawLabel(ctx: CanvasRenderingContext2D, cover: CoverAnnotation) {
-  ctx.font = `${COVER_LABEL_SIZE}px ${ANNOTATION_FONT_FAMILY}`;
+  ctx.font = `${COVER_LABEL_SIZE}px ${TEXT_FONTS.sans.stack}`;
   const fits =
     ctx.measureText(COVER_LABEL).width + COVER_LABEL_PADDING * 2 <=
       cover.width && COVER_LABEL_SIZE + COVER_LABEL_PADDING * 2 <= cover.height;

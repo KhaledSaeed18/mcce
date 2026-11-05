@@ -6,7 +6,10 @@ import type {
   LocalPdfProblem,
   PageSheet,
   StudyPanelTab,
+  TextAlign,
+  TextFontFamily,
   TextMarkStyle,
+  TextStyle,
 } from "@/lib/pdf-editor/types";
 
 export const EDITOR_PATH = "/editor";
@@ -469,11 +472,104 @@ export const SELECTION_MENU_OFFSET = 8;
 /** Selected pieces whose heights overlap by at least this share sit on one line. */
 export const TEXT_LINE_OVERLAP = 0.5;
 
-/** Matches the Helvetica the export embeds, so the canvas previews what is saved. */
-export const ANNOTATION_FONT_FAMILY = "Helvetica, Arial, sans-serif";
+/** Each stack leads with a font that has the widths of the PDF standard font
+ * the export writes, so the page previews what is saved. */
+export const TEXT_FONTS: Record<
+  TextFontFamily,
+  { label: string; stack: string }
+> = {
+  mono: { label: "Mono", stack: '"Courier New", Courier, monospace' },
+  sans: { label: "Sans", stack: "Helvetica, Arial, sans-serif" },
+  serif: { label: "Serif", stack: '"Times New Roman", Times, serif' },
+};
 
-export const FONT_SIZES = [12, 16, 24, 32] as const;
-export const DEFAULT_FONT_SIZE = 16;
+export const TEXT_FONT_FAMILIES: readonly TextFontFamily[] = [
+  "sans",
+  "serif",
+  "mono",
+];
+
+export const MIN_FONT_SIZE = 6;
+export const MAX_FONT_SIZE = 144;
+
+/** The sizes the toolbar's minus and plus step through. */
+export const TEXT_SIZE_STEPS: readonly number[] = [
+  6, 8, 9, 10, 11, 12, 14, 16, 18, 20, 24, 28, 32, 36, 48, 64, 72, 96, 144,
+];
+
+export const TEXT_COLORS: readonly string[] = [
+  "#1a1815",
+  "#ffffff",
+  "#e63946",
+  "#ff9f1c",
+  "#2a9d8f",
+  "#3a6ea5",
+];
+
+export const TEXT_FILLS: readonly string[] = [
+  "#ffffff",
+  "#fff3b0",
+  "#d8f3dc",
+  "#dbe9f9",
+  "#fde2e4",
+];
+
+/** Black on a page, whatever color the pen last wrote in. */
+export const DEFAULT_TEXT_STYLE: TextStyle = {
+  align: "left",
+  bold: false,
+  color: "#1a1815",
+  fontFamily: "sans",
+  fontSize: 16,
+  italic: false,
+  underline: false,
+};
+
+export const TEXT_PLACEHOLDER = "Type here";
+
+/** How far a line starts along the spare width of its box. */
+export const TEXT_ALIGN_SHARE: Record<TextAlign, number> = {
+  center: 0.5,
+  left: 0,
+  right: 1,
+};
+
+/** A fill reaches this far past the text, as a share of the font size, so
+ * letters do not touch its edge. */
+export const TEXT_FILL_PADDING_RATIO = 0.15;
+
+export const TEXT_UNDERLINE_OFFSET_RATIO = 0.13;
+export const TEXT_UNDERLINE_WIDTH_RATIO = 0.06;
+
+/** Room past the last letter of a box that grows with its text, so the caret
+ * has somewhere to sit without the line scrolling sideways. */
+export const TEXT_CARET_ROOM_PX = 6;
+
+/** With less than this left before the page's edge, a new box slides back
+ * rather than wrap into a sliver. */
+export const MIN_EDGE_WRAP_WIDTH = 120;
+
+/** How far the arrow keys carry selected text, and with Shift held. */
+export const TEXT_NUDGE = 1;
+export const TEXT_NUDGE_LARGE = 10;
+
+/** The gap between the text toolbar and the box it serves, and the scroller's edge. */
+export const TEXT_TOOLBAR_GAP = 12;
+export const TEXT_TOOLBAR_MARGIN = 6;
+
+/** Below this much room above it, a toolbar menu opens downward. */
+export const TEXT_MENU_ROOM = 180;
+
+/** The box being drawn with the text tool. */
+export const TEXT_BOX_DRAFT_COLOR = "#ff9f1c";
+
+/** Marks the frame the text toolbar sits beside. */
+export const TEXT_FRAME_ATTRIBUTE = "data-text-frame";
+
+/** Marks what a press may land on without finishing the text being typed. */
+export const TEXT_CONTROLS_ATTRIBUTE = "data-text-controls";
+
+export const TEXT_FIELD_ATTRIBUTE = "data-text-field";
 
 /**
  * How far back the reader can step. Each step holds the whole file's markup and
@@ -506,15 +602,11 @@ export const PAGE_INSET = 2;
 
 /** The outline that marks the text under the pointer as movable. */
 export const TEXT_HIGHLIGHT_PADDING = 3;
-export const TEXT_HIGHLIGHT_ALPHA = 0.7;
+export const TEXT_HIGHLIGHT_ALPHA = 0.5;
 export const TEXT_HIGHLIGHT_WIDTH = 1;
-export const TEXT_HIGHLIGHT_DASH = [4, 3];
 
 /** Narrower than this and a wrapped box has nowhere left to put a word. */
 export const MIN_TEXT_BOX_WIDTH = 32;
-
-/** An empty field still needs somewhere to put the caret and the placeholder. */
-export const EMPTY_TEXT_BOX_WIDTH = 140;
 
 /** A drag shorter than this is a click, not a shape. */
 export const MIN_SHAPE_SIZE = 4;
@@ -530,7 +622,8 @@ export const ARROW_HEAD_ANGLE = Math.PI / 7;
 /** A stroke needs two points to be a line; one is a press that never moved. */
 export const MIN_STROKE_POINTS = 2;
 
-/** Below this a press on text is a click that opens it for editing, not a move. */
+/** Below this a press on text is a click that opens it for editing, not a move,
+ * and a press on bare page is a click that opens a box, not a drawn one. */
 export const TEXT_MOVE_TOLERANCE = 3;
 
 /** A file opens ready to read: selecting text and picking up markup, not drawing. */
@@ -643,8 +736,17 @@ export const SHORTCUT_HINTS = {
   quickOpen: "Mod+K",
   redo: "Mod+Shift+Z",
   reopenTab: "Alt+Shift+T",
+  biggerText: "Mod+Shift+.",
+  bold: "Mod+B",
   bookmark: "B",
+  duplicate: "Mod+D",
+  finishText: "Enter",
+  italic: "Mod+I",
+  nudge: "Arrow keys",
+  textNewLine: "Shift+Enter",
   scrollLock: "L",
+  smallerText: "Mod+Shift+,",
+  underline: "Mod+U",
   scrollZoom: "Mod+Scroll",
   split: "Mod+\\",
   search: "Mod+F",
