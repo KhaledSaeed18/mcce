@@ -57,7 +57,7 @@ export function FeatureTile({
         {children}
 
         {linkLabel ? (
-          <span className="mt-auto inline-flex items-center gap-1.5 font-head text-sm group-hover/card:text-primary">
+          <span className="font-head group-hover/card:text-primary mt-auto inline-flex items-center gap-1.5 text-sm">
             {linkLabel}
             <ArrowRightIcon className="size-3.5" />
           </span>

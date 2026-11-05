@@ -84,10 +84,10 @@ export function EditorSearchBar({
   );
 
   return (
-    <search className="absolute top-3 right-6 z-20 flex items-center gap-1 rounded border-2 bg-card p-1 shadow-md">
+    <search className="bg-card absolute top-3 right-6 z-20 flex items-center gap-1 rounded border-2 p-1 shadow-md">
       <SearchIcon
         aria-hidden="true"
-        className="ml-1.5 size-4 text-muted-foreground"
+        className="text-muted-foreground ml-1.5 size-4"
       />
       <input
         aria-label={SEARCH_LABEL}
@@ -101,7 +101,7 @@ export function EditorSearchBar({
       />
       <span
         aria-live="polite"
-        className="min-w-20 text-center font-head text-muted-foreground text-xs tabular-nums"
+        className="font-head text-muted-foreground min-w-20 text-center text-xs tabular-nums"
       >
         {describeResult(query, current, matchCount, isReading)}
       </span>

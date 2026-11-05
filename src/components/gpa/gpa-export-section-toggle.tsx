@@ -24,7 +24,7 @@ export function GpaExportSectionToggle({
   return (
     <div className="flex items-start justify-between gap-3">
       <label className="flex flex-col" htmlFor={`export-${option.id}`}>
-        <span className="font-medium text-sm">{option.label}</span>
+        <span className="text-sm font-medium">{option.label}</span>
         <span className="text-muted-foreground text-xs">
           {option.description}
         </span>

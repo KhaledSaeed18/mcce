@@ -18,18 +18,18 @@ export function ThesisStageSection({
     <section className="flex scroll-mt-20 flex-col gap-4" id={stage.id}>
       <div className="flex flex-col gap-2 border-b-2 pb-3">
         <div className="flex items-center gap-3">
-          <span className="flex size-8 shrink-0 items-center justify-center rounded border-2 border-black bg-primary font-head text-sm">
+          <span className="bg-primary font-head flex size-8 shrink-0 items-center justify-center rounded border-2 border-black text-sm">
             {order}
           </span>
           <h2
-            className="min-w-0 flex-1 truncate font-head text-lg sm:text-xl"
+            className="font-head min-w-0 flex-1 truncate text-lg sm:text-xl"
             tabIndex={-1}
           >
             {stage.label}
           </h2>
           <Badge variant="outline">{THESIS_TERM_LABELS[stage.term]}</Badge>
         </div>
-        <p className="max-w-3xl text-muted-foreground text-sm">{stage.note}</p>
+        <p className="text-muted-foreground max-w-3xl text-sm">{stage.note}</p>
       </div>
 
       <ResourceGrid tools={tools} />

@@ -13,12 +13,12 @@ export function StudentPerkSteps({ perk }: StudentPerkStepsProps) {
       <ol className="flex flex-col gap-3">
         {perk.steps.map((step, index) => (
           <li
-            className="flex gap-4 rounded-lg border-2 bg-card p-4 shadow-md"
+            className="bg-card flex gap-4 rounded-lg border-2 p-4 shadow-md"
             key={step.title}
           >
             <span
               aria-hidden="true"
-              className="flex size-8 shrink-0 items-center justify-center rounded border-2 border-black bg-primary font-head text-sm"
+              className="bg-primary font-head flex size-8 shrink-0 items-center justify-center rounded border-2 border-black text-sm"
             >
               {index + 1}
             </span>

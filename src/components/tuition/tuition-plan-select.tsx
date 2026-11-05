@@ -36,7 +36,7 @@ export function TuitionPlanSelect({
 
   return (
     <div className="flex flex-col gap-1.5">
-      <span className="font-medium text-sm">{label}</span>
+      <span className="text-sm font-medium">{label}</span>
       <Select onValueChange={handleValueChange} value={value}>
         <SelectTrigger className="w-full">
           <SelectValue>{() => selectedLabel}</SelectValue>

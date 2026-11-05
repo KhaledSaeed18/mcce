@@ -16,8 +16,8 @@ import {
 import { folderLink, readmeLink, sitePage } from "./sections";
 import type { ReadmeDoc } from "./types";
 
-const VIDEOS_DOC_NAME = /videos/i;
-const LECTURE_NUMBER = /^Lecture (\d+)$/;
+const VIDEOS_DOC_NAME = /videos/iu;
+const LECTURE_NUMBER = /^Lecture (\d+)$/u;
 
 function videoUrl(playlist: LecturePlaylist, videoId: string): string {
   return `https://www.youtube.com/watch?v=${videoId}&list=${playlist.playlistId}`;

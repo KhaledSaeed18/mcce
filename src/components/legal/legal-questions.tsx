@@ -16,7 +16,7 @@ export function LegalQuestions() {
             rewriting.
           </p>
           <Link
-            className="inline-flex items-center gap-1.5 font-head text-sm underline underline-offset-2 hover:text-primary"
+            className="font-head hover:text-primary inline-flex items-center gap-1.5 text-sm underline underline-offset-2"
             to="/contact"
           >
             Contact

@@ -27,7 +27,7 @@ export function TuitionSemesterCreditsField({
 
   return (
     <label className="flex flex-col gap-1.5" htmlFor={inputId}>
-      <span className="font-medium text-sm">{label} credits</span>
+      <span className="text-sm font-medium">{label} credits</span>
       <Input
         id={inputId}
         max={TUITION_MAX_CREDITS_PER_SEMESTER}

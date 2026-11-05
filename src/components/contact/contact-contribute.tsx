@@ -23,7 +23,7 @@ export function ContactContribute() {
 
   return (
     <m.section
-      className="relative flex flex-col gap-5 rounded border-2 bg-card p-5 shadow-md sm:p-8"
+      className="bg-card relative flex flex-col gap-5 rounded border-2 p-5 shadow-md sm:p-8"
       {...entrance}
     >
       <Badge className="absolute -top-3 left-5 -rotate-3" variant="secondary">
@@ -48,10 +48,10 @@ export function ContactContribute() {
       <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
         {CONTACT_MATERIAL_ITEMS.map((item) => (
           <li
-            className="flex items-start gap-2 rounded border-2 bg-background p-3 text-sm"
+            className="bg-background flex items-start gap-2 rounded border-2 p-3 text-sm"
             key={item}
           >
-            <CheckIcon className="mt-0.5 size-4 shrink-0 text-primary" />
+            <CheckIcon className="text-primary mt-0.5 size-4 shrink-0" />
             {item}
           </li>
         ))}

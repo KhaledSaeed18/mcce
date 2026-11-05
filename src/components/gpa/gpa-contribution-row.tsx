@@ -17,7 +17,7 @@ export function GpaContributionRow({
 
   return (
     <li className="flex items-center gap-2">
-      <span className="w-16 shrink-0 truncate font-medium text-xs">
+      <span className="w-16 shrink-0 truncate text-xs font-medium">
         {contribution.code}
       </span>
 
@@ -26,18 +26,18 @@ export function GpaContributionRow({
           {contribution.name}, {contribution.credits} credits,{" "}
           {formatContribution(contribution.contribution)} GPA points
         </span>
-        <span className="absolute inset-y-0 left-1/2 w-px bg-border" />
+        <span className="bg-border absolute inset-y-0 left-1/2 w-px" />
         <span
           className={
             isLift
               ? "absolute left-1/2 h-2.5 rounded-r-xs bg-(--gpa-cumulative)"
-              : "absolute right-1/2 h-2.5 rounded-l-xs bg-destructive"
+              : "bg-destructive absolute right-1/2 h-2.5 rounded-l-xs"
           }
           style={{ width: `${width}%` }}
         />
       </span>
 
-      <span className="w-14 shrink-0 text-right text-muted-foreground text-xs tabular-nums">
+      <span className="text-muted-foreground w-14 shrink-0 text-right text-xs tabular-nums">
         {formatContribution(contribution.contribution)}
       </span>
     </li>

@@ -125,7 +125,7 @@ export const ASSESSMENT_FILE_MOVES: {
   { course: [FALL, EENG527], from: ["Exams", "Midterm"] },
 ];
 
-export const ASSESSMENT_FILE_PATTERN = /assessment/i;
+export const ASSESSMENT_FILE_PATTERN = /assessment/iu;
 
 /**
  * One-off file renames the mechanical rules cannot derive. Keyed by the full

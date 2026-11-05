@@ -25,16 +25,16 @@ export function HeroSection({ stations, stats }: HeroSectionProps) {
       <m.div className="flex flex-col gap-6" {...entrance}>
         <div className="flex flex-wrap items-center gap-2">
           <Badge className="w-fit gap-1.5" variant="outline">
-            <span className="size-1.5 rounded-full bg-primary" />
+            <span className="bg-primary size-1.5 rounded-full" />
             {PROGRAM_UNIVERSITY_SHORT} · MCCE
           </Badge>
         </div>
 
-        <h1 className="max-w-xl font-head text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+        <h1 className="font-head max-w-xl text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
           The whole program, <span className="text-primary">indexed</span>.
         </h1>
 
-        <p className="max-w-xl text-base text-muted-foreground sm:text-lg">
+        <p className="text-muted-foreground max-w-xl text-base sm:text-lg">
           Slides, past exams, problem sets, and recordings from both years of
           MCCE, pulled straight from the program's Drive and kept in sync. On
           top of the files: search across every name, a PDF editor to mark them

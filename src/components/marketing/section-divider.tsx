@@ -7,12 +7,12 @@ const TRACK_ITEMS = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
 function MarqueeCell({ text }: { text: string }) {
   return (
     <div className="flex shrink-0 items-center gap-8">
-      <span className="whitespace-nowrap font-head text-xs tracking-wide sm:text-sm">
+      <span className="font-head text-xs tracking-wide whitespace-nowrap sm:text-sm">
         {text}
       </span>
       <span
         aria-hidden="true"
-        className="size-2 shrink-0 rotate-45 border-2 bg-primary"
+        className="bg-primary size-2 shrink-0 rotate-45 border-2"
       />
     </div>
   );
@@ -26,7 +26,7 @@ export function SectionDivider() {
       aria-hidden="true"
       className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden py-10 sm:py-14"
     >
-      <div className="w-[110vw] translate-x-[-5vw] -rotate-2 border-y-2 bg-secondary text-secondary-foreground">
+      <div className="bg-secondary text-secondary-foreground w-[110vw] translate-x-[-5vw] -rotate-2 border-y-2">
         <div className="overflow-hidden py-3">
           <m.div
             animate={shouldReduceMotion ? undefined : { x: "-50%" }}

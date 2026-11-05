@@ -30,7 +30,7 @@ export function CceAdmissions() {
         <p className="text-muted-foreground text-sm">
           Applying to the master's program instead? The{" "}
           <Link
-            className="underline underline-offset-2 hover:text-primary"
+            className="hover:text-primary underline underline-offset-2"
             to="/admissions"
           >
             MCCE admissions guide

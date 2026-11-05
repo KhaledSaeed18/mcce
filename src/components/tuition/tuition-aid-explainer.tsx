@@ -33,7 +33,7 @@ export function TuitionAidExplainer() {
 
         <TuitionAidExample example={example} />
 
-        <div className="space-y-1 text-muted-foreground text-sm">
+        <div className="text-muted-foreground space-y-1 text-sm">
           <p>{TUITION_AID_SPILLOVER_NOTE}</p>
           <p>
             Registration and NSSF are outside tuition, so no percent covers

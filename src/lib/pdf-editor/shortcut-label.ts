@@ -1,4 +1,4 @@
-const MAC_PLATFORM = /mac|iphone|ipad/i;
+const MAC_PLATFORM = /mac|iphone|ipad/iu;
 
 /** Only called in the browser: the editor renders nothing of its own before hydration. */
 function isMac(): boolean {

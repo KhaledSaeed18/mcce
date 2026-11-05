@@ -52,7 +52,7 @@ export function EditorPaneMenu({
     <DropdownMenu>
       <DropdownMenuTrigger
         aria-label={PANE_MENU_LABEL}
-        className="grid size-5 shrink-0 cursor-pointer place-items-center rounded-sm hover:bg-foreground/10"
+        className="hover:bg-foreground/10 grid size-5 shrink-0 cursor-pointer place-items-center rounded-sm"
         title={PANE_MENU_LABEL}
       >
         <EllipsisIcon className="size-3.5" />

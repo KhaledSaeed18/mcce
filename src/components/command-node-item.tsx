@@ -22,7 +22,7 @@ export function CommandNodeItem({ node, onSelect }: CommandNodeItemProps) {
       <KindIcon className="text-muted-foreground" kind={node.kind} />
       <div className="flex min-w-0 flex-col">
         <span className="truncate">{node.name}</span>
-        <span className="truncate text-muted-foreground text-xs">
+        <span className="text-muted-foreground truncate text-xs">
           {formatNodePath(node)}
         </span>
       </div>

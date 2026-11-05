@@ -22,14 +22,14 @@ export function ClipsClosedRow({
   return (
     <li>
       <button
-        className="flex w-full items-center gap-2 px-3 py-1.5 text-left text-sm hover:bg-accent"
+        className="hover:bg-accent flex w-full items-center gap-2 px-3 py-1.5 text-left text-sm"
         onClick={handleClick}
         type="button"
       >
         <span className="min-w-0 flex-1">
           <ClipTitle label={label} pageNumber={pageNumber} />
         </span>
-        <span className="shrink-0 text-muted-foreground text-xs">
+        <span className="text-muted-foreground shrink-0 text-xs">
           {CLIPS_REOPEN_LABEL}
         </span>
       </button>

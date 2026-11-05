@@ -25,7 +25,7 @@ const config = defineConfig({
     viteStaticCopy({
       targets: [
         {
-          dest: PDF_STANDARD_FONTS_PATH.replace(/^\//, ""),
+          dest: PDF_STANDARD_FONTS_PATH.replace(/^\//u, ""),
           rename: { stripBase: true },
           src: "node_modules/pdfjs-dist/standard_fonts/*",
         },

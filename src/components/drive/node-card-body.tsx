@@ -43,12 +43,12 @@ export function NodeCardBody({
     <Card className={cn(CARD_CLASSES, isCourseRoot && "bg-primary/10")}>
       <CardContent className="flex items-center gap-3">
         {CourseIcon ? (
-          <div className="flex size-8 shrink-0 items-center justify-center rounded border-2 border-black bg-primary">
+          <div className="bg-primary flex size-8 shrink-0 items-center justify-center rounded border-2 border-black">
             <CourseIcon className="size-4" />
           </div>
         ) : (
           <KindIcon
-            className="size-8 shrink-0 text-muted-foreground"
+            className="text-muted-foreground size-8 shrink-0"
             kind={node.kind}
           />
         )}
@@ -70,7 +70,7 @@ export function NodeCardBody({
             {subtitleText}
           </p>
           {context ? (
-            <p className="truncate text-muted-foreground text-xs">{context}</p>
+            <p className="text-muted-foreground truncate text-xs">{context}</p>
           ) : null}
         </div>
       </CardContent>

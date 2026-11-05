@@ -31,17 +31,17 @@ export function PageHero({
 
       <m.div className="flex flex-col gap-4" {...entrance}>
         <Badge className="w-fit gap-1.5" variant="outline">
-          <span className="size-1.5 rounded-full bg-primary" />
+          <span className="bg-primary size-1.5 rounded-full" />
           {badge}
         </Badge>
 
-        <h1 className="max-w-3xl font-head text-3xl leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl">
+        <h1 className="font-head max-w-3xl text-3xl leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl">
           {title}
           <br />
           <span className="text-primary">{highlight}</span>
         </h1>
 
-        <p className="max-w-3xl text-base text-muted-foreground sm:text-lg">
+        <p className="text-muted-foreground max-w-3xl text-base sm:text-lg">
           {description}
         </p>
 

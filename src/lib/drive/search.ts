@@ -2,7 +2,7 @@ import { compareNaturally } from "./natural-sort";
 import { scoreNode } from "./search-score";
 import type { DriveNode } from "./types";
 
-const WHITESPACE = /\s+/;
+const WHITESPACE = /\s+/u;
 
 interface ScoredNode {
   node: DriveNode;

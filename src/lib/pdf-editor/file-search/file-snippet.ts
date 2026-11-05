@@ -4,7 +4,7 @@ import {
 } from "@/config/pdf-editor";
 import type { FileSearchSnippet } from "./types";
 
-const SPACES = /\s+/g;
+const SPACES = /\s+/gu;
 const CUT = "…";
 
 function tidy(text: string): string {

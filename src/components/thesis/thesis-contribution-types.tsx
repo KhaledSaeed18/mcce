@@ -10,7 +10,7 @@ export function ThesisContributionTypes() {
       <h3 className="font-head text-base">
         What a realistic contribution looks like
       </h3>
-      <p className="max-w-3xl text-muted-foreground text-sm">
+      <p className="text-muted-foreground max-w-3xl text-sm">
         {THESIS_CONTRIBUTION_NOTE}
       </p>
       <ThesisNamedGrid items={THESIS_CONTRIBUTION_TYPES} />

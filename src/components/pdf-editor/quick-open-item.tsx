@@ -26,7 +26,7 @@ export function QuickOpenItem({ node, onSelect }: QuickOpenItemProps) {
       {chip ? <FileTypeChip chip={chip} /> : null}
       <span className="truncate">{stripPdfExtension(node.name)}</span>
       {node.courseCode ? (
-        <span className="ml-auto shrink-0 text-muted-foreground text-xs">
+        <span className="text-muted-foreground ml-auto shrink-0 text-xs">
           {node.courseCode}
         </span>
       ) : null}

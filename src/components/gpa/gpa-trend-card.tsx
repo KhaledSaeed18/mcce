@@ -33,7 +33,7 @@ export function GpaTrendCard({ points }: GpaTrendCardProps) {
             {isTable ? "Chart" : "Table"}
           </Button>
         </CardTitle>
-        <dl className="flex flex-wrap gap-x-4 gap-y-1 text-muted-foreground text-xs">
+        <dl className="text-muted-foreground flex flex-wrap gap-x-4 gap-y-1 text-xs">
           <div className="flex items-center gap-1.5">
             <span className="size-2.5 rounded-xs bg-(--gpa-semester)" />
             <dt>Semester GPA</dt>
@@ -43,7 +43,7 @@ export function GpaTrendCard({ points }: GpaTrendCardProps) {
             <dt>Cumulative GPA</dt>
           </div>
           <div className="flex items-center gap-1.5">
-            <span className="h-0.5 w-3.5 rounded-full bg-muted-foreground" />
+            <span className="bg-muted-foreground h-0.5 w-3.5 rounded-full" />
             <dt>{formatGpa(GRADUATION_MIN_GPA)} to graduate</dt>
           </div>
         </dl>
@@ -60,7 +60,7 @@ export function GpaTrendCard({ points }: GpaTrendCardProps) {
             <div className="relative h-56 w-7 shrink-0">
               {GPA_AXIS_TICKS.map((tick) => (
                 <span
-                  className="absolute right-0 translate-y-1/2 text-muted-foreground text-xs tabular-nums"
+                  className="text-muted-foreground absolute right-0 translate-y-1/2 text-xs tabular-nums"
                   key={tick}
                   style={{ bottom: `${toAxisPercent(tick)}%` }}
                 >
@@ -77,7 +77,7 @@ export function GpaTrendCard({ points }: GpaTrendCardProps) {
               <div className="mt-2 flex">
                 {points.map((point) => (
                   <span
-                    className="min-w-0 truncate text-center text-muted-foreground text-xs"
+                    className="text-muted-foreground min-w-0 truncate text-center text-xs"
                     key={point.id}
                     style={{ width: `${100 / points.length}%` }}
                   >

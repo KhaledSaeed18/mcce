@@ -97,7 +97,7 @@ export function PageThumbnail({
       >
         <canvas
           className={cn(
-            "block border-2 bg-card transition-shadow",
+            "bg-card block border-2 transition-shadow",
             isActive ? "border-primary shadow-md" : "shadow-xs"
           )}
           ref={canvasRef}

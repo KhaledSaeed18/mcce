@@ -11,7 +11,7 @@ interface RecentStripProps {
 export function RecentStrip({ addedAt, count }: RecentStripProps) {
   return (
     <Link
-      className="flex items-center gap-3 rounded border-2 bg-primary/10 p-3 transition hover:bg-primary/20"
+      className="bg-primary/10 hover:bg-primary/20 flex items-center gap-3 rounded border-2 p-3 transition"
       to="/recent"
     >
       <SparkleIcon className="size-5 shrink-0" />

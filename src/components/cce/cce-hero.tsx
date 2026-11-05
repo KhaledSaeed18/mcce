@@ -28,7 +28,7 @@ export function CceHero() {
         <TextLink href={PROGRAM_SCHOOL_URL}>LIU School of Engineering</TextLink>
 
         <Link
-          className="inline-flex items-center gap-1.5 underline underline-offset-2 hover:text-primary"
+          className="hover:text-primary inline-flex items-center gap-1.5 underline underline-offset-2"
           to="/plan-of-study"
         >
           MCCE master's plan of study

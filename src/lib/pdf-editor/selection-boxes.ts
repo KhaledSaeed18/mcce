@@ -24,7 +24,7 @@ export interface PageSelection {
   text: string;
 }
 
-const WHITESPACE_PATTERN = /\s+/g;
+const WHITESPACE_PATTERN = /\s+/gu;
 
 /** The selected text's boxes on each page, in pixels from that page's corner,
  * and the words they cover, keyed by the page's position. */

@@ -63,8 +63,8 @@ export function CurriculumCourseDialog({
         </p>
 
         {course.note ? (
-          <p className="flex items-start gap-2 rounded border-2 bg-muted/50 p-3 text-sm">
-            <InfoIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+          <p className="bg-muted/50 flex items-start gap-2 rounded border-2 p-3 text-sm">
+            <InfoIcon className="text-muted-foreground mt-0.5 size-4 shrink-0" />
             {course.note}
           </p>
         ) : null}
@@ -72,7 +72,7 @@ export function CurriculumCourseDialog({
         <Separator />
 
         <div className="flex flex-col gap-2">
-          <h3 className="text-muted-foreground text-xs uppercase tracking-wide">
+          <h3 className="text-muted-foreground text-xs tracking-wide uppercase">
             Objectives
           </h3>
           {course.objectives.length === 0 ? (

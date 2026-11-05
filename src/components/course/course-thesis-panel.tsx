@@ -18,7 +18,7 @@ export function CourseThesisPanel({ code }: CourseThesisPanelProps) {
 
   return (
     <div className="flex flex-col gap-3">
-      <h2 className="text-muted-foreground text-xs uppercase tracking-wide">
+      <h2 className="text-muted-foreground text-xs tracking-wide uppercase">
         What this part delivers
       </h2>
       <ThesisPartCard part={part} />

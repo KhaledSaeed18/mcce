@@ -7,7 +7,7 @@ import {
 import { cn } from "@/lib/utils";
 
 const CARD_CLASSES = cn(
-  "group flex h-full flex-col gap-4 rounded-lg border-2 bg-card p-4 shadow-md transition duration-200",
+  "group bg-card flex h-full flex-col gap-4 rounded-lg border-2 p-4 shadow-md transition duration-200",
   "lift-hit-area hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg",
   "active:translate-x-1 active:translate-y-1 active:shadow-none"
 );
@@ -31,12 +31,12 @@ export function DriveDirectCard({ link }: DriveDirectCardProps) {
 
       <div className="flex flex-col gap-1">
         <span className="font-head text-lg">{link.label}</span>
-        <span className="break-all font-mono text-muted-foreground text-xs">
+        <span className="text-muted-foreground font-mono text-xs break-all">
           {link.driveLabel}
         </span>
       </div>
 
-      <span className="mt-auto inline-flex w-fit items-center gap-1.5 rounded border-2 border-border px-2 py-0.5 font-head text-xs uppercase tracking-wide transition duration-200 group-hover:border-black group-hover:bg-primary group-hover:text-primary-foreground">
+      <span className="border-border font-head group-hover:bg-primary group-hover:text-primary-foreground mt-auto inline-flex w-fit items-center gap-1.5 rounded border-2 px-2 py-0.5 text-xs tracking-wide uppercase transition duration-200 group-hover:border-black">
         {DRIVE_DIRECT_ACTION}
       </span>
     </a>

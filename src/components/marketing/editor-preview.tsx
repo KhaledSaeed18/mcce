@@ -7,12 +7,12 @@ export function EditorPreview() {
   return (
     <div
       aria-hidden="true"
-      className="flex flex-col overflow-hidden rounded border-2 bg-background shadow-sm"
+      className="bg-background flex flex-col overflow-hidden rounded border-2 shadow-sm"
     >
       <EditorPreviewToolbar />
       <div className="flex">
         <EditorPreviewSidebar />
-        <div className="flex flex-1 bg-muted p-4 sm:p-6">
+        <div className="bg-muted flex flex-1 p-4 sm:p-6">
           <EditorPreviewPage />
         </div>
       </div>

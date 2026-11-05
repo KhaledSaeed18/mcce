@@ -25,7 +25,7 @@ export function TuitionRateField({
 
   return (
     <label className="flex flex-col gap-1.5" htmlFor="usd-rate-input">
-      <span className="font-medium text-sm">Exchange rate</span>
+      <span className="text-sm font-medium">Exchange rate</span>
       <Input
         id="usd-rate-input"
         min={TUITION_MIN_USD_TO_LBP_RATE}

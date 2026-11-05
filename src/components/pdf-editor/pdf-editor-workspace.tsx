@@ -61,7 +61,7 @@ export function PdfEditorWorkspace({
   return (
     /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
     <main
-      className={cn("flex flex-col bg-background", EDITOR_HEIGHT_CLASS)}
+      className={cn("bg-background flex flex-col", EDITOR_HEIGHT_CLASS)}
       ref={rootRef}
     >
       <EditorDropZone>

@@ -11,13 +11,13 @@ export function ResourceCategoryJump({ sections }: ResourceCategoryJumpProps) {
     <nav aria-label="Jump to a category" className="flex flex-wrap gap-2">
       {sections.map(({ category, tools }) => (
         <Link
-          className="rounded border-2 px-2 py-1 font-medium text-xs transition hover:bg-primary"
+          className="hover:bg-primary rounded border-2 px-2 py-1 text-xs font-medium transition"
           hash={category.id}
           key={category.id}
           to="."
         >
           {category.label}
-          <span className="ml-1 text-muted-foreground">{tools.length}</span>
+          <span className="text-muted-foreground ml-1">{tools.length}</span>
         </Link>
       ))}
     </nav>

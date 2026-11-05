@@ -56,22 +56,22 @@ export function MobileNavGroup({
         <span
           className={cn(
             "flex size-9 items-center justify-center rounded border-2 border-black transition-transform duration-300",
-            isExpanded && "-rotate-6 scale-110"
+            isExpanded && "scale-110 -rotate-6"
           )}
           style={{ backgroundColor: `var(--${group.color})` }}
         >
           <Icon className="size-4 text-black" />
         </span>
         <span className="flex min-w-0 flex-1 flex-col">
-          <span className="flex items-center gap-2 font-head text-xl">
+          <span className="font-head flex items-center gap-2 text-xl">
             {group.label}
             {isActive ? (
-              <span className="rounded border-2 bg-primary px-1.5 py-0.5 font-head text-[0.625rem] text-primary-foreground uppercase">
+              <span className="bg-primary font-head text-primary-foreground rounded border-2 px-1.5 py-0.5 text-[0.625rem] uppercase">
                 Here
               </span>
             ) : null}
           </span>
-          <span className="truncate text-muted-foreground text-xs">
+          <span className="text-muted-foreground truncate text-xs">
             {group.entries.length} links
           </span>
         </span>

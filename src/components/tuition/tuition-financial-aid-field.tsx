@@ -32,7 +32,7 @@ export function TuitionFinancialAidField({
 
   return (
     <label className="flex flex-col gap-1.5" htmlFor="financial-aid-percent">
-      <span className="font-medium text-sm">Financial aid percent</span>
+      <span className="text-sm font-medium">Financial aid percent</span>
       <Input
         id="financial-aid-percent"
         max={TUITION_MAX_FINANCIAL_AID_PERCENT}

@@ -24,7 +24,7 @@ function Rail({ side }: { side: RailSide }) {
         RAIL_POSITION[side]
       )}
     >
-      <div className="h-full w-full bg-border" />
+      <div className="bg-border h-full w-full" />
       {RAIL_NODES.map((node) => (
         <span
           className="absolute left-1/2 size-2 -translate-x-1/2 rotate-45 border-2"
@@ -41,7 +41,7 @@ export function RailLine({ side }: { side: RailSide }) {
     <span
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-y-0 hidden w-0.5 bg-border xl:block",
+        "bg-border pointer-events-none absolute inset-y-0 hidden w-0.5 xl:block",
         RAIL_POSITION[side]
       )}
     />

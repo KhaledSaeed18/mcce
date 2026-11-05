@@ -27,7 +27,7 @@ export function ClipResizeHandle({ corner, handlers }: ClipResizeHandleProps) {
       {...handlers}
       aria-label={CLIP_RESIZE_LABEL}
       className={cn(
-        "absolute z-10 size-3.5 touch-none bg-primary",
+        "bg-primary absolute z-10 size-3.5 touch-none",
         HANDLE_CLASS[corner]
       )}
       tabIndex={-1}

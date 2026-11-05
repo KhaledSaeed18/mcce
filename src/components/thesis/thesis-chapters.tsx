@@ -23,17 +23,17 @@ export function ThesisChapters() {
       id={THESIS_GUIDE_SECTIONS.chapters.id}
       title="The eight chapters"
     >
-      <div className="overflow-x-auto rounded-lg border-2 bg-card shadow-md">
+      <div className="bg-card overflow-x-auto rounded-lg border-2 shadow-md">
         <table className="w-full text-sm">
           <thead className="border-b-2 text-left">
             <tr>
-              <th className="px-3 py-2 font-head" scope="col">
+              <th className="font-head px-3 py-2" scope="col">
                 #
               </th>
-              <th className="px-3 py-2 font-head" scope="col">
+              <th className="font-head px-3 py-2" scope="col">
                 Chapter
               </th>
-              <th className="px-3 py-2 font-head" scope="col">
+              <th className="font-head px-3 py-2" scope="col">
                 Written in
               </th>
             </tr>
@@ -41,12 +41,12 @@ export function ThesisChapters() {
           <tbody>
             {THESIS_CHAPTERS.map((chapter) => (
               <tr className="border-b last:border-b-0" key={chapter.number}>
-                <td className="px-3 py-2 align-top font-head">
+                <td className="font-head px-3 py-2 align-top">
                   {chapter.number}
                 </td>
                 <td className="px-3 py-2">
                   <span className="font-medium">{chapter.title}</span>
-                  <span className="block text-muted-foreground">
+                  <span className="text-muted-foreground block">
                     {chapter.content}
                   </span>
                 </td>

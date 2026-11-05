@@ -21,7 +21,7 @@ function toCsvField(value: string | number | null): string {
     return '""';
   }
 
-  return `"${String(value).replace(/"/g, '""')}"`;
+  return `"${String(value).replace(/"/gu, '""')}"`;
 }
 
 function toCsvRow(values: (string | number | null)[]): string {

@@ -53,7 +53,7 @@ export function FooterNav() {
           className="flex min-w-0 flex-col gap-3"
           key={column.title}
         >
-          <h3 className="font-head text-xs uppercase tracking-wide">
+          <h3 className="font-head text-xs tracking-wide uppercase">
             {column.title}
           </h3>
           <ul className="flex flex-col gap-1">

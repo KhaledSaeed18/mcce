@@ -17,8 +17,8 @@ export function EditorDropZone({ children }: EditorDropZoneProps) {
     <div className="contents" {...handlers}>
       {children}
       {isDragging ? (
-        <div className="pointer-events-none fixed inset-3 z-40 flex items-center justify-center rounded border-2 border-primary border-dashed bg-background/80">
-          <p className="flex items-center gap-2 font-head text-lg">
+        <div className="border-primary bg-background/80 pointer-events-none fixed inset-3 z-40 flex items-center justify-center rounded border-2 border-dashed">
+          <p className="font-head flex items-center gap-2 text-lg">
             <FileUpIcon aria-hidden="true" className="size-5" />
             {LOCAL_PDF_DROP_LABEL}
           </p>
@@ -26,7 +26,7 @@ export function EditorDropZone({ children }: EditorDropZoneProps) {
       ) : null}
       {error ? (
         <p
-          className="fixed bottom-6 left-1/2 z-40 -translate-x-1/2 rounded border-2 bg-card px-4 py-2 text-destructive text-sm shadow-md"
+          className="bg-card text-destructive fixed bottom-6 left-1/2 z-40 -translate-x-1/2 rounded border-2 px-4 py-2 text-sm shadow-md"
           role="alert"
         >
           {error}

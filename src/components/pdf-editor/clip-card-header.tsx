@@ -47,7 +47,7 @@ export function ClipCardHeader({
       <button
         {...moveHandlers}
         aria-label={`${label?.text ?? ""} ${CLIP_MOVE_HINT}`}
-        className="flex h-full min-w-0 flex-1 cursor-grab touch-none items-center pl-2 text-left text-xs outline-none focus-visible:bg-accent active:cursor-grabbing"
+        className="focus-visible:bg-accent flex h-full min-w-0 flex-1 cursor-grab touch-none items-center pl-2 text-left text-xs outline-none active:cursor-grabbing"
         onDoubleClick={onFold}
         title={CLIP_MOVE_HINT}
         type="button"

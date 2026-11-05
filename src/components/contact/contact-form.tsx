@@ -33,7 +33,7 @@ export function ContactForm() {
 
   return (
     <m.section
-      className="relative flex flex-col gap-5 rounded border-2 bg-card p-5 shadow-md sm:p-8"
+      className="bg-card relative flex flex-col gap-5 rounded border-2 p-5 shadow-md sm:p-8"
       {...entrance}
     >
       <Badge className="absolute -top-3 left-5 -rotate-3" variant="secondary">

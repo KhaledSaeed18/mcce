@@ -10,12 +10,12 @@ export function ThesisTopicDomains() {
       <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {THESIS_TOPIC_DOMAINS.map((domain) => (
           <li
-            className="flex flex-col gap-1 rounded border-2 bg-card p-3 text-sm"
+            className="bg-card flex flex-col gap-1 rounded border-2 p-3 text-sm"
             key={domain.title}
           >
             <span className="font-head">{domain.title}</span>
             <Link
-              className="w-fit text-xs underline underline-offset-2 hover:text-primary"
+              className="hover:text-primary w-fit text-xs underline underline-offset-2"
               params={{ code: domain.courseCode }}
               to="/course/$code"
             >
@@ -25,7 +25,7 @@ export function ThesisTopicDomains() {
           </li>
         ))}
       </ul>
-      <p className="font-medium text-sm">{THESIS_AI_REQUIREMENT}</p>
+      <p className="text-sm font-medium">{THESIS_AI_REQUIREMENT}</p>
       <ThesisTipList
         tips={THESIS_DOMAIN_TIPS}
         title="Choosing between domains"

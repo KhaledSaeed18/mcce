@@ -5,7 +5,7 @@ interface PreviewFallbackProps {
 
 export function PreviewFallback({ slow }: PreviewFallbackProps) {
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-card p-6 text-center text-muted-foreground text-sm">
+    <div className="bg-card text-muted-foreground absolute inset-0 flex flex-col items-center justify-center gap-1 p-6 text-center text-sm">
       <p>
         {slow
           ? "Preview is taking a while to load."

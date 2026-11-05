@@ -20,10 +20,10 @@ export function StudentPerkFacts({ perk }: StudentPerkFactsProps) {
     <dl className="grid gap-3 sm:grid-cols-3">
       {FACTS.map((fact) => (
         <div
-          className="flex flex-col gap-1 rounded-lg border-2 bg-card p-4 shadow-md"
+          className="bg-card flex flex-col gap-1 rounded-lg border-2 p-4 shadow-md"
           key={fact.key}
         >
-          <dt className="inline-flex items-center gap-1.5 font-medium text-muted-foreground text-xs">
+          <dt className="text-muted-foreground inline-flex items-center gap-1.5 text-xs font-medium">
             <fact.icon aria-hidden="true" className="size-3.5" />
             {fact.label}
           </dt>

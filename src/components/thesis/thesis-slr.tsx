@@ -16,7 +16,7 @@ export function ThesisSlr() {
               <CardHeader className="border-b-2 pb-3">
                 <CardTitle>
                   <h3 className="font-head">
-                    <span className="mr-2 text-primary">{index + 1}</span>
+                    <span className="text-primary mr-2">{index + 1}</span>
                     {phase.title}
                   </h3>
                 </CardTitle>

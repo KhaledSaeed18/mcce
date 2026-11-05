@@ -56,13 +56,13 @@ export function HeroRadioScope({ fileCounts, position }: HeroRadioScopeProps) {
         ))}
       </g>
       <path
-        className="fill-none stroke-chart-4 opacity-30"
+        className="stroke-chart-4 fill-none opacity-30"
         d={initialPath}
         ref={glowRef}
         strokeWidth={4}
       />
       <path
-        className="fill-none stroke-chart-4 [filter:drop-shadow(0_0_3px_var(--chart-4))]"
+        className="stroke-chart-4 fill-none [filter:drop-shadow(0_0_3px_var(--chart-4))]"
         d={initialPath}
         ref={traceRef}
         strokeLinejoin="round"

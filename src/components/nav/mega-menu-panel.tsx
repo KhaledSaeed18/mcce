@@ -28,7 +28,7 @@ export function MegaMenuPanel({ group }: MegaMenuPanelProps) {
         <p className="text-muted-foreground text-xs leading-snug">
           {group.tagline}
         </p>
-        <span className="mt-auto font-head text-muted-foreground text-xs">
+        <span className="font-head text-muted-foreground mt-auto text-xs">
           {group.entries.length} links
         </span>
       </div>

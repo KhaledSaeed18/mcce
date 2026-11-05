@@ -19,7 +19,7 @@ export function AdmissionsFeatureTile() {
         <ol className="flex flex-col gap-2">
           {ADMISSIONS_PREVIEW_STEPS.map((step, index) => (
             <li className="flex items-center gap-2" key={step}>
-              <span className="flex size-5 shrink-0 items-center justify-center rounded border-2 font-head text-[10px] tabular-nums">
+              <span className="font-head flex size-5 shrink-0 items-center justify-center rounded border-2 text-[10px] tabular-nums">
                 {index + 1}
               </span>
               <span className="text-xs leading-tight">{step}</span>

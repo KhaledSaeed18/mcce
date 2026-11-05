@@ -49,7 +49,7 @@ export function PageControls({
         onKeyDown={jump.handleKeyDown}
         value={jump.value}
       />
-      <span className="whitespace-nowrap font-head text-sm tabular-nums">
+      <span className="font-head text-sm whitespace-nowrap tabular-nums">
         of {pageCount}
       </span>
       <Button

@@ -14,17 +14,17 @@ export function ThesisTopicChecks() {
         <ul className="flex flex-col gap-2">
           {THESIS_TOPIC_CHECKS.map((check) => (
             <li
-              className="flex items-center gap-2 rounded border-2 bg-card px-3 py-2 text-sm"
+              className="bg-card flex items-center gap-2 rounded border-2 px-3 py-2 text-sm"
               key={check}
             >
-              <CircleCheckIcon className="size-4 shrink-0 text-primary" />
+              <CircleCheckIcon className="text-primary size-4 shrink-0" />
               {check}
             </li>
           ))}
         </ul>
         <div className="flex flex-col gap-2 rounded border-2 border-dashed p-3">
-          <h4 className="inline-flex items-center gap-1.5 font-head text-sm">
-            <TriangleAlertIcon className="size-4 text-destructive" />
+          <h4 className="font-head inline-flex items-center gap-1.5 text-sm">
+            <TriangleAlertIcon className="text-destructive size-4" />
             Red flags
           </h4>
           <ul className="flex list-disc flex-col gap-1 pl-5 text-sm">

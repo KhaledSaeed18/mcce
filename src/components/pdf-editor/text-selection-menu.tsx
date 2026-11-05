@@ -43,7 +43,7 @@ export function TextSelectionMenu({
   return (
     <div
       aria-label="Selected text"
-      className="fixed z-30 flex -translate-x-1/2 items-center gap-1 rounded border-2 bg-card p-1 shadow-md"
+      className="bg-card fixed z-30 flex -translate-x-1/2 items-center gap-1 rounded border-2 p-1 shadow-md"
       role="toolbar"
       style={{
         left: rect.left + rect.width / 2,

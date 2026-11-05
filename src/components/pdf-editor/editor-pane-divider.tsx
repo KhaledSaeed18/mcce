@@ -25,7 +25,7 @@ export function EditorPaneDivider({
       aria-valuemax={PERCENT}
       aria-valuemin={0}
       aria-valuenow={Math.round(ratio * PERCENT)}
-      className="relative w-2.5 shrink-0 cursor-col-resize touch-none border-x-2 bg-card transition-colors hover:bg-primary/40 focus-visible:bg-primary/40 focus-visible:outline-none"
+      className="bg-card hover:bg-primary/40 focus-visible:bg-primary/40 relative w-2.5 shrink-0 cursor-col-resize touch-none border-x-2 transition-colors focus-visible:outline-none"
       role="separator"
       tabIndex={0}
       title={SPLIT_DIVIDER_LABEL}

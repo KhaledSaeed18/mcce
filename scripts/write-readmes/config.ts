@@ -3,7 +3,7 @@ import type { ResourceCategoryId } from "../../src/lib/resources/types";
 export const ROOT_README_NAME = "README (start here)";
 
 /** A blank doc made in the Drive UI is named "Untitled document"; anything else here is already ours. */
-export const README_NAME_PATTERN = /^(README|Untitled)/;
+export const README_NAME_PATTERN = /^(README|Untitled)/u;
 
 export const MATERIAL_FOLDER_DESCRIPTIONS: Record<string, string> = {
   Lectures: "Slides, notes, chapters, and recordings, grouped per lecture",

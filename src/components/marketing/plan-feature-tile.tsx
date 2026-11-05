@@ -31,17 +31,17 @@ export function PlanFeatureTile() {
               key={stop.id}
             >
               <span
-                className="flex size-8 items-center justify-center rounded border-2 border-black font-head text-black text-xs tabular-nums"
+                className="font-head flex size-8 items-center justify-center rounded border-2 border-black text-xs text-black tabular-nums"
                 style={{
                   backgroundColor: `var(--${COURSE_CARD_COLORS[index % COURSE_CARD_COLORS.length]})`,
                 }}
               >
                 {stop.credits}
               </span>
-              <span className="text-center font-head text-[10px] leading-tight">
+              <span className="font-head text-center text-[10px] leading-tight">
                 {stop.label}
               </span>
-              <span className="text-center text-[10px] text-muted-foreground">
+              <span className="text-muted-foreground text-center text-[10px]">
                 {stop.courseCount} courses
               </span>
             </li>

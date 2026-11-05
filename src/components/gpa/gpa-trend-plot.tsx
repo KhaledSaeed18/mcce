@@ -35,8 +35,8 @@ export function GpaTrendPlot({
         <div
           className={
             tick === GRADUATION_MIN_GPA
-              ? "absolute inset-x-0 border-muted-foreground border-t"
-              : "absolute inset-x-0 border-border/25 border-t"
+              ? "border-muted-foreground absolute inset-x-0 border-t"
+              : "border-border/25 absolute inset-x-0 border-t"
           }
           key={tick}
           style={{ bottom: `${toAxisPercent(tick)}%` }}
@@ -73,7 +73,7 @@ export function GpaTrendPlot({
 
       {points.map((point, index) => (
         <span
-          className="pointer-events-none absolute size-2.5 rounded-full bg-(--gpa-cumulative) ring-2 ring-card"
+          className="ring-card pointer-events-none absolute size-2.5 rounded-full bg-(--gpa-cumulative) ring-2"
           key={point.id}
           style={{
             bottom: `${toAxisPercent(point.cumulativeGpa)}%`,
@@ -85,7 +85,7 @@ export function GpaTrendPlot({
 
       {activeIndex === null ? (
         <span
-          className="pointer-events-none absolute -translate-x-1/2 -translate-y-2 font-medium text-xs tabular-nums"
+          className="pointer-events-none absolute -translate-x-1/2 -translate-y-2 text-xs font-medium tabular-nums"
           style={{
             bottom: `${toAxisPercent(last.cumulativeGpa)}%`,
             left: `${bandCentre(total - 1, total)}%`,

@@ -43,7 +43,7 @@ export function CurriculumRequirementList({
 }: CurriculumRequirementListProps) {
   return (
     <div className="flex min-w-0 flex-col gap-2">
-      <h3 className="text-muted-foreground text-xs uppercase tracking-wide">
+      <h3 className="text-muted-foreground text-xs tracking-wide uppercase">
         {label}
       </h3>
       {codes.length === 0 ? (

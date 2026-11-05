@@ -5,7 +5,7 @@ export type CsvValue = string | number;
  * spreadsheet reads an unquoted comma as a new column.
  */
 function toCsvField(value: CsvValue): string {
-  return `"${String(value).replace(/"/g, '""')}"`;
+  return `"${String(value).replace(/"/gu, '""')}"`;
 }
 
 export function toCsvRow(values: CsvValue[]): string {

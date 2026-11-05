@@ -37,7 +37,7 @@ export function StudyPanel({
   pages,
 }: StudyPanelProps) {
   return (
-    <aside className="flex w-72 shrink-0 flex-col border-l-2 bg-card">
+    <aside className="bg-card flex w-72 shrink-0 flex-col border-l-2">
       <Tabs className="min-h-0 flex-1 gap-0" defaultValue={TABS[0]}>
         <TabsList className="m-2 w-auto">
           {TABS.map((tab) => (

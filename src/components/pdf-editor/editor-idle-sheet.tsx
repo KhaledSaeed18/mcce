@@ -36,7 +36,7 @@ export function EditorIdleSheet({ isBrowserOpen }: EditorIdleSheetProps) {
       </div>
 
       <div className="flex justify-center py-8">
-        <h2 className="relative font-head text-2xl text-black">
+        <h2 className="font-head relative text-2xl text-black">
           {EDITOR_IDLE_TITLE}
           <HandDrawnStroke
             className="-top-4 -left-5 h-[calc(100%+2rem)] w-[calc(100%+2.5rem)]"
@@ -67,7 +67,7 @@ export function EditorIdleSheet({ isBrowserOpen }: EditorIdleSheetProps) {
       </div>
 
       <p
-        className="mt-auto text-center font-head text-sm"
+        className="font-head mt-auto text-center text-sm"
         style={{ color: RED }}
       >
         {note}

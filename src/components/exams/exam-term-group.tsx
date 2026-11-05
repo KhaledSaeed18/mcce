@@ -15,7 +15,7 @@ export function ExamTermGroup({ group }: ExamTermGroupProps) {
       <div className="flex items-baseline gap-2">
         <h3
           className={cn(
-            "font-medium text-sm",
+            "text-sm font-medium",
             isUnrecorded && "text-muted-foreground"
           )}
         >

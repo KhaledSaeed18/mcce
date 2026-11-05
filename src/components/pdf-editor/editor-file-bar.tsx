@@ -62,7 +62,7 @@ export function EditorFileBar({
   const title = node ? node.name : EDITOR_EMPTY_TITLE;
 
   return (
-    <div className="flex items-center gap-3 border-b-2 bg-background p-3">
+    <div className="bg-background flex items-center gap-3 border-b-2 p-3">
       <div className="flex shrink-0 items-center gap-2">
         <EditorPanelToggle
           hideLabel={FILES_PANEL_HIDE_LABEL}
@@ -89,7 +89,7 @@ export function EditorFileBar({
           kept for screen readers only. */}
       <h1
         className={cn(
-          "min-w-0 truncate font-head text-xs sm:text-sm",
+          "font-head min-w-0 truncate text-xs sm:text-sm",
           hasTabs ? "sr-only" : "flex-1"
         )}
       >

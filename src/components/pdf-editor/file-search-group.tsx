@@ -28,10 +28,10 @@ export function FileSearchGroup({
   const { count, file, hits } = group;
   const shown = isExpanded ? hits : hits.slice(0, FILE_SEARCH_PREVIEW_COUNT);
   const heading = (
-    <span className="flex items-center gap-2 text-foreground">
+    <span className="text-foreground flex items-center gap-2">
       {label?.chip ? <FileTypeChip chip={label.chip} /> : null}
       <span className="truncate font-bold">{label?.text ?? file.name}</span>
-      <span className="ml-auto shrink-0 font-head tabular-nums">{count}</span>
+      <span className="font-head ml-auto shrink-0 tabular-nums">{count}</span>
     </span>
   );
 

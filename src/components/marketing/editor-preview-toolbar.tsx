@@ -23,7 +23,7 @@ const ACTIVE_TOOL_INDEX = 1;
 
 export function EditorPreviewToolbar() {
   return (
-    <div className="flex items-center gap-3 border-b-2 bg-card px-2 py-1.5">
+    <div className="bg-card flex items-center gap-3 border-b-2 px-2 py-1.5">
       <div className="flex items-center gap-1">
         {TOOL_ICONS.map((Icon, index) => (
           <span
@@ -39,14 +39,14 @@ export function EditorPreviewToolbar() {
         ))}
       </div>
 
-      <span className="hidden h-4 w-0.5 bg-border sm:block" />
+      <span className="bg-border hidden h-4 w-0.5 sm:block" />
 
       <div className="hidden items-center gap-1.5 sm:flex">
         {ANNOTATION_COLORS.map((color) => (
           <span
             className={cn(
-              "size-3.5 rounded-full border-2 border-border",
-              color === DEFAULT_COLOR && "ring-2 ring-primary ring-offset-1"
+              "border-border size-3.5 rounded-full border-2",
+              color === DEFAULT_COLOR && "ring-primary ring-2 ring-offset-1"
             )}
             key={color}
             style={{ backgroundColor: color }}
@@ -54,7 +54,7 @@ export function EditorPreviewToolbar() {
         ))}
       </div>
 
-      <span className="ml-auto flex items-center gap-1 rounded border-2 bg-background px-2 py-0.5 font-head text-[10px]">
+      <span className="bg-background font-head ml-auto flex items-center gap-1 rounded border-2 px-2 py-0.5 text-[10px]">
         <DownloadIcon className="size-3" />
         Export
       </span>

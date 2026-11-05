@@ -21,7 +21,7 @@ export function TuitionHero() {
     >
       <div className="flex flex-wrap items-center gap-3 text-sm">
         <a
-          className="inline-flex items-center gap-1.5 underline underline-offset-2 hover:text-primary"
+          className="hover:text-primary inline-flex items-center gap-1.5 underline underline-offset-2"
           href={TUITION_OFFICIAL_PAGE_URL}
           rel="noopener"
           target="_blank"
@@ -31,7 +31,7 @@ export function TuitionHero() {
         </a>
 
         <a
-          className="inline-flex items-center gap-1.5 underline underline-offset-2 hover:text-primary"
+          className="hover:text-primary inline-flex items-center gap-1.5 underline underline-offset-2"
           href={PROGRAM_OFFICIAL_URL}
           rel="noopener"
           target="_blank"
@@ -41,7 +41,7 @@ export function TuitionHero() {
         </a>
 
         <Link
-          className="inline-flex items-center gap-1.5 underline underline-offset-2 hover:text-primary"
+          className="hover:text-primary inline-flex items-center gap-1.5 underline underline-offset-2"
           to="/plan-of-study"
         >
           Plan of study on this site

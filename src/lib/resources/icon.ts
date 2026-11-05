@@ -31,7 +31,7 @@ export function resolveRepoIcon(
 
 export function toMonogram(name: string): string {
   return name
-    .replace(/[^a-z0-9]/gi, "")
+    .replace(/[^a-z0-9]/giu, "")
     .slice(0, MONOGRAM_LENGTH)
     .toUpperCase();
 }

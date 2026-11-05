@@ -36,13 +36,13 @@ export function EditorPaneHeader({
   const { activeIndex, pageCount } = pane.session.navigation;
 
   return (
-    <div className="flex h-7 shrink-0 items-center gap-2 border-b-2 bg-card px-2 text-xs">
+    <div className="bg-card flex h-7 shrink-0 items-center gap-2 border-b-2 px-2 text-xs">
       {chip ? <FileTypeChip chip={chip} /> : null}
       <span className="min-w-0 truncate font-medium" title={pane.node?.name}>
         {pane.node?.name}
       </span>
       {pageCount > 0 ? (
-        <span className="ml-auto shrink-0 text-muted-foreground tabular-nums">
+        <span className="text-muted-foreground ml-auto shrink-0 tabular-nums">
           {activeIndex + 1} / {pageCount}
         </span>
       ) : null}

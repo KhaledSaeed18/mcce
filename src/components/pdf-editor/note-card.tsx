@@ -40,7 +40,7 @@ export function NoteCard({
   return (
     <div
       {...{ [MARKUP_OVERLAY_ATTRIBUTE]: true }}
-      className="pointer-events-auto absolute flex flex-col gap-2 rounded border-2 bg-card p-2 text-card-foreground shadow-md"
+      className="bg-card text-card-foreground pointer-events-auto absolute flex flex-col gap-2 rounded border-2 p-2 shadow-md"
       style={{ left: place.x, top: place.y, width: NOTE_CARD_WIDTH }}
     >
       <Textarea

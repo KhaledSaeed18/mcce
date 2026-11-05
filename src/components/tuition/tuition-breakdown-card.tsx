@@ -18,10 +18,10 @@ export function TuitionBreakdownCard({
   title,
 }: TuitionBreakdownCardProps) {
   return (
-    <div className="rounded border-2 bg-card p-4">
+    <div className="bg-card rounded border-2 p-4">
       <h3 className="font-head text-sm">{title}</h3>
       {subtitle ? (
-        <p className="mt-1 text-muted-foreground text-xs">{subtitle}</p>
+        <p className="text-muted-foreground mt-1 text-xs">{subtitle}</p>
       ) : null}
 
       <dl className="mt-3 space-y-2 text-sm">

@@ -34,7 +34,7 @@ export function GpaTargetPanel({
 
       <CardContent className="flex flex-col gap-4">
         <div className="flex items-center gap-3">
-          <label className="font-medium text-sm" htmlFor="target-gpa">
+          <label className="text-sm font-medium" htmlFor="target-gpa">
             Target GPA
           </label>
           <Input

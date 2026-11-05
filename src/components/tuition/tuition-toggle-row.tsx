@@ -16,9 +16,9 @@ export function TuitionToggleRow({
   onCheckedChange,
 }: TuitionToggleRowProps) {
   return (
-    <div className="flex items-start justify-between gap-3 rounded border-2 bg-card p-3">
+    <div className="bg-card flex items-start justify-between gap-3 rounded border-2 p-3">
       <label className="flex flex-col" htmlFor={id}>
-        <span className="font-medium text-sm">{label}</span>
+        <span className="text-sm font-medium">{label}</span>
         <span className="text-muted-foreground text-xs">{description}</span>
       </label>
       <Switch

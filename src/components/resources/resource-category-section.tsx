@@ -21,14 +21,14 @@ export function ResourceCategorySection({
           <CategoryIcon aria-hidden="true" className="size-4 text-black" />
         </div>
         <div className="min-w-0 flex-1">
-          <h2 className="truncate font-head text-lg sm:text-xl" tabIndex={-1}>
+          <h2 className="font-head truncate text-lg sm:text-xl" tabIndex={-1}>
             {category.label}
           </h2>
-          <p className="truncate text-muted-foreground text-xs">
+          <p className="text-muted-foreground truncate text-xs">
             {category.tagline}
           </p>
         </div>
-        <span className="shrink-0 text-muted-foreground text-sm">
+        <span className="text-muted-foreground shrink-0 text-sm">
           {tools.length} tools
         </span>
       </div>

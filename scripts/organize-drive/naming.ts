@@ -1,12 +1,12 @@
 import { academicYearFor } from "../sync-drive/term-label";
 
 const SOLUTION_ALIASES: [RegExp, string][] = [
-  [/\[(?:solved|solution|solutions)\]/gi, "[Solution]"],
-  [/\[solved-v(\d+)\]/gi, "[Solution]V$1-"],
-  [/\[solution(\d+)\]/gi, "[Solution]V$1-"],
-  [/\[solution-p(\d+)\]/gi, "[Solution]P$1-"],
-  [/\[detailedsolution\]/gi, "[Detailed Solution]"],
-  [/\[ai_solution\]/gi, "[AI Solution]"],
+  [/\[(?:solved|solution|solutions)\]/giu, "[Solution]"],
+  [/\[solved-v(\d+)\]/giu, "[Solution]V$1-"],
+  [/\[solution(\d+)\]/giu, "[Solution]V$1-"],
+  [/\[solution-p(\d+)\]/giu, "[Solution]P$1-"],
+  [/\[detailedsolution\]/giu, "[Detailed Solution]"],
+  [/\[ai_solution\]/giu, "[AI Solution]"],
 ];
 
 /** "SP" is how the assessment files spell Spring; the rest are already words. */
@@ -19,14 +19,14 @@ const TERM_WORDS: Record<string, string> = {
 
 /** The lookahead keeps an already-correct "Fall-2024-2025" from expanding a second time. */
 const SINGLE_YEAR_TERM =
-  /\b(fall|spring|summer|sp)[\s\-_]?((?:19|20)\d{2})\b(?!\s*-\s*(?:19|20)\d{2})/gi;
+  /\b(fall|spring|summer|sp)[\s\-_]?((?:19|20)\d{2})\b(?!\s*-\s*(?:19|20)\d{2})/giu;
 const SPACED_ACADEMIC_YEAR =
-  /\b(fall|spring|summer|sp)[\s\-_]?((?:19|20)\d{2})\s*-\s*((?:19|20)\d{2})\b/gi;
-const PARENTHESISED_VERSION = /\(V(\d+)\)/gi;
-const REPEATED_DASH = /-{2,}/g;
-const REPEATED_SPACE = /\s{2,}/g;
-const SPACED_DASH_PAIR = /-\s*-/g;
-const DASH_BEFORE_EXTENSION = /-(\.[a-z0-9]+)$/i;
+  /\b(fall|spring|summer|sp)[\s\-_]?((?:19|20)\d{2})\s*-\s*((?:19|20)\d{2})\b/giu;
+const PARENTHESISED_VERSION = /\(V(\d+)\)/giu;
+const REPEATED_DASH = /-{2,}/gu;
+const REPEATED_SPACE = /\s{2,}/gu;
+const SPACED_DASH_PAIR = /-\s*-/gu;
+const DASH_BEFORE_EXTENSION = /-(\.[a-z0-9]+)$/iu;
 
 /**
  * Rewrites the term markers a file name already carries into one spelling.

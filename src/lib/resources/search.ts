@@ -1,6 +1,6 @@
 import { type Searchable, scoreSearchable } from "./search-score";
 
-const WHITESPACE = /\s+/;
+const WHITESPACE = /\s+/u;
 
 export function tokenise(query: string): string[] {
   return query.trim().toLowerCase().split(WHITESPACE).filter(Boolean);

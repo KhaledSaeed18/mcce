@@ -31,16 +31,16 @@ export function GpaProjection({
 
       <CardContent className="grid gap-4 sm:grid-cols-2">
         <div>
-          <p className="text-muted-foreground text-xs uppercase tracking-wide">
+          <p className="text-muted-foreground text-xs tracking-wide uppercase">
             Ceiling, {MAX_QUALITY_POINT_AVERAGE}+ on everything
           </p>
-          <p className="font-head text-4xl text-primary tabular-nums">
+          <p className="font-head text-primary text-4xl tabular-nums">
             {formatGpa(projection.bestCase)}
           </p>
         </div>
 
         <div>
-          <p className="text-muted-foreground text-xs uppercase tracking-wide">
+          <p className="text-muted-foreground text-xs tracking-wide uppercase">
             Floor, passing everything at {PASSING_AVERAGE}
           </p>
           <p className="font-head text-4xl tabular-nums">

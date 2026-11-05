@@ -26,7 +26,7 @@ export function ResourceEmptyState({ onClear }: ResourceEmptyStateProps) {
       </EmptyHeader>
       <EmptyContent>
         <button
-          className="underline underline-offset-4 hover:text-primary focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+          className="hover:text-primary focus-visible:outline-primary underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2"
           onClick={onClear}
           type="button"
         >

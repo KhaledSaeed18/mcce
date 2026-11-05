@@ -1,6 +1,6 @@
 import type { Repository, Resource } from "../../src/lib/resources/types";
 
-const WHITESPACE = /\s+/g;
+const WHITESPACE = /\s+/gu;
 
 function normalise(parts: Array<string | undefined>): string {
   return parts

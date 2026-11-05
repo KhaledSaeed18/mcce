@@ -4,7 +4,7 @@ import {
 } from "@/config/pdf-editor";
 import type { EditorClip } from "./types";
 
-const OWN_PAGE_ID = /^p(\d+)$/;
+const OWN_PAGE_ID = /^p(\d+)$/u;
 
 /** The clips a link can carry: from index files, on pages the file came
  * with. Files from this device and pages put in by the reader stay here.

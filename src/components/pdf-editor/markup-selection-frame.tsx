@@ -25,7 +25,7 @@ export function MarkupSelectionFrame({
         width: box.width * zoom,
       }}
     >
-      <span className="absolute -inset-1 rounded-sm border-2 border-primary border-dashed" />
+      <span className="border-primary absolute -inset-1 rounded-sm border-2 border-dashed" />
       {children}
     </div>
   );

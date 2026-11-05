@@ -2,7 +2,7 @@ name: Resources index
 
 on:
   pull_request:
-    branches: [main]
+    branches: [ main ]
     paths:
       - "src/config/resources/**"
       - "src/data/resources-index.json"

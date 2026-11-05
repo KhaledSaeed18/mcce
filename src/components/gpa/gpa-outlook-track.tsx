@@ -21,17 +21,17 @@ export function GpaOutlookTrack({
 
   return (
     <div className="flex flex-col gap-1">
-      <div className="relative h-8 rounded border-2 bg-muted">
+      <div className="bg-muted relative h-8 rounded border-2">
         <div
           className="absolute inset-y-0 bg-(--gpa-cumulative)/25"
           style={{ left: `${floor}%`, width: `${ceiling - floor}%` }}
         />
         <div
-          className="absolute inset-y-0 border-muted-foreground border-l-2"
+          className="border-muted-foreground absolute inset-y-0 border-l-2"
           style={{ left: `${toAxisPercent(GRADUATION_MIN_GPA)}%` }}
         />
         <div
-          className="absolute inset-y-0 w-1 -translate-x-1/2 rounded-full bg-(--gpa-cumulative) ring-2 ring-card"
+          className="ring-card absolute inset-y-0 w-1 -translate-x-1/2 rounded-full bg-(--gpa-cumulative) ring-2"
           style={{ left: `${toAxisPercent(cumulativeGpa)}%` }}
         />
       </div>
@@ -39,7 +39,7 @@ export function GpaOutlookTrack({
       <div className="relative h-4">
         {GPA_AXIS_TICKS.map((tick) => (
           <span
-            className="absolute -translate-x-1/2 text-muted-foreground text-xs tabular-nums"
+            className="text-muted-foreground absolute -translate-x-1/2 text-xs tabular-nums"
             key={tick}
             style={{ left: `${toAxisPercent(tick)}%` }}
           >

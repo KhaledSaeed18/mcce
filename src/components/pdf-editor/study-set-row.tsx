@@ -36,7 +36,7 @@ export function StudySetRow({ set }: StudySetRowProps) {
     <li className="flex flex-col gap-1">
       <div className="flex items-center gap-1">
         <Link
-          className="flex min-w-0 flex-1 items-center gap-2 rounded border-2 bg-card px-3 py-2 text-sm shadow-sm transition duration-200 hover:bg-primary hover:text-primary-foreground hover:shadow-md"
+          className="bg-card hover:bg-primary hover:text-primary-foreground flex min-w-0 flex-1 items-center gap-2 rounded border-2 px-3 py-2 text-sm shadow-sm transition duration-200 hover:shadow-md"
           search={{ setId: set.id }}
           to={EDITOR_PATH}
         >
@@ -70,7 +70,7 @@ export function StudySetRow({ set }: StudySetRowProps) {
         </button>
         <DeleteStudySetButton name={set.name} onDelete={remove} />
       </div>
-      <p aria-live="polite" className="px-1 text-muted-foreground text-xs">
+      <p aria-live="polite" className="text-muted-foreground px-1 text-xs">
         {hasFailed ? STUDY_SET_COPY_FAILED : copyNote.join(". ").trim()}
       </p>
       <StudySetNameDialog

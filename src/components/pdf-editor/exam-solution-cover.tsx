@@ -14,8 +14,8 @@ interface ExamSolutionCoverProps {
  * lifted until time is up. */
 export function ExamSolutionCover({ remaining }: ExamSolutionCoverProps) {
   return (
-    <div className="absolute inset-0 z-30 flex items-center justify-center bg-muted p-6">
-      <div className="flex max-w-xs flex-col items-center gap-2 rounded border-2 bg-card p-5 text-center shadow-md">
+    <div className="bg-muted absolute inset-0 z-30 flex items-center justify-center p-6">
+      <div className="bg-card flex max-w-xs flex-col items-center gap-2 rounded border-2 p-5 text-center shadow-md">
         <EyeOffIcon className="size-6" />
         <p className="font-head text-sm">{EXAM_SOLUTION_COVER_TITLE}</p>
         <p className="text-muted-foreground text-sm">

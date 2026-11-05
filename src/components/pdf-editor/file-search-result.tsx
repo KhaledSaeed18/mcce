@@ -33,12 +33,12 @@ export function FileSearchResult({
 
   return (
     <CommandItem className="pl-4" onSelect={handleSelect} value={value}>
-      <span className="min-w-0 flex-1 truncate text-muted-foreground group-data-selected/command-item:text-foreground">
+      <span className="text-muted-foreground group-data-selected/command-item:text-foreground min-w-0 flex-1 truncate">
         {before}
-        <strong className="font-bold text-foreground">{match}</strong>
+        <strong className="text-foreground font-bold">{match}</strong>
         {after}
       </span>
-      <span className="shrink-0 font-head text-muted-foreground text-xs tabular-nums">
+      <span className="font-head text-muted-foreground shrink-0 text-xs tabular-nums">
         {PAGE_NUMBER_PREFIX} {hit.position + 1}
       </span>
     </CommandItem>

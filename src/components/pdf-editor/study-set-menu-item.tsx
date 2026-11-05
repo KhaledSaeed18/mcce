@@ -16,7 +16,7 @@ export function StudySetMenuItem({ onOpen, set }: StudySetMenuItemProps) {
     <CommandItem keywords={[set.name]} onSelect={handleSelect} value={set.id}>
       {set.besideId ? <Columns2Icon /> : null}
       <span className="truncate">{set.name}</span>
-      <span className="ml-auto shrink-0 text-muted-foreground text-xs">
+      <span className="text-muted-foreground ml-auto shrink-0 text-xs">
         {describeStudySet(set)}
       </span>
     </CommandItem>

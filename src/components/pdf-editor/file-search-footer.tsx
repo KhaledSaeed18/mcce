@@ -22,8 +22,8 @@ const HINTS = [
 /** How far through reading the files it is, and what the keys do. */
 export function FileSearchFooter({ progress }: FileSearchFooterProps) {
   return (
-    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-t-2 bg-muted px-3 py-2 text-muted-foreground text-xs">
-      <span aria-live="polite" className="font-medium text-foreground">
+    <div className="bg-muted text-muted-foreground flex flex-wrap items-center gap-x-4 gap-y-1 border-t-2 px-3 py-2 text-xs">
+      <span aria-live="polite" className="text-foreground font-medium">
         {progress
           ? `Reading ${progress.done + 1} of ${progress.total} files`
           : null}

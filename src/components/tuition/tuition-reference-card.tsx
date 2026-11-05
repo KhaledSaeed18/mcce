@@ -5,7 +5,7 @@ import { TUITION_REFERENCE_FACTS } from "@/lib/tuition/reference";
 /** The narrow screen reading of the reference table, which would otherwise scroll sideways. */
 export function TuitionReferenceCard() {
   return (
-    <div className="rounded border-2 bg-background p-4">
+    <div className="bg-background rounded border-2 p-4">
       <h3 className="font-head text-sm">{TUITION_PROGRAM_LABEL}</h3>
 
       <dl className="mt-3 space-y-2 text-sm">

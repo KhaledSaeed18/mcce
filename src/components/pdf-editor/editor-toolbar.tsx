@@ -82,7 +82,7 @@ export function EditorToolbar({
   return (
     <div
       aria-label="Markup tools"
-      className="flex flex-wrap items-center gap-3 border-b-2 bg-card p-3"
+      className="bg-card flex flex-wrap items-center gap-3 border-b-2 p-3"
       role="toolbar"
     >
       <ToolPicker onSelect={onToolChange} value={tool} />

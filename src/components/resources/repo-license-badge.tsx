@@ -23,7 +23,7 @@ export function RepoLicenseBadge({
       <Badge title={REUSE_CLASS_EXPLANATIONS[reuseClass]} variant="outline">
         {REUSE_CLASS_LABELS[reuseClass]}
       </Badge>
-      <span className="font-mono text-muted-foreground text-xs">{license}</span>
+      <span className="text-muted-foreground font-mono text-xs">{license}</span>
       {maintenance === "active" ? null : (
         <Badge variant="secondary">{MAINTENANCE_LABELS[maintenance]}</Badge>
       )}

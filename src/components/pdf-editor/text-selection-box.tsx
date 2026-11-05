@@ -34,7 +34,7 @@ export function TextSelectionBox({
         width: box.width * zoom,
       }}
     >
-      <span className="absolute inset-0 border-2 border-primary border-dashed" />
+      <span className="border-primary absolute inset-0 border-2 border-dashed" />
       <TextBoxResizer
         edge="left"
         onEnd={onResizeEnd}

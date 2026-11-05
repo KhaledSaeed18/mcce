@@ -23,7 +23,7 @@ export function FactCard({
       size="sm"
       {...motionProps}
     >
-      <dt className="text-muted-foreground text-xs uppercase tracking-wide">
+      <dt className="text-muted-foreground text-xs tracking-wide uppercase">
         {label}
       </dt>
       <dd className={cn("font-head text-2xl", valueClassName)}>{value}</dd>

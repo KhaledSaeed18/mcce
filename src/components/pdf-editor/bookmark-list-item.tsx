@@ -48,7 +48,7 @@ export function BookmarkListItem({
       </button>
       <button
         aria-label={`${BOOKMARK_REMOVE_LABEL}: ${label}`}
-        className="flex size-7 shrink-0 cursor-pointer items-center justify-center rounded border-2 border-transparent text-muted-foreground hover:border-border hover:bg-accent hover:text-foreground"
+        className="text-muted-foreground hover:border-border hover:bg-accent hover:text-foreground flex size-7 shrink-0 cursor-pointer items-center justify-center rounded border-2 border-transparent"
         onClick={handleRemove}
         title={BOOKMARK_REMOVE_LABEL}
         type="button"

@@ -12,8 +12,8 @@ export interface CourseStats {
   videos: number;
 }
 
-const SOLUTION_MARKER = /\[solution\]/i;
-const ACADEMIC_YEAR = /(\d{4})-\d{4}/;
+const SOLUTION_MARKER = /\[solution\]/iu;
+const ACADEMIC_YEAR = /(\d{4})-\d{4}/u;
 
 function termKey(label: string): [number, number] {
   const year = Number(label.match(ACADEMIC_YEAR)?.[1] ?? 0);

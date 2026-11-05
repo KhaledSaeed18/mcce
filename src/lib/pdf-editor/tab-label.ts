@@ -4,15 +4,15 @@ import { stripPdfExtension } from "./file-name";
 import type { TabLabel } from "./types";
 
 /** Tags that only say what the chip already says. */
-const CHIP_TAG = /\[[^\]]*(?:solution|solved|book)[^\]]*\]/gi;
-const COURSE_CODE = /\b[A-Z]{3,4}\d{3}[A-Z]?\b[-_]?/g;
-const TERM = /(?:(?:Fall|Spring|Summer)[- ]?)?\d{4}-\d{4}/i;
+const CHIP_TAG = /\[[^\]]*(?:solution|solved|book)[^\]]*\]/giu;
+const COURSE_CODE = /\b[A-Z]{3,4}\d{3}[A-Z]?\b[-_]?/gu;
+const TERM = /(?:(?:Fall|Spring|Summer)[- ]?)?\d{4}-\d{4}/iu;
 /** A hyphen inside a year range like 2024-2025 stays; any other is a space. */
-const PUNCTUATION = /[_()[\]]+|(?<!\d)-|-(?!\d)/g;
-const LOWER_THEN_UPPER = /([a-z])(?=[A-Z])/g;
-const LETTER_THEN_DIGIT = /([a-z])(?=\d)/g;
-const DIGIT_THEN_LETTER = /(\d)(?=[A-Za-z])/g;
-const SPACES = /\s+/g;
+const PUNCTUATION = /[_()[\]]+|(?<!\d)-|-(?!\d)/gu;
+const LOWER_THEN_UPPER = /([a-z])(?=[A-Z])/gu;
+const LETTER_THEN_DIGIT = /([a-z])(?=\d)/gu;
+const DIGIT_THEN_LETTER = /(\d)(?=[A-Za-z])/gu;
+const SPACES = /\s+/gu;
 
 interface LabelSource {
   materialType: MaterialType | null;

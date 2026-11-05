@@ -1,4 +1,4 @@
-const RESOURCE_ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const RESOURCE_ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/u;
 
 /** Ids name icon files and appear in URLs, so they are kebab-case ASCII only. */
 export function isValidResourceId(id: string): boolean {
@@ -8,6 +8,6 @@ export function isValidResourceId(id: string): boolean {
 export function toResourceId(value: string): string {
   return value
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .replace(/[^a-z0-9]+/gu, "-")
+    .replace(/^-+|-+$/gu, "");
 }

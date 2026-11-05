@@ -14,7 +14,7 @@ export function GpaCreditMeter({ credits }: GpaCreditMeterProps) {
         aria-valuemax={MCCE_DEGREE_CREDITS}
         aria-valuemin={0}
         aria-valuenow={credits}
-        className="h-2 overflow-hidden rounded-full border-2 bg-muted"
+        className="bg-muted h-2 overflow-hidden rounded-full border-2"
         role="progressbar"
       >
         <div

@@ -24,14 +24,14 @@ export function AboutTrust() {
         Found a broken link, a file filed under the wrong course, or have
         material to add? Send it through the{" "}
         <Link
-          className="underline underline-offset-2 hover:text-foreground"
+          className="hover:text-foreground underline underline-offset-2"
           to="/contact"
         >
           contact page
         </Link>
         , or{" "}
         <a
-          className="underline underline-offset-2 hover:text-foreground"
+          className="hover:text-foreground underline underline-offset-2"
           href={FOOTER_BUG_REPORT_URL}
           rel="noopener"
           target="_blank"

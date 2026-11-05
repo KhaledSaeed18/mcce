@@ -23,7 +23,7 @@ export function PageThumbnailRailPlaceholder() {
     <div
       aria-hidden="true"
       className={cn(
-        "flex shrink-0 flex-col items-center gap-4 overflow-hidden border-r-2 bg-card p-4",
+        "bg-card flex shrink-0 flex-col items-center gap-4 overflow-hidden border-r-2 p-4",
         RAIL_WIDTH_CLASS
       )}
     >

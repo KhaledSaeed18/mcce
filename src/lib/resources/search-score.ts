@@ -6,7 +6,7 @@ const NAME_PARTIAL_SCORE = 4;
 const HAYSTACK_WORD_SCORE = 2;
 const HAYSTACK_PARTIAL_SCORE = 1;
 
-const WORD_CHARACTER = /[a-z0-9]/;
+const WORD_CHARACTER = /[a-z0-9]/u;
 
 function hasWordStart(haystack: string, token: string): boolean {
   let index = haystack.indexOf(token);

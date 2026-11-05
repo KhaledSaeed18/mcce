@@ -13,13 +13,13 @@ export function StudentPerkFaq({ perk }: StudentPerkFaqProps) {
       <div className="flex flex-col gap-3">
         {perk.faq.map((entry) => (
           <details
-            className="group rounded-lg border-2 bg-card p-4 shadow-md"
+            className="group bg-card rounded-lg border-2 p-4 shadow-md"
             key={entry.question}
           >
-            <summary className="cursor-pointer font-head text-base">
+            <summary className="font-head cursor-pointer text-base">
               {entry.question}
             </summary>
-            <p className="pt-2 text-muted-foreground text-sm">{entry.answer}</p>
+            <p className="text-muted-foreground pt-2 text-sm">{entry.answer}</p>
           </details>
         ))}
       </div>

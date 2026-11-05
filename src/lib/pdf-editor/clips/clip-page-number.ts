@@ -2,7 +2,7 @@ import type { EditorPage } from "../types";
 import type { EditorClip } from "./types";
 
 /** How the id of a page the file came with names its place in the file. */
-const OWN_PAGE_ID = /^p\d+$/;
+const OWN_PAGE_ID = /^p\d+$/u;
 
 /** The clip's page number in its file as the pages sit now, or null once
  * its page has been removed. With no pages to go by, a page the file came

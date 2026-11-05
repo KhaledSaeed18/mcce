@@ -4,7 +4,7 @@ import { formatSemesterLabel } from "@/lib/drive/format";
 import { frequencyAt } from "@/lib/drive/hero-radio-signal";
 import { cn } from "@/lib/utils";
 
-const COURSE_PREFIX_PATTERN = /^[A-Z]+/;
+const COURSE_PREFIX_PATTERN = /^[A-Z]+/u;
 
 interface HeroRadioReadoutProps {
   frequencies: number[];
@@ -26,7 +26,7 @@ export function HeroRadioReadout({
 
   return (
     <div className="flex flex-col gap-1">
-      <div className="flex items-baseline gap-2 font-head text-white">
+      <div className="font-head flex items-baseline gap-2 text-white">
         <span
           className={cn(
             "text-xs transition-opacity duration-150",
@@ -35,7 +35,7 @@ export function HeroRadioReadout({
         >
           {prefix}
         </span>
-        <m.span className="text-3xl tabular-nums leading-none tracking-tight">
+        <m.span className="text-3xl leading-none tracking-tight tabular-nums">
           {frequency}
         </m.span>
         <span className="ml-auto text-[10px] text-white/50">
@@ -44,7 +44,7 @@ export function HeroRadioReadout({
       </div>
       <p
         className={cn(
-          "truncate font-head text-sm transition-colors duration-150",
+          "font-head truncate text-sm transition-colors duration-150",
           isLocked ? "text-white" : "text-white/35"
         )}
       >

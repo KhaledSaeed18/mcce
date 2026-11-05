@@ -14,12 +14,12 @@ export function TuitionCreditSplitBar() {
     <div className="flex flex-col gap-2">
       <div className="flex h-8 overflow-hidden rounded border-2">
         <div
-          className="flex items-center justify-center bg-chart-2 font-head text-black text-xs"
+          className="bg-chart-2 font-head flex items-center justify-center text-xs text-black"
           style={{ width: `${CASH_SHARE}%` }}
         >
           {TUITION_USD_PER_CREDIT}
         </div>
-        <div className="flex flex-1 items-center justify-center border-black border-l-2 bg-chart-4 font-head text-black text-xs">
+        <div className="bg-chart-4 font-head flex flex-1 items-center justify-center border-l-2 border-black text-xs text-black">
           {LBP_UNITS_PER_CREDIT}
         </div>
       </div>
@@ -29,7 +29,7 @@ export function TuitionCreditSplitBar() {
           <span className="font-medium">
             {formatUsd(TUITION_USD_PER_CREDIT)} in cash USD
           </span>
-          <span className="block text-muted-foreground">
+          <span className="text-muted-foreground block">
             {Math.round(CASH_SHARE * 10) / 10}% of the credit price
           </span>
         </p>
@@ -37,7 +37,7 @@ export function TuitionCreditSplitBar() {
           <span className="font-medium">
             {formatLbp(TUITION_LBP_PER_CREDIT)}
           </span>
-          <span className="block text-muted-foreground">
+          <span className="text-muted-foreground block">
             {LBP_UNITS_PER_CREDIT} units at{" "}
             {formatLbp(TUITION_INTERNAL_LBP_RATE)} each
           </span>

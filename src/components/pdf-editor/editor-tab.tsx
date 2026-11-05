@@ -99,7 +99,7 @@ export function EditorTab({
         <button
           aria-label={`${CLOSE_TAB_LABEL} ${label.text}`}
           className={cn(
-            "mx-0.5 grid size-5 shrink-0 cursor-pointer place-items-center rounded-sm hover:bg-foreground/10 focus-visible:opacity-100 group-hover:opacity-100",
+            "hover:bg-foreground/10 mx-0.5 grid size-5 shrink-0 cursor-pointer place-items-center rounded-sm group-hover:opacity-100 focus-visible:opacity-100",
             isActive ? "opacity-100" : "opacity-0"
           )}
           onClick={handleClose}

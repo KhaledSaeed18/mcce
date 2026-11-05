@@ -108,12 +108,12 @@ export function ResourceFilters({
 
       <p
         aria-live="polite"
-        className="flex items-center gap-3 text-muted-foreground text-sm"
+        className="text-muted-foreground flex items-center gap-3 text-sm"
       >
         <span>{resultCount} tools</span>
         {showLegendLink ? (
           <a
-            className="underline underline-offset-4 hover:text-primary"
+            className="hover:text-primary underline underline-offset-4"
             href={`#${BADGE_LEGEND_ID}`}
           >
             {BADGE_LEGEND_LINK}
@@ -121,7 +121,7 @@ export function ResourceFilters({
         ) : null}
         {hasCriteria ? (
           <button
-            className="underline underline-offset-4 hover:text-primary focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+            className="hover:text-primary focus-visible:outline-primary underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2"
             onClick={onClear}
             type="button"
           >

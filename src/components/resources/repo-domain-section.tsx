@@ -12,14 +12,14 @@ export function RepoDomainSection({ section }: RepoDomainSectionProps) {
     <section className="flex scroll-mt-20 flex-col gap-4" id={domain.id}>
       <div className="flex items-center gap-3 border-b-2 pb-2">
         <div className="min-w-0 flex-1">
-          <h2 className="truncate font-head text-lg sm:text-xl" tabIndex={-1}>
+          <h2 className="font-head truncate text-lg sm:text-xl" tabIndex={-1}>
             {domain.label}
           </h2>
-          <p className="truncate text-muted-foreground text-xs">
+          <p className="text-muted-foreground truncate text-xs">
             {domain.tagline}
           </p>
         </div>
-        <span className="shrink-0 text-muted-foreground text-sm">
+        <span className="text-muted-foreground shrink-0 text-sm">
           {repos.length} repositories
         </span>
       </div>

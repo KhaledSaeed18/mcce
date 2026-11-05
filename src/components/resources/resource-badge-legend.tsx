@@ -10,7 +10,7 @@ export function ResourceBadgeLegend() {
   return (
     <section className="flex scroll-mt-20 flex-col gap-4" id={BADGE_LEGEND_ID}>
       <h2
-        className="border-b-2 pb-2 font-head text-lg sm:text-xl"
+        className="font-head border-b-2 pb-2 text-lg sm:text-xl"
         tabIndex={-1}
       >
         {BADGE_LEGEND_TITLE}
@@ -18,7 +18,7 @@ export function ResourceBadgeLegend() {
       <dl className="grid gap-3 sm:grid-cols-2">
         {BADGE_FILTERS.map((badge) => (
           <div
-            className="flex items-start gap-3 rounded-lg border-2 bg-card p-3 shadow-sm"
+            className="bg-card flex items-start gap-3 rounded-lg border-2 p-3 shadow-sm"
             key={badge}
           >
             <dt className="shrink-0 pt-0.5">

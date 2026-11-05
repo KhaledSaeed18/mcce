@@ -1,6 +1,6 @@
 import { FILE_SEARCH_SELECTION_LIMIT } from "@/config/pdf-editor";
 
-const SPACES = /\s+/g;
+const SPACES = /\s+/gu;
 
 /** The words selected on the page, when there are a few to search for. */
 export function readSelectedWords(): string | null {

@@ -61,7 +61,7 @@ export function CurriculumCourseCardBody({
             {requirementCount} requirement{requirementCount === 1 ? "" : "s"}
           </span>
         )}
-        <span className="ml-auto flex items-center gap-1 text-muted-foreground text-xs">
+        <span className="text-muted-foreground ml-auto flex items-center gap-1 text-xs">
           <FolderOpenIcon className="size-3.5" />
           {fileCount ? `${fileCount} files` : "No materials yet"}
         </span>

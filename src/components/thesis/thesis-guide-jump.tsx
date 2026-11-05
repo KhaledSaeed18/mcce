@@ -6,7 +6,7 @@ export function ThesisGuideJump() {
     <nav aria-label="Jump to a section" className="flex flex-wrap gap-2">
       {THESIS_GUIDE_ORDER.map((section) => (
         <Link
-          className="rounded border-2 px-2 py-1 font-medium text-xs transition hover:bg-primary"
+          className="hover:bg-primary rounded border-2 px-2 py-1 text-xs font-medium transition"
           hash={section.id}
           key={section.id}
           to="."

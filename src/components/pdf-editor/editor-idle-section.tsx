@@ -8,7 +8,7 @@ interface EditorIdleSectionProps {
 export function EditorIdleSection({ children, title }: EditorIdleSectionProps) {
   return (
     <section className="flex w-full flex-col gap-2.5">
-      <h3 className="font-head text-[0.65rem] text-muted-foreground uppercase tracking-[0.18em]">
+      <h3 className="font-head text-muted-foreground text-[0.65rem] tracking-[0.18em] uppercase">
         {title}
       </h3>
       {children}
