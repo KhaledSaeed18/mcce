@@ -3,6 +3,7 @@ import { EditorPlaceholder } from "@/components/pdf-editor/editor-placeholder";
 import { EditorSearchBar } from "@/components/pdf-editor/editor-search-bar";
 import { PdfPageList } from "@/components/pdf-editor/pdf-page-list";
 import { TextSelectionMarker } from "@/components/pdf-editor/text-selection-marker";
+import { TextToolbarLayer } from "@/components/pdf-editor/text-toolbar-layer";
 import type { EditorSession } from "@/hooks/use-editor-session";
 import type { EditorTools } from "@/hooks/use-editor-tools";
 import type { EditorFile, EditorTreeNode } from "@/lib/pdf-editor/types";
@@ -105,6 +106,11 @@ export function EditorPane({
         scrollRef={scrollRef}
         sizes={sizes}
         zoom={zoom.value}
+      />
+      <TextToolbarLayer
+        markup={markup}
+        scrollRef={scrollRef}
+        tool={tools.tool}
       />
     </div>
   );

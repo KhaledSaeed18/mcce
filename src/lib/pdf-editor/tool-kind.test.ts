@@ -9,14 +9,20 @@ describe("usesColor", () => {
       "rect",
       "ellipse",
       "arrow",
-      "text",
     ] as const) {
       expect(usesColor(tool)).toBe(true);
     }
   });
 
   it("is false for tools that move, rub out, pick text, or bring their own color", () => {
-    for (const tool of ["hand", "eraser", "select", "cover", "note"] as const) {
+    for (const tool of [
+      "hand",
+      "eraser",
+      "select",
+      "cover",
+      "note",
+      "text",
+    ] as const) {
       expect(usesColor(tool)).toBe(false);
     }
   });

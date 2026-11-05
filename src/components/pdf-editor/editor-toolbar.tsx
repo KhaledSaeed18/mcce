@@ -33,12 +33,10 @@ interface EditorToolbarProps {
   covers: CoverControls;
   exam: ExamTimer;
   exportStatus: PdfExportStatus;
-  fontSize: number;
   navigation: PageNavigation;
   onClear: () => void;
   onColorChange: (color: string) => void;
   onExport: () => void;
-  onFontSizeChange: (size: number) => void;
   onOpenFileSearch: () => void;
   onOpenSearch: () => void;
   onRedo: () => void;
@@ -62,11 +60,9 @@ export function EditorToolbar({
   covers,
   exam,
   exportStatus,
-  fontSize,
   onClear,
   onColorChange,
   onExport,
-  onFontSizeChange,
   onRedo,
   onOpenFileSearch,
   onOpenSearch,
@@ -88,9 +84,7 @@ export function EditorToolbar({
       <ToolPicker onSelect={onToolChange} value={tool} />
       <InkControls
         color={color}
-        fontSize={fontSize}
         onColorChange={onColorChange}
-        onFontSizeChange={onFontSizeChange}
         onStrokeWidthChange={onStrokeWidthChange}
         strokeWidth={strokeWidth}
         tool={tool}

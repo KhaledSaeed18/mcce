@@ -1,45 +1,39 @@
-import { useCallback, useRef, useState } from "react";
-import type { Annotation, TextDraft } from "@/lib/pdf-editor/types";
-
-type TextStyle = Pick<TextDraft, "color" | "fontSize">;
+import { useCallback, useState } from "react";
+import { toDraft } from "@/lib/pdf-editor/build-draft";
+import { findText } from "@/lib/pdf-editor/move";
+import { pasteAnnotation } from "@/lib/pdf-editor/paste-annotation";
+import type { Annotation, TextDraft, TextStyle } from "@/lib/pdf-editor/types";
 
 interface EditorTextOptions {
   annotations: Annotation[];
+  onAdd: (annotation: Annotation) => void;
   onRemove: (id: string) => void;
   onReplace: (annotation: Annotation) => void;
-  setColor: (color: string) => void;
-  setFontSize: (fontSize: number) => void;
+  onStyleChange: (style: Partial<TextStyle>) => void;
 }
 
 /**
  * The one piece of text the editor is working on, in either of its two states:
- * selected, which is what the toolbar and the Delete key act on, or open for
- * typing. Entering one leaves the other.
+ * selected, which is what the Delete key acts on, or open for typing. Entering
+ * one leaves the other, and the text toolbar serves both.
  */
 export function useEditorText({
   annotations,
+  onAdd,
   onRemove,
   onReplace,
-  setColor,
-  setFontSize,
+  onStyleChange,
 }: EditorTextOptions) {
   const [draft, setDraft] = useState<TextDraft | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const isOpenRef = useRef(false);
+  const selectedText = findText(annotations, selectedId);
 
-  const openDraft = useCallback(
-    (next: TextDraft | null) => {
-      // Opening a box points the toolbar at the style that text is written in.
-      if (next && !isOpenRef.current) {
-        setColor(next.color);
-        setFontSize(next.fontSize);
-        setSelectedId(null);
-      }
-      isOpenRef.current = next !== null;
-      setDraft(next);
-    },
-    [setColor, setFontSize]
-  );
+  const openDraft = useCallback((next: TextDraft | null) => {
+    if (next) {
+      setSelectedId(null);
+    }
+    setDraft(next);
+  }, []);
 
   const select = useCallback((id: string | null) => setSelectedId(id), []);
   const deselect = useCallback(() => setSelectedId(null), []);
@@ -47,30 +41,14 @@ export function useEditorText({
   const restyle = useCallback(
     (style: Partial<TextStyle>) => {
       setDraft((current) => (current ? { ...current, ...style } : current));
-      const target = annotations.find(
-        (annotation) => annotation.id === selectedId
-      );
-      if (target?.type === "text") {
-        onReplace({ ...target, ...style });
+      if (selectedText) {
+        onReplace({ ...selectedText, ...style });
       }
+      // A fill is for the one box it was put behind, not for all that follow.
+      const { background: _background, ...sticky } = style;
+      onStyleChange(sticky);
     },
-    [annotations, onReplace, selectedId]
-  );
-
-  const changeColor = useCallback(
-    (color: string) => {
-      setColor(color);
-      restyle({ color });
-    },
-    [restyle, setColor]
-  );
-
-  const changeFontSize = useCallback(
-    (fontSize: number) => {
-      setFontSize(fontSize);
-      restyle({ fontSize });
-    },
-    [restyle, setFontSize]
+    [onReplace, onStyleChange, selectedText]
   );
 
   const removeSelected = useCallback(() => {
@@ -80,13 +58,39 @@ export function useEditorText({
     }
   }, [onRemove, selectedId]);
 
+  /** The toolbar's delete, which also throws away what is being typed. */
+  const removeActive = useCallback(() => {
+    if (draft?.id) {
+      onRemove(draft.id);
+    }
+    setDraft(null);
+    removeSelected();
+  }, [draft, onRemove, removeSelected]);
+
+  const duplicateSelected = useCallback(() => {
+    if (selectedText) {
+      const copy = pasteAnnotation(selectedText, selectedText.pageId, 1);
+      onAdd(copy);
+      setSelectedId(copy.id);
+    }
+  }, [onAdd, selectedText]);
+
+  const editSelected = useCallback(() => {
+    if (selectedText) {
+      openDraft(toDraft(selectedText));
+    }
+  }, [openDraft, selectedText]);
+
   return {
-    changeColor,
-    changeFontSize,
+    activeText: draft ?? selectedText,
     deselect,
     draft,
+    duplicateSelected,
+    editSelected,
     openDraft,
+    removeActive,
     removeSelected,
+    restyle,
     select,
     selectedId,
   };

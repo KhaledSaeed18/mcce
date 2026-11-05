@@ -24,8 +24,7 @@ export function useSessionMarkup({
   const fileMarkup = useEditorMarkup({
     fileId: node?.id,
     pageCount: doc?.numPages ?? 0,
-    setColor: tools.setColor,
-    setFontSize: tools.setFontSize,
+    onTextStyleChange: tools.changeTextStyle,
   });
   const { activeSize, isDocumentShown, navigation, sizes } = useEditorPages(
     scrollRef,

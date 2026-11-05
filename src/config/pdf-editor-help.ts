@@ -28,6 +28,8 @@ export const EDITOR_HELP_FACTS: readonly string[] = [
   "The page rail turns, copies, removes, and reorders pages, and adds a blank or squared page after any page to work a problem on. Drag a thumbnail to move it.",
   "The select tool picks text to copy, highlight, underline, or strike through, and picks up markup to move it. Delete removes what is selected.",
   "The contents panel, opened from the top right, lists the PDF's own table of contents when it has one, the pages you bookmarked, and every note and highlight by page, which download as a revision summary.",
+  "The text tool (T) writes on the page. Click to start a box that grows with what you type, or drag to draw one with its own width. Enter finishes and Shift+Enter starts a new line. Clicking away also finishes. Drag text to move it, and click it to edit it. With the select tool, click once to select and again to edit.",
+  "Selected text shows a toolbar for font, size, bold, italic, underline, alignment, color, and a fill that can white out what is printed underneath. The corners of the frame scale the text, the sides set where it wraps, and a double click on a side lets the box fit its text again.",
   "The note tool (N) pins a sticky note to a place on the page. Downloaded copies keep notes as PDF notes that other readers open.",
   "The answer cover draws a box over an answer to quiz yourself. With the select tool, click a cover to see what it hides and again to hide it. The eye button shows or hides every answer at once. Covers stay out of downloads.",
   "Exam mode, the timer button, counts down a sample exam. Every answer cover stays hidden until time is up, then drawing stops and your answers are kept in this browser. A solution open beside the exam stays covered until then, and uncovers on the page you are on, scrolling with it.",
@@ -50,6 +52,23 @@ export const EDITOR_HELP_SHORTCUT_GROUPS: readonly ShortcutGroup[] = [
       { keys: SHORTCUT_HINTS.export, label: EXPORT_LABEL },
     ],
     title: "Edit",
+  },
+  {
+    items: [
+      {
+        keys: SHORTCUT_HINTS.finishText,
+        label: "Finish typing, or edit selected text",
+      },
+      { keys: SHORTCUT_HINTS.textNewLine, label: "New line" },
+      { keys: SHORTCUT_HINTS.bold, label: "Bold" },
+      { keys: SHORTCUT_HINTS.italic, label: "Italic" },
+      { keys: SHORTCUT_HINTS.underline, label: "Underline" },
+      { keys: SHORTCUT_HINTS.biggerText, label: "Bigger text" },
+      { keys: SHORTCUT_HINTS.smallerText, label: "Smaller text" },
+      { keys: SHORTCUT_HINTS.nudge, label: "Nudge selected text" },
+      { keys: SHORTCUT_HINTS.duplicate, label: "Duplicate selected text" },
+    ],
+    title: "Text",
   },
   {
     items: [

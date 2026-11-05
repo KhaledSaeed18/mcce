@@ -3,6 +3,7 @@ import {
   CLIP_DRAFT_COLOR,
   CLIP_DRAFT_WIDTH,
   CLIP_MIN_BOX,
+  DEFAULT_TEXT_STYLE,
 } from "@/config/pdf-editor";
 import { buildShape } from "@/lib/pdf-editor/build-annotation";
 import { normalizeRect } from "@/lib/pdf-editor/geometry";
@@ -19,8 +20,8 @@ interface ClipToolOptions {
 
 const DRAFT_SETTINGS = {
   color: CLIP_DRAFT_COLOR,
-  fontSize: 0,
   strokeWidth: CLIP_DRAFT_WIDTH,
+  textStyle: DEFAULT_TEXT_STYLE,
   tool: "clip",
 } as const;
 

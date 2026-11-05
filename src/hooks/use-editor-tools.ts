@@ -1,13 +1,13 @@
 import { useCallback, useRef, useState } from "react";
 import {
   DEFAULT_COLOR,
-  DEFAULT_FONT_SIZE,
   DEFAULT_HIGHLIGHT_COLOR,
   DEFAULT_HIGHLIGHT_WIDTH,
   DEFAULT_STROKE_WIDTH,
+  DEFAULT_TEXT_STYLE,
   DEFAULT_TOOL,
 } from "@/config/pdf-editor";
-import type { EditorTool } from "@/lib/pdf-editor/types";
+import type { EditorTool, TextStyle } from "@/lib/pdf-editor/types";
 
 /** The tool in hand and the ink it draws with, shared by every open file. */
 export function useEditorTools() {
@@ -28,7 +28,12 @@ export function useEditorTools() {
   );
   const [color, setColor] = useState<string>(DEFAULT_COLOR);
   const [strokeWidth, setStrokeWidth] = useState<number>(DEFAULT_STROKE_WIDTH);
-  const [fontSize, setFontSize] = useState<number>(DEFAULT_FONT_SIZE);
+  const [textStyle, setTextStyle] = useState<TextStyle>(DEFAULT_TEXT_STYLE);
+  const changeTextStyle = useCallback(
+    (style: Partial<TextStyle>) =>
+      setTextStyle((current) => ({ ...current, ...style })),
+    []
+  );
   const [highlightColor, setHighlightColor] = useState<string>(
     DEFAULT_HIGHLIGHT_COLOR
   );
@@ -37,18 +42,18 @@ export function useEditorTools() {
   );
 
   return {
+    changeTextStyle,
     color,
-    fontSize,
     highlightColor,
     highlightWidth,
     restoreTool,
     setColor,
-    setFontSize,
     setHighlightColor,
     setHighlightWidth,
     setStrokeWidth,
     setTool,
     strokeWidth,
+    textStyle,
     tool,
   };
 }

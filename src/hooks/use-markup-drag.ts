@@ -21,19 +21,25 @@ interface MarkupDragOptions {
   annotations: Annotation[];
   isEnabled: boolean;
   onMove: (id: string, dx: number, dy: number) => void;
-  /** A press that let go without moving, which is how a cover is looked under. */
-  onPress: (id: string) => void;
+  /** A press that let go without moving, which is how a cover is looked under
+   * and selected text is opened. */
+  onPress: (press: MarkupPress) => void;
   onSelect: (id: string | null) => void;
   pageId: string;
   rotation: number;
+  selectedId: string | null;
   size: PageSize;
   zoom: number;
 }
 
-interface Press {
-  box: Box;
+export interface MarkupPress {
   id: string;
-  origin: Point;
+  point: Point;
+  wasSelected: boolean;
+}
+
+interface Press extends MarkupPress {
+  box: Box;
 }
 
 /** Picking up any markup with the select tool: a press on it selects it and
@@ -47,6 +53,7 @@ export function useMarkupDrag({
   onSelect,
   pageId,
   rotation,
+  selectedId,
   size,
   zoom,
 }: MarkupDragOptions) {
@@ -81,11 +88,22 @@ export function useMarkupDrag({
       pressRef.current = {
         box: getAnnotationBox(target),
         id: target.id,
-        origin: point,
+        point,
+        wasSelected: target.id === selectedId,
       };
       update({ dx: 0, dy: 0, id: target.id });
     },
-    [annotations, isEnabled, onSelect, pageId, rotation, size, update, zoom]
+    [
+      annotations,
+      isEnabled,
+      onSelect,
+      pageId,
+      rotation,
+      selectedId,
+      size,
+      update,
+      zoom,
+    ]
   );
 
   // Browsers start a text selection on the mouse press that follows, so a
@@ -110,7 +128,7 @@ export function useMarkupDrag({
       }
       const delta = clampDelta(
         press.box,
-        { x: point.x - press.origin.x, y: point.y - press.origin.y },
+        { x: point.x - press.point.x, y: point.y - press.point.y },
         size
       );
       update({ dx: delta.x, dy: delta.y, id: press.id });
@@ -120,16 +138,17 @@ export function useMarkupDrag({
 
   const handlePointerUp = useCallback(() => {
     const { current } = dragRef;
+    const { current: press } = pressRef;
     pressRef.current = null;
     update(null);
-    if (!current) {
+    if (!(current && press)) {
       return;
     }
     if (current.dx !== 0 || current.dy !== 0) {
       onMove(current.id, current.dx, current.dy);
       return;
     }
-    onPress(current.id);
+    onPress(press);
   }, [onMove, onPress, update]);
 
   // A press the browser took back was not a click on anything.

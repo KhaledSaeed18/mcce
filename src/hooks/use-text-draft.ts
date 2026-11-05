@@ -1,88 +1,64 @@
 import { useCallback } from "react";
+import { useTextBoxTransform } from "@/hooks/use-text-box-transform";
 import { useTextCommit } from "@/hooks/use-text-commit";
-import { clampTextAnchor } from "@/lib/pdf-editor/bounds";
-import {
-  getFieldBox,
-  getFieldWidth,
-  resizeTextBox,
-  withBoundedWidth,
-} from "@/lib/pdf-editor/text-box";
 import type {
+  Annotation,
   AnnotationActions,
   PageSize,
-  TextBoxEdge,
   TextDraft,
 } from "@/lib/pdf-editor/types";
 
 interface TextDraftOptions {
   actions: AnnotationActions;
+  annotations: Annotation[];
   draft: TextDraft | null;
   onChange: (draft: TextDraft | null) => void;
   size: PageSize;
 }
 
-/**
- * The box being typed into, and what leaving it does: write new text, rewrite
- * the text it was opened on, or remove that text once it has been emptied.
- */
+/** The box being typed into: what its handles and keys do, and what leaving it does. */
 export function useTextDraft({
   actions,
+  annotations,
   draft,
   onChange,
   size,
 }: TextDraftOptions) {
-  const commit = useTextCommit({ actions, draft, onChange, size });
+  const commit = useTextCommit({ actions, annotations, draft, onChange, size });
 
-  const place = useCallback(
-    (next: TextDraft) => {
-      const bounded = withBoundedWidth(next, size);
-      onChange({
-        ...bounded,
-        ...clampTextAnchor(bounded, getFieldBox(bounded), size),
-      });
-    },
-    [onChange, size]
+  const handleUpdate = useCallback(
+    (next: TextDraft) => onChange({ ...next, isEdgeWrapped: false }),
+    [onChange]
   );
-
-  const cancel = useCallback(() => onChange(null), [onChange]);
-
-  const withDraft = useCallback(
-    (change: (current: TextDraft) => TextDraft) => {
-      if (draft) {
-        place(change(draft));
-      }
-    },
-    [draft, place]
-  );
+  const { finish, resizeCorner, resizeSide } = useTextBoxTransform({
+    onUpdate: handleUpdate,
+    size,
+    target: draft,
+  });
 
   const edit = useCallback(
-    (text: string) => withDraft((current) => ({ ...current, text })),
-    [withDraft]
+    (text: string) => {
+      if (draft) {
+        onChange({ ...draft, text });
+      }
+    },
+    [draft, onChange]
   );
 
   const move = useCallback(
-    (dx: number, dy: number) =>
-      withDraft((current) => ({
-        ...current,
-        x: current.x + dx,
-        y: current.y + dy,
-      })),
-    [withDraft]
+    (dx: number, dy: number) => {
+      if (draft) {
+        onChange({ ...draft, x: draft.x + dx, y: draft.y + dy });
+      }
+    },
+    [draft, onChange]
   );
 
-  const resize = useCallback(
-    (edge: TextBoxEdge, dx: number) =>
-      withDraft((current) =>
-        resizeTextBox(
-          // The field shows a minimum width, so a drag starts from that.
-          { ...current, width: current.width ?? getFieldWidth(current) },
-          edge,
-          dx,
-          size
-        )
-      ),
-    [size, withDraft]
-  );
+  const fitWidth = useCallback(() => {
+    if (draft) {
+      onChange({ ...draft, isEdgeWrapped: false, width: undefined });
+    }
+  }, [draft, onChange]);
 
-  return { cancel, commit, edit, move, request: place, resize };
+  return { commit, edit, finish, fitWidth, move, resizeCorner, resizeSide };
 }

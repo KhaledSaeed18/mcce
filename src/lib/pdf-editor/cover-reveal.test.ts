@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { DEFAULT_TEXT_STYLE } from "@/config/pdf-editor";
 import { buildCover, buildShape } from "./build-annotation";
 import {
   isEveryCoverRevealed,
@@ -9,8 +10,8 @@ import type { ToolSettings } from "./types";
 
 const SETTINGS: ToolSettings = {
   color: "#000000",
-  fontSize: 16,
   strokeWidth: 2,
+  textStyle: DEFAULT_TEXT_STYLE,
   tool: "rect",
 };
 

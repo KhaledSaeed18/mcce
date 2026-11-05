@@ -29,22 +29,10 @@ const CURSOR_BY_TOOL: Record<ToolSettings["tool"], string> = {
   text: "cursor-text",
 };
 
-/** Text under the pointer offers a grab, so a move reads as available before it starts. */
-function resolveCursor(
-  tool: ToolSettings["tool"],
-  isOverText: boolean,
-  isMoving: boolean
-): string {
-  if (tool === "hand") {
-    return isMoving ? "cursor-grabbing" : CURSOR_BY_TOOL.hand;
-  }
-  if (tool !== "text") {
-    return CURSOR_BY_TOOL[tool];
-  }
-  if (isMoving) {
-    return "cursor-grabbing";
-  }
-  return isOverText ? "cursor-grab" : CURSOR_BY_TOOL.text;
+function resolveCursor(tool: ToolSettings["tool"], isMoving: boolean): string {
+  return isMoving && (tool === "hand" || tool === "text")
+    ? "cursor-grabbing"
+    : CURSOR_BY_TOOL[tool];
 }
 
 interface AnnotationCanvasProps {
@@ -89,7 +77,6 @@ export function AnnotationCanvas({
   const {
     draft,
     drag,
-    handleDoubleClick,
     handlePointerDown,
     handlePointerLeave,
     handlePointerMove,
@@ -126,9 +113,8 @@ export function AnnotationCanvas({
         // The text layer underneath takes the pointer while text is being picked.
         settings.tool === "select"
           ? "pointer-events-none"
-          : resolveCursor(settings.tool, hoveredTextId !== null, drag !== null)
+          : resolveCursor(settings.tool, drag !== null)
       )}
-      onDoubleClick={handleDoubleClick}
       onPointerCancel={handlePointerUp}
       onPointerDown={handlePointerDown}
       onPointerLeave={handlePointerLeave}

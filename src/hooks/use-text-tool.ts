@@ -1,10 +1,20 @@
-import { useTextDrag } from "@/hooks/use-text-drag";
+import { useCallback, useMemo } from "react";
+import { TEXT_BOX_DRAFT_COLOR } from "@/config/pdf-editor";
+import { useTextBoxDraw } from "@/hooks/use-text-box-draw";
+import { type TextDragResult, useTextDrag } from "@/hooks/use-text-drag";
 import { useTextHover } from "@/hooks/use-text-hover";
-import { useTextOpen } from "@/hooks/use-text-open";
 import { useTextPointerHandlers } from "@/hooks/use-text-pointer-handlers";
+import {
+  buildBoxDraft,
+  buildDraft,
+  toDraft,
+} from "@/lib/pdf-editor/build-draft";
+import { getCaretOffset } from "@/lib/pdf-editor/text-caret";
 import type {
   Annotation,
+  Box,
   PageSize,
+  Point,
   TextDraft,
   ToolSettings,
 } from "@/lib/pdf-editor/types";
@@ -21,14 +31,7 @@ interface TextToolOptions {
   zoom: number;
 }
 
-/**
- * Pressing text already on the page picks it up: drag to move it, release
- * without moving to select it, press again to open it for typing. Pressing
- * anywhere else writes new text.
- *
- * Every field opens on the release, because the click that follows a press would
- * move focus to the canvas and blur the new field away as it appeared.
- */
+/** The text tool on one page. */
 export function useTextTool({
   annotations,
   onDraft,
@@ -40,38 +43,69 @@ export function useTextTool({
   size,
   zoom,
 }: TextToolOptions) {
-  const { drag, end, move, start } = useTextDrag({
+  const handleLift = useCallback(() => onSelect(null), [onSelect]);
+  const textDrag = useTextDrag({
     annotations,
+    onLift: handleLift,
     onMove: onMoveText,
     pageId,
     size,
   });
   const hover = useTextHover(annotations, pageId);
-  const open = useTextOpen({
-    annotations,
-    onDraft,
-    pageId,
-    rotation,
-    settings,
-    size,
-    zoom,
-  });
+  const boxDraw = useTextBoxDraw();
+  const { textStyle } = settings;
 
+  const actions = useMemo(
+    () => ({
+      beginBox: boxDraw.begin,
+      endBox: boxDraw.end,
+      endDrag: textDrag.end,
+      moveBox: boxDraw.move,
+      moveDrag: textDrag.move,
+      onHover: hover.update,
+      onOpenAt: (point: Point) => onDraft(buildDraft(point, pageId, textStyle)),
+      onOpenBox: (box: Box) => onDraft(buildBoxDraft(box, pageId, textStyle)),
+      onOpenOn: ({ target }: TextDragResult, point: Point) =>
+        onDraft(toDraft(target, getCaretOffset(target, point))),
+      onSelect,
+      startDrag: textDrag.start,
+    }),
+    [
+      boxDraw.begin,
+      boxDraw.end,
+      boxDraw.move,
+      hover.update,
+      onDraft,
+      onSelect,
+      pageId,
+      textDrag.end,
+      textDrag.move,
+      textDrag.start,
+      textStyle,
+    ]
+  );
   const { handleDown, handleMove, handleUp } = useTextPointerHandlers({
-    end,
-    hover,
-    move,
-    onSelect,
-    open,
+    actions,
     rotation,
     size,
-    start,
     zoom,
   });
+  const boxDraft = useMemo<Annotation | null>(
+    () =>
+      boxDraw.box && {
+        ...boxDraw.box,
+        color: TEXT_BOX_DRAFT_COLOR,
+        id: "text-box-draft",
+        pageId,
+        strokeWidth: 1,
+        type: "rect",
+      },
+    [boxDraw.box, pageId]
+  );
 
   return {
-    drag,
-    handleDoubleClick: open.openOn,
+    boxDraft,
+    drag: textDrag.drag,
     handleDown,
     handleLeave: hover.clear,
     handleMove,

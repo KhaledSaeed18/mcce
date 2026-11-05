@@ -1,6 +1,7 @@
 import type { EditorTool } from "./types";
 
-/** Tools that put ink down, and so take a color. A cover and a note have their own. */
+/** Tools that put ink down from the toolbar. A cover and a note have their own
+ * color, and text is styled from the toolbar beside it. */
 const OWN_COLOR_TOOLS: ReadonlySet<EditorTool> = new Set([
   "clip",
   "cover",
@@ -8,13 +9,14 @@ const OWN_COLOR_TOOLS: ReadonlySet<EditorTool> = new Set([
   "hand",
   "note",
   "select",
+  "text",
 ]);
 
 export function usesColor(tool: EditorTool): boolean {
   return !OWN_COLOR_TOOLS.has(tool);
 }
 
-/** Tools that draw a line, and so take a width. Text takes a size instead. */
+/** Tools that draw a line, and so take a width. */
 export function usesStrokeWidth(tool: EditorTool): boolean {
-  return usesColor(tool) && tool !== "text";
+  return usesColor(tool);
 }

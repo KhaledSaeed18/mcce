@@ -1,8 +1,9 @@
 import { useCallback } from "react";
-import { clampTextAnchor } from "@/lib/pdf-editor/bounds";
 import { buildText } from "@/lib/pdf-editor/build-annotation";
-import { getTextBox } from "@/lib/pdf-editor/text-layout";
+import { keepTextOnPage } from "@/lib/pdf-editor/text-box";
+import { cleanTypedText, isSameText } from "@/lib/pdf-editor/text-compare";
 import type {
+  Annotation,
   AnnotationActions,
   PageSize,
   TextDraft,
@@ -10,44 +11,46 @@ import type {
 
 interface TextCommitOptions {
   actions: AnnotationActions;
+  annotations: Annotation[];
   draft: TextDraft | null;
   onChange: (draft: TextDraft | null) => void;
   size: PageSize;
 }
 
-/** Leaving a box: write it, rewrite what it was opened on, or take that off the page. */
+/** Leaving a box: write it, rewrite what it was opened on, or take that off the
+ * page. Opening text and leaving it untouched adds no undo step. */
 export function useTextCommit({
   actions,
+  annotations,
   draft,
   onChange,
   size,
 }: TextCommitOptions) {
-  return useCallback(() => {
-    if (!draft) {
-      return;
-    }
-    const text = draft.text.trim();
-    onChange(null);
-
-    // Emptying a box is how text already on the page is removed.
-    if (!text) {
-      if (draft.id) {
-        actions.remove(draft.id);
+  return useCallback(
+    (shouldKeepSelected: boolean) => {
+      if (!draft) {
+        return;
       }
-      return;
-    }
+      const text = cleanTypedText(draft.text);
+      onChange(null);
 
-    const annotation = buildText(draft, text);
-    const placed = {
-      ...annotation,
-      ...clampTextAnchor(annotation, getTextBox(annotation), size),
-    };
-    if (draft.id) {
-      actions.replace(placed);
-    } else {
-      actions.add(placed);
-    }
-    // What was just written stays selected, the way it does elsewhere.
-    actions.select(placed.id);
-  }, [actions, draft, onChange, size]);
+      // Emptying a box is how text already on the page is removed.
+      if (!text) {
+        if (draft.id) {
+          actions.remove(draft.id);
+        }
+        return;
+      }
+
+      const placed = keepTextOnPage(buildText(draft, text), size);
+      const original = annotations.find((item) => item.id === draft.id);
+      if (!draft.id) {
+        actions.add(placed);
+      } else if (!(original?.type === "text" && isSameText(original, placed))) {
+        actions.replace(placed);
+      }
+      actions.select(shouldKeepSelected ? placed.id : null);
+    },
+    [actions, annotations, draft, onChange, size]
+  );
 }
