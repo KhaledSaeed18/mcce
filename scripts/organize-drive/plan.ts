@@ -89,20 +89,29 @@ export interface Collision {
   target: string;
 }
 
+/**
+ * Files in different Drive roots cannot shadow each other, so each root gets its
+ * own namespace. Folders stay global because apply resolves them by path alone.
+ */
+function collisionKey(node: PlannedNode): string {
+  const target = node.targetPath.join("/");
+  return node.isFolder ? target : `${node.sourceId}:${target}`;
+}
+
 /** Two nodes normalising onto one path would silently shadow a file, so apply refuses to run. */
 export function findCollisions(planned: PlannedNode[]): Collision[] {
-  const byTarget = new Map<string, string[]>();
+  const byKey = new Map<string, Collision>();
   for (const node of planned) {
-    const target = node.targetPath.join("/");
-    byTarget.set(target, [
-      ...(byTarget.get(target) ?? []),
-      node.path.join("/"),
-    ]);
+    const key = collisionKey(node);
+    const collision = byKey.get(key) ?? {
+      sources: [],
+      target: node.targetPath.join("/"),
+    };
+    collision.sources.push(node.path.join("/"));
+    byKey.set(key, collision);
   }
 
-  return [...byTarget.entries()]
-    .filter(([, sources]) => sources.length > 1)
-    .map(([target, sources]) => ({ sources, target }));
+  return [...byKey.values()].filter(({ sources }) => sources.length > 1);
 }
 
 export function planTree(nodes: TreeNode[]): PlannedNode[] {
