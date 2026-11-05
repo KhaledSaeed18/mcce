@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { ArrowEndHandle } from "@/components/pdf-editor/arrow-end-handle";
 import { MarkupResizeHandle } from "@/components/pdf-editor/markup-resize-handle";
 import { MarkupSelectionFrame } from "@/components/pdf-editor/markup-selection-frame";
 import { NoteCard } from "@/components/pdf-editor/note-card";
@@ -13,10 +14,13 @@ import { getFieldBox } from "@/lib/pdf-editor/text-box";
 import type {
   Annotation,
   AnnotationActions,
+  ArrowEnd,
   FrameCorner,
   PageSize,
   TextDraft,
 } from "@/lib/pdf-editor/types";
+
+const ARROW_ENDS: readonly ArrowEnd[] = ["from", "to"];
 
 const CORNERS: readonly FrameCorner[] = [
   "top-left",
@@ -53,28 +57,80 @@ export function PdfPageOverlays({
   const { select } = actions;
   const handleClose = useCallback(() => select(null), [select]);
   const { preview } = selection;
+  const shownNow = resize.preview ?? shown;
+  const arrow = shownNow?.type === "arrow" ? shownNow : null;
 
   return (
-    <PageOverlayLayer rotation={rotation} size={size} zoom={zoom}>
-      {selected && !textDraft ? (
-        <TextBoxFrame
-          box={getFieldBox(
-            preview ?? (shown?.type === "text" ? shown : selected)
-          )}
-          isEditing={false}
-          onFit={selection.fitWidth}
-          onResizeCorner={selection.resizeCorner}
-          onResizeEnd={selection.end}
-          onResizeSide={selection.resizeSide}
-          rotation={rotation}
-          sizeLabel={
-            preview && preview.fontSize !== selected.fontSize
-              ? `${preview.fontSize} px`
-              : undefined
-          }
-          zoom={zoom}
-        />
-      ) : null}
+    <>
+      <PageOverlayLayer rotation={rotation} size={size} zoom={zoom}>
+        {selected && !textDraft ? (
+          <TextBoxFrame
+            box={getFieldBox(
+              preview ?? (shown?.type === "text" ? shown : selected)
+            )}
+            isEditing={false}
+            onFit={selection.fitWidth}
+            onResizeCorner={selection.resizeCorner}
+            onResizeEnd={selection.end}
+            onResizeSide={selection.resizeSide}
+            rotation={rotation}
+            sizeLabel={
+              preview && preview.fontSize !== selected.fontSize
+                ? `${preview.fontSize} px`
+                : undefined
+            }
+            zoom={zoom}
+          />
+        ) : null}
+        {shown && shown.type !== "text" && shown.type !== "note" ? (
+          <MarkupSelectionFrame
+            box={getAnnotationBox(arrow ?? resize.preview ?? shown)}
+            zoom={zoom}
+          >
+            {isResizable(shown) && shown.type !== "arrow"
+              ? CORNERS.map((corner) => (
+                  <MarkupResizeHandle
+                    corner={corner}
+                    key={corner}
+                    onEnd={resize.end}
+                    onResize={resize.resize}
+                    rotation={rotation}
+                    zoom={zoom}
+                  />
+                ))
+              : null}
+          </MarkupSelectionFrame>
+        ) : null}
+        {arrow
+          ? ARROW_ENDS.map((end) => (
+              <ArrowEndHandle
+                end={end}
+                key={end}
+                onEnd={resize.end}
+                onMove={resize.moveArrowEnd}
+                point={arrow[end]}
+                rotation={rotation}
+                zoom={zoom}
+              />
+            ))
+          : null}
+        {textDraft ? (
+          <TextDraftField
+            draft={textDraft}
+            key={textDraft.id ?? "new"}
+            onCommit={field.commit}
+            onEdit={field.edit}
+            onFit={field.fitWidth}
+            onMove={field.move}
+            onResizeCorner={field.resizeCorner}
+            onResizeEnd={field.finish}
+            onResizeSide={field.resizeSide}
+            onRestyle={actions.restyleText}
+            rotation={rotation}
+            zoom={zoom}
+          />
+        ) : null}
+      </PageOverlayLayer>
       {shown?.type === "note" ? (
         <NoteCard
           key={shown.id}
@@ -82,45 +138,11 @@ export function PdfPageOverlays({
           onClose={handleClose}
           onRemove={actions.remove}
           onReplace={actions.replace}
+          rotation={rotation}
           size={size}
           zoom={zoom}
         />
       ) : null}
-      {shown && shown.type !== "text" && shown.type !== "note" ? (
-        <MarkupSelectionFrame
-          box={getAnnotationBox(resize.preview ?? shown)}
-          zoom={zoom}
-        >
-          {isResizable(shown)
-            ? CORNERS.map((corner) => (
-                <MarkupResizeHandle
-                  corner={corner}
-                  key={corner}
-                  onEnd={resize.end}
-                  onResize={resize.resize}
-                  rotation={rotation}
-                  zoom={zoom}
-                />
-              ))
-            : null}
-        </MarkupSelectionFrame>
-      ) : null}
-      {textDraft ? (
-        <TextDraftField
-          draft={textDraft}
-          key={textDraft.id ?? "new"}
-          onCommit={field.commit}
-          onEdit={field.edit}
-          onFit={field.fitWidth}
-          onMove={field.move}
-          onResizeCorner={field.resizeCorner}
-          onResizeEnd={field.finish}
-          onResizeSide={field.resizeSide}
-          onRestyle={actions.restyleText}
-          rotation={rotation}
-          zoom={zoom}
-        />
-      ) : null}
-    </PageOverlayLayer>
+    </>
   );
 }

@@ -553,9 +553,9 @@ export const MIN_EDGE_WRAP_WIDTH = 120;
 export const TEXT_NUDGE = 1;
 export const TEXT_NUDGE_LARGE = 10;
 
-/** The gap between the text toolbar and the box it serves, and the scroller's edge. */
-export const TEXT_TOOLBAR_GAP = 12;
-export const TEXT_TOOLBAR_MARGIN = 6;
+/** The gap between a floating toolbar and the box it serves, and the scroller's edge. */
+export const MARKUP_TOOLBAR_GAP = 12;
+export const MARKUP_TOOLBAR_MARGIN = 6;
 
 /** Below this much room above it, a toolbar menu opens downward. */
 export const TEXT_MENU_ROOM = 180;
@@ -563,8 +563,8 @@ export const TEXT_MENU_ROOM = 180;
 /** The box being drawn with the text tool. */
 export const TEXT_BOX_DRAFT_COLOR = "#ff9f1c";
 
-/** Marks the frame the text toolbar sits beside. */
-export const TEXT_FRAME_ATTRIBUTE = "data-text-frame";
+/** Marks the frame a floating toolbar sits beside. */
+export const MARKUP_FRAME_ATTRIBUTE = "data-markup-frame";
 
 /** Marks what a press may land on without finishing the text being typed. */
 export const TEXT_CONTROLS_ATTRIBUTE = "data-text-controls";
@@ -611,6 +611,9 @@ export const MIN_TEXT_BOX_WIDTH = 32;
 /** A drag shorter than this is a click, not a shape. */
 export const MIN_SHAPE_SIZE = 4;
 
+/** What a Shift drag holds an arrow to: steps of 45 degrees. */
+export const CONSTRAIN_ANGLE_STEP = Math.PI / 4;
+
 /** An arrow's head grows with its line so a thick arrow keeps its shape,
  * but never shrinks below what reads as a head on a thin one. */
 export const ARROW_HEAD_LENGTH_RATIO = 4;
@@ -622,8 +625,8 @@ export const ARROW_HEAD_ANGLE = Math.PI / 7;
 /** A stroke needs two points to be a line; one is a press that never moved. */
 export const MIN_STROKE_POINTS = 2;
 
-/** Below this a press on text is a click that opens it for editing, not a move,
- * and a press on bare page is a click that opens a box, not a drawn one. */
+/** Below this a press on markup is a click, not a move, and a press on bare
+ * page with the text tool is a click that opens a box, not a drawn one. */
 export const TEXT_MOVE_TOLERANCE = 3;
 
 /** A file opens ready to read: selecting text and picking up markup, not drawing. */

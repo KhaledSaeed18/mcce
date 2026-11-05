@@ -1,6 +1,7 @@
 import { useCallback, useLayoutEffect } from "react";
+import { useKeepSelectedOnPage } from "@/hooks/use-keep-selected-on-page";
 import type { MarkupPress } from "@/hooks/use-markup-drag";
-import { useSelectedTextKeys } from "@/hooks/use-selected-text-keys";
+import { useSelectedMarkupKeys } from "@/hooks/use-selected-markup-keys";
 import { useSelectedTextTransform } from "@/hooks/use-selected-text-transform";
 import { useTextDraft } from "@/hooks/use-text-draft";
 import { toDraft } from "@/lib/pdf-editor/build-draft";
@@ -77,7 +78,20 @@ export function usePageTextEditing({
     (text: TextAnnotation) => onDraftChange(toDraft(text)),
     [onDraftChange]
   );
-  useSelectedTextKeys({ actions, onEdit: handleEdit, selected, size });
+  const selectedMarkup =
+    annotations.find((annotation) => annotation.id === selectedId) ?? null;
+  useSelectedMarkupKeys({
+    actions,
+    onEdit: handleEdit,
+    selected: selectedMarkup,
+    size,
+  });
+  useKeepSelectedOnPage(
+    selected ? null : selectedMarkup,
+    isMeasured,
+    size,
+    actions.replace
+  );
 
   /** With the select tool, a press on selected text opens it where it was pressed. */
   const handlePress = useCallback(

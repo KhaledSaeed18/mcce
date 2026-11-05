@@ -59,7 +59,10 @@ export function useNoteDraft({
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<HTMLTextAreaElement>) => {
-      if (event.key === "Escape") {
+      const isModEnter =
+        event.key === "Enter" && (event.metaKey || event.ctrlKey);
+      if (event.key === "Escape" || isModEnter) {
+        event.preventDefault();
         commit();
         onClose();
       }

@@ -13,6 +13,8 @@ interface AnnotationPainterOptions {
   drag: AnnotationDrag | null;
   /** The text open in a field, which that field draws instead of the canvas. */
   editingId: string | null;
+  /** Markup the eraser has passed over, gone from view before the release. */
+  erasedIds: ReadonlySet<string>;
   highlightId: string | null;
   preview: Annotation | null;
   /** The page as it is shown, which a turned page measures differently. */
@@ -28,6 +30,7 @@ export function useAnnotationPainter({
   draft,
   drag,
   editingId,
+  erasedIds,
   highlightId,
   preview,
   rendered,
@@ -55,7 +58,7 @@ export function useAnnotationPainter({
     ctx.rotate(transform.angle);
 
     for (const stored of withDrag(annotations, drag)) {
-      if (stored.id === editingId) {
+      if (stored.id === editingId || erasedIds.has(stored.id)) {
         continue;
       }
       const annotation = preview?.id === stored.id ? preview : stored;
@@ -72,6 +75,7 @@ export function useAnnotationPainter({
     draft,
     drag,
     editingId,
+    erasedIds,
     highlightId,
     preview,
     rendered.height,

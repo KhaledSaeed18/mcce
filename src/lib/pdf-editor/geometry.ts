@@ -1,6 +1,7 @@
 import { ERASER_TOLERANCE } from "@/config/pdf-editor";
 import { distanceToSegment, distanceToStroke } from "./distance";
 import { getNoteBox } from "./note-box";
+import { distanceToEllipseOutline, distanceToRectOutline } from "./shape-hit";
 import { getTextBox } from "./text-layout";
 import type { Annotation, Box, Point } from "./types";
 
@@ -52,6 +53,15 @@ export function isAnnotationHit(
       distanceToSegment(annotation.from, annotation.to, target) <=
       ERASER_TOLERANCE
     );
+  }
+  // A hollow shape is only its line. Its middle stays free for the text under
+  // it to be selected, and for the eraser to pass over.
+  if (annotation.type === "rect" || annotation.type === "ellipse") {
+    const distance =
+      annotation.type === "rect"
+        ? distanceToRectOutline(annotation, target)
+        : distanceToEllipseOutline(annotation, target);
+    return distance <= ERASER_TOLERANCE + annotation.strokeWidth / 2;
   }
   return isInsideBox(annotation, target);
 }

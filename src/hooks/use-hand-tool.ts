@@ -50,7 +50,10 @@ export function useHandTool(): PointerHandlers {
   );
 
   const handleUp = useCallback((event: PointerEvent<HTMLCanvasElement>) => {
-    event.currentTarget.releasePointerCapture(event.pointerId);
+    // A press the browser took back has already let go.
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
     dragRef.current = null;
   }, []);
 

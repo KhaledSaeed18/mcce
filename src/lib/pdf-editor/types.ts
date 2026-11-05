@@ -417,6 +417,8 @@ export type FrameCorner =
 /** Which side of a text box a resize drag has hold of. */
 export type TextBoxEdge = "left" | "right";
 
+export type ArrowEnd = "from" | "to";
+
 /** A timed attempt at the open file, kept so a reload does not stop the clock. */
 export interface ExamSession {
   /** When time runs out, in milliseconds since the epoch. */
@@ -426,6 +428,8 @@ export interface ExamSession {
 
 /** Which answer covers are showing what they hide, and how a page shows one. */
 export interface CoverReveal {
+  /** During an exam, when no cover can be lifted, moved, or rubbed out. */
+  isLocked: boolean;
   revealed: ReadonlySet<string>;
   /** Shows a hidden answer, or hides a shown one. Anything but a cover is ignored. */
   toggle: (id: string) => void;
@@ -448,12 +452,11 @@ export interface AnnotationActions {
   add: (annotation: Annotation) => void;
   /** Several at once, as a single undo step. */
   addMany: (annotations: Annotation[]) => void;
-  batchErase: (pageId: string, points: Point[]) => void;
+  batchErase: (ids: ReadonlySet<string>) => void;
   /** Keeps a part of the page in view as a clip. */
   clip: (pageId: string, box: Box) => void;
-  /** Puts a copy of the selected text beside it, and selects the copy. */
-  duplicateText: () => void;
-  erase: (pageId: string, point: Point) => void;
+  /** Puts a copy of the selected markup beside it, and selects the copy. */
+  duplicateSelected: () => void;
   moveText: (id: string, dx: number, dy: number) => void;
   remove: (id: string) => void;
   replace: (annotation: Annotation) => void;

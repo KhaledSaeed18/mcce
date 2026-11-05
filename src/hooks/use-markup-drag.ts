@@ -5,7 +5,10 @@ import {
   useRef,
   useState,
 } from "react";
-import { MARKUP_OVERLAY_ATTRIBUTE } from "@/config/pdf-editor";
+import {
+  MARKUP_OVERLAY_ATTRIBUTE,
+  TEXT_MOVE_TOLERANCE,
+} from "@/config/pdf-editor";
 import { getAnnotationBox } from "@/lib/pdf-editor/annotation-box";
 import { blurFocusedOverlay } from "@/lib/pdf-editor/blur-overlay";
 import { clampDelta } from "@/lib/pdf-editor/bounds";
@@ -19,6 +22,8 @@ export const OVER_MARKUP_ATTRIBUTE = "data-over-markup";
 
 interface MarkupDragOptions {
   annotations: Annotation[];
+  /** During an exam, when a cover stays where it is, hiding what it hides. */
+  areCoversLocked: boolean;
   isEnabled: boolean;
   onMove: (id: string, dx: number, dy: number) => void;
   /** A press that let go without moving, which is how a cover is looked under
@@ -47,6 +52,7 @@ interface Press extends MarkupPress {
  * to the text layer, so text can still be selected. */
 export function useMarkupDrag({
   annotations,
+  areCoversLocked,
   isEnabled,
   onMove,
   onPress,
@@ -60,6 +66,11 @@ export function useMarkupDrag({
   const [drag, setDrag] = useState<AnnotationDrag | null>(null);
   const pressRef = useRef<Press | null>(null);
   const dragRef = useRef<AnnotationDrag | null>(null);
+  // A click rarely lands without a pixel of slip, which must not count as a move.
+  const hasTravelledRef = useRef<boolean>(false);
+  const pressable = areCoversLocked
+    ? annotations.filter((annotation) => annotation.type !== "cover")
+    : annotations;
 
   const update = useCallback((next: AnnotationDrag | null) => {
     dragRef.current = next;
@@ -78,13 +89,14 @@ export function useMarkupDrag({
       }
       blurFocusedOverlay();
       const point = toPagePoint(event, zoom, size, rotation);
-      const target = findAnnotationAt(annotations, pageId, point);
+      const target = findAnnotationAt(pressable, pageId, point);
       onSelect(target ? target.id : null);
       if (!target) {
         return;
       }
       event.preventDefault();
       event.currentTarget.setPointerCapture(event.pointerId);
+      hasTravelledRef.current = false;
       pressRef.current = {
         box: getAnnotationBox(target),
         id: target.id,
@@ -94,10 +106,10 @@ export function useMarkupDrag({
       update({ dx: 0, dy: 0, id: target.id });
     },
     [
-      annotations,
       isEnabled,
       onSelect,
       pageId,
+      pressable,
       rotation,
       selectedId,
       size,
@@ -122,9 +134,19 @@ export function useMarkupDrag({
       const point = toPagePoint(event, zoom, size, rotation);
       const { current: press } = pressRef;
       if (!press) {
-        const isOver = findAnnotationAt(annotations, pageId, point) !== null;
+        const isOver = findAnnotationAt(pressable, pageId, point) !== null;
         event.currentTarget.setAttribute(OVER_MARKUP_ATTRIBUTE, String(isOver));
         return;
+      }
+      if (!hasTravelledRef.current) {
+        const reach = Math.hypot(
+          point.x - press.point.x,
+          point.y - press.point.y
+        );
+        if (reach <= TEXT_MOVE_TOLERANCE) {
+          return;
+        }
+        hasTravelledRef.current = true;
       }
       const delta = clampDelta(
         press.box,
@@ -133,7 +155,7 @@ export function useMarkupDrag({
       );
       update({ dx: delta.x, dy: delta.y, id: press.id });
     },
-    [annotations, isEnabled, pageId, rotation, size, update, zoom]
+    [isEnabled, pageId, pressable, rotation, size, update, zoom]
   );
 
   const handlePointerUp = useCallback(() => {
