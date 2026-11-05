@@ -64,7 +64,7 @@
     "vite": "^8",
     "vite-plugin-static-copy": "^4.1.1",
     "vitest": "^5",
-    "wrangler": "^4.156.1"
+    "wrangler": "^4.156.2"
   },
   "packageManager": "pnpm@11.11.0"
 }
