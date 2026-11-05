@@ -35,6 +35,6 @@ export function findSiblingFile(
     return null;
   }
   const index = desk.files.findIndex((item) => item.id === id);
-  const from = index < 0 ? 0 : index;
+  const from = Math.max(index, 0);
   return desk.files[(from + step + count) % count];
 }

@@ -1,3 +1,9 @@
+import {
+  RESOURCES_OPEN_SOURCE_PATH,
+  RESOURCES_PAGE_PATH,
+  RESOURCES_THESIS_PATH,
+} from "@/config/resources/copy";
+import { THESIS_GUIDE_PATH } from "@/config/thesis";
 /**
  * Stands in for a date on pages whose content is the Drive index itself. They
  * follow the newest indexed file instead of a date written here.
@@ -133,10 +139,3 @@ export const STATIC_PAGES: StaticPage[] = [
     priority: "0.3",
   },
 ];
-
-import {
-  RESOURCES_OPEN_SOURCE_PATH,
-  RESOURCES_PAGE_PATH,
-  RESOURCES_THESIS_PATH,
-} from "@/config/resources/copy";
-import { THESIS_GUIDE_PATH } from "@/config/thesis";

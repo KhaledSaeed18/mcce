@@ -56,6 +56,7 @@ export function buildRecentBatches(index: DriveIndex): RecentBatch[] {
     .map(([day, items]) => ({
       addedAt: items.reduce(
         (latest, item) =>
+          // biome-ignore lint/complexity/useMathMinMax: these are ISO date strings, which Math.max would turn into NaN
           item.firstSeenAt > latest ? item.firstSeenAt : latest,
         items[0].firstSeenAt
       ),
