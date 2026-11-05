@@ -2,10 +2,11 @@ import { useEffect, useRef } from "react";
 import { TEXT_NUDGE, TEXT_NUDGE_LARGE } from "@/config/pdf-editor";
 import { isDialogTarget } from "@/lib/is-dialog-target";
 import { isEditableTarget } from "@/lib/is-editable-target";
+import { getAnnotationBox } from "@/lib/pdf-editor/annotation-box";
 import { clampDelta } from "@/lib/pdf-editor/bounds";
-import { getTextBox } from "@/lib/pdf-editor/text-layout";
 import { readStyleShortcut } from "@/lib/pdf-editor/text-style";
 import type {
+  Annotation,
   AnnotationActions,
   PageSize,
   Point,
@@ -19,10 +20,10 @@ const ARROW_DIRECTIONS: Readonly<Record<string, Point>> = {
   ArrowUp: { x: 0, y: -1 },
 };
 
-interface SelectedTextKeyOptions {
+interface SelectedMarkupKeyOptions {
   actions: AnnotationActions;
   onEdit: (text: TextAnnotation) => void;
-  selected: TextAnnotation | null;
+  selected: Annotation | null;
   size: PageSize;
 }
 
@@ -36,7 +37,7 @@ function isDuplicateKey(event: KeyboardEvent): boolean {
 
 function nudge(
   event: KeyboardEvent,
-  selected: TextAnnotation,
+  selected: Annotation,
   size: PageSize,
   actions: AnnotationActions
 ): boolean {
@@ -46,7 +47,7 @@ function nudge(
   }
   const step = event.shiftKey ? TEXT_NUDGE_LARGE : TEXT_NUDGE;
   const delta = clampDelta(
-    getTextBox(selected),
+    getAnnotationBox(selected),
     { x: direction.x * step, y: direction.y * step },
     size
   );
@@ -54,24 +55,25 @@ function nudge(
   return true;
 }
 
-/** Whether the key was one that acts on selected text, having acted on it. */
+/** Whether the key was one that acts on selected markup, having acted on it. */
 function runKey(
   event: KeyboardEvent,
-  { actions, onEdit, size }: SelectedTextKeyOptions,
-  selected: TextAnnotation
+  { actions, onEdit, size }: SelectedMarkupKeyOptions,
+  selected: Annotation
 ): boolean {
   if (!(event.metaKey || event.ctrlKey || event.altKey)) {
-    if (event.key === "Enter" && !event.shiftKey) {
+    if (selected.type === "text" && event.key === "Enter" && !event.shiftKey) {
       onEdit(selected);
       return true;
     }
     return nudge(event, selected, size, actions);
   }
   if (isDuplicateKey(event)) {
-    actions.duplicateText();
+    actions.duplicateSelected();
     return true;
   }
-  const style = readStyleShortcut(event, selected);
+  const style =
+    selected.type === "text" ? readStyleShortcut(event, selected) : null;
   if (style) {
     actions.restyleText(style);
   }
@@ -79,11 +81,12 @@ function runKey(
 }
 
 /**
- * The keys that act on selected text: Enter opens it, the arrows nudge it, and
- * the formatting shortcuts restyle it. They listen ahead of the editor's own
- * keys, where the arrows turn pages, and only for as long as text is selected.
+ * The keys that act on selected markup: the arrows nudge it and Cmd+D copies it,
+ * while on text Enter opens it and the formatting shortcuts restyle it. They
+ * listen ahead of the editor's own keys, where the arrows turn pages, and only
+ * for as long as something is selected.
  */
-export function useSelectedTextKeys(options: SelectedTextKeyOptions) {
+export function useSelectedMarkupKeys(options: SelectedMarkupKeyOptions) {
   const optionsRef = useRef(options);
   optionsRef.current = options;
   const isSelected = options.selected !== null;

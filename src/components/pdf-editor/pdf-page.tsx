@@ -79,6 +79,7 @@ export function PdfPage({
   });
   const markupDrag = useMarkupDrag({
     annotations,
+    areCoversLocked: covers.isLocked,
     isEnabled: settings.tool === "select",
     onMove: actions.moveText,
     onPress: editing.handlePress,
@@ -121,6 +122,7 @@ export function PdfPage({
         <AnnotationCanvas
           actions={actions}
           annotations={annotations}
+          areCoversLocked={covers.isLocked}
           editingId={textDraft?.id ?? null}
           markupDrag={markupDrag.drag}
           onDraft={editing.request}

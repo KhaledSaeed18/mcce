@@ -26,6 +26,8 @@ export function useEditorText({
 }: EditorTextOptions) {
   const [draft, setDraft] = useState<TextDraft | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const selected =
+    annotations.find((annotation) => annotation.id === selectedId) ?? null;
   const selectedText = findText(annotations, selectedId);
 
   const openDraft = useCallback((next: TextDraft | null) => {
@@ -68,12 +70,12 @@ export function useEditorText({
   }, [draft, onRemove, removeSelected]);
 
   const duplicateSelected = useCallback(() => {
-    if (selectedText) {
-      const copy = pasteAnnotation(selectedText, selectedText.pageId, 1);
+    if (selected) {
+      const copy = pasteAnnotation(selected, selected.pageId, 1);
       onAdd(copy);
       setSelectedId(copy.id);
     }
-  }, [onAdd, selectedText]);
+  }, [onAdd, selected]);
 
   const editSelected = useCallback(() => {
     if (selectedText) {
@@ -92,6 +94,7 @@ export function useEditorText({
     removeSelected,
     restyle,
     select,
+    selected,
     selectedId,
   };
 }

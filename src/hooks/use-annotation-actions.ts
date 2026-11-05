@@ -1,7 +1,6 @@
 import { useCallback } from "react";
-import { isAnnotationHit } from "@/lib/pdf-editor/geometry";
 import { shiftAnnotation } from "@/lib/pdf-editor/move";
-import type { Annotation, EditorSnapshot, Point } from "@/lib/pdf-editor/types";
+import type { Annotation, EditorSnapshot } from "@/lib/pdf-editor/types";
 
 type Commit = (next: (current: EditorSnapshot) => EditorSnapshot) => void;
 
@@ -30,28 +29,13 @@ export function useAnnotationActions(commit: Commit) {
     [withAnnotations]
   );
 
-  const eraseAt = useCallback(
-    (pageId: string, point: Point) =>
-      withAnnotations((current) => {
-        const next = current.filter(
-          (annotation) =>
-            annotation.pageId !== pageId || !isAnnotationHit(annotation, point)
-        );
-        return next.length === current.length ? current : next;
-      }),
-    [withAnnotations]
-  );
-
-  const batchEraseAt = useCallback(
-    (pageId: string, points: Point[]) =>
-      withAnnotations((current) => {
-        const next = current.filter(
-          (annotation) =>
-            annotation.pageId !== pageId ||
-            !points.some((point) => isAnnotationHit(annotation, point))
-        );
-        return next.length === current.length ? current : next;
-      }),
+  const batchErase = useCallback(
+    (ids: ReadonlySet<string>) =>
+      withAnnotations((current) =>
+        ids.size
+          ? current.filter((annotation) => !ids.has(annotation.id))
+          : current
+      ),
     [withAnnotations]
   );
 
@@ -91,9 +75,8 @@ export function useAnnotationActions(commit: Commit) {
   return {
     add,
     addMany,
-    batchEraseAt,
+    batchErase,
     clear,
-    eraseAt,
     move,
     remove,
     replace,

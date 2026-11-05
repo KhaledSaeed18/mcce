@@ -7,6 +7,7 @@ import {
   buildStroke,
   isEmptyAnnotation,
 } from "@/lib/pdf-editor/build-annotation";
+import { constrainDrag } from "@/lib/pdf-editor/constrain-drag";
 import { toPagePoint } from "@/lib/pdf-editor/pointer";
 import type {
   Annotation,
@@ -106,7 +107,10 @@ export function useShapeDrawing({
         updateDraft(buildFreehand(pointsRef.current, pageId, settings));
         return;
       }
-      updateDraft(buildDraft(origin, point, pageId, settings));
+      const end = event.shiftKey
+        ? constrainDrag(settings.tool, origin, point)
+        : point;
+      updateDraft(buildDraft(origin, end, pageId, settings));
     },
     [pageId, rotation, settings, size, updateDraft, zoom]
   );

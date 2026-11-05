@@ -8,7 +8,9 @@ import {
   NOTE_REMOVE_LABEL,
 } from "@/config/pdf-editor";
 import { useNoteDraft } from "@/hooks/use-note-draft";
+import { getNoteBox } from "@/lib/pdf-editor/note-box";
 import { placeNoteCard } from "@/lib/pdf-editor/note-card";
+import { getRenderedSize, toRenderedBox } from "@/lib/pdf-editor/rotation";
 import type {
   Annotation,
   NoteAnnotation,
@@ -20,7 +22,10 @@ interface NoteCardProps {
   onClose: () => void;
   onRemove: (id: string) => void;
   onReplace: (annotation: Annotation) => void;
-  /** The page upright, which the card is placed in. */
+  /** Quarter turns the page has been given. The card stays upright to be read,
+   * so it is placed on the page as it is shown. */
+  rotation: number;
+  /** The page upright, which the note is held in. */
   size: PageSize;
   zoom: number;
 }
@@ -31,11 +36,16 @@ export function NoteCard({
   onClose,
   onRemove,
   onReplace,
+  rotation,
   size,
   zoom,
 }: NoteCardProps) {
   const draft = useNoteDraft({ note, onClose, onRemove, onReplace });
-  const place = placeNoteCard(note, size, zoom);
+  const place = placeNoteCard(
+    toRenderedBox(getNoteBox(note), size, rotation),
+    getRenderedSize(size, rotation),
+    zoom
+  );
 
   return (
     <div

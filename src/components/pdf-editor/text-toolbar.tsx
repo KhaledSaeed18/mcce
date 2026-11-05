@@ -19,8 +19,8 @@ import { TextSizeControl } from "@/components/pdf-editor/text-size-control";
 import { TextToolbarButton } from "@/components/pdf-editor/text-toolbar-button";
 import { Separator } from "@/components/ui/separator";
 import { TEXT_CONTROLS_ATTRIBUTE } from "@/config/pdf-editor";
+import { useMarkupToolbarPosition } from "@/hooks/use-markup-toolbar-position";
 import { useTextToolbarMenus } from "@/hooks/use-text-toolbar-menus";
-import { useTextToolbarPosition } from "@/hooks/use-text-toolbar-position";
 import type { TextAlign, TextStyle } from "@/lib/pdf-editor/types";
 
 const ALIGNMENTS: ReadonlyArray<{
@@ -58,7 +58,7 @@ export function TextToolbar({
 }: TextToolbarProps) {
   const barRef = useRef<HTMLDivElement>(null);
   const menus = useTextToolbarMenus(barRef);
-  useTextToolbarPosition(barRef, scrollRef);
+  useMarkupToolbarPosition(barRef, scrollRef);
   const handleSize = useCallback(
     (fontSize: number) => onRestyle({ fontSize }),
     [onRestyle]

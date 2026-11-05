@@ -3,7 +3,7 @@ import {
   PAGE_QUARTER_TURN,
   PAGE_THREE_QUARTER_TURN,
 } from "@/config/pdf-editor";
-import type { PageSize, Point } from "./types";
+import type { Box, PageSize, Point } from "./types";
 
 /** How a turned page is placed so that it still starts at the same corner. */
 export interface RotationTransform {
@@ -58,6 +58,34 @@ export function toBaseDelta(delta: Point, rotation: number): Point {
     return { x: -delta.y, y: delta.x };
   }
   return delta;
+}
+
+/** Where a box on the upright page lands on the turned one. */
+export function toRenderedBox(box: Box, size: PageSize, rotation: number): Box {
+  if (rotation === PAGE_QUARTER_TURN) {
+    return {
+      height: box.width,
+      width: box.height,
+      x: size.height - box.y - box.height,
+      y: box.x,
+    };
+  }
+  if (rotation === PAGE_HALF_TURN) {
+    return {
+      ...box,
+      x: size.width - box.x - box.width,
+      y: size.height - box.y - box.height,
+    };
+  }
+  if (rotation === PAGE_THREE_QUARTER_TURN) {
+    return {
+      height: box.width,
+      width: box.height,
+      x: box.y,
+      y: size.width - box.x - box.width,
+    };
+  }
+  return box;
 }
 
 /** Where a point on the turned page sits on the upright one. */

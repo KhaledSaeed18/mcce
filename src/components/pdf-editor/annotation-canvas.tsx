@@ -20,7 +20,7 @@ const CURSOR_BY_TOOL: Record<ToolSettings["tool"], string> = {
   cover: "cursor-crosshair",
   ellipse: "cursor-crosshair",
   eraser: "cursor-cell",
-  hand: "cursor-grab",
+  hand: "cursor-grab active:cursor-grabbing",
   highlight: "cursor-crosshair",
   note: "cursor-copy",
   pen: "cursor-crosshair",
@@ -30,14 +30,13 @@ const CURSOR_BY_TOOL: Record<ToolSettings["tool"], string> = {
 };
 
 function resolveCursor(tool: ToolSettings["tool"], isMoving: boolean): string {
-  return isMoving && (tool === "hand" || tool === "text")
-    ? "cursor-grabbing"
-    : CURSOR_BY_TOOL[tool];
+  return isMoving && tool === "text" ? "cursor-grabbing" : CURSOR_BY_TOOL[tool];
 }
 
 interface AnnotationCanvasProps {
   actions: AnnotationActions;
   annotations: Annotation[];
+  areCoversLocked: boolean;
   /** The text currently open in a field, which that field draws instead. */
   editingId: string | null;
   /** Markup being carried by the select tool, drawn where the pointer has it. */
@@ -60,6 +59,7 @@ interface AnnotationCanvasProps {
 export function AnnotationCanvas({
   actions,
   annotations,
+  areCoversLocked,
   editingId,
   markupDrag,
   onDraft,
@@ -77,6 +77,7 @@ export function AnnotationCanvas({
   const {
     draft,
     drag,
+    erasedIds,
     handlePointerDown,
     handlePointerLeave,
     handlePointerMove,
@@ -85,6 +86,7 @@ export function AnnotationCanvas({
   } = useAnnotationDrawing({
     actions,
     annotations,
+    areCoversLocked,
     onDraft,
     pageId,
     rotation,
@@ -98,6 +100,7 @@ export function AnnotationCanvas({
     draft,
     drag: drag ?? markupDrag,
     editingId,
+    erasedIds,
     highlightId: drag?.id ?? hoverId,
     preview,
     rendered,

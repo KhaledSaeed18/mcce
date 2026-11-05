@@ -2,9 +2,9 @@ import type { ReactNode } from "react";
 import { MarkupResizeHandle } from "@/components/pdf-editor/markup-resize-handle";
 import { TextBoxResizer } from "@/components/pdf-editor/text-box-resizer";
 import {
+  MARKUP_FRAME_ATTRIBUTE,
   MARKUP_OVERLAY_ATTRIBUTE,
   TEXT_CONTROLS_ATTRIBUTE,
-  TEXT_FRAME_ATTRIBUTE,
 } from "@/config/pdf-editor";
 import type { Box, FrameCorner, TextBoxEdge } from "@/lib/pdf-editor/types";
 
@@ -51,7 +51,7 @@ export function TextBoxFrame({
   zoom,
 }: TextBoxFrameProps) {
   const markers = {
-    [TEXT_FRAME_ATTRIBUTE]: "",
+    [MARKUP_FRAME_ATTRIBUTE]: "",
     ...(isEditing
       ? { [MARKUP_OVERLAY_ATTRIBUTE]: "", [TEXT_CONTROLS_ATTRIBUTE]: "" }
       : {}),
