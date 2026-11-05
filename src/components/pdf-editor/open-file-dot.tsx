@@ -4,7 +4,7 @@ import { OPEN_FILE_DOT_LABEL } from "@/config/pdf-editor";
 export function OpenFileDot() {
   return (
     <span
-      className="ml-auto size-2 shrink-0 rounded-full border border-border bg-primary"
+      className="border-border bg-primary ml-auto size-2 shrink-0 rounded-full border"
       title={OPEN_FILE_DOT_LABEL}
     >
       <span className="sr-only">{OPEN_FILE_DOT_LABEL}</span>

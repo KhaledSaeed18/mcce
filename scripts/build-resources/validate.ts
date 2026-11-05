@@ -9,7 +9,7 @@ export interface ValidationContext {
 }
 
 const DESCRIPTION_MAX_LENGTH = 140;
-const URL_PATTERN = /^https?:\/\/[^\s#]+$/;
+const URL_PATTERN = /^https?:\/\/[^\s#]+$/u;
 
 function checkUrl(url: string, label: string, out: string[]) {
   if (!URL_PATTERN.test(url)) {

@@ -1,6 +1,6 @@
 import type { TabKey } from "./types";
 
-const DIGIT = /^Digit[1-9]$/;
+const DIGIT = /^Digit[1-9]$/u;
 const LAST_TAB_DIGIT = 9;
 
 type KeyPress = Pick<

@@ -6,13 +6,13 @@ import type { MaterialType } from "../../src/lib/drive/types";
  * and students look for them separately.
  */
 const SEGMENT_PATTERNS: [MaterialType, RegExp][] = [
-  ["assessment", /assessment|quiz/i],
-  ["exam", /exam|midterm|\bfinal\b|\btests?\b/i],
-  ["assignment", /assignment|homework|\bhw\b|project/i],
-  ["exercise", /exercise|problem set|\bset \d|tutorial|practice/i],
-  ["lab", /\blabs?\b|laborator|experiment/i],
-  ["book", /\bbooks?\b|textbook/i],
-  ["lecture", /lecture|material|slide|chapter|note|summar|session/i],
+  ["assessment", /assessment|quiz/iu],
+  ["exam", /exam|midterm|\bfinal\b|\btests?\b/iu],
+  ["assignment", /assignment|homework|\bhw\b|project/iu],
+  ["exercise", /exercise|problem set|\bset \d|tutorial|practice/iu],
+  ["lab", /\blabs?\b|laborator|experiment/iu],
+  ["book", /\bbooks?\b|textbook/iu],
+  ["lecture", /lecture|material|slide|chapter|note|summar|session/iu],
 ];
 
 /**
@@ -21,7 +21,7 @@ const SEGMENT_PATTERNS: [MaterialType, RegExp][] = [
  * folder above has to outrank the numbered one below it.
  */
 const NUMBERED_GROUP =
-  /^(?:lecture|chapter|set|assignment|homework|experiment|assessment)s?\s*\d+(?:\s*[&+-]\s*\d+)?$/i;
+  /^(?:lecture|chapter|set|assignment|homework|experiment|assessment)s?\s*\d+(?:\s*[&+-]\s*\d+)?$/iu;
 
 function matchSegment(segment: string): MaterialType | null {
   for (const [type, pattern] of SEGMENT_PATTERNS) {

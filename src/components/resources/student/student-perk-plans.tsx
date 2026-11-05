@@ -16,15 +16,15 @@ export function StudentPerkPlans({ perk }: StudentPerkPlansProps) {
       <div className="grid gap-3 lg:grid-cols-3">
         {perk.plans.map((plan) => (
           <article
-            className="flex flex-col gap-3 rounded-lg border-2 bg-card p-4 shadow-md"
+            className="bg-card flex flex-col gap-3 rounded-lg border-2 p-4 shadow-md"
             key={plan.name}
           >
             <div>
               <h3 className="font-head text-lg">{plan.name}</h3>
-              <p className="font-medium text-primary text-sm">{plan.price}</p>
+              <p className="text-primary text-sm font-medium">{plan.price}</p>
               <p className="text-muted-foreground text-xs">{plan.after}</p>
             </div>
-            <ul className="flex list-disc flex-col gap-1 pl-5 text-muted-foreground text-sm">
+            <ul className="text-muted-foreground flex list-disc flex-col gap-1 pl-5 text-sm">
               {plan.includes.map((item) => (
                 <li key={item}>{item}</li>
               ))}

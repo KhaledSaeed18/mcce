@@ -52,7 +52,7 @@ export function NotesList({
         <ScrollArea className="min-h-0 flex-1">
           {groups.map(({ items, position }) => (
             <section className="p-2" key={position}>
-              <h3 className="px-2 pb-1 font-head text-muted-foreground text-xs">
+              <h3 className="font-head text-muted-foreground px-2 pb-1 text-xs">
                 Page {position + 1}
               </h3>
               <ul className="flex flex-col gap-0.5">

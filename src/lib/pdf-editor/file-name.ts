@@ -3,7 +3,7 @@ import {
   SUMMARY_EXPORT_SUFFIX,
 } from "@/config/pdf-editor";
 
-const PDF_EXTENSION_PATTERN = /\.pdf$/i;
+const PDF_EXTENSION_PATTERN = /\.pdf$/iu;
 
 export function stripPdfExtension(name: string): string {
   return name.replace(PDF_EXTENSION_PATTERN, "");

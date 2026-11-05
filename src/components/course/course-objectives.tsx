@@ -11,7 +11,7 @@ export function CourseObjectives({ objectives }: CourseObjectivesProps) {
 
   return (
     <div className="flex min-w-0 flex-col gap-2">
-      <h2 className="text-muted-foreground text-xs uppercase tracking-wide">
+      <h2 className="text-muted-foreground text-xs tracking-wide uppercase">
         Objectives
       </h2>
       <CourseObjectiveList objectives={objectives} />

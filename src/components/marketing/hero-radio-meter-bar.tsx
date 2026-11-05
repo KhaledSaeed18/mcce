@@ -20,7 +20,7 @@ export function HeroRadioMeterBar({
 
   return (
     <m.span
-      className="w-1 rounded-[1px] bg-chart-4"
+      className="bg-chart-4 w-1 rounded-[1px]"
       style={{ height: `${heightPercent}%`, opacity }}
     />
   );

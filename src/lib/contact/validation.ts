@@ -1,6 +1,6 @@
 import type { ContactFormErrors, ContactFormValues } from "@/lib/contact/types";
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/u;
 const MESSAGE_MIN_LENGTH = 10;
 
 export function validateContactForm(

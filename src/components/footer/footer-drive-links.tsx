@@ -9,7 +9,7 @@ const DRIVE_LINK_CLASSES =
 export function FooterDriveLinks() {
   return (
     <div className="flex flex-col gap-2">
-      <h3 className="font-head text-xs uppercase tracking-wide">
+      <h3 className="font-head text-xs tracking-wide uppercase">
         {FOOTER_DRIVE_TITLE}
       </h3>
 

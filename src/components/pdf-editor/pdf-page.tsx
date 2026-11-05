@@ -98,7 +98,7 @@ export function PdfPage({
     <div
       {...pageMarker}
       {...markupDrag.handlers}
-      className="relative scroll-mt-6 overflow-hidden border-2 bg-card shadow-md data-[over-markup=true]:cursor-move data-[over-markup=true]:[&_.textLayer_span]:cursor-move"
+      className="bg-card relative scroll-mt-6 overflow-hidden border-2 shadow-md data-[over-markup=true]:cursor-move data-[over-markup=true]:[&_.textLayer_span]:cursor-move"
       ref={containerRef}
       style={{ height: rendered.height * zoom, width: rendered.width * zoom }}
     >

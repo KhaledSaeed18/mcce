@@ -13,7 +13,7 @@ export function StudentPerkLinks({ perk }: StudentPerkLinksProps) {
       <ul className="flex flex-col gap-2 text-sm">
         <li>
           <a
-            className="underline underline-offset-4 hover:text-primary"
+            className="hover:text-primary underline underline-offset-4"
             href={perk.applyUrl}
             rel="noopener"
             target="_blank"
@@ -23,7 +23,7 @@ export function StudentPerkLinks({ perk }: StudentPerkLinksProps) {
         </li>
         <li>
           <a
-            className="underline underline-offset-4 hover:text-primary"
+            className="hover:text-primary underline underline-offset-4"
             href={perk.docsUrl}
             rel="noopener"
             target="_blank"
@@ -34,7 +34,7 @@ export function StudentPerkLinks({ perk }: StudentPerkLinksProps) {
         {perk.allOffers ? (
           <li>
             <a
-              className="underline underline-offset-4 hover:text-primary"
+              className="hover:text-primary underline underline-offset-4"
               href={perk.allOffers.href}
               rel="noopener"
               target="_blank"
@@ -50,7 +50,7 @@ export function StudentPerkLinks({ perk }: StudentPerkLinksProps) {
         {perk.supportUrl ? (
           <li>
             <a
-              className="underline underline-offset-4 hover:text-primary"
+              className="hover:text-primary underline underline-offset-4"
               href={perk.supportUrl}
               rel="noopener"
               target="_blank"
@@ -62,7 +62,7 @@ export function StudentPerkLinks({ perk }: StudentPerkLinksProps) {
         {perk.supportEmail ? (
           <li>
             <a
-              className="underline underline-offset-4 hover:text-primary"
+              className="hover:text-primary underline underline-offset-4"
               href={`mailto:${perk.supportEmail}`}
             >
               {perk.supportEmail}

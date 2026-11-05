@@ -18,7 +18,7 @@ export function HeroBaseUnit({ children }: HeroBaseUnitProps) {
           <span className="absolute top-1/2 right-1 h-0.5 w-3 -translate-y-1/2 bg-white/30" />
         </span>
         <span className="size-2.5 rounded-sm border-2 border-black bg-black/15" />
-        <span className="ml-auto size-2 rounded-full border border-black bg-primary" />
+        <span className="bg-primary ml-auto size-2 rounded-full border border-black" />
         <span className="font-mono text-[8px] text-black/55">HDD</span>
       </div>
       {children}

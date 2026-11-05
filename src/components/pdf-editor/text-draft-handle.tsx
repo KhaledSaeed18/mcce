@@ -21,7 +21,7 @@ export function TextDraftHandle({
   return (
     <button
       aria-label="Move this text"
-      className="absolute bottom-full left-0 mb-1 flex size-5 cursor-grab touch-none items-center justify-center rounded-sm border-2 bg-secondary text-secondary-foreground active:cursor-grabbing"
+      className="bg-secondary text-secondary-foreground absolute bottom-full left-0 mb-1 flex size-5 cursor-grab touch-none items-center justify-center rounded-sm border-2 active:cursor-grabbing"
       onPointerCancel={handlePointerUp}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}

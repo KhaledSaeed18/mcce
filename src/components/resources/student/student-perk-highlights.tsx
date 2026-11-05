@@ -13,7 +13,7 @@ export function StudentPerkHighlights({ perk }: StudentPerkHighlightsProps) {
       <div className="grid gap-3 sm:grid-cols-2">
         {perk.highlights.map((item) => (
           <article
-            className="flex flex-col gap-1 rounded-lg border-2 bg-card p-4 shadow-md"
+            className="bg-card flex flex-col gap-1 rounded-lg border-2 p-4 shadow-md"
             key={item.title}
           >
             <h3 className="font-head text-base">{item.title}</h3>

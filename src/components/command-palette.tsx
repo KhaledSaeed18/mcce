@@ -41,7 +41,7 @@ export function CommandPalette() {
       >
         <SearchIcon data-icon="inline-start" />
         <span className="hidden lg:inline">Search</span>
-        <kbd className="hidden rounded border-2 bg-muted px-1 font-sans text-xs lg:inline">
+        <kbd className="bg-muted hidden rounded border-2 px-1 font-sans text-xs lg:inline">
           ⌘K
         </kbd>
       </Button>
@@ -59,7 +59,7 @@ export function CommandPalette() {
             {/* The "More" group keeps an item mounted, so CommandEmpty never
                 fires on a fruitless query and this branch has to cover it. */}
             {Boolean(query.trim()) && results.length === 0 && (
-              <p className="py-6 text-center text-muted-foreground text-sm">
+              <p className="text-muted-foreground py-6 text-center text-sm">
                 No files or folders match "{query}".
               </p>
             )}

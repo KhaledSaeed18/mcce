@@ -35,7 +35,7 @@ export function HeroMonitorChin({
 
       <span className="ml-auto flex items-center gap-2 font-mono text-[8px] text-black/55">
         <span className="flex items-center gap-1">
-          <span className="size-2 rounded-full border border-black bg-chart-4" />
+          <span className="bg-chart-4 size-2 rounded-full border border-black" />
           PWR
         </span>
         <span className="flex items-center gap-1">

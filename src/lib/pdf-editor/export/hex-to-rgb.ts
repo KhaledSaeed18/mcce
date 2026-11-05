@@ -1,6 +1,6 @@
 import { type RGB, rgb } from "pdf-lib";
 
-const HEX_PATTERN = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i;
+const HEX_PATTERN = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/iu;
 const CHANNEL_MAX = 255;
 
 export function hexToRgb(hex: string): RGB {

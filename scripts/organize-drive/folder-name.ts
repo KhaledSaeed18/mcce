@@ -1,10 +1,10 @@
-const MATLAB_ALIASES = /^matlab[\s\-_]*(codes?|files?)$/i;
-const BRACKET_PREFIX = /^\[[^\]]+\]\s*/;
+const MATLAB_ALIASES = /^matlab[\s\-_]*(codes?|files?)$/iu;
+const BRACKET_PREFIX = /^\[[^\]]+\]\s*/u;
 const NUMBERED_GROUP =
-  /^(Lecture|Chapter|Set|Assignment|Homework|Experiment|Assessment)s?\s*0*(\d+)$/i;
+  /^(Lecture|Chapter|Set|Assignment|Homework|Experiment|Assessment)s?\s*0*(\d+)$/iu;
 /** One folder covers two lectures, e.g. "Lecture4&5". */
 const NUMBERED_RANGE =
-  /^(Lecture|Chapter|Set|Assignment|Homework|Experiment|Assessment)s?\s*0*(\d+)\s*[&+-]\s*0*(\d+)$/i;
+  /^(Lecture|Chapter|Set|Assignment|Homework|Experiment|Assessment)s?\s*0*(\d+)\s*[&+-]\s*0*(\d+)$/iu;
 
 const GROUP_LABELS: Record<string, string> = {
   assessment: "Assessment",

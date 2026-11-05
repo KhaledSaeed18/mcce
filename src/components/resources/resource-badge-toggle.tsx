@@ -22,10 +22,10 @@ export function ResourceBadgeToggle({
     <button
       aria-pressed={pressed}
       className={cn(
-        "flex items-center gap-1.5 rounded border-2 px-1.5 py-1 transition focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2",
+        "focus-visible:outline-primary flex items-center gap-1.5 rounded border-2 px-1.5 py-1 transition focus-visible:outline-2 focus-visible:outline-offset-2",
         pressed
-          ? "border-black bg-accent"
-          : "border-transparent hover:bg-accent"
+          ? "bg-accent border-black"
+          : "hover:bg-accent border-transparent"
       )}
       onClick={handleClick}
       type="button"

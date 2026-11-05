@@ -22,14 +22,14 @@ export function AppHeader() {
 
   return (
     <header
-      className="sticky top-0 z-50 border-b-2 bg-background"
+      className="bg-background sticky top-0 z-50 border-b-2"
       ref={headerRef}
     >
       <RailLine side="left" />
       <RailLine side="right" />
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 p-4 sm:px-6">
         <Link
-          className="group flex items-center gap-2 font-head text-lg"
+          className="group font-head flex items-center gap-2 text-lg"
           to="/"
         >
           <LogoMark />

@@ -9,7 +9,7 @@ interface CourseMaterialsProps {
 export function CourseMaterials({ courseCode, groups }: CourseMaterialsProps) {
   if (groups.length === 0) {
     return (
-      <p className="rounded border-2 border-dashed p-4 text-muted-foreground text-sm">
+      <p className="text-muted-foreground rounded border-2 border-dashed p-4 text-sm">
         No material for this course has reached the Drive yet. If you have some,
         send it through the contact page.
       </p>

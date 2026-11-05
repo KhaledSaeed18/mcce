@@ -21,13 +21,13 @@ export function SearchFeatureTile() {
         title="Search the whole index"
       >
         <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-2 rounded border-2 bg-background px-3 py-2 shadow-sm">
-            <SearchIcon className="size-4 shrink-0 text-muted-foreground" />
+          <div className="bg-background flex items-center gap-2 rounded border-2 px-3 py-2 shadow-sm">
+            <SearchIcon className="text-muted-foreground size-4 shrink-0" />
             <span className="truncate text-sm">{SEARCH_PREVIEW_QUERY}</span>
             <m.span
               animate={shouldReduceMotion ? undefined : { opacity: [1, 0, 1] }}
               aria-hidden="true"
-              className="h-4 w-0.5 shrink-0 bg-foreground"
+              className="bg-foreground h-4 w-0.5 shrink-0"
               transition={{
                 duration: CARET_BLINK_SECONDS,
                 repeat: Number.POSITIVE_INFINITY,

@@ -1,9 +1,9 @@
 import type { MaterialType } from "@/lib/drive/types";
 import type { FileChip } from "./types";
 
-const SOLUTION_TAG = /\[[^\]]*(?:solution|solved)[^\]]*\]/i;
-const BOOK_TAG = /\[book\]/i;
-const SHEET_NAME = /formula|cheat.?sheet|table.of/i;
+const SOLUTION_TAG = /\[[^\]]*(?:solution|solved)[^\]]*\]/iu;
+const BOOK_TAG = /\[book\]/iu;
+const SHEET_NAME = /formula|cheat.?sheet|table.of/iu;
 
 const CHIP_BY_MATERIAL: Partial<Record<MaterialType, FileChip>> = {
   assessment: "quiz",

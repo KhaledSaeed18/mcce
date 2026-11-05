@@ -19,7 +19,7 @@ export function PdfSearchHighlights({
           className={cn(
             "absolute rounded-sm mix-blend-multiply",
             box.isCurrent
-              ? "bg-primary/70 outline-2 outline-primary"
+              ? "bg-primary/70 outline-primary outline-2"
               : "bg-primary/30"
           )}
           key={box.key}

@@ -10,7 +10,7 @@ export function HomeCtaSection() {
 
   return (
     <m.section {...reveal.single}>
-      <Card className="border-2 bg-secondary text-secondary-foreground shadow-md">
+      <Card className="bg-secondary text-secondary-foreground border-2 shadow-md">
         <CardContent className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-1">
             <h2 className="font-head text-xl sm:text-2xl">

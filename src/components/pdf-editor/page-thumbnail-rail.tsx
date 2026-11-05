@@ -62,7 +62,7 @@ export function PageThumbnailRail({
       {...{ [PAGE_RAIL_ATTRIBUTE]: "" }}
       aria-label="Pages"
       className={cn(
-        "flex shrink-0 flex-col gap-4 overflow-y-auto border-r-2 bg-card p-4",
+        "bg-card flex shrink-0 flex-col gap-4 overflow-y-auto border-r-2 p-4",
         RAIL_WIDTH_CLASS
       )}
       ref={railRef}

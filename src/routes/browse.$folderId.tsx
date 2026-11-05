@@ -76,7 +76,7 @@ function BrowseFolder() {
       <JsonLd data={breadcrumbSchema} />
 
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h1 className="break-words font-head text-xl sm:text-2xl">{title}</h1>
+        <h1 className="font-head text-xl break-words sm:text-2xl">{title}</h1>
         <OpenInDriveButton
           href={buildDriveFolderUrl(folderId)}
           label="Open this folder in Drive"

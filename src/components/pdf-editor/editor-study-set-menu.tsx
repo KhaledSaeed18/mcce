@@ -88,7 +88,7 @@ export function EditorStudySetMenu({
                   ))}
                 </CommandGroup>
               ) : (
-                <p className="px-3 pt-3 text-muted-foreground text-sm">
+                <p className="text-muted-foreground px-3 pt-3 text-sm">
                   {STUDY_SET_EMPTY}
                 </p>
               )}

@@ -1,6 +1,6 @@
 const UNITS = ["B", "KB", "MB", "GB", "TB"] as const;
 const UNIT_STEP = 1024;
-const SEMESTER_WORD_PATTERN = /\s*Semester$/;
+const SEMESTER_WORD_PATTERN = /\s*Semester$/u;
 
 export function formatBytes(bytes: number | null): string {
   if (bytes === null || bytes <= 0) {

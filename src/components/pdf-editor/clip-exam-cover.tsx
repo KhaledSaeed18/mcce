@@ -12,7 +12,7 @@ interface ClipExamCoverProps {
 /** Lies over a clip of a solution while its exam runs, with the time left. */
 export function ClipExamCover({ remaining }: ClipExamCoverProps) {
   return (
-    <div className="flex min-h-0 flex-1 flex-col items-center justify-center gap-1 bg-muted p-2 text-center">
+    <div className="bg-muted flex min-h-0 flex-1 flex-col items-center justify-center gap-1 p-2 text-center">
       <EyeOffIcon className="size-4" />
       <p className="font-head text-xs">{EXAM_SOLUTION_COVER_TITLE}</p>
       <p

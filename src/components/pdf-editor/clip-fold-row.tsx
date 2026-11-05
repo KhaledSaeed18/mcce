@@ -20,7 +20,7 @@ export function ClipFoldRow({
   return (
     <ul
       aria-label={CLIP_FOLDED_LABEL}
-      className="pointer-events-auto absolute inset-x-3 bottom-0 flex items-center gap-1.5 overflow-x-auto [scrollbar-width:none]"
+      className="pointer-events-auto absolute inset-x-3 bottom-0 flex [scrollbar-width:none] items-center gap-1.5 overflow-x-auto"
       style={{ height: CLIP_FOLD_ROW_HEIGHT }}
     >
       {clips.map((clip) => (

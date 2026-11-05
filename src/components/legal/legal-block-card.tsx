@@ -15,7 +15,7 @@ export function LegalBlockCard({ block }: LegalBlockCardProps) {
         <CardTitle className="text-base sm:text-lg">{title}</CardTitle>
       </CardHeader>
 
-      <CardContent className="flex flex-col gap-3 text-muted-foreground text-sm">
+      <CardContent className="text-muted-foreground flex flex-col gap-3 text-sm">
         <p className="text-pretty">{body}</p>
 
         {items ? (
@@ -32,7 +32,7 @@ export function LegalBlockCard({ block }: LegalBlockCardProps) {
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             {links.map((link) => (
               <a
-                className="inline-flex items-center gap-1 font-medium text-foreground underline underline-offset-2 hover:text-primary"
+                className="text-foreground hover:text-primary inline-flex items-center gap-1 font-medium underline underline-offset-2"
                 href={link.href}
                 key={link.href}
                 rel={link.external ? "noopener" : undefined}

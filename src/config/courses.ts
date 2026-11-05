@@ -46,24 +46,24 @@ export const COURSE_ICON_KEYWORDS: Array<{
   icon: LucideIcon;
   pattern: RegExp;
 }> = [
-  { icon: GraduationCapIcon, pattern: /thesis|capstone/i },
-  { icon: FlaskConicalIcon, pattern: /laboratory|\blab\b/i },
+  { icon: GraduationCapIcon, pattern: /thesis|capstone/iu },
+  { icon: FlaskConicalIcon, pattern: /laboratory|\blab\b/iu },
   {
     icon: BrainCircuitIcon,
-    pattern: /machine learning|artificial intelligence|\bai\b/i,
+    pattern: /machine learning|artificial intelligence|\bai\b/iu,
   },
-  { icon: ClapperboardIcon, pattern: /multimedia/i },
-  { icon: ImageIcon, pattern: /image processing|computer vision/i },
-  { icon: SatelliteIcon, pattern: /satellite|space/i },
-  { icon: ShieldIcon, pattern: /security|cryptograph/i },
-  { icon: SmartphoneIcon, pattern: /mobile/i },
-  { icon: DatabaseIcon, pattern: /data mining|database/i },
-  { icon: AudioWaveformIcon, pattern: /signal processing/i },
-  { icon: WifiIcon, pattern: /wireless/i },
-  { icon: RadioIcon, pattern: /communication/i },
-  { icon: NetworkIcon, pattern: /network/i },
-  { icon: SigmaIcon, pattern: /mathematic/i },
-  { icon: CpuIcon, pattern: /embedded/i },
+  { icon: ClapperboardIcon, pattern: /multimedia/iu },
+  { icon: ImageIcon, pattern: /image processing|computer vision/iu },
+  { icon: SatelliteIcon, pattern: /satellite|space/iu },
+  { icon: ShieldIcon, pattern: /security|cryptograph/iu },
+  { icon: SmartphoneIcon, pattern: /mobile/iu },
+  { icon: DatabaseIcon, pattern: /data mining|database/iu },
+  { icon: AudioWaveformIcon, pattern: /signal processing/iu },
+  { icon: WifiIcon, pattern: /wireless/iu },
+  { icon: RadioIcon, pattern: /communication/iu },
+  { icon: NetworkIcon, pattern: /network/iu },
+  { icon: SigmaIcon, pattern: /mathematic/iu },
+  { icon: CpuIcon, pattern: /embedded/iu },
 ];
 
 export const COURSE_CARD_COLORS = [

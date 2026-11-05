@@ -13,7 +13,7 @@ export function TextLink({ children, className, href }: TextLinkProps) {
   return (
     <a
       className={cn(
-        "inline-flex items-center gap-1.5 underline underline-offset-2 hover:text-primary",
+        "hover:text-primary inline-flex items-center gap-1.5 underline underline-offset-2",
         className
       )}
       href={href}

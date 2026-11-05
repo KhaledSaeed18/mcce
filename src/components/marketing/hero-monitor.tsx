@@ -21,12 +21,12 @@ export function HeroMonitor({ children, chin }: HeroMonitorProps) {
       </div>
       <span
         aria-hidden="true"
-        className="h-3 w-20 border-black border-x-2"
+        className="h-3 w-20 border-x-2 border-black"
         style={{ backgroundColor: HERO_BEZEL_STYLE.backgroundColor }}
       />
       <span
         aria-hidden="true"
-        className="h-2.5 w-44 rounded-t-md border-2 border-black border-b-0"
+        className="h-2.5 w-44 rounded-t-md border-2 border-b-0 border-black"
         style={{ backgroundColor: HERO_CASE_STYLE.backgroundColor }}
       />
     </div>

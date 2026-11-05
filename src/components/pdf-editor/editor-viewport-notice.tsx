@@ -22,7 +22,7 @@ export function EditorViewportNotice({
   return (
     <main
       className={cn(
-        "flex flex-col items-center justify-center gap-6 bg-background p-6 text-center",
+        "bg-background flex flex-col items-center justify-center gap-6 p-6 text-center",
         EDITOR_HEIGHT_CLASS,
         className
       )}
@@ -30,10 +30,10 @@ export function EditorViewportNotice({
       <LogoMark className="size-24 sm:size-28" />
 
       <div className="flex max-w-sm flex-col items-center gap-3">
-        <div className="flex size-11 items-center justify-center rounded border-2 border-black bg-primary shadow-sm">
+        <div className="bg-primary flex size-11 items-center justify-center rounded border-2 border-black shadow-sm">
           <MonitorIcon
             aria-hidden="true"
-            className="size-5 text-primary-foreground"
+            className="text-primary-foreground size-5"
           />
         </div>
         <div className="flex flex-col gap-1.5">

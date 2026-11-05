@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, test } from "vitest";
 import type { LoopingProgress } from "@/hooks/use-looping-progress";
 import { ABOUT_MARK_LOOP } from "./about-mark";
 import { ADMISSIONS_MARK_LOOP } from "./admissions-mark";
@@ -36,12 +36,12 @@ const LOOPS: [string, LoopingProgress][] = [
  * drifts outside the blanked window the reader sees the animation snap
  * backwards, which is the one failure these configs can hide. */
 describe.each(LOOPS)("%s loop", (_name, loop) => {
-  it("pairs every keyframe with a time", () => {
+  test("pairs every keyframe with a time", () => {
     expect(loop.progress).toHaveLength(loop.progressTimes.length);
     expect(loop.opacity).toHaveLength(loop.opacityTimes.length);
   });
 
-  it("runs its times in order from 0 to 1", () => {
+  test("runs its times in order from 0 to 1", () => {
     for (const times of [loop.progressTimes, loop.opacityTimes]) {
       expect(times.at(0)).toBe(0);
       expect(times.at(-1)).toBe(1);
@@ -49,7 +49,7 @@ describe.each(LOOPS)("%s loop", (_name, loop) => {
     }
   });
 
-  it("rewinds only while blanked out", () => {
+  test("rewinds only while blanked out", () => {
     const [, , resetFrom, resetUntil] = loop.progressTimes;
     const [, , blankFrom, blankUntil] = loop.opacityTimes;
 
@@ -58,7 +58,7 @@ describe.each(LOOPS)("%s loop", (_name, loop) => {
     expect(resetUntil).toBeLessThanOrEqual(blankUntil);
   });
 
-  it("starts and ends on the same visible rest state", () => {
+  test("starts and ends on the same visible rest state", () => {
     expect(loop.progress.at(0)).toBe(loop.progress.at(-1));
     expect(loop.opacity.at(0)).toBe(loop.opacity.at(-1));
   });

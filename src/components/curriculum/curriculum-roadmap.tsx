@@ -148,19 +148,19 @@ export function CurriculumRoadmap({
     <m.div className="flex flex-col gap-4" {...entrance}>
       <div className="flex flex-col gap-2">
         <Badge className="w-fit gap-1.5" variant="outline">
-          <span className="size-1.5 rounded-full bg-primary" />
+          <span className="bg-primary size-1.5 rounded-full" />
           ROADMAP
         </Badge>
         <h2 className="font-head text-2xl tracking-tight sm:text-3xl">
           Courses build on courses.
         </h2>
-        <p className="max-w-3xl text-muted-foreground text-sm sm:text-base">
+        <p className="text-muted-foreground max-w-3xl text-sm sm:text-base">
           The whole program as a map. Follow the lines to see what to take
           first, and what each course unlocks.
         </p>
       </div>
 
-      <div className="overflow-hidden rounded border-2 bg-card shadow-md">
+      <div className="bg-card overflow-hidden rounded border-2 shadow-md">
         <div className="overflow-x-auto">
           <div
             className="relative"
@@ -233,7 +233,7 @@ export function CurriculumRoadmap({
                   <span className="font-head text-sm leading-none">
                     {TERM_SHORT_LABEL[column.term]}
                   </span>
-                  <span className="text-[11px] text-muted-foreground leading-none">
+                  <span className="text-muted-foreground text-[11px] leading-none">
                     Year {column.year}
                   </span>
                 </div>
@@ -334,7 +334,7 @@ function RoadmapNodeButton({
           : `${node.code}: not offered in this plan`
       }
       className={cn(
-        "absolute flex flex-col justify-center gap-0.5 rounded border-2 bg-card px-2.5 py-1.5 text-left transition-[border-color,box-shadow,opacity] duration-200 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2",
+        "bg-card focus-visible:outline-primary absolute flex flex-col justify-center gap-0.5 rounded border-2 px-2.5 py-1.5 text-left transition-[border-color,box-shadow,opacity] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2",
         node.isMissing ? "border-dashed shadow-none" : "shadow-sm",
         focused && "shadow-lg"
       )}
@@ -369,7 +369,7 @@ function RoadmapNodeButton({
           </Badge>
         )}
       </span>
-      <span className="line-clamp-2 text-[11px] text-muted-foreground leading-tight">
+      <span className="text-muted-foreground line-clamp-2 text-[11px] leading-tight">
         {node.course ? node.course.name : "Outside this plan"}
       </span>
     </button>
@@ -438,7 +438,7 @@ function RoadmapLegend({ hasMissing }: { hasMissing: boolean }) {
   }
 
   return (
-    <ul className="flex shrink-0 flex-wrap gap-x-5 gap-y-2 text-muted-foreground text-xs">
+    <ul className="text-muted-foreground flex shrink-0 flex-wrap gap-x-5 gap-y-2 text-xs">
       {legendItems.map((item) => (
         <li className="flex items-center gap-1.5" key={item.label}>
           <svg

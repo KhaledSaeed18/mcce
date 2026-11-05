@@ -14,7 +14,7 @@ export function HeroStats({ stats }: HeroStatsProps) {
   ];
 
   return (
-    <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-muted-foreground text-xs sm:text-sm">
+    <p className="text-muted-foreground flex flex-wrap items-center gap-x-2 gap-y-1 text-xs sm:text-sm">
       {items.map((item, index) => (
         <span className="flex items-center gap-2" key={item}>
           {index > 0 && <span aria-hidden="true">·</span>}

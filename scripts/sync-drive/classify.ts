@@ -30,8 +30,8 @@ const EXTENSION_TO_KIND: Record<string, DriveNodeKind> = {
   zip: "archive",
 };
 
-const EXTENSION_PATTERN = /\.([a-zA-Z0-9]+)$/;
-const COURSE_CODE_PATTERN = /^([A-Z]{2,5}\d{3}[A-Z]?)\s*-\s*(.+)$/;
+const EXTENSION_PATTERN = /\.([a-zA-Z0-9]+)$/u;
+const COURSE_CODE_PATTERN = /^([A-Z]{2,5}\d{3}[A-Z]?)\s*-\s*(.+)$/u;
 
 export function extensionOf(name: string): string | null {
   const match = name.match(EXTENSION_PATTERN);

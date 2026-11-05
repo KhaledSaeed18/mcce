@@ -27,7 +27,7 @@ export function RouteError({ error }: ErrorComponentProps) {
           always there.
         </p>
         {import.meta.env.DEV && message ? (
-          <pre className="mt-2 overflow-x-auto rounded border-2 bg-muted p-3 text-left text-xs">
+          <pre className="bg-muted mt-2 overflow-x-auto rounded border-2 p-3 text-left text-xs">
             {message}
           </pre>
         ) : null}

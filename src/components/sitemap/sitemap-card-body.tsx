@@ -19,7 +19,7 @@ export function SitemapCardBody({
 }: SitemapCardBodyProps) {
   return (
     <>
-      <span className="flex items-center gap-1.5 font-head text-sm">
+      <span className="font-head flex items-center gap-1.5 text-sm">
         {icon}
         {label}
         {trailingIcon ?? (

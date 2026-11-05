@@ -14,7 +14,7 @@ export function ClipTitle({ label, pageNumber }: ClipTitleProps) {
     <span className="flex min-w-0 items-center gap-1.5">
       {label?.chip ? <FileTypeChip chip={label.chip} /> : null}
       <span className="truncate font-bold">{label?.text}</span>
-      <span className="shrink-0 font-head text-muted-foreground text-xs tabular-nums">
+      <span className="font-head text-muted-foreground shrink-0 text-xs tabular-nums">
         {pageNumber === null
           ? CLIP_PAGE_GONE
           : `${PAGE_NUMBER_PREFIX} ${pageNumber}`}

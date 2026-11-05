@@ -10,7 +10,7 @@ export function GpaTrendTable({ points }: GpaTrendTableProps) {
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b-2 text-muted-foreground text-xs uppercase tracking-wide">
+          <tr className="text-muted-foreground border-b-2 text-xs tracking-wide uppercase">
             <th className="py-2 text-left font-normal">Semester</th>
             <th className="py-2 text-right font-normal">Credits</th>
             <th className="py-2 text-right font-normal">Semester GPA</th>

@@ -35,7 +35,7 @@ export function AdmissionsHero() {
         </TextLink>
 
         <Link
-          className="inline-flex items-center gap-1.5 underline underline-offset-2 hover:text-primary"
+          className="hover:text-primary inline-flex items-center gap-1.5 underline underline-offset-2"
           to="/plan-of-study"
         >
           Plan of study on this site

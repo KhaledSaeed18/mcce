@@ -7,7 +7,7 @@ const NAME_PARTIAL_SCORE = 4;
 const COURSE_CODE_SCORE = 3;
 const PATH_SCORE = 2;
 
-const WORD_CHARACTER = /[a-z0-9]/;
+const WORD_CHARACTER = /[a-z0-9]/u;
 
 function hasWordStart(haystack: string, token: string): boolean {
   let index = haystack.indexOf(token);

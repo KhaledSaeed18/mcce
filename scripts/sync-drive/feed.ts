@@ -12,7 +12,7 @@ const XML_ESCAPES: Record<string, string> = {
   "<": "&lt;",
   ">": "&gt;",
 };
-const XML_UNSAFE = /["&'<>]/g;
+const XML_UNSAFE = /["&'<>]/gu;
 
 function escapeXml(value: string): string {
   return value.replace(XML_UNSAFE, (character) => XML_ESCAPES[character]);

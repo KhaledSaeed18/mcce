@@ -37,7 +37,7 @@ export function readmeLink(
   return docId ? link(docUrl(docId), label) : null;
 }
 
-const SOURCE_TERM_SUFFIX = / \((\w+)\)/;
+const SOURCE_TERM_SUFFIX = / \((\w+)\)/u;
 
 export function sourceHolds(source: DriveSource): string {
   return source.label === "First Year"

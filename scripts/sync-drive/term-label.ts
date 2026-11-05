@@ -2,10 +2,10 @@ import { PAPER_MATERIAL_TYPES } from "../../src/config/materials";
 import type { MaterialType } from "../../src/lib/drive/types";
 
 /** Two four-digit years, which keeps a lone year in a book title from reading as a term. */
-const ACADEMIC_YEAR_PATTERN = /(20\d{2})\s*[-/]\s*(20\d{2})/;
-const TRAILING_TERM_PATTERN = /\b(fall|spring|sp|summer)[\s\-_|]*$/i;
-const SEMESTER_TERM_PATTERN = /fall|spring|summer/i;
-const BARE_YEAR_PATTERN = /\((19|20)(\d{2})\)|\b(19|20)(\d{2})\b/;
+const ACADEMIC_YEAR_PATTERN = /(20\d{2})\s*[-/]\s*(20\d{2})/u;
+const TRAILING_TERM_PATTERN = /\b(fall|spring|sp|summer)[\s\-_|]*$/iu;
+const SEMESTER_TERM_PATTERN = /fall|spring|summer/iu;
+const BARE_YEAR_PATTERN = /\((19|20)(\d{2})\)|\b(19|20)(\d{2})\b/u;
 
 const TERM_LABELS: Record<string, string> = {
   fall: "Fall",

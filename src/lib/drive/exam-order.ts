@@ -2,9 +2,9 @@ import { TERM_RANK, UNRECORDED_TERM_LABEL } from "@/config/exams";
 import { compareNaturally } from "./natural-sort";
 import type { DriveNode } from "./types";
 
-const TERM_LABEL_PATTERN = /^(?:(\w+)\s+)?(\d{4})-\d{4}$/;
-const MIDTERM_PATTERN = /midterm/i;
-const FINAL_PATTERN = /\bfinal\b/i;
+const TERM_LABEL_PATTERN = /^(?:(\w+)\s+)?(\d{4})-\d{4}$/u;
+const MIDTERM_PATTERN = /midterm/iu;
+const FINAL_PATTERN = /\bfinal\b/iu;
 
 /** Newest first, with unlabelled papers last: they cannot be placed on the timeline. */
 export function compareTermLabels(a: string, b: string): number {

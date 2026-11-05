@@ -49,7 +49,7 @@ export function ClipsButton({ view }: ClipsButtonProps) {
         }
       >
         <GalleryVerticalEndIcon />
-        <span className="absolute -top-2 -right-2 min-w-5 rounded-full border-2 bg-primary px-1 font-head text-[0.65rem] text-primary-foreground tabular-nums leading-4">
+        <span className="bg-primary font-head text-primary-foreground absolute -top-2 -right-2 min-w-5 rounded-full border-2 px-1 text-[0.65rem] leading-4 tabular-nums">
           {count}
         </span>
       </PopoverTrigger>

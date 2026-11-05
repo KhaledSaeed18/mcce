@@ -24,7 +24,7 @@ export function CourseHeader({ context, folderId, intro }: CourseHeaderProps) {
     <header className="flex flex-col gap-3">
       <div className="flex items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-3">
-          <div className="flex size-10 shrink-0 items-center justify-center rounded border-2 border-black bg-primary">
+          <div className="bg-primary flex size-10 shrink-0 items-center justify-center rounded border-2 border-black">
             <Icon className="size-5" />
           </div>
           {/* The code sits in the h1 because it is what people search for. */}
@@ -58,8 +58,8 @@ export function CourseHeader({ context, folderId, intro }: CourseHeaderProps) {
       </p>
 
       {course.note ? (
-        <p className="flex items-start gap-2 rounded border-2 bg-muted/50 p-3 text-sm">
-          <InfoIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+        <p className="bg-muted/50 flex items-start gap-2 rounded border-2 p-3 text-sm">
+          <InfoIcon className="text-muted-foreground mt-0.5 size-4 shrink-0" />
           {course.note}
         </p>
       ) : null}

@@ -53,7 +53,7 @@ export function TextBoxResizer({
       onPointerUp={handleUp}
       type="button"
     >
-      <span className="h-full w-[3px] rounded-full bg-foreground" />
+      <span className="bg-foreground h-full w-[3px] rounded-full" />
     </button>
   );
 }

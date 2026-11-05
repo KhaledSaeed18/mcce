@@ -17,7 +17,7 @@ export function CurriculumNotes() {
           <p className="text-sm">
             The official Plan of Study is published as a{" "}
             <a
-              className="underline underline-offset-2 hover:text-foreground"
+              className="hover:text-foreground underline underline-offset-2"
               href={PROGRAM_OFFICIAL_POS_URL}
               rel="noopener"
               target="_blank"

@@ -70,7 +70,7 @@ export function TuitionCalculator() {
           <TuitionExportPanel scenario={scenario} />
         </TuitionResultsGrid>
 
-        <div className="flex flex-col gap-1 text-muted-foreground text-xs">
+        <div className="text-muted-foreground flex flex-col gap-1 text-xs">
           <p>{TUITION_NSSF_CHARGE_NOTE}</p>
           {plan.includeFinancialAid ? (
             <p>{TUITION_FINANCIAL_AID_NOTE}</p>

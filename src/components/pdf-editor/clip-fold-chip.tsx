@@ -21,7 +21,7 @@ export function ClipFoldChip({
 
   return (
     <button
-      className="flex h-7 max-w-64 shrink-0 items-center rounded border-2 bg-card px-2 text-xs shadow-sm hover:bg-accent"
+      className="bg-card hover:bg-accent flex h-7 max-w-64 shrink-0 items-center rounded border-2 px-2 text-xs shadow-sm"
       onClick={handleClick}
       title={CLIP_UNFOLD_LABEL}
       type="button"

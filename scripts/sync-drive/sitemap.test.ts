@@ -6,8 +6,8 @@ import { buildSitemapXml } from "./sitemap";
 import { buildCourseDateMap, getIndexDate } from "./sitemap-dates";
 
 const BASELINE = "2026-08-01T00:00:00.000Z";
-const URL_ENTRY = /<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g;
-const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+const URL_ENTRY = /<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/gu;
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/u;
 const RESOURCES_DATE = "2026-09-20";
 
 function makeIndex(nodes: DriveNode[], generatedAt: string): DriveIndex {

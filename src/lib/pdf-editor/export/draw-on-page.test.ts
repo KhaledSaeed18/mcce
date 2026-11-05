@@ -32,8 +32,8 @@ const ARROW: Annotation = {
 };
 
 /** A stroke operator standing alone on its line, and a switch to a stored graphics state. */
-const STROKE_OPERATOR = /^S$/gm;
-const GRAPHICS_STATE_OPERATOR = /\/GS-\d+ gs/;
+const STROKE_OPERATOR = /^S$/gmu;
+const GRAPHICS_STATE_OPERATOR = /\/GS-\d+ gs/u;
 
 const HIGHLIGHT: Annotation = {
   color: "#ffd60a",
@@ -134,7 +134,7 @@ describe("drawAnnotationOnPage", () => {
     const drawing = await exportWithPageTurnedBy(0, ARROW);
 
     expect(drawing).toContain("10 100 m");
-    expect(drawing.match(/60 100 l/g)).toHaveLength(3);
+    expect(drawing.match(/60 100 l/gu)).toHaveLength(3);
   });
 
   it("writes a highlight as one see-through path, flipped against the page height", async () => {
@@ -187,7 +187,7 @@ describe("drawAnnotationOnPage", () => {
     const drawing = readDrawing(Buffer.from(out));
 
     // One piece of markup drawn, the stroke, each in its own turned space.
-    expect(drawing.match(/ cm/g)).toHaveLength(1);
+    expect(drawing.match(/ cm/gu)).toHaveLength(1);
     expect(drawing).toContain("10 180 m");
   });
 });

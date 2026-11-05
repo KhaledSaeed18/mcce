@@ -31,7 +31,7 @@ function PlanRow({ entry }: RowProps) {
 
   return (
     <tr className="border-t-2">
-      <td className={`${CELL_CLASSES} whitespace-nowrap font-head`}>
+      <td className={`${CELL_CLASSES} font-head whitespace-nowrap`}>
         {course.code}
       </td>
       <td className={CELL_CLASSES}>{course.name}</td>
@@ -61,7 +61,7 @@ export function CcePlanSemesterTable({ semester }: CcePlanSemesterTableProps) {
         <Badge variant="outline">{semester.entries.length} courses</Badge>
       </div>
 
-      <div className="overflow-x-auto rounded border-2 bg-card">
+      <div className="bg-card overflow-x-auto rounded border-2">
         <table className="w-full min-w-[42rem] border-collapse text-sm">
           <thead>
             <tr>

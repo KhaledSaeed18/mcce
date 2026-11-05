@@ -15,11 +15,11 @@ interface DifferenceColumnProps {
 function DifferenceColumn({ courses, label }: DifferenceColumnProps) {
   return (
     <div className="flex flex-col gap-2">
-      <h3 className="font-head text-muted-foreground text-sm uppercase tracking-wide">
+      <h3 className="font-head text-muted-foreground text-sm tracking-wide uppercase">
         {label}
       </h3>
       {courses.map((course) => (
-        <div className="rounded border-2 bg-background p-3" key={course.code}>
+        <div className="bg-background rounded border-2 p-3" key={course.code}>
           <p className="font-head">{course.code}</p>
           <p className="text-muted-foreground text-sm">{course.name}</p>
         </div>

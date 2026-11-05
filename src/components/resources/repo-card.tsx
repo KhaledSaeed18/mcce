@@ -31,7 +31,7 @@ export function RepoCard({ repo }: RepoCardProps) {
       </div>
 
       <div className="flex flex-col gap-1">
-        <h3 className="break-all font-head font-mono text-base leading-tight">
+        <h3 className="font-head font-mono text-base leading-tight break-all">
           {repo.owner}/{repo.name}
           <span className="sr-only">, {OPENS_IN_NEW_TAB}</span>
         </h3>

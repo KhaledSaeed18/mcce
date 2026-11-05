@@ -22,7 +22,7 @@ export function PaneDropOverlay({ isSplit, target }: PaneDropOverlayProps) {
       {SIDES.map((side) => (
         <div
           className={cn(
-            "flex flex-1 items-center justify-center rounded border-2 border-dashed font-head text-sm transition-colors",
+            "font-head flex flex-1 items-center justify-center rounded border-2 border-dashed text-sm transition-colors",
             side === target
               ? "border-border bg-primary/80 text-primary-foreground"
               : "border-border/40 bg-background/60 text-muted-foreground"

@@ -55,7 +55,7 @@ export function PageThumbnailAction({
       {...props}
       aria-label={label}
       className={cn(
-        "absolute z-10 size-7 bg-card p-0 text-card-foreground opacity-0 shadow-xs transition-opacity focus-visible:opacity-100 group-hover:opacity-100 data-popup-open:opacity-100",
+        "bg-card text-card-foreground absolute z-10 size-7 p-0 opacity-0 shadow-xs transition-opacity group-hover:opacity-100 focus-visible:opacity-100 data-popup-open:opacity-100",
         variant === "destructive"
           ? "hover:bg-destructive hover:text-destructive-foreground hover:shadow-sm"
           : "hover:bg-primary hover:text-primary-foreground hover:shadow-sm",

@@ -58,7 +58,7 @@ export function EditorDocumentArea({
         )}
       </EditorSidePanel>
       <div
-        className="flex min-h-0 flex-1 flex-col overflow-auto bg-muted"
+        className="bg-muted flex min-h-0 flex-1 flex-col overflow-auto"
         ref={scrollRef}
       >
         <PageScrollerContext value={scrollRef}>{children}</PageScrollerContext>

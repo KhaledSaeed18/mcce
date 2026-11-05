@@ -26,7 +26,7 @@ export function ProgramGlanceSection() {
           </p>
         </div>
         <Link
-          className="inline-flex items-center gap-1.5 font-head text-sm underline underline-offset-2 hover:text-primary"
+          className="font-head hover:text-primary inline-flex items-center gap-1.5 text-sm underline underline-offset-2"
           to="/plan-of-study"
         >
           View full plan of study

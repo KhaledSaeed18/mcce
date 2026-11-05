@@ -29,7 +29,7 @@ export function HeroRadioScreen({
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex items-center justify-between font-head text-[9px] tracking-widest">
+      <div className="font-head flex items-center justify-between text-[9px] tracking-widest">
         <span className="flex items-center gap-2 text-white/50">
           <HeroRadioMeter position={position} />
           SIGNAL

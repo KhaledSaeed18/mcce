@@ -14,7 +14,7 @@ export function FileBrowserCrumb({ crumb, onSelect }: FileBrowserCrumbProps) {
 
   return (
     <button
-      className="cursor-pointer text-muted-foreground hover:underline"
+      className="text-muted-foreground cursor-pointer hover:underline"
       onClick={handleClick}
       type="button"
     >

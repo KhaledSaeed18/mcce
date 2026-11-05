@@ -31,7 +31,7 @@ export function CceElectives() {
             <CardContent className="flex flex-col gap-3">
               <ul className="flex flex-col gap-2 text-sm">
                 {block?.codes.map((code) => (
-                  <li className="rounded border-2 bg-background p-3" key={code}>
+                  <li className="bg-background rounded border-2 p-3" key={code}>
                     <span className="font-head">{code}</span>
                     <span className="text-muted-foreground">
                       , {getCceCourse(code)?.name}

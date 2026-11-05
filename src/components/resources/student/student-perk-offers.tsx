@@ -16,11 +16,11 @@ export function StudentPerkOffers({ perk }: StudentPerkOffersProps) {
       <div className="grid gap-3 sm:grid-cols-2">
         {perk.offerGroups.map((group) => (
           <article
-            className="flex flex-col gap-2 rounded-lg border-2 bg-card p-4 shadow-md"
+            className="bg-card flex flex-col gap-2 rounded-lg border-2 p-4 shadow-md"
             key={group.title}
           >
             <h3 className="font-head text-base">{group.title}</h3>
-            <ul className="flex list-disc flex-col gap-1 pl-5 text-muted-foreground text-sm">
+            <ul className="text-muted-foreground flex list-disc flex-col gap-1 pl-5 text-sm">
               {group.items.map((item) => (
                 <li key={item}>{item}</li>
               ))}
@@ -31,7 +31,7 @@ export function StudentPerkOffers({ perk }: StudentPerkOffersProps) {
       {perk.allOffers ? (
         <p className="text-muted-foreground text-sm">
           <a
-            className="underline underline-offset-4 hover:text-primary"
+            className="hover:text-primary underline underline-offset-4"
             href={perk.allOffers.href}
             rel="noopener"
             target="_blank"

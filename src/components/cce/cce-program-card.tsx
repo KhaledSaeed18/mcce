@@ -34,7 +34,7 @@ export function CceProgramCard({ program }: CceProgramCardProps) {
               key={block.label}
             >
               <dt className="text-muted-foreground">{block.label}</dt>
-              <dd className="shrink-0 font-head">{block.credits} credits</dd>
+              <dd className="font-head shrink-0">{block.credits} credits</dd>
             </div>
           ))}
         </dl>

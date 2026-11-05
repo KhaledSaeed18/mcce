@@ -17,7 +17,7 @@ export function HeroRadioKnob({ position }: HeroRadioKnobProps) {
       className="relative flex size-9 shrink-0 items-start justify-center rounded-full border-2 border-black bg-neutral-800 shadow-[2px_2px_0_0_rgb(0_0_0/0.35)]"
       style={{ rotate }}
     >
-      <span className="mt-0.5 h-2.5 w-1 rounded-full bg-primary" />
+      <span className="bg-primary mt-0.5 h-2.5 w-1 rounded-full" />
     </m.span>
   );
 }

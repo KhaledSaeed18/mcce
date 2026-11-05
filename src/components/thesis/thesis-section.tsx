@@ -18,7 +18,7 @@ export function ThesisSection({
       <div className="flex flex-col gap-1 border-b-2 pb-3">
         <h2 className="font-head text-lg sm:text-xl">{title}</h2>
         {description ? (
-          <p className="max-w-3xl text-muted-foreground text-sm">
+          <p className="text-muted-foreground max-w-3xl text-sm">
             {description}
           </p>
         ) : null}

@@ -27,10 +27,10 @@ export function MobileNavRow({ color, entry, onNavigate }: MobileNavRowProps) {
         <Icon className="size-4 text-black" />
       </span>
       <span className="flex min-w-0 flex-col">
-        <span className="flex items-center gap-1 font-head text-base">
+        <span className="font-head flex items-center gap-1 text-base">
           {entry.label}
           {"href" in entry ? (
-            <ArrowUpRightIcon className="size-3.5 text-muted-foreground" />
+            <ArrowUpRightIcon className="text-muted-foreground size-3.5" />
           ) : null}
         </span>
         <span className="text-muted-foreground text-xs leading-snug">

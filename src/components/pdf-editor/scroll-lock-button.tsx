@@ -45,7 +45,7 @@ export function ScrollLockButton({ gap, onToggle }: ScrollLockButtonProps) {
         <Icon className="size-4" />
       </button>
       {isLocked ? (
-        <span className="whitespace-nowrap rounded-sm border-2 bg-card px-1 font-head text-[0.6rem]">
+        <span className="bg-card font-head rounded-sm border-2 px-1 text-[0.6rem] whitespace-nowrap">
           {formatPageGap(gap)}
         </span>
       ) : null}

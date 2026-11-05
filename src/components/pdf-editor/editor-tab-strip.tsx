@@ -74,7 +74,7 @@ export function EditorTabStrip({
               scroller would clip, taken back from the bar so it keeps its
               height. */}
           <ul
-            className="-mb-1 flex min-w-0 items-center gap-1.5 overflow-x-auto pr-1 pb-1 [scrollbar-width:none]"
+            className="-mb-1 flex min-w-0 [scrollbar-width:none] items-center gap-1.5 overflow-x-auto pr-1 pb-1"
             ref={stripRef}
           >
             {desk.files.map((file, index) => (

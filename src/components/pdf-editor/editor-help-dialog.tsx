@@ -42,7 +42,7 @@ export function EditorHelpDialog({
             </TabsTrigger>
           </TabsList>
           <TabsContent value={GUIDE_TAB}>
-            <ul className="flex list-disc flex-col gap-1.5 pl-5 text-muted-foreground">
+            <ul className="text-muted-foreground flex list-disc flex-col gap-1.5 pl-5">
               {EDITOR_HELP_FACTS.map((fact) => (
                 <li key={fact}>{fact}</li>
               ))}

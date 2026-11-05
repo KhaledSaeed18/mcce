@@ -6,5 +6,5 @@ interface EditorPanelNoteProps {
 
 /** What a side panel says in place of a list with nothing in it yet. */
 export function EditorPanelNote({ children }: EditorPanelNoteProps) {
-  return <p className="p-4 text-muted-foreground text-sm">{children}</p>;
+  return <p className="text-muted-foreground p-4 text-sm">{children}</p>;
 }

@@ -27,7 +27,7 @@ export function FileBrowserIndex({
       <ScrollArea className="min-h-0 flex-1">
         <div className="flex flex-col gap-0.5 p-2">
           {entries.length === 0 ? (
-            <p className="p-2 text-muted-foreground text-sm">Empty folder.</p>
+            <p className="text-muted-foreground p-2 text-sm">Empty folder.</p>
           ) : (
             entries.map((entry) => (
               <FileBrowserEntry

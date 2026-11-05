@@ -89,7 +89,7 @@ export function ClipCard({
       {...{ [CLIP_CARD_ATTRIBUTE]: "" }}
       aria-label={name}
       className={cn(
-        "pointer-events-auto absolute flex flex-col overflow-hidden rounded border-2 bg-card shadow-md transition-opacity",
+        "bg-card pointer-events-auto absolute flex flex-col overflow-hidden rounded border-2 shadow-md transition-opacity",
         isPassedUnder && "pointer-events-none opacity-20",
         move.isMoving && "shadow-lg"
       )}

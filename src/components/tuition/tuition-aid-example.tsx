@@ -20,7 +20,7 @@ export function TuitionAidExample({ example }: TuitionAidExampleProps) {
   const { aidUnits, breakdown, credits, grossUnits, percent } = example;
 
   return (
-    <div className="rounded border-2 bg-background p-4">
+    <div className="bg-background rounded border-2 p-4">
       <h3 className="font-head text-sm">
         Worked example: {credits} credits at {percent}%
       </h3>

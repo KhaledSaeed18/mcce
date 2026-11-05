@@ -23,8 +23,8 @@ export function MatchPeekOverlay({
   const isSolution = isSolutionName(peek.node?.name ?? "");
 
   return (
-    <div className="absolute inset-0 z-30 flex flex-col border-2 border-primary bg-muted">
-      <p className="shrink-0 border-b-2 bg-primary px-2 py-1 font-head text-primary-foreground text-xs">
+    <div className="border-primary bg-muted absolute inset-0 z-30 flex flex-col border-2">
+      <p className="bg-primary font-head text-primary-foreground shrink-0 border-b-2 px-2 py-1 text-xs">
         {MATCH_PEEK_NOTES[isSolution ? "solution" : "paper"]}
       </p>
       <EditorPane

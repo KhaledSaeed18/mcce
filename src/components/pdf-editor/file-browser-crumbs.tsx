@@ -20,7 +20,7 @@ export function FileBrowserCrumbs({
       {crumbs.map((crumb, index) => (
         <Fragment key={crumb.id ?? "root"}>
           {index > 0 ? (
-            <ChevronRightIcon className="size-3 text-muted-foreground" />
+            <ChevronRightIcon className="text-muted-foreground size-3" />
           ) : null}
           {index === crumbs.length - 1 ? (
             <span className="font-head">{crumb.name}</span>

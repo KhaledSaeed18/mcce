@@ -28,7 +28,7 @@ export function GpaStandingSummary({ cumulative }: GpaStandingSummaryProps) {
     <Card>
       <CardContent className="flex flex-wrap items-end justify-between gap-6">
         <div>
-          <p className="text-muted-foreground text-xs uppercase tracking-wide">
+          <p className="text-muted-foreground text-xs tracking-wide uppercase">
             Cumulative GPA
           </p>
           <p className="font-head text-5xl tabular-nums">
@@ -37,7 +37,7 @@ export function GpaStandingSummary({ cumulative }: GpaStandingSummaryProps) {
         </div>
 
         <div>
-          <p className="text-muted-foreground text-xs uppercase tracking-wide">
+          <p className="text-muted-foreground text-xs tracking-wide uppercase">
             Credits graded
           </p>
           <p className="font-head text-2xl tabular-nums">
@@ -50,7 +50,7 @@ export function GpaStandingSummary({ cumulative }: GpaStandingSummaryProps) {
         </div>
 
         <div>
-          <p className="text-muted-foreground text-xs uppercase tracking-wide">
+          <p className="text-muted-foreground text-xs tracking-wide uppercase">
             Quality points
           </p>
           <p className="font-head text-2xl tabular-nums">

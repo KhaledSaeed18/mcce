@@ -21,7 +21,7 @@ export function GpaFeatureTile() {
           <div className="relative flex h-24 items-end gap-2">
             <span
               aria-hidden="true"
-              className="absolute inset-x-0 border-muted-foreground border-t-2 border-dashed"
+              className="border-muted-foreground absolute inset-x-0 border-t-2 border-dashed"
               style={{ bottom: MINIMUM_LINE_OFFSET }}
             />
 
@@ -30,7 +30,7 @@ export function GpaFeatureTile() {
                 className="flex h-full flex-1 flex-col justify-end gap-1"
                 key={point.label}
               >
-                <span className="text-center font-head text-[10px] tabular-nums">
+                <span className="font-head text-center text-[10px] tabular-nums">
                   {point.gpa.toFixed(2)}
                 </span>
                 <div
@@ -46,7 +46,7 @@ export function GpaFeatureTile() {
           <div className="flex gap-2">
             {GPA_PREVIEW_POINTS.map((point) => (
               <span
-                className="flex-1 text-center text-[10px] text-muted-foreground"
+                className="text-muted-foreground flex-1 text-center text-[10px]"
                 key={point.label}
               >
                 {point.label}

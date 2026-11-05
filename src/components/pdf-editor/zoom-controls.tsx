@@ -30,7 +30,7 @@ export function ZoomControls({
       >
         <ZoomOutIcon />
       </Button>
-      <span className="w-14 text-center font-head text-sm tabular-nums">
+      <span className="font-head w-14 text-center text-sm tabular-nums">
         {Math.round(value * PERCENT)}%
       </span>
       <Button

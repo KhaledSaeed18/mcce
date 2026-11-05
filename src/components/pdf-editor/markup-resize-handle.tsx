@@ -45,7 +45,7 @@ export function MarkupResizeHandle({
     <button
       aria-label={`Drag to resize from the ${corner.replace("-", " ")} corner`}
       className={cn(
-        "pointer-events-auto absolute size-3 touch-none rounded-sm border-2 border-primary bg-card",
+        "border-primary bg-card pointer-events-auto absolute size-3 touch-none rounded-sm border-2",
         CORNER_CLASSES[corner]
       )}
       onPointerCancel={handleUp}

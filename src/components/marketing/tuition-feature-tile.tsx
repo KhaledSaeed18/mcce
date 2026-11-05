@@ -54,10 +54,10 @@ export function TuitionFeatureTile() {
         title="Work out the year's fees"
       >
         <div className="flex flex-col gap-3">
-          <dl className="flex flex-col gap-1.5 rounded border-2 bg-background px-3 py-2 shadow-sm">
+          <dl className="bg-background flex flex-col gap-1.5 rounded border-2 px-3 py-2 shadow-sm">
             {PREVIEW_ROWS.map((row) => (
               <div className="flex items-baseline gap-3" key={row.label}>
-                <dt className="flex-1 truncate text-muted-foreground text-xs">
+                <dt className="text-muted-foreground flex-1 truncate text-xs">
                   {row.label}
                 </dt>
                 <dd className="font-head text-xs tabular-nums">
@@ -67,7 +67,7 @@ export function TuitionFeatureTile() {
             ))}
 
             <div className="flex items-baseline gap-3 border-t-2 pt-1.5">
-              <dt className="flex-1 font-head text-xs">Year total</dt>
+              <dt className="font-head flex-1 text-xs">Year total</dt>
               <dd className="font-head text-sm tabular-nums">
                 {formatUsd(PREVIEW.annualProjection.totalUsd)}
               </dd>

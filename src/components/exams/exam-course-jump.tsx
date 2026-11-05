@@ -11,13 +11,13 @@ export function ExamCourseJump({ groups }: ExamCourseJumpProps) {
     <nav aria-label="Jump to a course" className="flex flex-wrap gap-2">
       {groups.map((group) => (
         <Link
-          className="rounded border-2 px-2 py-1 font-medium text-xs transition hover:bg-primary"
+          className="hover:bg-primary rounded border-2 px-2 py-1 text-xs font-medium transition"
           hash={group.code}
           key={group.code}
           to="/exams"
         >
           {group.code}
-          <span className="ml-1 text-muted-foreground">{group.total}</span>
+          <span className="text-muted-foreground ml-1">{group.total}</span>
         </Link>
       ))}
     </nav>

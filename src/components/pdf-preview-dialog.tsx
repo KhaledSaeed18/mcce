@@ -79,8 +79,9 @@ export function PdfPreviewDialog({
           <DialogTitle className="truncate">{title}</DialogTitle>
         </DialogHeader>
 
-        <div className="relative min-h-0 flex-1 overflow-hidden rounded border-2 bg-muted/20">
+        <div className="bg-muted/20 relative min-h-0 flex-1 overflow-hidden rounded border-2">
           {url ? (
+            // biome-ignore lint/security/useIframeSandbox: the cross-origin browser isolates the Drive viewer, and a sandbox would only restrict the viewer itself
             <iframe
               className="size-full border-0"
               src={url}

@@ -13,10 +13,36 @@
           "options": {
             "filenameCases": ["camelCase", "PascalCase", "kebab-case"]
           }
-        }
+        },
+        // Numbered groups are read positionally by term and file name parsing.
+        "useNamedCaptureGroup": "off"
+      },
+      "suspicious": {
+        // The PDF text layer and scrollbar styles rely on these features on purpose.
+        "useBaseline": "off"
       }
     }
   },
+  "overrides": [
+    {
+      // Vendored shadcn primitives stay as generated so upgrades diff cleanly.
+      "includes": ["src/components/ui/**"],
+      "linter": {
+        "rules": {
+          "nursery": { "useTailwindSortedClasses": "off" }
+        }
+      }
+    },
+    {
+      // Consumers pass the control through htmlFor or as a child.
+      "includes": ["src/components/ui/field.tsx"],
+      "linter": {
+        "rules": {
+          "a11y": { "noLabelWithoutControl": "off" }
+        }
+      }
+    }
+  ],
   "files": {
     "includes": [
       "!src/data/drive-index.json",

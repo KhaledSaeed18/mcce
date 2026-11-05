@@ -14,7 +14,7 @@ export function ThesisGuideFooter() {
           above, from the database search to the defense deck.
         </p>
         <Link
-          className="inline-flex w-fit items-center gap-1.5 text-sm underline underline-offset-2 hover:text-primary"
+          className="hover:text-primary inline-flex w-fit items-center gap-1.5 text-sm underline underline-offset-2"
           to={RESOURCES_THESIS_PATH}
         >
           Open the thesis toolkit

@@ -21,7 +21,7 @@ export function CceOfficialDocs() {
     <section className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
         <h2 className="font-head text-xl sm:text-2xl">Official documents</h2>
-        <p className="max-w-4xl text-muted-foreground text-sm sm:text-base">
+        <p className="text-muted-foreground max-w-4xl text-sm sm:text-base">
           Everything on this page is drawn from these sources. They open in a
           new tab, on LIU's own servers.
         </p>

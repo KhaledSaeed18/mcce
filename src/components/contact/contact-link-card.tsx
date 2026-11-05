@@ -23,10 +23,10 @@ export function ContactLinkCard({ link }: ContactLinkCardProps) {
       </span>
 
       <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-        <span className="text-[11px] text-muted-foreground uppercase tracking-wide">
+        <span className="text-muted-foreground text-[11px] tracking-wide uppercase">
           {link.eyebrow}
         </span>
-        <span className="truncate font-head text-sm sm:text-base">
+        <span className="font-head truncate text-sm sm:text-base">
           {link.value}
         </span>
         <span className="text-muted-foreground text-xs sm:text-sm">
@@ -34,7 +34,7 @@ export function ContactLinkCard({ link }: ContactLinkCardProps) {
         </span>
       </span>
 
-      <TrailingIcon className="size-4 shrink-0 text-muted-foreground transition duration-200 group-hover:translate-x-0.5 group-hover:text-foreground" />
+      <TrailingIcon className="text-muted-foreground group-hover:text-foreground size-4 shrink-0 transition duration-200 group-hover:translate-x-0.5" />
     </>
   );
 

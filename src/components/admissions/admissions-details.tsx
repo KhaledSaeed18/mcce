@@ -17,7 +17,7 @@ export function AdmissionsDetails() {
   return (
     <div className="flex flex-col gap-10">
       <section className="flex flex-col gap-4">
-        <h2 className="font-head text-lg uppercase tracking-wide sm:text-xl">
+        <h2 className="font-head text-lg tracking-wide uppercase sm:text-xl">
           LIU bachelor graduates
         </h2>
 
@@ -54,7 +54,7 @@ export function AdmissionsDetails() {
       <SectionDividerDots />
 
       <section className="flex flex-col gap-4">
-        <h2 className="font-head text-lg uppercase tracking-wide sm:text-xl">
+        <h2 className="font-head text-lg tracking-wide uppercase sm:text-xl">
           Non-LIU bachelor graduates (new students)
         </h2>
 
@@ -108,7 +108,7 @@ export function AdmissionsDetails() {
             {ADMISSIONS_CONTACT_EMAILS.map((email) => (
               <li key={email}>
                 <a
-                  className="underline underline-offset-2 hover:text-primary"
+                  className="hover:text-primary underline underline-offset-2"
                   href={`mailto:${email}`}
                 >
                   {email}
@@ -116,7 +116,7 @@ export function AdmissionsDetails() {
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-muted-foreground text-xs sm:text-sm">
+          <p className="text-muted-foreground mt-4 text-xs sm:text-sm">
             This page is an independent, simplified guide. Policies can change,
             so confirm details with official LIU offices before you apply.
           </p>

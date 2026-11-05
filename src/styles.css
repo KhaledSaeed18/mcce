@@ -57,6 +57,9 @@
 }
 
 :root {
+  --scrollbar-size: 10px;
+  --scrollbar-track: var(--muted);
+  --scrollbar-hatch: color-mix(in oklab, var(--border) 14%, transparent);
   --font-head: "Archivo Black", sans-serif;
   --font-sans: "Space Grotesk Variable", sans-serif;
   --radius: 0.25rem;
@@ -162,8 +165,8 @@
     cursor: pointer;
   }
   html {
-    font-family: var(--font-sans);
     scroll-behavior: smooth;
+    font-family: var(--font-sans);
   }
   h1,
   h2,
@@ -206,12 +209,6 @@
 
 @layer base {
   /* Scrollbar */
-  :root {
-    --scrollbar-size: 10px;
-    --scrollbar-track: var(--muted);
-    --scrollbar-hatch: color-mix(in oklab, var(--border) 14%, transparent);
-  }
-
   /* Chrome drops the ::-webkit-scrollbar rules below for any scroller that sets
      the standard properties, so those are scoped to engines without them. */
   @supports not selector(::-webkit-scrollbar) {

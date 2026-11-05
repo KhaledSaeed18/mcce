@@ -29,7 +29,7 @@ export function StudentPerkNotFound({ perkId }: StudentPerkNotFoundProps) {
         </EmptyHeader>
         <EmptyContent>
           <Link
-            className="underline underline-offset-4 hover:text-primary"
+            className="hover:text-primary underline underline-offset-4"
             to={RESOURCES_STUDENT_PATH}
           >
             All student plans

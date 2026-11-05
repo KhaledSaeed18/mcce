@@ -9,13 +9,13 @@ export function ThesisFirstMeeting() {
       id={THESIS_GUIDE_SECTIONS.firstMeeting.id}
       title="Before the first meeting"
     >
-      <ol className="flex flex-col divide-y-2 rounded border-2 bg-card shadow-md">
+      <ol className="bg-card flex flex-col divide-y-2 rounded border-2 shadow-md">
         {THESIS_FIRST_MEETING.map((task, index) => (
           <li
             className="flex items-baseline gap-3 px-4 py-3 text-sm"
             key={task}
           >
-            <span className="font-head text-lg text-primary">{index + 1}</span>
+            <span className="font-head text-primary text-lg">{index + 1}</span>
             {task}
           </li>
         ))}

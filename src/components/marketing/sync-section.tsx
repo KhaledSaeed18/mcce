@@ -29,7 +29,7 @@ export function SyncSection({ stats }: SyncSectionProps) {
       </m.div>
 
       <m.div
-        className="relative overflow-hidden rounded border-2 bg-card shadow-md"
+        className="bg-card relative overflow-hidden rounded border-2 shadow-md"
         {...reveal.single}
       >
         <div
@@ -52,7 +52,7 @@ export function SyncSection({ stats }: SyncSectionProps) {
               key={step.title}
               {...reveal.item}
             >
-              <span className="flex size-9 items-center justify-center rounded border-2 bg-primary font-head text-primary-foreground text-sm shadow-sm">
+              <span className="bg-primary font-head text-primary-foreground flex size-9 items-center justify-center rounded border-2 text-sm shadow-sm">
                 {index + 1}
               </span>
               <h3 className="font-head text-base">{step.title}</h3>
@@ -61,11 +61,11 @@ export function SyncSection({ stats }: SyncSectionProps) {
           ))}
         </m.ol>
 
-        <div className="relative flex flex-wrap items-center gap-x-2 gap-y-1 border-t-2 bg-muted/50 px-5 py-3 text-muted-foreground text-xs sm:px-6">
+        <div className="bg-muted/50 text-muted-foreground relative flex flex-wrap items-center gap-x-2 gap-y-1 border-t-2 px-5 py-3 text-xs sm:px-6">
           <m.span
             animate={shouldReduceMotion ? undefined : { opacity: [1, 0.3, 1] }}
             aria-hidden="true"
-            className="size-2 shrink-0 rounded-full bg-primary"
+            className="bg-primary size-2 shrink-0 rounded-full"
             transition={{
               duration: PULSE_SECONDS,
               repeat: Number.POSITIVE_INFINITY,

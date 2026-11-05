@@ -10,7 +10,7 @@ export function FileTypeChip({ chip }: FileTypeChipProps) {
   return (
     <span
       className={cn(
-        "shrink-0 rounded-sm border border-current px-1 font-head text-[0.55rem] uppercase leading-4 tracking-wider",
+        "font-head shrink-0 rounded-sm border border-current px-1 text-[0.55rem] leading-4 tracking-wider uppercase",
         FILE_CHIP_CLASSES[chip]
       )}
     >

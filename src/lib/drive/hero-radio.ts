@@ -9,7 +9,7 @@ import {
 } from "@/config/hero-radio";
 import type { DriveNode } from "./types";
 
-const COURSE_NUMBER_PATTERN = /(\d+)(L?)$/i;
+const COURSE_NUMBER_PATTERN = /(\d+)(L?)$/iu;
 
 interface StationDraft {
   counts: Map<string, number>;

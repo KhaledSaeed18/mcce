@@ -22,10 +22,10 @@ export function TuitionExportPanel({ scenario }: TuitionExportPanelProps) {
   } = useTuitionExport(scenario);
 
   return (
-    <div className="flex flex-col gap-3 rounded border-2 bg-card p-4">
+    <div className="bg-card flex flex-col gap-3 rounded border-2 p-4">
       <div>
         <h3 className="font-head text-sm">Export</h3>
-        <p className="mt-1 text-muted-foreground text-xs">
+        <p className="text-muted-foreground mt-1 text-xs">
           This scenario as PDF, CSV, or JSON.
         </p>
       </div>

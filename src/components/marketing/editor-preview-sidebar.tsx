@@ -8,8 +8,8 @@ import { cn } from "@/lib/utils";
 
 export function EditorPreviewSidebar() {
   return (
-    <div className="hidden w-44 shrink-0 flex-col gap-1 border-r-2 bg-card p-2 text-[11px] sm:flex">
-      <span className="flex items-center gap-1.5 px-1.5 py-1 font-head">
+    <div className="bg-card hidden w-44 shrink-0 flex-col gap-1 border-r-2 p-2 text-[11px] sm:flex">
+      <span className="font-head flex items-center gap-1.5 px-1.5 py-1">
         <FolderOpenIcon className="size-3.5 shrink-0" />
         {EDITOR_PREVIEW_FOLDER}
       </span>
@@ -21,7 +21,7 @@ export function EditorPreviewSidebar() {
           )}
           key={file}
         >
-          <FileTextIcon className="size-3 shrink-0 text-muted-foreground" />
+          <FileTextIcon className="text-muted-foreground size-3 shrink-0" />
           <span className="truncate">{file}</span>
         </span>
       ))}

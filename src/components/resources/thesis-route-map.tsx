@@ -9,7 +9,7 @@ export function ThesisRouteMap() {
     <ol className="grid gap-2 sm:grid-cols-3">
       {THESIS_ROUTE_MAP.map((row) => (
         <li
-          className="flex flex-col gap-0.5 rounded border-2 bg-card px-3 py-2 text-sm"
+          className="bg-card flex flex-col gap-0.5 rounded border-2 px-3 py-2 text-sm"
           key={`${row.term}-${row.weeks}`}
         >
           <span className="text-muted-foreground text-xs">

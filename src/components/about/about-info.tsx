@@ -55,7 +55,7 @@ export function AboutInfo() {
         affiliated with or an official page of {PROGRAM_UNIVERSITY_SHORT}. See
         the{" "}
         <a
-          className="underline underline-offset-2 hover:text-foreground"
+          className="hover:text-foreground underline underline-offset-2"
           href={PROGRAM_OFFICIAL_URL}
           rel="noopener"
           target="_blank"

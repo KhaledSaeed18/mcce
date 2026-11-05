@@ -16,9 +16,9 @@ name: Pipeline
 # a push made with GITHUB_TOKEN does not start other workflows.
 on:
   pull_request:
-    branches: [main]
+    branches: [ main ]
   push:
-    branches: [main]
+    branches: [ main ]
   workflow_dispatch:
   workflow_call:
     inputs:
@@ -212,7 +212,7 @@ jobs:
   ci:
     name: CI
     if: ${{ always() }}
-    needs: [changes, workflows, lint, typecheck, test, knip, build]
+    needs: [ changes, workflows, lint, typecheck, test, knip, build ]
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -228,7 +228,7 @@ jobs:
 
   deploy:
     name: Deploy to Cloudflare Workers
-    needs: [changes, ci, build]
+    needs: [ changes, ci, build ]
     if: ${{ needs.changes.outputs.deploy == 'true' && needs.ci.result == 'success' && needs.build.result == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10

@@ -11,14 +11,14 @@ export function GpaTrendTooltip({ centre, point }: GpaTrendTooltipProps) {
 
   return (
     <div
-      className="pointer-events-none absolute z-10 w-max rounded border-2 bg-card p-2 shadow-md"
+      className="bg-card pointer-events-none absolute z-10 w-max rounded border-2 p-2 shadow-md"
       style={{
         bottom: `${Math.min(toAxisPercent(point.cumulativeGpa) + 8, 70)}%`,
         left: anchorRight ? undefined : `${centre}%`,
         right: anchorRight ? `${100 - centre}%` : undefined,
       }}
     >
-      <p className="font-medium text-xs">{point.label}</p>
+      <p className="text-xs font-medium">{point.label}</p>
       <dl className="mt-1 grid grid-cols-[auto_auto] gap-x-3 text-xs">
         <dt className="text-muted-foreground">Semester</dt>
         <dd className="text-right tabular-nums">

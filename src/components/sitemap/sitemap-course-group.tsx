@@ -23,7 +23,7 @@ export function SitemapCourseGroup() {
         <div className="flex flex-col gap-3" key={year.id}>
           {year.semesters.map((semester) => (
             <div className="flex flex-col gap-2" key={semester.id}>
-              <h3 className="text-muted-foreground text-xs uppercase tracking-wide">
+              <h3 className="text-muted-foreground text-xs tracking-wide uppercase">
                 {year.label} · {semester.label}
               </h3>
 

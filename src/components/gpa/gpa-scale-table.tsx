@@ -22,7 +22,7 @@ export function GpaScaleTable() {
       <CardContent>
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b-2 text-muted-foreground text-xs uppercase tracking-wide">
+            <tr className="text-muted-foreground border-b-2 text-xs tracking-wide uppercase">
               <th className="py-2 text-left font-normal">Average</th>
               <th className="py-2 text-right font-normal">Quality points</th>
             </tr>

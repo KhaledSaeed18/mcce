@@ -37,14 +37,14 @@ export function HeroRadioDial({
       aria-valuemin={0}
       aria-valuenow={stationIndex}
       aria-valuetext={`${station.code}, ${station.name}`}
-      className="relative h-16 cursor-ew-resize touch-none select-none rounded border-2 border-black bg-background outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-card"
+      className="bg-background focus-visible:ring-primary focus-visible:ring-offset-card relative h-16 cursor-ew-resize touch-none rounded border-2 border-black outline-none select-none focus-visible:ring-2 focus-visible:ring-offset-2"
       role="slider"
       tabIndex={0}
       {...handlers}
     >
       {minorTicks.map((left) => (
         <span
-          className="absolute bottom-2 h-1.5 w-px bg-foreground/30"
+          className="bg-foreground/30 absolute bottom-2 h-1.5 w-px"
           key={left}
           style={{ left: `${left}%` }}
         />
@@ -64,15 +64,15 @@ export function HeroRadioDial({
           >
             {item.label}
           </span>
-          <span className="h-3 w-0.5 bg-foreground" />
+          <span className="bg-foreground h-3 w-0.5" />
         </span>
       ))}
       <m.span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-1 w-0.5 -translate-x-1/2 bg-chart-2 shadow-[0_0_0_1px_var(--background)]"
+        className="bg-chart-2 pointer-events-none absolute inset-y-1 w-0.5 -translate-x-1/2 shadow-[0_0_0_1px_var(--background)]"
         style={{ left: needleLeft }}
       >
-        <span className="absolute -top-1 left-1/2 size-2 -translate-x-1/2 rotate-45 bg-chart-2" />
+        <span className="bg-chart-2 absolute -top-1 left-1/2 size-2 -translate-x-1/2 rotate-45" />
       </m.span>
     </div>
   );

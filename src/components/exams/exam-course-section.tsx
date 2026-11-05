@@ -13,11 +13,11 @@ export function ExamCourseSection({ group }: ExamCourseSectionProps) {
   return (
     <section className="flex scroll-mt-20 flex-col gap-4" id={group.code}>
       <div className="flex items-center gap-3 border-b-2 pb-2">
-        <div className="flex size-8 shrink-0 items-center justify-center rounded border-2 border-black bg-primary">
+        <div className="bg-primary flex size-8 shrink-0 items-center justify-center rounded border-2 border-black">
           <CourseIcon className="size-4" />
         </div>
         <div className="min-w-0 flex-1">
-          <h2 className="truncate font-head text-lg sm:text-xl">
+          <h2 className="font-head truncate text-lg sm:text-xl">
             <Link
               className="underline-offset-2 hover:underline"
               params={{ code: group.code }}
@@ -26,9 +26,9 @@ export function ExamCourseSection({ group }: ExamCourseSectionProps) {
               {group.code}
             </Link>
           </h2>
-          <p className="truncate text-muted-foreground text-xs">{group.name}</p>
+          <p className="text-muted-foreground truncate text-xs">{group.name}</p>
         </div>
-        <span className="shrink-0 text-muted-foreground text-sm">
+        <span className="text-muted-foreground shrink-0 text-sm">
           {group.total} papers
         </span>
       </div>

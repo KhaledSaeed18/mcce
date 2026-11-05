@@ -10,7 +10,7 @@ export function HeroCrtGlass({ children }: HeroCrtGlassProps) {
     <div
       // isolate plus a compositor layer keeps Chrome clipping animated
       // children to the rounded edge instead of a square box.
-      className="relative isolate overflow-hidden rounded-[18px] border-2 border-black bg-neutral-950 p-3.5 [transform:translateZ(0)]"
+      className="relative isolate [transform:translateZ(0)] overflow-hidden rounded-[18px] border-2 border-black bg-neutral-950 p-3.5"
       style={HERO_SCOPE_SCANLINES}
     >
       {children}

@@ -80,7 +80,7 @@ export function TextDraftField({
       <textarea
         aria-label="Annotation text"
         autoFocus
-        className="block w-full resize-none overflow-hidden rounded-none border-0 bg-card/90 p-0 outline-2 outline-border outline-offset-2 focus-visible:outline-primary"
+        className="bg-card/90 outline-border focus-visible:outline-primary block w-full resize-none overflow-hidden rounded-none border-0 p-0 outline-2 outline-offset-2"
         onBlur={onCommit}
         onChange={handleChange}
         onKeyDown={handleKeyDown}

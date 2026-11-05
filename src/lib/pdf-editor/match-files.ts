@@ -2,9 +2,9 @@ import { isSolutionName } from "./file-chip";
 import { stripPdfExtension } from "./file-name";
 import type { EditorTreeNode } from "./types";
 
-const SOLUTION_TAGS = /\[[^\]]*(?:solution|solved)[^\]]*\]/gi;
-const COURSE_CODE = /\b[A-Z]{3,4}\d{3}[A-Z]?\b/g;
-const NOT_LETTER_OR_DIGIT = /[^a-z0-9]+/g;
+const SOLUTION_TAGS = /\[[^\]]*(?:solution|solved)[^\]]*\]/giu;
+const COURSE_CODE = /\b[A-Z]{3,4}\d{3}[A-Z]?\b/gu;
+const NOT_LETTER_OR_DIGIT = /[^a-z0-9]+/gu;
 
 /** A name with what differs between a paper and its solution taken out:
  * the solution tag, the course code, case, and punctuation. */

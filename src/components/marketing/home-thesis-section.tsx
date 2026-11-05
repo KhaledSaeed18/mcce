@@ -18,7 +18,7 @@ export function HomeThesisSection() {
       <Card>
         <CardContent className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-start gap-3">
-            <span className="flex size-10 shrink-0 items-center justify-center rounded border-2 border-black bg-primary">
+            <span className="bg-primary flex size-10 shrink-0 items-center justify-center rounded border-2 border-black">
               <GraduationCapIcon className="size-5" />
             </span>
             <div className="flex flex-col gap-1">

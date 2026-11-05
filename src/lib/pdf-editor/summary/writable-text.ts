@@ -1,7 +1,7 @@
 import type { PDFFont } from "pdf-lib";
 import { SUMMARY_MISSING_CHARACTER } from "@/config/pdf-editor";
 
-const TAB_PATTERN = /\t/g;
+const TAB_PATTERN = /\t/gu;
 
 /**
  * The text with every character the font cannot write swapped for a stand-in.
