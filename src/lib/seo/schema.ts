@@ -24,6 +24,7 @@ import { UNIVERSITY_PROVIDER } from "@/lib/seo/provider";
 export function buildWebSiteSchema() {
   return {
     "@context": "https://schema.org",
+    "@id": `${SITE_URL}/#website`,
     "@type": "WebSite",
     alternateName: [
       "MCCE Index",
