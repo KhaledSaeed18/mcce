@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CourseNotFound } from "@/components/course/CourseNotFound";
 import { CourseRouteNotFound } from "@/components/course/CourseRouteNotFound";
+import { CourseFaq } from "@/components/course/course-faq";
 import { CourseHeader } from "@/components/course/course-header";
 import { CourseMaterials } from "@/components/course/course-materials";
 import { CourseObjectives } from "@/components/course/course-objectives";
@@ -11,6 +12,7 @@ import { CourseTopics } from "@/components/course/course-topics";
 import { FilePreviewHost } from "@/components/drive/file-preview-host";
 import { CourseJsonLd } from "@/components/seo/course-json-ld";
 import { CURRICULUM } from "@/config/curriculum";
+import { buildCourseFaq } from "@/lib/curriculum/course-faq";
 import { buildCourseIntro } from "@/lib/curriculum/course-intro";
 import { buildCourseContextLookup } from "@/lib/curriculum/lookup";
 import { resolveCourseRoute } from "@/lib/curriculum/resolveCourseRoute";
@@ -52,6 +54,7 @@ function CoursePage() {
   }
 
   const previewNodes = materials.flatMap((group) => group.items);
+  const faq = buildCourseFaq(context, materials, courseLookup);
 
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-6 p-4 sm:p-6">
@@ -75,8 +78,10 @@ function CoursePage() {
 
       <CourseMaterials courseCode={code} groups={materials} />
 
+      <CourseFaq code={code} entries={faq} />
+
       <FilePreviewHost nodes={previewNodes} />
-      <CourseJsonLd context={context} />
+      <CourseJsonLd context={context} faq={faq} />
     </main>
   );
 }

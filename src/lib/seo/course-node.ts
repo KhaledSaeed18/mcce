@@ -1,4 +1,5 @@
 import { PROGRAM_UNIVERSITY_SHORT } from "@/config/site";
+import { formatSpacedCourseCode } from "@/lib/curriculum/course-code";
 import type { CurriculumCourse } from "@/lib/curriculum/types";
 import { courseUrl } from "@/lib/seo/course-url";
 import { UNIVERSITY_PROVIDER } from "@/lib/seo/provider";
@@ -7,7 +8,10 @@ import { UNIVERSITY_PROVIDER } from "@/lib/seo/provider";
 export function buildCourseNode(course: CurriculumCourse) {
   return {
     "@type": "Course",
-    alternateName: `${PROGRAM_UNIVERSITY_SHORT} ${course.code}`,
+    alternateName: [
+      `${PROGRAM_UNIVERSITY_SHORT} ${course.code}`,
+      formatSpacedCourseCode(course.code),
+    ],
     courseCode: course.code,
     description: course.description ?? undefined,
     name: course.name,

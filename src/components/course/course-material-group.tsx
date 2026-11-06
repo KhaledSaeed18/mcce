@@ -14,7 +14,9 @@ export function CourseMaterialGroup({
   return (
     <section className="flex flex-col gap-3">
       <div className="flex items-baseline gap-3 border-b-2 pb-2">
-        <h2 className="font-head text-lg">{group.label}</h2>
+        <h2 className="font-head text-lg">
+          {courseCode} {group.type === "other" ? "other files" : group.label}
+        </h2>
         <span className="text-muted-foreground text-sm">
           {group.items.length}
         </span>
