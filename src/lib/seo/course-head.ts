@@ -3,7 +3,6 @@ import type { CurriculumCourseContext } from "@/lib/curriculum/types";
 import {
   countMaterialFiles,
   countMaterialType,
-  formatMaterialList,
 } from "@/lib/drive/material-list";
 import type { CourseMaterialGroup } from "@/lib/drive/types";
 import { courseUrl } from "@/lib/seo/course-url";
@@ -20,22 +19,21 @@ function buildTitleTopic(groups: CourseMaterialGroup[]): string {
     : `${PROGRAM_UNIVERSITY_SHORT} Course Overview`;
 }
 
-/** Code, university, and program lead, since those are what a searcher types. */
-function buildDescription(
+/** Search engines cut descriptions near 160 characters, so this leads with what students want. */
+export function buildCourseDescription(
   { course }: CurriculumCourseContext,
   groups: CourseMaterialGroup[]
 ): string {
-  const kinds = formatMaterialList(groups);
+  const lead = `${course.code} ${course.name} at ${PROGRAM_UNIVERSITY_SHORT}`;
+  const files = countMaterialFiles(groups);
   const exams = countMaterialType(groups, "exam");
-  const examLead =
-    exams > 0
-      ? `${exams} past exams among ${countMaterialFiles(groups)} files, with `
-      : "";
-  const contents = kinds
-    ? `${examLead}${kinds}, plus the course description and prerequisites`
-    : "course description, credits, and prerequisites";
 
-  return `${course.code} ${course.name} at ${PROGRAM_UNIVERSITY_SHORT}, part of the ${SITE_NAME} program: ${contents}.`;
+  if (exams > 0) {
+    return `${lead}: ${exams} past exams among ${files} ${SITE_NAME} course files, plus topics and prerequisites.`;
+  }
+  return files > 0
+    ? `${lead}: ${files} ${SITE_NAME} course files, plus topics and prerequisites.`
+    : `${lead}, part of the ${SITE_NAME} program: course description, credits, and prerequisites.`;
 }
 
 /** Head tags for a course page, which has to cover codes the curriculum does not list. */
@@ -52,7 +50,7 @@ export function buildCourseHead(
     links: [{ href: url, rel: "canonical" }],
     meta: context
       ? buildPageMeta({
-          description: buildDescription(context, groups),
+          description: buildCourseDescription(context, groups),
           robots: previewRobots,
           title: formatPageTitle(
             `${context.course.code} ${context.course.name}`,

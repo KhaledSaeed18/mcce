@@ -13,7 +13,7 @@ import { formatPageTitle } from "@/lib/seo/page-title";
 const ABOUT_URL = `${SITE_URL}/about`;
 
 const ABOUT_DESCRIPTION =
-  "What the LIU M.S. in Computer and Communication Engineering (MCCE) graduate program is, and what this independent index offers: course files, past exams, study planning tools, and a PDF editor.";
+  "What the LIU M.S. in Computer and Communication Engineering (MCCE) is, and what this independent index offers: course files, past exams, and study tools.";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
