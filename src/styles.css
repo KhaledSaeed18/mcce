@@ -278,6 +278,13 @@
    keeps a ring around the element hoverable. It relies on the hover translate
    to anchor the pseudo-element and to give z-index -1 a stacking context, so
    only use it on elements that move on hover, and never with overflow-hidden. */
+/* A long grid of file cards repeats this on every card, so it lives here rather than in the HTML. */
+@layer components {
+  .node-card {
+    @apply flex h-full cursor-pointer flex-col gap-(--card-spacing) overflow-visible rounded border-2 bg-card py-(--card-spacing) text-card-foreground text-sm shadow-md transition duration-200 lift-hit-area [--card-spacing:--spacing(4)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg active:translate-x-1 active:translate-y-1 active:shadow-none;
+  }
+}
+
 @utility lift-hit-area {
   &:hover::after {
     position: absolute;

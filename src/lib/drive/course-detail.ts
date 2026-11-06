@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { buildCourseMaterials, findCourseFolderId } from "./course-materials";
+import { toListingGroups } from "./listing-node";
 import type { CourseMaterialGroup, DriveIndex } from "./types";
 
 export interface CourseDetail {
@@ -20,6 +21,6 @@ export const getCourseDetail = createServerFn({ method: "GET" })
 
     return {
       folderId: findCourseFolderId(nodes, data.code),
-      materials: buildCourseMaterials(nodes, data.code),
+      materials: toListingGroups(buildCourseMaterials(nodes, data.code)),
     };
   });

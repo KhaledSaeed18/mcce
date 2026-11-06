@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { selectFolderSlice } from "./folder-slice";
+import { toListingNode } from "./listing-node";
 import type { DriveIndex, DriveNode } from "./types";
 
 export interface FolderDetail {
@@ -13,5 +14,10 @@ export const getFolderDetail = createServerFn({ method: "GET" })
     const { nodes } = (await import("@/data/drive-index.json"))
       .default as DriveIndex;
 
-    return { nodes: selectFolderSlice(nodes, data.folderId) };
+    // The folder keeps its own path, which its breadcrumb is built from.
+    return {
+      nodes: selectFolderSlice(nodes, data.folderId).map((node) =>
+        node.id === data.folderId ? node : toListingNode(node)
+      ),
+    };
   });

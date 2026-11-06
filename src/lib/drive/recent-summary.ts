@@ -1,4 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
+import { toListingBatches } from "./listing-node";
 import { buildRecentBatches } from "./recent";
 import type { DriveIndex, RecentBatch } from "./types";
 
@@ -15,7 +16,7 @@ export const getRecentSummary = createServerFn({ method: "GET" }).handler(
 
     return {
       baselineAt: index.meta.baselineAt,
-      batches: buildRecentBatches(index),
+      batches: toListingBatches(buildRecentBatches(index)),
     };
   }
 );
