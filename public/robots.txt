@@ -1,6 +1,8 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+# File previews repeat their parent page, and crawling them used up the Worker's CPU limit.
+Disallow: /*?file=
+Disallow: /*&file=
 
 User-agent: MJ12bot
 Disallow: /
