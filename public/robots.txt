@@ -3,6 +3,12 @@ User-agent: *
 # File previews repeat their parent page, and crawling them used up the Worker's CPU limit.
 Disallow: /*?file=
 Disallow: /*&file=
+# Deep folder pages are noindex but expensive to render. Course folders canonicalize
+# to their course page, so only the three source roots stay crawlable.
+Allow: /browse/15A8bxA33GichTPcZkyXxaZnP_dRyryTq$
+Allow: /browse/1O5i5a7CgmPEwQ7G6MFyM75zIfmtDi5pt$
+Allow: /browse/1Ed1qu98go160SHcte4FstkPVhxX9pRK1$
+Disallow: /browse/
 
 User-agent: MJ12bot
 Disallow: /
