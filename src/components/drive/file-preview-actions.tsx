@@ -7,8 +7,10 @@ import {
   ExternalLinkIcon,
   HighlighterIcon,
 } from "lucide-react";
+import { useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
+import { trackOpenInDrive } from "@/lib/analytics/track";
 
 interface FilePreviewActionsProps {
   canAnnotate: boolean;
@@ -31,6 +33,10 @@ export function FilePreviewActions({
 }: FilePreviewActionsProps) {
   const saveLabel = isSaved ? "Remove from saved" : "Save";
   const copyLabel = isCopied ? "Link copied" : "Copy link";
+  const handleOpenInDrive = useCallback(
+    () => trackOpenInDrive(webViewLink),
+    [webViewLink]
+  );
 
   return (
     <DialogFooter className="sm:items-center">
@@ -57,7 +63,14 @@ export function FilePreviewActions({
       </div>
       <Button
         nativeButton={false}
-        render={<a href={webViewLink} rel="noopener" target="_blank" />}
+        render={
+          <a
+            href={webViewLink}
+            onClick={handleOpenInDrive}
+            rel="noopener"
+            target="_blank"
+          />
+        }
         variant={canAnnotate ? "outline" : "default"}
       >
         <ExternalLinkIcon data-icon="inline-start" />

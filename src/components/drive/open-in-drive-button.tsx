@@ -1,9 +1,8 @@
 import { ArrowUpRightIcon } from "lucide-react";
 import { useCallback } from "react";
 import { DriveGlyph } from "@/components/drive/drive-glyph";
-import { ANALYTICS_EVENTS } from "@/config/analytics";
 import { DRIVE_DIRECT_ACTION } from "@/config/drive-links";
-import { trackEvent } from "@/lib/analytics/track";
+import { trackOpenInDrive } from "@/lib/analytics/track";
 import { cn } from "@/lib/utils";
 
 const BUTTON_CLASSES =
@@ -20,10 +19,7 @@ export function OpenInDriveButton({
   href,
   label = DRIVE_DIRECT_ACTION,
 }: OpenInDriveButtonProps) {
-  const handleClick = useCallback(
-    () => trackEvent(ANALYTICS_EVENTS.openInDrive, { link_url: href }),
-    [href]
-  );
+  const handleClick = useCallback(() => trackOpenInDrive(href), [href]);
 
   return (
     <a
