@@ -14,6 +14,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { CURRICULUM } from "@/config/curriculum";
 import { SITE_NAME, SITE_URL } from "@/config/site";
 import { useCurriculumSelection } from "@/hooks/use-curriculum-selection";
+import { useHydratedSearch } from "@/hooks/use-hydrated-search";
 import { getProgramCredits } from "@/lib/curriculum/credits";
 import { buildCourseContextLookup } from "@/lib/curriculum/lookup";
 import { buildCourseSummaryMap } from "@/lib/drive/courses";
@@ -51,7 +52,7 @@ export const Route = createFileRoute("/plan-of-study")({
 
 function PlanOfStudyPage() {
   const courseSummaries = Route.useLoaderData();
-  const { course: selectedCode, tab } = Route.useSearch();
+  const { course: selectedCode, tab } = useHydratedSearch(Route.useSearch());
   const navigate = Route.useNavigate();
   const { handleOpenChange, selectCourse } = useCurriculumSelection({
     navigate,

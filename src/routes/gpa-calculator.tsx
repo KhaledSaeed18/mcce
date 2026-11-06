@@ -11,6 +11,7 @@ import { SITE_NAME, SITE_URL } from "@/config/site";
 import { useGpaAverages } from "@/hooks/use-gpa-averages";
 import { useGpaLinkImport } from "@/hooks/use-gpa-link-import";
 import { useGpaResults } from "@/hooks/use-gpa-results";
+import { useHydratedSearch } from "@/hooks/use-hydrated-search";
 import { toShareSearch } from "@/lib/gpa/share/search";
 import { buildPageMeta } from "@/lib/seo/meta";
 import { formatPageTitle } from "@/lib/seo/page-title";
@@ -32,7 +33,7 @@ export const Route = createFileRoute("/gpa-calculator")({
 });
 
 function GpaCalculatorPage() {
-  const search = Route.useSearch();
+  const search = useHydratedSearch(Route.useSearch());
   const navigate = Route.useNavigate();
   const { averages, reset, setAverage, setAverages, setTargetGpa, targetGpa } =
     useGpaAverages();
