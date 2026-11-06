@@ -14,7 +14,7 @@ export const TRACKS_INDEX = "tracks-index";
 export const TRACKS_RESOURCES = "tracks-resources";
 
 // Course text and structured data can change independently of Drive files.
-export const COURSE_CONTENT_LASTMOD = "2026-10-26";
+export const COURSE_CONTENT_LASTMOD = "2026-11-06";
 const COURSE_SEO_LASTMOD = "2026-10-06";
 
 export interface StaticPage {

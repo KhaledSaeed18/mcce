@@ -10,9 +10,10 @@ import {
   formatMaterialList,
 } from "@/lib/drive/material-list";
 import type { CourseMaterialGroup } from "@/lib/drive/types";
+import { formatSpacedCourseCode } from "./course-code";
 import type { CurriculumCourseContext } from "./types";
 
-function describeStanding({
+export function describeStanding({
   course,
   semester,
   year,
@@ -20,7 +21,7 @@ function describeStanding({
   const category =
     COURSE_REQUIREMENT_CATEGORY_LABEL[course.requirementCategory].toLowerCase();
 
-  return `${course.code} ${course.name} is a ${course.credits}-credit ${category} in the ${PROGRAM_NAME} (${SITE_NAME}) at ${PROGRAM_UNIVERSITY} (${PROGRAM_UNIVERSITY_SHORT}), scheduled in the ${semester.label} of the ${year.label}.`;
+  return `${course.code} (${formatSpacedCourseCode(course.code)}) ${course.name} is a ${course.credits}-credit ${category} in the ${PROGRAM_NAME} (${SITE_NAME}) at ${PROGRAM_UNIVERSITY} (${PROGRAM_UNIVERSITY_SHORT}), scheduled in the ${semester.label} of the ${year.label}.`;
 }
 
 function describeMaterials(groups: CourseMaterialGroup[]): string | null {

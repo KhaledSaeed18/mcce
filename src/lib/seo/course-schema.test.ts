@@ -29,7 +29,7 @@ describe("buildCourseSchema", () => {
 
   it("names the university and the course page", () => {
     expect(schema.provider.alternateName).toBe("LIU");
-    expect(schema.alternateName).toBe("LIU CENG557");
+    expect(schema.alternateName).toEqual(["LIU CENG557", "CENG 557"]);
     expect(schema.url).toBe("https://mcce.khaledsaeed.tech/course/CENG557");
   });
 

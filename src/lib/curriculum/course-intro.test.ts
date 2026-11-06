@@ -25,7 +25,7 @@ const CONTEXT: CurriculumCourseContext = {
 };
 
 const STANDING =
-  "ENGG515 Advanced Engineering Mathematics is a 3-credit core requirement in the M.S. in Computer and Communication Engineering (MCCE) at Lebanese International University (LIU), scheduled in the Fall Semester of the First Year.";
+  "ENGG515 (ENGG 515) Advanced Engineering Mathematics is a 3-credit core requirement in the M.S. in Computer and Communication Engineering (MCCE) at Lebanese International University (LIU), scheduled in the Fall Semester of the First Year.";
 
 describe("buildCourseIntro", () => {
   it("ties the code to the program and university", () => {
