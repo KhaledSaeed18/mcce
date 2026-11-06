@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { buildExamGroups } from "./exams";
+import { toListingNode } from "./listing-node";
 import type { DriveIndex, ExamCourseGroup } from "./types";
 
 /**
@@ -12,6 +13,12 @@ export const getExamGroups = createServerFn({ method: "GET" }).handler(
     const { nodes } = (await import("@/data/drive-index.json"))
       .default as DriveIndex;
 
-    return buildExamGroups(nodes);
+    return buildExamGroups(nodes).map((group) => ({
+      ...group,
+      terms: group.terms.map((term) => ({
+        ...term,
+        items: term.items.map(toListingNode),
+      })),
+    }));
   }
 );
