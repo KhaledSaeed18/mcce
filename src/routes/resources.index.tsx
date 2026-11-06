@@ -3,6 +3,7 @@ import { useCallback } from "react";
 import { ResourcesToolsPage } from "@/components/resources/resources-tools-page";
 import { BADGE_FILTERS } from "@/config/resources/badges";
 import { RESOURCE_CATEGORIES } from "@/config/resources/categories";
+import { useHydratedSearch } from "@/hooks/use-hydrated-search";
 import { resourcesIndexQueryOptions } from "@/lib/resources/queries";
 import type { ResourceFilterValues } from "@/lib/resources/types";
 import {
@@ -28,7 +29,7 @@ export const Route = createFileRoute("/resources/")({
 
 function ResourcesPage() {
   const index = Route.useLoaderData();
-  const values = Route.useSearch();
+  const values = useHydratedSearch(Route.useSearch());
   const navigate = Route.useNavigate();
 
   // Typing replaces history so the back button steps between filter states,

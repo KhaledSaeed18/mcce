@@ -7,7 +7,7 @@ import { CURRICULUM } from "@/config/curriculum";
 import { getProgramCredits } from "@/lib/curriculum/credits";
 import { flattenCourses } from "@/lib/curriculum/lookup";
 import { buildCourseSummaryMap } from "@/lib/drive/courses";
-import { driveIndexQueryOptions } from "@/lib/drive/queries";
+import { courseSummariesQueryOptions } from "@/lib/drive/queries";
 import { buildCurriculumSchema } from "@/lib/seo/course-schema";
 import { COURSES_URL } from "@/lib/seo/course-url";
 import { buildPageMeta } from "@/lib/seo/meta";
@@ -18,7 +18,7 @@ const COURSE_COUNT = flattenCourses(CURRICULUM).length;
 export const Route = createFileRoute("/course/")({
   component: CourseIndexPage,
   loader: ({ context }) =>
-    context.queryClient.ensureQueryData(driveIndexQueryOptions),
+    context.queryClient.ensureQueryData(courseSummariesQueryOptions),
   head: () => ({
     links: [{ href: COURSES_URL, rel: "canonical" }],
     meta: buildPageMeta({
@@ -33,10 +33,10 @@ export const Route = createFileRoute("/course/")({
 });
 
 function CourseIndexPage() {
-  const driveIndex = Route.useLoaderData();
+  const courseSummaries = Route.useLoaderData();
   const materialsMap = useMemo(
-    () => buildCourseSummaryMap(driveIndex.nodes),
-    [driveIndex.nodes]
+    () => buildCourseSummaryMap(courseSummaries),
+    [courseSummaries]
   );
 
   return (

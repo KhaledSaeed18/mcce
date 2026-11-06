@@ -6,6 +6,7 @@ import {
   REPO_DOMAINS,
   REUSE_CLASSES,
 } from "@/config/resources/repo-domains";
+import { useHydratedSearch } from "@/hooks/use-hydrated-search";
 import { resourcesIndexQueryOptions } from "@/lib/resources/queries";
 import type { RepoFilterValues } from "@/lib/resources/types";
 import { readOptionalOneOf, readOptionalQuery } from "@/lib/search-params";
@@ -28,7 +29,7 @@ export const Route = createFileRoute("/resources/open-source")({
 
 function OpenSourcePage() {
   const index = Route.useLoaderData();
-  const values = Route.useSearch();
+  const values = useHydratedSearch(Route.useSearch());
   const navigate = Route.useNavigate();
 
   const handleChange = useCallback(

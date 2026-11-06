@@ -51,9 +51,7 @@ export function buildCourseSummaries(nodes: DriveNode[]): CourseSummary[] {
 
 /** Course code to its Drive summary, for cross-referencing curriculum courses against indexed materials. */
 export function buildCourseSummaryMap(
-  nodes: DriveNode[]
+  summaries: CourseSummary[]
 ): Map<string, CourseSummary> {
-  return new Map(
-    buildCourseSummaries(nodes).map((summary) => [summary.code, summary])
-  );
+  return new Map(summaries.map((summary) => [summary.code, summary]));
 }

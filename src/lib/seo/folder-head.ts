@@ -27,7 +27,7 @@ function resolveCanonicalUrl(meta: FolderMeta, url: string): string {
 
 /** Head tags for a browse route, which has to cover ids the index no longer knows. */
 export function buildFolderHead(
-  driveIndex: DriveIndex | undefined,
+  driveIndex: Pick<DriveIndex, "nodes"> | undefined,
   folderId: string
 ) {
   const url = `${SITE_URL}/browse/${folderId}`;

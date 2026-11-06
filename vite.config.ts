@@ -6,6 +6,7 @@ import viteReact from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
+import { loadSitemapPages } from "./scripts/prerender/sitemapPages.ts";
 import { PDF_STANDARD_FONTS_PATH } from "./src/config/pdf-editor.ts";
 
 const config = defineConfig({
@@ -37,7 +38,19 @@ const config = defineConfig({
     process.env.VITEST
       ? null
       : cloudflare({ viteEnvironment: { name: "ssr" } }),
-    tanstackStart(),
+    // Static files never invoke the Worker, so public pages cannot hit its CPU
+    // limit. `.html` files rather than subfolders, because Workers Assets would
+    // redirect a subfolder index to a trailing slash the canonical URLs lack.
+    tanstackStart({
+      pages: loadSitemapPages("public/sitemap.xml"),
+      prerender: {
+        autoStaticPathsDiscovery: false,
+        autoSubfolderIndex: false,
+        crawlLinks: false,
+        enabled: true,
+        failOnError: true,
+      },
+    }),
     viteReact(),
   ],
   resolve: { tsconfigPaths: true },

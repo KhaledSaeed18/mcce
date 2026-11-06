@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/empty";
 import { SITE_URL } from "@/config/site";
 import { buildChildrenMap } from "@/lib/drive/children-map";
-import { driveIndexQueryOptions } from "@/lib/drive/queries";
+import { folderDetailQueryOptions } from "@/lib/drive/queries";
 import { resolveFolderMeta } from "@/lib/drive/resolve-folder";
 import type { FilePreviewSearch } from "@/lib/drive/types";
 import { buildDriveFolderUrl } from "@/lib/drive/urls";
@@ -26,8 +26,10 @@ import { buildBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const Route = createFileRoute("/browse/$folderId")({
   component: BrowseFolder,
-  loader: ({ context }) =>
-    context.queryClient.ensureQueryData(driveIndexQueryOptions),
+  loader: ({ context, params }) =>
+    context.queryClient.ensureQueryData(
+      folderDetailQueryOptions(params.folderId)
+    ),
   head: ({ loaderData, params }) =>
     buildFolderHead(loaderData, params.folderId),
   validateSearch: (search: Record<string, unknown>): FilePreviewSearch => ({
@@ -37,14 +39,14 @@ export const Route = createFileRoute("/browse/$folderId")({
 
 function BrowseFolder() {
   const { folderId } = Route.useParams();
-  const driveIndex = Route.useLoaderData();
+  const folderDetail = Route.useLoaderData();
 
   const childrenMap = useMemo(
-    () => buildChildrenMap(driveIndex.nodes),
-    [driveIndex.nodes]
+    () => buildChildrenMap(folderDetail.nodes),
+    [folderDetail.nodes]
   );
 
-  const meta = resolveFolderMeta(driveIndex, folderId);
+  const meta = resolveFolderMeta(folderDetail, folderId);
 
   if (!meta) {
     return <FolderNotFound />;
@@ -97,7 +99,7 @@ function BrowseFolder() {
         <NodeGrid childrenMap={childrenMap} nodes={children} />
       )}
 
-      <FilePreviewHost nodes={driveIndex.nodes} />
+      <FilePreviewHost nodes={folderDetail.nodes} />
     </main>
   );
 }

@@ -4,6 +4,7 @@ import { CategoryNotFound } from "@/components/resources/category-not-found";
 import { ResourcesCategoryPage } from "@/components/resources/resources-category-page";
 import { BADGE_FILTERS } from "@/config/resources/badges";
 import { RESOURCE_CATEGORY_BY_ID } from "@/config/resources/categories";
+import { useHydratedSearch } from "@/hooks/use-hydrated-search";
 import { resourcesIndexQueryOptions } from "@/lib/resources/queries";
 import type {
   ResourceCategoryId,
@@ -32,7 +33,7 @@ export const Route = createFileRoute("/resources/$category")({
 function CategoryPage() {
   const { category: categoryId } = Route.useParams();
   const index = Route.useLoaderData();
-  const values = Route.useSearch();
+  const values = useHydratedSearch(Route.useSearch());
   const navigate = Route.useNavigate();
   const category = RESOURCE_CATEGORY_BY_ID.get(
     categoryId as ResourceCategoryId

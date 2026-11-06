@@ -14,10 +14,11 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { CURRICULUM } from "@/config/curriculum";
 import { SITE_NAME, SITE_URL } from "@/config/site";
 import { useCurriculumSelection } from "@/hooks/use-curriculum-selection";
+import { useHydratedSearch } from "@/hooks/use-hydrated-search";
 import { getProgramCredits } from "@/lib/curriculum/credits";
 import { buildCourseContextLookup } from "@/lib/curriculum/lookup";
 import { buildCourseSummaryMap } from "@/lib/drive/courses";
-import { driveIndexQueryOptions } from "@/lib/drive/queries";
+import { courseSummariesQueryOptions } from "@/lib/drive/queries";
 import { readOptionalString } from "@/lib/search-params";
 import { buildCurriculumSchema } from "@/lib/seo/course-schema";
 import { buildPageMeta } from "@/lib/seo/meta";
@@ -42,7 +43,7 @@ export const Route = createFileRoute("/plan-of-study")({
     }),
   }),
   loader: ({ context }) =>
-    context.queryClient.ensureQueryData(driveIndexQueryOptions),
+    context.queryClient.ensureQueryData(courseSummariesQueryOptions),
   validateSearch: (search: Record<string, unknown>): PlanOfStudySearch => ({
     course: readOptionalString(search.course),
     tab: readOptionalString(search.tab),
@@ -50,8 +51,8 @@ export const Route = createFileRoute("/plan-of-study")({
 });
 
 function PlanOfStudyPage() {
-  const driveIndex = Route.useLoaderData();
-  const { course: selectedCode, tab } = Route.useSearch();
+  const courseSummaries = Route.useLoaderData();
+  const { course: selectedCode, tab } = useHydratedSearch(Route.useSearch());
   const navigate = Route.useNavigate();
   const { handleOpenChange, selectCourse } = useCurriculumSelection({
     navigate,
@@ -67,8 +68,8 @@ function PlanOfStudyPage() {
   );
 
   const materialsMap = useMemo(
-    () => buildCourseSummaryMap(driveIndex.nodes),
-    [driveIndex.nodes]
+    () => buildCourseSummaryMap(courseSummaries),
+    [courseSummaries]
   );
 
   const selectedContext = selectedCode

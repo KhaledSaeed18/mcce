@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useCallback } from "react";
 import { ResourcesThesisPage } from "@/components/resources/resources-thesis-page";
 import { BADGE_FILTERS } from "@/config/resources/badges";
+import { useHydratedSearch } from "@/hooks/use-hydrated-search";
 import { resourcesIndexQueryOptions } from "@/lib/resources/queries";
 import type { ResourceFilterValues } from "@/lib/resources/types";
 import { readOptionalList, readOptionalQuery } from "@/lib/search-params";
@@ -20,7 +21,7 @@ export const Route = createFileRoute("/resources/thesis")({
 
 function ThesisPage() {
   const index = Route.useLoaderData();
-  const values = Route.useSearch();
+  const values = useHydratedSearch(Route.useSearch());
   const navigate = Route.useNavigate();
 
   const handleChange = useCallback(

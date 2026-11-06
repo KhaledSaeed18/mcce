@@ -8,7 +8,7 @@ export interface FolderMeta {
 }
 
 export function resolveFolderMeta(
-  driveIndex: DriveIndex,
+  driveIndex: Pick<DriveIndex, "nodes">,
   folderId: string
 ): FolderMeta | null {
   const currentNode = driveIndex.nodes.find((node) => node.id === folderId);
