@@ -2,7 +2,9 @@ import { useEffect } from "react";
 import { FileMissingDialog } from "@/components/drive/file-missing-dialog";
 import { FilePreviewDialog } from "@/components/drive/file-preview-dialog";
 import { useRecentNodes } from "@/components/providers/recent-nodes-provider";
+import { ANALYTICS_EVENTS } from "@/config/analytics";
 import { useFilePreview } from "@/hooks/use-file-preview";
+import { trackEvent } from "@/lib/analytics/track";
 import type { DriveNode } from "@/lib/drive/types";
 
 interface FilePreviewHostProps {
@@ -18,6 +20,10 @@ export function FilePreviewHost({ nodes }: FilePreviewHostProps) {
   useEffect(() => {
     if (node) {
       record(node.id);
+      trackEvent(ANALYTICS_EVENTS.filePreview, {
+        course_code: node.courseCode ?? undefined,
+        file_name: node.name,
+      });
     }
   }, [node, record]);
 
