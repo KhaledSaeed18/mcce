@@ -191,6 +191,7 @@ describe("buildSitemapXml", () => {
     "/about",
     "/faq",
     "/contact",
+    "/links",
     "/sitemap",
     "/legal",
     "/resources",

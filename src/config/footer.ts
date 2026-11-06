@@ -1,3 +1,4 @@
+import { LINKS_NAV_LABEL } from "@/config/links";
 import { EDITOR_PATH } from "@/config/pdf-editor";
 import {
   RESOURCES_OPEN_SOURCE_PATH,
@@ -30,6 +31,7 @@ export type FooterNavLink =
         | "/exams"
         | "/recent"
         | "/saved"
+        | "/links"
         | "/about"
         | "/faq"
         | "/search"
@@ -74,6 +76,7 @@ export const FOOTER_NAV_COLUMNS: FooterNavColumn[] = [
       { label: "Past exams", to: "/exams" },
       { label: "Recently added", to: "/recent" },
       { label: "Saved", to: "/saved" },
+      { label: LINKS_NAV_LABEL, to: "/links" },
       ...DRIVE_SOURCES.map((source) => ({
         folderId: source.rootFolderId,
         label: source.label,

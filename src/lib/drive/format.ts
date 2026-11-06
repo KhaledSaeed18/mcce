@@ -31,6 +31,10 @@ export function formatDateTime(iso: string): string {
 }
 
 /** Date only, pinned for the same hydration reason as `formatDateTime`. */
+export function formatCount(count: number, noun: string): string {
+  return `${count.toLocaleString("en-US")} ${noun}${count === 1 ? "" : "s"}`;
+}
+
 export function formatDate(iso: string): string {
   return new Intl.DateTimeFormat("en-US", {
     dateStyle: "medium",
