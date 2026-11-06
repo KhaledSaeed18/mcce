@@ -22,7 +22,7 @@ export const Route = createFileRoute("/course/")({
   head: () => ({
     links: [{ href: COURSES_URL, rel: "canonical" }],
     meta: buildPageMeta({
-      description: `Every course in the LIU M.S. in Computer and Communication Engineering (MCCE) program: ${COURSE_COUNT} courses across ${getProgramCredits(CURRICULUM)} credits, with descriptions, prerequisites, and indexed material.`,
+      description: `All ${COURSE_COUNT} courses in the LIU M.S. in Computer and Communication Engineering (MCCE): ${getProgramCredits(CURRICULUM)} credits, with prerequisites and course files.`,
       title: formatPageTitle(
         "MCCE Courses",
         "Computer and Communication Engineering at LIU"

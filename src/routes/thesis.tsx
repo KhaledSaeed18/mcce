@@ -26,7 +26,7 @@ export const Route = createFileRoute("/thesis")({
     links: [{ href: THESIS_GUIDE_URL, rel: "canonical" }],
     meta: buildPageMeta({
       description:
-        "The MCCE master thesis at LIU: CENG695A and CENG695B, eligibility, Part A and Part B deliverables and grading, the eight template chapters, topic selection, and the systematic literature review.",
+        "The MCCE master thesis at LIU: CENG695A and CENG695B eligibility, deliverables and grading, template chapters, topic selection, and the literature review.",
       title: formatPageTitle("Master Thesis Guide", SITE_NAME),
       url: THESIS_GUIDE_URL,
     }),

@@ -13,7 +13,7 @@ import { formatPageTitle } from "@/lib/seo/page-title";
 
 const EXAMS_URL = `${SITE_URL}/exams`;
 const EXAMS_DESCRIPTION =
-  "The open MCCE exam archive: past midterms, finals, and assessments for the LIU Computer and Communication Engineering program, grouped by course and term. The listing is open, no account required.";
+  "Past MCCE midterms, finals, and assessments for the LIU Computer and Communication Engineering program, grouped by course and term. No account required.";
 
 export const Route = createFileRoute("/exams")({
   component: ExamsPage,

@@ -8,7 +8,7 @@ export const CCE_META_TITLE =
   "Computer Engineering (CENG) and Communications (TENG) at LIU";
 
 export const CCE_META_DESCRIPTION =
-  "Computer Engineering (CENG) and Communications Engineering (TENG) bachelor programs at LIU: 108 credits over three years, with the full plan of study, prerequisites, corequisites, course descriptions, electives, and admissions requirements.";
+  "Computer Engineering (CENG) and Communications Engineering (TENG) bachelor programs at LIU: 108 credits over three years, with plan of study and courses.";
 
 export const CCE_INTRO_PARAGRAPHS: string[] = [
   "CCE is the Department of Computer and Communications Engineering in the School of Engineering at the Lebanese International University (LIU). At the undergraduate level it runs two bachelor tracks: Computer Engineering (CENG) and Communications Engineering (TENG). Both are 108 credits and both are laid out over three years, summer semesters included.",
