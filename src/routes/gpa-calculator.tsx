@@ -6,6 +6,7 @@ import { GpaResourcesGrid } from "@/components/gpa/gpa-resources-grid";
 import { GpaSharedLinkDialog } from "@/components/gpa/gpa-shared-link-dialog";
 import { GpaStandingSummary } from "@/components/gpa/gpa-standing-summary";
 import { SectionDividerDots } from "@/components/marketing/section-divider-dots";
+import { JsonLd } from "@/components/seo/json-ld";
 import { GPA_CALCULATOR_PATH, GPA_SHARE_PARAM } from "@/config/gpa";
 import { SITE_NAME, SITE_URL } from "@/config/site";
 import { useGpaAverages } from "@/hooks/use-gpa-averages";
@@ -14,17 +15,20 @@ import { useGpaResults } from "@/hooks/use-gpa-results";
 import { useHydratedSearch } from "@/hooks/use-hydrated-search";
 import { toShareSearch } from "@/lib/gpa/share/search";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { buildWebApplicationGraph } from "@/lib/seo/page-schema";
 import { formatPageTitle } from "@/lib/seo/page-title";
 
 const GPA_CALCULATOR_URL = `${SITE_URL}${GPA_CALCULATOR_PATH}`;
+
+const GPA_DESCRIPTION =
+  "LIU GPA calculator for the MCCE program: semester and cumulative GPA on the official 4.0 scale, a final GPA projection, and the course average needed to hit a target.";
 
 export const Route = createFileRoute("/gpa-calculator")({
   component: GpaCalculatorPage,
   head: () => ({
     links: [{ href: GPA_CALCULATOR_URL, rel: "canonical" }],
     meta: buildPageMeta({
-      description:
-        "LIU GPA calculator for the MCCE program: semester and cumulative GPA on the official 4.0 scale, a final GPA projection, and the course average needed to hit a target.",
+      description: GPA_DESCRIPTION,
       title: formatPageTitle("LIU GPA Calculator", SITE_NAME),
       url: GPA_CALCULATOR_URL,
     }),
@@ -73,6 +77,13 @@ function GpaCalculatorPage() {
           onDismiss={dismiss}
         />
       ) : null}
+      <JsonLd
+        data={buildWebApplicationGraph({
+          description: GPA_DESCRIPTION,
+          name: "LIU GPA Calculator",
+          url: GPA_CALCULATOR_URL,
+        })}
+      />
     </main>
   );
 }

@@ -1,5 +1,9 @@
 import { RESOURCE_CATEGORIES } from "../../src/config/resources/categories";
-import { RESOURCES_PAGE_PATH } from "../../src/config/resources/copy";
+import {
+  RESOURCES_PAGE_PATH,
+  RESOURCES_STUDENT_PATH,
+} from "../../src/config/resources/copy";
+import { STUDENT_PERKS } from "../../src/config/resources/student-perks";
 import { SITE_URL } from "../../src/config/site";
 import type { DriveNode } from "../../src/lib/drive/types";
 import { findFolderCourseCode } from "../../src/lib/seo/folder-canonical";
@@ -13,6 +17,17 @@ export function buildCategoryEntries(resourcesDate: string): string[] {
       "monthly",
       "0.6"
     )
+  );
+}
+
+export function buildStudentPerkEntries(resourcesDate: string): string[] {
+  const paths = [
+    RESOURCES_STUDENT_PATH,
+    ...STUDENT_PERKS.map((perk) => `${RESOURCES_STUDENT_PATH}/${perk.id}`),
+  ];
+
+  return paths.map((path) =>
+    buildUrlEntry(`${SITE_URL}${path}`, resourcesDate, "monthly", "0.6")
   );
 }
 

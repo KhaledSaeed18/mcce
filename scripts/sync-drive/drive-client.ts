@@ -1,12 +1,11 @@
 const DRIVE_FILES_ENDPOINT = "https://www.googleapis.com/drive/v3/files";
 const FIELDS =
-  "nextPageToken, files(id,name,mimeType,size,modifiedTime,webViewLink,iconLink,shortcutDetails)";
+  "nextPageToken, files(id,name,mimeType,size,modifiedTime,webViewLink,shortcutDetails)";
 const PAGE_SIZE = 1000;
 const MAX_RETRIES = 5;
 const RETRY_BASE_DELAY_MS = 250;
 
 export interface DriveApiFile {
-  iconLink?: string;
   id: string;
   mimeType: string;
   modifiedTime: string;

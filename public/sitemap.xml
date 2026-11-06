@@ -265,6 +265,42 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://mcce.khaledsaeed.tech/resources/student</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mcce.khaledsaeed.tech/resources/student/github-education</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mcce.khaledsaeed.tech/resources/student/google-gemini</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mcce.khaledsaeed.tech/resources/student/zed-student</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mcce.khaledsaeed.tech/resources/student/perplexity-education</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mcce.khaledsaeed.tech/resources/student/jetbrains-student</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://mcce.khaledsaeed.tech/course/CENG507</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>

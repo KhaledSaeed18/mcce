@@ -258,3 +258,14 @@ describe("resource hub pages", () => {
     expect(lastmodFor(xml, "/resources/security")).toBe(RESOURCES_DATE);
   });
 });
+
+describe("student plan entries", () => {
+  it("lists the student plans hub and each offer", () => {
+    const xml = buildSitemapXml(makeIndex([], BASELINE), RESOURCES_DATE);
+
+    expect(lastmodFor(xml, "/resources/student")).toBe(RESOURCES_DATE);
+    expect(lastmodFor(xml, "/resources/student/github-education")).toBe(
+      RESOURCES_DATE
+    );
+  });
+});

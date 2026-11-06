@@ -1,3 +1,5 @@
+import { ANALYTICS_EVENTS } from "@/config/analytics";
+
 type AnalyticsParams = Record<string, string | undefined>;
 
 declare global {
@@ -16,4 +18,8 @@ export function trackPageView(pathname: string) {
     page_location: `${window.location.origin}${pathname}`,
     page_title: document.title,
   });
+}
+
+export function trackOpenInDrive(href: string) {
+  trackEvent(ANALYTICS_EVENTS.openInDrive, { link_url: href });
 }

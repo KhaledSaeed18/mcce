@@ -32,9 +32,7 @@ export interface DriveNode {
   extension: string | null;
   /** When a sync first saw this id, which is not the same as when Drive last touched it. */
   firstSeenAt: string;
-  iconLink: string | null;
   id: string;
-  isShortcut: boolean;
   kind: DriveNodeKind;
   /** What the material is for, normalised at sync time from folder names that vary by instructor. */
   materialType: MaterialType;

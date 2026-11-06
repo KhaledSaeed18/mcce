@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { FilePreviewHost } from "@/components/drive/file-preview-host";
 import { RecentBatchSection } from "@/components/recent/recent-batch-section";
 import { RecentHero } from "@/components/recent/recent-hero";
+import { JsonLd } from "@/components/seo/json-ld";
 import {
   Empty,
   EmptyDescription,
@@ -17,17 +18,20 @@ import { recentSummaryQueryOptions } from "@/lib/drive/queries";
 import type { FilePreviewSearch } from "@/lib/drive/types";
 import { readOptionalString } from "@/lib/search-params";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { buildPageGraph } from "@/lib/seo/page-schema";
 import { formatPageTitle } from "@/lib/seo/page-title";
 
 const RECENT_URL = `${SITE_URL}/recent`;
+
+const RECENT_DESCRIPTION =
+  "Files added to the MCCE index since the last syncs, grouped by the week they arrived.";
 
 export const Route = createFileRoute("/recent")({
   component: RecentPage,
   head: () => ({
     links: [{ href: RECENT_URL, rel: "canonical" }],
     meta: buildPageMeta({
-      description:
-        "Files added to the MCCE index since the last syncs, grouped by the week they arrived.",
+      description: RECENT_DESCRIPTION,
       title: formatPageTitle("Recently added", SITE_NAME),
       url: RECENT_URL,
     }),
@@ -73,6 +77,14 @@ function RecentPage() {
       )}
 
       <FilePreviewHost nodes={previewNodes} />
+      <JsonLd
+        data={buildPageGraph({
+          description: RECENT_DESCRIPTION,
+          name: "Recently added",
+          pageType: "CollectionPage",
+          url: RECENT_URL,
+        })}
+      />
     </main>
   );
 }

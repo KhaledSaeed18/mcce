@@ -2,11 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { FilePreviewHost } from "@/components/drive/file-preview-host";
 import { ExamCourseSection } from "@/components/exams/exam-course-section";
 import { ExamsHero } from "@/components/exams/exams-hero";
+import { JsonLd } from "@/components/seo/json-ld";
 import { SITE_URL } from "@/config/site";
 import { examGroupsQueryOptions } from "@/lib/drive/queries";
 import type { FilePreviewSearch } from "@/lib/drive/types";
 import { readOptionalString } from "@/lib/search-params";
 import { buildPageMeta } from "@/lib/seo/meta";
+import { buildPageGraph } from "@/lib/seo/page-schema";
 import { formatPageTitle } from "@/lib/seo/page-title";
 
 const EXAMS_URL = `${SITE_URL}/exams`;
@@ -48,6 +50,14 @@ function ExamsPage() {
       ))}
 
       <FilePreviewHost nodes={previewNodes} />
+      <JsonLd
+        data={buildPageGraph({
+          description: EXAMS_DESCRIPTION,
+          name: "MCCE Exam Archive",
+          pageType: "CollectionPage",
+          url: EXAMS_URL,
+        })}
+      />
     </main>
   );
 }
