@@ -13,8 +13,7 @@ import {
 } from "@/components/ui/empty";
 import { SITE_NAME, SITE_URL } from "@/config/site";
 import { formatDate } from "@/lib/drive/format";
-import { driveIndexQueryOptions } from "@/lib/drive/queries";
-import { buildRecentBatches } from "@/lib/drive/recent";
+import { recentSummaryQueryOptions } from "@/lib/drive/queries";
 import type { FilePreviewSearch } from "@/lib/drive/types";
 import { readOptionalString } from "@/lib/search-params";
 import { buildPageMeta } from "@/lib/seo/meta";
@@ -34,15 +33,21 @@ export const Route = createFileRoute("/recent")({
     }),
   }),
   loader: ({ context }) =>
-    context.queryClient.ensureQueryData(driveIndexQueryOptions),
+    context.queryClient.ensureQueryData(recentSummaryQueryOptions),
   validateSearch: (search: Record<string, unknown>): FilePreviewSearch => ({
     file: readOptionalString(search.file),
   }),
 });
 
 function RecentPage() {
-  const driveIndex = Route.useLoaderData();
-  const batches = useMemo(() => buildRecentBatches(driveIndex), [driveIndex]);
+  const { baselineAt, batches } = Route.useLoaderData();
+  const previewNodes = useMemo(
+    () =>
+      batches.flatMap((batch) =>
+        batch.courses.flatMap((course) => course.items)
+      ),
+    [batches]
+  );
 
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4 py-8 sm:p-6 sm:py-14">
@@ -56,9 +61,8 @@ function RecentPage() {
             </EmptyMedia>
             <EmptyTitle>Nothing new yet</EmptyTitle>
             <EmptyDescription>
-              The index started tracking additions on{" "}
-              {formatDate(driveIndex.meta.baselineAt)}. Anything shared to the
-              Drive after that shows up here.
+              The index started tracking additions on {formatDate(baselineAt)}.
+              Anything shared to the Drive after that shows up here.
             </EmptyDescription>
           </EmptyHeader>
         </Empty>
@@ -68,7 +72,7 @@ function RecentPage() {
         ))
       )}
 
-      <FilePreviewHost nodes={driveIndex.nodes} />
+      <FilePreviewHost nodes={previewNodes} />
     </main>
   );
 }
