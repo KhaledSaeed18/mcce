@@ -92,6 +92,20 @@ export interface CourseSummary {
   sourceId: string;
 }
 
+export interface SemesterCourse {
+  code: string;
+  name: string;
+}
+
+export interface SemesterFolder {
+  courses: SemesterCourse[];
+  fileCount: number;
+  href: string;
+  id: string;
+  term: "Fall" | "Spring";
+  year: 1 | 2;
+}
+
 export interface ExamTermGroup {
   items: DriveNode[];
   label: string;

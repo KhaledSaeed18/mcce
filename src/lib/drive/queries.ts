@@ -2,6 +2,7 @@ import { queryOptions } from "@tanstack/react-query";
 import { getCourseDetail } from "./course-detail";
 import { getExamGroups } from "./exam-groups";
 import { getHomeSummary } from "./home-summary";
+import { getLinksSummary } from "./links-summary";
 import type { DriveIndex } from "./types";
 
 export const driveIndexQueryOptions = queryOptions({
@@ -16,6 +17,12 @@ export const driveIndexQueryOptions = queryOptions({
 export const homeSummaryQueryOptions = queryOptions({
   queryFn: () => getHomeSummary(),
   queryKey: ["home-summary"],
+  staleTime: Number.POSITIVE_INFINITY,
+});
+
+export const linksSummaryQueryOptions = queryOptions({
+  queryFn: () => getLinksSummary(),
+  queryKey: ["links-summary"],
   staleTime: Number.POSITIVE_INFINITY,
 });
 
