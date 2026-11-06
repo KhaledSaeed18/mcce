@@ -10,6 +10,11 @@ Allow: /browse/1O5i5a7CgmPEwQ7G6MFyM75zIfmtDi5pt$
 Allow: /browse/1Ed1qu98go160SHcte4FstkPVhxX9pRK1$
 Disallow: /browse/
 
+# Cloudflare prepends a block for this token. Google merges groups for the same agent
+# and the least restrictive rule wins, so this allows Gemini to use the site.
+User-agent: Google-Extended
+Allow: /
+
 User-agent: MJ12bot
 Disallow: /
 

@@ -5,6 +5,10 @@ import { DRIVE_SOURCES } from "@/config/sources";
 const robots = readFileSync("public/robots.txt", "utf8");
 
 describe("robots.txt", () => {
+  it("allows Google-Extended", () => {
+    expect(robots).toContain("User-agent: Google-Extended\nAllow: /");
+  });
+
   it("keeps every Drive source root crawlable while blocking other folders", () => {
     expect(robots).toContain("Disallow: /browse/");
 
