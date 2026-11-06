@@ -4,6 +4,7 @@ import { buildCourseEntries } from "./sitemapCourseEntries";
 import {
   buildCategoryEntries,
   buildFolderEntries,
+  buildStudentPerkEntries,
 } from "./sitemapIndexEntries";
 import { buildStaticEntries } from "./sitemapStaticEntries";
 
@@ -16,6 +17,7 @@ export function buildSitemapXml(
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ...buildStaticEntries(getIndexDate(index), resourcesDate),
     ...buildCategoryEntries(resourcesDate),
+    ...buildStudentPerkEntries(resourcesDate),
     ...buildCourseEntries(buildCourseDateMap(index.nodes)),
     ...buildFolderEntries(index.nodes),
     "</urlset>",
