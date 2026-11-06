@@ -10,7 +10,6 @@ export type CrawledNode = Omit<DriveNode, "firstSeenAt">;
 
 const CONCURRENCY = 5;
 const FOLDER_MIME_TYPE = "application/vnd.google-apps.folder";
-const SHORTCUT_MIME_TYPE = "application/vnd.google-apps.shortcut";
 
 interface QueueItem {
   depth: number;
@@ -73,9 +72,7 @@ function toNode(item: QueueItem, source: DriveSource): CrawledNode {
     courseName: facets.courseName,
     depth,
     extension: isFolder ? null : extensionOf(file.name),
-    iconLink: file.iconLink ?? null,
     id: file.id,
-    isShortcut: file.mimeType === SHORTCUT_MIME_TYPE,
     kind: classifyKind(file.mimeType, file.name),
     materialType,
     mimeType: file.mimeType,
