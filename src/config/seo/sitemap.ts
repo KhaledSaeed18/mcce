@@ -127,6 +127,13 @@ export const STATIC_PAGES: StaticPage[] = [
     priority: "0.5",
   },
   {
+    changefreq: "weekly",
+    contentLastmod: "2026-11-06",
+    lastmod: TRACKS_INDEX,
+    path: "/links",
+    priority: "0.7",
+  },
+  {
     changefreq: "monthly",
     lastmod: "2026-08-24",
     path: "/sitemap",

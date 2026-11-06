@@ -8,6 +8,7 @@ import {
   ToolCaseIcon,
 } from "lucide-react";
 import type { COURSE_CARD_COLORS } from "@/config/courses";
+import { LINKS_NAV_LABEL } from "@/config/links";
 import { EDITOR_PATH } from "@/config/pdf-editor";
 import {
   RESOURCES_OPEN_SOURCE_PATH,
@@ -42,7 +43,8 @@ export interface SitemapEntry {
     | "/about"
     | "/faq"
     | "/contact"
-    | "/legal";
+    | "/legal"
+    | "/links";
 }
 
 export interface SitemapBrowseEntry {
@@ -200,6 +202,11 @@ export const SITEMAP_GROUPS: SitemapGroup[] = [
         description: "Send materials, report a bug, or ask something.",
         label: "Contact",
         to: "/contact",
+      },
+      {
+        description: "The four semester folders in Drive, on one short page.",
+        label: LINKS_NAV_LABEL,
+        to: "/links",
       },
       {
         description:

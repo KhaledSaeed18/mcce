@@ -62,6 +62,15 @@ Each course page at `https://mcce.khaledsaeed.tech/course/{code}` is the main pa
 
 See [the full FAQ](https://mcce.khaledsaeed.tech/faq) for more.
 
+## Google Drive folders by semester
+
+Direct links to the shared folder for each semester. Files open in Google Drive. The full list is on [the Drive folders page](https://mcce.khaledsaeed.tech/links).
+
+- [Year 1, Fall](https://drive.google.com/drive/folders/1SGGavAf2Z-ki5o0bDa4jyvZ_RYsEXbzV): CENG507, EENG527, EENG537, ENGG515.
+- [Year 1, Spring](https://drive.google.com/drive/folders/1w9brDt63Ma-miOLPet9JNru8AnWzpfRI): CENG557, CENG566, CENG566L, CENG675, EENG587.
+- [Year 2, Fall](https://drive.google.com/drive/folders/1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2): CENG625, CENG645, CENG646, CENG695A, ENGG550.
+- [Year 2, Spring](https://drive.google.com/drive/folders/1iqy4XbX8giixG1DqYfJE_iZseyxBIP5b): CENG678, CENG679, CENG685.
+
 ## Pages
 
 - [Program materials](https://mcce.khaledsaeed.tech/): Browse indexed course materials by source and semester.
@@ -77,6 +86,7 @@ See [the full FAQ](https://mcce.khaledsaeed.tech/faq) for more.
 - [About](https://mcce.khaledsaeed.tech/about): What this site is and how the index is built.
 - [FAQ](https://mcce.khaledsaeed.tech/faq): Answers about the program and the site.
 - [Contact](https://mcce.khaledsaeed.tech/contact): Report missing material or send files to add.
+- [Drive folders](https://mcce.khaledsaeed.tech/links): Direct Google Drive folders for all four semesters, with the courses in each.
 - [CCE undergraduate programs](https://mcce.khaledsaeed.tech/cce): Reference page for the department's two bachelor programs, CENG and TENG.
 - [Tools](https://mcce.khaledsaeed.tech/resources): A curated directory of external tools for MCCE students, grouped by task, each with its cost up front.
 - [Thesis toolkit](https://mcce.khaledsaeed.tech/resources/thesis): Tools for CENG695A and CENG695B in thesis order, from framing the topic to the defense.
