@@ -1,7 +1,7 @@
 {
   "meta": {
     "baselineAt": "2026-08-17T06:41:16.505Z",
-    "generatedAt": "2026-11-09T14:54:43.522Z",
+    "generatedAt": "2026-11-09T16:45:43.239Z",
     "sources": [
       {
         "description": "LIU - MCCE | First Year, Both Semesters | materials, videos, exercises, and previous exams.",
@@ -15,7 +15,7 @@
         "fileCount": 293,
         "folderCount": 78,
         "id": "year2",
-        "totalBytes": 9235660669
+        "totalBytes": 6291136536
       },
       {
         "description": "LIU - MCCE | Second Year, Spring Semester | materials, videos, exercises, and previous exams.",
@@ -33468,6 +33468,154 @@
       "courseName": "Engineering Project Management and Control",
       "depth": 4,
       "extension": "mp4",
+      "id": "1KEkQQMPoZaZiibuE9nY2YcFW0MaJ1lvK",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T16:19:34.964Z",
+      "name": "Topic 2 - Organization Strategy and Project Selection.mp4",
+      "parentId": "1YTyMGypMGMqtLCOmDdeSX0W4pNImiMHZ",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1wFrTbuaGZSIwNMrTkRw-Sb0au1K89GJR",
+        "1iLdE8ja8ZxR6yBSCZtuUFBssyQkm4HE0",
+        "1YTyMGypMGMqtLCOmDdeSX0W4pNImiMHZ",
+        "1KEkQQMPoZaZiibuE9nY2YcFW0MaJ1lvK"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "ENGG550 - Engineering Project Management and Control",
+        "Lectures",
+        "Recordings",
+        "Topic 2 - Organization Strategy and Project Selection.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 27546614,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1KEkQQMPoZaZiibuE9nY2YcFW0MaJ1lvK/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Recordings"
+      ],
+      "courseCode": "ENGG550",
+      "courseName": "Engineering Project Management and Control",
+      "depth": 4,
+      "extension": "mp4",
+      "id": "13Zr10apWPd2Wv9KWrAoW60Ve23VBD-Nb",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T16:17:12.951Z",
+      "name": "Topic 10 - Project Closure.mp4",
+      "parentId": "1YTyMGypMGMqtLCOmDdeSX0W4pNImiMHZ",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1wFrTbuaGZSIwNMrTkRw-Sb0au1K89GJR",
+        "1iLdE8ja8ZxR6yBSCZtuUFBssyQkm4HE0",
+        "1YTyMGypMGMqtLCOmDdeSX0W4pNImiMHZ",
+        "13Zr10apWPd2Wv9KWrAoW60Ve23VBD-Nb"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "ENGG550 - Engineering Project Management and Control",
+        "Lectures",
+        "Recordings",
+        "Topic 10 - Project Closure.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 27262106,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/13Zr10apWPd2Wv9KWrAoW60Ve23VBD-Nb/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Recordings"
+      ],
+      "courseCode": "ENGG550",
+      "courseName": "Engineering Project Management and Control",
+      "depth": 4,
+      "extension": "mp4",
+      "id": "1hey_yBsJLdpVDppqG6y8tf2p-znUfPpL",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T15:48:13.949Z",
+      "name": "Topic 5 - Estimating Project Times & Costs.mp4",
+      "parentId": "1YTyMGypMGMqtLCOmDdeSX0W4pNImiMHZ",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1wFrTbuaGZSIwNMrTkRw-Sb0au1K89GJR",
+        "1iLdE8ja8ZxR6yBSCZtuUFBssyQkm4HE0",
+        "1YTyMGypMGMqtLCOmDdeSX0W4pNImiMHZ",
+        "1hey_yBsJLdpVDppqG6y8tf2p-znUfPpL"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "ENGG550 - Engineering Project Management and Control",
+        "Lectures",
+        "Recordings",
+        "Topic 5 - Estimating Project Times & Costs.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 31200196,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1hey_yBsJLdpVDppqG6y8tf2p-znUfPpL/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Recordings"
+      ],
+      "courseCode": "ENGG550",
+      "courseName": "Engineering Project Management and Control",
+      "depth": 4,
+      "extension": "mp4",
+      "id": "11t2Uifc3SSU6ctLhvkVCTcqAz1W5rhwn",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T15:00:09.885Z",
+      "name": "Topic 6 - Developing a Project Plan.mp4",
+      "parentId": "1YTyMGypMGMqtLCOmDdeSX0W4pNImiMHZ",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1wFrTbuaGZSIwNMrTkRw-Sb0au1K89GJR",
+        "1iLdE8ja8ZxR6yBSCZtuUFBssyQkm4HE0",
+        "1YTyMGypMGMqtLCOmDdeSX0W4pNImiMHZ",
+        "11t2Uifc3SSU6ctLhvkVCTcqAz1W5rhwn"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "ENGG550 - Engineering Project Management and Control",
+        "Lectures",
+        "Recordings",
+        "Topic 6 - Developing a Project Plan.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 34125339,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/11t2Uifc3SSU6ctLhvkVCTcqAz1W5rhwn/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Recordings"
+      ],
+      "courseCode": "ENGG550",
+      "courseName": "Engineering Project Management and Control",
+      "depth": 4,
+      "extension": "mp4",
       "id": "1uq2coy4_BhzQ3cI-BfIlRVLGl5AksMa0",
       "kind": "video",
       "materialType": "lecture",
@@ -33653,117 +33801,6 @@
       "courseName": "Engineering Project Management and Control",
       "depth": 4,
       "extension": "mp4",
-      "id": "13Zr10apWPd2Wv9KWrAoW60Ve23VBD-Nb",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-08-31T21:33:20.067Z",
-      "name": "Topic 10 - Project Closure.mp4",
-      "parentId": "1YTyMGypMGMqtLCOmDdeSX0W4pNImiMHZ",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1wFrTbuaGZSIwNMrTkRw-Sb0au1K89GJR",
-        "1iLdE8ja8ZxR6yBSCZtuUFBssyQkm4HE0",
-        "1YTyMGypMGMqtLCOmDdeSX0W4pNImiMHZ",
-        "13Zr10apWPd2Wv9KWrAoW60Ve23VBD-Nb"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "ENGG550 - Engineering Project Management and Control",
-        "Lectures",
-        "Recordings",
-        "Topic 10 - Project Closure.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 186532611,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/13Zr10apWPd2Wv9KWrAoW60Ve23VBD-Nb/view?usp=drivesdk",
-      "firstSeenAt": "2026-09-04T16:23:27.892Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Recordings"
-      ],
-      "courseCode": "ENGG550",
-      "courseName": "Engineering Project Management and Control",
-      "depth": 4,
-      "extension": "mp4",
-      "id": "11t2Uifc3SSU6ctLhvkVCTcqAz1W5rhwn",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-08-31T21:32:50.366Z",
-      "name": "Topic 6 - Developing a Project Plan.mp4",
-      "parentId": "1YTyMGypMGMqtLCOmDdeSX0W4pNImiMHZ",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1wFrTbuaGZSIwNMrTkRw-Sb0au1K89GJR",
-        "1iLdE8ja8ZxR6yBSCZtuUFBssyQkm4HE0",
-        "1YTyMGypMGMqtLCOmDdeSX0W4pNImiMHZ",
-        "11t2Uifc3SSU6ctLhvkVCTcqAz1W5rhwn"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "ENGG550 - Engineering Project Management and Control",
-        "Lectures",
-        "Recordings",
-        "Topic 6 - Developing a Project Plan.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 217890398,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/11t2Uifc3SSU6ctLhvkVCTcqAz1W5rhwn/view?usp=drivesdk",
-      "firstSeenAt": "2026-09-04T16:23:27.892Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Recordings"
-      ],
-      "courseCode": "ENGG550",
-      "courseName": "Engineering Project Management and Control",
-      "depth": 4,
-      "extension": "mp4",
-      "id": "1hey_yBsJLdpVDppqG6y8tf2p-znUfPpL",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-08-31T21:32:43.872Z",
-      "name": "Topic 5 - Estimating Project Times & Costs.mp4",
-      "parentId": "1YTyMGypMGMqtLCOmDdeSX0W4pNImiMHZ",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1wFrTbuaGZSIwNMrTkRw-Sb0au1K89GJR",
-        "1iLdE8ja8ZxR6yBSCZtuUFBssyQkm4HE0",
-        "1YTyMGypMGMqtLCOmDdeSX0W4pNImiMHZ",
-        "1hey_yBsJLdpVDppqG6y8tf2p-znUfPpL"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "ENGG550 - Engineering Project Management and Control",
-        "Lectures",
-        "Recordings",
-        "Topic 5 - Estimating Project Times & Costs.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 202221377,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1hey_yBsJLdpVDppqG6y8tf2p-znUfPpL/view?usp=drivesdk",
-      "firstSeenAt": "2026-09-04T16:23:27.892Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Recordings"
-      ],
-      "courseCode": "ENGG550",
-      "courseName": "Engineering Project Management and Control",
-      "depth": 4,
-      "extension": "mp4",
       "id": "14QHe8Xom3k7eN3EIKTIxYXzWFqwq1ene",
       "kind": "video",
       "materialType": "lecture",
@@ -33790,43 +33827,6 @@
       "sourceId": "year2",
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/14QHe8Xom3k7eN3EIKTIxYXzWFqwq1ene/view?usp=drivesdk",
-      "firstSeenAt": "2026-09-04T16:23:27.892Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Recordings"
-      ],
-      "courseCode": "ENGG550",
-      "courseName": "Engineering Project Management and Control",
-      "depth": 4,
-      "extension": "mp4",
-      "id": "1KEkQQMPoZaZiibuE9nY2YcFW0MaJ1lvK",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-08-31T21:32:24.749Z",
-      "name": "Topic 2 - Organization Strategy and Project Selection.mp4",
-      "parentId": "1YTyMGypMGMqtLCOmDdeSX0W4pNImiMHZ",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1wFrTbuaGZSIwNMrTkRw-Sb0au1K89GJR",
-        "1iLdE8ja8ZxR6yBSCZtuUFBssyQkm4HE0",
-        "1YTyMGypMGMqtLCOmDdeSX0W4pNImiMHZ",
-        "1KEkQQMPoZaZiibuE9nY2YcFW0MaJ1lvK"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "ENGG550 - Engineering Project Management and Control",
-        "Lectures",
-        "Recordings",
-        "Topic 2 - Organization Strategy and Project Selection.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 186377972,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1KEkQQMPoZaZiibuE9nY2YcFW0MaJ1lvK/view?usp=drivesdk",
       "firstSeenAt": "2026-09-04T16:23:27.892Z"
     },
     {
@@ -36132,6 +36132,43 @@
       "courseName": "Mobile Communication",
       "depth": 4,
       "extension": "mp4",
+      "id": "1pUXYJQKf4Tcz8jiwWqQ9nwpDi5i_0Qe8",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T14:56:15.759Z",
+      "name": "Chapter13-P2.mp4",
+      "parentId": "143WGTt4BP-f1FjZ2FRZV9zxXBjl01v8X",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1Z_Ts6pIX8dqKNGkazoC3vq-KpH6HVDOU",
+        "143WGTt4BP-f1FjZ2FRZV9zxXBjl01v8X",
+        "1pUXYJQKf4Tcz8jiwWqQ9nwpDi5i_0Qe8"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Lectures",
+        "Chapter 13",
+        "Chapter13-P2.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 43281720,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1pUXYJQKf4Tcz8jiwWqQ9nwpDi5i_0Qe8/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 13"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "mp4",
       "id": "116036_MbXWWN5P0GJopsPLEqR-Dhemlh",
       "kind": "video",
       "materialType": "lecture",
@@ -36158,43 +36195,6 @@
       "sourceId": "year2",
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/116036_MbXWWN5P0GJopsPLEqR-Dhemlh/view?usp=drivesdk",
-      "firstSeenAt": "2026-09-04T16:23:27.892Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Chapter 13"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 4,
-      "extension": "mp4",
-      "id": "1pUXYJQKf4Tcz8jiwWqQ9nwpDi5i_0Qe8",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-09-04T15:14:49.538Z",
-      "name": "Chapter13-P2.mp4",
-      "parentId": "143WGTt4BP-f1FjZ2FRZV9zxXBjl01v8X",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "1Z_Ts6pIX8dqKNGkazoC3vq-KpH6HVDOU",
-        "143WGTt4BP-f1FjZ2FRZV9zxXBjl01v8X",
-        "1pUXYJQKf4Tcz8jiwWqQ9nwpDi5i_0Qe8"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Lectures",
-        "Chapter 13",
-        "Chapter13-P2.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 227687122,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1pUXYJQKf4Tcz8jiwWqQ9nwpDi5i_0Qe8/view?usp=drivesdk",
       "firstSeenAt": "2026-09-04T16:23:27.892Z"
     },
     {
@@ -36428,6 +36428,80 @@
       "courseName": "Mobile Communication",
       "depth": 4,
       "extension": "mp4",
+      "id": "1g2BXAAeIMgnYfU_oLB36AsRuKEoFYaer",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T15:58:13.170Z",
+      "name": "Chapter11-P4.mp4",
+      "parentId": "11fSEN8QG0XcGCeiKrqMsQDCo5kBpPcQV",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1Z_Ts6pIX8dqKNGkazoC3vq-KpH6HVDOU",
+        "11fSEN8QG0XcGCeiKrqMsQDCo5kBpPcQV",
+        "1g2BXAAeIMgnYfU_oLB36AsRuKEoFYaer"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Lectures",
+        "Chapter 11",
+        "Chapter11-P4.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 41259126,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1g2BXAAeIMgnYfU_oLB36AsRuKEoFYaer/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 11"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "mp4",
+      "id": "1QXRlQMnZbgsoIdpSrXAw98XOJyXhu20y",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T15:53:33.283Z",
+      "name": "Chapter11-P2.mp4",
+      "parentId": "11fSEN8QG0XcGCeiKrqMsQDCo5kBpPcQV",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1Z_Ts6pIX8dqKNGkazoC3vq-KpH6HVDOU",
+        "11fSEN8QG0XcGCeiKrqMsQDCo5kBpPcQV",
+        "1QXRlQMnZbgsoIdpSrXAw98XOJyXhu20y"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Lectures",
+        "Chapter 11",
+        "Chapter11-P2.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 45414353,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1QXRlQMnZbgsoIdpSrXAw98XOJyXhu20y/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 11"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "mp4",
       "id": "1eqxgq9KUapLg7XPXAAcLGCkIBZajpmsG",
       "kind": "video",
       "materialType": "lecture",
@@ -36501,80 +36575,6 @@
       "courseCode": "CENG645",
       "courseName": "Mobile Communication",
       "depth": 4,
-      "extension": "mp4",
-      "id": "1g2BXAAeIMgnYfU_oLB36AsRuKEoFYaer",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-09-04T15:13:24.596Z",
-      "name": "Chapter11-P4.mp4",
-      "parentId": "11fSEN8QG0XcGCeiKrqMsQDCo5kBpPcQV",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "1Z_Ts6pIX8dqKNGkazoC3vq-KpH6HVDOU",
-        "11fSEN8QG0XcGCeiKrqMsQDCo5kBpPcQV",
-        "1g2BXAAeIMgnYfU_oLB36AsRuKEoFYaer"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Lectures",
-        "Chapter 11",
-        "Chapter11-P4.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 197197441,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1g2BXAAeIMgnYfU_oLB36AsRuKEoFYaer/view?usp=drivesdk",
-      "firstSeenAt": "2026-09-04T16:23:27.892Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Chapter 11"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 4,
-      "extension": "mp4",
-      "id": "1QXRlQMnZbgsoIdpSrXAw98XOJyXhu20y",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-09-04T15:13:15.002Z",
-      "name": "Chapter11-P2.mp4",
-      "parentId": "11fSEN8QG0XcGCeiKrqMsQDCo5kBpPcQV",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "1Z_Ts6pIX8dqKNGkazoC3vq-KpH6HVDOU",
-        "11fSEN8QG0XcGCeiKrqMsQDCo5kBpPcQV",
-        "1QXRlQMnZbgsoIdpSrXAw98XOJyXhu20y"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Lectures",
-        "Chapter 11",
-        "Chapter11-P2.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 197691561,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1QXRlQMnZbgsoIdpSrXAw98XOJyXhu20y/view?usp=drivesdk",
-      "firstSeenAt": "2026-09-04T16:23:27.892Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Chapter 11"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 4,
       "extension": "pptx",
       "id": "1eI3HIwscWzUpucNVYgqZxfZ_ETep9WbG",
       "kind": "slides",
@@ -36602,6 +36602,43 @@
       "sourceId": "year2",
       "termLabel": null,
       "webViewLink": "https://docs.google.com/presentation/d/1eI3HIwscWzUpucNVYgqZxfZ_ETep9WbG/edit?usp=drivesdk&ouid=110887459839678167250&rtpof=true&sd=true",
+      "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 09"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "mp4",
+      "id": "1XFFoAYu6BzToxT0ZHNWJuI-vcbJd7aMk",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T15:36:48.967Z",
+      "name": "Chapter9-P1.mp4",
+      "parentId": "19QT8bXDYQyiiBSpQ4l2NEy-pOf4q3ld1",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1Z_Ts6pIX8dqKNGkazoC3vq-KpH6HVDOU",
+        "19QT8bXDYQyiiBSpQ4l2NEy-pOf4q3ld1",
+        "1XFFoAYu6BzToxT0ZHNWJuI-vcbJd7aMk"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Lectures",
+        "Chapter 09",
+        "Chapter9-P1.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 68621954,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1XFFoAYu6BzToxT0ZHNWJuI-vcbJd7aMk/view?usp=drivesdk",
       "firstSeenAt": "2026-09-04T16:23:27.892Z"
     },
     {
@@ -36676,43 +36713,6 @@
       "sourceId": "year2",
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1B_AvwwnR8OJVV5byJRScfpOuECSSvLM0/view?usp=drivesdk",
-      "firstSeenAt": "2026-09-04T16:23:27.892Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Chapter 09"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 4,
-      "extension": "mp4",
-      "id": "1XFFoAYu6BzToxT0ZHNWJuI-vcbJd7aMk",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-09-04T15:12:13.457Z",
-      "name": "Chapter9-P1.mp4",
-      "parentId": "19QT8bXDYQyiiBSpQ4l2NEy-pOf4q3ld1",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "1Z_Ts6pIX8dqKNGkazoC3vq-KpH6HVDOU",
-        "19QT8bXDYQyiiBSpQ4l2NEy-pOf4q3ld1",
-        "1XFFoAYu6BzToxT0ZHNWJuI-vcbJd7aMk"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Lectures",
-        "Chapter 09",
-        "Chapter9-P1.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 205483945,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1XFFoAYu6BzToxT0ZHNWJuI-vcbJd7aMk/view?usp=drivesdk",
       "firstSeenAt": "2026-09-04T16:23:27.892Z"
     },
     {
@@ -36876,7 +36876,7 @@
       "kind": "video",
       "materialType": "lecture",
       "mimeType": "video/mp4",
-      "modifiedTime": "2026-09-04T15:10:23.349Z",
+      "modifiedTime": "2026-11-09T16:25:48.301Z",
       "name": "Chapter7-P2.mp4",
       "parentId": "1aOOJWga-qwEk6bHYNDszLNr66NOXhwob",
       "pathIds": [
@@ -36894,7 +36894,7 @@
         "Chapter7-P2.mp4"
       ],
       "semester": "Second Year | Fall Semester",
-      "sizeBytes": 184332216,
+      "sizeBytes": 55327713,
       "sourceId": "year2",
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1BrQWdweDzHt225XcUd_1YkUWM3nYMOpi/view?usp=drivesdk",
@@ -37057,11 +37057,48 @@
       "courseName": "Mobile Communication",
       "depth": 4,
       "extension": "mp4",
+      "id": "1HTjQ8IEsotXomWMymQ9cIEYvtNf7Qw6D",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T16:14:57.464Z",
+      "name": "Chapter5-P1.mp4",
+      "parentId": "18SSUh6tTcA0YE3oapo-7dWanbo6S_UO6",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1Z_Ts6pIX8dqKNGkazoC3vq-KpH6HVDOU",
+        "18SSUh6tTcA0YE3oapo-7dWanbo6S_UO6",
+        "1HTjQ8IEsotXomWMymQ9cIEYvtNf7Qw6D"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Lectures",
+        "Chapter 05",
+        "Chapter5-P1.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 62518072,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1HTjQ8IEsotXomWMymQ9cIEYvtNf7Qw6D/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 05"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "mp4",
       "id": "1GOy3Rwt6uRIeGQIxXWBLYQ-rVf-sEjLy",
       "kind": "video",
       "materialType": "lecture",
       "mimeType": "video/mp4",
-      "modifiedTime": "2026-09-04T14:56:22.868Z",
+      "modifiedTime": "2026-11-09T15:16:23.308Z",
       "name": "Chapter5-P2.mp4",
       "parentId": "18SSUh6tTcA0YE3oapo-7dWanbo6S_UO6",
       "pathIds": [
@@ -37079,7 +37116,7 @@
         "Chapter5-P2.mp4"
       ],
       "semester": "Second Year | Fall Semester",
-      "sizeBytes": 212965866,
+      "sizeBytes": 69157827,
       "sourceId": "year2",
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1GOy3Rwt6uRIeGQIxXWBLYQ-rVf-sEjLy/view?usp=drivesdk",
@@ -37120,43 +37157,6 @@
       "sourceId": "year2",
       "termLabel": null,
       "webViewLink": "https://docs.google.com/presentation/d/1KFpsCfmOcIFwKZEnQgoUyxgxlZvlvBhy/edit?usp=drivesdk&ouid=110887459839678167250&rtpof=true&sd=true",
-      "firstSeenAt": "2026-09-04T16:23:27.892Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Chapter 05"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 4,
-      "extension": "mp4",
-      "id": "1HTjQ8IEsotXomWMymQ9cIEYvtNf7Qw6D",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-09-04T14:56:06.798Z",
-      "name": "Chapter5-P1.mp4",
-      "parentId": "18SSUh6tTcA0YE3oapo-7dWanbo6S_UO6",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "1Z_Ts6pIX8dqKNGkazoC3vq-KpH6HVDOU",
-        "18SSUh6tTcA0YE3oapo-7dWanbo6S_UO6",
-        "1HTjQ8IEsotXomWMymQ9cIEYvtNf7Qw6D"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Lectures",
-        "Chapter 05",
-        "Chapter5-P1.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 187170090,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1HTjQ8IEsotXomWMymQ9cIEYvtNf7Qw6D/view?usp=drivesdk",
       "firstSeenAt": "2026-09-04T16:23:27.892Z"
     },
     {
@@ -37242,6 +37242,43 @@
       "courseName": "Mobile Communication",
       "depth": 4,
       "extension": "mp4",
+      "id": "1YD5Km2pB0CawQ8-vl3oGe3VQyZ20GTEm",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T16:32:32.638Z",
+      "name": "Chapter1-P1.mp4",
+      "parentId": "1nXdmkZwvl3wGw2TbF2jrn6Umn-Jm4k5d",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1Z_Ts6pIX8dqKNGkazoC3vq-KpH6HVDOU",
+        "1nXdmkZwvl3wGw2TbF2jrn6Umn-Jm4k5d",
+        "1YD5Km2pB0CawQ8-vl3oGe3VQyZ20GTEm"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Lectures",
+        "Chapter 01",
+        "Chapter1-P1.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 56647266,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1YD5Km2pB0CawQ8-vl3oGe3VQyZ20GTEm/view?usp=drivesdk",
+      "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 01"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "mp4",
       "id": "11GH2tQJyvzev1xqU4ozQGV0a4KAazjdS",
       "kind": "video",
       "materialType": "lecture",
@@ -37268,43 +37305,6 @@
       "sourceId": "year2",
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/11GH2tQJyvzev1xqU4ozQGV0a4KAazjdS/view?usp=drivesdk",
-      "firstSeenAt": "2026-09-04T16:23:27.892Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Chapter 01"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 4,
-      "extension": "mp4",
-      "id": "1YD5Km2pB0CawQ8-vl3oGe3VQyZ20GTEm",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-09-04T14:54:54.689Z",
-      "name": "Chapter1-P1.mp4",
-      "parentId": "1nXdmkZwvl3wGw2TbF2jrn6Umn-Jm4k5d",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "1Z_Ts6pIX8dqKNGkazoC3vq-KpH6HVDOU",
-        "1nXdmkZwvl3wGw2TbF2jrn6Umn-Jm4k5d",
-        "1YD5Km2pB0CawQ8-vl3oGe3VQyZ20GTEm"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Lectures",
-        "Chapter 01",
-        "Chapter1-P1.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 183775486,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1YD5Km2pB0CawQ8-vl3oGe3VQyZ20GTEm/view?usp=drivesdk",
       "firstSeenAt": "2026-09-04T16:23:27.892Z"
     },
     {
@@ -37723,6 +37723,43 @@
       "courseName": "Cryptography & Advanced Computer Security",
       "depth": 4,
       "extension": "mp4",
+      "id": "1pbAyA2dk51xvUnVmhIOdrcsGnTBYHZZn",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T16:37:09.901Z",
+      "name": "Chapter11-P1.mp4",
+      "parentId": "1Wu4JLQozvnuENqFidFAAtpNaI7frHuLx",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
+        "1Wu4JLQozvnuENqFidFAAtpNaI7frHuLx",
+        "1pbAyA2dk51xvUnVmhIOdrcsGnTBYHZZn"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Lectures",
+        "Chapter 11",
+        "Chapter11-P1.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 40176105,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1pbAyA2dk51xvUnVmhIOdrcsGnTBYHZZn/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 11"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
+      "extension": "mp4",
       "id": "1Y4XaGVVcPaNsEubx_rd3HEc0btDe0E0g",
       "kind": "video",
       "materialType": "lecture",
@@ -37749,43 +37786,6 @@
       "sourceId": "year2",
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1Y4XaGVVcPaNsEubx_rd3HEc0btDe0E0g/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Chapter 11"
-      ],
-      "courseCode": "CENG625",
-      "courseName": "Cryptography & Advanced Computer Security",
-      "depth": 4,
-      "extension": "mp4",
-      "id": "1pbAyA2dk51xvUnVmhIOdrcsGnTBYHZZn",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-08-29T14:30:33.768Z",
-      "name": "Chapter11-P1.mp4",
-      "parentId": "1Wu4JLQozvnuENqFidFAAtpNaI7frHuLx",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
-        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
-        "1Wu4JLQozvnuENqFidFAAtpNaI7frHuLx",
-        "1pbAyA2dk51xvUnVmhIOdrcsGnTBYHZZn"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG625 - Cryptography & Advanced Computer Security",
-        "Lectures",
-        "Chapter 11",
-        "Chapter11-P1.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 183070760,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1pbAyA2dk51xvUnVmhIOdrcsGnTBYHZZn/view?usp=drivesdk",
       "firstSeenAt": "2026-08-31T12:24:54.641Z"
     },
     {
@@ -37945,6 +37945,43 @@
       "courseName": "Cryptography & Advanced Computer Security",
       "depth": 4,
       "extension": "mp4",
+      "id": "16KkSRRVC_BI7r52lx3wYdBH9c4PXNiXx",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T15:22:25.589Z",
+      "name": "Chapter8-P1.mp4",
+      "parentId": "1ssN5tdQGSzP70-I7B6ABFle7Fe3bxb_t",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
+        "1ssN5tdQGSzP70-I7B6ABFle7Fe3bxb_t",
+        "16KkSRRVC_BI7r52lx3wYdBH9c4PXNiXx"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Lectures",
+        "Chapter 08",
+        "Chapter8-P1.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 43437020,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/16KkSRRVC_BI7r52lx3wYdBH9c4PXNiXx/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 08"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
+      "extension": "mp4",
       "id": "1nCqtkwtoCajxan2Kls87Qmpgcrb8tiiB",
       "kind": "video",
       "materialType": "lecture",
@@ -37971,43 +38008,6 @@
       "sourceId": "year2",
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1nCqtkwtoCajxan2Kls87Qmpgcrb8tiiB/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Chapter 08"
-      ],
-      "courseCode": "CENG625",
-      "courseName": "Cryptography & Advanced Computer Security",
-      "depth": 4,
-      "extension": "mp4",
-      "id": "16KkSRRVC_BI7r52lx3wYdBH9c4PXNiXx",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-08-29T14:23:01.682Z",
-      "name": "Chapter8-P1.mp4",
-      "parentId": "1ssN5tdQGSzP70-I7B6ABFle7Fe3bxb_t",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
-        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
-        "1ssN5tdQGSzP70-I7B6ABFle7Fe3bxb_t",
-        "16KkSRRVC_BI7r52lx3wYdBH9c4PXNiXx"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG625 - Cryptography & Advanced Computer Security",
-        "Lectures",
-        "Chapter 08",
-        "Chapter8-P1.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 208199524,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/16KkSRRVC_BI7r52lx3wYdBH9c4PXNiXx/view?usp=drivesdk",
       "firstSeenAt": "2026-08-31T12:24:54.641Z"
     },
     {
@@ -38426,6 +38426,43 @@
       "courseName": "Cryptography & Advanced Computer Security",
       "depth": 4,
       "extension": "mp4",
+      "id": "1HVz67Gb100ecaAO_EnLG51FQQ8hcPVx7",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T15:08:34.092Z",
+      "name": "Chapter4-P1.mp4",
+      "parentId": "1OOP7aZVqz1RzB-JdrivziPRHvAR7sM1I",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
+        "1OOP7aZVqz1RzB-JdrivziPRHvAR7sM1I",
+        "1HVz67Gb100ecaAO_EnLG51FQQ8hcPVx7"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Lectures",
+        "Chapter 04",
+        "Chapter4-P1.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 73502444,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1HVz67Gb100ecaAO_EnLG51FQQ8hcPVx7/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 04"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
+      "extension": "mp4",
       "id": "1ifMem2PnWmDAkg9wMFLTOaJMIvBsP6CV",
       "kind": "video",
       "materialType": "lecture",
@@ -38499,43 +38536,6 @@
       "courseCode": "CENG625",
       "courseName": "Cryptography & Advanced Computer Security",
       "depth": 4,
-      "extension": "mp4",
-      "id": "1HVz67Gb100ecaAO_EnLG51FQQ8hcPVx7",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-08-29T14:15:21.657Z",
-      "name": "Chapter4-P1.mp4",
-      "parentId": "1OOP7aZVqz1RzB-JdrivziPRHvAR7sM1I",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
-        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
-        "1OOP7aZVqz1RzB-JdrivziPRHvAR7sM1I",
-        "1HVz67Gb100ecaAO_EnLG51FQQ8hcPVx7"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG625 - Cryptography & Advanced Computer Security",
-        "Lectures",
-        "Chapter 04",
-        "Chapter4-P1.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 214903109,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1HVz67Gb100ecaAO_EnLG51FQQ8hcPVx7/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Chapter 04"
-      ],
-      "courseCode": "CENG625",
-      "courseName": "Cryptography & Advanced Computer Security",
-      "depth": 4,
       "extension": "pdf",
       "id": "1Oxw8CkJ7esr4fdflNNHZjYeikXJNhTfl",
       "kind": "pdf",
@@ -38563,6 +38563,43 @@
       "sourceId": "year2",
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1Oxw8CkJ7esr4fdflNNHZjYeikXJNhTfl/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 03"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
+      "extension": "mp4",
+      "id": "1frg0aAopb6iOoVxzWxkRgLTV3gBvcX0b",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T15:29:40.008Z",
+      "name": "Chapter3-P2.mp4",
+      "parentId": "1-UmiScOeM_6Jl1Etef7ENx5POMJ7jmDi",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
+        "1-UmiScOeM_6Jl1Etef7ENx5POMJ7jmDi",
+        "1frg0aAopb6iOoVxzWxkRgLTV3gBvcX0b"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Lectures",
+        "Chapter 03",
+        "Chapter3-P2.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 63822618,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1frg0aAopb6iOoVxzWxkRgLTV3gBvcX0b/view?usp=drivesdk",
       "firstSeenAt": "2026-08-31T12:24:54.641Z"
     },
     {
@@ -38601,43 +38638,6 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1XdaF00rACgB4woQ97aHN8nfgXUkK5bIX/view?usp=drivesdk",
       "firstSeenAt": "2026-11-05T10:17:03.938Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Chapter 03"
-      ],
-      "courseCode": "CENG625",
-      "courseName": "Cryptography & Advanced Computer Security",
-      "depth": 4,
-      "extension": "mp4",
-      "id": "1frg0aAopb6iOoVxzWxkRgLTV3gBvcX0b",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-08-29T14:14:41.642Z",
-      "name": "Chapter3-P2.mp4",
-      "parentId": "1-UmiScOeM_6Jl1Etef7ENx5POMJ7jmDi",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
-        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
-        "1-UmiScOeM_6Jl1Etef7ENx5POMJ7jmDi",
-        "1frg0aAopb6iOoVxzWxkRgLTV3gBvcX0b"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG625 - Cryptography & Advanced Computer Security",
-        "Lectures",
-        "Chapter 03",
-        "Chapter3-P2.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 207944658,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1frg0aAopb6iOoVxzWxkRgLTV3gBvcX0b/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
     },
     {
       "categoryPath": [
@@ -38722,6 +38722,80 @@
       "courseName": "Cryptography & Advanced Computer Security",
       "depth": 4,
       "extension": "mp4",
+      "id": "1OVfdhebuae8qqygsWXCLj3JLheuTpxa5",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T16:43:23.541Z",
+      "name": "Chapter2-P2.mp4",
+      "parentId": "1CIRFKXk7EeTk5WZOZoW7Eq4eOYWoGG1r",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
+        "1CIRFKXk7EeTk5WZOZoW7Eq4eOYWoGG1r",
+        "1OVfdhebuae8qqygsWXCLj3JLheuTpxa5"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Lectures",
+        "Chapter 02",
+        "Chapter2-P2.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 59156785,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1OVfdhebuae8qqygsWXCLj3JLheuTpxa5/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 02"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
+      "extension": "mp4",
+      "id": "14PiEy8W16HkUePpYCzyQB_wcudXCXlpQ",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T16:04:25.744Z",
+      "name": "Chapter2-P3.mp4",
+      "parentId": "1CIRFKXk7EeTk5WZOZoW7Eq4eOYWoGG1r",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
+        "1CIRFKXk7EeTk5WZOZoW7Eq4eOYWoGG1r",
+        "14PiEy8W16HkUePpYCzyQB_wcudXCXlpQ"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Lectures",
+        "Chapter 02",
+        "Chapter2-P3.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 60495495,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/14PiEy8W16HkUePpYCzyQB_wcudXCXlpQ/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 02"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
+      "extension": "mp4",
       "id": "1_cmK7agOfBqxHBRgPbOSXJFBH7q8tlHC",
       "kind": "video",
       "materialType": "lecture",
@@ -38795,80 +38869,6 @@
       "courseCode": "CENG625",
       "courseName": "Cryptography & Advanced Computer Security",
       "depth": 4,
-      "extension": "mp4",
-      "id": "14PiEy8W16HkUePpYCzyQB_wcudXCXlpQ",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-08-29T14:13:47.171Z",
-      "name": "Chapter2-P3.mp4",
-      "parentId": "1CIRFKXk7EeTk5WZOZoW7Eq4eOYWoGG1r",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
-        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
-        "1CIRFKXk7EeTk5WZOZoW7Eq4eOYWoGG1r",
-        "14PiEy8W16HkUePpYCzyQB_wcudXCXlpQ"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG625 - Cryptography & Advanced Computer Security",
-        "Lectures",
-        "Chapter 02",
-        "Chapter2-P3.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 193150026,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/14PiEy8W16HkUePpYCzyQB_wcudXCXlpQ/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Chapter 02"
-      ],
-      "courseCode": "CENG625",
-      "courseName": "Cryptography & Advanced Computer Security",
-      "depth": 4,
-      "extension": "mp4",
-      "id": "1OVfdhebuae8qqygsWXCLj3JLheuTpxa5",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-08-29T14:13:40.688Z",
-      "name": "Chapter2-P2.mp4",
-      "parentId": "1CIRFKXk7EeTk5WZOZoW7Eq4eOYWoGG1r",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
-        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
-        "1CIRFKXk7EeTk5WZOZoW7Eq4eOYWoGG1r",
-        "1OVfdhebuae8qqygsWXCLj3JLheuTpxa5"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG625 - Cryptography & Advanced Computer Security",
-        "Lectures",
-        "Chapter 02",
-        "Chapter2-P2.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 182954349,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1OVfdhebuae8qqygsWXCLj3JLheuTpxa5/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Chapter 02"
-      ],
-      "courseCode": "CENG625",
-      "courseName": "Cryptography & Advanced Computer Security",
-      "depth": 4,
       "extension": "pdf",
       "id": "1sUUnjE9CxBV-H8so4CkJc6vTqlI6xQvx",
       "kind": "pdf",
@@ -38896,6 +38896,80 @@
       "sourceId": "year2",
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1sUUnjE9CxBV-H8so4CkJc6vTqlI6xQvx/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 01"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
+      "extension": "mp4",
+      "id": "1DgrnkN2lrnmbdcOvsVa4K8_LERefuMsA",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T16:09:37.456Z",
+      "name": "Chapter1-P3.mp4",
+      "parentId": "1DjoSKlvzW7lHEkXJ-s-Hl9hLv7gFJv7-",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
+        "1DjoSKlvzW7lHEkXJ-s-Hl9hLv7gFJv7-",
+        "1DgrnkN2lrnmbdcOvsVa4K8_LERefuMsA"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Lectures",
+        "Chapter 01",
+        "Chapter1-P3.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 58131434,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1DgrnkN2lrnmbdcOvsVa4K8_LERefuMsA/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 01"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
+      "extension": "mp4",
+      "id": "1mpQU3Qa_XiXclHcKsnmAbLgOVmTv4g_Q",
+      "kind": "video",
+      "materialType": "lecture",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T15:44:49.634Z",
+      "name": "Chapter1-P4.mp4",
+      "parentId": "1DjoSKlvzW7lHEkXJ-s-Hl9hLv7gFJv7-",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
+        "1DjoSKlvzW7lHEkXJ-s-Hl9hLv7gFJv7-",
+        "1mpQU3Qa_XiXclHcKsnmAbLgOVmTv4g_Q"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Lectures",
+        "Chapter 01",
+        "Chapter1-P4.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 66380667,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1mpQU3Qa_XiXclHcKsnmAbLgOVmTv4g_Q/view?usp=drivesdk",
       "firstSeenAt": "2026-08-31T12:24:54.641Z"
     },
     {
@@ -38971,80 +39045,6 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1J9kWCTVNcLSV8ftX5GQRwMaBmwP7ut7H/view?usp=drivesdk",
       "firstSeenAt": "2026-11-05T10:17:03.938Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Chapter 01"
-      ],
-      "courseCode": "CENG625",
-      "courseName": "Cryptography & Advanced Computer Security",
-      "depth": 4,
-      "extension": "mp4",
-      "id": "1mpQU3Qa_XiXclHcKsnmAbLgOVmTv4g_Q",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-08-29T14:12:38.885Z",
-      "name": "Chapter1-P4.mp4",
-      "parentId": "1DjoSKlvzW7lHEkXJ-s-Hl9hLv7gFJv7-",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
-        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
-        "1DjoSKlvzW7lHEkXJ-s-Hl9hLv7gFJv7-",
-        "1mpQU3Qa_XiXclHcKsnmAbLgOVmTv4g_Q"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG625 - Cryptography & Advanced Computer Security",
-        "Lectures",
-        "Chapter 01",
-        "Chapter1-P4.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 204606114,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1mpQU3Qa_XiXclHcKsnmAbLgOVmTv4g_Q/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
-    },
-    {
-      "categoryPath": [
-        "Lectures",
-        "Chapter 01"
-      ],
-      "courseCode": "CENG625",
-      "courseName": "Cryptography & Advanced Computer Security",
-      "depth": 4,
-      "extension": "mp4",
-      "id": "1DgrnkN2lrnmbdcOvsVa4K8_LERefuMsA",
-      "kind": "video",
-      "materialType": "lecture",
-      "mimeType": "video/mp4",
-      "modifiedTime": "2026-08-29T14:12:32.792Z",
-      "name": "Chapter1-P3.mp4",
-      "parentId": "1DjoSKlvzW7lHEkXJ-s-Hl9hLv7gFJv7-",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
-        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
-        "1DjoSKlvzW7lHEkXJ-s-Hl9hLv7gFJv7-",
-        "1DgrnkN2lrnmbdcOvsVa4K8_LERefuMsA"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG625 - Cryptography & Advanced Computer Security",
-        "Lectures",
-        "Chapter 01",
-        "Chapter1-P3.mp4"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 187834362,
-      "sourceId": "year2",
-      "termLabel": null,
-      "webViewLink": "https://drive.google.com/file/d/1DgrnkN2lrnmbdcOvsVa4K8_LERefuMsA/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
     },
     {
       "categoryPath": [
