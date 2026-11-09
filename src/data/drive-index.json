@@ -1,7 +1,7 @@
 {
   "meta": {
     "baselineAt": "2026-08-17T06:41:16.505Z",
-    "generatedAt": "2026-11-09T16:45:43.239Z",
+    "generatedAt": "2026-11-09T16:49:31.951Z",
     "sources": [
       {
         "description": "LIU - MCCE | First Year, Both Semesters | materials, videos, exercises, and previous exams.",
@@ -12,10 +12,10 @@
       },
       {
         "description": "LIU - MCCE | Second Year, Fall Semester | materials, videos, exercises, and previous exams.",
-        "fileCount": 293,
-        "folderCount": 78,
+        "fileCount": 298,
+        "folderCount": 82,
         "id": "year2",
-        "totalBytes": 6291136536
+        "totalBytes": 6599637794
       },
       {
         "description": "LIU - MCCE | Second Year, Spring Semester | materials, videos, exercises, and previous exams.",
@@ -31035,6 +31035,142 @@
       "courseName": "Data Mining",
       "depth": 3,
       "extension": null,
+      "id": "1EV8icC6fndAO_yTac-3RksobAKlVKJGf",
+      "kind": "folder",
+      "materialType": "exercise",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-11-09T11:05:36.094Z",
+      "name": "Set 8",
+      "parentId": "15hecoH1Vjx_utH3yvCkQ2TFs2cm4LTCJ",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "15hecoH1Vjx_utH3yvCkQ2TFs2cm4LTCJ",
+        "1EV8icC6fndAO_yTac-3RksobAKlVKJGf"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Exercises",
+        "Set 8"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": null,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1EV8icC6fndAO_yTac-3RksobAKlVKJGf",
+      "firstSeenAt": "2026-11-09T16:49:31.951Z"
+    },
+    {
+      "categoryPath": [
+        "Exercises"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 3,
+      "extension": null,
+      "id": "1dLgNkKstPIELazvAarNV-j886o45WL2o",
+      "kind": "folder",
+      "materialType": "exercise",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-11-09T11:05:35.081Z",
+      "name": "Set 7",
+      "parentId": "15hecoH1Vjx_utH3yvCkQ2TFs2cm4LTCJ",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "15hecoH1Vjx_utH3yvCkQ2TFs2cm4LTCJ",
+        "1dLgNkKstPIELazvAarNV-j886o45WL2o"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Exercises",
+        "Set 7"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": null,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1dLgNkKstPIELazvAarNV-j886o45WL2o",
+      "firstSeenAt": "2026-11-09T16:49:31.951Z"
+    },
+    {
+      "categoryPath": [
+        "Exercises"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 3,
+      "extension": null,
+      "id": "1UyK4lN8M8zBJBToCskDC8m9GUcRgpLHw",
+      "kind": "folder",
+      "materialType": "exercise",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-11-09T11:05:33.692Z",
+      "name": "Set 6",
+      "parentId": "15hecoH1Vjx_utH3yvCkQ2TFs2cm4LTCJ",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "15hecoH1Vjx_utH3yvCkQ2TFs2cm4LTCJ",
+        "1UyK4lN8M8zBJBToCskDC8m9GUcRgpLHw"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Exercises",
+        "Set 6"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": null,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1UyK4lN8M8zBJBToCskDC8m9GUcRgpLHw",
+      "firstSeenAt": "2026-11-09T16:49:31.951Z"
+    },
+    {
+      "categoryPath": [
+        "Exercises"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 3,
+      "extension": null,
+      "id": "1z-KaG16hXMsqdea20yzS4wd0p2k4-cdT",
+      "kind": "folder",
+      "materialType": "exercise",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-11-09T11:05:32.410Z",
+      "name": "Set 5",
+      "parentId": "15hecoH1Vjx_utH3yvCkQ2TFs2cm4LTCJ",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "15hecoH1Vjx_utH3yvCkQ2TFs2cm4LTCJ",
+        "1z-KaG16hXMsqdea20yzS4wd0p2k4-cdT"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Exercises",
+        "Set 5"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": null,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/drive/folders/1z-KaG16hXMsqdea20yzS4wd0p2k4-cdT",
+      "firstSeenAt": "2026-11-09T16:49:31.951Z"
+    },
+    {
+      "categoryPath": [
+        "Exercises"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 3,
+      "extension": null,
       "id": "1a9cgdZ4fHdf3kqenPZVftgtp-CpZy_6B",
       "kind": "folder",
       "materialType": "exercise",
@@ -33865,6 +34001,191 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1dCHp7kUXaGr31X4a1HmJeVedBIiWhFn-/view?usp=drivesdk",
       "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Exercises",
+        "Set 5"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 4,
+      "extension": "mp4",
+      "id": "1Jv1R3PbPrLoI6BZi7m_DZAx_RaD4qap-",
+      "kind": "video",
+      "materialType": "exercise",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T13:38:37.227Z",
+      "name": "Recording-Set5-2022-Part1.mp4",
+      "parentId": "1z-KaG16hXMsqdea20yzS4wd0p2k4-cdT",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "15hecoH1Vjx_utH3yvCkQ2TFs2cm4LTCJ",
+        "1z-KaG16hXMsqdea20yzS4wd0p2k4-cdT",
+        "1Jv1R3PbPrLoI6BZi7m_DZAx_RaD4qap-"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Exercises",
+        "Set 5",
+        "Recording-Set5-2022-Part1.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 53442108,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1Jv1R3PbPrLoI6BZi7m_DZAx_RaD4qap-/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-09T16:49:31.951Z"
+    },
+    {
+      "categoryPath": [
+        "Exercises",
+        "Set 5"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 4,
+      "extension": "mp4",
+      "id": "1mtjTc80wllaFzZGbECShDpguKEW6pTiv",
+      "kind": "video",
+      "materialType": "exercise",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T11:09:32.966Z",
+      "name": "Recording-Set5-2022-Part3.mp4",
+      "parentId": "1z-KaG16hXMsqdea20yzS4wd0p2k4-cdT",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "15hecoH1Vjx_utH3yvCkQ2TFs2cm4LTCJ",
+        "1z-KaG16hXMsqdea20yzS4wd0p2k4-cdT",
+        "1mtjTc80wllaFzZGbECShDpguKEW6pTiv"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Exercises",
+        "Set 5",
+        "Recording-Set5-2022-Part3.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 178260945,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1mtjTc80wllaFzZGbECShDpguKEW6pTiv/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-09T16:49:31.951Z"
+    },
+    {
+      "categoryPath": [
+        "Exercises",
+        "Set 5"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 4,
+      "extension": "mp4",
+      "id": "1WA9lQkaX7KaZrP2MMkN2TriCsFmEDkQt",
+      "kind": "video",
+      "materialType": "exercise",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-11-09T11:09:32.024Z",
+      "name": "Recording-Set5-2022-Part2.mp4",
+      "parentId": "1z-KaG16hXMsqdea20yzS4wd0p2k4-cdT",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "15hecoH1Vjx_utH3yvCkQ2TFs2cm4LTCJ",
+        "1z-KaG16hXMsqdea20yzS4wd0p2k4-cdT",
+        "1WA9lQkaX7KaZrP2MMkN2TriCsFmEDkQt"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Exercises",
+        "Set 5",
+        "Recording-Set5-2022-Part2.mp4"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 74866450,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1WA9lQkaX7KaZrP2MMkN2TriCsFmEDkQt/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-09T16:49:31.951Z"
+    },
+    {
+      "categoryPath": [
+        "Exercises",
+        "Set 5"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1icyqWQE4BmEihx7c3H6-9fRWPlcvYt-M",
+      "kind": "pdf",
+      "materialType": "exercise",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-09T11:09:29.370Z",
+      "name": "Solution-Set5-2022.pdf",
+      "parentId": "1z-KaG16hXMsqdea20yzS4wd0p2k4-cdT",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "15hecoH1Vjx_utH3yvCkQ2TFs2cm4LTCJ",
+        "1z-KaG16hXMsqdea20yzS4wd0p2k4-cdT",
+        "1icyqWQE4BmEihx7c3H6-9fRWPlcvYt-M"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Exercises",
+        "Set 5",
+        "Solution-Set5-2022.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 942318,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1icyqWQE4BmEihx7c3H6-9fRWPlcvYt-M/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-09T16:49:31.951Z"
+    },
+    {
+      "categoryPath": [
+        "Exercises",
+        "Set 5"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1NuKCozG6J0TMij43I26yUtQywaP9AH2c",
+      "kind": "pdf",
+      "materialType": "exercise",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-09T11:09:27.992Z",
+      "name": "Exercises-Set5-2022.pdf",
+      "parentId": "1z-KaG16hXMsqdea20yzS4wd0p2k4-cdT",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "15hecoH1Vjx_utH3yvCkQ2TFs2cm4LTCJ",
+        "1z-KaG16hXMsqdea20yzS4wd0p2k4-cdT",
+        "1NuKCozG6J0TMij43I26yUtQywaP9AH2c"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Exercises",
+        "Set 5",
+        "Exercises-Set5-2022.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 989437,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1NuKCozG6J0TMij43I26yUtQywaP9AH2c/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-09T16:49:31.951Z"
     },
     {
       "categoryPath": [
