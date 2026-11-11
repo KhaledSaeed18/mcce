@@ -4,8 +4,14 @@
     <title>MCCE: recently added</title>
     <link>https://mcce.khaledsaeed.tech/recent</link>
     <description>Material added to the MCCE index, updated weekly.</description>
-    <lastBuildDate>Mon, 09 Nov 2026 16:49:31 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 21:08:55 GMT</lastBuildDate>
     <atom:link href="https://mcce.khaledsaeed.tech/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CENG625: Chapter5-alternative.pdf</title>
+      <link>https://mcce.khaledsaeed.tech/browse/1KC6HzGmajhGi6dEfytMBLyyFpMwROx6D?file=1BGRrqFW4tXGc-ew4YywPKky9VUM6oab4</link>
+      <guid isPermaLink="false">1BGRrqFW4tXGc-ew4YywPKky9VUM6oab4</guid>
+      <pubDate>Wed, 11 Nov 2026 21:08:55 GMT</pubDate>
+    </item>
     <item>
       <title>CENG646: Exercises-Set1-2022.pptx</title>
       <link>https://mcce.khaledsaeed.tech/browse/1HgARVRikIS4JPqXklgwCqGP7auGCOpp-?file=1myTgcjBE_FueRJw9MSj1kGXHEzD9KQfO</link>
@@ -298,12 +304,6 @@
       <title>CENG566: README (CENG566 Machine Learning)</title>
       <link>https://mcce.khaledsaeed.tech/browse/1lsqY8_PBsBI_Las6QDwRc_w7DrgePgW5?file=1p8g4Uw5Y5pwc2NEE5JAcOcQHh-KXGlVtpqj--EFRBXY</link>
       <guid isPermaLink="false">1p8g4Uw5Y5pwc2NEE5JAcOcQHh-KXGlVtpqj--EFRBXY</guid>
-      <pubDate>Mon, 05 Oct 2026 18:26:28 GMT</pubDate>
-    </item>
-    <item>
-      <title>CENG566L: README (CENG566L Machine Learning Laboratory)</title>
-      <link>https://mcce.khaledsaeed.tech/browse/1f-pH8oPVzXN_Yz0TesY1BRvwHsjoe3H5?file=1VO8kGs9TcoqC0ukva3YNiHPqabpp8LbqyowqnrbIGu0</link>
-      <guid isPermaLink="false">1VO8kGs9TcoqC0ukva3YNiHPqabpp8LbqyowqnrbIGu0</guid>
       <pubDate>Mon, 05 Oct 2026 18:26:28 GMT</pubDate>
     </item>
   </channel>

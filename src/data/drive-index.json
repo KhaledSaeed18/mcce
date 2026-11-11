@@ -1,7 +1,7 @@
 {
   "meta": {
     "baselineAt": "2026-08-17T06:41:16.505Z",
-    "generatedAt": "2026-11-09T16:49:31.951Z",
+    "generatedAt": "2026-11-11T21:08:55.164Z",
     "sources": [
       {
         "description": "LIU - MCCE | First Year, Both Semesters | materials, videos, exercises, and previous exams.",
@@ -12,10 +12,10 @@
       },
       {
         "description": "LIU - MCCE | Second Year, Fall Semester | materials, videos, exercises, and previous exams.",
-        "fileCount": 298,
+        "fileCount": 299,
         "folderCount": 82,
         "id": "year2",
-        "totalBytes": 6599637794
+        "totalBytes": 6610527338
       },
       {
         "description": "LIU - MCCE | Second Year, Spring Semester | materials, videos, exercises, and previous exams.",
@@ -38589,6 +38589,43 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1y-RaHn46RMmUd1GjKo34yCgtmlXBD3yW/view?usp=drivesdk",
       "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 05"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1BGRrqFW4tXGc-ew4YywPKky9VUM6oab4",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-11T20:39:19.197Z",
+      "name": "Chapter5-alternative.pdf",
+      "parentId": "1KC6HzGmajhGi6dEfytMBLyyFpMwROx6D",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
+        "1KC6HzGmajhGi6dEfytMBLyyFpMwROx6D",
+        "1BGRrqFW4tXGc-ew4YywPKky9VUM6oab4"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Lectures",
+        "Chapter 05",
+        "Chapter5-alternative.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 10889544,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1BGRrqFW4tXGc-ew4YywPKky9VUM6oab4/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-11T21:08:55.164Z"
     },
     {
       "categoryPath": [
