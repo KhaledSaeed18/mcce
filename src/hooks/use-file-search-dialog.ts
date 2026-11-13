@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { SEARCH_HOTKEY_KEY } from "@/config/pdf-editor";
-import { isDialogTarget } from "@/lib/is-dialog-target";
+import { isPopupTarget } from "@/lib/is-popup-target";
 import { readSelectedWords } from "@/lib/pdf-editor/file-search/selected-words";
 
 /** Whether search across files is showing, and its query. Cmd/Ctrl+Shift+F
@@ -25,7 +25,7 @@ export function useFileSearchDialog() {
         event.shiftKey &&
         !event.altKey &&
         event.key.toLowerCase() === SEARCH_HOTKEY_KEY;
-      if (!isSearchKey || (!isOpen && isDialogTarget(event.target))) {
+      if (!isSearchKey || (!isOpen && isPopupTarget(event.target))) {
         return;
       }
       event.preventDefault();

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { COPY_HOTKEY_KEY, PASTE_HOTKEY_KEY } from "@/config/pdf-editor";
-import { isDialogTarget } from "@/lib/is-dialog-target";
 import { isEditableTarget } from "@/lib/is-editable-target";
+import { isPopupTarget } from "@/lib/is-popup-target";
 import { pasteAnnotation } from "@/lib/pdf-editor/paste-annotation";
 import type { Annotation, EditorPage } from "@/lib/pdf-editor/types";
 
@@ -41,7 +41,7 @@ export function useMarkupClipboard({
       if (
         !isModified ||
         isEditableTarget(event.target) ||
-        isDialogTarget(event.target)
+        isPopupTarget(event.target)
       ) {
         return;
       }

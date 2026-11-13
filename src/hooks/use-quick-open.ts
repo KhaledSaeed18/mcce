@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { QUICK_OPEN_HOTKEY_KEY } from "@/config/pdf-editor";
-import { isDialogTarget } from "@/lib/is-dialog-target";
+import { isPopupTarget } from "@/lib/is-popup-target";
 
 /** Whether quick open is showing. Cmd/Ctrl+K opens it from anywhere but
  * another dialog, and closes it again. */
@@ -13,7 +13,7 @@ export function useQuickOpen() {
         (event.metaKey || event.ctrlKey) &&
         !event.altKey &&
         event.key.toLowerCase() === QUICK_OPEN_HOTKEY_KEY;
-      if (!isQuickOpenKey || (!isOpen && isDialogTarget(event.target))) {
+      if (!isQuickOpenKey || (!isOpen && isPopupTarget(event.target))) {
         return;
       }
       event.preventDefault();

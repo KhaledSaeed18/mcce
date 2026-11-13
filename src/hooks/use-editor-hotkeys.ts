@@ -6,8 +6,8 @@ import {
   TOOL_HOTKEYS,
   UNDO_HOTKEY_KEY,
 } from "@/config/pdf-editor";
-import { isDialogTarget } from "@/lib/is-dialog-target";
 import { isEditableTarget } from "@/lib/is-editable-target";
+import { isPopupTarget } from "@/lib/is-popup-target";
 import type { EditorTool } from "@/lib/pdf-editor/types";
 
 interface EditorHotkeyOptions {
@@ -169,7 +169,7 @@ export function useEditorHotkeys({
 }: EditorHotkeyOptions) {
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
-      if (isEditableTarget(event.target) || isDialogTarget(event.target)) {
+      if (isEditableTarget(event.target) || isPopupTarget(event.target)) {
         return;
       }
       if (handleHistory(event, onRedo, onUndo)) {

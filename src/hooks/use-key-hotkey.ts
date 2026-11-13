@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { isDialogTarget } from "@/lib/is-dialog-target";
 import { isEditableTarget } from "@/lib/is-editable-target";
+import { isPopupTarget } from "@/lib/is-popup-target";
 
 /** A single letter pressed on its own, anywhere but a field or a dialog. It
  * steps aside when a modifier is held, so it never shadows Cmd or Ctrl keys. */
@@ -19,7 +19,7 @@ export function useKeyHotkey(
         hasModifier ||
         event.key.toLowerCase() !== key ||
         isEditableTarget(event.target) ||
-        isDialogTarget(event.target)
+        isPopupTarget(event.target)
       ) {
         return;
       }

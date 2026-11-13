@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { PAN_HOTKEY_KEY } from "@/config/pdf-editor";
-import { isDialogTarget } from "@/lib/is-dialog-target";
 import { isEditableTarget } from "@/lib/is-editable-target";
+import { isPopupTarget } from "@/lib/is-popup-target";
 
 /** A control the keyboard is on keeps Space for pressing it. One the mouse
  * last clicked only holds focus by accident, so Space pans instead. */
@@ -20,7 +20,7 @@ export function useSpacePan(): boolean {
       }
       if (
         isEditableTarget(event.target) ||
-        isDialogTarget(event.target) ||
+        isPopupTarget(event.target) ||
         isKeyboardFocused(event.target)
       ) {
         return;
