@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { TEXT_NUDGE, TEXT_NUDGE_LARGE } from "@/config/pdf-editor";
-import { isDialogTarget } from "@/lib/is-dialog-target";
 import { isEditableTarget } from "@/lib/is-editable-target";
+import { isPopupTarget } from "@/lib/is-popup-target";
 import { getAnnotationBox } from "@/lib/pdf-editor/annotation-box";
 import { clampDelta } from "@/lib/pdf-editor/bounds";
 import { readStyleShortcut } from "@/lib/pdf-editor/text-style";
@@ -100,7 +100,7 @@ export function useSelectedMarkupKeys(options: SelectedMarkupKeyOptions) {
       if (
         !current.selected ||
         isEditableTarget(event.target) ||
-        isDialogTarget(event.target)
+        isPopupTarget(event.target)
       ) {
         return;
       }

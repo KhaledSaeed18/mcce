@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { FULLSCREEN_HOTKEY_KEY } from "@/config/pdf-editor";
-import { isDialogTarget } from "@/lib/is-dialog-target";
 import { isEditableTarget } from "@/lib/is-editable-target";
+import { isPopupTarget } from "@/lib/is-popup-target";
 
 /** Both calls reject when the browser refuses the gesture, which costs nothing to ignore. */
 function exitFullscreen() {
@@ -51,7 +51,7 @@ export function useFullscreen() {
         event.key.toLowerCase() !== FULLSCREEN_HOTKEY_KEY ||
         hasModifier ||
         isEditableTarget(event.target) ||
-        isDialogTarget(event.target)
+        isPopupTarget(event.target)
       ) {
         return;
       }

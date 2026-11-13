@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { isDialogTarget } from "@/lib/is-dialog-target";
 import { isEditableTarget } from "@/lib/is-editable-target";
+import { isPopupTarget } from "@/lib/is-popup-target";
 
 /** Shift+S hides or shows every clip. Read by key position, as the letter
  * Shift types differs between layouts. */
@@ -14,7 +14,7 @@ export function useClipsHotkey(onToggle: () => void) {
       if (
         !isToggleKey ||
         isEditableTarget(event.target) ||
-        isDialogTarget(event.target)
+        isPopupTarget(event.target)
       ) {
         return;
       }

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { PANE_FOCUS_HOTKEY_CODE } from "@/config/pdf-editor";
-import { isDialogTarget } from "@/lib/is-dialog-target";
 import { isEditableTarget } from "@/lib/is-editable-target";
+import { isPopupTarget } from "@/lib/is-popup-target";
 
 /** The backquote key, on its own, moves focus to the other pane of a split.
  * Read by position, since the key types different marks on some layouts. */
@@ -16,7 +16,7 @@ export function usePaneFocusHotkey(onPress: () => void, isEnabled: boolean) {
         hasModifier ||
         event.code !== PANE_FOCUS_HOTKEY_CODE ||
         isEditableTarget(event.target) ||
-        isDialogTarget(event.target)
+        isPopupTarget(event.target)
       ) {
         return;
       }

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { SEARCH_HOTKEY_KEY } from "@/config/pdf-editor";
-import { isDialogTarget } from "@/lib/is-dialog-target";
+import { isPopupTarget } from "@/lib/is-popup-target";
 
 /** Cmd/Ctrl+F opens the file's own search instead of the browser's, which
  * cannot see text drawn on a canvas. It works from inside the search field
@@ -13,7 +13,7 @@ export function useSearchHotkey(onOpen: () => void) {
         !event.altKey &&
         !event.shiftKey &&
         event.key.toLowerCase() === SEARCH_HOTKEY_KEY;
-      if (!isSearchKey || isDialogTarget(event.target)) {
+      if (!isSearchKey || isPopupTarget(event.target)) {
         return;
       }
       event.preventDefault();

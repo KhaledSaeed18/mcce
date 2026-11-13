@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { SPLIT_HOTKEY_CODE } from "@/config/pdf-editor";
-import { isDialogTarget } from "@/lib/is-dialog-target";
 import { isEditableTarget } from "@/lib/is-editable-target";
+import { isPopupTarget } from "@/lib/is-popup-target";
 
 /** Cmd/Ctrl+\ splits the view, or goes back to one pane. */
 export function useSplitHotkey(onToggle: () => void) {
@@ -14,7 +14,7 @@ export function useSplitHotkey(onToggle: () => void) {
       if (
         !isSplitKey ||
         isEditableTarget(event.target) ||
-        isDialogTarget(event.target)
+        isPopupTarget(event.target)
       ) {
         return;
       }

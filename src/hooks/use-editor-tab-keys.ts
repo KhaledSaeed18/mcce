@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { isDialogTarget } from "@/lib/is-dialog-target";
 import { isEditableTarget } from "@/lib/is-editable-target";
+import { isPopupTarget } from "@/lib/is-popup-target";
 import { resolveTabKey } from "@/lib/pdf-editor/tab-key-result";
 import { readTabKey } from "@/lib/pdf-editor/tab-keys";
 import type { EditorDesk, OpenFile } from "@/lib/pdf-editor/types";
@@ -25,7 +25,7 @@ export function useEditorTabKeys({
 }: EditorTabKeyOptions) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (isEditableTarget(event.target) || isDialogTarget(event.target)) {
+      if (isEditableTarget(event.target) || isPopupTarget(event.target)) {
         return;
       }
       const key = readTabKey(event);

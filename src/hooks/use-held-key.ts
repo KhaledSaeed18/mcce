@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { isDialogTarget } from "@/lib/is-dialog-target";
 import { isEditableTarget } from "@/lib/is-editable-target";
+import { isPopupTarget } from "@/lib/is-popup-target";
 
 /** True while a single letter is held on its own, outside fields and
  * dialogs. A key let go while another window has focus never reports its
@@ -19,7 +19,7 @@ export function useHeldKey(key: string, isEnabled: boolean): boolean {
         hasModifier ||
         event.key.toLowerCase() !== key ||
         isEditableTarget(event.target) ||
-        isDialogTarget(event.target)
+        isPopupTarget(event.target)
       ) {
         return;
       }
