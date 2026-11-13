@@ -1,10 +1,22 @@
-import { type RefObject, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FULLSCREEN_HOTKEY_KEY } from "@/config/pdf-editor";
 import { isDialogTarget } from "@/lib/is-dialog-target";
 import { isEditableTarget } from "@/lib/is-editable-target";
 
-/** Puts one element on the whole screen, on the button or on a bare "f". */
-export function useFullscreen(targetRef: RefObject<HTMLElement | null>) {
+/** Both calls reject when the browser refuses the gesture, which costs nothing to ignore. */
+function exitFullscreen() {
+  if (document.fullscreenElement) {
+    document.exitFullscreen().catch(() => undefined);
+  }
+}
+
+/**
+ * Puts the whole page on the screen, on the button or on a bare "f". The whole
+ * document rather than the editor's own element, because menus, popovers and
+ * dialogs render at the end of the body, and full screen only paints what sits
+ * inside the element it was asked for.
+ */
+export function useFullscreen() {
   const [isFullscreen, setIsFullscreen] = useState(false);
   // Read after mount: the server has no document to ask, and the answer must not differ on hydration.
   const [isSupported, setIsSupported] = useState(false);
@@ -16,17 +28,20 @@ export function useFullscreen(targetRef: RefObject<HTMLElement | null>) {
       setIsFullscreen(Boolean(document.fullscreenElement));
     }
     document.addEventListener("fullscreenchange", handleChange);
-    return () => document.removeEventListener("fullscreenchange", handleChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", handleChange);
+      // The rest of the site has no way out of full screen, so leaving the editor ends it.
+      exitFullscreen();
+    };
   }, []);
 
   const toggle = useCallback(() => {
-    // Both calls reject when the browser refuses the gesture, which costs nothing to ignore.
     if (document.fullscreenElement) {
-      document.exitFullscreen().catch(() => undefined);
+      exitFullscreen();
       return;
     }
-    targetRef.current?.requestFullscreen().catch(() => undefined);
-  }, [targetRef]);
+    document.documentElement.requestFullscreen().catch(() => undefined);
+  }, []);
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
