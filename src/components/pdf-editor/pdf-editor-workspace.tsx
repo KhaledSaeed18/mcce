@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { EditorDocumentColumn } from "@/components/pdf-editor/editor-document-column";
 import { EditorDropZone } from "@/components/pdf-editor/editor-drop-zone";
 import { EditorFileBar } from "@/components/pdf-editor/editor-file-bar";
@@ -38,8 +37,7 @@ export function PdfEditorWorkspace({
   nodes,
   setLink,
 }: PdfEditorWorkspaceProps) {
-  const rootRef = useRef<HTMLElement>(null);
-  const fullscreen = useFullscreen(rootRef);
+  const fullscreen = useFullscreen();
   const dialogs = useWorkspaceDialogs();
   const {
     desk,
@@ -59,11 +57,7 @@ export function PdfEditorWorkspace({
   const handleOpenMatch = useFocusedMatchOpener(focused, match, openMatch);
 
   return (
-    /* Fullscreen paints its own backdrop behind the element, so the page needs its own ground. */
-    <main
-      className={cn("bg-background flex flex-col", EDITOR_HEIGHT_CLASS)}
-      ref={rootRef}
-    >
+    <main className={cn("bg-background flex flex-col", EDITOR_HEIGHT_CLASS)}>
       <EditorDropZone>
         <EditorFileBar
           hasTabs={desk.desk.files.length > 0}

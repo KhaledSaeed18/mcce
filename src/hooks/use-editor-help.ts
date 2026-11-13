@@ -2,22 +2,11 @@ import { useCallback, useEffect, useState } from "react";
 import { HELP_HOTKEY_KEY } from "@/config/pdf-editor";
 import { isEditableTarget } from "@/lib/is-editable-target";
 
-/** Dialogs render at the end of the page, outside the full-screen editor, where
- * they could not be seen, so opening help leaves full screen first. */
-function leaveFullscreen() {
-  if (document.fullscreenElement) {
-    document.exitFullscreen().catch(() => undefined);
-  }
-}
-
 /** The help panel's open state, which the ? key toggles from anywhere in the editor. */
 export function useEditorHelp() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const open = useCallback(() => {
-    leaveFullscreen();
-    setIsOpen(true);
-  }, []);
+  const open = useCallback(() => setIsOpen(true), []);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -25,7 +14,6 @@ export function useEditorHelp() {
         return;
       }
       event.preventDefault();
-      leaveFullscreen();
       setIsOpen((current) => !current);
     };
     document.addEventListener("keydown", handleKeyDown);
