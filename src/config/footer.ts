@@ -57,6 +57,11 @@ export const FOOTER_COPYRIGHT = "© 2026 MCCE";
 
 export const FOOTER_DRIVE_TITLE = "Open in Drive";
 
+export const FOOTER_SHARE_TITLE = "Sharing the course files?";
+export const FOOTER_SHARE_SUBTITLE =
+  "Send one link. It opens a page with every semester folder in Google Drive.";
+export const FOOTER_SHARE_OPEN_LABEL = "Open";
+
 export const FOOTER_CONTACT_EMAIL = "uni@khaledsaeed.tech";
 
 export const FOOTER_GITHUB_URL = "https://github.com/KhaledSaeed18/mcce";

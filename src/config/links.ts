@@ -16,6 +16,8 @@ import { THESIS_GUIDE_PATH } from "@/config/thesis";
 
 export const LINKS_PATH = "/links";
 export const LINKS_URL = `${SITE_URL}${LINKS_PATH}`;
+/** The site host as people will read it, without the protocol. */
+export const LINKS_DISPLAY_HOST = SITE_URL.replace(/^https?:\/\//u, "");
 
 export const LINKS_NAV_LABEL = "Drive folders";
 export const LINKS_META_TITLE = "MCCE Google Drive Folders by Semester";

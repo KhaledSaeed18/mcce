@@ -2,6 +2,7 @@ import { ArrowUpIcon } from "lucide-react";
 import { useCallback } from "react";
 import { FooterBottomBar } from "@/components/footer/footer-bottom-bar";
 import { FooterBrand } from "@/components/footer/footer-brand";
+import { FooterLinksShare } from "@/components/footer/footer-links-share";
 import { FooterNav } from "@/components/footer/footer-nav";
 import { FooterSeal } from "@/components/footer/footer-seal";
 import { FooterWordmark } from "@/components/footer/footer-wordmark";
@@ -45,6 +46,8 @@ export function SiteFooter() {
               <span className="hidden sm:inline">Back to top</span>
             </Button>
           </div>
+
+          <FooterLinksShare />
 
           <div className="flex flex-col gap-10 lg:flex-row lg:gap-58">
             <FooterBrand />
