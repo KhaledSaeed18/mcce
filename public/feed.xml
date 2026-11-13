@@ -4,8 +4,14 @@
     <title>MCCE: recently added</title>
     <link>https://mcce.khaledsaeed.tech/recent</link>
     <description>Material added to the MCCE index, updated weekly.</description>
-    <lastBuildDate>Wed, 11 Nov 2026 21:08:55 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 13:56:02 GMT</lastBuildDate>
     <atom:link href="https://mcce.khaledsaeed.tech/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CENG646: [Solution]CENG646-(Fall-2025-2026)Combined-Midterm.pdf</title>
+      <link>https://mcce.khaledsaeed.tech/browse/1Vva5ygH75kw5hk_npy4-UDT75oTvxlk1?file=1vrndOYspEKlEzqfci2map6dTiVcev63j</link>
+      <guid isPermaLink="false">1vrndOYspEKlEzqfci2map6dTiVcev63j</guid>
+      <pubDate>Fri, 13 Nov 2026 13:56:02 GMT</pubDate>
+    </item>
     <item>
       <title>CENG625: Chapter5-alternative.pdf</title>
       <link>https://mcce.khaledsaeed.tech/browse/1KC6HzGmajhGi6dEfytMBLyyFpMwROx6D?file=1BGRrqFW4tXGc-ew4YywPKky9VUM6oab4</link>
@@ -298,12 +304,6 @@
       <title>CENG557: README (CENG557 Advanced Network Architectures)</title>
       <link>https://mcce.khaledsaeed.tech/browse/1NGKWicSFltorrxLrhb4UEj6OinZ1rzeV?file=1i1qqMcKLYyOIHcx5fE09IbP6rAn-MM0ljHDYkAckdm8</link>
       <guid isPermaLink="false">1i1qqMcKLYyOIHcx5fE09IbP6rAn-MM0ljHDYkAckdm8</guid>
-      <pubDate>Mon, 05 Oct 2026 18:26:28 GMT</pubDate>
-    </item>
-    <item>
-      <title>CENG566: README (CENG566 Machine Learning)</title>
-      <link>https://mcce.khaledsaeed.tech/browse/1lsqY8_PBsBI_Las6QDwRc_w7DrgePgW5?file=1p8g4Uw5Y5pwc2NEE5JAcOcQHh-KXGlVtpqj--EFRBXY</link>
-      <guid isPermaLink="false">1p8g4Uw5Y5pwc2NEE5JAcOcQHh-KXGlVtpqj--EFRBXY</guid>
       <pubDate>Mon, 05 Oct 2026 18:26:28 GMT</pubDate>
     </item>
   </channel>

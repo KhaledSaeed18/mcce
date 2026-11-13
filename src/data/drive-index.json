@@ -1,7 +1,7 @@
 {
   "meta": {
     "baselineAt": "2026-08-17T06:41:16.505Z",
-    "generatedAt": "2026-11-11T21:08:55.164Z",
+    "generatedAt": "2026-11-13T13:56:02.484Z",
     "sources": [
       {
         "description": "LIU - MCCE | First Year, Both Semesters | materials, videos, exercises, and previous exams.",
@@ -12,10 +12,10 @@
       },
       {
         "description": "LIU - MCCE | Second Year, Fall Semester | materials, videos, exercises, and previous exams.",
-        "fileCount": 299,
+        "fileCount": 300,
         "folderCount": 82,
         "id": "year2",
-        "totalBytes": 6610527338
+        "totalBytes": 6611321785
       },
       {
         "description": "LIU - MCCE | Second Year, Spring Semester | materials, videos, exercises, and previous exams.",
@@ -41477,6 +41477,46 @@
       "termLabel": "Fall 2021-2022",
       "webViewLink": "https://drive.google.com/file/d/15nFLJ5ob7Rtwx8XU-NPr2C53Yhc-Oz2k/view?usp=drivesdk",
       "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Moodle"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 5,
+      "extension": "pdf",
+      "id": "1vrndOYspEKlEzqfci2map6dTiVcev63j",
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-13T13:51:14.609Z",
+      "name": "[Solution]CENG646-(Fall-2025-2026)Combined-Midterm.pdf",
+      "parentId": "1Vva5ygH75kw5hk_npy4-UDT75oTvxlk1",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "1msocpdWRsVh8OcE7LRAMaSplWxQCKxfY",
+        "18naMV-BO3_h6CCbpaZJ3ZVVmdxnfaJWr",
+        "1Vva5ygH75kw5hk_npy4-UDT75oTvxlk1",
+        "1vrndOYspEKlEzqfci2map6dTiVcev63j"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Exams",
+        "Midterm",
+        "Moodle",
+        "[Solution]CENG646-(Fall-2025-2026)Combined-Midterm.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 794447,
+      "sourceId": "year2",
+      "termLabel": "Fall 2025-2026",
+      "webViewLink": "https://drive.google.com/file/d/1vrndOYspEKlEzqfci2map6dTiVcev63j/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-13T13:56:02.484Z"
     },
     {
       "categoryPath": [
