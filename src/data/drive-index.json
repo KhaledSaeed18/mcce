@@ -1,7 +1,7 @@
 {
   "meta": {
     "baselineAt": "2026-08-17T06:41:16.505Z",
-    "generatedAt": "2026-11-13T13:56:02.484Z",
+    "generatedAt": "2026-11-16T14:30:29.846Z",
     "sources": [
       {
         "description": "LIU - MCCE | First Year, Both Semesters | materials, videos, exercises, and previous exams.",
@@ -12,10 +12,10 @@
       },
       {
         "description": "LIU - MCCE | Second Year, Fall Semester | materials, videos, exercises, and previous exams.",
-        "fileCount": 300,
+        "fileCount": 309,
         "folderCount": 82,
         "id": "year2",
-        "totalBytes": 6611321785
+        "totalBytes": 6620477362
       },
       {
         "description": "LIU - MCCE | Second Year, Spring Semester | materials, videos, exercises, and previous exams.",
@@ -38599,6 +38599,43 @@
       "courseName": "Cryptography & Advanced Computer Security",
       "depth": 4,
       "extension": "pdf",
+      "id": "1wGUkBpo6laxQhPO8gG0JYMhwQrwp0ekv",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-14T10:21:07.408Z",
+      "name": "ch5-notes.pdf",
+      "parentId": "1KC6HzGmajhGi6dEfytMBLyyFpMwROx6D",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
+        "1KC6HzGmajhGi6dEfytMBLyyFpMwROx6D",
+        "1wGUkBpo6laxQhPO8gG0JYMhwQrwp0ekv"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Lectures",
+        "Chapter 05",
+        "ch5-notes.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1408075,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1wGUkBpo6laxQhPO8gG0JYMhwQrwp0ekv/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-16T14:30:29.846Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 05"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
+      "extension": "pdf",
       "id": "1BGRrqFW4tXGc-ew4YywPKky9VUM6oab4",
       "kind": "pdf",
       "materialType": "lecture",
@@ -38783,6 +38820,43 @@
       "courseCode": "CENG625",
       "courseName": "Cryptography & Advanced Computer Security",
       "depth": 4,
+      "extension": "pdf",
+      "id": "1ii7eEgwFTJpPOMaUt0BF2d4iX5L93bdk",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-14T10:12:03.403Z",
+      "name": "ch4-notes.pdf",
+      "parentId": "1OOP7aZVqz1RzB-JdrivziPRHvAR7sM1I",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
+        "1OOP7aZVqz1RzB-JdrivziPRHvAR7sM1I",
+        "1ii7eEgwFTJpPOMaUt0BF2d4iX5L93bdk"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Lectures",
+        "Chapter 04",
+        "ch4-notes.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1458556,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1ii7eEgwFTJpPOMaUt0BF2d4iX5L93bdk/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-16T14:30:29.846Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 04"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
       "extension": "mp4",
       "id": "1HVz67Gb100ecaAO_EnLG51FQQ8hcPVx7",
       "kind": "video",
@@ -38931,6 +39005,43 @@
       "courseCode": "CENG625",
       "courseName": "Cryptography & Advanced Computer Security",
       "depth": 4,
+      "extension": "pdf",
+      "id": "1l3chb889kUXW4dLQVlNqIVm7JcNxdoLg",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-14T09:57:40.667Z",
+      "name": "ch3-notes.pdf",
+      "parentId": "1-UmiScOeM_6Jl1Etef7ENx5POMJ7jmDi",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
+        "1-UmiScOeM_6Jl1Etef7ENx5POMJ7jmDi",
+        "1l3chb889kUXW4dLQVlNqIVm7JcNxdoLg"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Lectures",
+        "Chapter 03",
+        "ch3-notes.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1531263,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1l3chb889kUXW4dLQVlNqIVm7JcNxdoLg/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-16T14:30:29.846Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 03"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
       "extension": "mp4",
       "id": "1frg0aAopb6iOoVxzWxkRgLTV3gBvcX0b",
       "kind": "video",
@@ -39070,6 +39181,43 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1W76A1n1BoadUPZ6U92VMmu-nw5XqJuXo/view?usp=drivesdk",
       "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 02"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1dsYSJWzt1TlujF4bt3OOv4F1DEumwhT_",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-14T09:47:49.411Z",
+      "name": "ch2-notes.pdf",
+      "parentId": "1CIRFKXk7EeTk5WZOZoW7Eq4eOYWoGG1r",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
+        "1CIRFKXk7EeTk5WZOZoW7Eq4eOYWoGG1r",
+        "1dsYSJWzt1TlujF4bt3OOv4F1DEumwhT_"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Lectures",
+        "Chapter 02",
+        "ch2-notes.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1194857,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1dsYSJWzt1TlujF4bt3OOv4F1DEumwhT_/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-16T14:30:29.846Z"
     },
     {
       "categoryPath": [
@@ -39255,6 +39403,43 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1sUUnjE9CxBV-H8so4CkJc6vTqlI6xQvx/view?usp=drivesdk",
       "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 01"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "15YJXQik9-CEOw1X8o4AqrR1MSTGb-MxI",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-14T09:41:13.361Z",
+      "name": "ch1-notes.pdf",
+      "parentId": "1DjoSKlvzW7lHEkXJ-s-Hl9hLv7gFJv7-",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
+        "1DjoSKlvzW7lHEkXJ-s-Hl9hLv7gFJv7-",
+        "15YJXQik9-CEOw1X8o4AqrR1MSTGb-MxI"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Lectures",
+        "Chapter 01",
+        "ch1-notes.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1134007,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/15YJXQik9-CEOw1X8o4AqrR1MSTGb-MxI/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-16T14:30:29.846Z"
     },
     {
       "categoryPath": [
@@ -41488,6 +41673,46 @@
       "courseName": "Data Mining",
       "depth": 5,
       "extension": "pdf",
+      "id": "1xl_iFCrMkdoEOO_fneRjis8cFJMkDtVZ",
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-14T09:22:05.799Z",
+      "name": "CENG646-(Fall-2025-2026)Midterm.pdf",
+      "parentId": "1Vva5ygH75kw5hk_npy4-UDT75oTvxlk1",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "1msocpdWRsVh8OcE7LRAMaSplWxQCKxfY",
+        "18naMV-BO3_h6CCbpaZJ3ZVVmdxnfaJWr",
+        "1Vva5ygH75kw5hk_npy4-UDT75oTvxlk1",
+        "1xl_iFCrMkdoEOO_fneRjis8cFJMkDtVZ"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Exams",
+        "Midterm",
+        "Moodle",
+        "CENG646-(Fall-2025-2026)Midterm.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 383881,
+      "sourceId": "year2",
+      "termLabel": "Fall 2025-2026",
+      "webViewLink": "https://drive.google.com/file/d/1xl_iFCrMkdoEOO_fneRjis8cFJMkDtVZ/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-16T14:30:29.846Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Moodle"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 5,
+      "extension": "pdf",
       "id": "1vrndOYspEKlEzqfci2map6dTiVcev63j",
       "kind": "pdf",
       "materialType": "exam",
@@ -43168,6 +43393,166 @@
       "courseName": "Cryptography & Advanced Computer Security",
       "depth": 5,
       "extension": "pdf",
+      "id": "1YEAb717eELcgFdV5cPvzgSZP_I-HEOi1",
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-14T15:53:29.414Z",
+      "name": "repeat-patterns.pdf",
+      "parentId": "1tVP9mEv5s0eKv3u-JS8NiPyOzVW_fg_a",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "12N64QrzcD3theM4mf-qWVg_mpJYWTcnD",
+        "1tQFCLtxD5rcnIkd0FB9xSDoZTud4SnUd",
+        "1tVP9mEv5s0eKv3u-JS8NiPyOzVW_fg_a",
+        "1YEAb717eELcgFdV5cPvzgSZP_I-HEOi1"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Exams",
+        "Midterm",
+        "Paper Based",
+        "repeat-patterns.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 867385,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1YEAb717eELcgFdV5cPvzgSZP_I-HEOi1/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-16T14:30:29.846Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Paper Based"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 5,
+      "extension": "pdf",
+      "id": "1LRJ5TQlohtDmwpn0NEI9Q20oqURUMfSm",
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-14T08:42:20.783Z",
+      "name": "[SOLVED-Details]CENG625-Midterm-2016.pdf",
+      "parentId": "1tVP9mEv5s0eKv3u-JS8NiPyOzVW_fg_a",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "12N64QrzcD3theM4mf-qWVg_mpJYWTcnD",
+        "1tQFCLtxD5rcnIkd0FB9xSDoZTud4SnUd",
+        "1tVP9mEv5s0eKv3u-JS8NiPyOzVW_fg_a",
+        "1LRJ5TQlohtDmwpn0NEI9Q20oqURUMfSm"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Exams",
+        "Midterm",
+        "Paper Based",
+        "[SOLVED-Details]CENG625-Midterm-2016.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 3572428,
+      "sourceId": "year2",
+      "termLabel": "Fall 2016-2017",
+      "webViewLink": "https://drive.google.com/file/d/1LRJ5TQlohtDmwpn0NEI9Q20oqURUMfSm/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Paper Based"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 5,
+      "extension": "pdf",
+      "id": "12jxcV9lTCly4plJPde-UwhAeeIesINiF",
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-14T08:36:19.562Z",
+      "name": "CENG625-Midterm-2018.pdf",
+      "parentId": "1tVP9mEv5s0eKv3u-JS8NiPyOzVW_fg_a",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "12N64QrzcD3theM4mf-qWVg_mpJYWTcnD",
+        "1tQFCLtxD5rcnIkd0FB9xSDoZTud4SnUd",
+        "1tVP9mEv5s0eKv3u-JS8NiPyOzVW_fg_a",
+        "12jxcV9lTCly4plJPde-UwhAeeIesINiF"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Exams",
+        "Midterm",
+        "Paper Based",
+        "CENG625-Midterm-2018.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 605977,
+      "sourceId": "year2",
+      "termLabel": "Fall 2018-2019",
+      "webViewLink": "https://drive.google.com/file/d/12jxcV9lTCly4plJPde-UwhAeeIesINiF/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-16T14:30:29.846Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Paper Based"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 5,
+      "extension": "pdf",
+      "id": "1FUK7nECgruJPbt3vaEZv0vmfWHXVfCeb",
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-14T08:36:12.055Z",
+      "name": "CENG625-Midterm-2017.pdf",
+      "parentId": "1tVP9mEv5s0eKv3u-JS8NiPyOzVW_fg_a",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "12N64QrzcD3theM4mf-qWVg_mpJYWTcnD",
+        "1tQFCLtxD5rcnIkd0FB9xSDoZTud4SnUd",
+        "1tVP9mEv5s0eKv3u-JS8NiPyOzVW_fg_a",
+        "1FUK7nECgruJPbt3vaEZv0vmfWHXVfCeb"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Exams",
+        "Midterm",
+        "Paper Based",
+        "CENG625-Midterm-2017.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 571576,
+      "sourceId": "year2",
+      "termLabel": "Fall 2017-2018",
+      "webViewLink": "https://drive.google.com/file/d/1FUK7nECgruJPbt3vaEZv0vmfWHXVfCeb/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-16T14:30:29.846Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Paper Based"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 5,
+      "extension": "pdf",
       "id": "1m5Xwflfm_NZ8xkPj5BiPanaVvTP55o1J",
       "kind": "pdf",
       "materialType": "exam",
@@ -43276,46 +43661,6 @@
       "sourceId": "year2",
       "termLabel": "Fall 2017-2018",
       "webViewLink": "https://drive.google.com/file/d/19dNkQkGVrzx_omLnmvTMczYnz_9tPEiE/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
-    },
-    {
-      "categoryPath": [
-        "Exams",
-        "Midterm",
-        "Paper Based"
-      ],
-      "courseCode": "CENG625",
-      "courseName": "Cryptography & Advanced Computer Security",
-      "depth": 5,
-      "extension": "pdf",
-      "id": "1LRJ5TQlohtDmwpn0NEI9Q20oqURUMfSm",
-      "kind": "pdf",
-      "materialType": "exam",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-11-05T09:48:31.942Z",
-      "name": "[Solution]CENG625-Midterm-2016.pdf",
-      "parentId": "1tVP9mEv5s0eKv3u-JS8NiPyOzVW_fg_a",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
-        "12N64QrzcD3theM4mf-qWVg_mpJYWTcnD",
-        "1tQFCLtxD5rcnIkd0FB9xSDoZTud4SnUd",
-        "1tVP9mEv5s0eKv3u-JS8NiPyOzVW_fg_a",
-        "1LRJ5TQlohtDmwpn0NEI9Q20oqURUMfSm"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG625 - Cryptography & Advanced Computer Security",
-        "Exams",
-        "Midterm",
-        "Paper Based",
-        "[Solution]CENG625-Midterm-2016.pdf"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 3572428,
-      "sourceId": "year2",
-      "termLabel": "Fall 2016-2017",
-      "webViewLink": "https://drive.google.com/file/d/1LRJ5TQlohtDmwpn0NEI9Q20oqURUMfSm/view?usp=drivesdk",
       "firstSeenAt": "2026-08-31T12:24:54.641Z"
     },
     {
