@@ -9,7 +9,7 @@ pnpm organize:drive apply    # writes to Drive and appends to journal.ndjson
 pnpm organize:drive rollback # replays the journal backwards
 ```
 
-Run `pnpm sync:drive` afterwards to rebuild `src/data/drive-index.json`.
+Run `pnpm sync:drive` afterwards to rebuild `src/data/drive-index.json`, then `pnpm readmes:drive apply` so the README docs pick up the new names.
 
 ## Layout
 

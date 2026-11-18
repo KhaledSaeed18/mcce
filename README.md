@@ -60,7 +60,9 @@ University. For admissions, curriculum, and official program details, see the
 
 ## Shared Drive folders
 
-Direct links to the three shared Google Drive folders:
+Direct links to the three shared Google Drive folders. The
+[Drive folders page](https://mcce.khaledsaeed.tech/links) lists the same folders by semester and
+course.
 
 - [LIU | MCCE 1 (First Year)](https://drive.google.com/drive/folders/15A8bxA33GichTPcZkyXxaZnP_dRyryTq): materials, exercises, and previous exams for both Fall and Spring semesters.
 - [LIU | MCCE 2.1 (Second Year, Fall Semester)](https://drive.google.com/drive/folders/1O5i5a7CgmPEwQ7G6MFyM75zIfmtDi5pt): materials, exercises, and previous exams for the fall semester.
@@ -107,7 +109,7 @@ Direct links to the three shared Google Drive folders:
 - **CCE undergraduate programs**: a reference page for the department's two bachelor programs,
   Computer Engineering (CENG) and Communications Engineering (TENG), with both plans of study,
   the electives, and the one course where the two tracks differ.
-- **Tools directory**: about 400 external tools for the program in 26 categories, each with a
+- **Tools directory**: about 400 external tools for the program in 25 categories, each with a
   cost badge (Free, Freemium, Trial, Paid, Student) and an Open Source flag, filterable by badge
   and searchable, with a thesis toolkit ordered by stage and an index of about 280 public GitHub
   repositories with their licence class and maintenance state.
@@ -119,6 +121,8 @@ Direct links to the three shared Google Drive folders:
 - **Open in Drive**: direct links into the shared Drive folders, from the home page, the footer,
   the sitemap, each course year, and any folder being browsed, for when the index is not the
   fastest way in.
+- **Drive folders page**: a standalone page at `/links` listing every semester folder with its
+  courses, built to be shared, with a share button and the time of the last sync.
 - **FAQ and about pages**: how the program is structured, and how syncing, search, and file
   access work here.
 - **Community-sourced contributions**: anyone in the program can send exams, notes, slides, or

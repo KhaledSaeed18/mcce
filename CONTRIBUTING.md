@@ -73,6 +73,9 @@ scripts/
                   writes src/data/resources-index.json.
   organize-drive/ Normalises the Drive folders and file names the index is built from.
                   Read its README before running it, it writes to the shared Drive.
+  write-readmes/  Writes the README Google Docs in each Drive root, semester, and course
+                  folder from the Drive index. Read its README before running it.
+  prerender/      Reads the sitemap to decide which pages the build prerenders.
 ```
 
 Full architecture, naming, and file-size rules are documented in `AGENTS.md` (symlinked as
@@ -115,6 +118,7 @@ runs `ultracite fix` on staged JS/TS/JSON/CSS files automatically.
 | `pnpm fullcheck` | Run typecheck, knip, check, and test together |
 | `pnpm sync:drive` | Crawl Google Drive and regenerate the index, sitemap, and feed |
 | `pnpm build:resources` | Validate the resource catalog and regenerate its index and icons. Pass `--skip-links` or `--skip-icons` to stay offline, `--check` to compare with the committed index |
+| `pnpm readmes:drive` | Dry-run the Drive README docs. Pass `apply` to overwrite them. Run `pnpm sync:drive` first |
 | `pnpm organize:drive` | Dry-run the Drive folder and file name normalisation. Pass `apply` to write, `rollback` to undo |
 | `pnpm cf-typegen` | Generate Cloudflare Worker types from `wrangler.jsonc` |
 
@@ -127,10 +131,13 @@ Copy `.env.example` to `.env` and fill in the values you need locally.
 | Variable | Used for |
 |---|---|
 | `VITE_WEB3FORMS_ACCESS_KEY` | Submitting the contact form via Web3Forms |
+| `VITE_GA_MEASUREMENT_ID` | Google Analytics measurement ID, only loaded in production builds |
 
-`pnpm sync:drive` additionally requires a `GOOGLE_SERVICE_ACCOUNT_KEY` (a Google service account
-with read access to the source Drive folder) available in the environment. This is only needed if
-you are working on the Drive sync script itself, it is not required for normal frontend
+`pnpm sync:drive` additionally requires a Google service account with read access to the source
+Drive folders, given as `GOOGLE_SERVICE_ACCOUNT_KEY` (the key JSON inline) or as a key file at
+`service-account-key.json` (or the path in `GOOGLE_SERVICE_ACCOUNT_KEY_PATH`). `pnpm
+readmes:drive apply` uses the same key and needs editor access to the README docs. This is only
+needed if you are working on the Drive scripts themselves, it is not required for normal frontend
 development since `src/data/drive-index.json` is already checked in.
 
 Never commit `.env`, `service-account-key.json`, or any file containing credentials. Both are
