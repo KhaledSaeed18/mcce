@@ -1,7 +1,7 @@
 {
   "meta": {
     "baselineAt": "2026-08-17T06:41:16.505Z",
-    "generatedAt": "2026-11-18T20:27:30.241Z",
+    "generatedAt": "2026-11-18T21:44:44.811Z",
     "sources": [
       {
         "description": "LIU - MCCE | First Year, Both Semesters | materials, videos, exercises, and previous exams.",
@@ -12,10 +12,10 @@
       },
       {
         "description": "LIU - MCCE | Second Year, Fall Semester | materials, videos, exercises, and previous exams.",
-        "fileCount": 318,
+        "fileCount": 319,
         "folderCount": 84,
         "id": "year2",
-        "totalBytes": 6637600263
+        "totalBytes": 6639835890
       },
       {
         "description": "LIU - MCCE | Second Year, Spring Semester | materials, videos, exercises, and previous exams.",
@@ -37744,6 +37744,43 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/drive/folders/1I2A6hss3GWq1-iYY0fvYWn9C4D8hVqmp",
       "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Assessments",
+        "2026-2027"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1XhoWwSMdFo2-ZZss8dBcUotE5t6nfjIv",
+      "kind": "pdf",
+      "materialType": "assessment",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-18T21:33:58.149Z",
+      "name": "[Combined]CENG645-SelfAssessment-Fall-2026-2027.pdf",
+      "parentId": "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
+        "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+        "1XhoWwSMdFo2-ZZss8dBcUotE5t6nfjIv"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Assessments",
+        "2026-2027",
+        "[Combined]CENG645-SelfAssessment-Fall-2026-2027.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 2235627,
+      "sourceId": "year2",
+      "termLabel": "Fall 2026-2027",
+      "webViewLink": "https://drive.google.com/file/d/1XhoWwSMdFo2-ZZss8dBcUotE5t6nfjIv/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-18T21:44:44.811Z"
     },
     {
       "categoryPath": [
