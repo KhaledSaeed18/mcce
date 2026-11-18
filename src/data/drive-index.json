@@ -1,7 +1,7 @@
 {
   "meta": {
     "baselineAt": "2026-08-17T06:41:16.505Z",
-    "generatedAt": "2026-11-16T14:30:29.846Z",
+    "generatedAt": "2026-11-18T20:27:30.241Z",
     "sources": [
       {
         "description": "LIU - MCCE | First Year, Both Semesters | materials, videos, exercises, and previous exams.",
@@ -12,10 +12,10 @@
       },
       {
         "description": "LIU - MCCE | Second Year, Fall Semester | materials, videos, exercises, and previous exams.",
-        "fileCount": 309,
-        "folderCount": 82,
+        "fileCount": 318,
+        "folderCount": 84,
         "id": "year2",
-        "totalBytes": 6620477362
+        "totalBytes": 6637600263
       },
       {
         "description": "LIU - MCCE | Second Year, Spring Semester | materials, videos, exercises, and previous exams.",
@@ -32190,32 +32190,32 @@
       "courseCode": "CENG645",
       "courseName": "Mobile Communication",
       "depth": 3,
-      "extension": "pdf",
-      "id": "1uRYYjEVz33utcHQDsS3VIy0LeTGiX9nN",
-      "kind": "pdf",
+      "extension": null,
+      "id": "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+      "kind": "folder",
       "materialType": "assessment",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-11-05T09:47:44.133Z",
-      "name": "V1-SelfAssessment-Fall-2025-2026.pdf",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-11-16T15:40:10.101Z",
+      "name": "2026-2027",
       "parentId": "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
       "pathIds": [
         "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
         "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
         "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
-        "1uRYYjEVz33utcHQDsS3VIy0LeTGiX9nN"
+        "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL"
       ],
       "pathNames": [
         "Second Year | Fall Semester",
         "CENG645 - Mobile Communication",
         "Assessments",
-        "V1-SelfAssessment-Fall-2025-2026.pdf"
+        "2026-2027"
       ],
       "semester": "Second Year | Fall Semester",
-      "sizeBytes": 471433,
+      "sizeBytes": null,
       "sourceId": "year2",
-      "termLabel": "Fall 2025-2026",
-      "webViewLink": "https://drive.google.com/file/d/1uRYYjEVz33utcHQDsS3VIy0LeTGiX9nN/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+      "termLabel": "2026-2027",
+      "webViewLink": "https://drive.google.com/drive/folders/1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+      "firstSeenAt": "2026-11-18T20:27:30.241Z"
     },
     {
       "categoryPath": [
@@ -32224,100 +32224,32 @@
       "courseCode": "CENG645",
       "courseName": "Mobile Communication",
       "depth": 3,
-      "extension": "pdf",
-      "id": "1dy8SPFxD6YCh953JmoToM_6nQ6vKhfRD",
-      "kind": "pdf",
+      "extension": null,
+      "id": "1eLk0p37qEp2IDm5hPrtBQrxejLLDkHvc",
+      "kind": "folder",
       "materialType": "assessment",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-11-05T09:47:43.419Z",
-      "name": "V2-SelfAssessment-Fall-2025-2026.pdf",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-11-16T15:34:25.712Z",
+      "name": "2025-2026",
       "parentId": "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
       "pathIds": [
         "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
         "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
         "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
-        "1dy8SPFxD6YCh953JmoToM_6nQ6vKhfRD"
+        "1eLk0p37qEp2IDm5hPrtBQrxejLLDkHvc"
       ],
       "pathNames": [
         "Second Year | Fall Semester",
         "CENG645 - Mobile Communication",
         "Assessments",
-        "V2-SelfAssessment-Fall-2025-2026.pdf"
+        "2025-2026"
       ],
       "semester": "Second Year | Fall Semester",
-      "sizeBytes": 574361,
+      "sizeBytes": null,
       "sourceId": "year2",
-      "termLabel": "Fall 2025-2026",
-      "webViewLink": "https://drive.google.com/file/d/1dy8SPFxD6YCh953JmoToM_6nQ6vKhfRD/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
-    },
-    {
-      "categoryPath": [
-        "Assessments"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 3,
-      "extension": "pdf",
-      "id": "1QkNmh9vHrH15Y8hm8B0kLMZ8th4y7QIF",
-      "kind": "pdf",
-      "materialType": "assessment",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-11-05T09:47:42.612Z",
-      "name": "V3-SelfAssessment-Fall-2025-2026.pdf",
-      "parentId": "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
-        "1QkNmh9vHrH15Y8hm8B0kLMZ8th4y7QIF"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Assessments",
-        "V3-SelfAssessment-Fall-2025-2026.pdf"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 495671,
-      "sourceId": "year2",
-      "termLabel": "Fall 2025-2026",
-      "webViewLink": "https://drive.google.com/file/d/1QkNmh9vHrH15Y8hm8B0kLMZ8th4y7QIF/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
-    },
-    {
-      "categoryPath": [
-        "Assessments"
-      ],
-      "courseCode": "CENG645",
-      "courseName": "Mobile Communication",
-      "depth": 3,
-      "extension": "pdf",
-      "id": "12CGH_pDVs0x3Qtnyz-SUp8gEjEB1TSCE",
-      "kind": "pdf",
-      "materialType": "assessment",
-      "mimeType": "application/pdf",
-      "modifiedTime": "2026-11-05T09:47:41.813Z",
-      "name": "V4-SelfAssessment-Fall-2025-2026.pdf",
-      "parentId": "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
-      "pathIds": [
-        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
-        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
-        "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
-        "12CGH_pDVs0x3Qtnyz-SUp8gEjEB1TSCE"
-      ],
-      "pathNames": [
-        "Second Year | Fall Semester",
-        "CENG645 - Mobile Communication",
-        "Assessments",
-        "V4-SelfAssessment-Fall-2025-2026.pdf"
-      ],
-      "semester": "Second Year | Fall Semester",
-      "sizeBytes": 645854,
-      "sourceId": "year2",
-      "termLabel": "Fall 2025-2026",
-      "webViewLink": "https://drive.google.com/file/d/12CGH_pDVs0x3Qtnyz-SUp8gEjEB1TSCE/view?usp=drivesdk",
-      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+      "termLabel": "2025-2026",
+      "webViewLink": "https://drive.google.com/drive/folders/1eLk0p37qEp2IDm5hPrtBQrxejLLDkHvc",
+      "firstSeenAt": "2026-11-18T20:27:30.241Z"
     },
     {
       "categoryPath": [
@@ -37812,6 +37744,487 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/drive/folders/1I2A6hss3GWq1-iYY0fvYWn9C4D8hVqmp",
       "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Assessments",
+        "2026-2027"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1bxJKOuH7Nud2zT63xtRAXzxuuC2Vp1tW",
+      "kind": "pdf",
+      "materialType": "assessment",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-18T20:26:13.250Z",
+      "name": "V9-SelfAssessment-Fall-2026-2027.pdf",
+      "parentId": "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
+        "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+        "1bxJKOuH7Nud2zT63xtRAXzxuuC2Vp1tW"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Assessments",
+        "2026-2027",
+        "V9-SelfAssessment-Fall-2026-2027.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 2496119,
+      "sourceId": "year2",
+      "termLabel": "Fall 2026-2027",
+      "webViewLink": "https://drive.google.com/file/d/1bxJKOuH7Nud2zT63xtRAXzxuuC2Vp1tW/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-18T20:27:30.241Z"
+    },
+    {
+      "categoryPath": [
+        "Assessments",
+        "2026-2027"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1BHinfzkBDS5ogY8Lhdjr1TYXz0MWnGvT",
+      "kind": "pdf",
+      "materialType": "assessment",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-16T16:27:52.098Z",
+      "name": "V8-SelfAssessment-Fall-2026-2027.pdf",
+      "parentId": "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
+        "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+        "1BHinfzkBDS5ogY8Lhdjr1TYXz0MWnGvT"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Assessments",
+        "2026-2027",
+        "V8-SelfAssessment-Fall-2026-2027.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 2548948,
+      "sourceId": "year2",
+      "termLabel": "Fall 2026-2027",
+      "webViewLink": "https://drive.google.com/file/d/1BHinfzkBDS5ogY8Lhdjr1TYXz0MWnGvT/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-18T20:27:30.241Z"
+    },
+    {
+      "categoryPath": [
+        "Assessments",
+        "2026-2027"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1DX3Isw6Fgr3ZjlW7G2a0J80mmauJBZiR",
+      "kind": "pdf",
+      "materialType": "assessment",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-16T15:39:10.313Z",
+      "name": "V7-SelfAssessment-Fall-2026-2027.pdf",
+      "parentId": "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
+        "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+        "1DX3Isw6Fgr3ZjlW7G2a0J80mmauJBZiR"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Assessments",
+        "2026-2027",
+        "V7-SelfAssessment-Fall-2026-2027.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 3623322,
+      "sourceId": "year2",
+      "termLabel": "Fall 2026-2027",
+      "webViewLink": "https://drive.google.com/file/d/1DX3Isw6Fgr3ZjlW7G2a0J80mmauJBZiR/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-18T20:27:30.241Z"
+    },
+    {
+      "categoryPath": [
+        "Assessments",
+        "2026-2027"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1kgeQ7YSf2v6ZsHh5bHf_YZ8uhW5kHniA",
+      "kind": "pdf",
+      "materialType": "assessment",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-16T15:39:03.952Z",
+      "name": "V6-SelfAssessment-Fall-2026-2027.pdf",
+      "parentId": "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
+        "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+        "1kgeQ7YSf2v6ZsHh5bHf_YZ8uhW5kHniA"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Assessments",
+        "2026-2027",
+        "V6-SelfAssessment-Fall-2026-2027.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 836005,
+      "sourceId": "year2",
+      "termLabel": "Fall 2026-2027",
+      "webViewLink": "https://drive.google.com/file/d/1kgeQ7YSf2v6ZsHh5bHf_YZ8uhW5kHniA/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-18T20:27:30.241Z"
+    },
+    {
+      "categoryPath": [
+        "Assessments",
+        "2026-2027"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1Z5JOzdhbW5sGsqZmfnK6r7eebZy8tPn4",
+      "kind": "pdf",
+      "materialType": "assessment",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-16T15:38:54.115Z",
+      "name": "V5-SelfAssessment-Fall-2026-2027.pdf",
+      "parentId": "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
+        "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+        "1Z5JOzdhbW5sGsqZmfnK6r7eebZy8tPn4"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Assessments",
+        "2026-2027",
+        "V5-SelfAssessment-Fall-2026-2027.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 632861,
+      "sourceId": "year2",
+      "termLabel": "Fall 2026-2027",
+      "webViewLink": "https://drive.google.com/file/d/1Z5JOzdhbW5sGsqZmfnK6r7eebZy8tPn4/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-18T20:27:30.241Z"
+    },
+    {
+      "categoryPath": [
+        "Assessments",
+        "2026-2027"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1PYzTTCdP22negLuyy2vpTFoY07CF5gt9",
+      "kind": "pdf",
+      "materialType": "assessment",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-16T15:38:47.370Z",
+      "name": "V4-SelfAssessment-Fall-2026-2027.pdf",
+      "parentId": "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
+        "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+        "1PYzTTCdP22negLuyy2vpTFoY07CF5gt9"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Assessments",
+        "2026-2027",
+        "V4-SelfAssessment-Fall-2026-2027.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 518185,
+      "sourceId": "year2",
+      "termLabel": "Fall 2026-2027",
+      "webViewLink": "https://drive.google.com/file/d/1PYzTTCdP22negLuyy2vpTFoY07CF5gt9/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-18T20:27:30.241Z"
+    },
+    {
+      "categoryPath": [
+        "Assessments",
+        "2026-2027"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1wmQW0Oc4UG5UEveQUcMaxC9gzLE3Jf4x",
+      "kind": "pdf",
+      "materialType": "assessment",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-16T15:38:40.518Z",
+      "name": "V3-SelfAssessment-Fall-2026-2027.pdf",
+      "parentId": "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
+        "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+        "1wmQW0Oc4UG5UEveQUcMaxC9gzLE3Jf4x"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Assessments",
+        "2026-2027",
+        "V3-SelfAssessment-Fall-2026-2027.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 2931226,
+      "sourceId": "year2",
+      "termLabel": "Fall 2026-2027",
+      "webViewLink": "https://drive.google.com/file/d/1wmQW0Oc4UG5UEveQUcMaxC9gzLE3Jf4x/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-18T20:27:30.241Z"
+    },
+    {
+      "categoryPath": [
+        "Assessments",
+        "2026-2027"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1wE-EsFBM0wcTYBy2lHGKD47SNlV_L0Li",
+      "kind": "pdf",
+      "materialType": "assessment",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-16T15:38:34.588Z",
+      "name": "V2-SelfAssessment-Fall-2026-2027.pdf",
+      "parentId": "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
+        "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+        "1wE-EsFBM0wcTYBy2lHGKD47SNlV_L0Li"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Assessments",
+        "2026-2027",
+        "V2-SelfAssessment-Fall-2026-2027.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 2926068,
+      "sourceId": "year2",
+      "termLabel": "Fall 2026-2027",
+      "webViewLink": "https://drive.google.com/file/d/1wE-EsFBM0wcTYBy2lHGKD47SNlV_L0Li/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-18T20:27:30.241Z"
+    },
+    {
+      "categoryPath": [
+        "Assessments",
+        "2026-2027"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1H5eBeGwYrqlQBqm-mUIwPlkUL9Qp8qTl",
+      "kind": "pdf",
+      "materialType": "assessment",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-16T15:38:19.258Z",
+      "name": "V1-SelfAssessment-Fall-2026-2027.pdf",
+      "parentId": "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
+        "1NKpy9HfEFZ66MEvgaB05yaxEbZJG3ZfL",
+        "1H5eBeGwYrqlQBqm-mUIwPlkUL9Qp8qTl"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Assessments",
+        "2026-2027",
+        "V1-SelfAssessment-Fall-2026-2027.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 610167,
+      "sourceId": "year2",
+      "termLabel": "Fall 2026-2027",
+      "webViewLink": "https://drive.google.com/file/d/1H5eBeGwYrqlQBqm-mUIwPlkUL9Qp8qTl/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-18T20:27:30.241Z"
+    },
+    {
+      "categoryPath": [
+        "Assessments",
+        "2025-2026"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1uRYYjEVz33utcHQDsS3VIy0LeTGiX9nN",
+      "kind": "pdf",
+      "materialType": "assessment",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-05T09:47:44.133Z",
+      "name": "V1-SelfAssessment-Fall-2025-2026.pdf",
+      "parentId": "1eLk0p37qEp2IDm5hPrtBQrxejLLDkHvc",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
+        "1eLk0p37qEp2IDm5hPrtBQrxejLLDkHvc",
+        "1uRYYjEVz33utcHQDsS3VIy0LeTGiX9nN"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Assessments",
+        "2025-2026",
+        "V1-SelfAssessment-Fall-2025-2026.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 471433,
+      "sourceId": "year2",
+      "termLabel": "Fall 2025-2026",
+      "webViewLink": "https://drive.google.com/file/d/1uRYYjEVz33utcHQDsS3VIy0LeTGiX9nN/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Assessments",
+        "2025-2026"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1dy8SPFxD6YCh953JmoToM_6nQ6vKhfRD",
+      "kind": "pdf",
+      "materialType": "assessment",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-05T09:47:43.419Z",
+      "name": "V2-SelfAssessment-Fall-2025-2026.pdf",
+      "parentId": "1eLk0p37qEp2IDm5hPrtBQrxejLLDkHvc",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
+        "1eLk0p37qEp2IDm5hPrtBQrxejLLDkHvc",
+        "1dy8SPFxD6YCh953JmoToM_6nQ6vKhfRD"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Assessments",
+        "2025-2026",
+        "V2-SelfAssessment-Fall-2025-2026.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 574361,
+      "sourceId": "year2",
+      "termLabel": "Fall 2025-2026",
+      "webViewLink": "https://drive.google.com/file/d/1dy8SPFxD6YCh953JmoToM_6nQ6vKhfRD/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Assessments",
+        "2025-2026"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1QkNmh9vHrH15Y8hm8B0kLMZ8th4y7QIF",
+      "kind": "pdf",
+      "materialType": "assessment",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-05T09:47:42.612Z",
+      "name": "V3-SelfAssessment-Fall-2025-2026.pdf",
+      "parentId": "1eLk0p37qEp2IDm5hPrtBQrxejLLDkHvc",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
+        "1eLk0p37qEp2IDm5hPrtBQrxejLLDkHvc",
+        "1QkNmh9vHrH15Y8hm8B0kLMZ8th4y7QIF"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Assessments",
+        "2025-2026",
+        "V3-SelfAssessment-Fall-2025-2026.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 495671,
+      "sourceId": "year2",
+      "termLabel": "Fall 2025-2026",
+      "webViewLink": "https://drive.google.com/file/d/1QkNmh9vHrH15Y8hm8B0kLMZ8th4y7QIF/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Assessments",
+        "2025-2026"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "12CGH_pDVs0x3Qtnyz-SUp8gEjEB1TSCE",
+      "kind": "pdf",
+      "materialType": "assessment",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-05T09:47:41.813Z",
+      "name": "V4-SelfAssessment-Fall-2025-2026.pdf",
+      "parentId": "1eLk0p37qEp2IDm5hPrtBQrxejLLDkHvc",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "1U8gq4T1EbJ5swNXeFiQLmqTHB-nlC-qh",
+        "1eLk0p37qEp2IDm5hPrtBQrxejLLDkHvc",
+        "12CGH_pDVs0x3Qtnyz-SUp8gEjEB1TSCE"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Assessments",
+        "2025-2026",
+        "V4-SelfAssessment-Fall-2025-2026.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 645854,
+      "sourceId": "year2",
+      "termLabel": "Fall 2025-2026",
+      "webViewLink": "https://drive.google.com/file/d/12CGH_pDVs0x3Qtnyz-SUp8gEjEB1TSCE/view?usp=drivesdk",
+      "firstSeenAt": "2026-08-31T12:24:54.641Z"
     },
     {
       "categoryPath": [
