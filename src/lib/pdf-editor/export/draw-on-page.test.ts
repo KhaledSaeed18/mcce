@@ -93,12 +93,8 @@ async function exportWithPageTurnedBy(
 
 /** The content stream the markup was written into, which is stored compressed. */
 function readDrawing(raw: Buffer): string {
-  let from = 0;
-  for (;;) {
-    const open = raw.indexOf("stream\n", from);
-    if (open === -1) {
-      return "";
-    }
+  let open = raw.indexOf("stream\n");
+  while (open !== -1) {
     const close = raw.indexOf("endstream", open);
     try {
       const text = inflateSync(raw.subarray(open + "stream\n".length, close));
@@ -109,8 +105,9 @@ function readDrawing(raw: Buffer): string {
     } catch {
       // Not every stream in the file is markup, or even compressed.
     }
-    from = close + 1;
+    open = raw.indexOf("stream\n", close + 1);
   }
+  return "";
 }
 
 describe("drawAnnotationOnPage", () => {
