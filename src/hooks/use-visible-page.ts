@@ -1,4 +1,5 @@
-import { type RefObject, useCallback, useEffect, useState } from "react";
+import type { RefObject } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   PAGE_INDEX_ATTRIBUTE,
   VISIBLE_PAGE_ROOT_MARGIN,

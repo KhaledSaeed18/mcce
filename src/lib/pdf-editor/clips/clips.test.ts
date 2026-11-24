@@ -5,7 +5,8 @@ import {
   CLIP_MARGIN,
   CLIP_START_WIDTH,
 } from "@/config/pdf-editor";
-import { type PointerTools, pickPointerTool } from "../pointer-tools";
+import type { PointerTools } from "../pointer-tools";
+import { pickPointerTool } from "../pointer-tools";
 import { avoidBands } from "./avoid-bands";
 import { findCardBox, findCardHeight } from "./clip-card-box";
 import { addClip, closeClip, EMPTY_CLIP_DESK, reopenClip } from "./clip-desk";

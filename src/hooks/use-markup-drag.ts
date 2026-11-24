@@ -1,10 +1,5 @@
-import {
-  type MouseEvent,
-  type PointerEvent,
-  useCallback,
-  useRef,
-  useState,
-} from "react";
+import type { MouseEvent, PointerEvent } from "react";
+import { useCallback, useRef, useState } from "react";
 import {
   MARKUP_OVERLAY_ATTRIBUTE,
   TEXT_MOVE_TOLERANCE,
@@ -12,7 +7,8 @@ import {
 import { getAnnotationBox } from "@/lib/pdf-editor/annotation-box";
 import { blurFocusedOverlay } from "@/lib/pdf-editor/blur-overlay";
 import { clampDelta } from "@/lib/pdf-editor/bounds";
-import { type AnnotationDrag, findAnnotationAt } from "@/lib/pdf-editor/move";
+import type { AnnotationDrag } from "@/lib/pdf-editor/move";
+import { findAnnotationAt } from "@/lib/pdf-editor/move";
 import { toPagePoint } from "@/lib/pdf-editor/pointer";
 import type { Annotation, Box, PageSize, Point } from "@/lib/pdf-editor/types";
 

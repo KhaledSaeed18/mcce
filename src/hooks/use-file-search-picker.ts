@@ -1,4 +1,5 @@
-import { type KeyboardEvent, useCallback, useState } from "react";
+import type { KeyboardEvent } from "react";
+import { useCallback, useState } from "react";
 import {
   FILE_SEARCH_SHOW_ALL_VALUE,
   FILE_SEARCH_VALUE_SEPARATOR,

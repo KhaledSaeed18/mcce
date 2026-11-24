@@ -4,12 +4,8 @@ import {
   SearchIcon,
   XIcon,
 } from "lucide-react";
-import {
-  type ChangeEvent,
-  type KeyboardEvent,
-  useCallback,
-  useRef,
-} from "react";
+import type { ChangeEvent, KeyboardEvent } from "react";
+import { useCallback, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import {
   SEARCH_LABEL,

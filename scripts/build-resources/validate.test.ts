@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { Repository, Resource } from "../../src/lib/resources/types";
-import { type ValidationContext, validateCatalog } from "./validate";
+import type { ValidationContext } from "./validate";
+import { validateCatalog } from "./validate";
 
 const context: ValidationContext = {
   categoryIds: new Set(["dev"]),

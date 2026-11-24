@@ -1,4 +1,5 @@
-import { type RGB, rgb } from "pdf-lib";
+import type { RGB } from "pdf-lib";
+import { rgb } from "pdf-lib";
 
 const HEX_PATTERN = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/iu;
 const CHANNEL_MAX = 255;

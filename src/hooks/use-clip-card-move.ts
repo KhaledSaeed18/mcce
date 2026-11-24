@@ -1,4 +1,5 @@
-import { type PointerEvent, useCallback, useRef, useState } from "react";
+import type { PointerEvent } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useClipCardKeys } from "@/hooks/use-clip-card-keys";
 import { clampCard } from "@/lib/pdf-editor/clips/clamp-card";
 import { placeCardAt } from "@/lib/pdf-editor/clips/clip-place";

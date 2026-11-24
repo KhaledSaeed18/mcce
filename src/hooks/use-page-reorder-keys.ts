@@ -1,4 +1,5 @@
-import { type KeyboardEvent, useCallback } from "react";
+import type { KeyboardEvent } from "react";
+import { useCallback } from "react";
 import { readRailPosition } from "@/lib/pdf-editor/rail-position";
 
 /** Alt and an arrow key move the focused page, for anyone not using a pointer. */

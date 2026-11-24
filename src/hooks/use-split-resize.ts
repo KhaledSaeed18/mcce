@@ -1,12 +1,5 @@
-import {
-  type KeyboardEvent,
-  type PointerEvent,
-  type RefObject,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import type { KeyboardEvent, PointerEvent, RefObject } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   DEFAULT_SPLIT_RATIO,
   SPLIT_DIVIDER_WIDTH,

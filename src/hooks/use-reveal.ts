@@ -1,4 +1,5 @@
-import { type MotionProps, useReducedMotion } from "motion/react";
+import type { MotionProps } from "motion/react";
+import { useReducedMotion } from "motion/react";
 import {
   REVEAL_GROUP_VARIANTS,
   REVEAL_VARIANTS,

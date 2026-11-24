@@ -1,10 +1,5 @@
-import {
-  type ChangeEvent,
-  type KeyboardEvent,
-  useCallback,
-  useRef,
-  useState,
-} from "react";
+import type { ChangeEvent, KeyboardEvent } from "react";
+import { useCallback, useRef, useState } from "react";
 import type { Annotation, NoteAnnotation } from "@/lib/pdf-editor/types";
 
 interface NoteDraftOptions {

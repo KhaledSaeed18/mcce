@@ -1,4 +1,5 @@
-import { type AnnotationDrag, shiftAnnotation } from "./move";
+import type { AnnotationDrag } from "./move";
+import { shiftAnnotation } from "./move";
 import type { Annotation } from "./types";
 
 /** The selected markup as it should be framed right now: moved along with a

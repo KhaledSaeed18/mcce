@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ExternalLinkIcon } from "lucide-react";
-import { FOOTER_NAV_COLUMNS, type FooterNavLink } from "@/config/footer";
+import type { FooterNavLink } from "@/config/footer";
+import { FOOTER_NAV_COLUMNS } from "@/config/footer";
 
 const LINK_CLASSES =
   "inline-flex max-w-full items-center gap-1 rounded border-2 border-transparent px-1.5 py-0.5 text-sm transition duration-200 lift-hit-area hover:-translate-x-0.5 hover:-translate-y-0.5 hover:border-border hover:bg-muted hover:shadow-sm active:translate-x-0.5 active:translate-y-0.5";

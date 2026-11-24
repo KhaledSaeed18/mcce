@@ -2,15 +2,12 @@ import { resolve } from "node:path";
 import { DRIVE_SOURCES } from "../../src/config/sources";
 import { DRIVE_WRITE_SCOPE, getAccessToken } from "../sync-drive/auth";
 import { crawlSource } from "../sync-drive/crawl";
-import { type ApplyContext, applyPlan } from "./apply";
+import type { ApplyContext } from "./apply";
+import { applyPlan } from "./apply";
 import { moveFile, renameFile } from "./drive-write";
 import { readJournal } from "./journal";
-import {
-  findCollisions,
-  findUncategorised,
-  planTree,
-  type TreeNode,
-} from "./plan";
+import type { TreeNode } from "./plan";
+import { findCollisions, findUncategorised, planTree } from "./plan";
 
 const JOURNAL_PATH = resolve(
   process.cwd(),

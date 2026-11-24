@@ -1,4 +1,5 @@
-import { type RefObject, useEffect, useRef } from "react";
+import type { RefObject } from "react";
+import { useEffect, useRef } from "react";
 
 /**
  * Hears a color input only when its picker is done. React's change event fires

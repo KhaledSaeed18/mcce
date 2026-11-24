@@ -1,3 +1,4 @@
+import type { LucideIcon } from "lucide-react";
 import {
   BookOpenTextIcon,
   CalculatorIcon,
@@ -5,7 +6,6 @@ import {
   FileTextIcon,
   HomeIcon,
   LibraryIcon,
-  type LucideIcon,
   MapIcon,
   SearchIcon,
 } from "lucide-react";

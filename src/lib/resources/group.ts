@@ -1,12 +1,9 @@
-import {
-  RESOURCE_CATEGORIES,
-  type ResourceCategory,
-} from "@/config/resources/categories";
-import { REPO_DOMAINS, type RepoDomain } from "@/config/resources/repo-domains";
-import {
-  THESIS_STAGES,
-  type ThesisStage,
-} from "@/config/resources/thesis-stages";
+import type { ResourceCategory } from "@/config/resources/categories";
+import { RESOURCE_CATEGORIES } from "@/config/resources/categories";
+import type { RepoDomain } from "@/config/resources/repo-domains";
+import { REPO_DOMAINS } from "@/config/resources/repo-domains";
+import type { ThesisStage } from "@/config/resources/thesis-stages";
+import { THESIS_STAGES } from "@/config/resources/thesis-stages";
 import type { RepoEntry, ResourceEntry } from "./types";
 
 export interface CategorySection {

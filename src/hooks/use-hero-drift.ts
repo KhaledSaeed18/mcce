@@ -1,4 +1,5 @@
-import { type MotionProps, useReducedMotion } from "motion/react";
+import type { MotionProps } from "motion/react";
+import { useReducedMotion } from "motion/react";
 import { HERO_DRIFT } from "@/config/page-hero";
 
 /** The wander every hero illustration shares, dropped when the reader asks for

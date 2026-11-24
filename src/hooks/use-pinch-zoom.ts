@@ -1,4 +1,5 @@
-import { type RefObject, useEffect, useRef } from "react";
+import type { RefObject } from "react";
+import { useEffect, useRef } from "react";
 import {
   GESTURE_ZOOM_STEP_SCALE,
   WHEEL_ZOOM_STEP_DELTA,

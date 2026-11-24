@@ -1,10 +1,5 @@
-import {
-  type DragEvent,
-  type RefObject,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import type { DragEvent, RefObject } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { TAB_DRAG_TYPE } from "@/config/pdf-editor";
 import { readTabDragData } from "@/lib/pdf-editor/tab-drag-data";
 import type { EditorPaneSide, OpenFile } from "@/lib/pdf-editor/types";

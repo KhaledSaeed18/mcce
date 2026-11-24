@@ -1,6 +1,6 @@
+import type { StaticPage } from "../../src/config/seo/sitemap";
 import {
   STATIC_PAGES,
-  type StaticPage,
   TRACKS_INDEX,
   TRACKS_RESOURCES,
 } from "../../src/config/seo/sitemap";

@@ -1,4 +1,5 @@
-import { type ChangeEvent, useCallback } from "react";
+import type { ChangeEvent } from "react";
+import { useCallback } from "react";
 import { GpaTargetOutcome } from "@/components/gpa/gpa-target-outcome";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";

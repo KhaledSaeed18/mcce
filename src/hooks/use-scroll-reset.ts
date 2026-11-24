@@ -1,4 +1,5 @@
-import { type RefObject, useEffect } from "react";
+import type { RefObject } from "react";
+import { useEffect } from "react";
 
 /** The scroller outlives the file in it, so a newly opened file would
  * otherwise start at the offset the last one was left at. */

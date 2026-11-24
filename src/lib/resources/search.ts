@@ -1,4 +1,5 @@
-import { type Searchable, scoreSearchable } from "./search-score";
+import type { Searchable } from "./search-score";
+import { scoreSearchable } from "./search-score";
 
 const WHITESPACE = /\s+/u;
 

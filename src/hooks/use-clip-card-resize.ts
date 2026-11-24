@@ -1,4 +1,5 @@
-import { type PointerEvent, useCallback, useRef, useState } from "react";
+import type { PointerEvent } from "react";
+import { useCallback, useRef, useState } from "react";
 import { CLIP_MARGIN, CLIP_MIN_WIDTH } from "@/config/pdf-editor";
 import {
   findCardHeight,

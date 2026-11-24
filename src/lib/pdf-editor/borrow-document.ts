@@ -1,8 +1,5 @@
-import {
-  acquireDocument,
-  type DocumentLease,
-  hasLoadedDocument,
-} from "./document-cache";
+import type { DocumentLease } from "./document-cache";
+import { acquireDocument, hasLoadedDocument } from "./document-cache";
 import { openDocument } from "./open-document";
 import type { EditorFileRef } from "./types";
 

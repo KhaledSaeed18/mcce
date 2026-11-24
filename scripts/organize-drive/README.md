@@ -13,14 +13,14 @@ Run `pnpm sync:drive` afterwards to rebuild `src/data/drive-index.json`, then `p
 
 ## Layout
 
-| File | Holds |
-|---|---|
-| `layout.ts` | The canonical category vocabulary and the per-course path rewrites |
-| `naming.ts` | File name rules: term markers, solution markers, version prefixes |
-| `folder-name.ts` | Folder name rules: zero-padding, MATLAB spellings, bracket prefixes |
-| `plan.ts` | Turns the crawled tree into a target path per node, plus the safety checks |
-| `apply.ts` | Walks the plan, creating folders as needed |
-| `journal.ndjson` | What the last `apply` actually did, and the only way to undo it |
+| File             | Holds                                                                      |
+| ---------------- | -------------------------------------------------------------------------- |
+| `layout.ts`      | The canonical category vocabulary and the per-course path rewrites         |
+| `naming.ts`      | File name rules: term markers, solution markers, version prefixes          |
+| `folder-name.ts` | Folder name rules: zero-padding, MATLAB spellings, bracket prefixes        |
+| `plan.ts`        | Turns the crawled tree into a target path per node, plus the safety checks |
+| `apply.ts`       | Walks the plan, creating folders as needed                                 |
+| `journal.ndjson` | What the last `apply` actually did, and the only way to undo it            |
 
 ## What it will not do
 

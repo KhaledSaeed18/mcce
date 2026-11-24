@@ -1,4 +1,5 @@
-import { type PointerEvent, useCallback, useRef, useState } from "react";
+import type { PointerEvent } from "react";
+import { useCallback, useRef, useState } from "react";
 import { ERASER_TOLERANCE } from "@/config/pdf-editor";
 import { isAnnotationHit } from "@/lib/pdf-editor/geometry";
 import { toPagePoint } from "@/lib/pdf-editor/pointer";

@@ -4,24 +4,24 @@ import { Badge } from "@/components/ui/badge";
 import { COURSE_KIND_BADGE_LABEL } from "@/config/courses";
 import { DOT_GRID_BACKGROUND } from "@/config/patterns";
 import { useEntrance } from "@/hooks/use-entrance";
-import {
-  buildRoadmapGraph,
-  type RoadmapEdgeKind,
-  type RoadmapGraph,
+import type {
+  RoadmapEdgeKind,
+  RoadmapGraph,
 } from "@/lib/curriculum/roadmap-graph";
+import { buildRoadmapGraph } from "@/lib/curriculum/roadmap-graph";
+import type {
+  RoadmapLayout,
+  RoadmapLayoutNode,
+} from "@/lib/curriculum/roadmap-layout";
 import {
   buildRoadmapLayout,
   columnX,
   ROADMAP_HEADER_HEIGHT,
   ROADMAP_NODE_HEIGHT,
   ROADMAP_NODE_WIDTH,
-  type RoadmapLayout,
-  type RoadmapLayoutNode,
 } from "@/lib/curriculum/roadmap-layout";
-import {
-  type RoadmapTrace,
-  traceRoadmap,
-} from "@/lib/curriculum/roadmap-trace";
+import type { RoadmapTrace } from "@/lib/curriculum/roadmap-trace";
+import { traceRoadmap } from "@/lib/curriculum/roadmap-trace";
 import type { CurriculumTerm, CurriculumYear } from "@/lib/curriculum/types";
 import { cn } from "@/lib/utils";
 

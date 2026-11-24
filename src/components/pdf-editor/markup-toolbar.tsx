@@ -1,5 +1,6 @@
 import { CopyIcon, Trash2Icon } from "lucide-react";
-import { type RefObject, useCallback, useRef } from "react";
+import type { RefObject } from "react";
+import { useCallback, useRef } from "react";
 import { ColorSwatches } from "@/components/pdf-editor/color-swatches";
 import { SizeSelect } from "@/components/pdf-editor/size-select";
 import { TextToolbarButton } from "@/components/pdf-editor/text-toolbar-button";

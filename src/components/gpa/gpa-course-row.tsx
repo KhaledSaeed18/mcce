@@ -1,4 +1,5 @@
-import { type ChangeEvent, useCallback } from "react";
+import type { ChangeEvent } from "react";
+import { useCallback } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { MAX_COURSE_AVERAGE } from "@/config/gpa";

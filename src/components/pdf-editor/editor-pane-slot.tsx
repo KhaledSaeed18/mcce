@@ -1,4 +1,5 @@
-import { type ReactNode, useCallback } from "react";
+import type { ReactNode } from "react";
+import { useCallback } from "react";
 import { PANE_LABELS } from "@/config/pdf-editor";
 import type { EditorPaneSide } from "@/lib/pdf-editor/types";
 

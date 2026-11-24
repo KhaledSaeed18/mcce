@@ -1,4 +1,5 @@
-import { type PDFDocument, type PDFFont, StandardFonts } from "pdf-lib";
+import type { PDFDocument, PDFFont } from "pdf-lib";
+import { StandardFonts } from "pdf-lib";
 import type { Annotation, TextFontFamily, TextFormat } from "../types";
 
 /** Regular, bold, italic, and bold italic of each family. */

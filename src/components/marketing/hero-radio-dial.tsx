@@ -1,4 +1,5 @@
-import { type MotionValue, m, useTransform } from "motion/react";
+import type { MotionValue } from "motion/react";
+import { m, useTransform } from "motion/react";
 import type { HeroStation } from "@/components/marketing/types";
 import type { HeroRadioDial as HeroRadioDialState } from "@/hooks/use-hero-radio-dial";
 import { dialPercent } from "@/lib/drive/hero-radio-signal";

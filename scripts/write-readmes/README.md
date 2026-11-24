@@ -25,17 +25,17 @@ A folder with more than one matching doc is skipped and reported.
 
 ## Layout
 
-| File | Holds |
-|---|---|
-| `config.ts` | Folder descriptions, course to tools-category map, site page list |
-| `context.ts` | Joins the Drive index with the curriculum and the README doc ids |
-| `course-stats.ts` | File, exam, and per-term counts for one course |
-| `sections.ts` | Tables and blocks shared by every doc: Drive and semester navigation, footer |
-| `root-doc.ts`, `semester-doc.ts`, `course-doc.ts` | One builder per README level |
-| `course-sections.ts` | The course README's sections |
-| `lecture-videos-*.ts` | YouTube playlist docs, currently CENG557 |
-| `drive-docs.ts` | Finds a folder's README doc and overwrites a doc with converted HTML |
-| `html.ts` | The small HTML vocabulary Drive keeps when it converts to a Doc |
+| File                                              | Holds                                                                        |
+| ------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `config.ts`                                       | Folder descriptions, course to tools-category map, site page list            |
+| `context.ts`                                      | Joins the Drive index with the curriculum and the README doc ids             |
+| `course-stats.ts`                                 | File, exam, and per-term counts for one course                               |
+| `sections.ts`                                     | Tables and blocks shared by every doc: Drive and semester navigation, footer |
+| `root-doc.ts`, `semester-doc.ts`, `course-doc.ts` | One builder per README level                                                 |
+| `course-sections.ts`                              | The course README's sections                                                 |
+| `lecture-videos-*.ts`                             | YouTube playlist docs, currently CENG557                                     |
+| `drive-docs.ts`                                   | Finds a folder's README doc and overwrites a doc with converted HTML         |
+| `html.ts`                                         | The small HTML vocabulary Drive keeps when it converts to a Doc              |
 
 Writing rules from `AGENTS.md` apply to the doc text too: no em dashes, no
 emojis, no exclamation marks.

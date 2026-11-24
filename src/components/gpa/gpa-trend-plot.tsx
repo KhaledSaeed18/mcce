@@ -1,7 +1,8 @@
 import { GpaTrendBand } from "@/components/gpa/gpa-trend-band";
 import { GpaTrendTooltip } from "@/components/gpa/gpa-trend-tooltip";
 import { GPA_AXIS_TICKS, GRADUATION_MIN_GPA } from "@/config/gpa";
-import { type GpaTrendPoint, toAxisPercent } from "@/lib/gpa/chart";
+import type { GpaTrendPoint } from "@/lib/gpa/chart";
+import { toAxisPercent } from "@/lib/gpa/chart";
 import { formatGpa } from "@/lib/gpa/standing";
 
 interface GpaTrendPlotProps {

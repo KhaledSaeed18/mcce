@@ -1,4 +1,5 @@
-import { type PointerEvent, useCallback, useRef, useState } from "react";
+import type { PointerEvent } from "react";
+import { useCallback, useRef, useState } from "react";
 import {
   CLIP_DRAFT_COLOR,
   CLIP_DRAFT_WIDTH,

@@ -1,4 +1,5 @@
-import { type RefObject, useCallback } from "react";
+import type { RefObject } from "react";
+import { useCallback } from "react";
 import { PAGE_RAIL_ATTRIBUTE } from "@/config/pdf-editor";
 import { avoidBands } from "@/lib/pdf-editor/clips/avoid-bands";
 import type { Box } from "@/lib/pdf-editor/types";

@@ -1,4 +1,5 @@
-import { type LucideIcon, ScaleIcon, ShieldCheckIcon } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { ScaleIcon, ShieldCheckIcon } from "lucide-react";
 import type { COURSE_CARD_COLORS } from "@/config/courses";
 import { FOOTER_CONTACT_EMAIL, FOOTER_GITHUB_URL } from "@/config/footer";
 import {

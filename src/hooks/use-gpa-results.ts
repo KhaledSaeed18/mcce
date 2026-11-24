@@ -4,11 +4,8 @@ import { MCCE_DEGREE_CREDITS } from "@/config/gpa";
 import { getSemesterTotals } from "@/lib/gpa/calculate";
 import { buildTrendPoints } from "@/lib/gpa/chart";
 import { buildContributions } from "@/lib/gpa/contribution";
-import {
-  type AverageMap,
-  buildGpaSemesters,
-  getAllEntries,
-} from "@/lib/gpa/entries";
+import type { AverageMap } from "@/lib/gpa/entries";
+import { buildGpaSemesters, getAllEntries } from "@/lib/gpa/entries";
 import { project } from "@/lib/gpa/projection";
 import { solveTarget } from "@/lib/gpa/target";
 

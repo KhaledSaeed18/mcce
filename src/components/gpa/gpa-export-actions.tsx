@@ -6,7 +6,8 @@ import {
   Share2Icon,
   SheetIcon,
 } from "lucide-react";
-import { type ReactNode, useCallback } from "react";
+import type { ReactNode } from "react";
+import { useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import type { GpaExportAction } from "@/lib/gpa/export/types";
 

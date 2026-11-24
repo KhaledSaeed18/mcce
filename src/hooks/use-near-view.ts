@@ -1,4 +1,5 @@
-import { type RefObject, useEffect, useState } from "react";
+import type { RefObject } from "react";
+import { useEffect, useState } from "react";
 
 /** True while the element is within `margin` of what its scroller shows, and
  * false again once it is further away, so it can let go of what it drew.

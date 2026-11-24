@@ -1,4 +1,5 @@
-import { type RefObject, useEffect } from "react";
+import type { RefObject } from "react";
+import { useEffect } from "react";
 
 /** Keeps whatever is current in sight, without pulling it away from where it sits. */
 export function useScrollIntoView(

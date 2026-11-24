@@ -6,7 +6,8 @@ import {
 import { getFillBox, getLineStart, layoutText } from "../text-layout";
 import type { TextAnnotation } from "../types";
 import { flipY } from "./content-space";
-import { type AnnotationFonts, pickStandardFont } from "./embed-font";
+import type { AnnotationFonts } from "./embed-font";
+import { pickStandardFont } from "./embed-font";
 import { hexToRgb } from "./hex-to-rgb";
 
 export function drawText(

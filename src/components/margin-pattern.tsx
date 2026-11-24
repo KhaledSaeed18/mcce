@@ -1,8 +1,8 @@
 import { MarginChip } from "@/components/margin-chip";
+import type { MarginPatternItem } from "@/config/margin-pattern";
 import {
   MARGIN_PATTERN_LEFT,
   MARGIN_PATTERN_RIGHT,
-  type MarginPatternItem,
 } from "@/config/margin-pattern";
 import { DOT_GRID_BACKGROUND } from "@/config/patterns";
 import { cn } from "@/lib/utils";

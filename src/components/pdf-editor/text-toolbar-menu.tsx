@@ -1,5 +1,6 @@
 import { ChevronDownIcon } from "lucide-react";
-import { type MouseEvent, type ReactNode, useCallback } from "react";
+import type { MouseEvent, ReactNode } from "react";
+import { useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import type {
   TextToolbarMenuId,

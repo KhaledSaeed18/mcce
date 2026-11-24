@@ -1,4 +1,5 @@
-import { Fragment, type ReactNode, useRef } from "react";
+import type { ReactNode } from "react";
+import { Fragment, useRef } from "react";
 import { EditorMatchTab } from "@/components/pdf-editor/editor-match-tab";
 import { EditorTab } from "@/components/pdf-editor/editor-tab";
 import { EditorTabMenu } from "@/components/pdf-editor/editor-tab-menu";

@@ -4,10 +4,10 @@
 
 This project ships as a single rolling deployment from the `main` branch. Only the version currently deployed to production receives security fixes. There are no maintained past releases.
 
-| Version | Supported |
-| --- | --- |
-| `main` (latest) | Supported |
-| Older commits | Not supported |
+| Version         | Supported     |
+| --------------- | ------------- |
+| `main` (latest) | Supported     |
+| Older commits   | Not supported |
 
 ## Reporting a Vulnerability
 

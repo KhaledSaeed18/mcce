@@ -1,4 +1,5 @@
-import { type GpaTrendPoint, toAxisPercent } from "@/lib/gpa/chart";
+import type { GpaTrendPoint } from "@/lib/gpa/chart";
+import { toAxisPercent } from "@/lib/gpa/chart";
 import { formatGpa } from "@/lib/gpa/standing";
 
 interface GpaTrendTooltipProps {

@@ -1,3 +1,4 @@
+import type { PDFNumber } from "pdf-lib";
 import {
   degrees,
   PDFArray,
@@ -5,7 +6,6 @@ import {
   PDFDocument,
   PDFHexString,
   PDFName,
-  type PDFNumber,
 } from "pdf-lib";
 import { describe, expect, it } from "vitest";
 import { NOTE_SIZE } from "@/config/pdf-editor";

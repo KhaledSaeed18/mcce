@@ -1,10 +1,5 @@
-import {
-  type MouseEvent,
-  type RefObject,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import type { MouseEvent, RefObject } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { TEXT_MENU_ROOM } from "@/config/pdf-editor";
 
 export type TextToolbarMenuId = "color" | "fill" | "font";

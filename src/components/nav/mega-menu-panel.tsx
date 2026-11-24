@@ -1,10 +1,8 @@
 import { m } from "motion/react";
 import { MegaMenuCard } from "@/components/nav/mega-menu-card";
 import { NAV_CARD_GROUP_VARIANTS, NAV_CARD_VARIANTS } from "@/config/motion";
-import {
-  MEGA_MENU_TWO_COLUMN_THRESHOLD,
-  type NavGroup,
-} from "@/config/navigation";
+import type { NavGroup } from "@/config/navigation";
+import { MEGA_MENU_TWO_COLUMN_THRESHOLD } from "@/config/navigation";
 import { cn } from "@/lib/utils";
 
 interface MegaMenuPanelProps {

@@ -1,4 +1,5 @@
-import { type PointerEvent, useCallback } from "react";
+import type { PointerEvent } from "react";
+import { useCallback } from "react";
 import type { TextBoxDrawResult } from "@/hooks/use-text-box-draw";
 import type { TextDragResult } from "@/hooks/use-text-drag";
 import { isPressConsumed } from "@/lib/pdf-editor/consumed-press";

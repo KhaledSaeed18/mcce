@@ -1,5 +1,6 @@
 import type { DriveNode } from "../../src/lib/drive/types";
-import { childFolders, findCourseFolder, type ReadmeContext } from "./context";
+import type { ReadmeContext } from "./context";
+import { childFolders, findCourseFolder } from "./context";
 import {
   callout,
   heading,
@@ -9,10 +10,8 @@ import {
   table,
   wrapDocument,
 } from "./html";
-import {
-  LECTURE_PLAYLISTS,
-  type LecturePlaylist,
-} from "./lecture-videos-config";
+import type { LecturePlaylist } from "./lecture-videos-config";
+import { LECTURE_PLAYLISTS } from "./lecture-videos-config";
 import { folderLink, readmeLink, sitePage } from "./sections";
 import type { ReadmeDoc } from "./types";
 

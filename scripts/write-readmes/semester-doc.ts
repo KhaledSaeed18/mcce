@@ -1,11 +1,7 @@
 import type { CurriculumCourse } from "../../src/lib/curriculum/types";
 import { ROOT_README_NAME } from "./config";
-import {
-  filesUnder,
-  findCourseFolder,
-  type ReadmeContext,
-  type SemesterFolder,
-} from "./context";
+import type { ReadmeContext, SemesterFolder } from "./context";
+import { filesUnder, findCourseFolder } from "./context";
 import {
   callout,
   escapeHtml,

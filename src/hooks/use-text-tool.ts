@@ -1,7 +1,8 @@
 import { useCallback, useMemo } from "react";
 import { TEXT_BOX_DRAFT_COLOR } from "@/config/pdf-editor";
 import { useTextBoxDraw } from "@/hooks/use-text-box-draw";
-import { type TextDragResult, useTextDrag } from "@/hooks/use-text-drag";
+import type { TextDragResult } from "@/hooks/use-text-drag";
+import { useTextDrag } from "@/hooks/use-text-drag";
 import { useTextHover } from "@/hooks/use-text-hover";
 import { useTextPointerHandlers } from "@/hooks/use-text-pointer-handlers";
 import {

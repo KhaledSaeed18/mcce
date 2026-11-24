@@ -1,4 +1,5 @@
-import { type MotionValue, useTransform } from "motion/react";
+import type { MotionValue } from "motion/react";
+import { useTransform } from "motion/react";
 import {
   SYNC_DIMMED_OPACITY,
   SYNC_FAN_DURATION,

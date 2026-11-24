@@ -1,9 +1,7 @@
 import { ArrowUpRightIcon } from "lucide-react";
 import { DriveGlyph } from "@/components/drive/drive-glyph";
-import {
-  DRIVE_DIRECT_ACTION,
-  type DriveDirectLink,
-} from "@/config/drive-links";
+import type { DriveDirectLink } from "@/config/drive-links";
+import { DRIVE_DIRECT_ACTION } from "@/config/drive-links";
 import { cn } from "@/lib/utils";
 
 const CARD_CLASSES = cn(

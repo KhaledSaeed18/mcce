@@ -1,11 +1,6 @@
 import type { LinkProps } from "@tanstack/react-router";
-import {
-  AtSignIcon,
-  BugIcon,
-  LightbulbIcon,
-  type LucideIcon,
-  MailIcon,
-} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { AtSignIcon, BugIcon, LightbulbIcon, MailIcon } from "lucide-react";
 import type { COURSE_CARD_COLORS } from "@/config/courses";
 import {
   FOOTER_BUG_REPORT_URL,

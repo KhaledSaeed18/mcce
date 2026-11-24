@@ -1,9 +1,5 @@
-import {
-  animate,
-  type MotionValue,
-  useMotionValue,
-  useReducedMotion,
-} from "motion/react";
+import type { MotionValue } from "motion/react";
+import { animate, useMotionValue, useReducedMotion } from "motion/react";
 import { useEffect } from "react";
 
 export interface LoopingProgress {

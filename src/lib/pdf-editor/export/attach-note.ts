@@ -1,8 +1,10 @@
-import { PDFHexString, type PDFPage } from "pdf-lib";
+import type { PDFPage } from "pdf-lib";
+import { PDFHexString } from "pdf-lib";
 import { NOTE_SIZE } from "@/config/pdf-editor";
 import { getRenderedSize } from "../rotation";
 import type { NoteAnnotation, Point } from "../types";
-import { type ContentMatrix, flipY, getContentMatrix } from "./content-space";
+import type { ContentMatrix } from "./content-space";
+import { flipY, getContentMatrix } from "./content-space";
 import { hexToRgb } from "./hex-to-rgb";
 
 /** The PDF flag that has a reader print the note's icon along with the page. */

@@ -1,11 +1,6 @@
 import type { MotionValue } from "motion/react";
-import {
-  type KeyboardEvent,
-  type PointerEvent,
-  useCallback,
-  useRef,
-  useState,
-} from "react";
+import type { KeyboardEvent, PointerEvent } from "react";
+import { useCallback, useRef, useState } from "react";
 import { positionFromDialPercent } from "@/lib/drive/hero-radio-signal";
 
 const STEP_BY_KEY: Record<string, number> = {

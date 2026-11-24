@@ -1,4 +1,5 @@
-import { type RefObject, useCallback, useMemo } from "react";
+import type { RefObject } from "react";
+import { useCallback, useMemo } from "react";
 import { TextSelectionMenu } from "@/components/pdf-editor/text-selection-menu";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { useSelectionClip } from "@/hooks/use-selection-clip";

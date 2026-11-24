@@ -12,7 +12,8 @@ import {
   ROOT_README_NAME,
   SITE_PAGES,
 } from "./config";
-import { filesUnder, findCourseFolder, type ReadmeContext } from "./context";
+import type { ReadmeContext } from "./context";
+import { filesUnder, findCourseFolder } from "./context";
 import { heading, link, list, paragraph, table } from "./html";
 
 export function docUrl(docId: string): string {

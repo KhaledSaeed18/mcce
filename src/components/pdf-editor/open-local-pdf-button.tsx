@@ -1,5 +1,6 @@
 import { FileUpIcon, LoaderIcon } from "lucide-react";
-import { type ChangeEvent, useCallback, useRef } from "react";
+import type { ChangeEvent } from "react";
+import { useCallback, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { LOCAL_PDF_ACCEPT, LOCAL_PDF_OPEN_LABEL } from "@/config/pdf-editor";
 import { useOpenLocalPdf } from "@/hooks/use-open-local-pdf";

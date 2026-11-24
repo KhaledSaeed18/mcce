@@ -1,35 +1,89 @@
 <h1 align="center">MCCE</h1>
 
 <p align="center">
-  An independent index and study toolkit for the LIU M.S. in Computer and Communication Engineering program.
+  An independent index and study toolkit for the LIU M.S. in Computer and
+  Communication Engineering program.
 </p>
 
 <p align="center">
-  <a href="https://mcce.khaledsaeed.tech"><img src=".github/assets/mcce-showcase.webp" alt="MCCE, the whole program indexed: real views of the prerequisite roadmap, file search, the PDF editor, and the GPA calculator." width="1600" height="720" /></a>
+  <a href="https://mcce.khaledsaeed.tech"
+    ><img
+      src=".github/assets/mcce-showcase.webp"
+      alt="MCCE, the whole program indexed: real views of the prerequisite roadmap, file search, the PDF editor, and the GPA calculator."
+      width="1600"
+      height="720"
+    ></a
+  >
 </p>
 
 <p align="center">
   <a href="https://mcce.khaledsaeed.tech/search">Find files</a> ·
   <a href="https://mcce.khaledsaeed.tech/exams">Past exams</a> ·
-  <a href="https://mcce.khaledsaeed.tech/plan-of-study?tab=roadmap">Course roadmap</a> ·
+  <a href="https://mcce.khaledsaeed.tech/plan-of-study?tab=roadmap"
+    >Course roadmap</a
+  >
+  ·
   <a href="https://mcce.khaledsaeed.tech/gpa-calculator">GPA calculator</a>
 </p>
 
 <p align="center">
-  <a href="https://mcce.khaledsaeed.tech"><img src="https://shieldcn.dev/badge/site-mcce.khaledsaeed.tech-ffb454.svg?logo=lu:Globe&variant=branded&animate=shimmer" alt="Site" /></a>
+  <a href="https://mcce.khaledsaeed.tech"
+    ><img
+      src="https://shieldcn.dev/badge/site-mcce.khaledsaeed.tech-ffb454.svg?logo=lu:Globe&variant=branded&animate=shimmer"
+      alt="Site"
+    ></a
+  >
 </p>
 
 <p align="center">
-  <a href="https://github.com/KhaledSaeed18/mcce/actions"><img src="https://shieldcn.dev/github/ci/KhaledSaeed18/mcce.svg" alt="CI" /></a>
-  <a href="https://github.com/KhaledSaeed18/mcce/blob/main/LICENSE"><img src="https://shieldcn.dev/github/license/KhaledSaeed18/mcce.svg" alt="License" /></a>
-  <a href="https://github.com/KhaledSaeed18/mcce/commits/main"><img src="https://shieldcn.dev/github/last-commit/KhaledSaeed18/mcce.svg" alt="Last commit" /></a>
-  <a href="./CONTRIBUTING.md"><img src="https://shieldcn.dev/badge/PRs-welcome-16a34a.svg?logo=lu:GitPullRequest" alt="PRs welcome" /></a>
+  <a href="https://github.com/KhaledSaeed18/mcce/actions"
+    ><img
+      src="https://shieldcn.dev/github/ci/KhaledSaeed18/mcce.svg"
+      alt="CI"
+    ></a
+  >
+  <a href="https://github.com/KhaledSaeed18/mcce/blob/main/LICENSE"
+    ><img
+      src="https://shieldcn.dev/github/license/KhaledSaeed18/mcce.svg"
+      alt="License"
+    ></a
+  >
+  <a href="https://github.com/KhaledSaeed18/mcce/commits/main"
+    ><img
+      src="https://shieldcn.dev/github/last-commit/KhaledSaeed18/mcce.svg"
+      alt="Last commit"
+    ></a
+  >
+  <a href="./CONTRIBUTING.md"
+    ><img
+      src="https://shieldcn.dev/badge/PRs-welcome-16a34a.svg?logo=lu:GitPullRequest"
+      alt="PRs welcome"
+    ></a
+  >
 </p>
 
 <p align="center">
-  <a href="https://drive.google.com/drive/folders/15A8bxA33GichTPcZkyXxaZnP_dRyryTq"><img src="https://shieldcn.dev/badge/First_Year-ff9f1c.svg?logo=googledrive" alt="First Year Drive" /></a>
-  <a href="https://drive.google.com/drive/folders/1O5i5a7CgmPEwQ7G6MFyM75zIfmtDi5pt"><img src="https://shieldcn.dev/badge/Second_Year_(Fall)-ff9f1c.svg?logo=googledrive" alt="Second Year Fall Drive" /></a>
-  <a href="https://drive.google.com/drive/folders/1Ed1qu98go160SHcte4FstkPVhxX9pRK1"><img src="https://shieldcn.dev/badge/Second_Year_(Spring)-ff9f1c.svg?logo=googledrive" alt="Second Year Spring Drive" /></a>
+  <a
+    href="https://drive.google.com/drive/folders/15A8bxA33GichTPcZkyXxaZnP_dRyryTq"
+    ><img
+      src="https://shieldcn.dev/badge/First_Year-ff9f1c.svg?logo=googledrive"
+      alt="First Year Drive"
+    ></a
+  >
+  <a
+    href="https://drive.google.com/drive/folders/1O5i5a7CgmPEwQ7G6MFyM75zIfmtDi5pt"
+    ><img
+      src="https://shieldcn.dev/badge/Second_Year_(Fall)-ff9f1c.svg?logo=googledrive"
+      alt="Second Year Fall Drive"
+    ></a
+  >
+  <a
+    href="https://drive.google.com/drive/folders/1Ed1qu98go160SHcte4FstkPVhxX9pRK1"
+    ><img
+      src="https://shieldcn.dev/badge/Second_Year_(Spring)-ff9f1c.svg?logo=googledrive"
+      alt="Second Year Spring Drive"
+    ></a
+  >
 </p>
 
 ---

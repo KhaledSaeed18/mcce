@@ -1,4 +1,5 @@
-import { type RefObject, useEffect, useLayoutEffect, useRef } from "react";
+import type { RefObject } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import {
   readScrollAnchor,
   restoreScrollAnchor,

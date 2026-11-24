@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
-import { type GpaSemester, getAllEntries } from "@/lib/gpa/entries";
+import type { GpaSemester } from "@/lib/gpa/entries";
+import { getAllEntries } from "@/lib/gpa/entries";
 import { buildShareUrl, encodeShareValue } from "@/lib/gpa/share/encode";
 
 const BLOCKED_MESSAGE = "Copying was blocked. Copy the address bar instead.";

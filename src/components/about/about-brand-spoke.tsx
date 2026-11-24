@@ -1,4 +1,5 @@
-import { type MotionValue, m, useTransform } from "motion/react";
+import type { MotionValue } from "motion/react";
+import { m, useTransform } from "motion/react";
 import {
   ABOUT_CENTER,
   ABOUT_NODE,

@@ -1,5 +1,6 @@
 import { LOADED_DOCUMENT_LIMIT } from "@/config/pdf-editor";
-import { type OpenedDocument, openDocument } from "./open-document";
+import type { OpenedDocument } from "./open-document";
+import { openDocument } from "./open-document";
 import type { EditorFileRef } from "./types";
 
 interface CachedDocument {
