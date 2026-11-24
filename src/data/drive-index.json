@@ -1,7 +1,7 @@
 {
   "meta": {
     "baselineAt": "2026-08-17T06:41:16.505Z",
-    "generatedAt": "2026-11-23T17:05:42.434Z",
+    "generatedAt": "2026-11-24T19:45:37.216Z",
     "sources": [
       {
         "description": "LIU - MCCE | First Year, Both Semesters | materials, videos, exercises, and previous exams.",
@@ -12,10 +12,10 @@
       },
       {
         "description": "LIU - MCCE | Second Year, Fall Semester | materials, videos, exercises, and previous exams.",
-        "fileCount": 319,
+        "fileCount": 335,
         "folderCount": 84,
         "id": "year2",
-        "totalBytes": 6639835890
+        "totalBytes": 6656895164
       },
       {
         "description": "LIU - MCCE | Second Year, Spring Semester | materials, videos, exercises, and previous exams.",
@@ -35163,6 +35163,80 @@
       "courseCode": "CENG646",
       "courseName": "Data Mining",
       "depth": 4,
+      "extension": "pdf",
+      "id": "1SsLRB9yaEGfP6HyzNOCbzLXlFmVog618",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-24T19:44:33.631Z",
+      "name": "Lecture4-P2-2026.pdf",
+      "parentId": "1wEoJAq7TNGNrvpFovT3bZfpwpwm0H9U8",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "1M-bKjleGSK8ISoT1wCNJYldn8r558bNK",
+        "1wEoJAq7TNGNrvpFovT3bZfpwpwm0H9U8",
+        "1SsLRB9yaEGfP6HyzNOCbzLXlFmVog618"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Lectures",
+        "Lecture 04",
+        "Lecture4-P2-2026.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 334169,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1SsLRB9yaEGfP6HyzNOCbzLXlFmVog618/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-24T19:45:37.216Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Lecture 04"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1YsSOVtiEkX_ngPx0x5LK31YLCaBucEYX",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-24T19:44:31.164Z",
+      "name": "Lecture4-P1-2026.pdf",
+      "parentId": "1wEoJAq7TNGNrvpFovT3bZfpwpwm0H9U8",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "1M-bKjleGSK8ISoT1wCNJYldn8r558bNK",
+        "1wEoJAq7TNGNrvpFovT3bZfpwpwm0H9U8",
+        "1YsSOVtiEkX_ngPx0x5LK31YLCaBucEYX"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Lectures",
+        "Lecture 04",
+        "Lecture4-P1-2026.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 565335,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1YsSOVtiEkX_ngPx0x5LK31YLCaBucEYX/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-24T19:45:37.216Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Lecture 04"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 4,
       "extension": "mp4",
       "id": "13aOFRAZYmdnruY0O919ivBVh01VdzYoF",
       "kind": "video",
@@ -35339,6 +35413,117 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1nFDX9-AVrlNajWX_28CsvVACo-DHin3U/view?usp=drivesdk",
       "firstSeenAt": "2026-09-04T16:23:27.892Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Lecture 03"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1Wk5I_4pgsAsLRR4BEddQYp2-bT6QIJgk",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-24T19:44:39.237Z",
+      "name": "lecture3-p1-notes.pdf",
+      "parentId": "1f3c6-fXwh6Q0n_FVYf3keJE0IdBlipTB",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "1M-bKjleGSK8ISoT1wCNJYldn8r558bNK",
+        "1f3c6-fXwh6Q0n_FVYf3keJE0IdBlipTB",
+        "1Wk5I_4pgsAsLRR4BEddQYp2-bT6QIJgk"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Lectures",
+        "Lecture 03",
+        "lecture3-p1-notes.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1045191,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1Wk5I_4pgsAsLRR4BEddQYp2-bT6QIJgk/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-24T19:45:37.216Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Lecture 03"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1Mpf6ujTG0ppDlP_KV5T6zRRuU6G-WHC3",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-24T19:44:29.173Z",
+      "name": "Lecture3-P2-2026.pdf",
+      "parentId": "1f3c6-fXwh6Q0n_FVYf3keJE0IdBlipTB",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "1M-bKjleGSK8ISoT1wCNJYldn8r558bNK",
+        "1f3c6-fXwh6Q0n_FVYf3keJE0IdBlipTB",
+        "1Mpf6ujTG0ppDlP_KV5T6zRRuU6G-WHC3"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Lectures",
+        "Lecture 03",
+        "Lecture3-P2-2026.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 683435,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1Mpf6ujTG0ppDlP_KV5T6zRRuU6G-WHC3/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-24T19:45:37.216Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Lecture 03"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1xx5g9kcorb7FJez5mhtLc_PUmG6CicvJ",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-24T19:44:27.722Z",
+      "name": "Lecture3-P1-2026.pdf",
+      "parentId": "1f3c6-fXwh6Q0n_FVYf3keJE0IdBlipTB",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "1M-bKjleGSK8ISoT1wCNJYldn8r558bNK",
+        "1f3c6-fXwh6Q0n_FVYf3keJE0IdBlipTB",
+        "1xx5g9kcorb7FJez5mhtLc_PUmG6CicvJ"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Lectures",
+        "Lecture 03",
+        "Lecture3-P1-2026.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 812246,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1xx5g9kcorb7FJez5mhtLc_PUmG6CicvJ/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-24T19:45:37.216Z"
     },
     {
       "categoryPath": [
@@ -35607,6 +35792,80 @@
       "courseCode": "CENG646",
       "courseName": "Data Mining",
       "depth": 4,
+      "extension": "pdf",
+      "id": "1vV2K22U_7NSIuVFSEKyLT6d7GMo0UMA4",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-24T19:44:37.260Z",
+      "name": "lecture2-notes.pdf",
+      "parentId": "1b9PCgLbYoOwt_TSw7r2dy86OvfMMUokK",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "1M-bKjleGSK8ISoT1wCNJYldn8r558bNK",
+        "1b9PCgLbYoOwt_TSw7r2dy86OvfMMUokK",
+        "1vV2K22U_7NSIuVFSEKyLT6d7GMo0UMA4"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Lectures",
+        "Lecture 02",
+        "lecture2-notes.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1275619,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1vV2K22U_7NSIuVFSEKyLT6d7GMo0UMA4/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-24T19:45:37.216Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Lecture 02"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1lHG33ipk6MV9y3eflNg05rdRvYvYMHPp",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-24T19:44:26.837Z",
+      "name": "Lecture2-2026.pdf",
+      "parentId": "1b9PCgLbYoOwt_TSw7r2dy86OvfMMUokK",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "1M-bKjleGSK8ISoT1wCNJYldn8r558bNK",
+        "1b9PCgLbYoOwt_TSw7r2dy86OvfMMUokK",
+        "1lHG33ipk6MV9y3eflNg05rdRvYvYMHPp"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Lectures",
+        "Lecture 02",
+        "Lecture2-2026.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1176547,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1lHG33ipk6MV9y3eflNg05rdRvYvYMHPp/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-24T19:45:37.216Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Lecture 02"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 4,
       "extension": "mp4",
       "id": "1xvOyJAf_jOTGCFd4bkDcO9cC5io7cO4z",
       "kind": "video",
@@ -35709,6 +35968,80 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/16CAZllOA19Mf3IMVxDNiNDiB0_8MlfUR/view?usp=drivesdk",
       "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Lecture 01"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1VbA5-0gW6pRSpp5CHYX4vE5wE-F_-veT",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-24T19:44:35.849Z",
+      "name": "lecture1-notes.pdf",
+      "parentId": "1nMOO0z_Xx1f4J33tg23M8p9K53kPMY6J",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "1M-bKjleGSK8ISoT1wCNJYldn8r558bNK",
+        "1nMOO0z_Xx1f4J33tg23M8p9K53kPMY6J",
+        "1VbA5-0gW6pRSpp5CHYX4vE5wE-F_-veT"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Lectures",
+        "Lecture 01",
+        "lecture1-notes.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1232719,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1VbA5-0gW6pRSpp5CHYX4vE5wE-F_-veT/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-24T19:45:37.216Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Lecture 01"
+      ],
+      "courseCode": "CENG646",
+      "courseName": "Data Mining",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "19QG9H8ndC97ZP14vG3WywhxY0AnqeGKp",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-24T19:44:25.866Z",
+      "name": "Lecture1-2026.pdf",
+      "parentId": "1nMOO0z_Xx1f4J33tg23M8p9K53kPMY6J",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1WR36BsrI3AWr3tm4HpzdVnZwRg9RTnaY",
+        "1M-bKjleGSK8ISoT1wCNJYldn8r558bNK",
+        "1nMOO0z_Xx1f4J33tg23M8p9K53kPMY6J",
+        "19QG9H8ndC97ZP14vG3WywhxY0AnqeGKp"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG646 - Data Mining",
+        "Lectures",
+        "Lecture 01",
+        "Lecture1-2026.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1279871,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/19QG9H8ndC97ZP14vG3WywhxY0AnqeGKp/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-24T19:45:37.216Z"
     },
     {
       "categoryPath": [
@@ -38382,6 +38715,43 @@
       "courseCode": "CENG625",
       "courseName": "Cryptography & Advanced Computer Security",
       "depth": 4,
+      "extension": "pdf",
+      "id": "134Rs4QUVPQkApWfyw6CV9LQP6AZQGzzV",
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-24T19:44:15.208Z",
+      "name": "CENG625-(Fall-2026-2027)Midterm-Appendix.pdf",
+      "parentId": "1tQFCLtxD5rcnIkd0FB9xSDoZTud4SnUd",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "12N64QrzcD3theM4mf-qWVg_mpJYWTcnD",
+        "1tQFCLtxD5rcnIkd0FB9xSDoZTud4SnUd",
+        "134Rs4QUVPQkApWfyw6CV9LQP6AZQGzzV"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Exams",
+        "Midterm",
+        "CENG625-(Fall-2026-2027)Midterm-Appendix.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 586499,
+      "sourceId": "year2",
+      "termLabel": "Fall 2026-2027",
+      "webViewLink": "https://drive.google.com/file/d/134Rs4QUVPQkApWfyw6CV9LQP6AZQGzzV/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-24T19:45:37.216Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
       "extension": null,
       "id": "1tVP9mEv5s0eKv3u-JS8NiPyOzVW_fg_a",
       "kind": "folder",
@@ -38937,6 +39307,43 @@
       "courseCode": "CENG625",
       "courseName": "Cryptography & Advanced Computer Security",
       "depth": 4,
+      "extension": "pdf",
+      "id": "15d6W-ZnWVnEs2fx0A_IU87L9-GlAKZP_",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-24T19:28:36.052Z",
+      "name": "Chapter6-alternative.pdf",
+      "parentId": "1uWiH0S_ZmE_5WTaytBz4Qb6V1x157S4-",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
+        "1uWiH0S_ZmE_5WTaytBz4Qb6V1x157S4-",
+        "15d6W-ZnWVnEs2fx0A_IU87L9-GlAKZP_"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Lectures",
+        "Chapter 06",
+        "Chapter6-alternative.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 3915418,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/15d6W-ZnWVnEs2fx0A_IU87L9-GlAKZP_/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-24T19:45:37.216Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 06"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
       "extension": "mp4",
       "id": "1ha53FGXI32WYyV1frohOCcs2OvNi8Yxu",
       "kind": "video",
@@ -39039,6 +39446,80 @@
       "termLabel": null,
       "webViewLink": "https://drive.google.com/file/d/1y-RaHn46RMmUd1GjKo34yCgtmlXBD3yW/view?usp=drivesdk",
       "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 05"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1UsKN4Sw4Y2xmlRbrHjuO-ksBONxqM87P",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-16T16:37:47.055Z",
+      "name": "ch5-modes-pros-cons.pdf",
+      "parentId": "1KC6HzGmajhGi6dEfytMBLyyFpMwROx6D",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
+        "1KC6HzGmajhGi6dEfytMBLyyFpMwROx6D",
+        "1UsKN4Sw4Y2xmlRbrHjuO-ksBONxqM87P"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Lectures",
+        "Chapter 05",
+        "ch5-modes-pros-cons.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 303114,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1UsKN4Sw4Y2xmlRbrHjuO-ksBONxqM87P/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-24T19:45:37.216Z"
+    },
+    {
+      "categoryPath": [
+        "Lectures",
+        "Chapter 05"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 4,
+      "extension": "pdf",
+      "id": "1gM69v94wM-ktaH24wwaADSfjRR5GGnlC",
+      "kind": "pdf",
+      "materialType": "lecture",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-16T16:19:29.898Z",
+      "name": "ch5-modes-summary.pdf",
+      "parentId": "1KC6HzGmajhGi6dEfytMBLyyFpMwROx6D",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "1KUOFOkCHLcrygb5oUc7tAOSHLWpVHojp",
+        "1KC6HzGmajhGi6dEfytMBLyyFpMwROx6D",
+        "1gM69v94wM-ktaH24wwaADSfjRR5GGnlC"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Lectures",
+        "Chapter 05",
+        "ch5-modes-summary.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 755245,
+      "sourceId": "year2",
+      "termLabel": null,
+      "webViewLink": "https://drive.google.com/file/d/1gM69v94wM-ktaH24wwaADSfjRR5GGnlC/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-24T19:45:37.216Z"
     },
     {
       "categoryPath": [
@@ -43043,6 +43524,46 @@
       "courseName": "Mobile Communication",
       "depth": 5,
       "extension": "pdf",
+      "id": "1AXbrftx-iI5lRkftpPMGBU82arQkcIAZ",
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-24T19:44:21.680Z",
+      "name": "[Solution]CENG645-Midterm-2018-Q2-Q3.pdf",
+      "parentId": "1NOsLqnn6HLgw7Ch4jHuEAvpIZp3Hyf2M",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1YOKu_nM9-QY_tFDpGO04fIDfUPCg69mX",
+        "14ExYflISfVkIr6JTp0ziO_4lbzbfucFz",
+        "1juezbkv9NqxrLPykXxUntnIFWTBq6XbH",
+        "1NOsLqnn6HLgw7Ch4jHuEAvpIZp3Hyf2M",
+        "1AXbrftx-iI5lRkftpPMGBU82arQkcIAZ"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG645 - Mobile Communication",
+        "Exams",
+        "Midterm",
+        "Paper Based",
+        "[Solution]CENG645-Midterm-2018-Q2-Q3.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 541422,
+      "sourceId": "year2",
+      "termLabel": "Fall 2018-2019",
+      "webViewLink": "https://drive.google.com/file/d/1AXbrftx-iI5lRkftpPMGBU82arQkcIAZ/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-24T19:45:37.216Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Paper Based"
+      ],
+      "courseCode": "CENG645",
+      "courseName": "Mobile Communication",
+      "depth": 5,
+      "extension": "pdf",
       "id": "1aLucUShWdH1mh8SX9KrZdDiooJ6tk6YI",
       "kind": "pdf",
       "materialType": "exam",
@@ -43832,6 +44353,86 @@
       "termLabel": "Fall 2021-2022",
       "webViewLink": "https://drive.google.com/file/d/1mwVhQ09eXhj_SkWr2ZHog932nH5XFmrS/view?usp=drivesdk",
       "firstSeenAt": "2026-08-31T12:24:54.641Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Paper Based"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 5,
+      "extension": "pdf",
+      "id": "1gAvohYGhYRvHnShtHcZtJ0PGamN6CGDZ",
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-24T19:44:19.884Z",
+      "name": "[Typed Solution]CENG625-Midterm-2018.pdf",
+      "parentId": "1tVP9mEv5s0eKv3u-JS8NiPyOzVW_fg_a",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "12N64QrzcD3theM4mf-qWVg_mpJYWTcnD",
+        "1tQFCLtxD5rcnIkd0FB9xSDoZTud4SnUd",
+        "1tVP9mEv5s0eKv3u-JS8NiPyOzVW_fg_a",
+        "1gAvohYGhYRvHnShtHcZtJ0PGamN6CGDZ"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Exams",
+        "Midterm",
+        "Paper Based",
+        "[Typed Solution]CENG625-Midterm-2018.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1225142,
+      "sourceId": "year2",
+      "termLabel": "Fall 2018-2019",
+      "webViewLink": "https://drive.google.com/file/d/1gAvohYGhYRvHnShtHcZtJ0PGamN6CGDZ/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-24T19:45:37.216Z"
+    },
+    {
+      "categoryPath": [
+        "Exams",
+        "Midterm",
+        "Paper Based"
+      ],
+      "courseCode": "CENG625",
+      "courseName": "Cryptography & Advanced Computer Security",
+      "depth": 5,
+      "extension": "pdf",
+      "id": "1B915FKcAIvmHzKNElmoYCBgGtxKAf3tU",
+      "kind": "pdf",
+      "materialType": "exam",
+      "mimeType": "application/pdf",
+      "modifiedTime": "2026-11-24T19:44:17.751Z",
+      "name": "[Typed Solution]CENG625-Midterm-2017.pdf",
+      "parentId": "1tVP9mEv5s0eKv3u-JS8NiPyOzVW_fg_a",
+      "pathIds": [
+        "1TW50ZX2s8r7p7nzpR3kl-YBRAbpSt7g2",
+        "1kYzWBEv_rEMUHuOO2sPgGmB9llfC1CfJ",
+        "12N64QrzcD3theM4mf-qWVg_mpJYWTcnD",
+        "1tQFCLtxD5rcnIkd0FB9xSDoZTud4SnUd",
+        "1tVP9mEv5s0eKv3u-JS8NiPyOzVW_fg_a",
+        "1B915FKcAIvmHzKNElmoYCBgGtxKAf3tU"
+      ],
+      "pathNames": [
+        "Second Year | Fall Semester",
+        "CENG625 - Cryptography & Advanced Computer Security",
+        "Exams",
+        "Midterm",
+        "Paper Based",
+        "[Typed Solution]CENG625-Midterm-2017.pdf"
+      ],
+      "semester": "Second Year | Fall Semester",
+      "sizeBytes": 1327302,
+      "sourceId": "year2",
+      "termLabel": "Fall 2017-2018",
+      "webViewLink": "https://drive.google.com/file/d/1B915FKcAIvmHzKNElmoYCBgGtxKAf3tU/view?usp=drivesdk",
+      "firstSeenAt": "2026-11-24T19:45:37.216Z"
     },
     {
       "categoryPath": [
