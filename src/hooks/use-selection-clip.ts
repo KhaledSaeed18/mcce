@@ -1,4 +1,5 @@
-import { type RefObject, useCallback } from "react";
+import type { RefObject } from "react";
+import { useCallback } from "react";
 import { findSelectionClipBox } from "@/lib/pdf-editor/clips/selection-clip-box";
 import { toPageBox } from "@/lib/pdf-editor/page-box";
 import { collectSelectionBoxes } from "@/lib/pdf-editor/selection-boxes";

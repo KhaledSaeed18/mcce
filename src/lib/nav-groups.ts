@@ -1,4 +1,5 @@
-import { NAV_GROUPS, type NavEntry } from "@/config/navigation";
+import type { NavEntry } from "@/config/navigation";
+import { NAV_GROUPS } from "@/config/navigation";
 
 function matchesEntry(entry: NavEntry, pathname: string) {
   if ("href" in entry) {

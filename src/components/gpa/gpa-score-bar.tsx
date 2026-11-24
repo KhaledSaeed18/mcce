@@ -1,4 +1,5 @@
-import { type MotionValue, m } from "motion/react";
+import type { MotionValue } from "motion/react";
+import { m } from "motion/react";
 import {
   GPA_BAR_HEIGHTS,
   GPA_BAR_RX,

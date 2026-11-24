@@ -1,4 +1,5 @@
-import { type RefObject, useEffect } from "react";
+import type { RefObject } from "react";
+import { useEffect } from "react";
 
 /** Keeps the tab on screen in sight: when it changes, and when the strip
  * narrows under it, as it does when the bar's other controls change. */

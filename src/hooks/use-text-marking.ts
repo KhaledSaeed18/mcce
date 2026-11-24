@@ -1,4 +1,5 @@
-import { type RefObject, useCallback } from "react";
+import type { RefObject } from "react";
+import { useCallback } from "react";
 import { buildTextMark } from "@/lib/pdf-editor/build-annotation";
 import { mergeLineBoxes } from "@/lib/pdf-editor/line-boxes";
 import { toPageBox } from "@/lib/pdf-editor/page-box";

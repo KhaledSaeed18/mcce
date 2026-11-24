@@ -1,4 +1,5 @@
-import { type MotionValue, m, useTransform } from "motion/react";
+import type { MotionValue } from "motion/react";
+import { m, useTransform } from "motion/react";
 import { HERO_RADIO_KNOB_DEG_PER_STATION } from "@/config/hero-radio";
 
 interface HeroRadioKnobProps {

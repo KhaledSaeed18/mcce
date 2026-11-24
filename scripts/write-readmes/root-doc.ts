@@ -1,7 +1,8 @@
 import { SITE_URL } from "../../src/config/site";
 import type { DriveSource } from "../../src/lib/drive/types";
 import { ROOT_README_NAME, SOURCE_NOTES } from "./config";
-import { childFolders, filesInSource, type ReadmeContext } from "./context";
+import type { ReadmeContext } from "./context";
+import { childFolders, filesInSource } from "./context";
 import {
   callout,
   formatSize,

@@ -1,4 +1,5 @@
-import { type KeyboardEvent, useCallback } from "react";
+import type { KeyboardEvent } from "react";
+import { useCallback } from "react";
 import { readStyleShortcut } from "@/lib/pdf-editor/text-style";
 import type { TextStyle } from "@/lib/pdf-editor/types";
 

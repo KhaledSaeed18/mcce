@@ -5,12 +5,8 @@ import {
   MATERIAL_FOLDER_DESCRIPTIONS,
   MATERIAL_FOLDER_ORDER,
 } from "./config";
-import {
-  type CourseEntry,
-  childFolders,
-  filesUnder,
-  type ReadmeContext,
-} from "./context";
+import type { CourseEntry, ReadmeContext } from "./context";
+import { childFolders, filesUnder } from "./context";
 import type { CourseStats } from "./course-stats";
 import {
   callout,

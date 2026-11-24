@@ -1,8 +1,8 @@
 import { CLIPS_STORAGE_KEY } from "@/config/pdf-editor";
 import { readJson, writeJson } from "@/lib/storage";
+import type { ClipDeskChange } from "./clip-desk";
 import {
   addClip,
-  type ClipDeskChange,
   changeClip,
   closeClip,
   EMPTY_CLIP_DESK,

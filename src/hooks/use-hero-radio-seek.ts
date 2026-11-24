@@ -1,4 +1,5 @@
-import { animate, type MotionValue, useReducedMotion } from "motion/react";
+import type { MotionValue } from "motion/react";
+import { animate, useReducedMotion } from "motion/react";
 import { useEffect } from "react";
 import {
   HERO_RADIO_DWELL_MS,

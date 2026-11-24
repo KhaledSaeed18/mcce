@@ -1,4 +1,5 @@
-import { type RefObject, useEffect, useState } from "react";
+import type { RefObject } from "react";
+import { useEffect, useState } from "react";
 import type { PageSize } from "@/lib/pdf-editor/types";
 
 /** The room an element currently has, tracked so a fitted page can keep fitting. */

@@ -1,4 +1,5 @@
-import { type RefObject, useEffect, useState } from "react";
+import type { RefObject } from "react";
+import { useEffect, useState } from "react";
 
 /** How many tabs the strip has scrolled even partly out of sight, kept up to
  * date as it scrolls and as it or any tab changes size. */

@@ -1,9 +1,5 @@
-import {
-  type ChangeEvent,
-  type KeyboardEvent,
-  useCallback,
-  useState,
-} from "react";
+import type { ChangeEvent, KeyboardEvent } from "react";
+import { useCallback, useState } from "react";
 import { readPageIndex } from "@/lib/pdf-editor/page-number";
 
 interface PageJumpOptions {

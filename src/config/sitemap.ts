@@ -1,9 +1,9 @@
+import type { LucideIcon } from "lucide-react";
 import {
   BookOpenIcon,
   CompassIcon,
   ExternalLinkIcon,
   FolderTreeIcon,
-  type LucideIcon,
   ScaleIcon,
   ToolCaseIcon,
 } from "lucide-react";

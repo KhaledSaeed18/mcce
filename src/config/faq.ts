@@ -1,4 +1,5 @@
-import { CompassIcon, GraduationCapIcon, type LucideIcon } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { CompassIcon, GraduationCapIcon } from "lucide-react";
 import type { COURSE_CARD_COLORS } from "@/config/courses";
 import { EDITOR_MIN_WIDTH_PX } from "@/config/pdf-editor";
 

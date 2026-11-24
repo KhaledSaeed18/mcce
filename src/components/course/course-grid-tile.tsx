@@ -1,4 +1,5 @@
-import { type MotionValue, m } from "motion/react";
+import type { MotionValue } from "motion/react";
+import { m } from "motion/react";
 import {
   COURSE_MARK_STROKE,
   COURSE_TILE_HEIGHT,

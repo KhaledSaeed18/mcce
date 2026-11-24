@@ -1,3 +1,4 @@
+import type { LucideIcon } from "lucide-react";
 import {
   ArchiveIcon,
   AudioWaveformIcon,
@@ -14,7 +15,6 @@ import {
   KanbanIcon,
   LibraryIcon,
   ListChecksIcon,
-  type LucideIcon,
   NetworkIcon,
   PenToolIcon,
   PresentationIcon,

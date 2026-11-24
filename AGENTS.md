@@ -43,6 +43,7 @@ These are the most common AI-generated design choices that produce generic, low-
 <!-- END:craft-rules -->
 
 !-- BEGIN:code-architecture-rules -->
+
 # Code Architecture Rules
 
 > Structure is not optional. Every decision -- file size, naming, where logic lives -- either builds toward a maintainable, scalable codebase or against it. These rules are non-negotiable regardless of deadline pressure or feature complexity.
@@ -58,14 +59,14 @@ These are the most common AI-generated design choices that produce generic, low-
 
 ## File Size Limits (approximate)
 
-| File type | Max lines | Reason |
-|---|---|---|
-| Page (`page.tsx`) | 80 | Pages compose -- they do not implement |
-| Component (`.tsx`) | 150 | Beyond this, it is doing more than one thing |
-| Custom hook (`use*.ts`) | 100 | Extract sub-hooks if growing |
-| Utility / helper | 60 | One responsibility per utility file |
-| Constants file | No limit | But group by domain, not one global dump |
-| Type definition file | No limit | But group by domain |
+| File type               | Max lines | Reason                                       |
+| ----------------------- | --------- | -------------------------------------------- |
+| Page (`page.tsx`)       | 80        | Pages compose -- they do not implement       |
+| Component (`.tsx`)      | 150       | Beyond this, it is doing more than one thing |
+| Custom hook (`use*.ts`) | 100       | Extract sub-hooks if growing                 |
+| Utility / helper        | 60        | One responsibility per utility file          |
+| Constants file          | No limit  | But group by domain, not one global dump     |
+| Type definition file    | No limit  | But group by domain                          |
 
 When a file exceeds its limit, split it -- do not suppress the rule.
 
@@ -99,13 +100,13 @@ src/data/              Generated data artifacts (e.g. the Drive index) -- machin
 
 ## DRY -- Don't Repeat Yourself
 
-| Situation | Action |
-|---|---|
-| Same JSX block appears in 2+ places | Extract a component |
+| Situation                                      | Action                                    |
+| ---------------------------------------------- | ----------------------------------------- |
+| Same JSX block appears in 2+ places            | Extract a component                       |
 | Same logic or calculation appears in 2+ places | Extract a utility function or custom hook |
-| Same string literal appears in 2+ places | Extract a constant |
-| Same type shape appears in 2+ places | Extract a named type or interface |
-| Same API call appears in 2+ places | Extract a service function |
+| Same string literal appears in 2+ places       | Extract a constant                        |
+| Same type shape appears in 2+ places           | Extract a named type or interface         |
+| Same API call appears in 2+ places             | Extract a service function                |
 
 The threshold is two. Not three, not "several". Two occurrences means extract.
 
@@ -133,20 +134,20 @@ The threshold is two. Not three, not "several". Two occurrences means extract.
 
 ## Naming Conventions
 
-| Thing | Convention | Example |
-|---|---|---|
-| Component | PascalCase noun | `UserProfileCard`, `OrderStatusBadge` |
-| Hook | camelCase, `use` prefix | `useCartItems`, `useFormValidation` |
-| Utility function | camelCase verb phrase | `formatCurrency`, `parseISODate` |
-| Service function | camelCase verb phrase | `fetchOrders`, `updateUserProfile` |
-| Boolean variable | `is`, `has`, `can`, `should` prefix | `isLoading`, `hasError`, `canSubmit` |
-| Event handler prop | `on` prefix | `onSubmit`, `onChange`, `onClose` |
-| Event handler implementation | `handle` prefix | `handleSubmit`, `handleClose` |
-| Constant | UPPER_SNAKE_CASE | `MAX_RETRY_COUNT`, `API_BASE_URL` |
-| Type / Interface | PascalCase noun | `UserProfile`, `ApiResponse<T>` |
-| Enum | PascalCase, singular | `OrderStatus`, `UserRole` |
-| File (component) | PascalCase | `UserProfileCard.tsx` |
-| File (hook, util, service) | camelCase | `useCartItems.ts`, `formatCurrency.ts` |
+| Thing                        | Convention                          | Example                                |
+| ---------------------------- | ----------------------------------- | -------------------------------------- |
+| Component                    | PascalCase noun                     | `UserProfileCard`, `OrderStatusBadge`  |
+| Hook                         | camelCase, `use` prefix             | `useCartItems`, `useFormValidation`    |
+| Utility function             | camelCase verb phrase               | `formatCurrency`, `parseISODate`       |
+| Service function             | camelCase verb phrase               | `fetchOrders`, `updateUserProfile`     |
+| Boolean variable             | `is`, `has`, `can`, `should` prefix | `isLoading`, `hasError`, `canSubmit`   |
+| Event handler prop           | `on` prefix                         | `onSubmit`, `onChange`, `onClose`      |
+| Event handler implementation | `handle` prefix                     | `handleSubmit`, `handleClose`          |
+| Constant                     | UPPER_SNAKE_CASE                    | `MAX_RETRY_COUNT`, `API_BASE_URL`      |
+| Type / Interface             | PascalCase noun                     | `UserProfile`, `ApiResponse<T>`        |
+| Enum                         | PascalCase, singular                | `OrderStatus`, `UserRole`              |
+| File (component)             | PascalCase                          | `UserProfileCard.tsx`                  |
+| File (hook, util, service)   | camelCase                           | `useCartItems.ts`, `formatCurrency.ts` |
 
 Names describe what a thing IS or DOES, not how it is implemented. `getFilteredAndSortedActiveUsers` is a bad name. `getActiveUsers` is better. `activeUsers` (if it is a derived value) is best.
 
@@ -291,14 +292,17 @@ Write code that is **accessible, performant, type-safe, and maintainable**. Focu
 ### Framework-Specific Guidance
 
 **TanStack Start:**
+
 - No built-in Image component -- use a plain `<img>` with explicit `width`/`height` and `loading="lazy"` for below-the-fold images.
 - Set head/meta tags via a route's `head` export (root route or per-route), not `next/head`.
 - Fetch data in route `loader`s or `createServerFn` server functions, not in `useEffect`.
 
 **React 19+:**
+
 - Use ref as a prop instead of `React.forwardRef`
 
 **Solid/Svelte/Vue/Qwik:**
+
 - Use `class` and `for` attributes (not `className` or `htmlFor`)
 
 ---
@@ -371,18 +375,18 @@ Follow the Conventional Commits specification strictly.
 
 ## Commit Types
 
-| Type | When to use |
-|---|---|
-| `feat` | A new feature visible to users or consumers of the API |
-| `fix` | A bug fix |
+| Type       | When to use                                                                            |
+| ---------- | -------------------------------------------------------------------------------------- |
+| `feat`     | A new feature visible to users or consumers of the API                                 |
+| `fix`      | A bug fix                                                                              |
 | `refactor` | Code change that neither adds a feature nor fixes a bug (restructure, rename, extract) |
-| `style` | Formatting, whitespace, missing semicolons -- no logic change |
-| `perf` | A change that improves performance |
-| `test` | Adding or correcting tests |
-| `docs` | Documentation only |
-| `chore` | Build process, dependency updates, config changes -- no production code |
-| `ci` | CI/CD pipeline changes |
-| `revert` | Reverting a previous commit |
+| `style`    | Formatting, whitespace, missing semicolons -- no logic change                          |
+| `perf`     | A change that improves performance                                                     |
+| `test`     | Adding or correcting tests                                                             |
+| `docs`     | Documentation only                                                                     |
+| `chore`    | Build process, dependency updates, config changes -- no production code                |
+| `ci`       | CI/CD pipeline changes                                                                 |
+| `revert`   | Reverting a previous commit                                                            |
 
 Use exactly one type per commit. If a commit needs two types, it should be two commits.
 

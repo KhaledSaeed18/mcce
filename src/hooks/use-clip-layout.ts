@@ -1,8 +1,6 @@
 import { useMemo } from "react";
-import {
-  type ClipLayout,
-  layOutClips,
-} from "@/lib/pdf-editor/clips/clip-layout";
+import type { ClipLayout } from "@/lib/pdf-editor/clips/clip-layout";
+import { layOutClips } from "@/lib/pdf-editor/clips/clip-layout";
 import type { EditorClip } from "@/lib/pdf-editor/clips/types";
 import type { PageSize } from "@/lib/pdf-editor/types";
 

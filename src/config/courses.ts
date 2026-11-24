@@ -1,3 +1,4 @@
+import type { LucideIcon } from "lucide-react";
 import {
   AudioWaveformIcon,
   BookOpenIcon,
@@ -8,7 +9,6 @@ import {
   FlaskConicalIcon,
   GraduationCapIcon,
   ImageIcon,
-  type LucideIcon,
   NetworkIcon,
   RadioIcon,
   SatelliteIcon,

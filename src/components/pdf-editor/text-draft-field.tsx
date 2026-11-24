@@ -1,4 +1,5 @@
-import { type ChangeEvent, useCallback, useRef } from "react";
+import type { ChangeEvent } from "react";
+import { useCallback, useRef } from "react";
 import { TextBoxFrame } from "@/components/pdf-editor/text-box-frame";
 import { TextMoveStrip } from "@/components/pdf-editor/text-move-strip";
 import {

@@ -1,4 +1,5 @@
-import { FileIcon, Grid3x3Icon, type LucideIcon } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { FileIcon, Grid3x3Icon } from "lucide-react";
 import { useCallback } from "react";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { PAGE_SHEET_LABELS } from "@/config/pdf-editor";

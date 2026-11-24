@@ -1,4 +1,5 @@
-import { type MotionValue, useTransform } from "motion/react";
+import type { MotionValue } from "motion/react";
+import { useTransform } from "motion/react";
 import { HeroRadioMeterBar } from "@/components/marketing/hero-radio-meter-bar";
 import { HERO_RADIO_METER_BARS } from "@/config/hero-radio";
 import { signalStrength } from "@/lib/drive/hero-radio-signal";

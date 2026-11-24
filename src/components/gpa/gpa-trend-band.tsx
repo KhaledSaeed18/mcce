@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { CHART_BAR_MAX_WIDTH } from "@/config/gpa";
-import { type GpaTrendPoint, toAxisPercent } from "@/lib/gpa/chart";
+import type { GpaTrendPoint } from "@/lib/gpa/chart";
+import { toAxisPercent } from "@/lib/gpa/chart";
 import { formatGpa } from "@/lib/gpa/standing";
 
 interface GpaTrendBandProps {

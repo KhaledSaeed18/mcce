@@ -1,10 +1,5 @@
-import {
-  type ChangeEvent,
-  type KeyboardEvent,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import type { ChangeEvent, KeyboardEvent } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { focusTextField } from "@/lib/pdf-editor/focus-text-field";
 import { clampFontSize, stepFontSize } from "@/lib/pdf-editor/text-style";
 

@@ -1,4 +1,5 @@
-import { type PointerEvent, useCallback, useRef } from "react";
+import type { PointerEvent } from "react";
+import { useCallback, useRef } from "react";
 import { toBaseDelta } from "@/lib/pdf-editor/rotation";
 
 /** Drag handlers reporting movement in page units, whatever the zoom or the turn. */

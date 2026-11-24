@@ -1,7 +1,5 @@
-import {
-  ADMISSIONS_PAGE_PATH,
-  type AdmissionsTrack,
-} from "@/config/admissions";
+import type { AdmissionsTrack } from "@/config/admissions";
+import { ADMISSIONS_PAGE_PATH } from "@/config/admissions";
 import { FOOTER_GITHUB_URL } from "@/config/footer";
 import {
   PROGRAM_DEPARTMENT,

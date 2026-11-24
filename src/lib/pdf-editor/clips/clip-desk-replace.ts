@@ -1,4 +1,5 @@
-import { addClip, type ClipDeskChange, closeClip } from "./clip-desk";
+import type { ClipDeskChange } from "./clip-desk";
+import { addClip, closeClip } from "./clip-desk";
 import type { ClipDesk, EditorClip } from "./types";
 
 /** Puts a set's clips on screen in place of the ones there, which go to

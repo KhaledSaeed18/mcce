@@ -1,4 +1,5 @@
-import { degrees, type PDFDocument, type PDFPage } from "pdf-lib";
+import type { PDFDocument, PDFPage } from "pdf-lib";
+import { degrees } from "pdf-lib";
 import type { EditorPage } from "../types";
 import { resolveLayoutPages } from "./resolve-pages";
 

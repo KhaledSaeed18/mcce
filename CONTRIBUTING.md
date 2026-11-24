@@ -25,25 +25,25 @@ and how to submit them.
 
 ## Tech stack
 
-| Layer | Technology |
-|---|---|
-| Framework | [TanStack Start](https://tanstack.com/start) (file-based routing via TanStack Router) |
-| UI | React 19, [shadcn/ui](https://ui.shadcn.com) (`base-nova` style, neutral base color), [Base UI](https://base-ui.com) primitives |
-| Styling | Tailwind CSS v4 |
-| Animation | [motion](https://motion.dev) only. No GSAP, Lenis, or other animation libraries |
-| Icons | lucide-react |
-| Data fetching | TanStack Query, TanStack Router SSR query integration |
-| Data source | Google Drive API v3, read through a service account |
-| Forms | Web3Forms (contact form), hCaptcha |
-| PDF export | jsPDF, jspdf-autotable |
-| Build tool | Vite 8 |
-| Deployment target | Cloudflare Workers (via `@cloudflare/vite-plugin` and Wrangler) |
-| Language | TypeScript, strict mode |
-| Linting/formatting | Biome, via [Ultracite](https://ultracite.dev) preset |
-| Unused code detection | Knip |
-| Testing | Vitest, node environment |
-| Git hooks | Lefthook |
-| Package manager | pnpm (`pnpm@11.11.0`, workspace-enabled) |
+| Layer                 | Technology                                                                                                                      |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Framework             | [TanStack Start](https://tanstack.com/start) (file-based routing via TanStack Router)                                           |
+| UI                    | React 19, [shadcn/ui](https://ui.shadcn.com) (`base-nova` style, neutral base color), [Base UI](https://base-ui.com) primitives |
+| Styling               | Tailwind CSS v4                                                                                                                 |
+| Animation             | [motion](https://motion.dev) only. No GSAP, Lenis, or other animation libraries                                                 |
+| Icons                 | lucide-react                                                                                                                    |
+| Data fetching         | TanStack Query, TanStack Router SSR query integration                                                                           |
+| Data source           | Google Drive API v3, read through a service account                                                                             |
+| Forms                 | Web3Forms (contact form), hCaptcha                                                                                              |
+| PDF export            | jsPDF, jspdf-autotable                                                                                                          |
+| Build tool            | Vite 8                                                                                                                          |
+| Deployment target     | Cloudflare Workers (via `@cloudflare/vite-plugin` and Wrangler)                                                                 |
+| Language              | TypeScript, strict mode                                                                                                         |
+| Linting/formatting    | Biome, via [Ultracite](https://ultracite.dev) preset                                                                            |
+| Unused code detection | Knip                                                                                                                            |
+| Testing               | Vitest, node environment                                                                                                        |
+| Git hooks             | Lefthook                                                                                                                        |
+| Package manager       | pnpm (`pnpm@11.11.0`, workspace-enabled)                                                                                        |
 
 The project has no traditional backend. Course data is served from a generated JSON index
 (`src/data/drive-index.json`) that is crawled from Google Drive by a scheduled GitHub Action and
@@ -104,23 +104,23 @@ runs `ultracite fix` on staged JS/TS/JSON/CSS files automatically.
 
 ## Available scripts
 
-| Command | Description |
-|---|---|
-| `pnpm dev` | Start the Vite dev server on port 3000 |
-| `pnpm build` | Build the production bundle |
-| `pnpm preview` | Build, then preview under `wrangler dev` |
-| `pnpm deploy` | Build and deploy to Cloudflare Workers |
-| `pnpm check` | Run Biome checks via Ultracite |
-| `pnpm fix` | Auto-fix formatting and lint issues via Ultracite |
-| `pnpm typecheck` | Run `tsc --noEmit` |
-| `pnpm test` | Run the Vitest suite once |
-| `pnpm knip` | Detect unused files, exports, and dependencies |
-| `pnpm fullcheck` | Run typecheck, knip, check, and test together |
-| `pnpm sync:drive` | Crawl Google Drive and regenerate the index, sitemap, and feed |
+| Command                | Description                                                                                                                                                            |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pnpm dev`             | Start the Vite dev server on port 3000                                                                                                                                 |
+| `pnpm build`           | Build the production bundle                                                                                                                                            |
+| `pnpm preview`         | Build, then preview under `wrangler dev`                                                                                                                               |
+| `pnpm deploy`          | Build and deploy to Cloudflare Workers                                                                                                                                 |
+| `pnpm check`           | Run Biome checks via Ultracite                                                                                                                                         |
+| `pnpm fix`             | Auto-fix formatting and lint issues via Ultracite                                                                                                                      |
+| `pnpm typecheck`       | Run `tsc --noEmit`                                                                                                                                                     |
+| `pnpm test`            | Run the Vitest suite once                                                                                                                                              |
+| `pnpm knip`            | Detect unused files, exports, and dependencies                                                                                                                         |
+| `pnpm fullcheck`       | Run typecheck, knip, check, and test together                                                                                                                          |
+| `pnpm sync:drive`      | Crawl Google Drive and regenerate the index, sitemap, and feed                                                                                                         |
 | `pnpm build:resources` | Validate the resource catalog and regenerate its index and icons. Pass `--skip-links` or `--skip-icons` to stay offline, `--check` to compare with the committed index |
-| `pnpm readmes:drive` | Dry-run the Drive README docs. Pass `apply` to overwrite them. Run `pnpm sync:drive` first |
-| `pnpm organize:drive` | Dry-run the Drive folder and file name normalisation. Pass `apply` to write, `rollback` to undo |
-| `pnpm cf-typegen` | Generate Cloudflare Worker types from `wrangler.jsonc` |
+| `pnpm readmes:drive`   | Dry-run the Drive README docs. Pass `apply` to overwrite them. Run `pnpm sync:drive` first                                                                             |
+| `pnpm organize:drive`  | Dry-run the Drive folder and file name normalisation. Pass `apply` to write, `rollback` to undo                                                                        |
+| `pnpm cf-typegen`      | Generate Cloudflare Worker types from `wrangler.jsonc`                                                                                                                 |
 
 Run `pnpm fullcheck` before opening a pull request. It is the same set of checks CI runs.
 
@@ -128,10 +128,10 @@ Run `pnpm fullcheck` before opening a pull request. It is the same set of checks
 
 Copy `.env.example` to `.env` and fill in the values you need locally.
 
-| Variable | Used for |
-|---|---|
-| `VITE_WEB3FORMS_ACCESS_KEY` | Submitting the contact form via Web3Forms |
-| `VITE_GA_MEASUREMENT_ID` | Google Analytics measurement ID, only loaded in production builds |
+| Variable                    | Used for                                                          |
+| --------------------------- | ----------------------------------------------------------------- |
+| `VITE_WEB3FORMS_ACCESS_KEY` | Submitting the contact form via Web3Forms                         |
+| `VITE_GA_MEASUREMENT_ID`    | Google Analytics measurement ID, only loaded in production builds |
 
 `pnpm sync:drive` additionally requires a Google service account with read access to the source
 Drive folders, given as `GOOGLE_SERVICE_ACCOUNT_KEY` (the key JSON inline) or as a key file at

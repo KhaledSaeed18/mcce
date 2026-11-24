@@ -1,4 +1,5 @@
-import { type MotionProps, m } from "motion/react";
+import type { MotionProps } from "motion/react";
+import { m } from "motion/react";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 

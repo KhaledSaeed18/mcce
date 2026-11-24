@@ -1,4 +1,5 @@
-import { type RefObject, useEffect, useRef, useState } from "react";
+import type { RefObject } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CLIP_CARD_ATTRIBUTE } from "@/config/pdf-editor";
 import type { Box } from "@/lib/pdf-editor/types";
 

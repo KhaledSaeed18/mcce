@@ -1,4 +1,5 @@
-import { createContext, type RefObject, useContext } from "react";
+import type { RefObject } from "react";
+import { createContext, useContext } from "react";
 
 const NO_SCROLLER: RefObject<HTMLDivElement | null> = { current: null };
 

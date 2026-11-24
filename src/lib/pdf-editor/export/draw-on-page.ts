@@ -1,6 +1,6 @@
+import type { PDFPage } from "pdf-lib";
 import {
   concatTransformationMatrix,
-  type PDFPage,
   popGraphicsState,
   pushGraphicsState,
 } from "pdf-lib";

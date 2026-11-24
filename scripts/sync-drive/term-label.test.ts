@@ -1,10 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { MaterialType } from "../../src/lib/drive/types";
-import {
-  academicYearFor,
-  parseTermLabel,
-  type TermContext,
-} from "./term-label";
+import type { TermContext } from "./term-label";
+import { academicYearFor, parseTermLabel } from "./term-label";
 
 const FALL = "First Year | Fall Semester";
 const SPRING = "First Year | Spring Semester";

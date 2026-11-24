@@ -1,3 +1,4 @@
+import type { LucideIcon } from "lucide-react";
 import {
   AlignCenterIcon,
   AlignLeftIcon,
@@ -5,12 +6,12 @@ import {
   BoldIcon,
   CopyIcon,
   ItalicIcon,
-  type LucideIcon,
   PencilIcon,
   Trash2Icon,
   UnderlineIcon,
 } from "lucide-react";
-import { type RefObject, useCallback, useRef } from "react";
+import type { RefObject } from "react";
+import { useCallback, useRef } from "react";
 import { TextAlignButton } from "@/components/pdf-editor/text-align-button";
 import { TextColorMenus } from "@/components/pdf-editor/text-color-menus";
 import { TextFontMenu } from "@/components/pdf-editor/text-font-menu";

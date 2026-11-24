@@ -1,9 +1,5 @@
-import {
-  LineCapStyle,
-  LineJoinStyle,
-  type PDFPage,
-  setLineJoin,
-} from "pdf-lib";
+import type { PDFPage } from "pdf-lib";
+import { LineCapStyle, LineJoinStyle, setLineJoin } from "pdf-lib";
 import { HIGHLIGHT_OPACITY } from "@/config/pdf-editor";
 import { getArrowHead } from "../arrow-head";
 import { getMarkLine } from "../text-mark-lines";

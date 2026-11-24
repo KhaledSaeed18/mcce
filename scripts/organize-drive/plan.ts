@@ -1,11 +1,11 @@
 import { normaliseFolderName } from "./folder-name";
+import type { PrefixRewrite } from "./layout";
 import {
   ASSESSMENT_FILE_MOVES,
   ASSESSMENT_FILE_PATTERN,
   COURSE_CATEGORIES,
   COURSE_REWRITES,
   FILE_RENAMES,
-  type PrefixRewrite,
 } from "./layout";
 import { normaliseFileName } from "./naming";
 

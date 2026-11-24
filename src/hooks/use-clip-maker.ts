@@ -2,11 +2,8 @@ import type { PDFDocumentProxy } from "pdfjs-dist";
 import { useCallback, useMemo } from "react";
 import type { EditorMarkup } from "@/hooks/use-editor-markup";
 import type { EditorTools } from "@/hooks/use-editor-tools";
-import {
-  type ClipSource,
-  createClip,
-  redrawClip,
-} from "@/lib/pdf-editor/clips/create-clip";
+import type { ClipSource } from "@/lib/pdf-editor/clips/create-clip";
+import { createClip, redrawClip } from "@/lib/pdf-editor/clips/create-clip";
 import type { EditorClip } from "@/lib/pdf-editor/clips/types";
 import type {
   AnnotationActions,

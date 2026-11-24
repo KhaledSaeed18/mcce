@@ -1,7 +1,7 @@
+import type { LucideIcon } from "lucide-react";
 import {
   CompassIcon,
   HelpCircleIcon,
-  type LucideIcon,
   MailIcon,
   WifiOffIcon,
   WrenchIcon,

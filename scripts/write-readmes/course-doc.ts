@@ -1,12 +1,8 @@
 import { DRIVE_SOURCES } from "../../src/config/sources";
 import type { DriveNode } from "../../src/lib/drive/types";
 import { ROOT_README_NAME } from "./config";
-import {
-  type CourseEntry,
-  childFolders,
-  filesUnder,
-  type ReadmeContext,
-} from "./context";
+import type { CourseEntry, ReadmeContext } from "./context";
+import { childFolders, filesUnder } from "./context";
 import {
   aboutSection,
   contentsSection,

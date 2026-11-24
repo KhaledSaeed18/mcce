@@ -1,10 +1,5 @@
-import {
-  type DragEvent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import type { DragEvent } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { LOCAL_PDF_DROP_ERROR_MS } from "@/config/pdf-editor";
 import { useOpenLocalPdf } from "@/hooks/use-open-local-pdf";
 

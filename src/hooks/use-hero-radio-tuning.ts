@@ -1,9 +1,5 @@
-import {
-  animate,
-  type MotionValue,
-  useMotionValue,
-  useMotionValueEvent,
-} from "motion/react";
+import type { MotionValue } from "motion/react";
+import { animate, useMotionValue, useMotionValueEvent } from "motion/react";
 import { useCallback, useState } from "react";
 import {
   HERO_RADIO_LOCK_STRENGTH,

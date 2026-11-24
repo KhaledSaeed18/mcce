@@ -1,5 +1,6 @@
 import { createFolder, moveFile, renameFile } from "./drive-write";
-import { type JournalEntry, record } from "./journal";
+import type { JournalEntry } from "./journal";
+import { record } from "./journal";
 import type { PlannedNode } from "./plan";
 
 export interface ApplyContext {

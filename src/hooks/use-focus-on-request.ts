@@ -1,4 +1,5 @@
-import { type RefObject, useEffect } from "react";
+import type { RefObject } from "react";
+import { useEffect } from "react";
 
 /** Focuses and selects a field each time the request count goes up, so asking
  * to search again lands in the field with the old query ready to replace. */

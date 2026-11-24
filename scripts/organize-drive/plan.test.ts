@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { findCollisions, type PlannedNode } from "./plan";
+import type { PlannedNode } from "./plan";
+import { findCollisions } from "./plan";
 
 function plannedNode(
   id: string,

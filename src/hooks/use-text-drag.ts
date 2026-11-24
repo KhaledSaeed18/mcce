@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 import { TEXT_MOVE_TOLERANCE } from "@/config/pdf-editor";
-import { type AnnotationDrag, findTextAt } from "@/lib/pdf-editor/move";
+import type { AnnotationDrag } from "@/lib/pdf-editor/move";
+import { findTextAt } from "@/lib/pdf-editor/move";
 import { boundedTextDelta } from "@/lib/pdf-editor/text-move";
 import type {
   Annotation,

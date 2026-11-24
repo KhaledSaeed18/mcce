@@ -1,8 +1,5 @@
-import {
-  type MotionValue,
-  useAnimationFrame,
-  useReducedMotion,
-} from "motion/react";
+import type { MotionValue } from "motion/react";
+import { useAnimationFrame, useReducedMotion } from "motion/react";
 import { useRef } from "react";
 import { HERO_SCOPE_PHASE_MS } from "@/config/hero-radio";
 import { nearestStation, signalStrength } from "@/lib/drive/hero-radio-signal";

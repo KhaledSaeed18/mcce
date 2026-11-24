@@ -1,7 +1,7 @@
+import type { LucideIcon } from "lucide-react";
 import {
   FolderSearchIcon,
   GraduationCapIcon,
-  type LucideIcon,
   MessagesSquareIcon,
 } from "lucide-react";
 import { m } from "motion/react";

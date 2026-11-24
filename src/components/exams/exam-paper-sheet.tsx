@@ -1,4 +1,5 @@
-import { type MotionValue, m, useTransform } from "motion/react";
+import type { MotionValue } from "motion/react";
+import { m, useTransform } from "motion/react";
 import {
   EXAMS_FAN_ANGLES,
   EXAMS_FAN_WINDOW,

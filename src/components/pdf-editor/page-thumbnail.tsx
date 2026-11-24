@@ -1,11 +1,7 @@
 import { CopyIcon, RotateCwIcon, Trash2Icon } from "lucide-react";
 import type { PDFDocumentProxy } from "pdfjs-dist";
-import {
-  type ComponentProps,
-  type RefObject,
-  useCallback,
-  useRef,
-} from "react";
+import type { ComponentProps, RefObject } from "react";
+import { useCallback, useRef } from "react";
 import { PageInsertMenu } from "@/components/pdf-editor/page-insert-menu";
 import { PageThumbnailAction } from "@/components/pdf-editor/page-thumbnail-action";
 import {

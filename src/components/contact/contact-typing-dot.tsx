@@ -1,4 +1,5 @@
-import { type MotionValue, m, useReducedMotion } from "motion/react";
+import type { MotionValue } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import {
   CONTACT_DOT_CENTER_Y,
   CONTACT_DOT_PULSE_DELAY,

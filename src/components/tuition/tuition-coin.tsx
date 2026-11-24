@@ -1,5 +1,6 @@
 import { DollarSignIcon } from "lucide-react";
-import { type MotionValue, m, useTransform } from "motion/react";
+import type { MotionValue } from "motion/react";
+import { m, useTransform } from "motion/react";
 import {
   TUITION_COIN_BOTTOM_Y,
   TUITION_COIN_CENTER_X,

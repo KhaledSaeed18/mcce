@@ -1,4 +1,5 @@
-import { type PointerEvent, useCallback, useRef } from "react";
+import type { PointerEvent } from "react";
+import { useCallback, useRef } from "react";
 import { buildNote } from "@/lib/pdf-editor/build-note";
 import { findAnnotationAt } from "@/lib/pdf-editor/move";
 import { toPagePoint } from "@/lib/pdf-editor/pointer";

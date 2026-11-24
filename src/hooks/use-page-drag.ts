@@ -1,11 +1,5 @@
-import {
-  type MouseEvent,
-  type PointerEvent,
-  type RefObject,
-  useCallback,
-  useRef,
-  useState,
-} from "react";
+import type { MouseEvent, PointerEvent, RefObject } from "react";
+import { useCallback, useRef, useState } from "react";
 import { PAGE_DRAG_TOLERANCE } from "@/config/pdf-editor";
 import { usePageReorderKeys } from "@/hooks/use-page-reorder-keys";
 import { readInsertAt, readRailPosition } from "@/lib/pdf-editor/rail-position";

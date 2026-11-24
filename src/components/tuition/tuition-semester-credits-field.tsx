@@ -1,4 +1,5 @@
-import { type ChangeEvent, useCallback } from "react";
+import type { ChangeEvent } from "react";
+import { useCallback } from "react";
 import { Input } from "@/components/ui/input";
 import { TUITION_MAX_CREDITS_PER_SEMESTER } from "@/config/tuition";
 

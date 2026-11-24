@@ -2,7 +2,8 @@ import { useEffect, useRef } from "react";
 import { MAX_RENDER_DPR } from "@/config/pdf-editor";
 import { drawAnnotation } from "@/lib/pdf-editor/draw/annotation";
 import { drawTextHighlight } from "@/lib/pdf-editor/draw/text";
-import { type AnnotationDrag, withDrag } from "@/lib/pdf-editor/move";
+import type { AnnotationDrag } from "@/lib/pdf-editor/move";
+import { withDrag } from "@/lib/pdf-editor/move";
 import type { RotationTransform } from "@/lib/pdf-editor/rotation";
 import type { Annotation, PageSize } from "@/lib/pdf-editor/types";
 

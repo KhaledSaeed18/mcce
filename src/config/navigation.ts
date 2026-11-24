@@ -1,3 +1,4 @@
+import type { LucideIcon } from "lucide-react";
 import {
   BadgeCheckIcon,
   BookmarkIcon,
@@ -14,7 +15,6 @@ import {
   HomeIcon,
   InfoIcon,
   LibraryIcon,
-  type LucideIcon,
   MailIcon,
   MapIcon,
   NetworkIcon,

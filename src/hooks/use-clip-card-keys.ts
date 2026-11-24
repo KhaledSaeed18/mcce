@@ -1,4 +1,5 @@
-import { type KeyboardEvent, useCallback } from "react";
+import type { KeyboardEvent } from "react";
+import { useCallback } from "react";
 import { CLIP_MOVE_STEP, CLIP_MOVE_STEP_LARGE } from "@/config/pdf-editor";
 import type { ClipCardMoveOptions } from "@/hooks/use-clip-card-move";
 import { clampCard } from "@/lib/pdf-editor/clips/clamp-card";

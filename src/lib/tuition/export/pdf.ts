@@ -37,10 +37,8 @@ import {
   drawTiles,
 } from "@/lib/tuition/export/pdf-sections";
 import { buildTables } from "@/lib/tuition/export/pdf-table-data";
-import {
-  drawTable,
-  type JsPdfWithAutoTable,
-} from "@/lib/tuition/export/pdf-tables";
+import type { JsPdfWithAutoTable } from "@/lib/tuition/export/pdf-tables";
+import { drawTable } from "@/lib/tuition/export/pdf-tables";
 import type { TuitionExportPayload } from "@/lib/tuition/types";
 
 function drawSubtitle(
